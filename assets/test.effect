@@ -1,0 +1,44 @@
+%{
+  "techniques": [
+    {
+      "queue": "opaque",
+      "passes": [
+        {
+          "vert": "vs",
+          "frag": "fs",
+          "stage": "default",
+          "depthTest": true,
+          "depthWrite": true
+        }
+      ]
+    }
+  ]
+%}
+
+
+%% vs {
+  attribute vec3 a_position;
+  attribute vec3 a_normal;
+  attribute vec2 a_uv0;
+
+  uniform mat4 _viewProj;
+  uniform mat4 _model;
+
+  varying vec2 uv;
+  varying vec3 normal;
+
+  void main () {
+    uv = a_uv0;
+    normal = a_normal;
+	  gl_Position = _viewProj * _model * vec4(a_position, 1);
+  }
+}
+
+%% fs {
+  varying vec2 uv;
+  varying vec3 normal;
+
+  void main () {
+    gl_FragColor = vec4(normal * 0.5 + 0.5, 1);
+  }
+}
