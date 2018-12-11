@@ -3,8 +3,26 @@
   "_name": "",
   "_objFlags": 0,
   "_native": "",
-  "_defines": {},
-  "_props": {},
+  "_defines": {
+    "USE_ALBEDO_TEXTURE": true
+  },
+  "_props": {
+    "albedo": {
+      "__type__": "cc.Color",
+      "r": 30,
+      "g": 188,
+      "b": 174,
+      "a": 1
+    },
+    "albedo_texture": {
+      "__uuid__": "b0ccc6f9-4099-4112-8fc6-ad004ae0ac0e@texture"
+    },
+    "mainTiling": {
+      "__type__": "cc.Vec2",
+      "x": 1,
+      "y": 1
+    }
+  },
   "_effectAsset": {
     "__uuid__": "e84e3815-d4ad-4777-a70c-a59f8425d4c1"
   }
