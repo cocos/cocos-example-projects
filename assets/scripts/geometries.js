@@ -60,20 +60,15 @@ cc.Class({
                 comp.material = m; models.push(comp);
             }
         }
-        cc.loader.loadRes('brdfLUT', cc.Texture2D, (err, asset) => {
+        cc.loader.loadRes('textures/brdfLUT', cc.Texture2D, (err, asset) => {
             models.forEach(m => m.material.setProperty('brdfLUT', asset));
         });
-        cc.loader.loadResDir('papermill/diffuse', cc.Texture2D, (err, asset) => {
-            let texture = new cc.TextureCube();
-            texture._nativeAsset = asset.map(i => i._image);
+        cc.loader.loadResDir('textures/papermill/diffuse', cc.Texture2D, (err, asset) => {
+            let texture = cc.TextureCube.fromTexture2DArray(asset);
             models.forEach(m => m.material.setProperty('diffuseEnvTexture', texture));
         });
-        cc.loader.loadResDir('papermill/specular', cc.Texture2D, (err, asset) => {
-            let res = [], mips = asset.length / 6;
-            for (let i = 0; i < mips; i++)
-                res.push(asset.splice(0, 6).map(img => img._image));
-            let texture = new cc.TextureCube();
-            texture._nativeAsset = res;
+        cc.loader.loadResDir('textures/papermill/specular', cc.Texture2D, (err, asset) => {
+            let texture = cc.TextureCube.fromTexture2DArray(asset);
             models.forEach(m => m.material.setProperty('specularEnvTexture', texture));
         });
     },
