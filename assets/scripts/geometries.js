@@ -39,37 +39,39 @@ cc.Class({
         let albedo = cc.color(128, 0, 0);
         let meshSphere = cc.utils.createMesh(cc.game._renderContext,
             cc.primitives.sphere(1, { segments: 64 }));
-        for (let i = 0; i < rows; i++) {
-            for (let j = 0; j < cols; j++) {
-                let node = new cc.Node();
-                node.parent = this.node;
-                node.setPosition((j-cols/2)*spacing, (i-rows/2)*spacing, -2);
-                let comp = node.addComponent(cc.ModelComponent);
-                comp.mesh = meshSphere;
-                let m = new cc.Material();
-                m.effectName = 'builtin-effect-pbr';
-                m.setProperty('ao', 1.0);
-                m.setProperty('albedo', albedo);
-                m.setProperty('metallic', i / rows);
-                m.setProperty('roughness', cc.vmath.clamp(j / cols, 0.05, 1));
-                m.define('USE_IBL', true);
-                m.define('USE_TEX_LOD', true);
-                m.define("USE_ALBEDO_TEXTURE", true);
-                m.define("USE_RGBE_IBL_DIFFUSE", true);
-                m.define("USE_RGBE_IBL_SPECULAR", true);
-                comp.material = m; models.push(comp);
+        cc.loader.loadRes('builtin-effect-pbr', cc.EffectAsset, 'internal', null, (err, asset) => {
+            for (let i = 0; i < rows; i++) {
+                for (let j = 0; j < cols; j++) {
+                    let node = new cc.Node();
+                    node.parent = this.node;
+                    node.setPosition((j-cols/2)*spacing, (i-rows/2)*spacing, -2);
+                    let comp = node.addComponent(cc.ModelComponent);
+                    comp.mesh = meshSphere;
+                    let m = new cc.Material();
+                    m.effectAsset = asset;
+                    m.setProperty('ao', 1.0);
+                    m.setProperty('albedo', albedo);
+                    m.setProperty('metallic', i / rows);
+                    m.setProperty('roughness', cc.vmath.clamp(j / cols, 0.05, 1));
+                    m.define('USE_IBL', true);
+                    m.define('USE_TEX_LOD', true);
+                    m.define("USE_ALBEDO_TEXTURE", true);
+                    m.define("USE_RGBE_IBL_DIFFUSE", true);
+                    m.define("USE_RGBE_IBL_SPECULAR", true);
+                    comp.material = m; models.push(comp);
+                }
             }
-        }
-        cc.loader.loadRes('textures/brdfLUT', cc.Texture2D, (err, asset) => {
-            models.forEach(m => m.material.setProperty('brdfLUT', asset));
-        });
-        cc.loader.loadResDir('textures/papermill/diffuse', cc.Texture2D, (err, asset) => {
-            let texture = cc.TextureCube.fromTexture2DArray(asset);
-            models.forEach(m => m.material.setProperty('diffuseEnvTexture', texture));
-        });
-        cc.loader.loadResDir('textures/papermill/specular', cc.Texture2D, (err, asset) => {
-            let texture = cc.TextureCube.fromTexture2DArray(asset);
-            models.forEach(m => m.material.setProperty('specularEnvTexture', texture));
+            cc.loader.loadRes('textures/brdfLUT', cc.Texture2D, (err, asset) => {
+                models.forEach(m => m.material.setProperty('brdfLUT', asset));
+            });
+            cc.loader.loadResDir('textures/papermill/diffuse', cc.Texture2D, (err, asset) => {
+                let texture = cc.TextureCube.fromTexture2DArray(asset);
+                models.forEach(m => m.material.setProperty('diffuseEnvTexture', texture));
+            });
+            cc.loader.loadResDir('textures/papermill/specular', cc.Texture2D, (err, asset) => {
+                let texture = cc.TextureCube.fromTexture2DArray(asset);
+                models.forEach(m => m.material.setProperty('specularEnvTexture', texture));
+            });
         });
     },
 
