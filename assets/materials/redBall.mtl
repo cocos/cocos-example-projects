@@ -1,0 +1,35 @@
+{
+  "__type__": "cc.Material",
+  "_name": "",
+  "_objFlags": 0,
+  "_native": "",
+  "_defines": {
+    "USE_RGBE_IBL_DIFFUSE": true,
+    "USE_RGBE_IBL_SPECULAR": true,
+    "USE_TEX_LOD": true
+  },
+  "_props": {
+    "albedo": {
+      "__type__": "cc.Color",
+      "r": 128,
+      "g": 0,
+      "b": 0,
+      "a": 1
+    },
+    "albedo_texture": null,
+    "ao": 1,
+    "brdfLUT": {
+      "__uuid__": "1ba994d2-7afd-46c6-818f-d05a7a95e13b@texture"
+    },
+    "mainTiling": {
+      "__type__": "cc.Vec2",
+      "x": 1,
+      "y": 1
+    },
+    "metallic": 0,
+    "roughness": 0.3
+  },
+  "_effectAsset": {
+    "__uuid__": "e84e3815-d4ad-4777-a70c-a59f8425d4c1"
+  }
+}
