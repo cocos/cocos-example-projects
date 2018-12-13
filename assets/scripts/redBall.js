@@ -8,12 +8,14 @@
 //  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
 //  - [English] http://www.cocos2d-x.org/docs/creator/en/scripting/life-cycle-callbacks.html
 
-let rows = 7;
-let cols = 7;
+let rows, cols;
+rows = cols = 3;
 let spacing = 2.5;
 
 let rowSpan = rows * spacing;
 let colSpan = cols * spacing;
+
+let dif, spe, mats = [];
 
 cc.Class({
     extends: cc.Component,
@@ -41,21 +43,38 @@ cc.Class({
     onLoad () {},
 
     start () {
-        let m = this.getComponent(cc.ModelComponent).material;
-        let pos = this.node.getPosition();
-        m.setProperty('metallic', pos.y / rowSpan);
-        m.setProperty('roughness', cc.vmath.clamp(pos.x / colSpan, 0.05, 1));
-        cc.loader.loadResDir('textures/papermill/specular', cc.Texture2D, (err, asset) => {
-            let texture = cc.TextureCube.fromTexture2DArray(asset);
-            m.setProperty('specularEnvTexture', texture);
+        this.node.children.forEach(n => {
+            let m = n.getComponent(cc.ModelComponent).material;
+            let pos = n.getPosition();
+            m.setProperty('metallic', pos.y / rowSpan);
+            m.setProperty('roughness', cc.vmath.clamp(pos.x / colSpan, 0.05, 1));
+            mats.push(m);
         });
-        // to be removed after texture cube integration
-        m.define('USE_IBL', true);
-        cc.loader.loadResDir('textures/papermill/diffuse', cc.Texture2D, (err, asset) => {
-            let texture = cc.TextureCube.fromTexture2DArray(asset);
-            m.setProperty('diffuseEnvTexture', texture);
+        cc.loader.loadResDir('papermill/specular', cc.Texture2D, (err, asset) => {
+            spe = new cc.TextureCube();
+            cc.TextureCube.fromTexture2DArray(asset, spe);
+        });
+        cc.loader.loadResDir('papermill/diffuse', cc.Texture2D, (err, asset) => {
+            dif = cc.TextureCube.fromTexture2DArray(asset);
+        });
+
+		const keyListener = cc.EventListener.create({
+			event: cc.EventListener.KEYBOARD,
+			onKeyReleased: this._keyUpHandler.bind(this)
+		});
+		cc.eventManager.addListener(keyListener, 1);
+    },
+
+    updateTexture() {
+        cc.director.getScene().getChildByName('camera').getComponent('sky').enabled = true;
+        cc.director.getScene().getChildByName('geoms-procedural').getComponent('geometries').enabled = true;
+        mats.forEach(m => {
+            m.setProperty('diffuseEnvTexture', dif);
+            m.setProperty('specularEnvTexture', spe);
         });
     },
 
-    // update (dt) {},
+	_keyUpHandler(keycode) {
+		if (keycode === 'R'.charCodeAt(0) && dif && spe) this.updateTexture();
+	}
 });

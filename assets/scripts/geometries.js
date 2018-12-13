@@ -63,11 +63,11 @@ cc.Class({
         cc.loader.loadRes('brdfLUT', cc.Texture2D, 'internal', null, (err, asset) => {
             models.forEach(m => m.material.setProperty('brdfLUT', asset));
         });
-        cc.loader.loadResDir('textures/papermill/diffuse', cc.Texture2D, (err, asset) => {
+        cc.loader.loadResDir('papermill/diffuse', cc.Texture2D, (err, asset) => {
             let texture = cc.TextureCube.fromTexture2DArray(asset);
             models.forEach(m => m.material.setProperty('diffuseEnvTexture', texture));
         });
-        cc.loader.loadResDir('textures/papermill/specular', cc.Texture2D, (err, asset) => {
+        cc.loader.loadResDir('papermill/specular', cc.Texture2D, (err, asset) => {
             let texture = cc.TextureCube.fromTexture2DArray(asset);
             models.forEach(m => m.material.setProperty('specularEnvTexture', texture));
         });

@@ -4,6 +4,7 @@
   "_objFlags": 0,
   "_native": "",
   "_defines": {
+    "USE_IBL": true,
     "USE_RGBE_IBL_DIFFUSE": true,
     "USE_RGBE_IBL_SPECULAR": true,
     "USE_TEX_LOD": true
@@ -19,7 +20,10 @@
     "albedo_texture": null,
     "ao": 1,
     "brdfLUT": {
-      "__uuid__": "1ba994d2-7afd-46c6-818f-d05a7a95e13b@texture"
+      "__uuid__": "1e843e8e-5f6c-49e2-9f78-47d0dac7e0be@brdfLUT"
+    },
+    "diffuseEnvTexture": {
+      "__uuid__": "c1bcaf97-e731-4da5-8888-b5e2cccbf0a5@dif.hdr"
     },
     "mainTiling": {
       "__type__": "cc.Vec2",
@@ -27,7 +31,10 @@
       "y": 1
     },
     "metallic": 0,
-    "roughness": 0.3
+    "roughness": 0.1,
+    "specularEnvTexture": {
+      "__uuid__": "3f9e86cf-758d-4ac2-b5b8-47c1945aabd6@spe.hdr"
+    }
   },
   "_effectAsset": {
     "__uuid__": "e84e3815-d4ad-4777-a70c-a59f8425d4c1"
