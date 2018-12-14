@@ -9,7 +9,7 @@
 //  - [English] http://www.cocos2d-x.org/docs/creator/en/scripting/life-cycle-callbacks.html
 
 let rows, cols;
-rows = cols = 3;
+rows = cols = 7;
 let spacing = 2.5;
 
 let rowSpan = rows * spacing;
@@ -48,6 +48,7 @@ cc.Class({
             let pos = n.getPosition();
             m.setProperty('metallic', pos.y / rowSpan);
             m.setProperty('roughness', cc.vmath.clamp(pos.x / colSpan, 0.05, 1));
+            m.effect.getProperty('specularEnvTexture').update({ mipmap: true });
             mats.push(m);
         });
         cc.loader.loadResDir('papermill/specular', cc.Texture2D, (err, asset) => {
