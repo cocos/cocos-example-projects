@@ -1,14 +1,14 @@
 %{
-  "techniques": [
+  techniques: [
     {
-      "queue": "opaque",
-      "passes": [
+      queue: opaque
+      passes: [
         {
-          "vert": "vs",
-          "frag": "fs",
-          "stage": "default",
-          "depthTest": true,
-          "depthWrite": true
+          vert: vs
+          frag: fs
+          stage: default
+          depthTest: true
+          depthWrite: true
         }
       ]
     }
