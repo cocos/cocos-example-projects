@@ -37,8 +37,7 @@ cc.Class({
         let models = [];
         let rows = 7, cols = 7, spacing = 2.5;
         let albedo = cc.color(128, 0, 0);
-        let meshSphere = cc.utils.createMesh(cc.game._renderContext,
-        cc.primitives.sphere(1, { segments: 64 }));
+        let meshSphere = cc.utils.createMesh(cc.primitives.sphere(1, { segments: 64 }));
         for (let i = 0; i < rows; i++) {
             for (let j = 0; j < cols; j++) {
                 let node = new cc.Node();
@@ -47,16 +46,18 @@ cc.Class({
                 let comp = node.addComponent(cc.ModelComponent);
                 comp.mesh = meshSphere;
                 let m = new cc.Material();
+                m.setDefines({
+                    USE_IBL: true,
+                    USE_TEX_LOD: true,
+                    USE_RGBE_IBL_DIFFUSE: true,
+                    USE_RGBE_IBL_SPECULAR: true,
+                });
                 m.effectName = 'builtin-effect-pbr';
                 m.setProperty('ao', 1.0);
                 m.setProperty('albedo', albedo);
                 m.setProperty('metallic', i / rows);
                 m.setProperty('roughness', cc.vmath.clamp(j / cols, 0.05, 1));
-                m.define('USE_IBL', true);
-                m.define('USE_TEX_LOD', true);
-                m.define("USE_ALBEDO_TEXTURE", true);
-                m.define("USE_RGBE_IBL_DIFFUSE", true);
-                m.define("USE_RGBE_IBL_SPECULAR", true);
+                m.setProperty('maxReflectionLod', 7);
                 comp.material = m; models.push(comp);
             }
         }

@@ -48,7 +48,10 @@ cc.Class({
             let pos = n.getPosition();
             m.setProperty('metallic', pos.y / rowSpan);
             m.setProperty('roughness', cc.vmath.clamp(pos.x / colSpan, 0.05, 1));
-            m.effect.getProperty('specularEnvTexture').update({ mipmap: true });
+            const tex = m.getProperty('specularEnvTexture');
+            tex.setGenMipmap(true);
+            m.setProperty('specularEnvTexture', tex);
+
             mats.push(m);
         });
         cc.loader.loadResDir('papermill/specular', cc.Texture2D, (err, asset) => {
