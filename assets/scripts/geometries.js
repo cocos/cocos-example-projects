@@ -50,7 +50,7 @@ cc.Class({
                     USE_IBL: true,
                     USE_TEX_LOD: true,
                     USE_RGBE_IBL_DIFFUSE: true,
-                    USE_RGBE_IBL_SPECULAR: true,
+                    // USE_RGBE_IBL_SPECULAR: true,
                 });
                 m.effectName = 'builtin-effect-pbr';
                 m.setProperty('ao', 1.0);
@@ -68,10 +68,10 @@ cc.Class({
             let texture = cc.TextureCube.fromTexture2DArray(asset);
             models.forEach(m => m.material.setProperty('diffuseEnvTexture', texture));
         });
-        cc.loader.loadResDir('papermill/specular', cc.Texture2D, (err, asset) => {
-            let texture = cc.TextureCube.fromTexture2DArray(asset);
-            models.forEach(m => m.material.setProperty('specularEnvTexture', texture));
-        });
+        // cc.loader.loadResDir('papermill/specular', cc.Texture2D, (err, asset) => {
+        //     let texture = cc.TextureCube.fromTexture2DArray(asset);
+        //     models.forEach(m => m.material.setProperty('specularEnvTexture', texture));
+        // });
     },
 
     // update (dt) {},
