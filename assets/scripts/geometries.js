@@ -46,13 +46,15 @@ cc.Class({
                 let comp = node.addComponent(cc.ModelComponent);
                 comp.mesh = meshSphere;
                 let m = new cc.Material();
-                m.setDefines({
-                    USE_IBL: true,
-                    USE_TEX_LOD: true,
-                    USE_RGBE_IBL_DIFFUSE: true,
-                    // USE_RGBE_IBL_SPECULAR: true,
+                m.initialize({
+                    defines: {
+                        USE_IBL: true,
+                        USE_TEX_LOD: true,
+                        USE_RGBE_IBL_DIFFUSE: true,
+                        USE_RGBE_IBL_SPECULAR: true,
+                    },
+                    effectName: 'builtin-effect-pbr',
                 });
-                m.effectName = 'builtin-effect-pbr';
                 m.setProperty('ao', 1.0);
                 m.setProperty('albedo', albedo);
                 m.setProperty('metallic', i / rows);
@@ -68,10 +70,10 @@ cc.Class({
             let texture = cc.TextureCube.fromTexture2DArray(asset);
             models.forEach(m => m.material.setProperty('diffuseEnvTexture', texture));
         });
-        // cc.loader.loadResDir('papermill/specular', cc.Texture2D, (err, asset) => {
-        //     let texture = cc.TextureCube.fromTexture2DArray(asset);
-        //     models.forEach(m => m.material.setProperty('specularEnvTexture', texture));
-        // });
+        cc.loader.loadResDir('papermill/specular', cc.Texture2D, (err, asset) => {
+            let texture = cc.TextureCube.fromTexture2DArray(asset);
+            models.forEach(m => m.material.setProperty('specularEnvTexture', texture));
+        });
     },
 
     // update (dt) {},

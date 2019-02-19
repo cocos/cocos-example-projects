@@ -50,10 +50,10 @@ cc.Class({
             m.setProperty('roughness', cc.vmath.clamp(pos.x / colSpan, 0.05, 1));
             mats.push(m);
         });
-        // cc.loader.loadResDir('papermill/specular', cc.Texture2D, (err, asset) => {
-        //     spe = new cc.TextureCube();
-        //     cc.TextureCube.fromTexture2DArray(asset, spe);
-        // });
+        cc.loader.loadResDir('papermill/specular', cc.Texture2D, (err, asset) => {
+            spe = new cc.TextureCube();
+            cc.TextureCube.fromTexture2DArray(asset, spe);
+        });
         cc.loader.loadResDir('papermill/diffuse', cc.Texture2D, (err, asset) => {
             dif = cc.TextureCube.fromTexture2DArray(asset);
         });
@@ -62,7 +62,7 @@ cc.Class({
 			event: cc.EventListener.KEYBOARD,
 			onKeyReleased: this._keyUpHandler.bind(this)
 		});
-		cc.eventManager.addListener(keyListener, 1);
+        cc.eventManager.addListener(keyListener, 1);
     },
 
     updateTexture() {
@@ -70,11 +70,11 @@ cc.Class({
         cc.director.getScene().getChildByName('geoms-procedural').getComponent('geometries').enabled = true;
         mats.forEach(m => {
             m.setProperty('diffuseEnvTexture', dif);
-            // m.setProperty('specularEnvTexture', spe);
+            m.setProperty('specularEnvTexture', spe);
         });
     },
 
 	_keyUpHandler(keycode) {
-		if (keycode === 'R'.charCodeAt(0) && dif /*&& spe*/) this.updateTexture();
+		if (keycode === 'R'.charCodeAt(0) && dif && spe) this.updateTexture();
 	}
 });
