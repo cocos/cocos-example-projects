@@ -17,15 +17,16 @@ CCEFFECT {
 
 
 CCPROGRAM vs {
-  attribute vec3 a_position;
-  attribute vec3 a_normal;
-  attribute vec2 a_texCoord;
+  precision mediump float;
+  in vec3 a_position;
+  in vec3 a_normal;
+  in vec2 a_texCoord;
 
   #include <cc-global>
   #include <cc-local>
 
-  varying vec2 uv;
-  varying vec3 normal;
+  out vec2 uv;
+  out vec3 normal;
 
   void main () {
     uv = a_texCoord;
@@ -35,11 +36,13 @@ CCPROGRAM vs {
 }
 
 CCPROGRAM fs {
-  varying vec2 uv;
-  varying vec3 normal;
+  precision mediump float;
+  in vec2 uv;
+  in vec3 normal;
+  out vec4 fragColor;
 
   void main () {
-    gl_FragColor = vec4(normal * 0.5 + 0.5, 1);
+    fragColor = vec4(normal * 0.5 + 0.5, 1);
     // gl_FragColor = vec4(abs(mod(uv, 2.0) - 1.0), 1, 1);
   }
 }
