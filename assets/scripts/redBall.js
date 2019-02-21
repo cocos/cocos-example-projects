@@ -46,8 +46,10 @@ cc.Class({
         this.node.children.forEach(n => {
             let m = n.getComponent(cc.ModelComponent).material;
             let pos = n.getPosition();
-            m.setProperty('metallic', pos.y / rowSpan);
-            m.setProperty('roughness', cc.vmath.clamp(pos.x / colSpan, 0.05, 1));
+            const props = m.getProperty('props');
+            props.x = pos.y / rowSpan; // metallic
+            props.y = cc.vmath.clamp(pos.x / colSpan, 0.05, 1); // roughness
+            m.setProperty('props', props);
             mats.push(m);
         });
         cc.loader.loadResDir('papermill/specular', cc.Texture2D, (err, asset) => {

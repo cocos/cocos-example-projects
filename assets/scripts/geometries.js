@@ -55,15 +55,12 @@ cc.Class({
                     },
                     effectName: 'builtin-effect-pbr',
                 });
-                m.setProperty('ao', 1.0);
+                m.setProperty('props', cc.v4(i / rows, cc.vmath.clamp(j / cols, 0.05, 1), 1, 7));
                 m.setProperty('albedo', albedo);
-                m.setProperty('metallic', i / rows);
-                m.setProperty('roughness', cc.vmath.clamp(j / cols, 0.05, 1));
-                m.setProperty('maxReflectionLod', 7);
                 comp.material = m; models.push(comp);
             }
         }
-        cc.loader.loadRes('brdfLUT', cc.Texture2D, 'internal', null, (err, asset) => {
+        cc.loader.loadRes('brdfLUT/brdfLUT', cc.Texture2D, 'internal', null, (err, asset) => {
             models.forEach(m => m.material.setProperty('brdfLUT', asset));
         });
         cc.loader.loadResDir('papermill/diffuse', cc.Texture2D, (err, asset) => {

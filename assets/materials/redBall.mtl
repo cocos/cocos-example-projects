@@ -24,20 +24,19 @@
         "b": 0,
         "a": 255
       },
-      "mainTiling": {
-        "__type__": "cc.Vec2",
-        "x": 1,
-        "y": 1
+      "props": {
+        "__type__": "cc.Vec4",
+        "x": 0.5,
+        "y": 0.1,
+        "z": 1,
+        "w": 7
       },
-      "metallic": 0.5,
-      "roughness": 0.1,
-      "ao": 1,
       "emissive": {
         "__type__": "cc.Color",
         "r": 0,
         "g": 0,
         "b": 0,
-        "a": 255
+        "a": 0
       },
       "diffuseEnvTexture": {
         "__uuid__": "c1bcaf97-e731-4da5-8888-b5e2cccbf0a5@dif.hdr"
@@ -47,8 +46,7 @@
       },
       "brdfLUT": {
         "__uuid__": "1e843e8e-5f6c-49e2-9f78-47d0dac7e0be@brdfLUT"
-      },
-      "maxReflectionLod": 7
+      }
     }
   ]
 }
