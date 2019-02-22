@@ -29,6 +29,9 @@
       },
       {
         "__id__": 10
+      },
+      {
+        "__id__": 12
       }
     ],
     "_active": true,
@@ -386,5 +389,69 @@
     "_shadowCastingMode": 0,
     "_receiveShadows": false,
     "_id": "43mRLDpQpDQoPGOwdKRarf"
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Light",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 1
+    },
+    "_children": [],
+    "_active": true,
+    "_level": 1,
+    "_components": [
+      {
+        "__id__": 13
+      }
+    ],
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": 10,
+      "y": 10,
+      "z": 10
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": -0.189307857412,
+      "y": 0.2685358227515692,
+      "z": -0.03813457647485015,
+      "w": 0.943714364147489
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_layer": 1,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": -20,
+      "y": 30,
+      "z": -10
+    },
+    "_id": "faZ5JetGNMnb5jIah+yFt6"
+  },
+  {
+    "__type__": "cc.LightComponent",
+    "_name": "Directional Light<LightComponent>",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 12
+    },
+    "_enabled": true,
+    "_type": 0,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_intensity": 1,
+    "_range": 1,
+    "_spotAngle": 60,
+    "_id": "b8YZW70TVDE7OIXs9Ifq9n"
   }
 ]
