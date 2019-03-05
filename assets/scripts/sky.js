@@ -34,10 +34,9 @@ cc.Class({
     // onLoad () {},
 
     start () {
-        let comp = this.getComponent(cc.SkyboxComponent);
         cc.loader.loadResDir('papermill/environment', cc.Texture2D, (err, asset) => {
             let texture = cc.TextureCube.fromTexture2DArray(asset);
-            comp.cubemap = texture;
+            cc.director.getScene().globals.skybox.cubemap = texture;
         });
     },
 

@@ -53,7 +53,7 @@ cc.Class({
                         USE_RGBE_IBL_DIFFUSE: true,
                         USE_RGBE_IBL_SPECULAR: true,
                     },
-                    effectName: 'builtin-effect-pbr',
+                    effectName: 'builtin-pbr',
                 });
                 m.setProperty('props', cc.v4(i / rows, cc.vmath.clamp(j / cols, 0.05, 1), 1, 7));
                 m.setProperty('albedo', albedo);
