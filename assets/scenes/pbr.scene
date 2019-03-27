@@ -198,7 +198,7 @@
       "height": 1
     },
     "_screenScale": 1,
-    "_targetDisplay": -1,
+    "_targetDisplay": 0,
     "_id": "f8gjOR6r9CAJF122JSJx3e"
   },
   {
@@ -985,7 +985,6 @@
       "__id__": 29
     },
     "_enabled": true,
-    "_type": 1,
     "_color": {
       "__type__": "cc.Color",
       "r": 255,
@@ -993,10 +992,8 @@
       "b": 255,
       "a": 255
     },
-    "_intensity": 2,
-    "_range": 50,
-    "_spotAngle": 60,
-    "_isMainLight": false,
+    "_useColorTemperature": false,
+    "_colorTemperature": 6550,
     "_id": "4f4YmzUKlKKJgFkzOJ1vJU"
   },
   {
@@ -1051,7 +1048,6 @@
       "__id__": 31
     },
     "_enabled": true,
-    "_type": 1,
     "_color": {
       "__type__": "cc.Color",
       "r": 255,
@@ -1059,10 +1055,8 @@
       "b": 255,
       "a": 255
     },
-    "_intensity": 2,
-    "_range": 50,
-    "_spotAngle": 60,
-    "_isMainLight": false,
+    "_useColorTemperature": false,
+    "_colorTemperature": 6550,
     "_id": "cbQUkkPKZCpIZE4mEpRZb9"
   },
   {
@@ -1117,7 +1111,6 @@
       "__id__": 33
     },
     "_enabled": true,
-    "_type": 1,
     "_color": {
       "__type__": "cc.Color",
       "r": 255,
@@ -1125,10 +1118,8 @@
       "b": 255,
       "a": 255
     },
-    "_intensity": 2,
-    "_range": 50,
-    "_spotAngle": 60,
-    "_isMainLight": false,
+    "_useColorTemperature": false,
+    "_colorTemperature": 6550,
     "_id": "69u38qWlFAaIdTVQzL/kI0"
   },
   {
@@ -1183,7 +1174,6 @@
       "__id__": 35
     },
     "_enabled": true,
-    "_type": 1,
     "_color": {
       "__type__": "cc.Color",
       "r": 255,
@@ -1191,10 +1181,8 @@
       "b": 255,
       "a": 255
     },
-    "_intensity": 2,
-    "_range": 50,
-    "_spotAngle": 60,
-    "_isMainLight": false,
+    "_useColorTemperature": false,
+    "_colorTemperature": 6550,
     "_id": "b57oe+gvBKbJVKS5pCtjOV"
   },
   {
@@ -1204,6 +1192,9 @@
     },
     "skybox": {
       "__id__": 39
+    },
+    "planarShadow": {
+      "__id__": 40
     }
   },
   {
@@ -1231,5 +1222,22 @@
     },
     "_isRGBE": true,
     "_enabled": true
+  },
+  {
+    "__type__": "cc.PlanarShadowInfo",
+    "_normal": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 1,
+      "z": 0
+    },
+    "_distance": 0,
+    "_shadowColor": {
+      "__type__": "cc.Color",
+      "r": 76,
+      "g": 76,
+      "b": 76,
+      "a": 255
+    }
   }
 ]

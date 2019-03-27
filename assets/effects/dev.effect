@@ -1,0 +1,99 @@
+CCEffect %{
+  techniques:
+  - name: test1
+    passes:
+    - vert: vs:vert
+      frag: fs:frag
+      depthStencilState: &opaque-ds
+        depthTest: true
+        depthWrite: true
+      properties: &props
+        color: { type: color4, value: [0.3, 0.5, 0.7, 0.5] }
+    - switch: ALL_WHITE
+      vert: compare-vs:vert
+      frag: compare-fs:frag
+      depthStencilState: *opaque-ds
+  - name: test2
+    passes:
+    - vert: vs:vert
+      frag: fs:frag
+      depthStencilState: &trans-ds
+        depthTest: true
+        depthWrite: false
+      blendState: &bs
+        targets:
+        - blend: true
+          blendSrc: src_alpha
+          blendDst: one_minus_src_alpha
+          blendDstAlpha: one_minus_src_alpha
+      properties: *props
+    - switch: ALL_WHITE
+      vert: compare-vs:vert
+      frag: compare-fs:frag
+      depthStencilState: *trans-ds
+      blendState: *bs
+%}
+
+CCProgram vs %{
+  precision mediump float;
+  in vec3 a_position;
+  in vec3 a_normal;
+  in vec2 a_texCoord;
+
+  #include <cc-global>
+  #include <cc-local>
+
+  out vec2 uv;
+  out vec3 normal;
+
+  vec4 vert () {
+    uv = a_texCoord;
+    normal = a_normal;
+	  return cc_matViewProj * cc_matWorld * vec4(a_position, 1);
+  }
+%}
+
+CCProgram fs %{
+  precision mediump float;
+  #include <post-process>
+
+  in vec2 uv;
+  in vec3 normal;
+
+  #pragma define SOURCE options([color.r, color.g, color.b])
+  #pragma define COUNT range([0, 3])
+
+  uniform Constants {
+    vec4 color;
+  };
+
+  vec4 frag () {
+    vec4 c = vec4(1);
+    c.rgb *= vec3(SOURCE);
+    c.r *= float(COUNT);
+    return PostProcess(c);
+  }
+%}
+
+CCProgram compare-vs %{
+  precision mediump float;
+  in vec3 a_position;
+
+  #include <cc-global>
+  #include <cc-local>
+
+  vec4 vert () {
+	  vec4 pos = vec4(a_position, 1);
+    pos.x += 2.0;
+    return cc_matViewProj * cc_matWorld * pos;
+  }
+%}
+
+CCProgram compare-fs %{
+  precision mediump float;
+  #include <post-process>
+
+  vec4 frag () {
+    return PostProcess(vec4(0.3, 0.5, 0.7, 0.5));
+  }
+%}

@@ -1,53 +1,39 @@
-[
-  {
-    "__type__": "cc.Material",
-    "_name": "",
-    "_objFlags": 0,
-    "_native": "",
-    "_effectAsset": {
-      "__uuid__": "1baf0fc9-befa-459c-8bdd-af1a450a0319"
-    },
-    "_techIdx": "0",
-    "_defines": [
-      {
-        "__id__": 1
-      },
-      {}
-    ],
-    "_props": [
-      {
-        "__id__": 2
-      },
-      {}
-    ]
+{
+  "__type__": "cc.Material",
+  "_name": "",
+  "_objFlags": 0,
+  "_native": "",
+  "_effectAsset": {
+    "__uuid__": "1baf0fc9-befa-459c-8bdd-af1a450a0319"
   },
-  {
-    "USE_IBL": true,
-    "": {
-      "__id__": 1
+  "_techIdx": "0",
+  "_defines": [
+    {
+      "USE_IBL": true
     },
-    "USE_HDR": true
-  },
-  {
-    "albedo": {
-      "__type__": "cc.Color",
-      "r": 128,
-      "g": 0,
-      "b": 0,
-      "a": 0
+    {}
+  ],
+  "_states": [],
+  "_props": [
+    {
+      "albedo": {
+        "__type__": "cc.Color",
+        "r": 128,
+        "g": 0,
+        "b": 0,
+        "a": 255
+      },
+      "emissive": {
+        "__type__": "cc.Color",
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 255
+      },
+      "envMap": {
+        "__uuid__": "54df34cd-0b6e-4557-8516-309fece35161@spe.hdr"
+      }
     },
-    "": {
-      "__id__": 2
-    },
-    "emissive": {
-      "__type__": "cc.Color",
-      "r": 0,
-      "g": 0,
-      "b": 0,
-      "a": 255
-    },
-    "envMap": {
-      "__uuid__": "54df34cd-0b6e-4557-8516-309fece35161@spe.hdr"
-    }
-  }
-]
+    {}
+  ]
+}

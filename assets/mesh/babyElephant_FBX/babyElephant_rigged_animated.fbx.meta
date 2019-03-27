@@ -1,5 +1,5 @@
 {
-  "ver": "1.0.108",
+  "ver": "1.0.378",
   "importer": "fbx",
   "uuid": "55fd594f-cd91-4515-921e-39ebb7da626b",
   "files": [
@@ -59,10 +59,10 @@
         "gltfIndex": 2
       }
     },
-    "babyElephant_rigged_animated.skeleton": {
+    "UnnamedSkeleton.skeleton": {
       "ver": "1.0.0",
       "importer": "gltf-skeleton",
-      "uuid": "55fd594f-cd91-4515-921e-39ebb7da626b@babyElephant_rigged_animated.skeleton",
+      "uuid": "55fd594f-cd91-4515-921e-39ebb7da626b@UnnamedSkeleton.skeleton",
       "imported": true,
       "files": [
         ".json"
@@ -73,7 +73,7 @@
       }
     },
     "babyElephantBodyMat.material": {
-      "ver": "1.0.5",
+      "ver": "1.0.8",
       "importer": "gltf-material",
       "uuid": "55fd594f-cd91-4515-921e-39ebb7da626b@babyElephantBodyMat.material",
       "imported": true,
@@ -86,7 +86,7 @@
       }
     },
     "babyElephantRightEyeMat.material": {
-      "ver": "1.0.5",
+      "ver": "1.0.8",
       "importer": "gltf-material",
       "uuid": "55fd594f-cd91-4515-921e-39ebb7da626b@babyElephantRightEyeMat.material",
       "imported": true,
@@ -99,7 +99,7 @@
       }
     },
     "babyElephantLeftEyeMat.material": {
-      "ver": "1.0.5",
+      "ver": "1.0.8",
       "importer": "gltf-material",
       "uuid": "55fd594f-cd91-4515-921e-39ebb7da626b@babyElephantLeftEyeMat.material",
       "imported": true,
@@ -112,7 +112,7 @@
       }
     },
     "babyElephant_rigged_animated.prefab": {
-      "ver": "1.0.3",
+      "ver": "1.0.4",
       "importer": "gltf-scene",
       "uuid": "55fd594f-cd91-4515-921e-39ebb7da626b@babyElephant_rigged_animated.prefab",
       "imported": true,
@@ -145,7 +145,30 @@
       ]
     },
     "imageLocations": {},
-    "redirect": "55fd594f-cd91-4515-921e-39ebb7da626b@babyElephant_rigged_animated.prefab"
+    "redirect": "55fd594f-cd91-4515-921e-39ebb7da626b@babyElephant_rigged_animated.prefab",
+    "normals": 0,
+    "tangents": 1,
+    "assetFinder": {
+      "meshes": [
+        "55fd594f-cd91-4515-921e-39ebb7da626b@babyElephantRetop.mesh"
+      ],
+      "animations": [
+        "55fd594f-cd91-4515-921e-39ebb7da626b@babyElephantRigged-babyElephant.death.animation",
+        "55fd594f-cd91-4515-921e-39ebb7da626b@babyElephantRigged-babyElephant.idle1.animation",
+        "55fd594f-cd91-4515-921e-39ebb7da626b@babyElephantRigged-babyElephant.walk1.animation"
+      ],
+      "skeletons": [
+        "55fd594f-cd91-4515-921e-39ebb7da626b@UnnamedSkeleton.skeleton"
+      ],
+      "materials": [
+        "55fd594f-cd91-4515-921e-39ebb7da626b@babyElephantBodyMat.material",
+        "55fd594f-cd91-4515-921e-39ebb7da626b@babyElephantRightEyeMat.material",
+        "55fd594f-cd91-4515-921e-39ebb7da626b@babyElephantLeftEyeMat.material"
+      ],
+      "scenes": [
+        "55fd594f-cd91-4515-921e-39ebb7da626b@babyElephant_rigged_animated.prefab"
+      ]
+    }
   },
   "imported": true
 }
