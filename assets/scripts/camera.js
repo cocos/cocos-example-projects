@@ -1,4 +1,7 @@
-@cc._decorator.ccclass()
+const { vec3, quat } = cc.vmath;
+const { ccclass } = cc._decorator;
+
+@ccclass
 class FirstPersonCamera extends cc.Component {
 
 	constructor() {
@@ -8,6 +11,7 @@ class FirstPersonCamera extends cc.Component {
 		this._rbtnDown  = false;
 		this._keyStates = new Array(128);
 		this._keyStates.fill(false);
+		this.dir = cc.v3();
 	}
 
 	start () {
@@ -20,20 +24,32 @@ class FirstPersonCamera extends cc.Component {
 
 		const mouseListener = cc.EventListener.create({
 			event: cc.EventListener.MOUSE,
-			onMouseDown: (...args) => this._mouseDownHandler(...args),
-			onMouseMove: (...args) => this._mouseMoveHandler(...args),
-			onMouseUp: (...args) => this._mouseUpHandler(...args),
-			onMouseScroll: (...args) => this._mouseWheelHandler(...args),
+			onMouseDown: this._mouseDownHandler.bind(this),
+			onMouseMove: this._mouseMoveHandler.bind(this),
+			onMouseUp: this._mouseUpHandler.bind(this),
+			onMouseScroll: this._mouseWheelHandler.bind(this),
 		});
 		cc.eventManager.addListener(mouseListener, 1);
 
 		const keyListener = cc.EventListener.create({
 			event: cc.EventListener.KEYBOARD,
-			onKeyPressed: (...args) => this._keyDownHandler(...args),
-			onKeyReleased: (...args) => this._keyUpHandler(...args),
+			onKeyPressed: this._keyDownHandler.bind(this),
+			onKeyReleased: this._keyUpHandler.bind(this),
 		});
 		cc.eventManager.addListener(keyListener, 1);
-    }
+
+		const touchListener = cc.EventListener.create({
+			event: cc.EventListener.TOUCH_ONE_BY_ONE,
+			onTouchBegan: this._TouchBeginHandler.bind(this),
+			onTouchMoved: this._TouchMoveHandler.bind(this),
+			onTouchEnded: this._TouchEndHandler.bind(this),
+		});
+		cc.eventManager.addListener(touchListener, 1);
+
+		cc.systemEvent.on(cc.SystemEvent.EventType.TOUCH_START, this._TouchBeginHandler, this);
+		cc.systemEvent.on(cc.SystemEvent.EventType.TOUCH_MOVE, this._TouchMoveHandler, this);
+		cc.systemEvent.on(cc.SystemEvent.EventType.TOUCH_END, this._TouchEndHandler, this);
+	}
 
 	update (dt) {
 		const translationDelta = dt * 10;
@@ -55,6 +71,9 @@ class FirstPersonCamera extends cc.Component {
 		}
 		if (isKeyPressing("E")) {
 			this._translate(cc.v3(0, 1, 0), translationDelta);
+		}
+		if (this.moving) {
+			this._translate(this.dir, translationDelta);
 		}
 	}
 
@@ -114,9 +133,38 @@ class FirstPersonCamera extends cc.Component {
 		}
 	}
 
+	_TouchBeginHandler(event) {
+		const startX = event._startPoint.x;
+		if (startX < cc.winSize.width / 2) {
+			this.moving = true;
+			vec3.set(this.dir, 0, 0, 0);
+		}
+	}
+
+	_TouchMoveHandler(event) {
+		const startX = event._startPoint.x;
+		if (startX > cc.winSize.width / 2) { // rotate
+			const d = event.getDelta();
+			this._rotateSelfHorizon(d.x / 5);
+			this._rotateSelfVertical(d.y / 5);
+		} else { // translate
+			const x = event.getLocationX();
+			const y = event.getLocationY();
+			const startY = event._startPoint.x;
+			this.dir = this._getDirection(x - startX, 0, startY - y).normalizeSelf();
+		}
+	}
+
+	_TouchEndHandler(event) {
+		const startX = event._startPoint.x;
+		if (startX < cc.winSize.width / 2) {
+			this.moving = false;
+		}
+	}
+
 	_translate(direction, delta) {
 		const position = this.node.getPosition();
-		cc.vmath.vec3.scaleAndAdd(position, position, direction, delta);
+		vec3.scaleAndAdd(position, position, direction, delta);
 		this.node.setPosition(position);
 	}
 
@@ -124,7 +172,7 @@ class FirstPersonCamera extends cc.Component {
 		const rotation = this.node.getRotation();
 		const up = cc.v3(0, 1, 0);
 		//const up = this._getUp();
-		cc.vmath.quat.rotateAround(rotation, rotation, up, -delta/ 360.0 * 3.14159265);
+		quat.rotateAround(rotation, rotation, up, -delta/ 360.0 * 3.14159265);
 		this.node.setRotation(rotation);
 	}
 
@@ -132,7 +180,7 @@ class FirstPersonCamera extends cc.Component {
 		const rotation = this.node.getRotation();
 		//const right = cc.v3(1, 0, 0);
 		const right = this._getRight();
-		cc.vmath.quat.rotateAround(rotation, rotation, right, delta / 360.0 * 3.14159265);
+		quat.rotateAround(rotation, rotation, right, delta / 360.0 * 3.14159265);
 		this.node.setRotation(rotation);
 	}
 
@@ -150,7 +198,7 @@ class FirstPersonCamera extends cc.Component {
 
 	_getDirection(x, y, z) {
 		const result = cc.v3(x, y, z);
-		cc.vmath.vec3.transformQuat(result, result, this.node.getRotation());
+		vec3.transformQuat(result, result, this.node.getRotation());
 		return result;
 	}
 }
