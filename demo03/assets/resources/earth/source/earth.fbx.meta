@@ -1,0 +1,140 @@
+{
+  "ver": "1.0.718",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "98f15017-08aa-4184-9889-322530ed7f15",
+  "files": [
+    ".fbx"
+  ],
+  "subMetas": {
+    "earth.mesh": {
+      "ver": "1.0.2",
+      "importer": "gltf-mesh",
+      "uuid": "98f15017-08aa-4184-9889-322530ed7f15@earth.mesh",
+      "imported": true,
+      "files": [
+        ".json",
+        ".bin"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 0
+      }
+    },
+    "Take-001.animation": {
+      "ver": "1.0.5",
+      "importer": "gltf-animation",
+      "uuid": "98f15017-08aa-4184-9889-322530ed7f15@Take-001.animation",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 0
+      }
+    },
+    "Map--7.texture": {
+      "ver": "1.0.19",
+      "importer": "texture",
+      "uuid": "98f15017-08aa-4184-9889-322530ed7f15@Map--7.texture",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {},
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "premultiplyAlpha": false,
+        "anisotropy": 1,
+        "generateMipmap": false,
+        "isUuid": false,
+        "imageUuidOrDatabaseUri": "db://assets/resources/earth/textures/earthmap4k.jpg",
+        "mipfilter": "none"
+      }
+    },
+    "Material--25.material": {
+      "ver": "1.0.10",
+      "importer": "gltf-material",
+      "uuid": "98f15017-08aa-4184-9889-322530ed7f15@Material--25.material",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 0
+      }
+    },
+    "earth.prefab": {
+      "ver": "1.0.4",
+      "importer": "gltf-scene",
+      "uuid": "98f15017-08aa-4184-9889-322530ed7f15@earth.prefab",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 0
+      }
+    }
+  },
+  "userData": {
+    "assetTable": {
+      "meshes": [
+        "98f15017-08aa-4184-9889-322530ed7f15@earth.mesh"
+      ],
+      "animations": [
+        "98f15017-08aa-4184-9889-322530ed7f15@Take-001.animation"
+      ],
+      "images": [
+        {
+          "embeded": true,
+          "uuidOrDatabaseUri": "98f15017-08aa-4184-9889-322530ed7f15@earthmap4k.jpg.image"
+        }
+      ],
+      "textures": [
+        "98f15017-08aa-4184-9889-322530ed7f15@Map--7.texture"
+      ],
+      "materials": [
+        "98f15017-08aa-4184-9889-322530ed7f15@Material--25.material"
+      ]
+    },
+    "imageLocations": {
+      "earthmap4k.jpg": {
+        "originalPath": "earthmap4k.jpg",
+        "targetDatabaseUrl": null
+      }
+    },
+    "redirect": "98f15017-08aa-4184-9889-322530ed7f15@earth.prefab",
+    "normals": 0,
+    "tangents": 1,
+    "assetFinder": {
+      "meshes": [
+        "98f15017-08aa-4184-9889-322530ed7f15@earth.mesh"
+      ],
+      "animations": [
+        "98f15017-08aa-4184-9889-322530ed7f15@Take-001.animation"
+      ],
+      "images": [
+        {
+          "embeded": false,
+          "uuidOrDatabaseUri": "db://assets/resources/earth/textures/earthmap4k.jpg"
+        }
+      ],
+      "textures": [
+        "98f15017-08aa-4184-9889-322530ed7f15@Map--7.texture"
+      ],
+      "materials": [
+        "98f15017-08aa-4184-9889-322530ed7f15@Material--25.material"
+      ],
+      "scenes": [
+        "98f15017-08aa-4184-9889-322530ed7f15@earth.prefab"
+      ]
+    }
+  }
+}
