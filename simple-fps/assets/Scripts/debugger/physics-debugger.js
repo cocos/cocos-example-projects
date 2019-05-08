@@ -46,12 +46,12 @@ export class PhysicsDebugger extends Component {
         this.updateComponentsDebuggerRecursive(this.node.scene);
     }
 
-    destroy () {
+    onDestroy () {
         if (this._imguiDebugger) {
             this._imguiDebugger.destroy();
             this._imguiDebugger = null;
         }
-        super.destroy();
+        super.onDestroy();
     }
 
     updateComponentsDebuggerRecursive (node) {
