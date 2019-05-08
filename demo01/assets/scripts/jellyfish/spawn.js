@@ -25,11 +25,11 @@ cc.Class({
         for (let i = 0; i < this.count; ++i) {
             let node = cc.instantiate(this.prefab);
             node.getComponent(JellyFish).range = this.range;
-            let anim = node.getComponent(cc.AnimationComponent);
-            if (anim) {
-                anim.playOnLoad = true;
-                anim.play();
-            }
+            // let anim = node.getComponent(cc.AnimationComponent);
+            // if (anim) {
+            //     anim.playOnLoad = true;
+            //     anim.play();
+            // }
             this.node.addChild(node);
         }
     },
