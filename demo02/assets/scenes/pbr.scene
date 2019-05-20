@@ -32,12 +32,6 @@
       },
       {
         "__id__": 31
-      },
-      {
-        "__id__": 33
-      },
-      {
-        "__id__": 35
       }
     ],
     "_active": true,
@@ -72,7 +66,7 @@
     },
     "autoReleaseAssets": false,
     "_globals": {
-      "__id__": 37
+      "__id__": 33
     },
     "_id": "5f9212dc-78a3-4a2f-a0f8-8a3721009bab"
   },
@@ -160,9 +154,9 @@
     "_layer": 1,
     "_euler": {
       "__type__": "cc.Vec3",
-      "x": 30,
+      "x": 30.000000000000004,
       "y": 150,
-      "z": 0
+      "z": 7.951386703658792e-16
     },
     "_id": "8bdq6Uj2tLurbFEBQjLwyJ"
   },
@@ -978,7 +972,7 @@
     "_id": "c0exUyMIlMs6uOXhfs5yg8"
   },
   {
-    "__type__": "cc.LightComponent",
+    "__type__": "cc.SphereLightComponent",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -994,7 +988,11 @@
     },
     "_useColorTemperature": false,
     "_colorTemperature": 6550,
-    "_id": "4f4YmzUKlKKJgFkzOJ1vJU"
+    "_size": 10,
+    "_luminance": 25330.295657281484,
+    "_term": 0,
+    "_range": 50,
+    "_id": "72kHj4QalPM5TcH0psbjlU"
   },
   {
     "__type__": "cc.Node",
@@ -1015,7 +1013,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": -10,
-      "y": 10,
+      "y": -10,
       "z": 10
     },
     "_lrot": {
@@ -1041,7 +1039,7 @@
     "_id": "dc4AuCeRtFm4WMEeH6/3BX"
   },
   {
-    "__type__": "cc.LightComponent",
+    "__type__": "cc.SphereLightComponent",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -1057,144 +1055,22 @@
     },
     "_useColorTemperature": false,
     "_colorTemperature": 6550,
-    "_id": "cbQUkkPKZCpIZE4mEpRZb9"
-  },
-  {
-    "__type__": "cc.Node",
-    "_name": "l3",
-    "_objFlags": 0,
-    "_parent": {
-      "__id__": 1
-    },
-    "_children": [],
-    "_active": true,
-    "_level": 1,
-    "_components": [
-      {
-        "__id__": 34
-      }
-    ],
-    "_prefab": null,
-    "_lpos": {
-      "__type__": "cc.Vec3",
-      "x": 10,
-      "y": -10,
-      "z": 10
-    },
-    "_lrot": {
-      "__type__": "cc.Quat",
-      "x": 0,
-      "y": 0,
-      "z": 0,
-      "w": 1
-    },
-    "_lscale": {
-      "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
-      "z": 1
-    },
-    "_layer": 1,
-    "_euler": {
-      "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 0,
-      "z": 0
-    },
-    "_id": "f1ZvrJh1RLkoukUj9h0zH/"
-  },
-  {
-    "__type__": "cc.LightComponent",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 33
-    },
-    "_enabled": true,
-    "_color": {
-      "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
-      "a": 255
-    },
-    "_useColorTemperature": false,
-    "_colorTemperature": 6550,
-    "_id": "69u38qWlFAaIdTVQzL/kI0"
-  },
-  {
-    "__type__": "cc.Node",
-    "_name": "l4",
-    "_objFlags": 0,
-    "_parent": {
-      "__id__": 1
-    },
-    "_children": [],
-    "_active": true,
-    "_level": 1,
-    "_components": [
-      {
-        "__id__": 36
-      }
-    ],
-    "_prefab": null,
-    "_lpos": {
-      "__type__": "cc.Vec3",
-      "x": -10,
-      "y": -10,
-      "z": 10
-    },
-    "_lrot": {
-      "__type__": "cc.Quat",
-      "x": 0,
-      "y": 0,
-      "z": 0,
-      "w": 1
-    },
-    "_lscale": {
-      "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
-      "z": 1
-    },
-    "_layer": 1,
-    "_euler": {
-      "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 0,
-      "z": 0
-    },
-    "_id": "ff5oKwF1NNHp/56Z7lRIXI"
-  },
-  {
-    "__type__": "cc.LightComponent",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 35
-    },
-    "_enabled": true,
-    "_color": {
-      "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
-      "a": 255
-    },
-    "_useColorTemperature": false,
-    "_colorTemperature": 6550,
-    "_id": "b57oe+gvBKbJVKS5pCtjOV"
+    "_size": 10,
+    "_luminance": 2533.029337755485,
+    "_term": 0,
+    "_range": 50,
+    "_id": "84v1Om9NRN6o8nYHMmal7m"
   },
   {
     "__type__": "cc.SceneGlobals",
     "ambient": {
-      "__id__": 38
+      "__id__": 34
     },
     "skybox": {
-      "__id__": 39
+      "__id__": 35
     },
     "planarShadow": {
-      "__id__": 40
+      "__id__": 36
     }
   },
   {
@@ -1225,6 +1101,7 @@
   },
   {
     "__type__": "cc.PlanarShadowInfo",
+    "_enabled": false,
     "_normal": {
       "__type__": "cc.Vec3",
       "x": 0,
