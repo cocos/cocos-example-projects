@@ -36,26 +36,28 @@ CCEffect %{
 
 CCProgram vs %{
   precision mediump float;
-  in vec3 a_position;
-  in vec3 a_normal;
-  in vec2 a_texCoord;
-
   #include <cc-global>
   #include <cc-local>
+  #include <input-standard>
 
+  in vec3 a_normal;
+  in vec2 a_texCoord;
   out vec2 uv;
   out vec3 normal;
 
   vec4 vert () {
+    StandardVertInput In;
+    CCVertInput(In);
+
     uv = a_texCoord;
     normal = a_normal;
-	  return cc_matViewProj * cc_matWorld * vec4(a_position, 1);
+	  return cc_matViewProj * cc_matWorld * vec4(In.position, 1);
   }
 %}
 
 CCProgram fs %{
   precision mediump float;
-  #include <post-process>
+  #include <output>
 
   in vec2 uv;
   in vec3 normal;
@@ -71,19 +73,21 @@ CCProgram fs %{
     vec4 c = vec4(1);
     c.rgb *= vec3(SOURCE);
     c.r *= float(COUNT);
-    return PostProcess(c);
+    return CCFragOutput(c);
   }
 %}
 
 CCProgram compare-vs %{
   precision mediump float;
-  in vec3 a_position;
-
   #include <cc-global>
   #include <cc-local>
+  #include <input>
 
   vec4 vert () {
-	  vec4 pos = vec4(a_position, 1);
+    vec3 position;
+    CCVertInput(position);
+
+	  vec4 pos = vec4(position, 1);
     pos.x += 2.0;
     return cc_matViewProj * cc_matWorld * pos;
   }
@@ -91,9 +95,9 @@ CCProgram compare-vs %{
 
 CCProgram compare-fs %{
   precision mediump float;
-  #include <post-process>
+  #include <output>
 
   vec4 frag () {
-    return PostProcess(vec4(0.3, 0.5, 0.7, 0.5));
+    return CCFragOutput(vec4(0.3, 0.5, 0.7, 0.5));
   }
 %}
