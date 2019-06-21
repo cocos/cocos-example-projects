@@ -1,5 +1,5 @@
 {
-  "ver": "1.0.11",
+  "ver": "1.0.13",
   "importer": "image",
   "uuid": "516c9742-3825-429d-bc02-d44a86b5e545",
   "files": [
@@ -7,32 +7,32 @@
     ".json"
   ],
   "subMetas": {
-    "environment_1.hdr": {
+    "texture": {
       "ver": "1.0.19",
       "importer": "texture",
-      "uuid": "516c9742-3825-429d-bc02-d44a86b5e545@environment_1.hdr",
+      "uuid": "516c9742-3825-429d-bc02-d44a86b5e545@texture",
       "imported": true,
       "files": [
         ".json"
       ],
       "subMetas": {},
       "userData": {
-        "wrapModeS": "clamp-to-edge",
-        "wrapModeT": "clamp-to-edge",
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
         "minfilter": "linear",
         "magfilter": "linear",
+        "mipfilter": "none",
         "premultiplyAlpha": false,
         "anisotropy": 1,
-        "generateMipmap": false,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "516c9742-3825-429d-bc02-d44a86b5e545",
-        "mipfilter": "none"
-      }
+        "imageUuidOrDatabaseUri": "516c9742-3825-429d-bc02-d44a86b5e545"
+      },
+      "displayName": "environment_1.hdr"
     }
   },
   "userData": {
     "type": "texture",
-    "redirect": "516c9742-3825-429d-bc02-d44a86b5e545@environment_1.hdr"
+    "redirect": "516c9742-3825-429d-bc02-d44a86b5e545@texture"
   },
   "imported": true
 }

@@ -8,12 +8,29 @@
   },
   "_techIdx": "0",
   "_defines": [
-    {
-      "USE_IBL": true
-    },
+    {},
     {}
   ],
-  "_states": [],
+  "_states": [
+    {
+      "blendState": {
+        "targets": [
+          {}
+        ]
+      },
+      "depthStencilState": {},
+      "rasterizerState": {}
+    },
+    {
+      "blendState": {
+        "targets": [
+          {}
+        ]
+      },
+      "depthStencilState": {},
+      "rasterizerState": {}
+    }
+  ],
   "_props": [
     {
       "albedo": {
@@ -23,15 +40,19 @@
         "b": 0,
         "a": 255
       },
+      "pbrParams": {
+        "__type__": "cc.Vec4",
+        "x": 0.1,
+        "y": 0.6,
+        "z": 0,
+        "w": 1
+      },
       "emissive": {
         "__type__": "cc.Color",
         "r": 0,
         "g": 0,
         "b": 0,
         "a": 255
-      },
-      "envMap": {
-        "__uuid__": "54df34cd-0b6e-4557-8516-309fece35161@spe.hdr"
       }
     },
     {}

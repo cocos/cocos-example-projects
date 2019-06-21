@@ -1,5 +1,5 @@
 {
-  "ver": "1.0.11",
+  "ver": "1.0.13",
   "importer": "image",
   "imported": true,
   "uuid": "6079877d-ca5d-4059-a3d1-e870d92c5144",
@@ -8,32 +8,32 @@
     ".json"
   ],
   "subMetas": {
-    "w_diffuse": {
+    "texture": {
       "ver": "1.0.19",
       "importer": "texture",
-      "uuid": "6079877d-ca5d-4059-a3d1-e870d92c5144@w_diffuse",
+      "uuid": "6079877d-ca5d-4059-a3d1-e870d92c5144@texture",
       "imported": true,
       "files": [
         ".json"
       ],
       "subMetas": {},
       "userData": {
-        "wrapModeS": "clamp-to-edge",
-        "wrapModeT": "clamp-to-edge",
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
         "minfilter": "linear",
         "magfilter": "linear",
+        "mipfilter": "none",
         "premultiplyAlpha": false,
         "anisotropy": 1,
-        "generateMipmap": false,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "6079877d-ca5d-4059-a3d1-e870d92c5144",
-        "mipfilter": "none"
-      }
+        "imageUuidOrDatabaseUri": "6079877d-ca5d-4059-a3d1-e870d92c5144"
+      },
+      "displayName": "w_diffuse"
     }
   },
   "userData": {
     "type": "texture",
-    "redirect": "6079877d-ca5d-4059-a3d1-e870d92c5144@w_diffuse",
+    "redirect": "6079877d-ca5d-4059-a3d1-e870d92c5144@texture",
     "flipVertical": true
   }
 }

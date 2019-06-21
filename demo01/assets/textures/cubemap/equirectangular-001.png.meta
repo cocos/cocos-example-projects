@@ -1,5 +1,5 @@
 {
-  "ver": "1.0.11",
+  "ver": "1.0.13",
   "importer": "image",
   "imported": true,
   "uuid": "ce6f4cb3-55ba-40ce-9302-f81414b505c0",
@@ -8,10 +8,10 @@
     ".json"
   ],
   "subMetas": {
-    "equirectangular-001": {
+    "textureCube": {
       "ver": "1.0.8",
       "importer": "erp-texture-cube",
-      "uuid": "ce6f4cb3-55ba-40ce-9302-f81414b505c0@equirectangular-001",
+      "uuid": "ce6f4cb3-55ba-40ce-9302-f81414b505c0@textureCube",
       "imported": true,
       "files": [
         ".json"
@@ -20,7 +20,7 @@
         "right": {
           "ver": "1.0.4",
           "importer": "erp-texture-cube-face",
-          "uuid": "ce6f4cb3-55ba-40ce-9302-f81414b505c0@equirectangular-001@right",
+          "uuid": "ce6f4cb3-55ba-40ce-9302-f81414b505c0@textureCube@right",
           "imported": true,
           "files": [
             ".png",
@@ -32,7 +32,7 @@
         "left": {
           "ver": "1.0.4",
           "importer": "erp-texture-cube-face",
-          "uuid": "ce6f4cb3-55ba-40ce-9302-f81414b505c0@equirectangular-001@left",
+          "uuid": "ce6f4cb3-55ba-40ce-9302-f81414b505c0@textureCube@left",
           "imported": true,
           "files": [
             ".png",
@@ -44,7 +44,7 @@
         "top": {
           "ver": "1.0.4",
           "importer": "erp-texture-cube-face",
-          "uuid": "ce6f4cb3-55ba-40ce-9302-f81414b505c0@equirectangular-001@top",
+          "uuid": "ce6f4cb3-55ba-40ce-9302-f81414b505c0@textureCube@top",
           "imported": true,
           "files": [
             ".png",
@@ -56,7 +56,7 @@
         "bottom": {
           "ver": "1.0.4",
           "importer": "erp-texture-cube-face",
-          "uuid": "ce6f4cb3-55ba-40ce-9302-f81414b505c0@equirectangular-001@bottom",
+          "uuid": "ce6f4cb3-55ba-40ce-9302-f81414b505c0@textureCube@bottom",
           "imported": true,
           "files": [
             ".png",
@@ -68,7 +68,7 @@
         "front": {
           "ver": "1.0.4",
           "importer": "erp-texture-cube-face",
-          "uuid": "ce6f4cb3-55ba-40ce-9302-f81414b505c0@equirectangular-001@front",
+          "uuid": "ce6f4cb3-55ba-40ce-9302-f81414b505c0@textureCube@front",
           "imported": true,
           "files": [
             ".png",
@@ -80,7 +80,7 @@
         "back": {
           "ver": "1.0.4",
           "importer": "erp-texture-cube-face",
-          "uuid": "ce6f4cb3-55ba-40ce-9302-f81414b505c0@equirectangular-001@back",
+          "uuid": "ce6f4cb3-55ba-40ce-9302-f81414b505c0@textureCube@back",
           "imported": true,
           "files": [
             ".png",
@@ -101,11 +101,12 @@
         "imageDatabaseUri": "db://assets/textures/cubemap/equirectangular-001.png",
         "mipfilter": "none",
         "isRGBE": false
-      }
+      },
+      "displayName": "equirectangular-001"
     }
   },
   "userData": {
     "type": "texture cube",
-    "redirect": "ce6f4cb3-55ba-40ce-9302-f81414b505c0@equirectangular-001"
+    "redirect": "ce6f4cb3-55ba-40ce-9302-f81414b505c0@textureCube"
   }
 }

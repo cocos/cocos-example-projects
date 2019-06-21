@@ -1,5 +1,5 @@
 {
-  "ver": "1.0.11",
+  "ver": "1.0.13",
   "importer": "image",
   "imported": true,
   "uuid": "8a4c0a09-d6dc-4d37-849a-1e2796ff4442",
@@ -8,10 +8,10 @@
     ".json"
   ],
   "subMetas": {
-    "GCanyon_C_YumaPoint_8k": {
+    "textureCube": {
       "ver": "1.0.8",
       "importer": "erp-texture-cube",
-      "uuid": "8a4c0a09-d6dc-4d37-849a-1e2796ff4442@GCanyon_C_YumaPoint_8k",
+      "uuid": "8a4c0a09-d6dc-4d37-849a-1e2796ff4442@textureCube",
       "imported": true,
       "files": [
         ".json"
@@ -20,7 +20,7 @@
         "right": {
           "ver": "1.0.4",
           "importer": "erp-texture-cube-face",
-          "uuid": "8a4c0a09-d6dc-4d37-849a-1e2796ff4442@GCanyon_C_YumaPoint_8k@right",
+          "uuid": "8a4c0a09-d6dc-4d37-849a-1e2796ff4442@textureCube@right",
           "imported": true,
           "files": [
             ".png",
@@ -32,7 +32,7 @@
         "left": {
           "ver": "1.0.4",
           "importer": "erp-texture-cube-face",
-          "uuid": "8a4c0a09-d6dc-4d37-849a-1e2796ff4442@GCanyon_C_YumaPoint_8k@left",
+          "uuid": "8a4c0a09-d6dc-4d37-849a-1e2796ff4442@textureCube@left",
           "imported": true,
           "files": [
             ".png",
@@ -44,7 +44,7 @@
         "top": {
           "ver": "1.0.4",
           "importer": "erp-texture-cube-face",
-          "uuid": "8a4c0a09-d6dc-4d37-849a-1e2796ff4442@GCanyon_C_YumaPoint_8k@top",
+          "uuid": "8a4c0a09-d6dc-4d37-849a-1e2796ff4442@textureCube@top",
           "imported": true,
           "files": [
             ".png",
@@ -56,7 +56,7 @@
         "bottom": {
           "ver": "1.0.4",
           "importer": "erp-texture-cube-face",
-          "uuid": "8a4c0a09-d6dc-4d37-849a-1e2796ff4442@GCanyon_C_YumaPoint_8k@bottom",
+          "uuid": "8a4c0a09-d6dc-4d37-849a-1e2796ff4442@textureCube@bottom",
           "imported": true,
           "files": [
             ".png",
@@ -68,7 +68,7 @@
         "front": {
           "ver": "1.0.4",
           "importer": "erp-texture-cube-face",
-          "uuid": "8a4c0a09-d6dc-4d37-849a-1e2796ff4442@GCanyon_C_YumaPoint_8k@front",
+          "uuid": "8a4c0a09-d6dc-4d37-849a-1e2796ff4442@textureCube@front",
           "imported": true,
           "files": [
             ".png",
@@ -80,7 +80,7 @@
         "back": {
           "ver": "1.0.4",
           "importer": "erp-texture-cube-face",
-          "uuid": "8a4c0a09-d6dc-4d37-849a-1e2796ff4442@GCanyon_C_YumaPoint_8k@back",
+          "uuid": "8a4c0a09-d6dc-4d37-849a-1e2796ff4442@textureCube@back",
           "imported": true,
           "files": [
             ".png",
@@ -91,20 +91,21 @@
         }
       },
       "userData": {
-        "wrapModeS": "clamp-to-edge",
-        "wrapModeT": "clamp-to-edge",
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
         "minfilter": "linear",
         "magfilter": "linear",
         "mipfilter": "none",
         "premultiplyAlpha": false,
         "anisotropy": 1,
-        "imageDatabaseUri": "db://assets/textures/cubemap/GCanyon_C_YumaPoint_8k.jpg",
-        "isRGBE": false
-      }
+        "isRGBE": false,
+        "imageDatabaseUri": "db://assets/textures/cubemap/GCanyon_C_YumaPoint_8k.jpg"
+      },
+      "displayName": "GCanyon_C_YumaPoint_8k"
     }
   },
   "userData": {
     "type": "texture cube",
-    "redirect": "8a4c0a09-d6dc-4d37-849a-1e2796ff4442@GCanyon_C_YumaPoint_8k"
+    "redirect": "8a4c0a09-d6dc-4d37-849a-1e2796ff4442@textureCube"
   }
 }

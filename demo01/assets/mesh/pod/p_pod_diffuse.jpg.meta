@@ -1,5 +1,5 @@
 {
-  "ver": "1.0.11",
+  "ver": "1.0.13",
   "importer": "image",
   "imported": true,
   "uuid": "ecfb2d35-c60d-4c8f-89cf-7988c1b5f723",
@@ -8,31 +8,31 @@
     ".json"
   ],
   "subMetas": {
-    "p_pod_diffuse": {
+    "texture": {
       "ver": "1.0.19",
       "importer": "texture",
-      "uuid": "ecfb2d35-c60d-4c8f-89cf-7988c1b5f723@p_pod_diffuse",
+      "uuid": "ecfb2d35-c60d-4c8f-89cf-7988c1b5f723@texture",
       "imported": true,
       "files": [
         ".json"
       ],
       "subMetas": {},
       "userData": {
-        "wrapModeS": "clamp-to-edge",
-        "wrapModeT": "clamp-to-edge",
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
         "minfilter": "linear",
         "magfilter": "linear",
+        "mipfilter": "none",
         "premultiplyAlpha": false,
         "anisotropy": 1,
-        "generateMipmap": false,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "ecfb2d35-c60d-4c8f-89cf-7988c1b5f723",
-        "mipfilter": "none"
-      }
+        "imageUuidOrDatabaseUri": "ecfb2d35-c60d-4c8f-89cf-7988c1b5f723"
+      },
+      "displayName": "p_pod_diffuse"
     }
   },
   "userData": {
     "type": "texture",
-    "redirect": "ecfb2d35-c60d-4c8f-89cf-7988c1b5f723@p_pod_diffuse"
+    "redirect": "ecfb2d35-c60d-4c8f-89cf-7988c1b5f723@texture"
   }
 }

@@ -763,11 +763,11 @@
     "imageLocations": {
       "pod_file_norm": {
         "originalPath": "S:/ComboMash/Projects/HEX/Assets/Player/p_pod/_textures/p_pod_normal.jpg",
-        "targetDatabaseUrl": null
+        "targetDatabaseUrl": "db://assets/mesh/pod/p_pod_normal.jpg"
       },
       "pod_file_diff": {
         "originalPath": "S:/ComboMash/Projects/HEX/Assets/Player/p_pod/_textures/p_pod_diffuse.jpg",
-        "targetDatabaseUrl": null
+        "targetDatabaseUrl": "db://assets/mesh/pod/p_pod_diffuse.jpg"
       }
     },
     "redirect": "42d7ec1c-b630-4ff1-ab35-95ba0b6f273d@hextraction_pod.prefab",
@@ -825,8 +825,14 @@
         "42d7ec1c-b630-4ff1-ab35-95ba0b6f273d@UnnamedSkeleton-17.skeleton"
       ],
       "images": [
-        null,
-        null
+        {
+          "embeded": false,
+          "uuidOrDatabaseUri": "db://assets/mesh/pod/p_pod_normal.jpg"
+        },
+        {
+          "embeded": false,
+          "uuidOrDatabaseUri": "db://assets/mesh/pod/p_pod_diffuse.jpg"
+        }
       ],
       "textures": [
         "42d7ec1c-b630-4ff1-ab35-95ba0b6f273d@pod_file_norm.texture",

@@ -1,5 +1,5 @@
 {
-  "ver": "1.0.11",
+  "ver": "1.0.13",
   "importer": "image",
   "uuid": "e8035b9f-7eb2-49c6-b47d-c2a59b9e6cb1",
   "files": [
@@ -7,32 +7,32 @@
     ".json"
   ],
   "subMetas": {
-    "diffuse_4.hdr": {
+    "texture": {
       "ver": "1.0.19",
       "importer": "texture",
-      "uuid": "e8035b9f-7eb2-49c6-b47d-c2a59b9e6cb1@diffuse_4.hdr",
+      "uuid": "e8035b9f-7eb2-49c6-b47d-c2a59b9e6cb1@texture",
       "imported": true,
       "files": [
         ".json"
       ],
       "subMetas": {},
       "userData": {
-        "wrapModeS": "clamp-to-edge",
-        "wrapModeT": "clamp-to-edge",
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
         "minfilter": "linear",
         "magfilter": "linear",
+        "mipfilter": "none",
         "premultiplyAlpha": false,
         "anisotropy": 1,
-        "generateMipmap": false,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "e8035b9f-7eb2-49c6-b47d-c2a59b9e6cb1",
-        "mipfilter": "none"
-      }
+        "imageUuidOrDatabaseUri": "e8035b9f-7eb2-49c6-b47d-c2a59b9e6cb1"
+      },
+      "displayName": "diffuse_4.hdr"
     }
   },
   "userData": {
     "type": "texture",
-    "redirect": "e8035b9f-7eb2-49c6-b47d-c2a59b9e6cb1@diffuse_4.hdr"
+    "redirect": "e8035b9f-7eb2-49c6-b47d-c2a59b9e6cb1@texture"
   },
   "imported": true
 }

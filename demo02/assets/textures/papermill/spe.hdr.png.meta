@@ -1,5 +1,5 @@
 {
-  "ver": "1.0.11",
+  "ver": "1.0.13",
   "importer": "image",
   "imported": true,
   "uuid": "54df34cd-0b6e-4557-8516-309fece35161",
@@ -8,10 +8,10 @@
     ".json"
   ],
   "subMetas": {
-    "spe.hdr": {
+    "textureCube": {
       "ver": "1.0.8",
       "importer": "erp-texture-cube",
-      "uuid": "54df34cd-0b6e-4557-8516-309fece35161@spe.hdr",
+      "uuid": "54df34cd-0b6e-4557-8516-309fece35161@textureCube",
       "imported": true,
       "files": [
         ".json"
@@ -20,7 +20,7 @@
         "right": {
           "ver": "1.0.4",
           "importer": "erp-texture-cube-face",
-          "uuid": "54df34cd-0b6e-4557-8516-309fece35161@spe.hdr@right",
+          "uuid": "54df34cd-0b6e-4557-8516-309fece35161@textureCube@right",
           "imported": true,
           "files": [
             ".png",
@@ -32,7 +32,7 @@
         "left": {
           "ver": "1.0.4",
           "importer": "erp-texture-cube-face",
-          "uuid": "54df34cd-0b6e-4557-8516-309fece35161@spe.hdr@left",
+          "uuid": "54df34cd-0b6e-4557-8516-309fece35161@textureCube@left",
           "imported": true,
           "files": [
             ".png",
@@ -44,7 +44,7 @@
         "top": {
           "ver": "1.0.4",
           "importer": "erp-texture-cube-face",
-          "uuid": "54df34cd-0b6e-4557-8516-309fece35161@spe.hdr@top",
+          "uuid": "54df34cd-0b6e-4557-8516-309fece35161@textureCube@top",
           "imported": true,
           "files": [
             ".png",
@@ -56,7 +56,7 @@
         "bottom": {
           "ver": "1.0.4",
           "importer": "erp-texture-cube-face",
-          "uuid": "54df34cd-0b6e-4557-8516-309fece35161@spe.hdr@bottom",
+          "uuid": "54df34cd-0b6e-4557-8516-309fece35161@textureCube@bottom",
           "imported": true,
           "files": [
             ".png",
@@ -68,7 +68,7 @@
         "front": {
           "ver": "1.0.4",
           "importer": "erp-texture-cube-face",
-          "uuid": "54df34cd-0b6e-4557-8516-309fece35161@spe.hdr@front",
+          "uuid": "54df34cd-0b6e-4557-8516-309fece35161@textureCube@front",
           "imported": true,
           "files": [
             ".png",
@@ -80,7 +80,7 @@
         "back": {
           "ver": "1.0.4",
           "importer": "erp-texture-cube-face",
-          "uuid": "54df34cd-0b6e-4557-8516-309fece35161@spe.hdr@back",
+          "uuid": "54df34cd-0b6e-4557-8516-309fece35161@textureCube@back",
           "imported": true,
           "files": [
             ".png",
@@ -91,21 +91,21 @@
         }
       },
       "userData": {
-        "wrapModeS": "clamp-to-edge",
-        "wrapModeT": "clamp-to-edge",
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
         "minfilter": "linear",
         "magfilter": "linear",
+        "mipfilter": "none",
         "premultiplyAlpha": false,
         "anisotropy": 1,
-        "generateMipmap": false,
-        "imageDatabaseUri": "db://assets/textures/papermill/spe.hdr.png",
-        "mipfilter": "none",
-        "isRGBE": false
-      }
+        "isRGBE": false,
+        "imageDatabaseUri": "db://assets/textures/papermill/spe.hdr.png"
+      },
+      "displayName": "spe.hdr"
     }
   },
   "userData": {
     "type": "texture cube",
-    "redirect": "54df34cd-0b6e-4557-8516-309fece35161@spe.hdr"
+    "redirect": "54df34cd-0b6e-4557-8516-309fece35161@textureCube"
   }
 }

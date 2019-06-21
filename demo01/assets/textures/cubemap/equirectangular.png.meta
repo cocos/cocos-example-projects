@@ -1,5 +1,5 @@
 {
-  "ver": "1.0.11",
+  "ver": "1.0.13",
   "importer": "image",
   "imported": true,
   "uuid": "f3e9e871-56a4-4646-944f-d06e06ddd83f",
@@ -8,10 +8,10 @@
     ".json"
   ],
   "subMetas": {
-    "equirectangular": {
+    "textureCube": {
       "ver": "1.0.8",
       "importer": "erp-texture-cube",
-      "uuid": "f3e9e871-56a4-4646-944f-d06e06ddd83f@equirectangular",
+      "uuid": "f3e9e871-56a4-4646-944f-d06e06ddd83f@textureCube",
       "imported": true,
       "files": [
         ".json"
@@ -20,7 +20,7 @@
         "right": {
           "ver": "1.0.4",
           "importer": "erp-texture-cube-face",
-          "uuid": "f3e9e871-56a4-4646-944f-d06e06ddd83f@equirectangular@right",
+          "uuid": "f3e9e871-56a4-4646-944f-d06e06ddd83f@textureCube@right",
           "imported": true,
           "files": [
             ".png",
@@ -32,7 +32,7 @@
         "left": {
           "ver": "1.0.4",
           "importer": "erp-texture-cube-face",
-          "uuid": "f3e9e871-56a4-4646-944f-d06e06ddd83f@equirectangular@left",
+          "uuid": "f3e9e871-56a4-4646-944f-d06e06ddd83f@textureCube@left",
           "imported": true,
           "files": [
             ".png",
@@ -44,7 +44,7 @@
         "top": {
           "ver": "1.0.4",
           "importer": "erp-texture-cube-face",
-          "uuid": "f3e9e871-56a4-4646-944f-d06e06ddd83f@equirectangular@top",
+          "uuid": "f3e9e871-56a4-4646-944f-d06e06ddd83f@textureCube@top",
           "imported": true,
           "files": [
             ".png",
@@ -56,7 +56,7 @@
         "bottom": {
           "ver": "1.0.4",
           "importer": "erp-texture-cube-face",
-          "uuid": "f3e9e871-56a4-4646-944f-d06e06ddd83f@equirectangular@bottom",
+          "uuid": "f3e9e871-56a4-4646-944f-d06e06ddd83f@textureCube@bottom",
           "imported": true,
           "files": [
             ".png",
@@ -68,7 +68,7 @@
         "front": {
           "ver": "1.0.4",
           "importer": "erp-texture-cube-face",
-          "uuid": "f3e9e871-56a4-4646-944f-d06e06ddd83f@equirectangular@front",
+          "uuid": "f3e9e871-56a4-4646-944f-d06e06ddd83f@textureCube@front",
           "imported": true,
           "files": [
             ".png",
@@ -80,7 +80,7 @@
         "back": {
           "ver": "1.0.4",
           "importer": "erp-texture-cube-face",
-          "uuid": "f3e9e871-56a4-4646-944f-d06e06ddd83f@equirectangular@back",
+          "uuid": "f3e9e871-56a4-4646-944f-d06e06ddd83f@textureCube@back",
           "imported": true,
           "files": [
             ".png",
@@ -101,11 +101,12 @@
         "imageDatabaseUri": "db://assets/textures/cubemap/equirectangular.png",
         "mipfilter": "none",
         "isRGBE": false
-      }
+      },
+      "displayName": "equirectangular"
     }
   },
   "userData": {
     "type": "texture cube",
-    "redirect": "f3e9e871-56a4-4646-944f-d06e06ddd83f@equirectangular"
+    "redirect": "f3e9e871-56a4-4646-944f-d06e06ddd83f@textureCube"
   }
 }

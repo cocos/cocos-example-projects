@@ -1,5 +1,5 @@
 {
-  "ver": "1.0.11",
+  "ver": "1.0.13",
   "importer": "image",
   "uuid": "5a533107-2abc-45f4-ab29-30ca3b200759",
   "files": [
@@ -7,32 +7,32 @@
     ".json"
   ],
   "subMetas": {
-    "specular_3_5.hdr": {
+    "texture": {
       "ver": "1.0.19",
       "importer": "texture",
-      "uuid": "5a533107-2abc-45f4-ab29-30ca3b200759@specular_3_5.hdr",
+      "uuid": "5a533107-2abc-45f4-ab29-30ca3b200759@texture",
       "imported": true,
       "files": [
         ".json"
       ],
       "subMetas": {},
       "userData": {
-        "wrapModeS": "clamp-to-edge",
-        "wrapModeT": "clamp-to-edge",
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
         "minfilter": "linear",
         "magfilter": "linear",
+        "mipfilter": "none",
         "premultiplyAlpha": false,
         "anisotropy": 1,
-        "generateMipmap": false,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "5a533107-2abc-45f4-ab29-30ca3b200759",
-        "mipfilter": "none"
-      }
+        "imageUuidOrDatabaseUri": "5a533107-2abc-45f4-ab29-30ca3b200759"
+      },
+      "displayName": "specular_3_5.hdr"
     }
   },
   "userData": {
     "type": "texture",
-    "redirect": "5a533107-2abc-45f4-ab29-30ca3b200759@specular_3_5.hdr"
+    "redirect": "5a533107-2abc-45f4-ab29-30ca3b200759@texture"
   },
   "imported": true
 }

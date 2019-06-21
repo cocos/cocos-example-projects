@@ -1,5 +1,5 @@
 {
-  "ver": "1.0.11",
+  "ver": "1.0.13",
   "importer": "image",
   "uuid": "9a17b81a-fad3-4692-8196-6bdc3408ef7f",
   "files": [
@@ -7,32 +7,32 @@
     ".json"
   ],
   "subMetas": {
-    "diffuse_3.hdr": {
+    "texture": {
       "ver": "1.0.19",
       "importer": "texture",
-      "uuid": "9a17b81a-fad3-4692-8196-6bdc3408ef7f@diffuse_3.hdr",
+      "uuid": "9a17b81a-fad3-4692-8196-6bdc3408ef7f@texture",
       "imported": true,
       "files": [
         ".json"
       ],
       "subMetas": {},
       "userData": {
-        "wrapModeS": "clamp-to-edge",
-        "wrapModeT": "clamp-to-edge",
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
         "minfilter": "linear",
         "magfilter": "linear",
+        "mipfilter": "none",
         "premultiplyAlpha": false,
         "anisotropy": 1,
-        "generateMipmap": false,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "9a17b81a-fad3-4692-8196-6bdc3408ef7f",
-        "mipfilter": "none"
-      }
+        "imageUuidOrDatabaseUri": "9a17b81a-fad3-4692-8196-6bdc3408ef7f"
+      },
+      "displayName": "diffuse_3.hdr"
     }
   },
   "userData": {
     "type": "texture",
-    "redirect": "9a17b81a-fad3-4692-8196-6bdc3408ef7f@diffuse_3.hdr"
+    "redirect": "9a17b81a-fad3-4692-8196-6bdc3408ef7f@texture"
   },
   "imported": true
 }

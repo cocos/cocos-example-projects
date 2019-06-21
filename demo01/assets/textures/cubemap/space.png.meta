@@ -1,5 +1,5 @@
 {
-  "ver": "1.0.11",
+  "ver": "1.0.13",
   "importer": "image",
   "imported": true,
   "uuid": "65505110-93cd-47da-ae3d-2330fc92eb89",
@@ -8,10 +8,10 @@
     ".json"
   ],
   "subMetas": {
-    "space": {
+    "textureCube": {
       "ver": "1.0.8",
       "importer": "erp-texture-cube",
-      "uuid": "65505110-93cd-47da-ae3d-2330fc92eb89@space",
+      "uuid": "65505110-93cd-47da-ae3d-2330fc92eb89@textureCube",
       "imported": true,
       "files": [
         ".json"
@@ -20,7 +20,7 @@
         "right": {
           "ver": "1.0.4",
           "importer": "erp-texture-cube-face",
-          "uuid": "65505110-93cd-47da-ae3d-2330fc92eb89@space@right",
+          "uuid": "65505110-93cd-47da-ae3d-2330fc92eb89@textureCube@right",
           "imported": true,
           "files": [
             ".png",
@@ -32,7 +32,7 @@
         "left": {
           "ver": "1.0.4",
           "importer": "erp-texture-cube-face",
-          "uuid": "65505110-93cd-47da-ae3d-2330fc92eb89@space@left",
+          "uuid": "65505110-93cd-47da-ae3d-2330fc92eb89@textureCube@left",
           "imported": true,
           "files": [
             ".png",
@@ -44,7 +44,7 @@
         "top": {
           "ver": "1.0.4",
           "importer": "erp-texture-cube-face",
-          "uuid": "65505110-93cd-47da-ae3d-2330fc92eb89@space@top",
+          "uuid": "65505110-93cd-47da-ae3d-2330fc92eb89@textureCube@top",
           "imported": true,
           "files": [
             ".png",
@@ -56,7 +56,7 @@
         "bottom": {
           "ver": "1.0.4",
           "importer": "erp-texture-cube-face",
-          "uuid": "65505110-93cd-47da-ae3d-2330fc92eb89@space@bottom",
+          "uuid": "65505110-93cd-47da-ae3d-2330fc92eb89@textureCube@bottom",
           "imported": true,
           "files": [
             ".png",
@@ -68,7 +68,7 @@
         "front": {
           "ver": "1.0.4",
           "importer": "erp-texture-cube-face",
-          "uuid": "65505110-93cd-47da-ae3d-2330fc92eb89@space@front",
+          "uuid": "65505110-93cd-47da-ae3d-2330fc92eb89@textureCube@front",
           "imported": true,
           "files": [
             ".png",
@@ -80,7 +80,7 @@
         "back": {
           "ver": "1.0.4",
           "importer": "erp-texture-cube-face",
-          "uuid": "65505110-93cd-47da-ae3d-2330fc92eb89@space@back",
+          "uuid": "65505110-93cd-47da-ae3d-2330fc92eb89@textureCube@back",
           "imported": true,
           "files": [
             ".png",
@@ -91,21 +91,21 @@
         }
       },
       "userData": {
-        "wrapModeS": "clamp-to-edge",
-        "wrapModeT": "clamp-to-edge",
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
         "minfilter": "linear",
         "magfilter": "linear",
+        "mipfilter": "none",
         "premultiplyAlpha": false,
         "anisotropy": 1,
-        "generateMipmap": false,
-        "imageDatabaseUri": "db://assets/textures/cubemap/space.png",
-        "mipfilter": "none",
-        "isRGBE": false
-      }
+        "isRGBE": false,
+        "imageDatabaseUri": "db://assets/textures/cubemap/space.png"
+      },
+      "displayName": "space"
     }
   },
   "userData": {
     "type": "texture cube",
-    "redirect": "65505110-93cd-47da-ae3d-2330fc92eb89@space"
+    "redirect": "65505110-93cd-47da-ae3d-2330fc92eb89@textureCube"
   }
 }
