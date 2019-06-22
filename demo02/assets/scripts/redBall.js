@@ -46,10 +46,10 @@ cc.Class({
         this.node.children.forEach(n => {
             let m = n.getComponent(cc.ModelComponent).material;
             let pos = n.getPosition();
-            const props = m.getProperty('props');
-            props.x = pos.y / rowSpan; // metallic
-            props.y = cc.vmath.clamp(pos.x / colSpan, 0.05, 1); // roughness
-            m.setProperty('props', props);
+            const props = m.getProperty('pbrParams');
+            props.x = cc.vmath.clamp(pos.x / colSpan, 0.05, 1); // roughness
+            props.y = pos.y / rowSpan; // metallic
+            m.setProperty('pbrParams', props);
             mats.push(m);
         });
         cc.loader.loadResDir('papermill/specular', cc.Texture2D, (err, asset) => {
@@ -68,12 +68,12 @@ cc.Class({
     },
 
     updateTexture() {
-        cc.director.getScene().getChildByName('camera').getComponent('sky').enabled = true;
+        // cc.director.getScene().getChildByName('camera').getComponent('sky').enabled = true;
         cc.director.getScene().getChildByName('geoms-procedural').getComponent('geometries').enabled = true;
-        mats.forEach(m => {
-            m.setProperty('diffuseEnvTexture', dif);
-            m.setProperty('specularEnvTexture', spe);
-        });
+        // mats.forEach(m => {
+        //     m.setProperty('diffuseEnvTexture', dif);
+        //     m.setProperty('specularEnvTexture', spe);
+        // });
     },
 
 	_keyUpHandler(keycode) {

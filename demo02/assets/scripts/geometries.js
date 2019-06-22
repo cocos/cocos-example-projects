@@ -35,42 +35,36 @@ cc.Class({
 
     start () {
         let models = [];
-        let rows = 7, cols = 7, spacing = 2.5;
+        let rows = 7, cols = 7, stride = 2.5;
         let albedo = cc.color(128, 0, 0);
         let meshSphere = cc.utils.createMesh(cc.primitives.sphere(1, { segments: 64 }));
         for (let i = 0; i < rows; i++) {
             for (let j = 0; j < cols; j++) {
                 let node = new cc.Node();
                 node.parent = this.node;
-                node.setPosition((j-cols/2)*spacing, (i-rows/2)*spacing, -2);
+                node.setPosition((j-cols/2)*stride, (i-rows/2)*stride, -2);
                 let comp = node.addComponent(cc.ModelComponent);
                 comp.mesh = meshSphere;
                 let m = new cc.Material();
                 m.initialize({
-                    defines: {
-                        USE_IBL: true,
-                        USE_TEX_LOD: true,
-                        USE_RGBE_IBL_DIFFUSE: true,
-                        USE_RGBE_IBL_SPECULAR: true,
-                    },
-                    effectName: 'builtin-pbr',
+                    effectName: 'builtin-standard',
                 });
-                m.setProperty('props', cc.v4(i / rows, cc.vmath.clamp(j / cols, 0.05, 1), 1, 7));
+                m.setProperty('pbrParams', cc.v4(cc.vmath.clamp(j / cols, 0.05, 1), i / rows, 1, 7));
                 m.setProperty('albedo', albedo);
                 comp.material = m; models.push(comp);
             }
         }
-        cc.loader.loadRes('brdfLUT/brdfLUT', cc.Texture2D, 'internal', null, (err, asset) => {
-            models.forEach(m => m.material.setProperty('brdfLUT', asset));
-        });
-        cc.loader.loadResDir('papermill/diffuse', cc.Texture2D, (err, asset) => {
-            let texture = cc.TextureCube.fromTexture2DArray(asset);
-            models.forEach(m => m.material.setProperty('diffuseEnvTexture', texture));
-        });
-        cc.loader.loadResDir('papermill/specular', cc.Texture2D, (err, asset) => {
-            let texture = cc.TextureCube.fromTexture2DArray(asset);
-            models.forEach(m => m.material.setProperty('specularEnvTexture', texture));
-        });
+        // cc.loader.loadRes('brdfLUT/brdfLUT', cc.Texture2D, 'internal', null, (err, asset) => {
+        //     models.forEach(m => m.material.setProperty('brdfLUT', asset));
+        // });
+        // cc.loader.loadResDir('papermill/diffuse', cc.Texture2D, (err, asset) => {
+        //     let texture = cc.TextureCube.fromTexture2DArray(asset);
+        //     models.forEach(m => m.material.setProperty('diffuseEnvTexture', texture));
+        // });
+        // cc.loader.loadResDir('papermill/specular', cc.Texture2D, (err, asset) => {
+        //     let texture = cc.TextureCube.fromTexture2DArray(asset);
+        //     models.forEach(m => m.material.setProperty('specularEnvTexture', texture));
+        // });
     },
 
     // update (dt) {},
