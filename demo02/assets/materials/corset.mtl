@@ -12,13 +12,33 @@
       "USE_NORMAL_MAP": true,
       "USE_PBR_MAP": true,
       "ROUGHNESS_CHANNEL": "g",
-      "METALLIC_CHANNEL": "b"
+      "METALLIC_CHANNEL": "b",
+      "AO_CHANNEL": "r"
     },
     {
       "USE_PLANAR_SHADOW": true
     }
   ],
-  "_states": [],
+  "_states": [
+    {
+      "blendState": {
+        "targets": [
+          {}
+        ]
+      },
+      "depthStencilState": {},
+      "rasterizerState": {}
+    },
+    {
+      "blendState": {
+        "targets": [
+          {}
+        ]
+      },
+      "depthStencilState": {},
+      "rasterizerState": {}
+    }
+  ],
   "_props": [
     {
       "normalMap": {
