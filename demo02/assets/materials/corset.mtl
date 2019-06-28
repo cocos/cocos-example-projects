@@ -13,20 +13,10 @@
       "USE_PBR_MAP": true,
       "ROUGHNESS_CHANNEL": "g",
       "METALLIC_CHANNEL": "b",
-      "AO_CHANNEL": "r"
-    },
-    {}
+      "OCCLUSION_CHANNEL": "r"
+    }
   ],
   "_states": [
-    {
-      "blendState": {
-        "targets": [
-          {}
-        ]
-      },
-      "depthStencilState": {},
-      "rasterizerState": {}
-    },
     {
       "blendState": {
         "targets": [
@@ -39,13 +29,18 @@
   ],
   "_props": [
     {
+      "albedoMap": {
+        "__uuid__": "1cd5498e-3745-48c3-beba-73ed195e5aba@texture"
+      },
       "normalMap": {
         "__uuid__": "16726576-7124-46c8-a259-0c53524fb826@texture"
       },
       "pbrMap": {
         "__uuid__": "e9d71021-2965-419c-8046-bbfe440e9e3d@texture"
+      },
+      "metallicRoughnessMap": {
+        "__uuid__": "e9d71021-2965-419c-8046-bbfe440e9e3d@texture"
       }
-    },
-    {}
+    }
   ]
 }

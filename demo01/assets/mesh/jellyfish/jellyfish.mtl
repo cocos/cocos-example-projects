@@ -6,16 +6,27 @@
   "_effectAsset": {
     "__uuid__": "1baf0fc9-befa-459c-8bdd-af1a450a0319"
   },
-  "_techIdx": "1",
+  "_techIdx": "0",
   "_defines": [
     {
       "USE_ALBEDO_MAP": true,
       "USE_PBR_MAP": true,
       "USE_EMISSIVE_MAP": true,
-      "ROUGHNESS_CHANNEL": "a",
-      "METALLIC_CHANNEL": "r"
-    },
-    {}
+      "ROUGHNESS_CHANNEL": "g",
+      "METALLIC_CHANNEL": "b",
+      "OCCLUSION_CHANNEL": "r"
+    }
+  ],
+  "_states": [
+    {
+      "blendState": {
+        "targets": [
+          {}
+        ]
+      },
+      "depthStencilState": {},
+      "rasterizerState": {}
+    }
   ],
   "_props": [
     {
@@ -28,7 +39,6 @@
       "emissiveMap": {
         "__uuid__": "bfb5b8f2-e084-4767-a88f-5be557d02d28@texture"
       }
-    },
-    {}
+    }
   ]
 }
