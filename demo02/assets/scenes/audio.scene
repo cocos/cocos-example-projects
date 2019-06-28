@@ -61,6 +61,10 @@
       "y": 0,
       "z": 0
     },
+    "autoReleaseAssets": false,
+    "_globals": {
+      "__id__": 12
+    },
     "_id": "06821728-3953-466a-85e1-b1cf6d2a977a"
   },
   {
@@ -115,7 +119,6 @@
       "__id__": 2
     },
     "_enabled": true,
-    "_type": 0,
     "_color": {
       "__type__": "cc.Color",
       "r": 255,
@@ -123,9 +126,8 @@
       "b": 255,
       "a": 255
     },
-    "_intensity": 1,
-    "_range": 1,
-    "_spotAngle": 60,
+    "_useColorTemperature": false,
+    "_colorTemperature": 6550,
     "_id": "57ZZlBZXZPDIvdsJ5Xh9t2"
   },
   {
@@ -146,16 +148,16 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 0,
-      "z": 0
+      "x": -14.968516693316099,
+      "y": 8.441860164732358,
+      "z": -15.419703561260063
     },
     "_lrot": {
       "__type__": "cc.Quat",
-      "x": 0,
-      "y": 0,
-      "z": 0,
-      "w": 1
+      "x": -0.08935101064185011,
+      "y": -0.9007583752240349,
+      "z": -0.22209191519894786,
+      "w": 0.3623891849777254
     },
     "_lscale": {
       "__type__": "cc.Vec3",
@@ -166,9 +168,9 @@
     "_layer": 1,
     "_euler": {
       "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 0,
-      "z": 0
+      "x": -27.70129035755964,
+      "y": -136.16861192766868,
+      "z": -0.00000423630216611068
     },
     "_id": "c9DMICJLFO5IeO07EPon7U"
   },
@@ -203,7 +205,9 @@
       "width": 1,
       "height": 1
     },
+    "_screenScale": 1,
     "_targetDisplay": 0,
+    "_visibility": 0,
     "_id": "7dWQTpwS5LrIHnc1zAPUtf"
   },
   {
@@ -385,5 +389,60 @@
       "__id__": 8
     },
     "_id": "53hM1RgydHo5ELHnfvU5W+"
+  },
+  {
+    "__type__": "cc.SceneGlobals",
+    "ambient": {
+      "__id__": 13
+    },
+    "skybox": {
+      "__id__": 14
+    },
+    "planarShadows": {
+      "__id__": 15
+    }
+  },
+  {
+    "__type__": "cc.AmbientInfo",
+    "_skyColor": {
+      "__type__": "cc.Color",
+      "r": 51,
+      "g": 128,
+      "b": 204,
+      "a": 1
+    },
+    "_skyIllum": 20000,
+    "_groundAlbedo": {
+      "__type__": "cc.Color",
+      "r": 51,
+      "g": 51,
+      "b": 51,
+      "a": 255
+    }
+  },
+  {
+    "__type__": "cc.SkyboxInfo",
+    "_envmap": null,
+    "_isRGBE": false,
+    "_enabled": false,
+    "_useIBL": false
+  },
+  {
+    "__type__": "cc.PlanarShadowInfo",
+    "_enabled": false,
+    "_normal": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 1,
+      "z": 0
+    },
+    "_distance": 0,
+    "_shadowColor": {
+      "__type__": "cc.Color",
+      "r": 76,
+      "g": 76,
+      "b": 76,
+      "a": 255
+    }
   }
 ]
