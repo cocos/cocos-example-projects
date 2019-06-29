@@ -40,7 +40,7 @@ let JellyFish = cc.Class({
         this.dstPos.x = Math.random() * this.range - this.range/2;
         this.dstPos.y = Math.random() * this.range - this.range/2;
         this.dstPos.z = Math.random() * this.range - this.range/2;
-        
+
         this.node.getPosition(_pos);
         this.dstPos.sub(_pos, this.dir);
         let angle = Math.atan2( this.dir.x, this.dir.z );
@@ -59,7 +59,7 @@ let JellyFish = cc.Class({
 
         // this.dstPos.sub(_pos, this.dir);
         this.dir.normalizeSelf().mulSelf(this.speed);
-        
+
         this._changing = true;
         this._time = 0;
     },
@@ -76,7 +76,7 @@ let JellyFish = cc.Class({
             else {
                 let ratio = this._time / this.mixDuration;
                 this.node.getRotation(_quat);
-                _quat.lerp(this.dstRot, ratio, _quat);
+                _quat.lerpSelf(this.dstRot, ratio, _quat);
                 this.node.setRotation(_quat);
             }
         }
