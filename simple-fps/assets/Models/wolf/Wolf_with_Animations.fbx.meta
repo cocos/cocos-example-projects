@@ -1,5 +1,5 @@
 {
-  "ver": "1.0.788",
+  "ver": "1.1.7",
   "importer": "fbx",
   "imported": true,
   "uuid": "a9d901b7-6dbc-457a-8d92-7d22140ffdd1",
@@ -64,7 +64,7 @@
       }
     },
     "01_Run.animation": {
-      "ver": "1.0.5",
+      "ver": "1.0.8",
       "importer": "gltf-animation",
       "uuid": "a9d901b7-6dbc-457a-8d92-7d22140ffdd1@01_Run.animation",
       "imported": true,
@@ -73,11 +73,12 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 0
+        "gltfIndex": 0,
+        "events": []
       }
     },
     "02_walk.animation": {
-      "ver": "1.0.5",
+      "ver": "1.0.8",
       "importer": "gltf-animation",
       "uuid": "a9d901b7-6dbc-457a-8d92-7d22140ffdd1@02_walk.animation",
       "imported": true,
@@ -86,11 +87,12 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 1
+        "gltfIndex": 1,
+        "events": []
       }
     },
     "03_creep.animation": {
-      "ver": "1.0.5",
+      "ver": "1.0.8",
       "importer": "gltf-animation",
       "uuid": "a9d901b7-6dbc-457a-8d92-7d22140ffdd1@03_creep.animation",
       "imported": true,
@@ -99,11 +101,12 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 2
+        "gltfIndex": 2,
+        "events": []
       }
     },
     "04_Idle.animation": {
-      "ver": "1.0.5",
+      "ver": "1.0.8",
       "importer": "gltf-animation",
       "uuid": "a9d901b7-6dbc-457a-8d92-7d22140ffdd1@04_Idle.animation",
       "imported": true,
@@ -112,11 +115,12 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 3
+        "gltfIndex": 3,
+        "events": []
       }
     },
     "05_site.animation": {
-      "ver": "1.0.5",
+      "ver": "1.0.8",
       "importer": "gltf-animation",
       "uuid": "a9d901b7-6dbc-457a-8d92-7d22140ffdd1@05_site.animation",
       "imported": true,
@@ -125,7 +129,8 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 4
+        "gltfIndex": 4,
+        "events": []
       }
     },
     "UnnamedSkeleton-0.skeleton": {
@@ -158,45 +163,6 @@
       "ver": "1.0.0",
       "importer": "gltf-skeleton",
       "uuid": "a9d901b7-6dbc-457a-8d92-7d22140ffdd1@UnnamedSkeleton-2.skeleton",
-      "imported": true,
-      "files": [
-        ".json"
-      ],
-      "subMetas": {},
-      "userData": {
-        "gltfIndex": 2
-      }
-    },
-    "fella3_jpg_001.image": {
-      "ver": "1.0.0",
-      "importer": "gltf-embeded-image",
-      "uuid": "a9d901b7-6dbc-457a-8d92-7d22140ffdd1@fella3_jpg_001.image",
-      "imported": true,
-      "files": [
-        ".json"
-      ],
-      "subMetas": {},
-      "userData": {
-        "gltfIndex": 0
-      }
-    },
-    "wolf_col_tga.image": {
-      "ver": "1.0.0",
-      "importer": "gltf-embeded-image",
-      "uuid": "a9d901b7-6dbc-457a-8d92-7d22140ffdd1@wolf_col_tga.image",
-      "imported": true,
-      "files": [
-        ".json"
-      ],
-      "subMetas": {},
-      "userData": {
-        "gltfIndex": 1
-      }
-    },
-    "nor2_tga.image": {
-      "ver": "1.0.0",
-      "importer": "gltf-embeded-image",
-      "uuid": "a9d901b7-6dbc-457a-8d92-7d22140ffdd1@nor2_tga.image",
       "imported": true,
       "files": [
         ".json"
@@ -449,18 +415,9 @@
         "a9d901b7-6dbc-457a-8d92-7d22140ffdd1@UnnamedSkeleton-2.skeleton"
       ],
       "images": [
-        {
-          "embeded": true,
-          "uuidOrDatabaseUri": "a9d901b7-6dbc-457a-8d92-7d22140ffdd1@fella3_jpg_001.image"
-        },
-        {
-          "embeded": true,
-          "uuidOrDatabaseUri": "a9d901b7-6dbc-457a-8d92-7d22140ffdd1@wolf_col_tga.image"
-        },
-        {
-          "embeded": true,
-          "uuidOrDatabaseUri": "a9d901b7-6dbc-457a-8d92-7d22140ffdd1@nor2_tga.image"
-        }
+        null,
+        null,
+        null
       ],
       "textures": [
         "a9d901b7-6dbc-457a-8d92-7d22140ffdd1@fella3_jpg_001.texture",
