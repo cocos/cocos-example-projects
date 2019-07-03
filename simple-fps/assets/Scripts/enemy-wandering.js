@@ -10,15 +10,15 @@ const state = {
 @cc._decorator.ccclass()
 class EnemyController extends cc.Component {
 
-	@cc._decorator.property(Number)
+	@cc._decorator.property
 	moveSpeed = 1;
-	@cc._decorator.property(Number)
+	@cc._decorator.property
 	dist = 10;
-	
+
 	constructor() {
 		super();
 	}
-	
+
 	start () {
 		this.status = state.idle;
 		this.oriPosition = this.node.getWorldPosition();
@@ -66,7 +66,7 @@ class EnemyController extends cc.Component {
 		}
 	//	console.log('enemy update');
     }
-	
+
 /* 	getMoveDirection() {
         const position = new cc.Vec3(
             Math.random(),
@@ -93,25 +93,25 @@ class EnemyController extends cc.Component {
             stateComponent.switchTo(state);
         }
     }
-	
+
 	_translate(direction, delta) {
 		const position = this.node.getPosition();
 		cc.vmath.vec3.scaleAndAdd(position, position, direction, delta);
 		this.node.setPosition(position);
 	}
-	
+
 	_getForward() {
 		return this._getDirection(0, 0, 1);
 	}
-	
+
 	_getRight() {
 		return this._getDirection(-1, 0, 0);
 	}
-	
+
 	_getUp() {
 		return this._getDirection(0, 1, 0);
 	}
-	
+
 	_getDirection(x, y, z) {
 		const result = cc.v3(x, y, z);
 		cc.vmath.vec3.transformQuat(result, result, this.node.getRotation());
