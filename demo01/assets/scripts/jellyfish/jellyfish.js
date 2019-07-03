@@ -42,7 +42,11 @@ let JellyFish = cc.Class({
         this.dstPos.z = Math.random() * this.range - this.range/2;
 
         this.node.getPosition(_pos);
-        this.dstPos.sub(_pos, this.dir);
+        let temp = new cc.Vec3();
+        temp.set(this.dstPos);
+        this.dstPos.subtract(_pos);
+        this.dir.set(this.dstPos);
+        this.dstPos.set(temp);
         let angle = Math.atan2( this.dir.x, this.dir.z );
         this.dstRot.x = 0;
         this.dstRot.y = 1 * Math.sin( angle/2 );
@@ -58,7 +62,8 @@ let JellyFish = cc.Class({
         // cc.vmath.quat.normalize(this.dstRot, this.dstRot);
 
         // this.dstPos.sub(_pos, this.dir);
-        this.dir.normalizeSelf().mulSelf(this.speed);
+        this.dir.normalize();
+        this.dir.multiply(this.speed);
 
         this._changing = true;
         this._time = 0;
@@ -76,16 +81,17 @@ let JellyFish = cc.Class({
             else {
                 let ratio = this._time / this.mixDuration;
                 this.node.getRotation(_quat);
-                _quat.lerpSelf(this.dstRot, ratio, _quat);
+                _quat.lerp(this.dstRot,ratio);
+
                 this.node.setRotation(_quat);
             }
         }
 
         this.node.getPosition(_pos);
-        _pos.addSelf(this.dir);
+        _pos.add(this.dir);
         this.node.setPosition(_pos);
 
-        _pos.subSelf(this.dstPos);
+        _pos.subtract(this.dstPos);
 
         if (_pos.mag() < 5) {
             this.newDst();
