@@ -37,39 +37,35 @@ cc.Class({
           setTimeout(function(){ source2.volume = 1; }, (off2 + t2) * 1000);
         });
         /* smooth transition */
-        let startTime = cc.director.getTotalFrames();
+        let startTime1, startTime2;
         const sineLerp = (b, e, t) => {
           return b + (e - b) * (Math.sin((t - 0.5) * Math.PI) + 1) * 0.5;
         };
         const animation1 = () => {
-          source.volume = sineLerp(1, 0.1, (cc.director.getTotalFrames() - startTime) / t1 / 60);
+          source.volume = sineLerp(1, 0.1, (performance.now() - startTime1) / (t1 * 1000));
         };
         const animation2 = () => {
-          source2.volume = sineLerp(0.5, 1, (cc.director.getTotalFrames() - startTime - off2) / t2 / 60);
+          source2.volume = sineLerp(0.5, 1, (performance.now() - startTime2) / (t2 * 1000));
         };
         source.clip.once('started', () => {
           // animate audio 1
-          startTime = cc.director.getTotalFrames();
-        //   setActive(volumes[0], false);
+          startTime1 = performance.now();
           cc.director.on(cc.Director.EVENT_BEFORE_UPDATE, animation1);
           setTimeout(() => {
             cc.director.off(cc.Director.EVENT_BEFORE_UPDATE, animation1);
-            // setActive(volumes[0], true);
           }, t1 * 1000);
           // animate audio 2
           setTimeout(() => {
             source2.play();
-            // setActive(volumes[1], false);
+            startTime2 = performance.now();
             cc.director.on(cc.Director.EVENT_BEFORE_UPDATE, animation2);
           }, off2 * 1000);
           setTimeout(() => {
             cc.director.off(cc.Director.EVENT_BEFORE_UPDATE, animation2);
-            // setActive(volumes[1], true);
           }, (off2 + t2) * 1000);
         });
         /**/
     },
-    // update(dt) {},
 
     onDisable () {
       this.node1.getComponent(cc.AudioSourceComponent).stop();
