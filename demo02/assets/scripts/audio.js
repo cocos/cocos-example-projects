@@ -69,6 +69,10 @@ cc.Class({
         });
         /**/
     },
-
     // update(dt) {},
+
+    onDisable () {
+      this.node1.getComponent(cc.AudioSourceComponent).stop();
+      this.node2.getComponent(cc.AudioSourceComponent).stop();
+    }
 });
