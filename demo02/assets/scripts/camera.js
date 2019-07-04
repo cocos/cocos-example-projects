@@ -201,4 +201,8 @@ class FirstPersonCamera extends cc.Component {
 		vec3.transformQuat(result, result, this.node.getRotation());
 		return result;
 	}
+
+	onDisable () {
+		cc.eventManager.removeAllListeners();
+	}
 }

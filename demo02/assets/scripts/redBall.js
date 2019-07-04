@@ -78,5 +78,9 @@ cc.Class({
 
 	_keyUpHandler(keycode) {
 		if (keycode === 'R'.charCodeAt(0) && dif && spe) this.updateTexture();
+    },
+
+    onDisable () {
+		cc.eventManager.removeAllListeners();
 	}
 });
