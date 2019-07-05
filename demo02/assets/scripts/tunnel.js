@@ -34,4 +34,8 @@ export class Tunnel extends Component {
             this._passes[i].setUniform(this._borderHandles[i], this._border);
         }
     }
+
+    onDisable () {
+		cc.eventManager.removeAllListeners();
+	}
 }
