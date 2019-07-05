@@ -1,12 +1,3 @@
-// Learn cc.Class:
-//  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/class.html
-//  - [English] http://www.cocos2d-x.org/docs/creator/en/scripting/class.html
-// Learn Attribute:
-//  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/reference/attributes.html
-//  - [English] http://www.cocos2d-x.org/docs/creator/en/scripting/reference/attributes.html
-// Learn life-cycle callbacks:
-//  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
-//  - [English] http://www.cocos2d-x.org/docs/creator/en/scripting/life-cycle-callbacks.html
 
 let rows, cols;
 rows = cols = 3;
@@ -52,13 +43,13 @@ cc.Class({
             m.setProperty('pbrParams', props);
             mats.push(m);
         });
-        cc.loader.loadResDir('papermill/specular', cc.Texture2D, (err, asset) => {
-            spe = new cc.TextureCube();
-            cc.TextureCube.fromTexture2DArray(asset, spe);
-        });
-        cc.loader.loadResDir('papermill/diffuse', cc.Texture2D, (err, asset) => {
-            dif = cc.TextureCube.fromTexture2DArray(asset);
-        });
+        // cc.loader.loadResDir('papermill/specular', cc.Texture2D, (err, asset) => {
+        //     spe = new cc.TextureCube();
+        //     cc.TextureCube.fromTexture2DArray(asset, spe);
+        // });
+        // cc.loader.loadResDir('papermill/diffuse', cc.Texture2D, (err, asset) => {
+        //     dif = cc.TextureCube.fromTexture2DArray(asset);
+        // });
 
 		const keyListener = cc.EventListener.create({
 			event: cc.EventListener.KEYBOARD,
@@ -77,7 +68,7 @@ cc.Class({
     },
 
 	_keyUpHandler(keycode) {
-		if (keycode === 'R'.charCodeAt(0) && dif && spe) this.updateTexture();
+		if (keycode === 'R'.charCodeAt(0)) this.updateTexture();
     },
 
     onDisable () {
