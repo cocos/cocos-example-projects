@@ -4051,7 +4051,7 @@
   },
   {
     "__type__": "cc.AnimationComponent",
-    "_name": "",
+    "_name": "SpaceSoldier_Male_01<AnimationComponent>",
     "_objFlags": 0,
     "node": {
       "__id__": 8
@@ -4135,11 +4135,14 @@
     },
     "fileId": "Node.872",
     "sync": false,
-    "_synced": {}
+    "_synced": {
+      "default": false,
+      "serializable": false
+    }
   },
   {
     "__type__": "94194hVC99FV57JLlbwgJEn",
-    "_name": "",
+    "_name": "MainCharacter<character-controller>",
     "_objFlags": 0,
     "node": {
       "__id__": 7
@@ -4150,7 +4153,7 @@
   },
   {
     "__type__": "8464bNFYt1J0ZjL0CDCI6Qp",
-    "_name": "",
+    "_name": "MainCharacter<character-state>",
     "_objFlags": 0,
     "node": {
       "__id__": 7
@@ -4160,7 +4163,7 @@
   },
   {
     "__type__": "f757c9DS4FAi5BcNg3yFArq",
-    "_name": "",
+    "_name": "MainCharacter<bullet_emitter>",
     "_objFlags": 0,
     "node": {
       "__id__": 7
@@ -4374,7 +4377,7 @@
   },
   {
     "__type__": "39b4893z6JFfrSffWxiWVXh",
-    "_name": "",
+    "_name": "target<target>",
     "_objFlags": 0,
     "node": {
       "__id__": 141
@@ -4383,7 +4386,7 @@
     "targetPrefab": {
       "__uuid__": "7cf32d24-20b5-4139-962b-74b2898ef0f1"
     },
-    "numberTarget": 20,
+    "numberTarget": 10,
     "targetAreaUniformExtent": 30,
     "targetAreaCenter": {
       "__type__": "cc.Vec3",
@@ -4396,7 +4399,7 @@
   },
   {
     "__type__": "20a13XpKD9E2Jy7tQZ0ZHx+",
-    "_name": "",
+    "_name": "target<timer>",
     "_objFlags": 0,
     "node": {
       "__id__": 141
@@ -4405,7 +4408,7 @@
     "timeDisplay": {
       "__id__": 144
     },
-    "duration": 20,
+    "duration": 60,
     "_id": "70ORUuWqBPhqNfFYTkx7Wu"
   },
   {
@@ -5059,7 +5062,7 @@
   },
   {
     "__type__": "cc.BoxColliderComponent",
-    "_name": "",
+    "_name": "bullet<BoxColliderComponent>",
     "_objFlags": 0,
     "node": {
       "__id__": 160
@@ -5082,7 +5085,7 @@
   },
   {
     "__type__": "cc.RigidBodyComponent",
-    "_name": "",
+    "_name": "bullet<RigidBodyComponent>",
     "_objFlags": 0,
     "node": {
       "__id__": 160
@@ -5093,7 +5096,7 @@
     "_angularDamping": 0,
     "_fixedRotation": true,
     "_isKinematic": false,
-    "_useGravity": true,
+    "_useGravity": false,
     "_linearFactor": {
       "__type__": "cc.Vec3",
       "x": 1,
@@ -5118,8 +5121,7 @@
     "sync": false,
     "_synced": {
       "default": false,
-      "serializable": false,
-      "_iN$t": null
+      "serializable": false
     }
   },
   {
@@ -5352,7 +5354,6 @@
   },
   {
     "__type__": "cc.GradientRange",
-    "_mode": 0,
     "color": {
       "__type__": "cc.Color",
       "r": 255,
@@ -5382,7 +5383,8 @@
     },
     "gradientMax": {
       "__id__": 172
-    }
+    },
+    "_mode": 0
   },
   {
     "__type__": "cc.Gradient",
@@ -6007,7 +6009,6 @@
   },
   {
     "__type__": "cc.GradientRange",
-    "_mode": 1,
     "color": {
       "__type__": "cc.Color",
       "r": 255,
@@ -6037,7 +6038,8 @@
     },
     "gradientMax": {
       "__id__": 192
-    }
+    },
+    "_mode": 1
   },
   {
     "__type__": "cc.Gradient",
@@ -7631,7 +7633,6 @@
       "__id__": 222
     },
     "_minParticleDistance": 0.1,
-    "_space": 0,
     "existWithParticles": true,
     "textureMode": 0,
     "widthFromParticle": true,
@@ -7644,7 +7645,8 @@
     },
     "colorOvertime": {
       "__id__": 228
-    }
+    },
+    "_space": 0
   },
   {
     "__type__": "cc.CurveRange",
@@ -7778,7 +7780,6 @@
   },
   {
     "__type__": "cc.GradientRange",
-    "_mode": 0,
     "color": {
       "__type__": "cc.Color",
       "r": 255,
@@ -7808,7 +7809,8 @@
     },
     "gradientMax": {
       "__id__": 227
-    }
+    },
+    "_mode": 0
   },
   {
     "__type__": "cc.Gradient",
@@ -7830,7 +7832,6 @@
   },
   {
     "__type__": "cc.GradientRange",
-    "_mode": 0,
     "color": {
       "__type__": "cc.Color",
       "r": 255,
@@ -7860,7 +7861,8 @@
     },
     "gradientMax": {
       "__id__": 231
-    }
+    },
+    "_mode": 0
   },
   {
     "__type__": "cc.Gradient",
@@ -8036,7 +8038,6 @@
   },
   {
     "__type__": "cc.GradientRange",
-    "_mode": 0,
     "color": {
       "__type__": "cc.Color",
       "r": 255,
@@ -8066,7 +8067,8 @@
     },
     "gradientMax": {
       "__id__": 239
-    }
+    },
+    "_mode": 0
   },
   {
     "__type__": "cc.Gradient",
@@ -8739,7 +8741,6 @@
   },
   {
     "__type__": "cc.GradientRange",
-    "_mode": 1,
     "color": {
       "__type__": "cc.Color",
       "r": 255,
@@ -8769,7 +8770,8 @@
     },
     "gradientMax": {
       "__id__": 259
-    }
+    },
+    "_mode": 1
   },
   {
     "__type__": "cc.Gradient",
@@ -10363,7 +10365,6 @@
       "__id__": 289
     },
     "_minParticleDistance": 0.1,
-    "_space": 0,
     "existWithParticles": true,
     "textureMode": 0,
     "widthFromParticle": true,
@@ -10376,7 +10377,8 @@
     },
     "colorOvertime": {
       "__id__": 295
-    }
+    },
+    "_space": 0
   },
   {
     "__type__": "cc.CurveRange",
@@ -10510,7 +10512,6 @@
   },
   {
     "__type__": "cc.GradientRange",
-    "_mode": 0,
     "color": {
       "__type__": "cc.Color",
       "r": 255,
@@ -10540,7 +10541,8 @@
     },
     "gradientMax": {
       "__id__": 294
-    }
+    },
+    "_mode": 0
   },
   {
     "__type__": "cc.Gradient",
@@ -10562,7 +10564,6 @@
   },
   {
     "__type__": "cc.GradientRange",
-    "_mode": 0,
     "color": {
       "__type__": "cc.Color",
       "r": 255,
@@ -10592,7 +10593,8 @@
     },
     "gradientMax": {
       "__id__": 298
-    }
+    },
+    "_mode": 0
   },
   {
     "__type__": "cc.Gradient",
@@ -10768,7 +10770,6 @@
   },
   {
     "__type__": "cc.GradientRange",
-    "_mode": 0,
     "color": {
       "__type__": "cc.Color",
       "r": 255,
@@ -10798,7 +10799,8 @@
     },
     "gradientMax": {
       "__id__": 306
-    }
+    },
+    "_mode": 0
   },
   {
     "__type__": "cc.Gradient",
@@ -11471,7 +11473,6 @@
   },
   {
     "__type__": "cc.GradientRange",
-    "_mode": 1,
     "color": {
       "__type__": "cc.Color",
       "r": 255,
@@ -11501,7 +11502,8 @@
     },
     "gradientMax": {
       "__id__": 326
-    }
+    },
+    "_mode": 1
   },
   {
     "__type__": "cc.Gradient",
@@ -13095,7 +13097,6 @@
       "__id__": 356
     },
     "_minParticleDistance": 0.1,
-    "_space": 0,
     "existWithParticles": true,
     "textureMode": 0,
     "widthFromParticle": true,
@@ -13108,7 +13109,8 @@
     },
     "colorOvertime": {
       "__id__": 362
-    }
+    },
+    "_space": 0
   },
   {
     "__type__": "cc.CurveRange",
@@ -13242,7 +13244,6 @@
   },
   {
     "__type__": "cc.GradientRange",
-    "_mode": 0,
     "color": {
       "__type__": "cc.Color",
       "r": 255,
@@ -13272,7 +13273,8 @@
     },
     "gradientMax": {
       "__id__": 361
-    }
+    },
+    "_mode": 0
   },
   {
     "__type__": "cc.Gradient",
@@ -13294,7 +13296,6 @@
   },
   {
     "__type__": "cc.GradientRange",
-    "_mode": 0,
     "color": {
       "__type__": "cc.Color",
       "r": 255,
@@ -13324,7 +13325,8 @@
     },
     "gradientMax": {
       "__id__": 365
-    }
+    },
+    "_mode": 0
   },
   {
     "__type__": "cc.Gradient",

@@ -8,7 +8,7 @@ const state = {
 	collider: 3,
 }
 @cc._decorator.ccclass()
-class EnemyController extends cc.Component {
+export class EnemyController extends cc.Component {
 
 	@cc._decorator.property
 	moveSpeed = 1;
@@ -22,21 +22,9 @@ class EnemyController extends cc.Component {
 	start () {
 		this.status = state.idle;
 		this.oriPosition = this.node.getWorldPosition();
-		//this.direction = this.getMoveDirection();
-		this.node.on('collided',(para) => {
-			if(para.source.name === 'bullet'){
-				para.target.getComponent(cc.BoxColliderComponent).enabled = false;
-				this.status = state.collider;
-				this._switchState(States.death);
-				setTimeout(() => {
-					this.node.active = false;
-					this.status = state.idle;
-				}, 1000);
-			}
-			else if(para.source.name === 'enemy'){
-				cc.vmath.vec3.negate(this.direction,this.direction);
-			}
-		});
+
+		var collider = this.node.getComponent(cc.ColliderComponent);
+		collider.on('onCollisionEnter',this.onCollision,this);
     }
 
 	update (dt) {
@@ -116,5 +104,23 @@ class EnemyController extends cc.Component {
 		const result = cc.v3(x, y, z);
 		cc.vmath.vec3.transformQuat(result, result, this.node.getRotation());
 		return result;
+	}
+
+	onCollision (event) {
+		if(event.otherCollider.node._name == 'bullet'){
+            this.score += 1;
+			event.otherCollider.node.getComponent(cc.BoxColliderComponent).enabled = false;
+			event.otherCollider.node.active = false;
+			event.selfCollider.node.getComponent(cc.BoxColliderComponent).enabled = false;
+            this.status = state.collider;
+				this._switchState(States.death);
+				setTimeout(() => {
+					this.node.active = false;
+					this.status = state.idle;
+				}, 1000);
+		}
+		else if(event.otherCollider.node._name == 'enemy'){
+			cc.vmath.vec3.negate(this.direction,this.direction);
+		}
 	}
 }
