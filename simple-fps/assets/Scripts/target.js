@@ -8,6 +8,8 @@
 //  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
 //  - [English] http://www.cocos2d-x.org/docs/creator/en/scripting/life-cycle-callbacks.html
 
+import { EnemyController } from './enemy-wandering';
+
 cc.Class({
     extends: cc.Component,
 
@@ -51,15 +53,16 @@ cc.Class({
         this.boxAreaHalfExtents = new cc.Vec3(this.targetAreaUniformExtent, this.targetAreaUniformExtent, this.targetAreaUniformExtent);
         this.targets = [];
         for (let iBox = 0; iBox < this.numberTarget; ++iBox) {
-            
+
 
             // 使用给定的模板在场景中生成一个目标靶盒子节点
             const boxNode = cc.instantiate(this.targetPrefab);
-            boxNode.on('collided',(para) => {
-                if(para.source.name === 'bullet'){
+            var collider = boxNode.getComponent(cc.ColliderComponent);
+            collider.on('onCollisionEnter',(event)=>{
+                if(event.otherCollider.node._name == 'bullet'){
                     this.score += 1;
                 }
-            });
+            },this);
             this.targets.push(boxNode);
              // 将新增的节点添加到 Ground 节点下面
             this.node.addChild(boxNode);
@@ -78,11 +81,11 @@ cc.Class({
         const canvas = scene.getChildByName('Canvas');
         const score = canvas.getChildByName('Score');
 
-        score.getComponent(cc.LabelComponent).string = 'Score:  ' + Math.ceil(this.score/16) + '/' + this.numberTarget;
+        score.getComponent(cc.LabelComponent).string = 'Score:  ' + Math.ceil(this.score) + '/' + this.numberTarget;
      },
 
      isWin() {
-        return (Math.ceil(this.score/4) >= this.numberTarget);
+        return (Math.ceil(this.score) >= this.numberTarget);
      },
 
      reStart() {
@@ -93,13 +96,14 @@ cc.Class({
         const scene = this.node.scene;
         const character = scene.getChildByName('MainCharacter');
         character.setPosition(0,0,0);
-        // restart enemy 
+        // restart enemy
         console.log('restart');
         for (let iBox = 0; iBox < this.numberTarget; ++iBox) {
             const boxNode = this.targets[iBox];
             boxNode.active = true;
            // console.log(boxNode);
             boxNode.getComponent(cc.BoxColliderComponent).enabled = true;
+            boxNode.getComponent(EnemyController)._switchState(0);
 
             const enemy = boxNode.getChildByName('SpaceSoldier_Male_02');
            // enemy.getComponent(cc.AnimationComponent).enabled = true;

@@ -53,7 +53,7 @@ cc.Class({
     },
 
     update(dt) {
-       
+
     },
 
     _playEffect(){
@@ -68,17 +68,17 @@ cc.Class({
         cc.vmath.vec3.transformQuat(velocity,velocity,q);
         cc.vmath.vec3.normalize(velocity, velocity);
         effect.direction = velocity;
-        
+
         let coms = effect.getComponentsInChildren(cc.ParticleSystemComponent);
        // console.log(coms);
 		coms.forEach(function(com){
 			com.play();
 		});
     },
-    
+
     _mouseDownHandler(event) {
 	},
-    
+
  /*    _getModelPosition(modelnode){
         let model = modelnode.getComponent(cc.SkinningModelComponent);
         let position = new cc.Vec3();
@@ -144,39 +144,32 @@ cc.Class({
 
     _emitBall(position, velocity) {
         const ball = cc.instantiate(this.bulletPrefab);
-        ball.on('collided', (para) => {
-            if(para.source.name === 'enemy' ) {
-                
+        var collider = ball.getComponent(cc.ColliderComponent);
+        collider.on('onCollisionEnter',(event)=>{
+            if(event.otherCollider.node._name == 'enemy'){
                 this.score += 1;
-      //          para.destroy();
-             //   para.source.removeComponent(cc.BoxColliderComponent);
-                para.target.getComponent(cc.BoxColliderComponent).enabled = false;
-                console.log(`ball collided.`,para.source,para.target);
+                event.otherCollider.node.getComponent(cc.BoxColliderComponent).enabled = false;
             }
             setTimeout(() => {
                 ball.active = false;
             }, 1000);
-        });
+        },this);
+
         ball.active = true;
         ball.setScale(this.bulletScale,this.bulletScale,this.bulletScale);
         this.node.parent.addChild(ball);
-        
+
         ball.setPosition(position);
 
         //console.log(ball);
         const ballRigidBodyComponent = ball.getComponent(cc.RigidBodyComponent);
         //console.log(ballRigidBodyComponent);
         if (ballRigidBodyComponent) {
-            // ballRigidBodyComponent.mass = 0;
-          //  ballRigidBodyComponent.body.pullTransform();
-             // ballRigidBodyComponent.mass = 0;
-           //  ballRigidBodyComponent.syncPhysWithScene();
-
              const speed = this.bulletSpeed;
              cc.vmath.vec3.scale(velocity, velocity, speed);
-             ballRigidBodyComponent.velocity = velocity;
+             ballRigidBodyComponent.setLinearVelocity(velocity);
              console.log('root',ballRigidBodyComponent.velocity);
         }
         return ball;
-    },
+    }
 });
