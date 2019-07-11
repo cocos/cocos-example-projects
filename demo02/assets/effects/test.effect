@@ -1,0 +1,43 @@
+CCEffect %{
+  techniques:
+  - passes:
+    - vert: vs:vert
+      frag: fs:frag
+      depthStencilState:
+        depthTest: true
+        depthWrite: true
+%}
+
+CCProgram vs %{
+  precision mediump float;
+  #include <cc-global>
+  #include <cc-local>
+  #include <input-standard>
+
+  in vec2 a_texCoord;
+  out vec2 uv;
+  out vec3 normal;
+
+  vec4 vert () {
+    StandardVertInput In;
+    CCVertInput(In);
+
+    uv = a_texCoord;
+    normal = In.normal;
+	  return cc_matViewProj * cc_matWorld * vec4(In.position, 1);
+  }
+%}
+
+CCProgram fs %{
+  precision mediump float;
+  #include <output>
+
+  in vec2 uv;
+  in vec3 normal;
+
+  vec4 frag () {
+    vec4 color = vec4(normal * 0.5 + 0.5, 1);
+    // vec4 color = vec4(abs(mod(uv, 2.0) - 1.0), 1, 1);
+    return CCFragOutput(color);
+  }
+%}

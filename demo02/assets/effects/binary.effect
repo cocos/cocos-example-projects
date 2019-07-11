@@ -1,0 +1,55 @@
+CCEffect %{
+  techniques:
+  - passes:
+    - vert: binary-vs:vert
+      frag: binary-fs:frag
+      properties:
+        tilingOffset: { value: [1, 1, 0, 0] }
+        color:        { value: [1, 1, 1, 1], inspector: { type: color } }
+        border:       { value: [0.01, 0.01] }
+}%
+
+CCProgram binary-vs %{
+  precision mediump float;
+  #include <cc-global>
+  #include <cc-local>
+  #include <input>
+
+  in vec2 a_texCoord;
+  out vec2 v_uv;
+  uniform TexCoords {
+    vec4 tilingOffset;
+  };
+
+  vec4 vert () {
+    vec3 position;
+    CCVertInput(position);
+
+    v_uv = a_texCoord * tilingOffset.xy + tilingOffset.zw;
+
+    return cc_matViewProj * cc_matWorld * vec4(position, 1.0);
+  }
+}%
+
+CCProgram binary-fs %{
+  precision mediump float;
+  #include <output>
+
+  in vec2 v_uv;
+  uniform Constant {
+    vec4 color;
+    vec2 border;
+  };
+
+  vec4 frag () {
+    vec4 o = vec4(0, 0, 0, 1);
+
+    vec2 uv = v_uv - floor(v_uv);
+    if (any(lessThan(vec4(uv, 1.0 - border), vec4(border, uv))))
+      o = vec4(1);
+
+    o *= color;
+
+    return CCFragOutput(o);
+  }
+}%
