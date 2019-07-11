@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <title>Cocos Creator 3D | show-cases</title>
+
+  <!--http://www.html5rocks.com/en/mobile/mobifying/-->
+  <meta name="viewport"
+        content="width=device-width,user-scalable=no,initial-scale=1, minimum-scale=1,maximum-scale=1"/>
+
+  <!--https://developer.apple.com/library/safari/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
+
+  <!-- force webkit on 360 -->
+  <meta name="renderer" content="webkit"/>
+  <meta name="force-rendering" content="webkit"/>
+  <!-- force edge on IE -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta name="msapplication-tap-highlight" content="no">
+
+  <!-- force full screen on some browser -->
+  <meta name="full-screen" content="yes"/>
+  <meta name="x5-fullscreen" content="true"/>
+  <meta name="360-fullscreen" content="true"/>
+  
+  <!-- force screen orientation on some browser -->
+  <meta name="screen-orientation" content="auto"/>
+  <meta name="x5-orientation" content="auto">
+
+  <!--fix fireball/issues/3568 -->
+  <!--<meta name="browsermode" content="application">-->
+  <meta name="x5-page-mode" content="app">
+
+  <!--<link rel="apple-touch-icon" href=".png" />-->
+  <!--<link rel="apple-touch-icon-precomposed" href=".png" />-->
+
+  <link rel="stylesheet" type="text/css" href="style.css"/>
+
+</head>
+<body>
+  <canvas id="GameCanvas" oncontextmenu="event.preventDefault()" tabindex="0"></canvas>
+  <!-- Polyfills bundle. -->
+<script src="src/polyfills.bundle.js" charset="utf-8"> </script>
+
+<!-- SystemJS support. -->
+<script src="src/system.bundle.js" charset="utf-8"> </script>
+
+
+
+<!-- Manifest file. -->
+<script src="src/settings.js" charset="utf-8"></script>
+
+<!-- Contains window.boot() which bootstrap the logic. -->
+<script src="main.js" charset="utf-8"></script>
+
+<script type="text/javascript">
+  (function () {
+    
+
+    function addClass (element, name) {
+        const hasClass = (' ' + element.className + ' ').indexOf(' ' + name + ' ') > -1;
+        if (!hasClass) {
+            if (element.className) {
+                element.className += ' ';
+            }
+            element.className += name;
+        }
+    }
+    const canvas = document.getElementById('GameCanvas');
+    const $p = canvas.parentElement;
+    const bcr = $p.getBoundingClientRect();
+    canvas.width = bcr.width;
+    canvas.height = bcr.height;
+
+    var boot = window.boot;
+    boot.prepare.engine = function() {
+        var importMap = { imports: { }, };
+        importMap.imports['cc'] = './cocos3d-js.min.js';
+        var importMapElement = document.createElement('script');
+        importMapElement.type = 'systemjs-importmap';
+        importMapElement.text = JSON.stringify(importMap, undefined, 2);
+        document.body.appendChild(importMapElement);
+    };
+    boot.prepare.loadIIFE = function (url) {
+        return new Promise(function (resolve, reject) {
+            var err;
+            function windowErrorListener(evt) {
+                if (evt.filename === url) {
+                    err = evt.error;
+                }
+            }
+            window.addEventListener('error', windowErrorListener);
+            var script = document.createElement('script');
+            script.charset = 'utf-8';
+            script.async = true;
+            script.crossOrigin = 'anonymous';
+            script.addEventListener('error', function () {
+                window.removeEventListener('error', windowErrorListener);
+                reject(Error('Error loading ' + url));
+            });
+            script.addEventListener('load', function () {
+                window.removeEventListener('error', windowErrorListener);
+                document.head.removeChild(script);
+                // Note that if an error occurs that isn't caught by this if statement,
+                // that getRegister will return null and a "did not instantiate" error will be thrown.
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve();
+                }
+            });
+            script.src = url;
+            document.head.appendChild(script);
+        });
+    };
+    boot.prepare.findCanvas = function () {
+        // Use canvas in outer context
+        if (!canvas || canvas.tagName !== 'CANVAS') {
+            console.error("unknown canvas id:", el);
+        }
+        var width = canvas.width;
+        var height = canvas.height;
+        var container = document.createElement('div');
+        if (canvas && canvas.parentNode) {
+            canvas.parentNode.insertBefore(container, canvas);
+        }
+        container.setAttribute('id', 'Cocos3dGameContainer');
+        container.appendChild(canvas);
+        var frame = (container.parentNode === document.body) ? document.documentElement : container.parentNode;
+        addClass(canvas, 'gameCanvas');
+        canvas.setAttribute('width', width || '480');
+        canvas.setAttribute('height', height || '320');
+        canvas.setAttribute('tabindex', '99');
+        return { frame, canvas, container };
+    };
+    boot.prepare().then(boot);
+  })();
+</script>
+
+</body>
+</html>
