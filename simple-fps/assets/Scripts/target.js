@@ -102,9 +102,10 @@ cc.Class({
             const boxNode = this.targets[iBox];
             boxNode.active = true;
            // console.log(boxNode);
-            boxNode.getComponent(cc.BoxColliderComponent).enabled = true;
+            boxNode.getComponent(cc.ColliderComponent).enabled = true;
+            boxNode.getComponent('EnemyState')._currentState = 0;
             boxNode.getComponent(EnemyController)._switchState(0);
-
+            
             const enemy = boxNode.getChildByName('SpaceSoldier_Male_02');
            // enemy.getComponent(cc.AnimationComponent).enabled = true;
            // enemy.getComponent(cc.AnimationComponent)._resetTarget();

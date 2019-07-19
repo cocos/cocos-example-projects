@@ -32,9 +32,9 @@ cc.Class({
             type: cc.Prefab
         },
         // 子弹大小
-        bulletScale :1,
+        bulletScale :0.5,
         // 子弹速度
-        bulletSpeed :80,
+        bulletSpeed :300,
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -144,22 +144,22 @@ cc.Class({
 
     _emitBall(position, velocity) {
         const ball = cc.instantiate(this.bulletPrefab);
+        this.node.parent.addChild(ball);
+        ball.active = true;
+
+        ball.setScale(this.bulletScale,this.bulletScale,this.bulletScale);
+        ball.setPosition(position);
+
         var collider = ball.getComponent(cc.ColliderComponent);
         collider.on('onCollisionEnter',(event)=>{
             if(event.otherCollider.node._name == 'enemy'){
                 this.score += 1;
-                event.otherCollider.node.getComponent(cc.BoxColliderComponent).enabled = false;
             }
+            event.selfCollider.getComponent(cc.ColliderComponent).enabled = false;
             setTimeout(() => {
                 ball.active = false;
             }, 1000);
         },this);
-
-        ball.active = true;
-        ball.setScale(this.bulletScale,this.bulletScale,this.bulletScale);
-        this.node.parent.addChild(ball);
-
-        ball.setPosition(position);
 
         //console.log(ball);
         const ballRigidBodyComponent = ball.getComponent(cc.RigidBodyComponent);
@@ -168,7 +168,7 @@ cc.Class({
              const speed = this.bulletSpeed;
              cc.vmath.vec3.scale(velocity, velocity, speed);
              ballRigidBodyComponent.setLinearVelocity(velocity);
-             console.log('root',ballRigidBodyComponent.velocity);
+             console.log('root', velocity);
         }
         return ball;
     }

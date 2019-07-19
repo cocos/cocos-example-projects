@@ -22,12 +22,15 @@ export class CharacterState extends cc.Component {
            // console.log('same state',this._currentState,state);
             return;
         }
-        this._currentState = state;
         const animationComponent = this._getAnimationComponent();
         if (!animationComponent) {
             return;
         }
         const animationName = this._getAnimationName(state);
+        if(animationComponent.getAnimationState(animationName)._isPlaying){
+            return;
+        }
+        this._currentState = state;
         animationComponent.play(animationName, 0.0);
     }
 
@@ -35,22 +38,22 @@ export class CharacterState extends cc.Component {
         let animationName = null;
         switch (state) {
             case States.idle:
-                animationName = 'Ar|Idle.3';
+                animationName = 'Ar_Idle.3';
                 break;
             case States.walk:
-                animationName = 'Ar|WalkGun';
+                animationName = 'Ar-WalkGun';
                 break;
             case States.run:
-                animationName = 'Ar|Run';
+                animationName = 'Ar_Run';
                 break;
-            case States.creep:
-                animationName = '03_creep';
+            case States.hit:
+                animationName = 'Ar_HitGun';
                 break;
-            case States.site:
-                animationName = '05_site';
+            case States.death:
+                animationName = 'Ar_Death';
                 break;
             case States.shoot:
-                animationName = 'Ar|ShootTorsoArmsPistol';
+                animationName = 'Ar_ShootTorsoArmsPistol';
                 break;
 
         }
@@ -73,7 +76,7 @@ export const States = {
     idle: 0,
     walk: 1,
     run: 2,
-    creep: 3,
-    site: 4,
+    hit: 3,
+    death: 4,
     shoot: 5,
 };

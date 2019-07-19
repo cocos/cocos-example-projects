@@ -73,6 +73,7 @@
         "__uuid__": "0bb7523c-ea6d-49dc-82f8-461a672841d8"
       }
     ],
+    "_viewID": 0,
     "_mesh": {
       "__uuid__": "1263d74c-8167-4928-91a6-4e2672411f47@sphere.mesh"
     },
@@ -81,20 +82,44 @@
     "_id": ""
   },
   {
-    "__type__": "cc.BoxColliderComponent",
+    "__type__": "cc.SphereColliderComponent",
     "_name": "",
     "_objFlags": 0,
     "node": {
       "__id__": 1
     },
     "_enabled": true,
+    "_isTrigger": false,
     "_center": {
       "__type__": "cc.Vec3",
       "x": 0,
       "y": 0,
       "z": 0
     },
-    "_size": {
+    "_radius": 0.5,
+    "_id": ""
+  },
+  {
+    "__type__": "cc.RigidBodyComponent",
+    "_name": "bullet<RigidBodyComponent>",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "_mass": 1,
+    "_linearDamping": 0.8,
+    "_angularDamping": 0,
+    "_fixedRotation": false,
+    "_isKinematic": false,
+    "_useGravity": true,
+    "_linearFactor": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_angularFactor": {
       "__type__": "cc.Vec3",
       "x": 1,
       "y": 1,
@@ -103,30 +128,12 @@
     "_id": ""
   },
   {
-    "__type__": "cc.RigidBodyComponent",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 1
-    },
-    "_enabled": true,
-    "_material": null,
-    "_mass": 1,
-    "_linearDamping": 0.8,
-    "_angularDamping": 0,
-    "_fixedRotation": true,
-    "_triggered": true,
-    "_isKinematic": false,
-    "_useGravity": true,
-    "_id": ""
-  },
-  {
     "__type__": "cc.PrefabInfo",
     "root": {
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "30399d89-c5d1-4870-be9d-b207385298b3"
     },
     "fileId": "01sL2GTshBZ6UGXkNXPQ0a",
     "sync": false,

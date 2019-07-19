@@ -30,6 +30,9 @@ export class EnemyController extends cc.Component {
 	update (dt) {
 		//const translationDelta = dt * 10 * this.moveSpeed;
 		//console.log(this.status);
+		if(this.status === state.collider){
+			return
+		}
         if(this.status === state.idle){
 			this.status = state.wait;
 			setTimeout(() => {
@@ -108,16 +111,14 @@ export class EnemyController extends cc.Component {
 
 	onCollision (event) {
 		if(event.otherCollider.node._name == 'bullet'){
-            this.score += 1;
-			event.otherCollider.node.getComponent(cc.BoxColliderComponent).enabled = false;
-			event.otherCollider.node.active = false;
-			event.selfCollider.node.getComponent(cc.BoxColliderComponent).enabled = false;
+			event.selfCollider.getComponent(cc.ColliderComponent).enabled = false;
             this.status = state.collider;
-				this._switchState(States.death);
-				setTimeout(() => {
-					this.node.active = false;
-					this.status = state.idle;
-				}, 1000);
+			this._switchState(States.death);
+			
+			setTimeout(() => {
+				this.node.active = false;
+				this.status = state.idle;
+			}, 1000);
 		}
 		else if(event.otherCollider.node._name == 'enemy'){
 			cc.vmath.vec3.negate(this.direction,this.direction);

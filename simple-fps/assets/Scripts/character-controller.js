@@ -46,11 +46,17 @@ class CharacterConstroller extends cc.Component {
 
         if (moving) {
             this._switchState(States.run);
-        } else if (isKeyPressing("J")) {
+		} else {
+			this._switchState(States.idle);
+		}
+		
+		/*
+		else if (isKeyPressing("J")) {
             this._switchState(States.site);
         } else {
             this._switchState(States.idle);
 		}
+		*/
 
 		if (isKeyPressing("W")) {
             this._translate(this._getForward(), translationDelta);

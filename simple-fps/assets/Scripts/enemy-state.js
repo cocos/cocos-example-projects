@@ -1,4 +1,4 @@
-@cc._decorator.ccclass()
+@cc._decorator.ccclass('EnemyState')
 export class EnemyState extends cc.Component {
 	constructor() {
 		super();
@@ -22,6 +22,11 @@ export class EnemyState extends cc.Component {
        //     console.log(state,this._currentState);
             return;
         }
+
+        if (this._currentState == States.death){
+            return;
+        }
+
         this._currentState = state;
         const animationComponent = this._getAnimationComponent();
         if (!animationComponent) {
@@ -38,19 +43,19 @@ export class EnemyState extends cc.Component {
         let animationName = null;
         switch (state) {
             case States.idle:
-                animationName = 'SH|Idle.3';
+                animationName = 'SH_Idle.3';
                 break;
             case States.walk:
-                animationName = 'SH|WalkGun';
+                animationName = 'SH_WalkGun';
                 break;
             case States.run:
-                animationName = 'SH|Run';
+                animationName = 'SH_Run';
                 break;
             case States.shoot:
-                animationName = 'SH|ShootTorsoArmsPistol';
+                animationName = 'SH_ShootTorsoArmsPistol';
                 break;
             case States.death:
-                animationName = 'SH|Death';
+                animationName = 'SH_Death';
 
         }
         return animationName;
