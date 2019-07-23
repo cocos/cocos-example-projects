@@ -38,7 +38,7 @@ cc.Class({
             let m = n.getComponent(cc.ModelComponent).material;
             let pos = n.getPosition();
             const props = m.getProperty('pbrParams');
-            props.x = cc.vmath.clamp(pos.x / colSpan, 0.05, 1); // roughness
+            props.x = cc.misc.clampf(pos.x / colSpan, 0.05, 1); // roughness
             props.y = pos.y / rowSpan; // metallic
             m.setProperty('pbrParams', props);
             mats.push(m);
