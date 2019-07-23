@@ -71,10 +71,9 @@ export class FirstPersonCamera extends Component {
     }
 
 	onMouseWheel (e) {
-		const delta = -e.getScrollY() * this.moveSpeed / 24; // delta is positive when scroll down
+		const delta = -e.getScrollY() * this.moveSpeed * 0.1; // delta is positive when scroll down
 		vec3.transformQuat(v3_1, id_forward, this.node.rotation);
-		vec3.scaleAndAdd(v3_1, this.node.position, v3_1, delta);
-		this.node.setPosition(v3_1);
+		vec3.scaleAndAdd(this._position, this.node.position, v3_1, delta);
 	}
 
 	onKeyDown (e) {
