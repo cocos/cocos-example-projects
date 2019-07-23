@@ -1,5 +1,5 @@
 {
-  "ver": "1.1.9",
+  "ver": "1.1.17",
   "importer": "gltf",
   "imported": true,
   "uuid": "a2c8ba4b-7b15-410f-ab5b-5a88ca19075c",
@@ -21,10 +21,10 @@
         "gltfIndex": 0
       }
     },
-    "Take-001.animation": {
-      "ver": "1.0.8",
+    "Take 001.animation": {
+      "ver": "1.0.10",
       "importer": "gltf-animation",
-      "uuid": "a2c8ba4b-7b15-410f-ab5b-5a88ca19075c@Take-001.animation",
+      "uuid": "a2c8ba4b-7b15-410f-ab5b-5a88ca19075c@Take 001.animation",
       "imported": true,
       "files": [
         ".json"
@@ -32,6 +32,11 @@
       "subMetas": {},
       "userData": {
         "gltfIndex": 0,
+        "sample": 30,
+        "span": {
+          "from": 0,
+          "to": 4.083333492279053
+        },
         "events": []
       }
     },
@@ -125,7 +130,7 @@
       }
     },
     "scene.prefab": {
-      "ver": "1.0.4",
+      "ver": "1.0.7",
       "importer": "gltf-scene",
       "uuid": "a2c8ba4b-7b15-410f-ab5b-5a88ca19075c@scene.prefab",
       "imported": true,
@@ -211,6 +216,20 @@
       "scenes": [
         "a2c8ba4b-7b15-410f-ab5b-5a88ca19075c@scene.prefab"
       ]
-    }
+    },
+    "animationImportSettings": [
+      {
+        "name": "Take 001",
+        "duration": 4.083333492279053,
+        "fps": 30,
+        "splits": [
+          {
+            "name": "Take 001",
+            "from": 0,
+            "to": 4.083333492279053
+          }
+        ]
+      }
+    ]
   }
 }

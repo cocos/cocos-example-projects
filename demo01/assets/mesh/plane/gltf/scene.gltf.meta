@@ -1,5 +1,5 @@
 {
-  "ver": "1.1.9",
+  "ver": "1.1.17",
   "importer": "gltf",
   "imported": true,
   "uuid": "2f6f8742-f427-483c-8a4c-eb2a20c8203f",
@@ -22,7 +22,7 @@
       }
     },
     "Aeroplane_fly.animation": {
-      "ver": "1.0.8",
+      "ver": "1.0.10",
       "importer": "gltf-animation",
       "uuid": "2f6f8742-f427-483c-8a4c-eb2a20c8203f@Aeroplane_fly.animation",
       "imported": true,
@@ -32,7 +32,12 @@
       "subMetas": {},
       "userData": {
         "gltfIndex": 0,
-        "events": []
+        "events": [],
+        "sample": 30,
+        "span": {
+          "from": 0,
+          "to": 1.4583333730697632
+        }
       }
     },
     "UnnamedSkeleton.skeleton": {
@@ -83,7 +88,7 @@
       }
     },
     "scene.prefab": {
-      "ver": "1.0.4",
+      "ver": "1.0.7",
       "importer": "gltf-scene",
       "uuid": "2f6f8742-f427-483c-8a4c-eb2a20c8203f@scene.prefab",
       "imported": true,
@@ -149,6 +154,20 @@
       "scenes": [
         "2f6f8742-f427-483c-8a4c-eb2a20c8203f@scene.prefab"
       ]
-    }
+    },
+    "animationImportSettings": [
+      {
+        "name": "Aeroplane_fly",
+        "duration": 1.4583333730697632,
+        "fps": 30,
+        "splits": [
+          {
+            "name": "Aeroplane_fly",
+            "from": 0,
+            "to": 1.4583333730697632
+          }
+        ]
+      }
+    ]
   }
 }
