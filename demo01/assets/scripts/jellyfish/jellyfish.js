@@ -52,7 +52,7 @@ let JellyFish = cc.Class({
         this.dstRot.y = 1 * Math.sin( angle/2 );
         this.dstRot.z = 0;
         this.dstRot.w = Math.cos( angle/2 );
-        cc.vmath.quat.normalize(this.dstRot, this.dstRot);
+        cc.Quat.normalize(this.dstRot, this.dstRot);
 
         // let angle = cc.vmath.vec3.angle(_pos, this.dstPos);
         // this.dstRot.x = _pos.x * Math.sin(angle/2);
@@ -63,7 +63,7 @@ let JellyFish = cc.Class({
 
         // this.dstPos.sub(_pos, this.dir);
         this.dir.normalize();
-        this.dir.multiply(this.speed);
+        this.dir.scale(this.speed);
 
         this._changing = true;
         this._time = 0;

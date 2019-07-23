@@ -1,7 +1,7 @@
 
-import { _decorator, Component, Node, instantiate, Vec3, vmath } from "Cocos3D";
+import { _decorator, Component, Node, instantiate, Vec3 } from "Cocos3D";
 const { ccclass, property } = _decorator;
-const { randomRange } = vmath;
+// const { randomRange } = vmath;
 
 const v3_1 = new Vec3();
 
@@ -22,8 +22,8 @@ export class ColliderManager extends Component {
         for (let i = 0; i < this.count; i++) {
             const node = instantiate(this.prefabs[Math.round(Math.random())]);
             node.parent = this.node;
-            node.setPosition(randomRange(-2, 2), 3 + i * 2, randomRange(-2, 2));
-            node.setRotationFromEuler(randomRange(0, 180), randomRange(0, 180), randomRange(0, 180));
+            node.setPosition(cc.misc.randomRangeUtil(-2, 2), 3 + i * 2, cc.misc.randomRangeUtil(-2, 2));
+            node.setRotationFromEuler(cc.misc.randomRangeUtil(0, 180), cc.misc.randomRangeUtil(0, 180), cc.misc.randomRangeUtil(0, 180));
         }
     }
 

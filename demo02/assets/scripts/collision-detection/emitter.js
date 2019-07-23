@@ -1,6 +1,6 @@
-import { _decorator, Component, EffectAsset, ModelComponent, SphereColliderComponent, Color, Vec3, Node, Material, vmath } from "Cocos3D";
+import { _decorator, Component, EffectAsset, ModelComponent, SphereColliderComponent, Color, Vec3, Node, Material } from "Cocos3D";
 const { ccclass, property } = _decorator;
-const { vec3, randomRange, toRadian } = vmath;
+// const { randomRange, toRadian } = vmath;
 
 const hintMesh = cc.utils.createMesh(cc.primitives.capsule(1));
 const sphereMesh = cc.utils.createMesh(cc.primitives.sphere(1));
@@ -92,7 +92,7 @@ export class Emitter extends Component {
           ele.pass.setUniform(ele.hColor, ele.color);
           ele.collided = true;
           ele.framesRemaining = 5;
-          vec3.set(ele.velocity, 0, 0, 0);
+          Vec3.set(ele.velocity, 0, 0, 0);
           col.setGroup(0); col.setMask(0);
         });
         // store
@@ -107,7 +107,7 @@ export class Emitter extends Component {
         if (ele.collided) {
           if (ele.framesRemaining-- <= 0) this.reap(ele);
         } else {
-          vec3.add(v3_1, ele.node.position, ele.velocity);
+          Vec3.add(v3_1, ele.node.position, ele.velocity);
           ele.node.setPosition(v3_1);
           if (outOfBounds(v3_1)) this.reap(ele);
         }
@@ -133,10 +133,10 @@ export class Emitter extends Component {
 
     resurrect () {
       let ele = this._deadpool.pop();
-      let theta = toRadian(randomRange(this.leftAngle, this.rightAngle));
-      let phi = randomRange(1, 2);
-      let speed = randomRange(0.1, 0.3);
-      vec3.set(ele.velocity, Math.cos(theta) * Math.sin(phi) * speed,
+      let theta = cc.misc.degreesToRadians(cc.misc.randomRangeUtil(this.leftAngle, this.rightAngle));
+      let phi = cc.misc.randomRangeUtil(1, 2);
+      let speed = cc.misc.randomRangeUtil(0.1, 0.3);
+      Vec3.set(ele.velocity, Math.cos(theta) * Math.sin(phi) * speed,
         Math.cos(phi) * speed, Math.sin(theta) * Math.sin(phi) * speed);
       ele.color.a = this.color.a; ele.collided = false;
       ele.pass.setUniform(ele.hColor, ele.color);
