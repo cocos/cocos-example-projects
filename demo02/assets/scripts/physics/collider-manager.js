@@ -22,8 +22,8 @@ export class ColliderManager extends Component {
         for (let i = 0; i < this.count; i++) {
             const node = instantiate(this.prefabs[Math.round(Math.random())]);
             node.parent = this.node;
-            node.setPosition(cc.misc.randomRangeUtil(-2, 2), 3 + i * 2, cc.misc.randomRangeUtil(-2, 2));
-            node.setRotationFromEuler(cc.misc.randomRangeUtil(0, 180), cc.misc.randomRangeUtil(0, 180), cc.misc.randomRangeUtil(0, 180));
+            node.setPosition(cc.math.randomRange(-2, 2), 3 + i * 2, cc.math.randomRange(-2, 2));
+            node.setRotationFromEuler(cc.math.randomRange(0, 180), cc.math.randomRange(0, 180), cc.math.randomRange(0, 180));
         }
     }
 
