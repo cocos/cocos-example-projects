@@ -133,9 +133,9 @@ export class Emitter extends Component {
 
     resurrect () {
       let ele = this._deadpool.pop();
-      let theta = cc.misc.degreesToRadians(cc.misc.randomRangeUtil(this.leftAngle, this.rightAngle));
-      let phi = cc.misc.randomRangeUtil(1, 2);
-      let speed = cc.misc.randomRangeUtil(0.1, 0.3);
+      let theta = cc.math.toRadian(cc.math.randomRange(this.leftAngle, this.rightAngle));
+      let phi = cc.math.randomRange(1, 2);
+      let speed = cc.math.randomRange(0.1, 0.3);
       Vec3.set(ele.velocity, Math.cos(theta) * Math.sin(phi) * speed,
         Math.cos(phi) * speed, Math.sin(theta) * Math.sin(phi) * speed);
       ele.color.a = this.color.a; ele.collided = false;

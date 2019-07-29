@@ -49,7 +49,7 @@ cc.Class({
                 m.initialize({
                     effectName: 'builtin-standard',
                 });
-                m.setProperty('pbrParams', cc.v4(cc.misc.clampf(j / cols, 0.05, 1), i / rows, 1, 7));
+                m.setProperty('pbrParams', cc.v4(cc.math.clamp(j / cols, 0.05, 1), i / rows, 1, 7));
                 m.setProperty('albedo', albedo);
                 comp.material = m; models.push(comp);
             }
