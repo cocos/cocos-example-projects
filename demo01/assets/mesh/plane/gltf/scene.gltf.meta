@@ -1,5 +1,5 @@
 {
-  "ver": "1.1.17",
+  "ver": "1.1.21",
   "importer": "gltf",
   "imported": true,
   "uuid": "2f6f8742-f427-483c-8a4c-eb2a20c8203f",
@@ -88,7 +88,7 @@
       }
     },
     "scene.prefab": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-scene",
       "uuid": "2f6f8742-f427-483c-8a4c-eb2a20c8203f@scene.prefab",
       "imported": true,
@@ -129,12 +129,23 @@
     "redirect": "2f6f8742-f427-483c-8a4c-eb2a20c8203f@scene.prefab",
     "normals": 0,
     "tangents": 1,
+    "animationImportSettings": [
+      {
+        "name": "Aeroplane_fly",
+        "duration": 1.4583333730697632,
+        "fps": 30,
+        "splits": [
+          {
+            "name": "Aeroplane_fly",
+            "from": 0,
+            "to": 1.4583333730697632
+          }
+        ]
+      }
+    ],
     "assetFinder": {
       "meshes": [
         "2f6f8742-f427-483c-8a4c-eb2a20c8203f@Aeroplane_Aeroplane_color_3_0.mesh"
-      ],
-      "animations": [
-        "2f6f8742-f427-483c-8a4c-eb2a20c8203f@Aeroplane_fly.animation"
       ],
       "skeletons": [
         "2f6f8742-f427-483c-8a4c-eb2a20c8203f@UnnamedSkeleton.skeleton"
@@ -154,20 +165,6 @@
       "scenes": [
         "2f6f8742-f427-483c-8a4c-eb2a20c8203f@scene.prefab"
       ]
-    },
-    "animationImportSettings": [
-      {
-        "name": "Aeroplane_fly",
-        "duration": 1.4583333730697632,
-        "fps": 30,
-        "splits": [
-          {
-            "name": "Aeroplane_fly",
-            "from": 0,
-            "to": 1.4583333730697632
-          }
-        ]
-      }
-    ]
+    }
   }
 }

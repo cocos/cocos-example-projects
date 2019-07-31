@@ -1,6 +1,6 @@
-import { _decorator, Component, math } from "cc";
+import { _decorator, Component, math } from "Cocos3D";
 const { ccclass, property } = _decorator;
-const { Quat, Vec2, Vec3 } = math;
+const { Vec2, Vec3, Quat } = math;
 
 const v2_1 = new Vec2();
 const v2_2 = new Vec2();
@@ -31,7 +31,6 @@ export class FirstPersonCamera extends Component {
 
 	@property
 	rotateSpeed = 1;
-
 
 	_euler = new Vec3();
 	_velocity = new Vec3();
@@ -71,9 +70,10 @@ export class FirstPersonCamera extends Component {
     }
 
 	onMouseWheel (e) {
-		const delta = -e.getScrollY() * this.moveSpeed * 0.1; // delta is positive when scroll down
+		const delta = -e.getScrollY() * this.moveSpeed / 24; // delta is positive when scroll down
 		Vec3.transformQuat(v3_1, id_forward, this.node.rotation);
-		Vec3.scaleAndAdd(this._position, this.node.position, v3_1, delta);
+		Vec3.scaleAndAdd(v3_1, this.node.position, v3_1, delta);
+		this.node.setPosition(v3_1);
 	}
 
 	onKeyDown (e) {
@@ -106,8 +106,8 @@ export class FirstPersonCamera extends Component {
 		e.getStartLocation(v2_1);
 		if (v2_1.x > cc.winSize.width * 0.4) { // rotation
 			e.getDelta(v2_2);
-			this._euler.y -= v2_2.x * 0.5;
-			this._euler.x += v2_2.y * 0.5;
+			this._euler.y -= v2_2.x * this.rotateSpeed * 0.1;
+			this._euler.x += v2_2.y * this.rotateSpeed * 0.1;
 		} else { // position
 			e.getLocation(v2_2);
 			Vec3.subtract(v2_2, v2_2, v2_1);

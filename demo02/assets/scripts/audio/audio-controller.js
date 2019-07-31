@@ -25,6 +25,20 @@ export class AudioController extends Component {
         this.playing = this.node.getChildByName('playing').getComponent(ToggleComponent);
 
         this.node.getChildByName('name').getComponent(LabelComponent).string = this.source.node.name;
+
+        let loadMode = 'Unknown Load Mode';
+        switch (this.source.clip.loadMode) {
+        case cc.AudioClip.AudioType.WEB_AUDIO:
+            loadMode = 'Web Audio API Mode';
+            break;
+        case cc.AudioClip.AudioType.DOM_AUDIO:
+            loadMode = 'DOM Audio Mode';
+            break;
+        case cc.AudioClip.AudioType.WX_GAME_AUDIO:
+            loadMode = 'wx.InnerAudioContext Mode';
+            break;
+        }
+        this.node.getChildByName('loadMode').getComponent(LabelComponent).string = loadMode;
     }
 
     update () {

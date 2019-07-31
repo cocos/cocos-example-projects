@@ -1,7 +1,6 @@
 
 import { _decorator, Component, Node, instantiate, Vec3 } from "Cocos3D";
 const { ccclass, property } = _decorator;
-// const { randomRange } = vmath;
 
 const v3_1 = new Vec3();
 

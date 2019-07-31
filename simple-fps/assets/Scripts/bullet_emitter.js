@@ -65,8 +65,8 @@ cc.Class({
 
         const velocity = new cc.Vec3(0,0,1);
         const q = character.getWorldRotation();
-        cc.vmath.vec3.transformQuat(velocity,velocity,q);
-        cc.vmath.vec3.normalize(velocity, velocity);
+        cc.math.Vec3.transformQuat(velocity,velocity,q);
+        cc.math.Vec3.normalize(velocity, velocity);
         effect.direction = velocity;
 
         let coms = effect.getComponentsInChildren(cc.ParticleSystemComponent);
@@ -82,27 +82,27 @@ cc.Class({
  /*    _getModelPosition(modelnode){
         let model = modelnode.getComponent(cc.SkinningModelComponent);
         let position = new cc.Vec3();
-        cc.vmath.vec3.copy(position,modelnode.getWorldPosition());
+        cc.math.Vec3.copy(position,modelnode.getWorldPosition());
         let minpos = new cc.Vec3();
-        cc.vmath.vec3.copy(minpos,model.mesh.minPosition);
+        cc.math.Vec3.copy(minpos,model.mesh.minPosition);
         let maxpos = new cc.Vec3();
-        cc.vmath.vec3.copy(maxpos,model.mesh.maxPosition);
+        cc.math.Vec3.copy(maxpos,model.mesh.maxPosition);
         let mpos = new cc.Vec3();
      //   console.log(modelnode);
-    //    cc.vmath.vec3.subtract(mpos,model.mesh.maxPosition,model.mesh.minPosition);
-     //   cc.vmath.vec3.multiply(mpos,mpos,new cc.Vec3(0.5,0.5,0.5));
+    //    cc.math.Vec3.subtract(mpos,model.mesh.maxPosition,model.mesh.minPosition);
+     //   cc.math.Vec3.multiply(mpos,mpos,new cc.Vec3(0.5,0.5,0.5));
         console.log(minpos,maxpos);
         console.log(model.mesh.minPosition,model.mesh.maxPosition);
         let translation = modelnode.getWorldMatrix();
-        cc.vmath.vec3.transformMat4(minpos, minpos, translation);
-        cc.vmath.vec3.transformMat4(maxpos, maxpos, translation);
+        cc.math.Vec3.transformMat4(minpos, minpos, translation);
+        cc.math.Vec3.transformMat4(maxpos, maxpos, translation);
 
         console.log(minpos,maxpos);
-        cc.vmath.vec3.subtract(mpos,maxpos,minpos);
-        cc.vmath.vec3.multiply(mpos,mpos,new cc.Vec3(0.5,0.5,0.5));
+        cc.math.Vec3.subtract(mpos,maxpos,minpos);
+        cc.math.Vec3.multiply(mpos,mpos,new cc.Vec3(0.5,0.5,0.5));
         console.log(mpos);
-       // cc.vmath.vec3.multiply(mpos,mpos,modelnode.getScale());
-        cc.vmath.vec3.add(position, position, mpos);
+       // cc.math.Vec3.multiply(mpos,mpos,modelnode.getScale());
+        cc.math.Vec3.add(position, position, mpos);
 
        return position;
     }, */
@@ -127,17 +127,17 @@ cc.Class({
      //   console.log(camera.name,cameraComponent.name);
         const from = gun.getWorldPosition();//gun.getWorldPosition();
       //  console.log(from);
-        //const clickPosition = new cc.vmath.vec3();
-       // cameraComponent.screenToWorld(new cc.vmath.vec3(x, y, 0), clickPosition);
+        //const clickPosition = new cc.math.Vec3();
+       // cameraComponent.screenToWorld(new cc.math.Vec3(x, y, 0), clickPosition);
        // console.log(x,y);
        // console.log(clickPosition);
 
 
         const velocity = new cc.Vec3(0,0,1);
-        //cc.vmath.vec3.subtract(velocity, clickPosition, from);
+        //cc.math.Vec3.subtract(velocity, clickPosition, from);
         const q = character.getWorldRotation();
-        cc.vmath.vec3.transformQuat(velocity,velocity,q);
-        cc.vmath.vec3.normalize(velocity, velocity);
+        cc.math.Vec3.transformQuat(velocity,velocity,q);
+        cc.math.Vec3.normalize(velocity, velocity);
 
        return this._emitBall(from, velocity);
     },
@@ -166,7 +166,7 @@ cc.Class({
         //console.log(ballRigidBodyComponent);
         if (ballRigidBodyComponent) {
              const speed = this.bulletSpeed;
-             cc.vmath.vec3.scale(velocity, velocity, speed);
+             cc.math.Vec3.scale(velocity, velocity, speed);
              ballRigidBodyComponent.setLinearVelocity(velocity);
              console.log('root',ballRigidBodyComponent.velocity);
         }

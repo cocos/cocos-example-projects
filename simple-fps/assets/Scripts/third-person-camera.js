@@ -21,7 +21,7 @@ class ThirdPersonCamera extends cc.Component {
         this._keyStates.fill(false);
 
         this._viewDir = new cc.Vec3(1, 0.5, 1);
-        cc.vmath.vec3.normalize(this._viewDir, this._viewDir);
+        cc.math.Vec3.normalize(this._viewDir, this._viewDir);
 
         this._viewVector = new cc.Vec3(0, 0, 0);
 	}
@@ -51,18 +51,18 @@ class ThirdPersonCamera extends cc.Component {
             return;
         }
 
-        cc.vmath.vec3.scale(this._viewVector, this._viewDir, this.distance);
+        cc.math.Vec3.scale(this._viewVector, this._viewDir, this.distance);
 
         const targetPosition = this.target.getPosition();
 
         const cameraPosition = new cc.Vec3();
-        cc.vmath.vec3.add(cameraPosition, targetPosition, this._viewVector);
+        cc.math.Vec3.add(cameraPosition, targetPosition, this._viewVector);
         this.node.setPosition(cameraPosition);
         this.node.lookAt(targetPosition);
     }
 
     _setDistance(value) {
-        this.distance = cc.vmath.clamp(value, this.minDistance, this.maxDistance);
+        this.distance = cc.math.clamp(value, this.minDistance, this.maxDistance);
     }
 
 	_mouseWheelHandler(event) {
@@ -129,15 +129,15 @@ class ThirdPersonCamera extends cc.Component {
 	_rotateSelfVertical(delta) {
         const up = cc.v3(0, 1, 0);
         const right = new cc.Vec3();
-        cc.vmath.vec3.cross(right, this._viewDir, up);
-        cc.vmath.vec3.normalize(right, right);
+        cc.math.Vec3.cross(right, this._viewDir, up);
+        cc.math.Vec3.normalize(right, right);
         this._rotate(-delta/ 360.0 * 3.14159265, right);
     }
 
     _rotate(angle, axis) {
-        const rotation = cc.vmath.quat.create();
-        cc.vmath.quat.rotateAround(rotation, rotation, axis, angle);
-        cc.vmath.vec3.transformQuat(this._viewDir, this._viewDir, rotation);
+        const rotation = cc.math.Quat.create();
+        cc.math.Quat.rotateAround(rotation, rotation, axis, angle);
+        cc.math.Vec3.transformQuat(this._viewDir, this._viewDir, rotation);
     }
 
 	_getForward() {
@@ -154,7 +154,7 @@ class ThirdPersonCamera extends cc.Component {
 
 	_getDirection(x, y, z) {
 		const result = cc.v3(x, y, z);
-		cc.vmath.vec3.transformQuat(result, result, this.node.getRotation());
+		cc.math.Vec3.transformQuat(result, result, this.node.getRotation());
 		return result;
 	}
 }

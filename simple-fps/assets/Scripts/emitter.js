@@ -16,7 +16,7 @@ class BallEmitter extends Component {
 			onMouseUp: (...args) => this._mouseUpHandler(...args),
 		});
         cc.eventManager.addListener(mouseListener, 1);
-        
+
         const boxMesh = createMesh(box());
         const nBox = 7;
         const boxAreaUniformExtent = 50;
@@ -29,8 +29,8 @@ class BallEmitter extends Component {
                 0,
                 Math.random() * 2 - 1,
             );
-            cc.vmath.vec3.multiply(position, position, boxAreaHalfExtents);
-            cc.vmath.vec3.add(position, position, boxAreaCenter);
+            cc.math.Vec3.multiply(position, position, boxAreaHalfExtents);
+            cc.math.Vec3.add(position, position, boxAreaCenter);
 
             // Create node
             const boxNode = new Node();
@@ -75,9 +75,9 @@ class BallEmitter extends Component {
             boxNode.on('collided', () => {
                 console.log(`box collided.`);
                 const d = 90;
-                color.r = cc.vmath.clamp(color.r - d, 0, 255);
-                color.g = cc.vmath.clamp(color.g - d, 0, 255);
-                color.b = cc.vmath.clamp(color.b - d, 0, 255);
+                color.r = cc.math.clamp(color.r - d, 0, 255);
+                color.g = cc.math.clamp(color.g - d, 0, 255);
+                color.b = cc.math.clamp(color.b - d, 0, 255);
                 updateColor();
             });
         }
@@ -85,7 +85,7 @@ class BallEmitter extends Component {
 
     _mouseDownHandler(event) {
 	}
-	
+
 	_mouseUpHandler(event) {
 		if (event._button === 0) {
             console.log(`Clicked.`);
@@ -102,12 +102,12 @@ class BallEmitter extends Component {
         const cameraComponent = camera.getComponent('cc.CameraComponent');
 
         const from = camera.getPosition();
-        const clickPosition = new cc.vmath.vec3();
-        cameraComponent.screenToWorld(new cc.vmath.vec3(x, y, 0), clickPosition);
+        const clickPosition = new cc.math.Vec3();
+        cameraComponent.screenToWorld(new cc.math.Vec3(x, y, 0), clickPosition);
 
         const velocity = new cc.Vec3();
-        cc.vmath.vec3.subtract(velocity, clickPosition, from);
-        cc.vmath.vec3.normalize(velocity, velocity);
+        cc.math.Vec3.subtract(velocity, clickPosition, from);
+        cc.math.Vec3.normalize(velocity, velocity);
 
         this._emitBall(clickPosition, velocity);
     }
@@ -131,12 +131,12 @@ class BallEmitter extends Component {
                 ballRigidBodyComponent.body.pullTransform();
 
                 const speed = 100;
-                cc.vmath.vec3.scale(velocity, velocity, speed);
+                cc.math.Vec3.scale(velocity, velocity, speed);
                 ballRigidBodyComponent.body.velocity = velocity;
             }
         }
     }
-    
+
     _getBallTemplate () {
         return this.node.parent.getChildByName('Ball');
     }
@@ -144,18 +144,18 @@ class BallEmitter extends Component {
     _getForward() {
 		return this._getDirection(0, 0, -1);
 	}
-	
+
 	_getRight() {
 		return this._getDirection(1, 0, 0);
 	}
-	
+
 	_getUp() {
 		return this._getDirection(0, 1, 0);
 	}
-	
+
 	_getDirection(x, y, z) {
 		const result = cc.v3(x, y, z);
-		cc.vmath.vec3.transformQuat(result, result, this.node.getRotation());
+		cc.math.Vec3.transformQuat(result, result, this.node.getRotation());
 		return result;
 	}
 
@@ -179,8 +179,8 @@ function setupBoxCollider(boxCollider, mesh) {
 function placeOntoGround (node, mesh) {
     const position = node.getPosition();
     const translation = node.getScale();
-    cc.vmath.vec3.multiply(translation, translation, mesh.minPosition);
-    cc.vmath.vec3.subtract(position, position, translation);
+    cc.math.Vec3.multiply(translation, translation, mesh.minPosition);
+    cc.math.Vec3.subtract(position, position, translation);
     node.setPosition(position);
 }
 
@@ -190,13 +190,13 @@ function setupSphereCollider(sphereCollider, mesh) {
 
 function getBoundingBoxExtents(mesh) {
     const size = new cc.Vec3();
-    cc.vmath.vec3.subtract(size, mesh.maxPosition, mesh.minPosition);
+    cc.math.Vec3.subtract(size, mesh.maxPosition, mesh.minPosition);
     return size;
 }
 
 function getBoundingBoxCenter(mesh) {
     const extents = getBoundingBoxExtents(mesh);
     const center = new cc.Vec3();
-    cc.vmath.vec3.scaleAndAdd(center, mesh.minPosition, extents, 0.5);
+    cc.math.Vec3.scaleAndAdd(center, mesh.minPosition, extents, 0.5);
     return center;
 }

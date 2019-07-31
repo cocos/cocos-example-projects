@@ -58,7 +58,7 @@
       "y": 0,
       "z": 0
     },
-    "_id": ""
+    "_id": "a3iWzuHctDXLJAyA9muall"
   },
   {
     "__type__": "cc.ModelComponent",
@@ -73,12 +73,13 @@
         "__uuid__": "0bb7523c-ea6d-49dc-82f8-461a672841d8"
       }
     ],
+    "_viewID": 0,
     "_mesh": {
       "__uuid__": "1263d74c-8167-4928-91a6-4e2672411f47@sphere.mesh"
     },
     "_shadowCastingMode": 0,
     "_receiveShadows": false,
-    "_id": ""
+    "_id": "fcMD40s/lBtJ7HOC5zAt9/"
   },
   {
     "__type__": "cc.BoxColliderComponent",
@@ -88,6 +89,7 @@
       "__id__": 1
     },
     "_enabled": true,
+    "_isTrigger": false,
     "_center": {
       "__type__": "cc.Vec3",
       "x": 0,
@@ -100,7 +102,7 @@
       "y": 1,
       "z": 1
     },
-    "_id": ""
+    "_id": "a8Pi6PpUBPl4dOkCIvc6zE"
   },
   {
     "__type__": "cc.RigidBodyComponent",
@@ -110,15 +112,25 @@
       "__id__": 1
     },
     "_enabled": true,
-    "_material": null,
     "_mass": 1,
     "_linearDamping": 0.8,
     "_angularDamping": 0,
     "_fixedRotation": true,
-    "_triggered": true,
     "_isKinematic": false,
     "_useGravity": true,
-    "_id": ""
+    "_linearFactor": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_angularFactor": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_id": "afdzOjcO9A8oaYv26zCRfI"
   },
   {
     "__type__": "cc.PrefabInfo",

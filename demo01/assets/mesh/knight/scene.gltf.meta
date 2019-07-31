@@ -1,5 +1,5 @@
 {
-  "ver": "1.1.17",
+  "ver": "1.1.21",
   "importer": "gltf",
   "imported": true,
   "uuid": "9c32e2f0-f6a7-45bf-afa0-0c1c7d2fea99",
@@ -88,7 +88,7 @@
       }
     },
     "scene.prefab": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-scene",
       "uuid": "9c32e2f0-f6a7-45bf-afa0-0c1c7d2fea99@scene.prefab",
       "imported": true,
@@ -129,12 +129,23 @@
     "redirect": "9c32e2f0-f6a7-45bf-afa0-0c1c7d2fea99@scene.prefab",
     "normals": 0,
     "tangents": 1,
+    "animationImportSettings": [
+      {
+        "name": "Take 001",
+        "duration": 1,
+        "fps": 30,
+        "splits": [
+          {
+            "name": "Take 001",
+            "from": 0,
+            "to": 1
+          }
+        ]
+      }
+    ],
     "assetFinder": {
       "meshes": [
         "9c32e2f0-f6a7-45bf-afa0-0c1c7d2fea99@knight_full_Material_0.mesh"
-      ],
-      "animations": [
-        "9c32e2f0-f6a7-45bf-afa0-0c1c7d2fea99@Take-001.animation"
       ],
       "skeletons": [
         "9c32e2f0-f6a7-45bf-afa0-0c1c7d2fea99@UnnamedSkeleton.skeleton"
@@ -154,20 +165,6 @@
       "scenes": [
         "9c32e2f0-f6a7-45bf-afa0-0c1c7d2fea99@scene.prefab"
       ]
-    },
-    "animationImportSettings": [
-      {
-        "name": "Take 001",
-        "duration": 1,
-        "fps": 30,
-        "splits": [
-          {
-            "name": "Take 001",
-            "from": 0,
-            "to": 1
-          }
-        ]
-      }
-    ]
+    }
   }
 }

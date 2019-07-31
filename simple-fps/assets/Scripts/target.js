@@ -123,16 +123,16 @@ cc.Class({
             0,
             Math.random() * 2 - 1,
         );
-        cc.vmath.vec3.multiply(position, position, this.boxAreaHalfExtents);
-        cc.vmath.vec3.add(position, position, this.targetAreaCenter);
+        cc.math.Vec3.multiply(position, position, this.boxAreaHalfExtents);
+        cc.math.Vec3.add(position, position, this.targetAreaCenter);
         return position;
     },
 
     placeOntoGround (node, mesh) {
         const position = node.getPosition();
         const translation = node.getScale();
-        cc.vmath.vec3.multiply(translation, translation, mesh.minPosition);
-        cc.vmath.vec3.subtract(position, position, translation);
+        cc.math.Vec3.multiply(translation, translation, mesh.minPosition);
+        cc.math.Vec3.subtract(position, position, translation);
         node.setPosition(position);
     },
 });

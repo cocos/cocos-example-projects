@@ -59,8 +59,8 @@ export class PhysicsComponentsDebugger extends Component {
             let geometry = undefined;
             if (colliderComponent instanceof BoxColliderComponent) {
                 const scale = this.node.getWorldScale();
-                cc.vmath.vec3.multiply(scale, scale, colliderComponent.size);
-                cc.vmath.vec3.add(scale, scale, new cc.Vec3(0.1, 0.1, 0.1));
+                cc.math.Vec3.multiply(scale, scale, colliderComponent.size);
+                cc.math.Vec3.add(scale, scale, new cc.Vec3(0.1, 0.1, 0.1));
                 geometry = box({ width: scale.x, height: scale.y, length: scale.z});
             } else if (colliderComponent instanceof SphereColliderComponent) {
             }

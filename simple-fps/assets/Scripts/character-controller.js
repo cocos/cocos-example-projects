@@ -146,7 +146,7 @@ class CharacterConstroller extends cc.Component {
 
 	_translate(direction, delta) {
 		const position = this.node.getPosition();
-		cc.vmath.vec3.scaleAndAdd(position, position, direction, delta);
+		cc.math.Vec3.scaleAndAdd(position, position, direction, delta);
 		this.node.setPosition(position);
 	}
 
@@ -154,7 +154,7 @@ class CharacterConstroller extends cc.Component {
 		const rotation = this.node.getRotation();
 		const up = cc.v3(0, 1, 0);
 		//const up = this._getUp();
-		cc.vmath.quat.rotateAround(rotation, rotation, up, -delta/ 360.0 * 3.14159265);
+		cc.math.Quat.rotateAround(rotation, rotation, up, -delta/ 360.0 * 3.14159265);
 		this.node.setRotation(rotation);
 	}
 
@@ -172,7 +172,7 @@ class CharacterConstroller extends cc.Component {
 
 	_getDirection(x, y, z) {
 		const result = cc.v3(x, y, z);
-		cc.vmath.vec3.transformQuat(result, result, this.node.getRotation());
+		cc.math.Vec3.transformQuat(result, result, this.node.getRotation());
 		return result;
 	}
 }

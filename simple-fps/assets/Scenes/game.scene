@@ -3927,7 +3927,7 @@
       "__uuid__": "32107784-0791-42a6-af00-4ab9f8f33f33@UnnamedSkeleton-0.skeleton"
     },
     "_skinningRoot": {
-      "__id__": 11
+      "__id__": 8
     },
     "_id": "b3OZN4Y1pCl5h+PRm/UavQ"
   },
@@ -4015,7 +4015,7 @@
       "__uuid__": "32107784-0791-42a6-af00-4ab9f8f33f33@UnnamedSkeleton-1.skeleton"
     },
     "_skinningRoot": {
-      "__id__": 11
+      "__id__": 8
     },
     "_id": "43vbZud7hLdrlA/eAPGiXA"
   },
@@ -4050,80 +4050,81 @@
     }
   },
   {
-    "__type__": "cc.AnimationComponent",
-    "_name": "SpaceSoldier_Male_01<AnimationComponent>",
+    "__type__": "cc.SkeletalAnimationComponent",
+    "_name": "",
     "_objFlags": 0,
     "node": {
       "__id__": 8
     },
     "_enabled": true,
-    "playOnLoad": true,
+    "playOnLoad": false,
     "_clips": [
       {
-        "__uuid__": "32107784-0791-42a6-af00-4ab9f8f33f33@Ar-0StartPose.001.animation"
+        "__uuid__": "32107784-0791-42a6-af00-4ab9f8f33f33@Ar|0StartPose.001.animation"
       },
       {
-        "__uuid__": "32107784-0791-42a6-af00-4ab9f8f33f33@Ar-Death.animation"
+        "__uuid__": "32107784-0791-42a6-af00-4ab9f8f33f33@Ar|Death.animation"
       },
       {
-        "__uuid__": "32107784-0791-42a6-af00-4ab9f8f33f33@Ar-Death.1.animation"
+        "__uuid__": "32107784-0791-42a6-af00-4ab9f8f33f33@Ar|Death.1.animation"
       },
       {
-        "__uuid__": "32107784-0791-42a6-af00-4ab9f8f33f33@Ar-Hit.animation"
+        "__uuid__": "32107784-0791-42a6-af00-4ab9f8f33f33@Ar|Hit.animation"
       },
       {
-        "__uuid__": "32107784-0791-42a6-af00-4ab9f8f33f33@Ar-HitGun.animation"
+        "__uuid__": "32107784-0791-42a6-af00-4ab9f8f33f33@Ar|HitGun.animation"
       },
       {
-        "__uuid__": "32107784-0791-42a6-af00-4ab9f8f33f33@Ar-Idle.animation"
+        "__uuid__": "32107784-0791-42a6-af00-4ab9f8f33f33@Ar|Idle.animation"
       },
       {
-        "__uuid__": "32107784-0791-42a6-af00-4ab9f8f33f33@Ar-Idle.1.animation"
+        "__uuid__": "32107784-0791-42a6-af00-4ab9f8f33f33@Ar|Idle.1.animation"
       },
       {
-        "__uuid__": "32107784-0791-42a6-af00-4ab9f8f33f33@Ar-Idle.2.animation"
+        "__uuid__": "32107784-0791-42a6-af00-4ab9f8f33f33@Ar|Idle.2.animation"
       },
       {
-        "__uuid__": "32107784-0791-42a6-af00-4ab9f8f33f33@Ar-Idle.3.animation"
+        "__uuid__": "32107784-0791-42a6-af00-4ab9f8f33f33@Ar|Idle.3.animation"
       },
       {
-        "__uuid__": "32107784-0791-42a6-af00-4ab9f8f33f33@Ar-Idle.4.animation"
+        "__uuid__": "32107784-0791-42a6-af00-4ab9f8f33f33@Ar|Idle.4.animation"
       },
       {
-        "__uuid__": "32107784-0791-42a6-af00-4ab9f8f33f33@Ar-Jump.animation"
+        "__uuid__": "32107784-0791-42a6-af00-4ab9f8f33f33@Ar|Jump.animation"
       },
       {
-        "__uuid__": "32107784-0791-42a6-af00-4ab9f8f33f33@Ar-JumpGun.animation"
+        "__uuid__": "32107784-0791-42a6-af00-4ab9f8f33f33@Ar|JumpGun.animation"
       },
       {
-        "__uuid__": "32107784-0791-42a6-af00-4ab9f8f33f33@Ar-Landing.animation"
+        "__uuid__": "32107784-0791-42a6-af00-4ab9f8f33f33@Ar|Landing.animation"
       },
       {
-        "__uuid__": "32107784-0791-42a6-af00-4ab9f8f33f33@Ar-LandingGun.animation"
+        "__uuid__": "32107784-0791-42a6-af00-4ab9f8f33f33@Ar|LandingGun.animation"
       },
       {
-        "__uuid__": "32107784-0791-42a6-af00-4ab9f8f33f33@Ar-Run.animation"
+        "__uuid__": "32107784-0791-42a6-af00-4ab9f8f33f33@Ar|Run.animation"
       },
       {
-        "__uuid__": "32107784-0791-42a6-af00-4ab9f8f33f33@Ar-RunGun.animation"
+        "__uuid__": "32107784-0791-42a6-af00-4ab9f8f33f33@Ar|RunGun.animation"
       },
       {
-        "__uuid__": "32107784-0791-42a6-af00-4ab9f8f33f33@Ar-ShootTorsoArmsPistol.animation"
+        "__uuid__": "32107784-0791-42a6-af00-4ab9f8f33f33@Ar|ShootTorsoArmsPistol.animation"
       },
       {
-        "__uuid__": "32107784-0791-42a6-af00-4ab9f8f33f33@Ar-ShootTorsoArmsRifle.animation"
+        "__uuid__": "32107784-0791-42a6-af00-4ab9f8f33f33@Ar|ShootTorsoArmsRifle.animation"
       },
       {
-        "__uuid__": "32107784-0791-42a6-af00-4ab9f8f33f33@Ar-Walk.animation"
+        "__uuid__": "32107784-0791-42a6-af00-4ab9f8f33f33@Ar|Walk.animation"
       },
       {
-        "__uuid__": "32107784-0791-42a6-af00-4ab9f8f33f33@Ar-WalkGun.animation"
+        "__uuid__": "32107784-0791-42a6-af00-4ab9f8f33f33@Ar|WalkGun.animation"
       }
     ],
     "_defaultClip": {
-      "__uuid__": "32107784-0791-42a6-af00-4ab9f8f33f33@Ar-Idle.1.animation"
+      "__uuid__": "32107784-0791-42a6-af00-4ab9f8f33f33@Ar|Idle.1.animation"
     },
-    "_id": "4fG8OjSIZJDqnSqLF76AmS"
+    "_sockets": [],
+    "_id": "e4orEEqj5FsaUO6FLIGbh5"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -6118,6 +6119,24 @@
     "enable": false,
     "shapeType": 0,
     "emitFrom": 3,
+    "alignToDirection": false,
+    "randomDirectionAmount": 0,
+    "sphericalDirectionAmount": 0,
+    "randomPositionAmount": 0,
+    "radius": 1,
+    "radiusThickness": 1,
+    "arcMode": 0,
+    "arcSpread": 0,
+    "arcSpeed": {
+      "__id__": 194
+    },
+    "length": 0,
+    "boxThickness": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
     "_position": {
       "__type__": "cc.Vec3",
       "x": 0,
@@ -6136,26 +6155,8 @@
       "y": 1,
       "z": 1
     },
-    "alignToDirection": false,
-    "randomDirectionAmount": 0,
-    "sphericalDirectionAmount": 0,
-    "randomPositionAmount": 0,
-    "radius": 1,
-    "radiusThickness": 1,
     "_arc": 6.283185307179586,
-    "arcMode": 0,
-    "arcSpread": 0,
-    "arcSpeed": {
-      "__id__": 194
-    },
-    "_angle": 0.4363323129985824,
-    "length": 0,
-    "boxThickness": {
-      "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 0,
-      "z": 0
-    }
+    "_angle": 0.4363323129985824
   },
   {
     "__type__": "cc.CurveRange",
@@ -7646,7 +7647,8 @@
     "colorOvertime": {
       "__id__": 228
     },
-    "_space": 0
+    "_space": 0,
+    "_particleSystem": null
   },
   {
     "__type__": "cc.CurveRange",
@@ -7887,7 +7889,8 @@
     "_renderMode": 0,
     "_velocityScale": 1,
     "_lengthScale": 1,
-    "_mesh": null
+    "_mesh": null,
+    "_particleSystem": null
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -8850,6 +8853,24 @@
     "enable": true,
     "shapeType": 2,
     "emitFrom": 3,
+    "alignToDirection": false,
+    "randomDirectionAmount": 0,
+    "sphericalDirectionAmount": 0,
+    "randomPositionAmount": 0,
+    "radius": 0.01,
+    "radiusThickness": 1,
+    "arcMode": 0,
+    "arcSpread": 0,
+    "arcSpeed": {
+      "__id__": 261
+    },
+    "length": 0,
+    "boxThickness": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
     "_position": {
       "__type__": "cc.Vec3",
       "x": 0,
@@ -8868,26 +8889,8 @@
       "y": 1,
       "z": 1
     },
-    "alignToDirection": false,
-    "randomDirectionAmount": 0,
-    "sphericalDirectionAmount": 0,
-    "randomPositionAmount": 0,
-    "radius": 0.01,
-    "radiusThickness": 1,
     "_arc": 6.283185307179586,
-    "arcMode": 0,
-    "arcSpread": 0,
-    "arcSpeed": {
-      "__id__": 261
-    },
-    "_angle": 0.8726646259971648,
-    "length": 0,
-    "boxThickness": {
-      "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 0,
-      "z": 0
-    }
+    "_angle": 0.8726646259971648
   },
   {
     "__type__": "cc.CurveRange",
@@ -10378,7 +10381,8 @@
     "colorOvertime": {
       "__id__": 295
     },
-    "_space": 0
+    "_space": 0,
+    "_particleSystem": null
   },
   {
     "__type__": "cc.CurveRange",
@@ -10619,7 +10623,8 @@
     "_renderMode": 1,
     "_velocityScale": 1,
     "_lengthScale": 3,
-    "_mesh": null
+    "_mesh": null,
+    "_particleSystem": null
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -11582,6 +11587,24 @@
     "enable": false,
     "shapeType": 0,
     "emitFrom": 3,
+    "alignToDirection": false,
+    "randomDirectionAmount": 0,
+    "sphericalDirectionAmount": 0,
+    "randomPositionAmount": 0,
+    "radius": 1,
+    "radiusThickness": 1,
+    "arcMode": 0,
+    "arcSpread": 0,
+    "arcSpeed": {
+      "__id__": 328
+    },
+    "length": 0,
+    "boxThickness": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
     "_position": {
       "__type__": "cc.Vec3",
       "x": 0,
@@ -11600,26 +11623,8 @@
       "y": 1,
       "z": 1
     },
-    "alignToDirection": false,
-    "randomDirectionAmount": 0,
-    "sphericalDirectionAmount": 0,
-    "randomPositionAmount": 0,
-    "radius": 1,
-    "radiusThickness": 1,
     "_arc": 6.283185307179586,
-    "arcMode": 0,
-    "arcSpread": 0,
-    "arcSpeed": {
-      "__id__": 328
-    },
-    "_angle": 0.4363323129985824,
-    "length": 0,
-    "boxThickness": {
-      "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 0,
-      "z": 0
-    }
+    "_angle": 0.4363323129985824
   },
   {
     "__type__": "cc.CurveRange",
@@ -13110,7 +13115,8 @@
     "colorOvertime": {
       "__id__": 362
     },
-    "_space": 0
+    "_space": 0,
+    "_particleSystem": null
   },
   {
     "__type__": "cc.CurveRange",
@@ -13351,7 +13357,8 @@
     "_renderMode": 1,
     "_velocityScale": 1,
     "_lengthScale": 3,
-    "_mesh": null
+    "_mesh": null,
+    "_particleSystem": null
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -17013,7 +17020,7 @@
       "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@UnnamedSkeleton-0.skeleton"
     },
     "_skinningRoot": {
-      "__id__": 373
+      "__id__": 370
     },
     "_id": "b2pgNt8ExA1boEWOhoQP6c"
   },
@@ -17100,7 +17107,7 @@
       "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@UnnamedSkeleton-1.skeleton"
     },
     "_skinningRoot": {
-      "__id__": 373
+      "__id__": 370
     },
     "_id": "d3f1eZIrJJ4bYUdMThemPu"
   },
@@ -17133,86 +17140,87 @@
     }
   },
   {
-    "__type__": "cc.AnimationComponent",
+    "__type__": "cc.SkeletalAnimationComponent",
     "_name": "",
     "_objFlags": 0,
     "node": {
       "__id__": 370
     },
     "_enabled": true,
-    "playOnLoad": true,
+    "playOnLoad": false,
     "_clips": [
       {
-        "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@SH-0StartPose.animation"
+        "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@SH|0StartPose.animation"
       },
       {
-        "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@SH-Death.animation"
+        "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@SH|Death.animation"
       },
       {
-        "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@SH-Death.1.animation"
+        "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@SH|Death.1.animation"
       },
       {
-        "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@SH-HandClose.animation"
+        "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@SH|HandClose.animation"
       },
       {
-        "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@SH-Hit.animation"
+        "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@SH|Hit.animation"
       },
       {
-        "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@SH-HitGun.animation"
+        "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@SH|HitGun.animation"
       },
       {
-        "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@SH-Idle.animation"
+        "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@SH|Idle.animation"
       },
       {
-        "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@SH-Idle.1.animation"
+        "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@SH|Idle.1.animation"
       },
       {
-        "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@SH-Idle.2.animation"
+        "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@SH|Idle.2.animation"
       },
       {
-        "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@SH-Idle.3.animation"
+        "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@SH|Idle.3.animation"
       },
       {
-        "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@SH-Idle.4.animation"
+        "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@SH|Idle.4.animation"
       },
       {
-        "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@SH-Jump.animation"
+        "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@SH|Jump.animation"
       },
       {
-        "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@SH-JumpGun.animation"
+        "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@SH|JumpGun.animation"
       },
       {
-        "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@SH-Landing.animation"
+        "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@SH|Landing.animation"
       },
       {
-        "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@SH-LandingGun.animation"
+        "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@SH|LandingGun.animation"
       },
       {
-        "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@SH-Run.animation"
+        "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@SH|Run.animation"
       },
       {
-        "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@SH-RunGun.animation"
+        "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@SH|RunGun.animation"
       },
       {
-        "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@SH-RunShot.animation"
+        "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@SH|RunShot.animation"
       },
       {
-        "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@SH-ShootTorsoArmsPistol.animation"
+        "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@SH|ShootTorsoArmsPistol.animation"
       },
       {
-        "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@SH-ShootTorsoArmsRifle.animation"
+        "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@SH|ShootTorsoArmsRifle.animation"
       },
       {
-        "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@SH-Walk.animation"
+        "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@SH|Walk.animation"
       },
       {
-        "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@SH-WalkGun.animation"
+        "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@SH|WalkGun.animation"
       }
     ],
     "_defaultClip": {
-      "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@SH-Idle.1.animation"
+      "__uuid__": "91754df2-1eb6-458a-9e52-635a24dffa5d@SH|Idle.1.animation"
     },
-    "_id": "66F/wX82FNXp022kxk++yZ"
+    "_sockets": [],
+    "_id": "bbDrwfjnxA84q4aeB1y0I4"
   },
   {
     "__type__": "cc.PrefabInfo",

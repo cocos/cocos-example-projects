@@ -39,6 +39,7 @@ CCProgram binary-fs %{
   uniform Constant {
     vec4 color;
     vec2 border;
+    vec2 padding;
   };
 
   vec4 frag () {

@@ -1,7 +1,6 @@
 
 import { _decorator, Component, ModelComponent, RigidBodyComponent, Vec3, Vec4 } from "Cocos3D";
 const { ccclass } = _decorator;
-// const { vec3, vec4 } = vmath;
 
 const v3_1 = new Vec3();
 const static_color = new Vec4(0.3, 0.3, 0.3, 1.0);

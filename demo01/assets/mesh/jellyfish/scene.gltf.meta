@@ -1,5 +1,5 @@
 {
-  "ver": "1.1.17",
+  "ver": "1.1.21",
   "importer": "gltf",
   "imported": true,
   "uuid": "a2c8ba4b-7b15-410f-ab5b-5a88ca19075c",
@@ -130,7 +130,7 @@
       }
     },
     "scene.prefab": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-scene",
       "uuid": "a2c8ba4b-7b15-410f-ab5b-5a88ca19075c@scene.prefab",
       "imported": true,
@@ -181,12 +181,23 @@
     "redirect": "a2c8ba4b-7b15-410f-ab5b-5a88ca19075c@scene.prefab",
     "normals": 0,
     "tangents": 1,
+    "animationImportSettings": [
+      {
+        "name": "Take 001",
+        "duration": 4.083333492279053,
+        "fps": 30,
+        "splits": [
+          {
+            "name": "Take 001",
+            "from": 0,
+            "to": 4.083333492279053
+          }
+        ]
+      }
+    ],
     "assetFinder": {
       "meshes": [
         "a2c8ba4b-7b15-410f-ab5b-5a88ca19075c@jellyfish_aiStandardSurface1_0.mesh"
-      ],
-      "animations": [
-        "a2c8ba4b-7b15-410f-ab5b-5a88ca19075c@Take-001.animation"
       ],
       "skeletons": [
         "a2c8ba4b-7b15-410f-ab5b-5a88ca19075c@UnnamedSkeleton.skeleton"
@@ -216,20 +227,6 @@
       "scenes": [
         "a2c8ba4b-7b15-410f-ab5b-5a88ca19075c@scene.prefab"
       ]
-    },
-    "animationImportSettings": [
-      {
-        "name": "Take 001",
-        "duration": 4.083333492279053,
-        "fps": 30,
-        "splits": [
-          {
-            "name": "Take 001",
-            "from": 0,
-            "to": 4.083333492279053
-          }
-        ]
-      }
-    ]
+    }
   }
 }

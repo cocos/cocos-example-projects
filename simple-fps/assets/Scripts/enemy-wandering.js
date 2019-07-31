@@ -46,7 +46,7 @@ export class EnemyController extends cc.Component {
 		else if(this.status === state.walk){
 			this._translate(this._getForward(),dt * 10 *this.moveSpeed);
 			//this.node.getComponent(cc.BoxColliderComponent).syncPhysWithScene();
-			if(cc.vmath.vec3.distance(this.node.getWorldPosition(),this.oriPosition) > this.dist){
+			if(cc.math.Vec3.distance(this.node.getWorldPosition(),this.oriPosition) > this.dist){
 				this._switchState(States.idle);
 				this.status = state.idle;
 			//	console.log('end walk',this);
@@ -61,7 +61,7 @@ export class EnemyController extends cc.Component {
             0,
             Math.random(),
 		);
-		cc.vmath.vec3.normalize(position,position);
+		cc.math.Vec3.normalize(position,position);
 		this.oriPosition = this.node.getWorldPosition();
         return position;
 	} */
@@ -70,7 +70,7 @@ export class EnemyController extends cc.Component {
 		const rotation = this.node.getRotation();
 		const up = cc.v3(0, 1, 0);
 		//const up = this._getUp();
-		cc.vmath.quat.rotateAround(rotation, rotation, up, -delta/ 360.0 * 3.14159265);
+		cc.math.Quat.rotateAround(rotation, rotation, up, -delta/ 360.0 * 3.14159265);
 		this.node.setRotation(rotation);
 	}
 
@@ -84,7 +84,7 @@ export class EnemyController extends cc.Component {
 
 	_translate(direction, delta) {
 		const position = this.node.getPosition();
-		cc.vmath.vec3.scaleAndAdd(position, position, direction, delta);
+		cc.math.Vec3.scaleAndAdd(position, position, direction, delta);
 		this.node.setPosition(position);
 	}
 
@@ -102,7 +102,7 @@ export class EnemyController extends cc.Component {
 
 	_getDirection(x, y, z) {
 		const result = cc.v3(x, y, z);
-		cc.vmath.vec3.transformQuat(result, result, this.node.getRotation());
+		cc.math.Vec3.transformQuat(result, result, this.node.getRotation());
 		return result;
 	}
 
@@ -120,7 +120,7 @@ export class EnemyController extends cc.Component {
 				}, 1000);
 		}
 		else if(event.otherCollider.node._name == 'enemy'){
-			cc.vmath.vec3.negate(this.direction,this.direction);
+			cc.math.Vec3.negate(this.direction,this.direction);
 		}
 	}
 }
