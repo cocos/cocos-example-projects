@@ -1,7 +1,7 @@
 
-import { _decorator, Component, ModelComponent, RigidBodyComponent, Vec3, Vec4, vmath } from "Cocos3D";
+import { _decorator, Component, ModelComponent, RigidBodyComponent, Vec3, Vec4 } from "Cocos3D";
 const { ccclass } = _decorator;
-const { vec3, vec4 } = vmath;
+// const { vec3, vec4 } = vmath;
 
 const v3_1 = new Vec3();
 const static_color = new Vec4(0.3, 0.3, 0.3, 1.0);
@@ -28,8 +28,8 @@ export class Collider extends Component {
     update () {
         // visualize speed
         this._body.getLinearVelocity(v3_1);
-        let speed = vec3.magnitude(v3_1); speed /= speed + 1;
-        vec4.lerp(this._color, static_color, this._initialColor, speed);
+        let speed = Vec3.magnitude(v3_1); speed /= speed + 1;
+        Vec4.lerp(this._color, static_color, this._initialColor, speed);
         this._pass.setUniform(this._handle, this._color);
     }
 }

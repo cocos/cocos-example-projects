@@ -1,6 +1,6 @@
-import { _decorator, Component, Quat, Vec2, Vec3, vmath } from "Cocos3D";
+import { _decorator, Component, math } from "cc";
 const { ccclass, property } = _decorator;
-const { vec3, quat } = vmath;
+const { Quat, Vec2, Vec3 } = math;
 
 const v2_1 = new Vec2();
 const v2_2 = new Vec2();
@@ -44,8 +44,8 @@ export class FirstPersonCamera extends Component {
         cc.systemEvent.on(cc.SystemEvent.EventType.TOUCH_START, this.onTouchStart, this);
         cc.systemEvent.on(cc.SystemEvent.EventType.TOUCH_MOVE, this.onTouchMove, this);
 		cc.systemEvent.on(cc.SystemEvent.EventType.TOUCH_END, this.onTouchEnd, this);
-		vec3.copy(this._euler, this.node.eulerAngles);
-		vec3.copy(this._position, this.node.position);
+		Vec3.copy(this._euler, this.node.eulerAngles);
+		Vec3.copy(this._position, this.node.position);
 	}
 
 	onDestroy () {
@@ -59,20 +59,20 @@ export class FirstPersonCamera extends Component {
 
 	update (dt) {
 		// position
-		vec3.transformQuat(v3_1, this._velocity, this.node.rotation);
-		vec3.scaleAndAdd(this._position, this._position, v3_1, this.moveSpeed * this._speedScale);
-		vec3.lerp(v3_1, this.node.position, this._position, dt / this.damp);
+		Vec3.transformQuat(v3_1, this._velocity, this.node.rotation);
+		Vec3.scaleAndAdd(this._position, this._position, v3_1, this.moveSpeed * this._speedScale);
+		Vec3.lerp(v3_1, this.node.position, this._position, dt / this.damp);
 		this.node.setPosition(v3_1);
 		// rotation
-		quat.fromEuler(qt_1, this._euler.x, this._euler.y, this._euler.z);
-		quat.slerp(qt_1, this.node.rotation, qt_1, dt / this.damp);
+		Quat.fromEuler(qt_1, this._euler.x, this._euler.y, this._euler.z);
+		Quat.slerp(qt_1, this.node.rotation, qt_1, dt / this.damp);
 		this.node.setRotation(qt_1);
     }
 
 	onMouseWheel (e) {
 		const delta = -e.getScrollY() * this.moveSpeed * 0.1; // delta is positive when scroll down
-		vec3.transformQuat(v3_1, id_forward, this.node.rotation);
-		vec3.scaleAndAdd(this._position, this.node.position, v3_1, delta);
+		Vec3.transformQuat(v3_1, id_forward, this.node.rotation);
+		Vec3.scaleAndAdd(this._position, this.node.position, v3_1, delta);
 	}
 
 	onKeyDown (e) {
@@ -109,7 +109,7 @@ export class FirstPersonCamera extends Component {
 			this._euler.x += v2_2.y * 0.5;
 		} else { // position
 			e.getLocation(v2_2);
-			vec3.subtract(v2_2, v2_2, v2_1);
+			Vec3.subtract(v2_2, v2_2, v2_1);
 			this._velocity.x = v2_2.x * 0.01;
 			this._velocity.z = -v2_2.y * 0.01;
 		}
