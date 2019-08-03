@@ -27,7 +27,7 @@ export class Collider extends Component {
     update () {
         // visualize speed
         this._body.getLinearVelocity(v3_1);
-        let speed = Vec3.magnitude(v3_1); speed /= speed + 1;
+        let speed = v3_1.length(); speed /= speed + 1;
         Vec4.lerp(this._color, static_color, this._initialColor, speed);
         this._pass.setUniform(this._handle, this._color);
     }
