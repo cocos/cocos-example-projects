@@ -22,12 +22,12 @@ CCProgram binary-vs %{
   };
 
   vec4 vert () {
-    vec3 position;
+    vec4 position;
     CCVertInput(position);
 
     v_uv = a_texCoord * tilingOffset.xy + tilingOffset.zw;
 
-    return cc_matViewProj * cc_matWorld * vec4(position, 1.0);
+    return cc_matViewProj * cc_matWorld * position;
   }
 }%
 

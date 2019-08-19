@@ -24,7 +24,7 @@ CCProgram vs %{
 
     uv = a_texCoord;
     normal = In.normal;
-	  return cc_matViewProj * cc_matWorld * vec4(In.position, 1);
+	  return cc_matViewProj * cc_matWorld * In.position;
   }
 %}
 
