@@ -6,7 +6,6 @@ const v2_1 = new Vec2();
 const v2_2 = new Vec2();
 const v3_1 = new Vec3();
 const qt_1 = new Quat();
-const id_forward = new Vec3(0, 0, 1);
 const KEYCODE = {
     W: 'W'.charCodeAt(0),
     S: 'S'.charCodeAt(0),
@@ -70,10 +69,9 @@ export class FirstPersonCamera extends Component {
     }
 
 	onMouseWheel (e) {
-		const delta = -e.getScrollY() * this.moveSpeed / 24; // delta is positive when scroll down
-		Vec3.transformQuat(v3_1, id_forward, this.node.rotation);
-		Vec3.scaleAndAdd(v3_1, this.node.position, v3_1, delta);
-		this.node.setPosition(v3_1);
+		const delta = -e.getScrollY() * this.moveSpeed * 0.1; // delta is positive when scroll down
+		Vec3.transformQuat(v3_1, Vec3.UNIT_Z, this.node.rotation);
+		Vec3.scaleAndAdd(this._position, this.node.position, v3_1, delta);
 	}
 
 	onKeyDown (e) {
