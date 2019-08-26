@@ -8,7 +8,7 @@
 //  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
 //  - [English] http://www.cocos2d-x.org/docs/creator/en/scripting/life-cycle-callbacks.html
 
-import { _decorator, Component } from "Cocos3D";
+import { _decorator, Component } from "cc";
 const { ccclass, property } = _decorator;
 
 @ccclass("scenechange")
