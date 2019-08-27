@@ -1,0 +1,125 @@
+[
+  {
+    "__type__": "cc.Prefab",
+    "_name": "",
+    "_objFlags": 0,
+    "_native": "",
+    "data": {
+      "__id__": 1
+    },
+    "optimizationPolicy": 0,
+    "asyncLoadAssets": false
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "ReMonster",
+    "_objFlags": 0,
+    "_parent": null,
+    "_children": [],
+    "_active": true,
+    "_level": 1,
+    "_components": [
+      {
+        "__id__": 2
+      },
+      {
+        "__id__": 3
+      }
+    ],
+    "_prefab": {
+      "__id__": 4
+    },
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_layer": 1,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_id": "10uuqCFO5CELjoxC+KUZbC"
+  },
+  {
+    "__type__": "cc.BoxColliderComponent",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "_isTrigger": true,
+    "_center": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_size": {
+      "__type__": "cc.Vec3",
+      "x": 30,
+      "y": 5,
+      "z": 30
+    },
+    "_id": "51FL4JSHxLsrcbmfYedx35"
+  },
+  {
+    "__type__": "924a1V5yQFFf5TmC+poyDdv",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "_IsRe": false,
+    "_ReMonsterx": 0,
+    "_ReMonsterz": 0,
+    "_ReMMinCount": 0,
+    "_ReMMaxCount": 0,
+    "_isMonster": false,
+    "_ReTrapx": 0,
+    "_ReTrapz": 0,
+    "MonsterPrefab": {
+      "__uuid__": "666f8875-e63c-47be-b73e-5d78611ff73a"
+    },
+    "PortalPrefab": {
+      "__uuid__": "1db6ff36-3f3b-4516-a096-cda5474a9c34"
+    },
+    "TrapPrefab": {
+      "__uuid__": "2808753a-f055-4c02-ba2f-659eade7a4a6"
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 1
+    },
+    "asset": {
+      "__id__": 0
+    },
+    "fileId": "adbkgvx3BOo4vDNo3ljmd3",
+    "sync": false,
+    "_synced": {
+      "default": false,
+      "serializable": false
+    }
+  }
+]
