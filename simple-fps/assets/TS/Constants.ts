@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, Vec3 } from "cc";
+import { _decorator, Component, Node, Vec3, Prefab } from "cc";
 const { ccclass, property } = _decorator;
 
 @ccclass("Con")
@@ -9,7 +9,6 @@ export class Con extends Component {
     /* use `property` decorator if your want the member to be serializable */
     // @property
     // serializableDummy = 0;
-
     //玩家信息
     //人称转换
     public static PersonChange:boolean=false;
@@ -34,35 +33,42 @@ export class Con extends Component {
     //子弹速度
     public static BulletMoveSpeed:number=25;
 
-    //怪物信息
-    //怪物血量
+    //敌人信息
+    //敌人血量
     public static MonsterHp: number = 100;
-    //怪物伤害
-    public static MonsterD: number = 50;
-    //怪物子弹速度
+    //敌人伤害
+    public static MonsterD: number = 20;
+    //敌人子弹速度
     public static MonsterBulletSpeed:number =10;
-    //怪物移动速度
+    //敌人移动速度
     public static MonsterMoveSpeed:number = 3;
-    //怪物攻击间隔
+    //敌人攻击间隔
     public static MonsterShoootinterval:number = 1;
-    //怪物子弹射程，用存在时间来代表射程，方便之后折计算
+    //敌人子弹射程，用存在时间来代表射程，方便之后折计算
     public static MonsterBulletRange:number =3;
+    //血量计数
+    public static HpNumber:number=0;
+
+    public static rrrrrr:boolean=false;
 
     //Boss相关控制
     //Boss出现信号
     public static BossReSignal:boolean=false;
     //Boss行为控制
     public static BossBehavior:boolean=false;
-    //第一个Boss场景控制
+    //Boss场景控制
     public static JumpSwitchBoss1:boolean=false;
     //Boss血量
     public static BossHp:number=300;
     //Boss伤害
     public static BossD:number=50;
+    //Boss绕行
+    public static BossDetour:boolean=false;
+
 
 
     //刷怪控制
-    //已经刷新了怪物
+    //已经刷新了敌人
     public static AlreadyReMonster:boolean =false;
     //已经产生了道具
     public static AlredyReProps:boolean = false;
