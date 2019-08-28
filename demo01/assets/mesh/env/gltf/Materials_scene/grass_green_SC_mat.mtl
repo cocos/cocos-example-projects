@@ -1,0 +1,66 @@
+{
+  "__type__": "cc.Material",
+  "_name": "grass_green_SC_mat",
+  "_objFlags": 0,
+  "_native": "",
+  "_effectAsset": {
+    "__uuid__": "1baf0fc9-befa-459c-8bdd-af1a450a0319"
+  },
+  "_techIdx": 0,
+  "_defines": [
+    {
+      "OCCLUSION_CHANNEL": "r",
+      "ROUGHNESS_CHANNEL": "g",
+      "METALLIC_CHANNEL": "b",
+      "USE_ALBEDO_MAP": true
+    }
+  ],
+  "_states": [
+    {
+      "rasterizerState": {
+        "cullMode": 0
+      },
+      "blendState": {
+        "targets": [
+          {}
+        ]
+      },
+      "depthStencilState": {}
+    }
+  ],
+  "_props": [
+    {
+      "pbrParams": {
+        "__type__": "cc.Vec4",
+        "x": 1,
+        "y": 1,
+        "z": 1,
+        "w": 1
+      },
+      "pbrScale": {
+        "__type__": "cc.Vec4",
+        "x": 1,
+        "y": 1,
+        "z": 0,
+        "w": 1
+      },
+      "albedoScale": {
+        "__type__": "cc.Vec4",
+        "x": 1,
+        "y": 1,
+        "z": 1,
+        "w": 1
+      },
+      "albedoMap": {
+        "__uuid__": "7e445684-43c0-459d-9284-cca2be97d7c6@UnnamedTexture-2.texture"
+      },
+      "emissiveScale": {
+        "__type__": "cc.Vec4",
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "w": 1
+      }
+    }
+  ]
+}

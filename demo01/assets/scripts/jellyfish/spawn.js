@@ -22,6 +22,7 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     start () {
+        if (!this.prefab) { return; }
         for (let i = 0; i < this.count; ++i) {
             setTimeout(() => {
                 let node = cc.instantiate(this.prefab);
