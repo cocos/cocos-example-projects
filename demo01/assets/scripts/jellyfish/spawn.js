@@ -22,9 +22,9 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     start () {
-        if (!this.prefab) { return; }
         for (let i = 0; i < this.count; ++i) {
             setTimeout(() => {
+                if (!this.prefab) { return; }
                 let node = cc.instantiate(this.prefab);
                 node.getComponent(JellyFish).range = this.range;
                 this.node.addChild(node);
