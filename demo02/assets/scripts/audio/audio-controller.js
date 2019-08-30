@@ -1,4 +1,4 @@
-import { _decorator, Component, AudioSourceComponent, LabelComponent, SliderComponent, ToggleComponent } from "Cocos3D";
+import { _decorator, Component, AudioSourceComponent, LabelComponent, SliderComponent, ToggleComponent } from "cc";
 const { ccclass, property } = _decorator;
 
 @ccclass("AudioController")
