@@ -1,0 +1,92 @@
+{
+  "ver": "1.1.2212",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "3990b73c-4dcd-4ad8-91f5-e1a4e09d6fe1",
+  "displayName": "",
+  "files": [
+    ".fbx"
+  ],
+  "subMetas": {
+    "head.mesh": {
+      "ver": "1.0.2",
+      "importer": "gltf-mesh",
+      "uuid": "3990b73c-4dcd-4ad8-91f5-e1a4e09d6fe1@head.mesh",
+      "imported": true,
+      "files": [
+        ".json",
+        ".bin"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 0
+      }
+    },
+    "Map #1.texture": {
+      "ver": "1.0.19",
+      "importer": "texture",
+      "uuid": "3990b73c-4dcd-4ad8-91f5-e1a4e09d6fe1@Map #1.texture",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {},
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "premultiplyAlpha": false,
+        "anisotropy": 1,
+        "isUuid": false,
+        "imageUuidOrDatabaseUri": "db://assets/meshes/head/diffuse.jpg"
+      }
+    },
+    "head.prefab": {
+      "ver": "1.0.8",
+      "importer": "gltf-scene",
+      "uuid": "3990b73c-4dcd-4ad8-91f5-e1a4e09d6fe1@head.prefab",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 0
+      }
+    }
+  },
+  "userData": {
+    "imageLocations": {
+      "Map #1": {
+        "originalPath": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg==",
+        "targetDatabaseUrl": "db://assets/meshes/head/diffuse.jpg"
+      }
+    },
+    "normals": 2,
+    "tangents": 2,
+    "dumpMaterials": true,
+    "redirect": "3990b73c-4dcd-4ad8-91f5-e1a4e09d6fe1@head.prefab",
+    "assetFinder": {
+      "meshes": [
+        "3990b73c-4dcd-4ad8-91f5-e1a4e09d6fe1@head.mesh"
+      ],
+      "images": [
+        {
+          "embeded": false,
+          "uuidOrDatabaseUri": "db://assets/meshes/head/diffuse.jpg"
+        }
+      ],
+      "textures": [
+        "3990b73c-4dcd-4ad8-91f5-e1a4e09d6fe1@Map #1.texture"
+      ],
+      "materials": [
+        "09e8b5f1-46e1-4d0f-86cb-6d00e856df89"
+      ],
+      "scenes": [
+        "3990b73c-4dcd-4ad8-91f5-e1a4e09d6fe1@head.prefab"
+      ]
+    }
+  }
+}

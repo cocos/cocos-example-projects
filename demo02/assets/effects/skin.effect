@@ -1,0 +1,228 @@
+// Copyright (c) 2017-2019 Xiamen Yaji Software Co., Ltd.
+
+CCEffect %{
+  techniques:
+  - name: opaque
+    passes:
+    - vert: standard-vs:vert
+      frag: standard-fs:frag
+      properties: &props
+        tilingOffset:  { value: [1.0, 1.0, 0.0, 0.0] }
+        albedo:        { value: [1.0, 1.0, 1.0, 1.0], inspector: { type: color } }
+        albedoScale:   { value: [1.0, 1.0, 1.0, 0.0] }
+        pbrParams:     { value: [0.8, 0.6, 1.0, 1.0] }
+        pbrScale:      { value: [1.0, 1.0, 1.0, 1.0] }
+        emissive:      { value: [0.0, 0.0, 0.0, 1.0], inspector: { type: color } }
+        emissiveScale: { value: [1.0, 1.0, 1.0, 1.0] }
+        albedoMap:     { value: grey         }
+        normalMap:     { value: normal       }
+        pbrMap:        { value: grey         }
+        metallicRoughnessMap: { value: grey  }
+        occlusionMap:  { value: white        }
+        emissiveMap:   { value: grey         }
+  - name: transparent
+    passes:
+    - vert: standard-vs:vert
+      frag: standard-fs:frag
+      depthStencilState:
+        depthTest: true
+        depthWrite: false
+      blendState:
+        targets:
+        - blend: true
+          blendSrc: src_alpha
+          blendDst: one_minus_src_alpha
+          blendDstAlpha: one_minus_src_alpha
+      properties: *props
+}%
+
+CCProgram shared-ubos %{
+  uniform Constants {
+    vec4 tilingOffset;
+    vec4 albedo;
+    vec4 albedoScale;   // xyz: albedo scale, w: cutoff
+    vec4 pbrParams;     // xyz: roughness/metallic/occlusion (specific permutation follows CHANNEL macros), w: SSS intensity
+    vec4 pbrScale;      // xyz: roughness/metallic/occlusion scales, w: normal scale
+    vec4 emissive;
+    vec4 emissiveScale;
+  };
+}%
+
+CCProgram standard-vs %{
+  precision highp float;
+  #include <cc-global>
+  #include <cc-local>
+  #include <input-standard>
+  #include <shared-ubos>
+
+  out vec3 v_position;
+  out vec3 v_normal;
+  #if USE_NORMAL_MAP
+    out vec3 v_tangent;
+    out vec3 v_bitangent;
+  #endif
+
+  #if USE_ALBEDO_MAP || USE_NORMAL_MAP || USE_PBR_MAP || USE_EMISSIVE_MAP || USE_METALLIC_ROUGHNESS_MAP || USE_OCCLUSION_MAP
+    in vec2 a_texCoord;
+    out vec2 v_uv;
+  #endif
+
+  vec4 vert () {
+    StandardVertInput In;
+    CCVertInput(In);
+
+    vec4 pos = cc_matWorld * In.position;
+
+    v_position = pos.xyz;
+    v_normal = normalize((cc_matWorldIT * vec4(In.normal, 0.0)).xyz);
+    #if USE_NORMAL_MAP
+      v_tangent = normalize((cc_matWorldIT * vec4(In.tangent.xyz, 0.0)).xyz);
+      v_bitangent = cross(v_tangent, v_normal) * In.tangent.w;
+    #endif
+
+    #if USE_ALBEDO_MAP || USE_NORMAL_MAP || USE_PBR_MAP || USE_EMISSIVE_MAP || USE_METALLIC_ROUGHNESS_MAP || USE_OCCLUSION_MAP
+      v_uv = a_texCoord * tilingOffset.xy + tilingOffset.zw;
+    #endif
+
+    return cc_matViewProj * pos;
+  }
+}%
+
+CCProgram standard-fs %{
+  precision highp float;
+  #include <cc-global>
+  #include <shading-standard>
+  #include <output-standard>
+  #include <gamma>
+  #include <shared-ubos>
+
+  in vec3 v_position;
+
+  #if USE_ALBEDO_MAP || USE_NORMAL_MAP || USE_PBR_MAP || USE_EMISSIVE_MAP || USE_METALLIC_ROUGHNESS_MAP || USE_OCCLUSION_MAP
+    in vec2 v_uv;
+  #endif
+
+  in vec3 v_normal;
+  #if USE_NORMAL_MAP
+    in vec3 v_tangent;
+    in vec3 v_bitangent;
+  #endif
+
+  #if USE_ALBEDO_MAP
+    uniform sampler2D albedoMap;
+  #endif
+  #if USE_NORMAL_MAP
+    uniform sampler2D normalMap;
+  #endif
+  #if USE_PBR_MAP
+    uniform sampler2D pbrMap;
+  #endif
+  #if USE_METALLIC_ROUGHNESS_MAP
+    uniform sampler2D metallicRoughnessMap;
+  #endif
+  #if USE_OCCLUSION_MAP
+    uniform sampler2D occlusionMap;
+  #endif
+  #if USE_EMISSIVE_MAP
+    uniform sampler2D emissiveMap;
+  #endif
+
+  #pragma define ROUGHNESS_CHANNEL options([r, g, b, a])
+  #pragma define METALLIC_CHANNEL  options([g, r, b, a])
+  #pragma define OCCLUSION_CHANNEL options([b, r, g, a])
+  #if USE_ALPHA_TEST
+    #pragma define ALPHA_TEST_CHANNEL options([a, r, g, b])
+  #endif
+
+  void surf (out StandardSurface s) {
+    vec4 baseColor = albedo;
+    #if USE_ALBEDO_MAP
+      vec4 texColor = texture(albedoMap, v_uv);
+      texColor.rgb = SRGBToLinear(texColor.rgb);
+      baseColor *= texColor;
+    #endif
+    s.albedo = baseColor;
+    s.albedo.rgb *= albedoScale.xyz;
+
+    #if USE_ALPHA_TEST
+      if(s.albedo.ALPHA_TEST_CHANNEL < albedoScale.w)
+        discard;
+    #endif
+
+    s.normal = v_normal;
+    #if USE_NORMAL_MAP
+      vec3 nmmp = texture(normalMap, v_uv).xyz - vec3(0.5);
+      s.normal =
+        (nmmp.x * pbrScale.w) * normalize(v_tangent) +
+        (nmmp.y * pbrScale.w) * normalize(v_bitangent) +
+        nmmp.z * normalize(s.normal);
+    #endif
+
+    s.position = v_position;
+
+    vec4 pbr = pbrParams;
+    #if USE_PBR_MAP
+      pbr = texture(pbrMap, v_uv);
+    #endif
+    #if USE_METALLIC_ROUGHNESS_MAP
+      vec4 metallicRoughness = texture(metallicRoughnessMap, v_uv);
+      pbr.METALLIC_CHANNEL = metallicRoughness.METALLIC_CHANNEL;
+      pbr.ROUGHNESS_CHANNEL = metallicRoughness.ROUGHNESS_CHANNEL;
+    #endif
+    #if USE_OCCLUSION_MAP
+      pbr.OCCLUSION_CHANNEL = texture(occlusionMap, v_uv).OCCLUSION_CHANNEL;
+    #endif
+    pbr *= pbrScale;
+    s.roughness = clamp(pbr.ROUGHNESS_CHANNEL, 0.04, 1.0);
+    s.metallic = clamp(pbr.METALLIC_CHANNEL, 0.0, 0.96);
+    s.occlusion = pbr.OCCLUSION_CHANNEL;
+
+    s.emissive = emissive.rgb * emissiveScale.xyz;
+    #if USE_EMISSIVE_MAP
+      s.emissive *= SRGBToLinear(texture(emissiveMap, v_uv).rgb);
+    #endif
+  }
+
+  // http://simonstechblog.blogspot.com/2015/02/pre-integrated-skin-shading.html
+  vec3 preIntegratedSkinCurveApprox(float NdotL, float Curvature) {
+    vec3 curve0;
+    {
+      const vec3 rangeMin = vec3(0.0, 0.3, 0.3);
+      const vec3 rangeMax = vec3(1.0, 0.7, 0.7);
+      const vec3 offset = vec3(0.0, 0.06, 0.06);
+      const vec3 m = vec3(1.75, 2.0, 1.97);
+      const vec3 lerpMin = vec3(0.0, 0.35, 0.35);
+      const vec3 lerpMax = vec3(1.0,  0.7,  0.6);
+      vec3 t = clamp(NdotL / (rangeMax - rangeMin) + (offset + rangeMin) / (rangeMin - rangeMax), 0.0, 1.0);
+      vec3 lowerLine = (t * t) * vec3(0.65, 0.5, 0.9);
+      lowerLine.r += 0.045;
+      lowerLine.b *= t.b;
+      vec3 upperLine = clamp(NdotL * m + vec3(0.99, 0.99, 0.99) - m, 0.0, 1.0);
+      vec3 lerpT = clamp(NdotL / (lerpMax - lerpMin) + lerpMin / (lerpMin - lerpMax), 0.0, 1.0);
+      curve0 = mix(lowerLine, upperLine, lerpT * lerpT);
+    }
+    vec3 curve1;
+    {
+      const vec3 m = vec3(1.95, 2.0, 2.0);
+      curve1 = clamp(NdotL * m + vec3(0.99, 0.99, 1.0) - m, 0.0, 1.0);
+    }
+    // curvature is within [0, 1] remap to normalized r from 2 to 16
+    float curva = (1.0 / (Curvature * (0.5 - 0.0625) + 0.0625) - 2.0) / (16.0 - 2.0);
+    float oneMinusCurva = 1.0 - curva;
+    float oneMinusCurva2 = oneMinusCurva * oneMinusCurva;
+    return mix(curve0, curve1, 1.0 - oneMinusCurva2 * oneMinusCurva2);
+  }
+
+  vec4 frag () {
+    StandardSurface s; surf(s);
+    vec4 color = CCStandardShading(s);
+
+    vec3 N = normalize(s.normal);
+    vec3 L = normalize(-cc_mainLitDir.xyz);
+    float wrappedNL = dot(N, L) * 0.5 + 0.5;
+    vec3 scattering = preIntegratedSkinCurveApprox(wrappedNL, pbrParams.w);
+    color.rgb += (1.0 - wrappedNL) * cc_mainLitColor.rgb * cc_mainLitColor.w * s.albedo.rgb * s.occlusion * scattering;
+
+    return CCFragOutput(color);
+  }
+}%
