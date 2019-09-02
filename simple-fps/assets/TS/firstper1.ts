@@ -2,8 +2,8 @@ import { _decorator, Component, Node } from "cc";
 const { ccclass, property } = _decorator;
 import { Con } from './Constants';
 
-@ccclass("NewScript")
-export class NewScript extends Component {
+@ccclass("firstper1")
+export class firstper1 extends Component {
     /* class member could be defined like this */
     // dummy = '';
 

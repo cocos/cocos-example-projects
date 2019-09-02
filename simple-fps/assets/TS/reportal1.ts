@@ -1,8 +1,8 @@
 import { _decorator, Component, Node, Prefab } from "cc";
 const { ccclass, property } = _decorator;
 import { Con } from './Constants';
-@ccclass("NewScript")
-export class NewScript extends Component {
+@ccclass("reportal1")
+export class reportal1 extends Component {
     /* class member could be defined like this */
     // dummy = '';
 
