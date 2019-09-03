@@ -1,4 +1,4 @@
-import { _decorator, Component, Node } from "cc";
+import { _decorator, Component, Node, Vec3 } from "cc";
 const { ccclass, property } = _decorator;
 import { Con } from './Constants';
 
@@ -29,6 +29,8 @@ export class firstper1 extends Component {
     private _sprite:any=null;
 
     private _animationComponent:any =null;
+
+    private rigidbody:any=null;
 
     onLoad() {
         //键盘监听
@@ -94,13 +96,13 @@ export class firstper1 extends Component {
         if (event.getButton() === 2) {
             cc.game.canvas.requestPointerLock();
         } 
-        if (event.getButton() === 0) {
+        if (event.getButton() === 0&&Con.PlayerHp>0) {
             Con.AniShoot=true;
         } 
     }
 
     onMouseUp(event){
-        if (event.getButton() === 0) {
+        if (event.getButton() === 0&&Con.PlayerHp>0) {
         Con.AniShoot=false;
         }
 
@@ -179,13 +181,14 @@ export class firstper1 extends Component {
                 this.node.setPosition(position);
             }
         }
-        if(this._startJump){
+        if(this._startJump&&this._ifJump==false){
             //只要按了跳跃 先让其他动画都等于false
             Con.AniJump=true;
             this._ifJump=true;
-            const position = this.node.getPosition();
-            cc.math.Vec3.scaleAndAdd(position, position, this._getDirection(0,1,0), -deltaTime*Con.PlayerJump);
-            this.node.setPosition(position);
+            const velocity = new cc.Vec3(0,Con.PlayerJump,0);
+            cc.math.Vec3.transformQuat(velocity,velocity,this.node.getWorldRotation());
+            this.rigidbody=this.node.getComponent(cc.RigidBodyComponent);
+            this.rigidbody.setLinearVelocity(velocity);
         }
         //跳跃动画管理
         if(this._ifJump){
@@ -248,7 +251,7 @@ export class firstper1 extends Component {
            Con.AniDel=true;
            this._Deltimmer+=1*deltaTime;
         }
-        if(this._Deltimmer>2){
+        if(this._Deltimmer>1.8){
             cc.game.pause();
         }
      }
