@@ -15,7 +15,7 @@ export class Con extends Component {
     //玩家血量
     public static PlayerHp:number=100;
     //玩家移动速度
-    public static PlayerSpeed:number=3;
+    public static PlayerSpeed:number=5;
     //玩家跳跃速度
     public static PlayerJump:number=5;
     //玩家后坐力开关

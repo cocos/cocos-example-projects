@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, Prefab } from "cc";
+import { _decorator, Component, Node, Prefab, instantiate, director, math, AnimationComponent, SpriteComponent, RigidBodyComponent, CameraComponent, Vec3 } from "cc";
 const { ccclass, property } = _decorator;
 import { Con } from './Constants';
 
@@ -65,15 +65,15 @@ export class monster1 extends Component {
         private rigidbody:any=null;
         //实例化怪物子弹
     PrefabMonsterBullet(){
-        var newMonsterBullet = cc.instantiate(this.MonsterBulletPrefab);
+        var newMonsterBullet = instantiate(this.MonsterBulletPrefab);
         this.node.addChild(newMonsterBullet);
         newMonsterBullet.setPosition(-0.1,1,0.5);
     }
 
     //实例化HP
     PrefarHP(){
-        var canvas= cc.director.getScene().getChildByName('Canvas');
-        this._newHp = cc.instantiate(this.HPPrefab);
+        var canvas= director.getScene().getChildByName('Canvas');
+        this._newHp = instantiate(this.HPPrefab);
         canvas.addChild(this._newHp);
         this._newHp.setPosition(0,0,0);
     }
@@ -91,21 +91,21 @@ export class monster1 extends Component {
         this.monsterd=Con.MonsterD;
 
         //random自己远程还是近战
-        this._FarorNear=cc.math.randomRangeInt(1,3);
+        this._FarorNear=math.randomRangeInt(1,3);
         if(this._FarorNear==1){
             this._Switch=true;
         }
         this._MonsterMove=Con.MonsterMoveSpeed;
         //获取动画组件
-        this._animationComponent = this.node.getComponent(cc.AnimationComponent);
+        this._animationComponent = this.node.getComponent(AnimationComponent);
         //获取血量组件
-        this._sprite = this._newHp.getComponent(cc.SpriteComponent);
-        const CameraNodepp = cc.director.getScene().getChildByName('Player');
+        this._sprite = this._newHp.getComponent(SpriteComponent);
+        const CameraNodepp = director.getScene().getChildByName('Player');
         const CameraNodep=CameraNodepp.getChildByName('center');
         this.CameraNode=CameraNodep.getChildByName('Camera');
         this.UINode = this._newHp;
 
-        this.rigidbody=this.node.getComponent(cc.RigidBodyComponent);
+        this.rigidbody=this.node.getComponent(RigidBodyComponent);
         
     }
 
@@ -114,9 +114,9 @@ export class monster1 extends Component {
           //血量变化
         this._sprite.fillRange=this.monsterhp/Con.MonsterHp;
         //血条跟随
-        var HpPosition=cc.v3(this.node.getPosition().x,this.node.getPosition().y+1.7,this.node.getPosition().z)
-        var ddddd=cc.v3(10,10,10);
-        cc.pipelineUtils.WorldNode3DToLocalNodeUI(this.CameraNode.getComponent(cc.CameraComponent),HpPosition,this.UINode,ddddd);
+        var HpPosition=new Vec3(this.node.getPosition().x,this.node.getPosition().y+1.7,this.node.getPosition().z)
+        var ddddd=new Vec3(10,10,10);
+        cc.pipelineUtils.WorldNode3DToLocalNodeUI(this.CameraNode.getComponent(CameraComponent),HpPosition,this.UINode,ddddd);
         this.UINode.setPosition(ddddd);
         if(this._anidea==false){
         //远程
@@ -135,8 +135,8 @@ export class monster1 extends Component {
                this._anirun=true;
            }
            //面向并向玩家移动
-           const _Player = cc.director.getScene().getChildByName('Player');
-           this._Distance= cc.math.Vec3.distance(_Player.getPosition(),this.node.getPosition());
+           const _Player = director.getScene().getChildByName('Player');
+           this._Distance= math.Vec3.distance(_Player.getPosition(),this.node.getPosition());
            if(this._Distance<10){
                this._MonsterMove=0;
                this._ifShootDistance=true;
@@ -145,8 +145,8 @@ export class monster1 extends Component {
                this._ifShootDistance=false;
            }
            this.node.lookAt(_Player.getPosition());
-           const velocity = new cc.Vec3(0,0,-this._MonsterMove);  
-           cc.math.Vec3.transformQuat(velocity,velocity,this.node.getRotation());
+           const velocity = new Vec3(0,0,-this._MonsterMove);  
+           math.Vec3.transformQuat(velocity,velocity,this.node.getRotation());
            this.rigidbody.setLinearVelocity(velocity);
 
            if(this._anirun&&this._isanirun==false){
@@ -159,10 +159,10 @@ export class monster1 extends Component {
        if(this._Switch==false){
            //面向并向玩家移动
            this._anirun=true;
-           const _Player = cc.director.getScene().getChildByName('Player');
+           const _Player = director.getScene().getChildByName('Player');
            this.node.lookAt(_Player.getPosition());
            const velocity = new cc.Vec3(0,0,-this._MonsterMove);  
-           cc.math.Vec3.transformQuat(velocity,velocity,this.node.getRotation());
+           math.Vec3.transformQuat(velocity,velocity,this.node.getRotation());
            this.rigidbody.setLinearVelocity(velocity);
 
            if(this._anirun&&this._isanirun==false){
@@ -180,8 +180,8 @@ export class monster1 extends Component {
        //受伤扣血
        if(this._ifHunt){
            //击退效果
-           const velocity = new cc.Vec3(0,0,20);  
-           cc.math.Vec3.transformQuat(velocity,velocity,this.node.getRotation());
+           const velocity = new Vec3(0,0,20);  
+           math.Vec3.transformQuat(velocity,velocity,this.node.getRotation());
            this.rigidbody.setLinearVelocity(velocity);
 
            this.monsterhp -= this.bulletd;
@@ -207,8 +207,6 @@ export class monster1 extends Component {
            this._hittimer=0;
        }
 
-
-
        //攻击
        if(this._ifAttack){
            Con.PlayerHit=true;
@@ -220,9 +218,8 @@ export class monster1 extends Component {
            this._detourtimer+=1*deltaTime
            this._MonsterMove=0;
            const position = this.node.getPosition();
-           cc.math.Vec3.scaleAndAdd(position, position, this._getDirection(1,0,0), -deltaTime*1);
+           math.Vec3.scaleAndAdd(position, position, this._getDirection(1,0,0), -deltaTime*1);
            this.node.setPosition(position);
-
        }
        if(this._detourtimer>0.5){
            this._MonsterDetour=false;
@@ -274,8 +271,8 @@ export class monster1 extends Component {
         }
     }
     _getDirection(x, y, z) {
-		const result = cc.v3(x, y, z);
-		cc.math.Vec3.transformQuat(result, result, this.node.getRotation());
+		const result = new Vec3(x, y, z);
+		math.Vec3.transformQuat(result, result, this.node.getRotation());
 		return result;
     }
 }

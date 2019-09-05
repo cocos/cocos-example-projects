@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, Prefab } from "cc";
+import { _decorator, Component, Node, Prefab, director, instantiate, systemEvent, SystemEvent } from "cc";
 const { ccclass, property } = _decorator;
 import { Con } from './Constants';
 @ccclass("shoot1")
@@ -23,16 +23,16 @@ export class shoot1 extends Component {
     //实例化子弹
     PrefabBullet(){
         const Player = this.node.getWorldPosition();
-        var scene = cc.director.getScene();
-        var newBullet = cc.instantiate(this.BulletPrefab);
+        var scene = director.getScene();
+        var newBullet = instantiate(this.BulletPrefab);
         scene.addChild(newBullet);
         newBullet.setPosition(Player.x,Player.y,Player.z);
     }
 
     onLoad() {
         //鼠标监听
-        cc.systemEvent.on(cc.SystemEvent.EventType.MOUSE_DOWN, this.onMouseDown, this);   
-        cc.systemEvent.on(cc.SystemEvent.EventType.MOUSE_UP,this.onMouseUp,this);     
+        systemEvent.on(SystemEvent.EventType.MOUSE_DOWN, this.onMouseDown, this);   
+        systemEvent.on(SystemEvent.EventType.MOUSE_UP,this.onMouseUp,this);     
      }
 
      onMouseDown(event) {

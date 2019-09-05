@@ -1,4 +1,4 @@
-import { _decorator, Component, Node } from "cc";
+import { _decorator, Component, Node, ColliderComponent, Vec3, math } from "cc";
 const { ccclass, property } = _decorator;
 import { Con } from './Constants';
 
@@ -25,21 +25,14 @@ export class bossbullet1 extends Component {
     start () {
         // Your initialization goes here.
         //触发事件
-        this.collider = this.node.getComponent(cc.ColliderComponent);
+        this.collider = this.node.getComponent(ColliderComponent);
 		this.collider.on('onTriggerEnter',this.onTrigger,this);
         
-        //面向并向玩家移动
-      /*  this._Player = cc.director.getScene().getChildByName('Player');
-        this.node.lookAt(this._Player.getPosition());
-        const velocity = new cc.Vec3(0,0,10);  
-        this.rigidbody=this.node.getComponent(cc.RigidBodyComponent);
-        this.rigidbody.setLinearVelocity(velocity);
-*/
         this.ParentNode = this.node.getParent();
-        const velocity = new cc.Vec3(0,0,-10);
+        const velocity = new Vec3(0,0,-10);
         if(this.ParentNode!=null){
         const q = this.ParentNode.getWorldRotation();
-        cc.math.Vec3.transformQuat(velocity,velocity,q);
+        math.Vec3.transformQuat(velocity,velocity,q);
         this.rigidbody=this.node.getComponent(cc.RigidBodyComponent);
         this.rigidbody.setLinearVelocity(velocity);
         }

@@ -1,4 +1,4 @@
-import { _decorator, Component, Node } from "cc";
+import { _decorator, Component, Node, ColliderComponent } from "cc";
 const { ccclass, property } = _decorator;
 import { Con } from './Constants';
 @ccclass("typec1")
@@ -15,7 +15,7 @@ export class typec1 extends Component {
     start () {
         // Your initialization goes here.
         //触发事件
-        this.collider = this.node.getComponent(cc.ColliderComponent);
+        this.collider = this.node.getComponent(ColliderComponent);
 		this.collider.on('onTriggerEnter',this.onTrigger,this);
     }
 

@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, Prefab } from "cc";
+import { _decorator, Component, Node, Prefab, instantiate, director, ColliderComponent, AnimationComponent, SpriteComponent, Vec3, CameraComponent, math } from "cc";
 const { ccclass, property } = _decorator;
 import { Con } from './Constants';
 @ccclass("bossai1")
@@ -47,14 +47,14 @@ export class bossai1 extends Component {
 
     //实例化怪物子弹
     PrefabBossBullet(){
-        var newBossBullet = cc.instantiate(this.BossBulletPrefab);
+        var newBossBullet = instantiate(this.BossBulletPrefab);
         this.node.addChild(newBossBullet); 
         newBossBullet.setPosition(-0.1,1,0.5);
     }
     //实例化UI
     PrefarHP(){
-        var canvas= cc.director.getScene().getChildByName('Canvas');
-        this._newHp = cc.instantiate(this.HPPrefab);
+        var canvas= director.getScene().getChildByName('Canvas');
+        this._newHp = instantiate(this.HPPrefab);
         canvas.addChild(this._newHp);
         this._newHp.setPosition(0,0,0);
     }
@@ -62,16 +62,16 @@ export class bossai1 extends Component {
         // Your initialization goes here.
         this.PrefarHP();
         //碰撞事件
-        this.collider = this.node.getComponent(cc.ColliderComponent);
+        this.collider = this.node.getComponent(ColliderComponent);
         this.collider.on('onTriggerEnter',this.onTrigger,this);
 
         //获取动画组件
-        this._animationComponent = this.node.getComponent(cc.AnimationComponent);
+        this._animationComponent = this.node.getComponent(AnimationComponent);
         this._animationComponent.play("ShootTorsoArmsRifle", 0.0);
 
         //获取血量组件
-        this._sprite = this._newHp.getComponent(cc.SpriteComponent);
-        const CameraNodepp = cc.director.getScene().getChildByName('Player');
+        this._sprite = this._newHp.getComponent(SpriteComponent);
+        const CameraNodepp = director.getScene().getChildByName('Player');
         const CameraNodep=CameraNodepp.getChildByName('center');
         this.CameraNode=CameraNodep.getChildByName('Camera');
         this.UINode = this._newHp;
@@ -82,16 +82,16 @@ export class bossai1 extends Component {
          //血条变化
         this._sprite.fillRange=Con.BossHp/300;
         //血条跟随
-        var HpPosition=cc.v3(this.node.getPosition().x,this.node.getPosition().y+1.7,this.node.getPosition().z)
-        var ddddd=cc.v3(10,10,10);
-        cc.pipelineUtils.WorldNode3DToLocalNodeUI(this.CameraNode.getComponent(cc.CameraComponent),HpPosition,this.UINode,ddddd);
+        var HpPosition=new Vec3(this.node.getPosition().x,this.node.getPosition().y+1.7,this.node.getPosition().z)
+        var ddddd=new Vec3(10,10,10);
+        cc.pipelineUtils.WorldNode3DToLocalNodeUI(this.CameraNode.getComponent(CameraComponent),HpPosition,this.UINode,ddddd);
         this.UINode.setPosition(ddddd);
     if(Con.BossHp>0){
         //面向玩家
-        const _Player = cc.director.getScene().getChildByName('Player');
+        const _Player = director.getScene().getChildByName('Player');
         this.node.lookAt(_Player.getPosition());
         const velocity = new cc.Vec3(0,0,0);  
-        cc.math.Vec3.transformQuat(velocity,velocity,this.node.getRotation());
+        math.Vec3.transformQuat(velocity,velocity,this.node.getRotation());
         //攻击间隔
         this._timer+=2*deltaTime;
         if(this._timer>Con.MonsterShoootinterval){
@@ -141,7 +141,7 @@ export class bossai1 extends Component {
         if(Con.BossDetour){
             this._DetourTimer+=1*deltaTime;
             const position = this.node.getPosition();
-            cc.math.Vec3.scaleAndAdd(position, position, this._getDirection(1,0,0), -deltaTime*2);
+            math.Vec3.scaleAndAdd(position, position, this._getDirection(1,0,0), -deltaTime*2);
             this.node.setPosition(position);
         }
         if(this._DetourTimer>0.5){
@@ -150,8 +150,8 @@ export class bossai1 extends Component {
         }
      }
      _getDirection(x, y, z) {
-		const result = cc.v3(x, y, z);
-		cc.math.Vec3.transformQuat(result, result, this.node.getRotation());
+		const result = new Vec3(x, y, z);
+		math.Vec3.transformQuat(result, result, this.node.getRotation());
 		return result;
     }
     onTrigger (event) {
