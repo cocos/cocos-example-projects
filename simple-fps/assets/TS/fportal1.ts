@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, Prefab } from "cc";
+import { _decorator, Component, Node, Prefab, director, instantiate, math } from "cc";
 const { ccclass, property } = _decorator;
 import { Con } from './Constants';
 @ccclass("fportal1")
@@ -27,24 +27,24 @@ export class fportal1 extends Component {
 
     //实例化场景1
     PrefabScene1Prefab(){
-        var scene= cc.director.getScene();
-        var newScene1 = cc.instantiate(this.Scene1Prefab);
+        var scene= director.getScene();
+        var newScene1 = instantiate(this.Scene1Prefab);
         scene.addChild(newScene1);
         newScene1.setPosition(0,0,-50);
     }
 
     //实例化场景2
     PrefabScene2Prefab(){
-        var scene= cc.director.getScene();
-        var newScene2 = cc.instantiate(this.Scene2Prefab);
+        var scene= director.getScene();
+        var newScene2 = instantiate(this.Scene2Prefab);
         scene.addChild(newScene2);
         newScene2.setPosition(0,0,-100);
     }
 
     //实例化场景Boss1
     PrefabSceneBoss1Prefab(){
-        var scene= cc.director.getScene();
-        var newSceneBoss1 = cc.instantiate(this.SceneBoss1Prefab);
+        var scene= director.getScene();
+        var newSceneBoss1 = instantiate(this.SceneBoss1Prefab);
         scene.addChild(newSceneBoss1);
         newSceneBoss1.setPosition(0,0,50);
     }
@@ -60,7 +60,7 @@ export class fportal1 extends Component {
     onTrigger (event) {
 		if(event.otherCollider.node._name == 'Player'&&Con.RepeatPotal){
             //随机场景号
-            this._ChooseScene = cc.math.randomRangeInt(1,3);
+            this._ChooseScene = math.randomRangeInt(1,3);
             //跳转开关
             if(this._ChooseScene==1&&Con.BossReSignal==false){
                 this.PrefabScene1Prefab();

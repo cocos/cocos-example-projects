@@ -1,9 +1,9 @@
-import { _decorator, Component, Node } from "cc";
+import { _decorator, Component, Node, Vec3, systemEvent, SystemEvent, macro, game, math, director } from "cc";
 const { ccclass, property } = _decorator;
 import { Con } from './Constants';
 
-@ccclass("NewScript")
-export class NewScript extends Component {
+@ccclass("firstper1")
+export class firstper1 extends Component {
     /* class member could be defined like this */
     // dummy = '';
 
@@ -30,35 +30,45 @@ export class NewScript extends Component {
 
     private _animationComponent:any =null;
 
+    private rigidbody:any=null;
+
     onLoad() {
+        
         //键盘监听
-        cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP,this.onKeyUp,this);
-        cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN,this.onKeyDown,this);
+        systemEvent.on(SystemEvent.EventType.KEY_UP,this.onKeyUp,this);
+        systemEvent.on(SystemEvent.EventType.KEY_DOWN,this.onKeyDown,this);
         
         //鼠标监听
-        cc.systemEvent.on(cc.SystemEvent.EventType.MOUSE_UP, this.onMouseUp, this);
-        cc.systemEvent.on(cc.SystemEvent.EventType.MOUSE_DOWN, this.onMouseDown, this);
-        cc.systemEvent.on(cc.SystemEvent.EventType.MOUSE_MOVE,this.onMouseMove,this);   
+        systemEvent.on(SystemEvent.EventType.MOUSE_UP, this.onMouseUp, this);
+        systemEvent.on(SystemEvent.EventType.MOUSE_DOWN, this.onMouseDown, this);
+        systemEvent.on(SystemEvent.EventType.MOUSE_MOVE,this.onMouseMove,this);
+        
+        /*
+        //触摸监听
+        systemEvent.on(SystemEvent.EventType.TOUCH_MOVE,this.onTouchMove,this);
+        systemEvent.on(SystemEvent.EventType.TOUCH_END,this.onTouchEnd,this);
+        systemEvent.on(SystemEvent.EventType.TOUCH_START,this.onTouchStart,this);
+        */
      }
 
      onKeyUp(event){
         switch(event.keyCode) {
-            case cc.macro.KEY.a:
+            case macro.KEY.a:
                 this._startLeft = false;
                 break;
-            case cc.macro.KEY.d:
+            case macro.KEY.d:
                 this._startRight = false;
                 break;
-            case cc.macro.KEY.w:
+            case macro.KEY.w:
                 this._startForward = false;
                 break;
-            case cc.macro.KEY.s:
+            case macro.KEY.s:
                 this._startBackward = false;
                 break;
-            case cc.macro.KEY.space:
+            case macro.KEY.space:
                 this._startJump=false;
                 break;
-            case cc.macro.KEY.shift:
+            case macro.KEY.shift:
                 this._startRun=false;
                 break;
         }
@@ -66,25 +76,25 @@ export class NewScript extends Component {
 
     onKeyDown(event){
         switch(event.keyCode) {
-            case cc.macro.KEY.a:
+            case macro.KEY.a:
                 this._startLeft = true;
                 break;
-            case cc.macro.KEY.d:
+            case macro.KEY.d:
                 this._startRight = true;
                 break;
-            case cc.macro.KEY.w:
+            case macro.KEY.w:
                 this._startForward = true;
                 break;
-            case cc.macro.KEY.s:
+            case macro.KEY.s:
                 this._startBackward = true;
                 break;
-            case cc.macro.KEY.f:
+            case macro.KEY.f:
                 Con.RecoilSwitch =! Con.RecoilSwitch;
                 break;
-            case cc.macro.KEY.space:
+            case macro.KEY.space:
                 this._startJump=true;
                 break;
-            case cc.macro.KEY.shift:
+            case macro.KEY.shift:
                 this._startRun=true;
                 break;
         }
@@ -92,15 +102,15 @@ export class NewScript extends Component {
 
     onMouseDown(event) {
         if (event.getButton() === 2) {
-            cc.game.canvas.requestPointerLock();
+            game.canvas.requestPointerLock();
         } 
-        if (event.getButton() === 0) {
+        if (event.getButton() === 0&&Con.PlayerHp>0) {
             Con.AniShoot=true;
         } 
     }
 
     onMouseUp(event){
-        if (event.getButton() === 0) {
+        if (event.getButton() === 0&&Con.PlayerHp>0) {
         Con.AniShoot=false;
         }
 
@@ -114,21 +124,54 @@ export class NewScript extends Component {
 
     onMouseMove(event){
         if(event.movementX!=0){
-        const up =cc.v3(0,1,0);
-        const rotationx = this.node.getRotation();
-        cc.math.Quat.rotateAround(rotationx, rotationx, up, -event.movementX/5/ 360.0 * 3.1415926535);
-        this.node.setRotation(rotationx);
+            const up =cc.v3(0,1,0);
+            const rotationx = this.node.getRotation();
+            math.Quat.rotateAround(rotationx, rotationx, up, -event.movementX/5/ 360.0 * 3.1415926535);
+            this.node.setRotation(rotationx);
         }
     }
+    
+   /*
+    onTouchMove(event){
+        if(event.movementX!=0){
+            const up =cc.v3(0,1,0);
+            const rotationx = this.node.getRotation();
+            math.Quat.rotateAround(rotationx, rotationx, up, -event.movementX/5/ 360.0 * 3.1415926535);
+            this.node.setRotation(rotationx);
+        }
+    }
+
+    onTouchEnd(event){
+        if (Con.PlayerHp>0) {
+            Con.AniShoot=false;
+            }
+    
+            Con.isanirun=false;
+            Con.isanijump=false;
+            Con.isanishoot=false;
+            Con.isaniidleshoot=false;
+            Con.isanirunshoot=false;
+            Con.isanijumpshoot=false;
+    }
+
+    onTouchStart(event){
+        if (Con.PlayerHp>0) {
+            Con.AniShoot=true;
+        }
+    }
+    */
     start () {
         // Your initialization goes here.
-        cc.director.getScheduler().scheduleUpdate(this, 0, false, this.schedule);
         //获取血量组件
         const canvas = cc.director.getScene().getChildByName('Canvas');
         const playerhp = canvas.getChildByName('PlayerHp');
         this._sprite = playerhp.getComponent(cc.SpriteComponent);
         //获取动画组件
         this._animationComponent = this.node.getComponent(cc.AnimationComponent);
+
+
+        //鼠标消失
+        game.canvas.requestPointerLock();
     }
 
      update (deltaTime: number) {
@@ -142,7 +185,7 @@ export class NewScript extends Component {
                     Con.Aniidleshoottorunshoot=false;
                 }
                 const position = this.node.getPosition();
-                cc.math.Vec3.scaleAndAdd(position, position, this._getDirection(0,0,-1), -deltaTime*Con.PlayerSpeed);
+                math.Vec3.scaleAndAdd(position, position, this._getDirection(0,0,-1), -deltaTime*Con.PlayerSpeed);
                 this.node.setPosition(position);
             }
         //开始跳跃锁运动
@@ -154,7 +197,7 @@ export class NewScript extends Component {
                     Con.Aniidleshoottorunshoot=false;
                 }
                 const position = this.node.getPosition();
-                cc.math.Vec3.scaleAndAdd(position, position, this._getDirection(1,0,0), deltaTime*Con.PlayerSpeed);
+                math.Vec3.scaleAndAdd(position, position, this._getDirection(1,0,0), deltaTime*Con.PlayerSpeed);
                 this.node.setPosition(position);
             }
             if(this._startRight){
@@ -164,7 +207,7 @@ export class NewScript extends Component {
                     Con.Aniidleshoottorunshoot=false;
                 }
                 const position = this.node.getPosition();
-                cc.math.Vec3.scaleAndAdd(position, position, this._getDirection(1,0,0), -deltaTime*Con.PlayerSpeed);
+                math.Vec3.scaleAndAdd(position, position, this._getDirection(1,0,0), -deltaTime*Con.PlayerSpeed);
                 this.node.setPosition(position);
             }
         
@@ -175,23 +218,24 @@ export class NewScript extends Component {
                     Con.Aniidleshoottorunshoot=false;
                 }
                 const position = this.node.getPosition();
-                cc.math.Vec3.scaleAndAdd(position, position, this._getDirection(0,0,-1), deltaTime*Con.PlayerSpeed);
+                math.Vec3.scaleAndAdd(position, position, this._getDirection(0,0,-1), deltaTime*Con.PlayerSpeed);
                 this.node.setPosition(position);
             }
         }
-        if(this._startJump){
+        if(this._startJump&&this._ifJump==false){
             //只要按了跳跃 先让其他动画都等于false
             Con.AniJump=true;
             this._ifJump=true;
-            const position = this.node.getPosition();
-            cc.math.Vec3.scaleAndAdd(position, position, this._getDirection(0,1,0), -deltaTime*Con.PlayerJump);
-            this.node.setPosition(position);
+            const velocity = new cc.Vec3(0,Con.PlayerJump,0);
+            math.Vec3.transformQuat(velocity,velocity,this.node.getWorldRotation());
+            this.rigidbody=this.node.getComponent(cc.RigidBodyComponent);
+            this.rigidbody.setLinearVelocity(velocity);
         }
         //跳跃动画管理
         if(this._ifJump){
             this._jumptimer+=1*deltaTime;
         }
-        if(this._jumptimer>=2){
+        if(this._jumptimer>=1){
             Con.AniJump=false;
             Con.isanijump=false;
             Con.isanirun=false;
@@ -221,19 +265,20 @@ export class NewScript extends Component {
         //受伤开启受伤动画
         if(Con.PlayerHit){
             Con.AniHit=true;
-            Con.isanirunshoot=false;
-            Con.isaniidleshoot=false;
+           // Con.isanirunshoot=false;
+          //  Con.isaniidleshoot=false;
             this._Hittimer+=1*deltaTime;
             //受伤后撤
             const position = this.node.getPosition();
-            cc.math.Vec3.scaleAndAdd(position, position, this._getDirection(0,0,-1), deltaTime*Con.PlayerSpeed);
+            math.Vec3.scaleAndAdd(position, position, this._getDirection(0,0,-1), deltaTime*Con.PlayerSpeed);
             this.node.setPosition(position);
         }
-        if(this._Hittimer>0.8){
+        if(this._Hittimer>0.4){
             Con.isanihit=false;
             Con.AniHit=false;
             Con.isanirun=false;
             Con.isanirunshoot=false;
+            Con.isaniidleshoot=false;
             Con.PlayerHit=false;
             this._Hittimer=0;
         }
@@ -248,13 +293,13 @@ export class NewScript extends Component {
            Con.AniDel=true;
            this._Deltimmer+=1*deltaTime;
         }
-        if(this._Deltimmer>2){
-            cc.game.pause();
+        if(this._Deltimmer>0.8){
+            game.pause();
         }
      }
      _getDirection(x, y, z) {
-		const result = cc.v3(x, y, z);
-		cc.math.Vec3.transformQuat(result, result, this.node.getRotation());
+		const result = new Vec3(x, y, z);
+		math.Vec3.transformQuat(result, result, this.node.getRotation());
 		return result;
     }
 }

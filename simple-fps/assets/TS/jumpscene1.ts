@@ -1,9 +1,9 @@
-import { _decorator, Component, Node, Prefab } from "cc";
+import { _decorator, Component, Node, Prefab, director, instantiate } from "cc";
 const { ccclass, property } = _decorator;
 import { Con } from './Constants';
 
-@ccclass("NewScript")
-export class NewScript extends Component {
+@ccclass("jumpscene1")
+export class jumpscene1 extends Component {
     /* class member could be defined like this */
     // dummy = '';
 
@@ -15,8 +15,8 @@ export class NewScript extends Component {
     public AppearParPrefab: Prefab =null;
     
     PrefabAppearPar(){
-        var scene= cc.director.getScene();
-        var newAppearPar = cc.instantiate(this.AppearParPrefab);
+        var scene= director.getScene();
+        var newAppearPar = instantiate(this.AppearParPrefab);
         scene.addChild(newAppearPar);
         newAppearPar.setPosition(this.node.getPosition());
     }

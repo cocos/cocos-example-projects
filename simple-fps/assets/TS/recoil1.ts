@@ -1,9 +1,9 @@
-import { _decorator, Component, Node } from "cc";
+import { _decorator, Component, Node, systemEvent, SystemEvent, math, director, Vec3 } from "cc";
 const { ccclass, property } = _decorator;
 import { Con } from './Constants';
 
-@ccclass("NewScript")
-export class NewScript extends Component {
+@ccclass("recoil1")
+export class recoil1 extends Component {
     /* class member could be defined like this */
     // dummy = '';
 
@@ -16,10 +16,18 @@ export class NewScript extends Component {
     private _RecoilRange:number=0;
 
     onLoad() {
+        
         //鼠标监听
-        cc.systemEvent.on(cc.SystemEvent.EventType.MOUSE_UP, this.onMouseUp, this);
-        cc.systemEvent.on(cc.SystemEvent.EventType.MOUSE_DOWN, this.onMouseDown, this);
-        cc.systemEvent.on(cc.SystemEvent.EventType.MOUSE_MOVE,this.onMouseMove,this);   
+        systemEvent.on(SystemEvent.EventType.MOUSE_UP, this.onMouseUp, this);
+        systemEvent.on(SystemEvent.EventType.MOUSE_DOWN, this.onMouseDown, this);
+        systemEvent.on(SystemEvent.EventType.MOUSE_MOVE,this.onMouseMove,this); 
+        /*
+        //触摸监听
+        systemEvent.on(SystemEvent.EventType.TOUCH_MOVE,this.onTouchMove,this);
+        systemEvent.on(SystemEvent.EventType.TOUCH_END,this.onTouchEnd,this);
+        systemEvent.on(SystemEvent.EventType.TOUCH_START,this.onTouchStart,this);
+        */
+        
      }
 
      onMouseDown(event) {
@@ -36,15 +44,28 @@ export class NewScript extends Component {
     onMouseMove(event){
         if(event.movementY!=0){
         const rotationy = this.node.getRotation();
-        cc.math.Quat.rotateAround(rotationy,rotationy,this._getDirection(-1, 0, 0), event.movementY/5/ 360.0 * 3.1415926535);
+        math.Quat.rotateAround(rotationy,rotationy,this._getDirection(-1, 0, 0), event.movementY/5/ 360.0 * 3.1415926535);
         this.node.setRotation(rotationy);
         }
     }
-
-    start () {
-        // Your initialization goes here.
-        cc.director.getScheduler().scheduleUpdate(this, 0, false, this.schedule);
+    /*
+    onTouchMove(event){
+        if(event.movementX!=0){
+            const up =cc.v3(0,1,0);
+            const rotationx = this.node.getRotation();
+            math.Quat.rotateAround(rotationx, rotationx, up, -event.movementX/5/ 360.0 * 3.1415926535);
+            this.node.setRotation(rotationx);
+        }
     }
+
+    onTouchEnd(event){
+        this._recoil=false;
+    }
+
+    onTouchStart(event){
+        this._recoil=true;
+    }
+*/
 
      update (deltaTime: number) {
          // Your update function goes here.
@@ -60,8 +81,8 @@ export class NewScript extends Component {
             if(this._recoil){
                 this._RecoilTime+=1*deltaTime;
             }
-            if(this._RecoilTime>1){
-                this._RecoilRange = cc.math.randomRange(-0.2,0.2);
+            if(this._RecoilTime>0.5){
+                this._RecoilRange = math.randomRange(-0.2,0.2);
                 this.node.setRotationFromEuler(this.node.eulerAngles.x+0.05,this.node.eulerAngles.y+this._RecoilRange,this.node.eulerAngles.z);
             }
             if(this._recoil==false){
@@ -71,8 +92,8 @@ export class NewScript extends Component {
         }
      }
      _getDirection(x, y, z) {
-		const result = cc.v3(x, y, z);
-		cc.math.Vec3.transformQuat(result, result, this.node.getRotation());
+		const result = new Vec3(x, y, z);
+		math.Vec3.transformQuat(result, result, this.node.getRotation());
 		return result;
     }
 }

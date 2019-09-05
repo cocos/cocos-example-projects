@@ -1,4 +1,4 @@
-import { _decorator, Component, Node } from "cc";
+import { _decorator, Component, Node, math, director, Vec3, RigidBodyComponent, ColliderComponent } from "cc";
 const { ccclass, property } = _decorator;
 import { Con } from './Constants';
 @ccclass("bullet1")
@@ -21,25 +21,25 @@ export class bullet1 extends Component {
         // Your initialization goes here.
          //弹道扩散范围
          if(Con.RecoilSwitch==false){
-            this.spreadx = cc.math.randomRange(-0.5,0.5);
-            this.spready = cc.math.randomRange(0,0.5);
+            this.spreadx = math.randomRange(-0.5,0.5);
+            this.spready = math.randomRange(0,0.5);
          }
          if(Con.RecoilSwitch){
             this.spreadx = 0;
             this.spready = 0;
         }
         //获取父节点，转世界坐标，赋予线性速度
-        const Player = cc.director.getScene().getChildByName('Player');
+        const Player = director.getScene().getChildByName('Player');
         const center = Player.getChildByName('center');
         //弹道
-        const velocity = new cc.Vec3(this.spreadx,this.spready,-Con.BulletMoveSpeed);
+        const velocity = new Vec3(this.spreadx,this.spready,-Con.BulletMoveSpeed);
         const q = center.getWorldRotation();
-        cc.math.Vec3.transformQuat(velocity,velocity,q);
-        this.rigidbody=this.node.getComponent(cc.RigidBodyComponent);
+        math.Vec3.transformQuat(velocity,velocity,q);
+        this.rigidbody=this.node.getComponent(RigidBodyComponent);
         this.rigidbody.setLinearVelocity(velocity);
 
         //碰撞事件
-        this.collider = this.node.getComponent(cc.ColliderComponent);
+        this.collider = this.node.getComponent(ColliderComponent);
         this.collider.on('onTriggerEnter',this.onTrigger,this);
     }
 

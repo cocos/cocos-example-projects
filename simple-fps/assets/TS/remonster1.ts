@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, Prefab } from "cc";
+import { _decorator, Component, Node, Prefab, director, instantiate, math } from "cc";
 const { ccclass, property } = _decorator;
 
 import { Con } from './Constants';
@@ -42,23 +42,23 @@ export class remonster1 extends Component {
 
     //实例化敌人
     PrefabMonster(){
-        var scene= cc.director.getScene();
-        var newMonster = cc.instantiate(this.MonsterPrefab);
+        var scene= director.getScene();
+        var newMonster = instantiate(this.MonsterPrefab);
         scene.addChild(newMonster);
         newMonster.setPosition(this.node.getParent().getPosition().x-this._ReMonsterx,1,this.node.getParent().getPosition().z-this._ReMonsterz);
     }
 
     //实例化Boss
     PrefabBoss(){
-        var scene= cc.director.getScene();
-        var newBoss = cc.instantiate(this.BossPrefab);
+        var scene= director.getScene();
+        var newBoss = instantiate(this.BossPrefab);
         scene.addChild(newBoss);
         newBoss.setPosition(this.node.getParent().getPosition().x-this._ReBossx,1,this.node.getParent().getPosition().z-this._ReBossz);
     }
 
     //实例化陷阱 
     PrefabTrap(){
-        var newTrap = cc.instantiate(this.TrapPrefab);
+        var newTrap = instantiate(this.TrapPrefab);
         this.node.addChild(newTrap);
         newTrap.setPosition(this.node.getPosition().x-this._ReTrapx,0,this.node.getPosition().z-this._ReTrapz);
     }
@@ -79,13 +79,13 @@ export class remonster1 extends Component {
          // Your update function goes here.
          //刷怪位置数量控制    
         if(this._IsRe&&Con.BossReSignal==false){
-            this._ReMMinCount = cc.math.randomRange(1,2);
-            this._ReMMaxCount = cc.math.randomRange(3,4);  
+            this._ReMMinCount = math.randomRange(1,2);
+            this._ReMMaxCount = math.randomRange(3,4);  
             for(this._ReMMinCount;this._ReMMinCount<this._ReMMaxCount;this._ReMMinCount++){
-                this._ReMonsterx = cc.math.randomRange(-8,8);
-                this._ReMonsterz = cc.math.randomRange(-8,8);
-                this._ReTrapx = cc.math.randomRange(-8,8);
-                this._ReTrapz = cc.math.randomRange(-8,8);
+                this._ReMonsterx = math.randomRange(-8,8);
+                this._ReMonsterz = math.randomRange(-8,8);
+                this._ReTrapx = math.randomRange(-8,8);
+                this._ReTrapz = math.randomRange(-8,8);
                 Con.HpNumber++;
                 this.PrefabMonster();
                 this.PrefabTrap();
@@ -99,8 +99,8 @@ export class remonster1 extends Component {
          if(Con.BossBehavior&&Con.BossHp>0){
             this._timer+=1*deltaTime;
             if(this._timer>8){
-                this._ReBossx = cc.math.randomRange(-8,8);
-                this._ReBossz = cc.math.randomRange(-8,8);
+                this._ReBossx = math.randomRange(-8,8);
+                this._ReBossz = math.randomRange(-8,8);
                 this.PrefabBoss();
                 this._timer=0;
             }

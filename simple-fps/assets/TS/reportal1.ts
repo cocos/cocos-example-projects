@@ -1,8 +1,8 @@
-import { _decorator, Component, Node, Prefab } from "cc";
+import { _decorator, Component, Node, Prefab, director, instantiate } from "cc";
 const { ccclass, property } = _decorator;
 import { Con } from './Constants';
-@ccclass("NewScript")
-export class NewScript extends Component {
+@ccclass("reportal1")
+export class reportal1 extends Component {
     /* class member could be defined like this */
     // dummy = '';
 
@@ -14,8 +14,8 @@ export class NewScript extends Component {
 
     //实例化传送门
     PrefabPortal1(){
-        var scene= cc.director.getScene();
-        var newPortal1 = cc.instantiate(this.Portal1Prefab);
+        var scene= director.getScene();
+        var newPortal1 = instantiate(this.Portal1Prefab);
         scene.addChild(newPortal1);
         newPortal1.setPosition(this.node.getParent().getPosition().x+10,1,this.node.getParent().getPosition().z-12);
     }
@@ -27,7 +27,7 @@ export class NewScript extends Component {
      update (deltaTime: number) {
          // Your update function goes here.
          //检测场景里没有怪物了实例化传送门
-        if(cc.director.getScene().getChildByName('Monster')==null&&Con.AlreadyReMonster){
+        if(director.getScene().getChildByName('Monster')==null&&Con.AlreadyReMonster){
             this.PrefabPortal1();
             Con.AlredyReProps=true;
             if(Con.AlredyReProps){

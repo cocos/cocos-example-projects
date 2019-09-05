@@ -1,4 +1,4 @@
-import { _decorator, Component, Node } from "cc";
+import { _decorator, Component, Node, Vec3, math, RigidBodyComponent, ColliderComponent } from "cc";
 const { ccclass, property } = _decorator;
 import { Con } from './Constants';
 @ccclass("monsterbullet1")
@@ -21,16 +21,16 @@ export class monsterbullet1 extends Component {
         // Your initialization goes here.
         //获取父节点，转世界坐标，赋予线性速度
         this.ParentNode = this.node.getParent();
-        const velocity = new cc.Vec3(0,0,-Con.MonsterBulletSpeed);
+        const velocity = new Vec3(0,0,-Con.MonsterBulletSpeed);
         if(this.ParentNode!=null){
         const q = this.ParentNode.getWorldRotation();
-        cc.math.Vec3.transformQuat(velocity,velocity,q);
-        this.rigidbody=this.node.getComponent(cc.RigidBodyComponent);
+        math.Vec3.transformQuat(velocity,velocity,q);
+        this.rigidbody=this.node.getComponent(RigidBodyComponent);
         this.rigidbody.setLinearVelocity(velocity);
         }
 
         //触发事件
-        this.collider = this.node.getComponent(cc.ColliderComponent);
+        this.collider = this.node.getComponent(ColliderComponent);
 		this.collider.on('onTriggerEnter',this.onTrigger,this);
     }
 
