@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, Prefab, director, instantiate, systemEvent, SystemEvent } from "cc";
+import { _decorator, Component, Prefab, director, instantiate, systemEvent, SystemEvent } from "cc";
 const { ccclass, property } = _decorator;
 import { Con } from './Constants';
 @ccclass("shoot1")
@@ -10,13 +10,12 @@ export class shoot1 extends Component {
     // @property
     // serializableDummy = 0;
 
-
     //控制射击速度
     private _timer:number=0;
     //持续射击
     private _ifcontinuous:boolean=false;
-
-
+    //鼠标监听信号
+    private mouevent:boolean=false;
     @property({type:Prefab})
     public BulletPrefab: Prefab =null;
 
@@ -36,7 +35,9 @@ export class shoot1 extends Component {
      }
 
      onMouseDown(event) {
-        if (event.getButton() === 0&&this._timer>Con.Shoootinterval) {
+        if (event.getButton() === 0&&this._timer>Con.Shoootinterval&&Con.buttonevent==false) {
+            console.log(Con.buttonevent);
+            this.mouevent=true;
             this.PrefabBullet();
             this._ifcontinuous=true;
             this._timer=0;
@@ -45,15 +46,29 @@ export class shoot1 extends Component {
 
     onMouseUp(event){
         if (event.getButton() === 0) {
+            this.mouevent=false;
             this._ifcontinuous=false;
         } 
     }
 
-    start () {
-        // Your initialization goes here.
-    }
-
      update (deltaTime: number) {
+        if(Con.startShoot&&this.mouevent==false){
+            if (Con.PlayerHp>0) {
+                Con.buttonevent=true;
+                if (this._timer>Con.Shoootinterval) {
+                    this.PrefabBullet();
+                    this._ifcontinuous=true;
+                    this._timer=0;
+                } 
+            }
+        }
+        if(Con.startShoot==false&&this.mouevent==false){
+            Con.buttonevent=false;
+            if (Con.PlayerHp>0) {
+                this._ifcontinuous=false;
+                }
+
+        }
          // Your update function goes here.
          this._timer +=1*deltaTime;
          //持续射击

@@ -1,5 +1,5 @@
-import { _decorator, Component, Node, Vec3, Prefab } from "cc";
-const { ccclass, property } = _decorator;
+import { _decorator, Component } from "cc";
+const { ccclass} = _decorator;
 
 @ccclass("Con")
 export class Con extends Component {
@@ -28,6 +28,9 @@ export class Con extends Component {
     public static startLeft:boolean=false;
     public static startBackward:boolean=false;
     public static startJump:boolean=false;
+    public static startShoot:boolean=false;
+    //按钮监听信号
+    public static buttonevent:boolean=false;
     //子弹信息
     //子弹伤害
     public static BulletD: number =30;
@@ -46,7 +49,7 @@ export class Con extends Component {
     //敌人子弹速度
     public static MonsterBulletSpeed:number =10;
     //敌人移动速度
-    public static MonsterMoveSpeed:number = 3;
+    public static MonsterMoveSpeed:number = 10;
     //敌人攻击间隔
     public static MonsterShoootinterval:number = 1;
     //敌人子弹射程，用存在时间来代表射程，方便之后折计算

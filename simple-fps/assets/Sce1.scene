@@ -28,10 +28,10 @@
         "__id__": 51
       },
       {
-        "__id__": 101
+        "__id__": 108
       },
       {
-        "__id__": 180
+        "__id__": 187
       }
     ],
     "_active": true,
@@ -65,7 +65,7 @@
     },
     "autoReleaseAssets": false,
     "_globals": {
-      "__id__": 324
+      "__id__": 331
     },
     "_id": "06fd3b43-18d1-42f3-9e87-4d26ad5f1a99"
   },
@@ -1550,15 +1550,18 @@
       },
       {
         "__id__": 96
+      },
+      {
+        "__id__": 103
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 99
+        "__id__": 106
       },
       {
-        "__id__": 100
+        "__id__": 107
       }
     ],
     "_prefab": null,
@@ -3249,6 +3252,276 @@
   },
   {
     "__type__": "cc.Node",
+    "_name": "Shoot",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 51
+    },
+    "_children": [
+      {
+        "__id__": 97
+      }
+    ],
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 100
+      },
+      {
+        "__id__": 101
+      },
+      {
+        "__id__": 102
+      }
+    ],
+    "_prefab": null,
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": 350,
+      "y": -128,
+      "z": 0
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_layer": 33554432,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_id": "3c8RxO3JxFjqDi2dPwIPyR"
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Label",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 96
+    },
+    "_children": [],
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 98
+      },
+      {
+        "__id__": 99
+      }
+    ],
+    "_prefab": null,
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_layer": 33554432,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_id": "b3TCuOqHlOZaosnWlunl21"
+  },
+  {
+    "__type__": "cc.UITransformComponent",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 97
+    },
+    "_enabled": true,
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 100,
+      "height": 40
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_id": "f9Km8f/NxLSaiVV4fvD7xQ"
+  },
+  {
+    "__type__": "cc.LabelComponent",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 97
+    },
+    "_enabled": true,
+    "_priority": 0,
+    "_srcBlendFactor": 2,
+    "_dstBlendFactor": 4,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 0,
+      "g": 0,
+      "b": 0,
+      "a": 255
+    },
+    "_sharedMaterial": null,
+    "_useOriginalSize": true,
+    "_string": "Shoot",
+    "_horizontalAlign": 1,
+    "_verticalAlign": 1,
+    "_actualFontSize": 20,
+    "_fontSize": 20,
+    "_fontFamily": "Arial",
+    "_lineHeight": 40,
+    "_overflow": 1,
+    "_enableWrapText": false,
+    "_font": null,
+    "_isSystemFontUsed": true,
+    "_isItalic": false,
+    "_isBold": false,
+    "_isUnderline": false,
+    "_cacheMode": 0,
+    "_id": "735wqhycxCToWQiGri7IWo"
+  },
+  {
+    "__type__": "cc.UITransformComponent",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 96
+    },
+    "_enabled": true,
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 100,
+      "height": 40
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_id": "d5Yd86O5JNr5mCfPvXwXV2"
+  },
+  {
+    "__type__": "cc.SpriteComponent",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 96
+    },
+    "_enabled": true,
+    "_priority": 0,
+    "_srcBlendFactor": 2,
+    "_dstBlendFactor": 4,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_sharedMaterial": null,
+    "_spriteFrame": {
+      "__uuid__": "20835ba4-6145-4fbc-a58a-051ce700aa3e@spriteFrame"
+    },
+    "_type": 1,
+    "_fillType": 0,
+    "_sizeMode": 0,
+    "_fillCenter": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_fillStart": 0,
+    "_fillRange": 0,
+    "_isTrimmedMode": true,
+    "_atlas": null,
+    "_id": "b1Ub9bNY1EVqmq976iiXj9"
+  },
+  {
+    "__type__": "cc.ButtonComponent",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 96
+    },
+    "_enabled": true,
+    "clickEvents": [],
+    "_interactable": true,
+    "_transition": 2,
+    "_normalColor": {
+      "__type__": "cc.Color",
+      "r": 214,
+      "g": 214,
+      "b": 214,
+      "a": 255
+    },
+    "_hoverColor": {
+      "__type__": "cc.Color",
+      "r": 211,
+      "g": 211,
+      "b": 211,
+      "a": 255
+    },
+    "_pressColor": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_disabledColor": {
+      "__type__": "cc.Color",
+      "r": 124,
+      "g": 124,
+      "b": 124,
+      "a": 255
+    },
+    "_normalSprite": {
+      "__uuid__": "20835ba4-6145-4fbc-a58a-051ce700aa3e@spriteFrame"
+    },
+    "_hoverSprite": {
+      "__uuid__": "20835ba4-6145-4fbc-a58a-051ce700aa3e@spriteFrame"
+    },
+    "_pressedSprite": {
+      "__uuid__": "544e49d6-3f05-4fa8-9a9e-091f98fc2ce8@spriteFrame"
+    },
+    "_disabledSprite": {
+      "__uuid__": "951249e0-9f16-456d-8b85-a6ca954da16b@spriteFrame"
+    },
+    "_duration": 0.1,
+    "_zoomScale": 1.2,
+    "_target": {
+      "__id__": 96
+    },
+    "_id": "d9pCMY+eNCoL71ZRMqPwGS"
+  },
+  {
+    "__type__": "cc.Node",
     "_name": "PlayerHp",
     "_objFlags": 0,
     "_parent": {
@@ -3258,10 +3531,10 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 97
+        "__id__": 104
       },
       {
-        "__id__": 98
+        "__id__": 105
       }
     ],
     "_prefab": null,
@@ -3298,7 +3571,7 @@
     "_name": "PlayerHp<UITransformComponent>",
     "_objFlags": 0,
     "node": {
-      "__id__": 96
+      "__id__": 103
     },
     "_enabled": true,
     "_contentSize": {
@@ -3318,7 +3591,7 @@
     "_name": "PlayerHp<SpriteComponent>",
     "_objFlags": 0,
     "node": {
-      "__id__": 96
+      "__id__": 103
     },
     "_enabled": true,
     "_priority": 1,
@@ -3399,32 +3672,32 @@
     },
     "_children": [
       {
-        "__id__": 102
+        "__id__": 109
       },
       {
-        "__id__": 105
+        "__id__": 112
       },
       {
-        "__id__": 108
+        "__id__": 115
       },
       {
-        "__id__": 111
+        "__id__": 118
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 176
+        "__id__": 183
       },
       {
-        "__id__": 177
+        "__id__": 184
       },
       {
-        "__id__": 178
+        "__id__": 185
       }
     ],
     "_prefab": {
-      "__id__": 179
+      "__id__": 186
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -3459,17 +3732,17 @@
     "_name": "New Cube",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 101
+      "__id__": 108
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 103
+        "__id__": 110
       }
     ],
     "_prefab": {
-      "__id__": 104
+      "__id__": 111
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -3504,7 +3777,7 @@
     "_name": "Cube<ModelComponent>",
     "_objFlags": 0,
     "node": {
-      "__id__": 102
+      "__id__": 109
     },
     "_enabled": true,
     "_materials": [
@@ -3523,7 +3796,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 101
+      "__id__": 108
     },
     "asset": {
       "__uuid__": "1db6ff36-3f3b-4516-a096-cda5474a9c34"
@@ -3540,17 +3813,17 @@
     "_name": "New Cube",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 101
+      "__id__": 108
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 106
+        "__id__": 113
       }
     ],
     "_prefab": {
-      "__id__": 107
+      "__id__": 114
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -3585,7 +3858,7 @@
     "_name": "Cube<ModelComponent>",
     "_objFlags": 0,
     "node": {
-      "__id__": 105
+      "__id__": 112
     },
     "_enabled": true,
     "_materials": [
@@ -3604,7 +3877,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 101
+      "__id__": 108
     },
     "asset": {
       "__uuid__": "1db6ff36-3f3b-4516-a096-cda5474a9c34"
@@ -3621,17 +3894,17 @@
     "_name": "New Cube",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 101
+      "__id__": 108
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 109
+        "__id__": 116
       }
     ],
     "_prefab": {
-      "__id__": 110
+      "__id__": 117
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -3666,7 +3939,7 @@
     "_name": "Cube<ModelComponent>",
     "_objFlags": 0,
     "node": {
-      "__id__": 108
+      "__id__": 115
     },
     "_enabled": true,
     "_materials": [
@@ -3685,7 +3958,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 101
+      "__id__": 108
     },
     "asset": {
       "__uuid__": "1db6ff36-3f3b-4516-a096-cda5474a9c34"
@@ -3702,17 +3975,17 @@
     "_name": "PortalPar",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 101
+      "__id__": 108
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 112
+        "__id__": 119
       }
     ],
     "_prefab": {
-      "__id__": 175
+      "__id__": 182
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -3747,7 +4020,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 111
+      "__id__": 118
     },
     "_enabled": true,
     "_materials": [
@@ -3758,67 +4031,67 @@
     ],
     "_visFlags": 0,
     "startColor": {
-      "__id__": 113
+      "__id__": 120
     },
     "scaleSpace": 1,
     "startSize": {
-      "__id__": 117
+      "__id__": 124
     },
     "startSpeed": {
-      "__id__": 118
+      "__id__": 125
     },
     "startRotation": {
-      "__id__": 119
+      "__id__": 126
     },
     "startDelay": {
-      "__id__": 120
+      "__id__": 127
     },
     "startLifetime": {
-      "__id__": 121
+      "__id__": 128
     },
     "duration": 5,
     "loop": true,
     "simulationSpeed": 1,
     "playOnAwake": true,
     "gravityModifier": {
-      "__id__": 122
+      "__id__": 129
     },
     "rateOverTime": {
-      "__id__": 123
+      "__id__": 130
     },
     "rateOverDistance": {
-      "__id__": 124
+      "__id__": 131
     },
     "bursts": [],
     "colorOverLifetimeModule": {
-      "__id__": 125
+      "__id__": 132
     },
     "shapeModule": {
-      "__id__": 135
-    },
-    "sizeOvertimeModule": {
-      "__id__": 137
-    },
-    "velocityOvertimeModule": {
       "__id__": 142
     },
+    "sizeOvertimeModule": {
+      "__id__": 144
+    },
+    "velocityOvertimeModule": {
+      "__id__": 149
+    },
     "forceOvertimeModule": {
-      "__id__": 147
+      "__id__": 154
     },
     "limitVelocityOvertimeModule": {
-      "__id__": 151
+      "__id__": 158
     },
     "rotationOvertimeModule": {
-      "__id__": 156
-    },
-    "textureAnimationModule": {
-      "__id__": 160
-    },
-    "trailModule": {
       "__id__": 163
     },
+    "textureAnimationModule": {
+      "__id__": 167
+    },
+    "trailModule": {
+      "__id__": 170
+    },
     "renderer": {
-      "__id__": 174
+      "__id__": 181
     },
     "_prewarm": false,
     "_capacity": 1000,
@@ -3849,13 +4122,13 @@
       "a": 255
     },
     "gradient": {
-      "__id__": 114
+      "__id__": 121
     },
     "gradientMin": {
-      "__id__": 115
+      "__id__": 122
     },
     "gradientMax": {
-      "__id__": 116
+      "__id__": 123
     },
     "_mode": 2
   },
@@ -4401,7 +4674,7 @@
     "__type__": "cc.ColorOvertimeModule",
     "enable": true,
     "color": {
-      "__id__": 126
+      "__id__": 133
     }
   },
   {
@@ -4428,13 +4701,13 @@
       "a": 255
     },
     "gradient": {
-      "__id__": 127
+      "__id__": 134
     },
     "gradientMin": {
-      "__id__": 133
+      "__id__": 140
     },
     "gradientMax": {
-      "__id__": 134
+      "__id__": 141
     },
     "_mode": 1
   },
@@ -4442,21 +4715,21 @@
     "__type__": "cc.Gradient",
     "colorKeys": [
       {
-        "__id__": 128
+        "__id__": 135
       },
       {
-        "__id__": 129
+        "__id__": 136
       }
     ],
     "alphaKeys": [
       {
-        "__id__": 130
+        "__id__": 137
       },
       {
-        "__id__": 131
+        "__id__": 138
       },
       {
-        "__id__": 132
+        "__id__": 139
       }
     ],
     "mode": 0
@@ -4524,7 +4797,7 @@
     "arcMode": 0,
     "arcSpread": 8,
     "arcSpeed": {
-      "__id__": 136
+      "__id__": 143
     },
     "length": 0,
     "boxThickness": {
@@ -4624,16 +4897,16 @@
     "enable": true,
     "separateAxes": false,
     "size": {
-      "__id__": 138
+      "__id__": 145
     },
     "x": {
-      "__id__": 139
+      "__id__": 146
     },
     "y": {
-      "__id__": 140
+      "__id__": 147
     },
     "z": {
-      "__id__": 141
+      "__id__": 148
     }
   },
   {
@@ -4906,16 +5179,16 @@
     "__type__": "cc.VelocityOvertimeModule",
     "enable": false,
     "x": {
-      "__id__": 143
+      "__id__": 150
     },
     "y": {
-      "__id__": 144
+      "__id__": 151
     },
     "z": {
-      "__id__": 145
+      "__id__": 152
     },
     "speedModifier": {
-      "__id__": 146
+      "__id__": 153
     },
     "space": 1
   },
@@ -5183,13 +5456,13 @@
     "__type__": "cc.ForceOvertimeModule",
     "enable": false,
     "x": {
-      "__id__": 148
+      "__id__": 155
     },
     "y": {
-      "__id__": 149
+      "__id__": 156
     },
     "z": {
-      "__id__": 150
+      "__id__": 157
     },
     "space": 1
   },
@@ -5392,16 +5665,16 @@
     "__type__": "cc.LimitVelocityOvertimeModule",
     "enable": false,
     "limitX": {
-      "__id__": 152
+      "__id__": 159
     },
     "limitY": {
-      "__id__": 153
+      "__id__": 160
     },
     "limitZ": {
-      "__id__": 154
+      "__id__": 161
     },
     "limit": {
-      "__id__": 155
+      "__id__": 162
     },
     "dampen": 3,
     "separateAxes": false,
@@ -5672,13 +5945,13 @@
     "enable": false,
     "_separateAxes": false,
     "x": {
-      "__id__": 157
+      "__id__": 164
     },
     "y": {
-      "__id__": 158
+      "__id__": 165
     },
     "z": {
-      "__id__": 159
+      "__id__": 166
     }
   },
   {
@@ -5884,10 +6157,10 @@
     "numTilesY": 0,
     "animation": 0,
     "frameOverTime": {
-      "__id__": 161
+      "__id__": 168
     },
     "startFrame": {
-      "__id__": 162
+      "__id__": 169
     },
     "cycleCount": 0,
     "_flipU": 0,
@@ -6031,25 +6304,25 @@
     "_enable": false,
     "mode": 0,
     "lifeTime": {
-      "__id__": 164
+      "__id__": 171
     },
     "_minParticleDistance": 0.1,
     "existWithParticles": true,
     "textureMode": 0,
     "widthFromParticle": true,
     "widthRatio": {
-      "__id__": 165
+      "__id__": 172
     },
     "colorFromParticle": false,
     "colorOverTrail": {
-      "__id__": 166
+      "__id__": 173
     },
     "colorOvertime": {
-      "__id__": 170
+      "__id__": 177
     },
     "_space": 0,
     "_particleSystem": {
-      "__id__": 112
+      "__id__": 119
     }
   },
   {
@@ -6206,13 +6479,13 @@
       "a": 255
     },
     "gradient": {
-      "__id__": 167
+      "__id__": 174
     },
     "gradientMin": {
-      "__id__": 168
+      "__id__": 175
     },
     "gradientMax": {
-      "__id__": 169
+      "__id__": 176
     },
     "_mode": 0
   },
@@ -6258,13 +6531,13 @@
       "a": 255
     },
     "gradient": {
-      "__id__": 171
+      "__id__": 178
     },
     "gradientMin": {
-      "__id__": 172
+      "__id__": 179
     },
     "gradientMax": {
-      "__id__": 173
+      "__id__": 180
     },
     "_mode": 0
   },
@@ -6293,13 +6566,13 @@
     "_lengthScale": 1,
     "_mesh": null,
     "_particleSystem": {
-      "__id__": 112
+      "__id__": 119
     }
   },
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 101
+      "__id__": 108
     },
     "asset": {
       "__uuid__": "1db6ff36-3f3b-4516-a096-cda5474a9c34"
@@ -6316,7 +6589,7 @@
     "_name": "Torus<ModelComponent>",
     "_objFlags": 0,
     "node": {
-      "__id__": 101
+      "__id__": 108
     },
     "_enabled": false,
     "_materials": [
@@ -6335,7 +6608,7 @@
     "_name": "Portal<BoxColliderComponent>",
     "_objFlags": 0,
     "node": {
-      "__id__": 101
+      "__id__": 108
     },
     "_enabled": true,
     "_material": null,
@@ -6359,7 +6632,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 101
+      "__id__": 108
     },
     "_enabled": true,
     "Scene1Prefab": {
@@ -6376,7 +6649,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 101
+      "__id__": 108
     },
     "asset": {
       "__uuid__": "1db6ff36-3f3b-4516-a096-cda5474a9c34"
@@ -6397,44 +6670,44 @@
     },
     "_children": [
       {
-        "__id__": 181
+        "__id__": 188
       },
       {
-        "__id__": 303
+        "__id__": 310
       },
       {
-        "__id__": 312
+        "__id__": 319
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 315
-      },
-      {
-        "__id__": 316
-      },
-      {
-        "__id__": 317
-      },
-      {
-        "__id__": 318
-      },
-      {
-        "__id__": 319
-      },
-      {
-        "__id__": 320
-      },
-      {
-        "__id__": 321
-      },
-      {
         "__id__": 322
+      },
+      {
+        "__id__": 323
+      },
+      {
+        "__id__": 324
+      },
+      {
+        "__id__": 325
+      },
+      {
+        "__id__": 326
+      },
+      {
+        "__id__": 327
+      },
+      {
+        "__id__": 328
+      },
+      {
+        "__id__": 329
       }
     ],
     "_prefab": {
-      "__id__": 323
+      "__id__": 330
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -6469,23 +6742,23 @@
     "_name": "RootNode",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 180
+      "__id__": 187
     },
     "_children": [
       {
-        "__id__": 182
+        "__id__": 189
       },
       {
-        "__id__": 296
+        "__id__": 303
       },
       {
-        "__id__": 299
+        "__id__": 306
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 302
+      "__id__": 309
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -6520,17 +6793,17 @@
     "_name": "Ar",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 181
+      "__id__": 188
     },
     "_children": [
       {
-        "__id__": 183
+        "__id__": 190
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 295
+      "__id__": 302
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -6565,23 +6838,23 @@
     "_name": "Root",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 182
+      "__id__": 189
     },
     "_children": [
       {
-        "__id__": 184
+        "__id__": 191
       },
       {
-        "__id__": 282
+        "__id__": 289
       },
       {
-        "__id__": 288
+        "__id__": 295
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 294
+      "__id__": 301
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -6616,20 +6889,20 @@
     "_name": "Base",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 183
+      "__id__": 190
     },
     "_children": [
       {
-        "__id__": 185
+        "__id__": 192
       },
       {
-        "__id__": 255
+        "__id__": 262
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 281
+      "__id__": 288
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -6664,17 +6937,17 @@
     "_name": "Body",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 184
+      "__id__": 191
     },
     "_children": [
       {
-        "__id__": 186
+        "__id__": 193
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 254
+      "__id__": 261
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -6709,23 +6982,23 @@
     "_name": "Chest",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 185
+      "__id__": 192
     },
     "_children": [
       {
-        "__id__": 187
+        "__id__": 194
       },
       {
-        "__id__": 217
+        "__id__": 224
       },
       {
-        "__id__": 247
+        "__id__": 254
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 253
+      "__id__": 260
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -6760,17 +7033,17 @@
     "_name": "Shoulder_L",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 186
+      "__id__": 193
     },
     "_children": [
       {
-        "__id__": 188
+        "__id__": 195
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 216
+      "__id__": 223
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -6805,17 +7078,17 @@
     "_name": "Arm_L",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 187
+      "__id__": 194
     },
     "_children": [
       {
-        "__id__": 189
+        "__id__": 196
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 215
+      "__id__": 222
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -6850,17 +7123,17 @@
     "_name": "Elbow_L",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 188
+      "__id__": 195
     },
     "_children": [
       {
-        "__id__": 190
+        "__id__": 197
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 214
+      "__id__": 221
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -6895,23 +7168,23 @@
     "_name": "Hand_L",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 189
+      "__id__": 196
     },
     "_children": [
       {
-        "__id__": 191
+        "__id__": 198
       },
       {
-        "__id__": 197
+        "__id__": 204
       },
       {
-        "__id__": 205
+        "__id__": 212
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 213
+      "__id__": 220
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -6946,17 +7219,17 @@
     "_name": "Finger_L.003",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 190
+      "__id__": 197
     },
     "_children": [
       {
-        "__id__": 192
+        "__id__": 199
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 196
+      "__id__": 203
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -6991,17 +7264,17 @@
     "_name": "Finger_L.004",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 191
+      "__id__": 198
     },
     "_children": [
       {
-        "__id__": 193
+        "__id__": 200
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 195
+      "__id__": 202
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -7036,13 +7309,13 @@
     "_name": "Finger_L.004_end",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 192
+      "__id__": 199
     },
     "_children": [],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 194
+      "__id__": 201
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -7075,7 +7348,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -7090,7 +7363,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -7105,7 +7378,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -7122,17 +7395,17 @@
     "_name": "Finger_L.005",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 190
+      "__id__": 197
     },
     "_children": [
       {
-        "__id__": 198
+        "__id__": 205
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 204
+      "__id__": 211
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -7167,17 +7440,17 @@
     "_name": "Finger_L.006",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 197
+      "__id__": 204
     },
     "_children": [
       {
-        "__id__": 199
+        "__id__": 206
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 203
+      "__id__": 210
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -7212,17 +7485,17 @@
     "_name": "Finger_L.007",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 198
+      "__id__": 205
     },
     "_children": [
       {
-        "__id__": 200
+        "__id__": 207
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 202
+      "__id__": 209
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -7257,13 +7530,13 @@
     "_name": "Finger_L.007_end",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 199
+      "__id__": 206
     },
     "_children": [],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 201
+      "__id__": 208
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -7296,7 +7569,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -7311,7 +7584,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -7326,7 +7599,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -7341,7 +7614,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -7358,17 +7631,17 @@
     "_name": "Finger_L",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 190
+      "__id__": 197
     },
     "_children": [
       {
-        "__id__": 206
+        "__id__": 213
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 212
+      "__id__": 219
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -7403,17 +7676,17 @@
     "_name": "Finger_L.001",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 205
+      "__id__": 212
     },
     "_children": [
       {
-        "__id__": 207
+        "__id__": 214
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 211
+      "__id__": 218
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -7448,17 +7721,17 @@
     "_name": "Finger_L.002",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 206
+      "__id__": 213
     },
     "_children": [
       {
-        "__id__": 208
+        "__id__": 215
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 210
+      "__id__": 217
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -7493,13 +7766,13 @@
     "_name": "Finger_L.002_end",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 207
+      "__id__": 214
     },
     "_children": [],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 209
+      "__id__": 216
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -7532,7 +7805,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -7547,7 +7820,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -7562,7 +7835,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -7577,7 +7850,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -7592,7 +7865,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -7607,7 +7880,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -7622,7 +7895,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -7637,7 +7910,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -7654,17 +7927,17 @@
     "_name": "Shoulder_R",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 186
+      "__id__": 193
     },
     "_children": [
       {
-        "__id__": 218
+        "__id__": 225
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 246
+      "__id__": 253
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -7699,17 +7972,17 @@
     "_name": "Arm_R",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 217
+      "__id__": 224
     },
     "_children": [
       {
-        "__id__": 219
+        "__id__": 226
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 245
+      "__id__": 252
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -7744,17 +8017,17 @@
     "_name": "Elbow_R",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 218
+      "__id__": 225
     },
     "_children": [
       {
-        "__id__": 220
+        "__id__": 227
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 244
+      "__id__": 251
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -7789,23 +8062,23 @@
     "_name": "Hand_R",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 219
+      "__id__": 226
     },
     "_children": [
       {
-        "__id__": 221
+        "__id__": 228
       },
       {
-        "__id__": 227
+        "__id__": 234
       },
       {
-        "__id__": 235
+        "__id__": 242
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 243
+      "__id__": 250
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -7840,17 +8113,17 @@
     "_name": "Finger_R.003",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 220
+      "__id__": 227
     },
     "_children": [
       {
-        "__id__": 222
+        "__id__": 229
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 226
+      "__id__": 233
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -7885,17 +8158,17 @@
     "_name": "Finger_R.004",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 221
+      "__id__": 228
     },
     "_children": [
       {
-        "__id__": 223
+        "__id__": 230
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 225
+      "__id__": 232
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -7930,13 +8203,13 @@
     "_name": "Finger_R.004_end",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 222
+      "__id__": 229
     },
     "_children": [],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 224
+      "__id__": 231
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -7969,7 +8242,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -7984,7 +8257,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -7999,7 +8272,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -8016,17 +8289,17 @@
     "_name": "Finger_R.005",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 220
+      "__id__": 227
     },
     "_children": [
       {
-        "__id__": 228
+        "__id__": 235
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 234
+      "__id__": 241
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -8061,17 +8334,17 @@
     "_name": "Finger_R.006",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 227
+      "__id__": 234
     },
     "_children": [
       {
-        "__id__": 229
+        "__id__": 236
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 233
+      "__id__": 240
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -8106,17 +8379,17 @@
     "_name": "Finger_R.007",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 228
+      "__id__": 235
     },
     "_children": [
       {
-        "__id__": 230
+        "__id__": 237
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 232
+      "__id__": 239
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -8151,13 +8424,13 @@
     "_name": "Finger_R.007_end",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 229
+      "__id__": 236
     },
     "_children": [],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 231
+      "__id__": 238
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -8190,7 +8463,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -8205,7 +8478,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -8220,7 +8493,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -8235,7 +8508,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -8252,17 +8525,17 @@
     "_name": "Finger_R",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 220
+      "__id__": 227
     },
     "_children": [
       {
-        "__id__": 236
+        "__id__": 243
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 242
+      "__id__": 249
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -8297,17 +8570,17 @@
     "_name": "Finger_R.001",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 235
+      "__id__": 242
     },
     "_children": [
       {
-        "__id__": 237
+        "__id__": 244
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 241
+      "__id__": 248
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -8342,17 +8615,17 @@
     "_name": "Finger_R.002",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 236
+      "__id__": 243
     },
     "_children": [
       {
-        "__id__": 238
+        "__id__": 245
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 240
+      "__id__": 247
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -8387,13 +8660,13 @@
     "_name": "Finger_R.002_end",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 237
+      "__id__": 244
     },
     "_children": [],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 239
+      "__id__": 246
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -8426,7 +8699,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -8441,7 +8714,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -8456,7 +8729,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -8471,7 +8744,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -8486,7 +8759,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -8501,7 +8774,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -8516,7 +8789,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -8531,7 +8804,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -8548,17 +8821,17 @@
     "_name": "Neck",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 186
+      "__id__": 193
     },
     "_children": [
       {
-        "__id__": 248
+        "__id__": 255
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 252
+      "__id__": 259
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -8593,17 +8866,17 @@
     "_name": "Head",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 247
+      "__id__": 254
     },
     "_children": [
       {
-        "__id__": 249
+        "__id__": 256
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 251
+      "__id__": 258
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -8638,13 +8911,13 @@
     "_name": "Head_end",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 248
+      "__id__": 255
     },
     "_children": [],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 250
+      "__id__": 257
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -8677,7 +8950,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -8692,7 +8965,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -8707,7 +8980,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -8722,7 +8995,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -8737,7 +9010,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -8754,20 +9027,20 @@
     "_name": "Waist",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 184
+      "__id__": 191
     },
     "_children": [
       {
-        "__id__": 256
+        "__id__": 263
       },
       {
-        "__id__": 268
+        "__id__": 275
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 280
+      "__id__": 287
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -8802,17 +9075,17 @@
     "_name": "Hips_L",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 255
+      "__id__": 262
     },
     "_children": [
       {
-        "__id__": 257
+        "__id__": 264
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 267
+      "__id__": 274
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -8847,17 +9120,17 @@
     "_name": "Leg_L",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 256
+      "__id__": 263
     },
     "_children": [
       {
-        "__id__": 258
+        "__id__": 265
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 266
+      "__id__": 273
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -8892,17 +9165,17 @@
     "_name": "Knee_L",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 257
+      "__id__": 264
     },
     "_children": [
       {
-        "__id__": 259
+        "__id__": 266
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 265
+      "__id__": 272
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -8937,17 +9210,17 @@
     "_name": "Foot_L",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 258
+      "__id__": 265
     },
     "_children": [
       {
-        "__id__": 260
+        "__id__": 267
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 264
+      "__id__": 271
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -8982,17 +9255,17 @@
     "_name": "Foot.1_L",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 259
+      "__id__": 266
     },
     "_children": [
       {
-        "__id__": 261
+        "__id__": 268
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 263
+      "__id__": 270
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -9027,13 +9300,13 @@
     "_name": "Foot.1_L_end",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 260
+      "__id__": 267
     },
     "_children": [],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 262
+      "__id__": 269
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -9066,7 +9339,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -9081,7 +9354,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -9096,7 +9369,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -9111,7 +9384,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -9126,7 +9399,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -9141,7 +9414,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -9158,17 +9431,17 @@
     "_name": "Hips_R",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 255
+      "__id__": 262
     },
     "_children": [
       {
-        "__id__": 269
+        "__id__": 276
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 279
+      "__id__": 286
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -9203,17 +9476,17 @@
     "_name": "Leg_R",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 268
+      "__id__": 275
     },
     "_children": [
       {
-        "__id__": 270
+        "__id__": 277
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 278
+      "__id__": 285
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -9248,17 +9521,17 @@
     "_name": "Knee_R",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 269
+      "__id__": 276
     },
     "_children": [
       {
-        "__id__": 271
+        "__id__": 278
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 277
+      "__id__": 284
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -9293,17 +9566,17 @@
     "_name": "Foot_R",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 270
+      "__id__": 277
     },
     "_children": [
       {
-        "__id__": 272
+        "__id__": 279
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 276
+      "__id__": 283
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -9338,17 +9611,17 @@
     "_name": "Foot.1_R",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 271
+      "__id__": 278
     },
     "_children": [
       {
-        "__id__": 273
+        "__id__": 280
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 275
+      "__id__": 282
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -9383,13 +9656,13 @@
     "_name": "Foot.1_R_end",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 272
+      "__id__": 279
     },
     "_children": [],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 274
+      "__id__": 281
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -9422,7 +9695,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -9437,7 +9710,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -9452,7 +9725,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -9467,7 +9740,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -9482,7 +9755,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -9497,7 +9770,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -9512,7 +9785,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -9527,7 +9800,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -9544,17 +9817,17 @@
     "_name": "Foot.IK_L",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 183
+      "__id__": 190
     },
     "_children": [
       {
-        "__id__": 283
+        "__id__": 290
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 287
+      "__id__": 294
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -9589,17 +9862,17 @@
     "_name": "Knee.IK_L",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 282
+      "__id__": 289
     },
     "_children": [
       {
-        "__id__": 284
+        "__id__": 291
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 286
+      "__id__": 293
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -9634,13 +9907,13 @@
     "_name": "Knee.IK_L_end",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 283
+      "__id__": 290
     },
     "_children": [],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 285
+      "__id__": 292
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -9673,7 +9946,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -9688,7 +9961,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -9703,7 +9976,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -9720,17 +9993,17 @@
     "_name": "Foot.IK_R",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 183
+      "__id__": 190
     },
     "_children": [
       {
-        "__id__": 289
+        "__id__": 296
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 293
+      "__id__": 300
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -9765,17 +10038,17 @@
     "_name": "Knee.IK_R",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 288
+      "__id__": 295
     },
     "_children": [
       {
-        "__id__": 290
+        "__id__": 297
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 292
+      "__id__": 299
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -9810,13 +10083,13 @@
     "_name": "Knee.IK_R_end",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 289
+      "__id__": 296
     },
     "_children": [],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 291
+      "__id__": 298
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -9849,7 +10122,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -9864,7 +10137,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -9879,7 +10152,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -9894,7 +10167,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -9909,7 +10182,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -9926,17 +10199,17 @@
     "_name": "SpaceSoldierMale01",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 181
+      "__id__": 188
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 297
+        "__id__": 304
       }
     ],
     "_prefab": {
-      "__id__": 298
+      "__id__": 305
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -9971,7 +10244,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 296
+      "__id__": 303
     },
     "_enabled": true,
     "_materials": [
@@ -9989,14 +10262,14 @@
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@UnnamedSkeleton-0.skeleton"
     },
     "_skinningRoot": {
-      "__id__": 180
+      "__id__": 187
     },
     "_id": "6cnCZXHUlCbqXNFfQehO5V"
   },
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -10013,17 +10286,17 @@
     "_name": "Gun",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 181
+      "__id__": 188
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 300
+        "__id__": 307
       }
     ],
     "_prefab": {
-      "__id__": 301
+      "__id__": 308
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -10058,7 +10331,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 299
+      "__id__": 306
     },
     "_enabled": true,
     "_materials": [
@@ -10076,14 +10349,14 @@
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@UnnamedSkeleton-1.skeleton"
     },
     "_skinningRoot": {
-      "__id__": 180
+      "__id__": 187
     },
     "_id": "b4eKVYgIpDEZjxKeLXXHqG"
   },
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -10098,7 +10371,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -10115,24 +10388,24 @@
     "_name": "center",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 180
+      "__id__": 187
     },
     "_children": [
       {
-        "__id__": 304
+        "__id__": 311
       },
       {
-        "__id__": 307
+        "__id__": 314
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 310
+        "__id__": 317
       }
     ],
     "_prefab": {
-      "__id__": 311
+      "__id__": 318
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -10167,17 +10440,17 @@
     "_name": "Camera",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 303
+      "__id__": 310
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 305
+        "__id__": 312
       }
     ],
     "_prefab": {
-      "__id__": 306
+      "__id__": 313
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -10212,7 +10485,7 @@
     "_name": "Camera<CameraComponent>",
     "_objFlags": 0,
     "node": {
-      "__id__": 304
+      "__id__": 311
     },
     "_enabled": true,
     "_projection": 1,
@@ -10246,7 +10519,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -10263,17 +10536,17 @@
     "_name": "rShooter",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 303
+      "__id__": 310
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 308
+        "__id__": 315
       }
     ],
     "_prefab": {
-      "__id__": 309
+      "__id__": 316
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -10308,7 +10581,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 307
+      "__id__": 314
     },
     "_enabled": true,
     "BulletPrefab": {
@@ -10319,7 +10592,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -10336,7 +10609,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 303
+      "__id__": 310
     },
     "_enabled": true,
     "_id": "08OPBrgmZH5bOrxNI6hT/L"
@@ -10344,7 +10617,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -10361,17 +10634,17 @@
     "_name": "Sphere Light",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 180
+      "__id__": 187
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 313
+        "__id__": 320
       }
     ],
     "_prefab": {
-      "__id__": 314
+      "__id__": 321
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -10406,7 +10679,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 312
+      "__id__": 319
     },
     "_enabled": true,
     "_color": {
@@ -10427,7 +10700,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -10444,7 +10717,7 @@
     "_name": "SpaceSoldier_Male_01<SkeletalAnimationComponent>",
     "_objFlags": 0,
     "node": {
-      "__id__": 180
+      "__id__": 187
     },
     "_enabled": true,
     "playOnLoad": false,
@@ -10521,7 +10794,7 @@
     "_name": "Player<BoxColliderComponent>",
     "_objFlags": 0,
     "node": {
-      "__id__": 180
+      "__id__": 187
     },
     "_enabled": true,
     "_material": null,
@@ -10545,7 +10818,7 @@
     "_name": "Player<BoxColliderComponent>",
     "_objFlags": 0,
     "node": {
-      "__id__": 180
+      "__id__": 187
     },
     "_enabled": true,
     "_material": null,
@@ -10569,7 +10842,7 @@
     "_name": "Player<RigidBodyComponent>",
     "_objFlags": 0,
     "node": {
-      "__id__": 180
+      "__id__": 187
     },
     "_enabled": true,
     "_mass": 10,
@@ -10597,7 +10870,7 @@
     "_name": "Player<firstper1>",
     "_objFlags": 0,
     "node": {
-      "__id__": 180
+      "__id__": 187
     },
     "_enabled": true,
     "_id": "22hjdCrjBPormSE50ZHExk"
@@ -10607,7 +10880,7 @@
     "_name": "Player<jumpscene1>",
     "_objFlags": 0,
     "node": {
-      "__id__": 180
+      "__id__": 187
     },
     "_enabled": true,
     "AppearParPrefab": {
@@ -10620,7 +10893,7 @@
     "_name": "Player<animationcol1>",
     "_objFlags": 0,
     "node": {
-      "__id__": 180
+      "__id__": 187
     },
     "_enabled": true,
     "_id": "594bzCacFP4rzWLa/j1nbf"
@@ -10630,7 +10903,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 180
+      "__id__": 187
     },
     "_enabled": true,
     "_id": "e7A7WQvgJIt72uZNY0cUMd"
@@ -10638,7 +10911,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 180
+      "__id__": 187
     },
     "asset": {
       "__uuid__": "e78a2182-f076-458c-8973-512c29485911@SpaceSoldier_Male_01.prefab"
@@ -10653,13 +10926,13 @@
   {
     "__type__": "cc.SceneGlobals",
     "ambient": {
-      "__id__": 325
+      "__id__": 332
     },
     "skybox": {
-      "__id__": 326
+      "__id__": 333
     },
     "planarShadows": {
-      "__id__": 327
+      "__id__": 334
     }
   },
   {
