@@ -22,7 +22,12 @@ export class Con extends Component {
     public static RecoilSwitch:boolean=false;
     //玩家受伤信号
     public static PlayerHit:boolean=false;
-
+    //方向控制
+    public static startForward:boolean=false;
+    public static startRight:boolean=false;
+    public static startLeft:boolean=false;
+    public static startBackward:boolean=false;
+    public static startJump:boolean=false;
     //子弹信息
     //子弹伤害
     public static BulletD: number =30;

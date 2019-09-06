@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, systemEvent, SystemEvent, math, director, Vec3 } from "cc";
+import { _decorator, Component, Node, systemEvent, SystemEvent, math, director, Vec3, Vec2 } from "cc";
 const { ccclass, property } = _decorator;
 import { Con } from './Constants';
 
@@ -21,12 +21,11 @@ export class recoil1 extends Component {
         systemEvent.on(SystemEvent.EventType.MOUSE_UP, this.onMouseUp, this);
         systemEvent.on(SystemEvent.EventType.MOUSE_DOWN, this.onMouseDown, this);
         systemEvent.on(SystemEvent.EventType.MOUSE_MOVE,this.onMouseMove,this); 
-        /*
+        
         //触摸监听
         systemEvent.on(SystemEvent.EventType.TOUCH_MOVE,this.onTouchMove,this);
         systemEvent.on(SystemEvent.EventType.TOUCH_END,this.onTouchEnd,this);
         systemEvent.on(SystemEvent.EventType.TOUCH_START,this.onTouchStart,this);
-        */
         
      }
 
@@ -48,12 +47,12 @@ export class recoil1 extends Component {
         this.node.setRotation(rotationy);
         }
     }
-    /*
+    
     onTouchMove(event){
-        if(event.movementX!=0){
+        if(event.getDelta().y!=0){
             const up =cc.v3(0,1,0);
             const rotationx = this.node.getRotation();
-            math.Quat.rotateAround(rotationx, rotationx, up, -event.movementX/5/ 360.0 * 3.1415926535);
+            math.Quat.rotateAround(rotationx, rotationx,this._getDirection(-1, 0, 0), -event.getDelta().y/5/ 360.0 * 3.1415926535);
             this.node.setRotation(rotationx);
         }
     }
@@ -64,8 +63,9 @@ export class recoil1 extends Component {
 
     onTouchStart(event){
         this._recoil=true;
+        
     }
-*/
+
 
      update (deltaTime: number) {
          // Your update function goes here.

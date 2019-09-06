@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, Vec3, systemEvent, SystemEvent, macro, game, math, director } from "cc";
+import { _decorator, Component, Node, Vec3, systemEvent, SystemEvent, macro, game, math, director, Vec2 } from "cc";
 const { ccclass, property } = _decorator;
 import { Con } from './Constants';
 
@@ -31,6 +31,7 @@ export class firstper1 extends Component {
     private _animationComponent:any =null;
 
     private rigidbody:any=null;
+    
 
     onLoad() {
         
@@ -43,33 +44,29 @@ export class firstper1 extends Component {
         systemEvent.on(SystemEvent.EventType.MOUSE_DOWN, this.onMouseDown, this);
         systemEvent.on(SystemEvent.EventType.MOUSE_MOVE,this.onMouseMove,this);
         
-        /*
         //触摸监听
         systemEvent.on(SystemEvent.EventType.TOUCH_MOVE,this.onTouchMove,this);
         systemEvent.on(SystemEvent.EventType.TOUCH_END,this.onTouchEnd,this);
         systemEvent.on(SystemEvent.EventType.TOUCH_START,this.onTouchStart,this);
-        */
+        
      }
 
      onKeyUp(event){
         switch(event.keyCode) {
             case macro.KEY.a:
-                this._startLeft = false;
+                Con.startLeft = false;
                 break;
             case macro.KEY.d:
-                this._startRight = false;
+                Con.startRight = false;
                 break;
             case macro.KEY.w:
-                this._startForward = false;
+                Con.startForward = false;
                 break;
             case macro.KEY.s:
-                this._startBackward = false;
+                Con.startBackward = false;
                 break;
             case macro.KEY.space:
                 this._startJump=false;
-                break;
-            case macro.KEY.shift:
-                this._startRun=false;
                 break;
         }
     }
@@ -77,25 +74,22 @@ export class firstper1 extends Component {
     onKeyDown(event){
         switch(event.keyCode) {
             case macro.KEY.a:
-                this._startLeft = true;
+                Con.startLeft = true;
                 break;
             case macro.KEY.d:
-                this._startRight = true;
+                Con.startRight = true;
                 break;
             case macro.KEY.w:
-                this._startForward = true;
+                Con.startForward = true;
                 break;
             case macro.KEY.s:
-                this._startBackward = true;
+                Con.startBackward = true;
                 break;
             case macro.KEY.f:
                 Con.RecoilSwitch =! Con.RecoilSwitch;
                 break;
             case macro.KEY.space:
                 this._startJump=true;
-                break;
-            case macro.KEY.shift:
-                this._startRun=true;
                 break;
         }
     }
@@ -124,19 +118,19 @@ export class firstper1 extends Component {
 
     onMouseMove(event){
         if(event.movementX!=0){
-            const up =cc.v3(0,1,0);
+            const up =new Vec3(0,1,0);
             const rotationx = this.node.getRotation();
             math.Quat.rotateAround(rotationx, rotationx, up, -event.movementX/5/ 360.0 * 3.1415926535);
             this.node.setRotation(rotationx);
         }
     }
     
-   /*
+   
     onTouchMove(event){
-        if(event.movementX!=0){
-            const up =cc.v3(0,1,0);
+        if(event.getDelta().x!=0){
+            const up =new Vec3(0,1,0);
             const rotationx = this.node.getRotation();
-            math.Quat.rotateAround(rotationx, rotationx, up, -event.movementX/5/ 360.0 * 3.1415926535);
+            math.Quat.rotateAround(rotationx, rotationx, up, -event.getDelta().x/5/ 360.0 * 3.1415926535);
             this.node.setRotation(rotationx);
         }
     }
@@ -158,8 +152,8 @@ export class firstper1 extends Component {
         if (Con.PlayerHp>0) {
             Con.AniShoot=true;
         }
+        
     }
-    */
     start () {
         // Your initialization goes here.
         //获取血量组件
@@ -175,6 +169,31 @@ export class firstper1 extends Component {
     }
 
      update (deltaTime: number) {
+        if(Con.startForward){
+            this._startForward=true;
+        }else{
+            this._startForward=false;
+        }
+        if(Con.startRight){
+            this._startRight=true;
+        }else{
+            this._startRight=false;
+        }
+        if(Con.startLeft){
+            this._startLeft=true;
+        }else{
+            this._startLeft=false;
+        }
+        if(Con.startBackward){
+            this._startBackward=true;
+        }else{
+            this._startBackward=false;
+        }
+        if(Con.startJump){
+            this._startJump=true;
+        }else{
+            this._startJump=false;
+        }
         this._sprite.fillRange=Con.PlayerHp/100;
         //血量为0限制行动
         if(Con.PlayerHp>0){
@@ -265,8 +284,6 @@ export class firstper1 extends Component {
         //受伤开启受伤动画
         if(Con.PlayerHit){
             Con.AniHit=true;
-           // Con.isanirunshoot=false;
-          //  Con.isaniidleshoot=false;
             this._Hittimer+=1*deltaTime;
             //受伤后撤
             const position = this.node.getPosition();
@@ -283,7 +300,6 @@ export class firstper1 extends Component {
             this._Hittimer=0;
         }
     }
-       //血量为0失败暂停，以后加上切换失败界面！！！！！！！！！！
        if(Con.PlayerHp<=0){
            Con.AniHit=false;
            Con.AniIdle=false;

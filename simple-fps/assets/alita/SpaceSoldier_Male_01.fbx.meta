@@ -1,5 +1,5 @@
 {
-  "ver": "1.1.2212",
+  "ver": "1.1.2225",
   "importer": "fbx",
   "imported": true,
   "uuid": "e78a2182-f076-458c-8973-512c29485911",
@@ -442,6 +442,20 @@
         "gltfIndex": 1
       }
     },
+    "TexSpaceSoldierM01.png.image": {
+      "ver": "1.0.0",
+      "importer": "gltf-embeded-image",
+      "uuid": "e78a2182-f076-458c-8973-512c29485911@TexSpaceSoldierM01.png.image",
+      "imported": true,
+      "files": [
+        ".png",
+        ".json"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 0
+      }
+    },
     "Texture.texture": {
       "ver": "1.0.19",
       "importer": "texture",
@@ -459,8 +473,8 @@
         "mipfilter": "none",
         "premultiplyAlpha": false,
         "anisotropy": 1,
-        "isUuid": false,
-        "imageUuidOrDatabaseUri": "db://assets/alita/TexSpaceSoldierM01.png"
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "e78a2182-f076-458c-8973-512c29485911@TexSpaceSoldierM01.png.image"
       }
     },
     "SpaceSoldier.material": {
@@ -771,8 +785,8 @@
       ],
       "images": [
         {
-          "embeded": false,
-          "uuidOrDatabaseUri": "db://assets/alita/TexSpaceSoldierM01.png"
+          "embeded": true,
+          "uuidOrDatabaseUri": "e78a2182-f076-458c-8973-512c29485911@TexSpaceSoldierM01.png.image"
         }
       ],
       "textures": [
