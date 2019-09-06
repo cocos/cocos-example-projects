@@ -1,5 +1,5 @@
-import { _decorator, Component, Node, Vec3, systemEvent, SystemEvent, macro, game, math, director, Vec2 } from "cc";
-const { ccclass, property } = _decorator;
+import { _decorator, Component, Vec3, systemEvent, SystemEvent, macro, game, math } from "cc";
+const { ccclass} = _decorator;
 import { Con } from './Constants';
 
 @ccclass("firstper1")
@@ -15,15 +15,13 @@ export class firstper1 extends Component {
     private _startForward:boolean =false;
     private _startBackward:boolean =false;
     private _startJump:boolean =false;
-        //跑步
-    private _startRun:boolean =false;
-        //跳跃检测
+    //跳跃检测
     private _ifJump:boolean =false;
-        //跳跃计时
+    //跳跃计时
     private _jumptimer:number =0;
-        //受伤计时
+    //受伤计时
     private _Hittimer:number = 0;
-        //失败计时
+    //失败计时
     private _Deltimmer:number = 0;
 
     private _sprite:any=null;
@@ -46,8 +44,6 @@ export class firstper1 extends Component {
         
         //触摸监听
         systemEvent.on(SystemEvent.EventType.TOUCH_MOVE,this.onTouchMove,this);
-        systemEvent.on(SystemEvent.EventType.TOUCH_END,this.onTouchEnd,this);
-        systemEvent.on(SystemEvent.EventType.TOUCH_START,this.onTouchStart,this);
         
      }
 
@@ -66,7 +62,7 @@ export class firstper1 extends Component {
                 Con.startBackward = false;
                 break;
             case macro.KEY.space:
-                this._startJump=false;
+                Con.startJump=false;
                 break;
         }
     }
@@ -89,7 +85,7 @@ export class firstper1 extends Component {
                 Con.RecoilSwitch =! Con.RecoilSwitch;
                 break;
             case macro.KEY.space:
-                this._startJump=true;
+                Con.startJump=true;
                 break;
         }
     }
@@ -98,7 +94,7 @@ export class firstper1 extends Component {
         if (event.getButton() === 2) {
             game.canvas.requestPointerLock();
         } 
-        if (event.getButton() === 0&&Con.PlayerHp>0) {
+        if (event.getButton() === 0&&Con.PlayerHp>0&&Con.buttonevent==false) {
             Con.AniShoot=true;
         } 
     }
@@ -135,25 +131,6 @@ export class firstper1 extends Component {
         }
     }
 
-    onTouchEnd(event){
-        if (Con.PlayerHp>0) {
-            Con.AniShoot=false;
-            }
-    
-            Con.isanirun=false;
-            Con.isanijump=false;
-            Con.isanishoot=false;
-            Con.isaniidleshoot=false;
-            Con.isanirunshoot=false;
-            Con.isanijumpshoot=false;
-    }
-
-    onTouchStart(event){
-        if (Con.PlayerHp>0) {
-            Con.AniShoot=true;
-        }
-        
-    }
     start () {
         // Your initialization goes here.
         //获取血量组件
@@ -163,12 +140,13 @@ export class firstper1 extends Component {
         //获取动画组件
         this._animationComponent = this.node.getComponent(cc.AnimationComponent);
 
-
         //鼠标消失
         game.canvas.requestPointerLock();
+
     }
 
      update (deltaTime: number) {
+        //处理按钮键鼠控制矛盾
         if(Con.startForward){
             this._startForward=true;
         }else{
