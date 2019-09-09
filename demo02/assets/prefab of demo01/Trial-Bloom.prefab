@@ -1,0 +1,2672 @@
+[
+  {
+    "__type__": "cc.Prefab",
+    "_name": "",
+    "_objFlags": 0,
+    "_native": "",
+    "data": {
+      "__id__": 1
+    },
+    "optimizationPolicy": 0,
+    "asyncLoadAssets": false
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Trial-Bloom",
+    "_objFlags": 0,
+    "_parent": null,
+    "_children": [],
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 2
+      }
+    ],
+    "_prefab": {
+      "__id__": 70
+    },
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": -23.556,
+      "y": 0,
+      "z": 39.309
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0.7071067811865475,
+      "y": 0,
+      "z": 0,
+      "w": 0.7071067811865476
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_layer": 1073741825,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": 89.99999999999999,
+      "y": 0,
+      "z": 0
+    },
+    "_id": "29ba3WwZJDmJjk3907OF+z"
+  },
+  {
+    "__type__": "cc.ParticleSystemComponent",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "_materials": [
+      {
+        "__uuid__": "ea7478b0-408d-4052-b703-f0d2355e095f"
+      }
+    ],
+    "_visFlags": 0,
+    "startColor": {
+      "__id__": 3
+    },
+    "scaleSpace": 1,
+    "startSize": {
+      "__id__": 12
+    },
+    "startSpeed": {
+      "__id__": 13
+    },
+    "startRotation": {
+      "__id__": 14
+    },
+    "startDelay": {
+      "__id__": 15
+    },
+    "startLifetime": {
+      "__id__": 16
+    },
+    "duration": 5,
+    "loop": true,
+    "simulationSpeed": 1,
+    "playOnAwake": true,
+    "gravityModifier": {
+      "__id__": 17
+    },
+    "rateOverTime": {
+      "__id__": 18
+    },
+    "rateOverDistance": {
+      "__id__": 19
+    },
+    "bursts": [],
+    "colorOverLifetimeModule": {
+      "__id__": 20
+    },
+    "shapeModule": {
+      "__id__": 30
+    },
+    "sizeOvertimeModule": {
+      "__id__": 32
+    },
+    "velocityOvertimeModule": {
+      "__id__": 37
+    },
+    "forceOvertimeModule": {
+      "__id__": 42
+    },
+    "limitVelocityOvertimeModule": {
+      "__id__": 46
+    },
+    "rotationOvertimeModule": {
+      "__id__": 51
+    },
+    "textureAnimationModule": {
+      "__id__": 55
+    },
+    "trailModule": {
+      "__id__": 58
+    },
+    "renderer": {
+      "__id__": 69
+    },
+    "_prewarm": false,
+    "_capacity": 100,
+    "_simulationSpace": 1,
+    "_id": "f9wf6VFVJDIaPm7ifQ8lDT"
+  },
+  {
+    "__type__": "cc.GradientRange",
+    "color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "colorMin": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "colorMax": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "gradient": {
+      "__id__": 4
+    },
+    "gradientMin": {
+      "__id__": 5
+    },
+    "gradientMax": {
+      "__id__": 9
+    },
+    "_mode": 3
+  },
+  {
+    "__type__": "cc.Gradient",
+    "colorKeys": [],
+    "alphaKeys": [],
+    "mode": 0
+  },
+  {
+    "__type__": "cc.Gradient",
+    "colorKeys": [
+      {
+        "__id__": 6
+      },
+      {
+        "__id__": 7
+      }
+    ],
+    "alphaKeys": [
+      {
+        "__id__": 8
+      }
+    ],
+    "mode": 0
+  },
+  {
+    "__type__": "cc.ColorKey",
+    "color": {
+      "__type__": "cc.Color",
+      "r": 0,
+      "g": 107,
+      "b": 255,
+      "a": 255
+    },
+    "time": 0
+  },
+  {
+    "__type__": "cc.ColorKey",
+    "color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 45,
+      "b": 241,
+      "a": 255
+    },
+    "time": 0.741
+  },
+  {
+    "__type__": "cc.AlphaKey",
+    "alpha": 255,
+    "time": 0
+  },
+  {
+    "__type__": "cc.Gradient",
+    "colorKeys": [
+      {
+        "__id__": 10
+      },
+      {
+        "__id__": 11
+      }
+    ],
+    "alphaKeys": [],
+    "mode": 0
+  },
+  {
+    "__type__": "cc.ColorKey",
+    "color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "time": 0
+  },
+  {
+    "__type__": "cc.ColorKey",
+    "color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 153,
+      "b": 60,
+      "a": 255
+    },
+    "time": 1
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 3,
+    "curve": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMin": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMax": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "constant": 1,
+    "constantMin": 1,
+    "constantMax": 2,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "curve": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMin": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMax": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "constant": 0,
+    "constantMin": 0,
+    "constantMax": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "curve": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMin": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMax": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "constant": 0,
+    "constantMin": 0,
+    "constantMax": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "curve": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMin": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMax": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "constant": 0,
+    "constantMin": 0,
+    "constantMax": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "curve": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMin": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMax": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "constant": 1,
+    "constantMin": 0,
+    "constantMax": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "curve": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMin": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMax": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "constant": 0,
+    "constantMin": 0,
+    "constantMax": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "curve": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMin": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMax": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "constant": 10,
+    "constantMin": 0,
+    "constantMax": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "curve": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMin": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMax": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "constant": 0,
+    "constantMin": 0,
+    "constantMax": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.ColorOvertimeModule",
+    "enable": true,
+    "color": {
+      "__id__": 21
+    }
+  },
+  {
+    "__type__": "cc.GradientRange",
+    "color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "colorMin": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "colorMax": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "gradient": {
+      "__id__": 22
+    },
+    "gradientMin": {
+      "__id__": 28
+    },
+    "gradientMax": {
+      "__id__": 29
+    },
+    "_mode": 1
+  },
+  {
+    "__type__": "cc.Gradient",
+    "colorKeys": [],
+    "alphaKeys": [
+      {
+        "__id__": 23
+      },
+      {
+        "__id__": 24
+      },
+      {
+        "__id__": 25
+      },
+      {
+        "__id__": 26
+      },
+      {
+        "__id__": 27
+      }
+    ],
+    "mode": 0
+  },
+  {
+    "__type__": "cc.AlphaKey",
+    "alpha": 0,
+    "time": 0
+  },
+  {
+    "__type__": "cc.AlphaKey",
+    "alpha": 0,
+    "time": 0
+  },
+  {
+    "__type__": "cc.AlphaKey",
+    "alpha": 255,
+    "time": 0.33966071428571426
+  },
+  {
+    "__type__": "cc.AlphaKey",
+    "alpha": 255,
+    "time": 0.6410892857142857
+  },
+  {
+    "__type__": "cc.AlphaKey",
+    "alpha": 0,
+    "time": 1
+  },
+  {
+    "__type__": "cc.Gradient",
+    "colorKeys": [],
+    "alphaKeys": [],
+    "mode": 0
+  },
+  {
+    "__type__": "cc.Gradient",
+    "colorKeys": [],
+    "alphaKeys": [],
+    "mode": 0
+  },
+  {
+    "__type__": "cc.ShapeModule",
+    "enable": true,
+    "shapeType": 0,
+    "emitFrom": 3,
+    "alignToDirection": false,
+    "randomDirectionAmount": 0,
+    "sphericalDirectionAmount": 0,
+    "randomPositionAmount": 0,
+    "radius": 0.18,
+    "radiusThickness": 0,
+    "arcMode": 0,
+    "arcSpread": 0,
+    "arcSpeed": {
+      "__id__": 31
+    },
+    "length": 5,
+    "boxThickness": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_position": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_rotation": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_scale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_arc": 6.283185307179586,
+    "_angle": 0.4363323129985824
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "curve": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMin": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMax": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "constant": 1,
+    "constantMin": 0,
+    "constantMax": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.SizeOvertimeModule",
+    "enable": false,
+    "separateAxes": false,
+    "size": {
+      "__id__": 33
+    },
+    "x": {
+      "__id__": 34
+    },
+    "y": {
+      "__id__": 35
+    },
+    "z": {
+      "__id__": 36
+    }
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "curve": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMin": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMax": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "constant": 0,
+    "constantMin": 0,
+    "constantMax": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "curve": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMin": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMax": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "constant": 0,
+    "constantMin": 0,
+    "constantMax": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "curve": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMin": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMax": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "constant": 0,
+    "constantMin": 0,
+    "constantMax": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "curve": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMin": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMax": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "constant": 0,
+    "constantMin": 0,
+    "constantMax": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.VelocityOvertimeModule",
+    "enable": false,
+    "x": {
+      "__id__": 38
+    },
+    "y": {
+      "__id__": 39
+    },
+    "z": {
+      "__id__": 40
+    },
+    "speedModifier": {
+      "__id__": 41
+    },
+    "space": 1
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "curve": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMin": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMax": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "constant": 0,
+    "constantMin": 0,
+    "constantMax": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "curve": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMin": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMax": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "constant": 0,
+    "constantMin": 0,
+    "constantMax": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "curve": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMin": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMax": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "constant": 0,
+    "constantMin": 0,
+    "constantMax": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "curve": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMin": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMax": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "constant": 1,
+    "constantMin": 0,
+    "constantMax": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.ForceOvertimeModule",
+    "enable": false,
+    "x": {
+      "__id__": 43
+    },
+    "y": {
+      "__id__": 44
+    },
+    "z": {
+      "__id__": 45
+    },
+    "space": 1
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "curve": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMin": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMax": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "constant": 0,
+    "constantMin": 0,
+    "constantMax": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "curve": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMin": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMax": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "constant": 0,
+    "constantMin": 0,
+    "constantMax": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "curve": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMin": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMax": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "constant": 10,
+    "constantMin": 0,
+    "constantMax": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.LimitVelocityOvertimeModule",
+    "enable": false,
+    "limitX": {
+      "__id__": 47
+    },
+    "limitY": {
+      "__id__": 48
+    },
+    "limitZ": {
+      "__id__": 49
+    },
+    "limit": {
+      "__id__": 50
+    },
+    "dampen": 3,
+    "separateAxes": false,
+    "space": 1
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "curve": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMin": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMax": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "constant": 0,
+    "constantMin": 0,
+    "constantMax": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "curve": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMin": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMax": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "constant": 0,
+    "constantMin": 0,
+    "constantMax": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "curve": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMin": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMax": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "constant": 0,
+    "constantMin": 0,
+    "constantMax": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "curve": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMin": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMax": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "constant": 0,
+    "constantMin": 0,
+    "constantMax": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.RotationOvertimeModule",
+    "enable": false,
+    "_separateAxes": false,
+    "x": {
+      "__id__": 52
+    },
+    "y": {
+      "__id__": 53
+    },
+    "z": {
+      "__id__": 54
+    }
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "curve": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMin": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMax": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "constant": 0,
+    "constantMin": 0,
+    "constantMax": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "curve": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMin": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMax": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "constant": 0,
+    "constantMin": 0,
+    "constantMax": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "curve": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMin": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMax": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "constant": 0,
+    "constantMin": 0,
+    "constantMax": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.TextureAnimationModule",
+    "_enable": false,
+    "_mode": 0,
+    "numTilesX": 0,
+    "numTilesY": 0,
+    "animation": 0,
+    "frameOverTime": {
+      "__id__": 56
+    },
+    "startFrame": {
+      "__id__": 57
+    },
+    "cycleCount": 0,
+    "_flipU": 0,
+    "_flipV": 0,
+    "_uvChannelMask": -1,
+    "randomRow": false,
+    "rowIndex": 0
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "curve": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMin": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMax": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "constant": 0,
+    "constantMin": 0,
+    "constantMax": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "curve": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMin": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMax": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "constant": 0,
+    "constantMin": 0,
+    "constantMax": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.TrailModule",
+    "_enable": true,
+    "mode": 0,
+    "lifeTime": {
+      "__id__": 59
+    },
+    "_minParticleDistance": 0.01,
+    "existWithParticles": true,
+    "textureMode": 0,
+    "widthFromParticle": true,
+    "widthRatio": {
+      "__id__": 60
+    },
+    "colorFromParticle": true,
+    "colorOverTrail": {
+      "__id__": 61
+    },
+    "colorOvertime": {
+      "__id__": 65
+    },
+    "_space": 0,
+    "_particleSystem": {
+      "__id__": 2
+    }
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "curve": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMin": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMax": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "constant": 1,
+    "constantMin": 0,
+    "constantMax": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.CurveRange",
+    "mode": 0,
+    "curve": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMin": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "curveMax": {
+      "__type__": "cc.AnimationCurve",
+      "preWrapMode": 2,
+      "postWrapMode": 2,
+      "keyFrames": [
+        {
+          "time": 0,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        },
+        {
+          "time": 1,
+          "value": 1,
+          "inTangent": 0,
+          "outTangent": 0
+        }
+      ]
+    },
+    "constant": 0.01,
+    "constantMin": 0,
+    "constantMax": 0,
+    "multiplier": 1
+  },
+  {
+    "__type__": "cc.GradientRange",
+    "color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "colorMin": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "colorMax": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "gradient": {
+      "__id__": 62
+    },
+    "gradientMin": {
+      "__id__": 63
+    },
+    "gradientMax": {
+      "__id__": 64
+    },
+    "_mode": 0
+  },
+  {
+    "__type__": "cc.Gradient",
+    "colorKeys": [],
+    "alphaKeys": [],
+    "mode": 0
+  },
+  {
+    "__type__": "cc.Gradient",
+    "colorKeys": [],
+    "alphaKeys": [],
+    "mode": 0
+  },
+  {
+    "__type__": "cc.Gradient",
+    "colorKeys": [],
+    "alphaKeys": [],
+    "mode": 0
+  },
+  {
+    "__type__": "cc.GradientRange",
+    "color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "colorMin": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "colorMax": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "gradient": {
+      "__id__": 66
+    },
+    "gradientMin": {
+      "__id__": 67
+    },
+    "gradientMax": {
+      "__id__": 68
+    },
+    "_mode": 0
+  },
+  {
+    "__type__": "cc.Gradient",
+    "colorKeys": [],
+    "alphaKeys": [],
+    "mode": 0
+  },
+  {
+    "__type__": "cc.Gradient",
+    "colorKeys": [],
+    "alphaKeys": [],
+    "mode": 0
+  },
+  {
+    "__type__": "cc.Gradient",
+    "colorKeys": [],
+    "alphaKeys": [],
+    "mode": 0
+  },
+  {
+    "__type__": "cc.ParticleSystemRenderer",
+    "_renderMode": 0,
+    "_velocityScale": 1,
+    "_lengthScale": 1,
+    "_mesh": null,
+    "_particleSystem": {
+      "__id__": 2
+    }
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 1
+    },
+    "asset": {
+      "__id__": 0
+    },
+    "fileId": "cdlNu9RDpAMK86vNau3yye",
+    "sync": false,
+    "_synced": {
+      "default": false,
+      "serializable": false
+    }
+  }
+]
