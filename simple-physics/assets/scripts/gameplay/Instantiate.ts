@@ -56,32 +56,32 @@ export class Instantiate extends Component {
 
         switch (this.algorithms) {
             case EShapeAlgorithm.RANDOM:
-                for (let i = 0; i < this.node.childrenCount; i++) {
+                for (let i = 0; i < this.node.children.length; i++) {
                     this.node.children[i].position = random_algorithm(-50, 50);
                 }
                 break;
 
             case EShapeAlgorithm.X_SQUARE_2:
-                for (let i = 0; i < this.node.childrenCount; i++) {
-                    this.node.children[i].position = x_square_2_algorithm(i, this.node.childrenCount);
+                for (let i = 0; i < this.node.children.length; i++) {
+                    this.node.children[i].position = x_square_2_algorithm(i, this.node.children.length);
                 }
                 break;
 
             case EShapeAlgorithm.SPIRAL:
-                for (let i = 0; i < this.node.childrenCount; i++) {
-                    this.node.children[i].position = spiral_algorithm(i, this.node.childrenCount);
+                for (let i = 0; i < this.node.children.length; i++) {
+                    this.node.children[i].position = spiral_algorithm(i, this.node.children.length);
                 }
                 break;
         }
 
 
-        for (let i = 0; i < this.node.childrenCount; i++) {
+        for (let i = 0; i < this.node.children.length; i++) {
             this.node.children[i].active = true;
         }
     }
 
     recoverEntity () {
-        for (let i = this.node.childrenCount; i--;) {
+        for (let i = this.node.children.length; i--;) {
             let entity = this.node.children[i];
             entity.removeFromParent();
             // hack
