@@ -1,4 +1,4 @@
-import { _decorator, Component, math } from "cc";
+import { _decorator, Component, math, systemEvent, SystemEvent, game, macro } from "cc";
 const { ccclass, property } = _decorator;
 
 const v2_1 = new math.Vec2();
@@ -11,7 +11,7 @@ const KEYCODE = {
     D: 'D'.charCodeAt(0),
     Q: 'Q'.charCodeAt(0),
     E: 'E'.charCodeAt(0),
-    SHIFT: cc.macro.KEY.shift,
+    SHIFT: macro.KEY.shift,
 };
 
 @ccclass("MotionCtr")
@@ -60,19 +60,19 @@ export class MotionCtr extends Component {
     }
 
     private _addEvents () {
-        cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
-        cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
-        cc.systemEvent.on(cc.SystemEvent.EventType.TOUCH_START, this.onTouchStart, this);
-        cc.systemEvent.on(cc.SystemEvent.EventType.TOUCH_MOVE, this.onTouchMove, this);
-        cc.systemEvent.on(cc.SystemEvent.EventType.TOUCH_END, this.onTouchEnd, this);
+        systemEvent.on(SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
+        systemEvent.on(SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
+        systemEvent.on(SystemEvent.EventType.TOUCH_START, this.onTouchStart, this);
+        systemEvent.on(SystemEvent.EventType.TOUCH_MOVE, this.onTouchMove, this);
+        systemEvent.on(SystemEvent.EventType.TOUCH_END, this.onTouchEnd, this);
     }
 
     private _removeEvents () {
-        cc.systemEvent.off(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
-        cc.systemEvent.off(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
-        cc.systemEvent.off(cc.SystemEvent.EventType.TOUCH_START, this.onTouchStart, this);
-        cc.systemEvent.off(cc.SystemEvent.EventType.TOUCH_MOVE, this.onTouchMove, this);
-        cc.systemEvent.off(cc.SystemEvent.EventType.TOUCH_END, this.onTouchEnd, this);
+        systemEvent.off(SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
+        systemEvent.off(SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
+        systemEvent.off(SystemEvent.EventType.TOUCH_START, this.onTouchStart, this);
+        systemEvent.off(SystemEvent.EventType.TOUCH_MOVE, this.onTouchMove, this);
+        systemEvent.off(SystemEvent.EventType.TOUCH_END, this.onTouchEnd, this);
     }
 
     onKeyDown (e) {
@@ -98,7 +98,7 @@ export class MotionCtr extends Component {
     }
 
     onTouchStart (e) {
-        if (cc.game.canvas.requestPointerLock) cc.game.canvas.requestPointerLock();
+        if (game.canvas.requestPointerLock) game.canvas.requestPointerLock();
     }
 
     onTouchMove (e) {
