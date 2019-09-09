@@ -1,5 +1,5 @@
 
-import { _decorator, Component, ModelComponent, RigidBodyComponent, Vec3, Vec4 } from "Cocos3D";
+import { _decorator, Component, ModelComponent, RigidBodyComponent, Vec3, Vec4 } from "cc";
 const { ccclass } = _decorator;
 
 const v3_1 = new Vec3();

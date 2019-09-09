@@ -1,4 +1,4 @@
-import { _decorator, Component, ModelComponent, Vec4, Vec2 } from "Cocos3D";
+import { _decorator, Component, ModelComponent, Vec4, Vec2 } from "cc";
 const { ccclass } = _decorator;
 
 @ccclass("Tunnel")

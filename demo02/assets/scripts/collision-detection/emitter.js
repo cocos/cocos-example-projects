@@ -1,4 +1,4 @@
-import { _decorator, Component, EffectAsset, ModelComponent, SphereColliderComponent, Color, Vec3, Node, Material } from "Cocos3D";
+import { _decorator, Component, EffectAsset, ModelComponent, SphereColliderComponent, Color, Vec3, Node, Material } from "cc";
 const { ccclass, property } = _decorator;
 
 const hintMesh = cc.utils.createMesh(cc.primitives.capsule(1));

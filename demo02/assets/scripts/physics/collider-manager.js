@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node, instantiate, Vec3 } from "Cocos3D";
+import { _decorator, Component, Node, instantiate, Vec3 } from "cc";
 const { ccclass, property } = _decorator;
 
 const v3_1 = new Vec3();

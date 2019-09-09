@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node } from "Cocos3D";
+import { _decorator, Component, Node } from "cc";
 const { ccclass, property } = _decorator;
 
 const sineLerp = (b, e, t) => {

@@ -1,5 +1,5 @@
 
-import { _decorator, Component, LabelComponent } from "Cocos3D";
+import { _decorator, Component, LabelComponent } from "cc";
 const { ccclass } = _decorator;
 
 @ccclass("EngineInfo")
