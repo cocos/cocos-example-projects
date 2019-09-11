@@ -1,5 +1,5 @@
 {
-  "ver": "1.1.22",
+  "ver": "1.1.24",
   "importer": "gltf",
   "imported": true,
   "uuid": "9c32e2f0-f6a7-45bf-afa0-0c1c7d2fea99",
@@ -7,10 +7,10 @@
     ".gltf"
   ],
   "subMetas": {
-    "knight_full_Material_0.mesh": {
+    "f605f": {
       "ver": "1.0.2",
       "importer": "gltf-mesh",
-      "uuid": "9c32e2f0-f6a7-45bf-afa0-0c1c7d2fea99@knight_full_Material_0.mesh",
+      "uuid": "9c32e2f0-f6a7-45bf-afa0-0c1c7d2fea99@f605f",
       "imported": true,
       "files": [
         ".json",
@@ -19,12 +19,14 @@
       "subMetas": {},
       "userData": {
         "gltfIndex": 0
-      }
+      },
+      "id": "f605f",
+      "name": "knight_full_Material_0.mesh"
     },
-    "Take 001.animation": {
+    "73b7f": {
       "ver": "1.0.10",
       "importer": "gltf-animation",
-      "uuid": "9c32e2f0-f6a7-45bf-afa0-0c1c7d2fea99@Take 001.animation",
+      "uuid": "9c32e2f0-f6a7-45bf-afa0-0c1c7d2fea99@73b7f",
       "imported": true,
       "files": [
         ".json"
@@ -38,12 +40,14 @@
           "to": 1
         },
         "events": []
-      }
+      },
+      "id": "73b7f",
+      "name": "Take 001.animation"
     },
-    "UnnamedSkeleton.skeleton": {
+    "438fe": {
       "ver": "1.0.0",
       "importer": "gltf-skeleton",
-      "uuid": "9c32e2f0-f6a7-45bf-afa0-0c1c7d2fea99@UnnamedSkeleton.skeleton",
+      "uuid": "9c32e2f0-f6a7-45bf-afa0-0c1c7d2fea99@438fe",
       "imported": true,
       "files": [
         ".json"
@@ -51,12 +55,14 @@
       "subMetas": {},
       "userData": {
         "gltfIndex": 0
-      }
+      },
+      "id": "438fe",
+      "name": "UnnamedSkeleton.skeleton"
     },
-    "UnnamedTexture.texture": {
+    "e39f7": {
       "ver": "1.0.19",
       "importer": "texture",
-      "uuid": "9c32e2f0-f6a7-45bf-afa0-0c1c7d2fea99@UnnamedTexture.texture",
+      "uuid": "9c32e2f0-f6a7-45bf-afa0-0c1c7d2fea99@e39f7",
       "imported": true,
       "files": [
         ".json"
@@ -72,12 +78,14 @@
         "anisotropy": 1,
         "isUuid": false,
         "imageUuidOrDatabaseUri": "db://assets/mesh/knight/textures/Material_baseColor.png"
-      }
+      },
+      "id": "e39f7",
+      "name": "UnnamedTexture.texture"
     },
-    "scene.prefab": {
+    "d1932": {
       "ver": "1.0.8",
       "importer": "gltf-scene",
-      "uuid": "9c32e2f0-f6a7-45bf-afa0-0c1c7d2fea99@scene.prefab",
+      "uuid": "9c32e2f0-f6a7-45bf-afa0-0c1c7d2fea99@d1932",
       "imported": true,
       "files": [
         ".json"
@@ -85,7 +93,9 @@
       "subMetas": {},
       "userData": {
         "gltfIndex": 0
-      }
+      },
+      "id": "d1932",
+      "name": "scene.prefab"
     }
   },
   "userData": {
@@ -113,7 +123,7 @@
       ]
     },
     "imageLocations": {},
-    "redirect": "9c32e2f0-f6a7-45bf-afa0-0c1c7d2fea99@scene.prefab",
+    "redirect": "9c32e2f0-f6a7-45bf-afa0-0c1c7d2fea99@d1932",
     "normals": 0,
     "tangents": 1,
     "animationImportSettings": [
@@ -132,10 +142,10 @@
     ],
     "assetFinder": {
       "meshes": [
-        "9c32e2f0-f6a7-45bf-afa0-0c1c7d2fea99@knight_full_Material_0.mesh"
+        "9c32e2f0-f6a7-45bf-afa0-0c1c7d2fea99@f605f"
       ],
       "skeletons": [
-        "9c32e2f0-f6a7-45bf-afa0-0c1c7d2fea99@UnnamedSkeleton.skeleton"
+        "9c32e2f0-f6a7-45bf-afa0-0c1c7d2fea99@438fe"
       ],
       "images": [
         {
@@ -144,13 +154,13 @@
         }
       ],
       "textures": [
-        "9c32e2f0-f6a7-45bf-afa0-0c1c7d2fea99@UnnamedTexture.texture"
+        "9c32e2f0-f6a7-45bf-afa0-0c1c7d2fea99@e39f7"
       ],
       "materials": [
         "c6c827fd-27e0-4ff7-bbe5-8b9cdf37034d"
       ],
       "scenes": [
-        "9c32e2f0-f6a7-45bf-afa0-0c1c7d2fea99@scene.prefab"
+        "9c32e2f0-f6a7-45bf-afa0-0c1c7d2fea99@d1932"
       ]
     },
     "dumpMaterials": true

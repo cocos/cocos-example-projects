@@ -1,5 +1,5 @@
 {
-  "ver": "1.1.22",
+  "ver": "1.1.24",
   "importer": "gltf",
   "imported": true,
   "uuid": "2f6f8742-f427-483c-8a4c-eb2a20c8203f",
@@ -7,10 +7,10 @@
     ".gltf"
   ],
   "subMetas": {
-    "Aeroplane_Aeroplane_color_3_0.mesh": {
+    "08d00": {
       "ver": "1.0.2",
       "importer": "gltf-mesh",
-      "uuid": "2f6f8742-f427-483c-8a4c-eb2a20c8203f@Aeroplane_Aeroplane_color_3_0.mesh",
+      "uuid": "2f6f8742-f427-483c-8a4c-eb2a20c8203f@08d00",
       "imported": true,
       "files": [
         ".json",
@@ -19,12 +19,14 @@
       "subMetas": {},
       "userData": {
         "gltfIndex": 0
-      }
+      },
+      "id": "08d00",
+      "name": "Aeroplane_Aeroplane_color_3_0.mesh"
     },
-    "Aeroplane_fly.animation": {
+    "69de1": {
       "ver": "1.0.10",
       "importer": "gltf-animation",
-      "uuid": "2f6f8742-f427-483c-8a4c-eb2a20c8203f@Aeroplane_fly.animation",
+      "uuid": "2f6f8742-f427-483c-8a4c-eb2a20c8203f@69de1",
       "imported": true,
       "files": [
         ".json"
@@ -38,12 +40,14 @@
           "from": 0,
           "to": 1.4583333730697632
         }
-      }
+      },
+      "id": "69de1",
+      "name": "Aeroplane_fly.animation"
     },
-    "UnnamedSkeleton.skeleton": {
+    "438fe": {
       "ver": "1.0.0",
       "importer": "gltf-skeleton",
-      "uuid": "2f6f8742-f427-483c-8a4c-eb2a20c8203f@UnnamedSkeleton.skeleton",
+      "uuid": "2f6f8742-f427-483c-8a4c-eb2a20c8203f@438fe",
       "imported": true,
       "files": [
         ".json"
@@ -51,12 +55,14 @@
       "subMetas": {},
       "userData": {
         "gltfIndex": 0
-      }
+      },
+      "id": "438fe",
+      "name": "UnnamedSkeleton.skeleton"
     },
-    "UnnamedTexture.texture": {
+    "e39f7": {
       "ver": "1.0.19",
       "importer": "texture",
-      "uuid": "2f6f8742-f427-483c-8a4c-eb2a20c8203f@UnnamedTexture.texture",
+      "uuid": "2f6f8742-f427-483c-8a4c-eb2a20c8203f@e39f7",
       "imported": true,
       "files": [
         ".json"
@@ -72,12 +78,14 @@
         "anisotropy": 1,
         "isUuid": false,
         "imageUuidOrDatabaseUri": "db://assets/mesh/plane/gltf/textures/Aeroplane_color_3_baseColor.png"
-      }
+      },
+      "id": "e39f7",
+      "name": "UnnamedTexture.texture"
     },
-    "scene.prefab": {
+    "d1932": {
       "ver": "1.0.8",
       "importer": "gltf-scene",
-      "uuid": "2f6f8742-f427-483c-8a4c-eb2a20c8203f@scene.prefab",
+      "uuid": "2f6f8742-f427-483c-8a4c-eb2a20c8203f@d1932",
       "imported": true,
       "files": [
         ".json"
@@ -85,7 +93,9 @@
       "subMetas": {},
       "userData": {
         "gltfIndex": 0
-      }
+      },
+      "id": "d1932",
+      "name": "scene.prefab"
     }
   },
   "userData": {
@@ -113,7 +123,7 @@
       ]
     },
     "imageLocations": {},
-    "redirect": "2f6f8742-f427-483c-8a4c-eb2a20c8203f@scene.prefab",
+    "redirect": "2f6f8742-f427-483c-8a4c-eb2a20c8203f@d1932",
     "normals": 0,
     "tangents": 1,
     "animationImportSettings": [
@@ -132,10 +142,10 @@
     ],
     "assetFinder": {
       "meshes": [
-        "2f6f8742-f427-483c-8a4c-eb2a20c8203f@Aeroplane_Aeroplane_color_3_0.mesh"
+        "2f6f8742-f427-483c-8a4c-eb2a20c8203f@08d00"
       ],
       "skeletons": [
-        "2f6f8742-f427-483c-8a4c-eb2a20c8203f@UnnamedSkeleton.skeleton"
+        "2f6f8742-f427-483c-8a4c-eb2a20c8203f@438fe"
       ],
       "images": [
         {
@@ -144,13 +154,13 @@
         }
       ],
       "textures": [
-        "2f6f8742-f427-483c-8a4c-eb2a20c8203f@UnnamedTexture.texture"
+        "2f6f8742-f427-483c-8a4c-eb2a20c8203f@e39f7"
       ],
       "materials": [
         "c712a314-b015-4b07-b74c-e6bd9bd2ed5d"
       ],
       "scenes": [
-        "2f6f8742-f427-483c-8a4c-eb2a20c8203f@scene.prefab"
+        "2f6f8742-f427-483c-8a4c-eb2a20c8203f@d1932"
       ]
     },
     "dumpMaterials": true

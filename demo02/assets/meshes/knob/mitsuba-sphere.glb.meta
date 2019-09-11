@@ -1,5 +1,5 @@
 {
-  "ver": "1.1.22",
+  "ver": "1.1.24",
   "importer": "gltf",
   "imported": true,
   "uuid": "0e613d01-9a32-4872-aa9e-d24c500ebe50",
@@ -8,10 +8,25 @@
     ".glb"
   ],
   "subMetas": {
-    "UnnamedMesh.mesh": {
+    "28448": {
+      "ver": "1.0.10",
+      "importer": "gltf-material",
+      "uuid": "0e613d01-9a32-4872-aa9e-d24c500ebe50@28448",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 0
+      },
+      "id": "28448",
+      "name": "UnnamedMaterial-0.material"
+    },
+    "bcca5": {
       "ver": "1.0.2",
       "importer": "gltf-mesh",
-      "uuid": "0e613d01-9a32-4872-aa9e-d24c500ebe50@UnnamedMesh.mesh",
+      "uuid": "0e613d01-9a32-4872-aa9e-d24c500ebe50@bcca5",
       "imported": true,
       "files": [
         ".json",
@@ -20,25 +35,14 @@
       "subMetas": {},
       "userData": {
         "gltfIndex": 0
-      }
+      },
+      "id": "bcca5",
+      "name": "UnnamedMesh.mesh"
     },
-    "UnnamedMaterial-0.material": {
+    "d71e7": {
       "ver": "1.0.10",
       "importer": "gltf-material",
-      "uuid": "0e613d01-9a32-4872-aa9e-d24c500ebe50@UnnamedMaterial-0.material",
-      "imported": true,
-      "files": [
-        ".json"
-      ],
-      "subMetas": {},
-      "userData": {
-        "gltfIndex": 0
-      }
-    },
-    "UnnamedMaterial-1.material": {
-      "ver": "1.0.10",
-      "importer": "gltf-material",
-      "uuid": "0e613d01-9a32-4872-aa9e-d24c500ebe50@UnnamedMaterial-1.material",
+      "uuid": "0e613d01-9a32-4872-aa9e-d24c500ebe50@d71e7",
       "imported": true,
       "files": [
         ".json"
@@ -46,12 +50,14 @@
       "subMetas": {},
       "userData": {
         "gltfIndex": 1
-      }
+      },
+      "id": "d71e7",
+      "name": "UnnamedMaterial-1.material"
     },
-    "mitsuba-sphere.prefab": {
+    "e1b9c": {
       "ver": "1.0.8",
       "importer": "gltf-scene",
-      "uuid": "0e613d01-9a32-4872-aa9e-d24c500ebe50@mitsuba-sphere.prefab",
+      "uuid": "0e613d01-9a32-4872-aa9e-d24c500ebe50@e1b9c",
       "imported": true,
       "files": [
         ".json"
@@ -59,7 +65,9 @@
       "subMetas": {},
       "userData": {
         "gltfIndex": 0
-      }
+      },
+      "id": "e1b9c",
+      "name": "mitsuba-sphere.prefab"
     }
   },
   "userData": {
@@ -67,17 +75,17 @@
     "normals": 2,
     "tangents": 2,
     "dumpMaterials": false,
-    "redirect": "0e613d01-9a32-4872-aa9e-d24c500ebe50@mitsuba-sphere.prefab",
+    "redirect": "0e613d01-9a32-4872-aa9e-d24c500ebe50@e1b9c",
     "assetFinder": {
       "meshes": [
-        "0e613d01-9a32-4872-aa9e-d24c500ebe50@UnnamedMesh.mesh"
+        "0e613d01-9a32-4872-aa9e-d24c500ebe50@bcca5"
       ],
       "materials": [
-        "0e613d01-9a32-4872-aa9e-d24c500ebe50@UnnamedMaterial-0.material",
-        "0e613d01-9a32-4872-aa9e-d24c500ebe50@UnnamedMaterial-1.material"
+        "0e613d01-9a32-4872-aa9e-d24c500ebe50@28448",
+        "0e613d01-9a32-4872-aa9e-d24c500ebe50@d71e7"
       ],
       "scenes": [
-        "0e613d01-9a32-4872-aa9e-d24c500ebe50@mitsuba-sphere.prefab"
+        "0e613d01-9a32-4872-aa9e-d24c500ebe50@e1b9c"
       ]
     }
   }

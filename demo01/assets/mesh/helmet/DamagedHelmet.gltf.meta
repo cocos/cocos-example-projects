@@ -1,5 +1,5 @@
 {
-  "ver": "1.1.22",
+  "ver": "1.1.24",
   "importer": "gltf",
   "imported": true,
   "uuid": "339e5be0-71d2-45f9-9c2d-77516fe64d44",
@@ -7,10 +7,25 @@
     ".gltf"
   ],
   "subMetas": {
-    "mesh_helmet_LP_13930damagedHelmet.mesh": {
+    "28803": {
+      "ver": "1.0.10",
+      "importer": "gltf-material",
+      "uuid": "339e5be0-71d2-45f9-9c2d-77516fe64d44@28803",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 0
+      },
+      "id": "28803",
+      "name": "Material_MR.material"
+    },
+    "92175": {
       "ver": "1.0.2",
       "importer": "gltf-mesh",
-      "uuid": "339e5be0-71d2-45f9-9c2d-77516fe64d44@mesh_helmet_LP_13930damagedHelmet.mesh",
+      "uuid": "339e5be0-71d2-45f9-9c2d-77516fe64d44@92175",
       "imported": true,
       "files": [
         ".json",
@@ -19,12 +34,14 @@
       "subMetas": {},
       "userData": {
         "gltfIndex": 0
-      }
+      },
+      "id": "92175",
+      "name": "mesh_helmet_LP_13930damagedHelmet.mesh"
     },
-    "UnnamedTexture-0.texture": {
+    "3effa": {
       "ver": "1.0.19",
       "importer": "texture",
-      "uuid": "339e5be0-71d2-45f9-9c2d-77516fe64d44@UnnamedTexture-0.texture",
+      "uuid": "339e5be0-71d2-45f9-9c2d-77516fe64d44@3effa",
       "imported": true,
       "files": [
         ".json"
@@ -40,12 +57,14 @@
         "anisotropy": 1,
         "isUuid": false,
         "imageUuidOrDatabaseUri": "db://assets/mesh/helmet/Default_albedo.jpg"
-      }
+      },
+      "id": "3effa",
+      "name": "UnnamedTexture-0.texture"
     },
-    "UnnamedTexture-1.texture": {
+    "221a5": {
       "ver": "1.0.19",
       "importer": "texture",
-      "uuid": "339e5be0-71d2-45f9-9c2d-77516fe64d44@UnnamedTexture-1.texture",
+      "uuid": "339e5be0-71d2-45f9-9c2d-77516fe64d44@221a5",
       "imported": true,
       "files": [
         ".json"
@@ -61,12 +80,14 @@
         "anisotropy": 1,
         "isUuid": false,
         "imageUuidOrDatabaseUri": "db://assets/mesh/helmet/Default_metalRoughness.jpg"
-      }
+      },
+      "id": "221a5",
+      "name": "UnnamedTexture-1.texture"
     },
-    "UnnamedTexture-2.texture": {
+    "0089c": {
       "ver": "1.0.19",
       "importer": "texture",
-      "uuid": "339e5be0-71d2-45f9-9c2d-77516fe64d44@UnnamedTexture-2.texture",
+      "uuid": "339e5be0-71d2-45f9-9c2d-77516fe64d44@0089c",
       "imported": true,
       "files": [
         ".json"
@@ -82,12 +103,14 @@
         "anisotropy": 1,
         "isUuid": false,
         "imageUuidOrDatabaseUri": "db://assets/mesh/helmet/Default_emissive.jpg"
-      }
+      },
+      "id": "0089c",
+      "name": "UnnamedTexture-2.texture"
     },
-    "UnnamedTexture-3.texture": {
+    "9b633": {
       "ver": "1.0.19",
       "importer": "texture",
-      "uuid": "339e5be0-71d2-45f9-9c2d-77516fe64d44@UnnamedTexture-3.texture",
+      "uuid": "339e5be0-71d2-45f9-9c2d-77516fe64d44@9b633",
       "imported": true,
       "files": [
         ".json"
@@ -103,12 +126,14 @@
         "anisotropy": 1,
         "isUuid": false,
         "imageUuidOrDatabaseUri": "db://assets/mesh/helmet/Default_AO.jpg"
-      }
+      },
+      "id": "9b633",
+      "name": "UnnamedTexture-3.texture"
     },
-    "UnnamedTexture-4.texture": {
+    "9b782": {
       "ver": "1.0.19",
       "importer": "texture",
-      "uuid": "339e5be0-71d2-45f9-9c2d-77516fe64d44@UnnamedTexture-4.texture",
+      "uuid": "339e5be0-71d2-45f9-9c2d-77516fe64d44@9b782",
       "imported": true,
       "files": [
         ".json"
@@ -124,25 +149,14 @@
         "anisotropy": 1,
         "isUuid": false,
         "imageUuidOrDatabaseUri": "db://assets/mesh/helmet/Default_normal.jpg"
-      }
+      },
+      "id": "9b782",
+      "name": "UnnamedTexture-4.texture"
     },
-    "Material_MR.material": {
-      "ver": "1.0.10",
-      "importer": "gltf-material",
-      "uuid": "339e5be0-71d2-45f9-9c2d-77516fe64d44@Material_MR.material",
-      "imported": true,
-      "files": [
-        ".json"
-      ],
-      "subMetas": {},
-      "userData": {
-        "gltfIndex": 0
-      }
-    },
-    "DamagedHelmet.prefab": {
+    "3b75d": {
       "ver": "1.0.8",
       "importer": "gltf-scene",
-      "uuid": "339e5be0-71d2-45f9-9c2d-77516fe64d44@DamagedHelmet.prefab",
+      "uuid": "339e5be0-71d2-45f9-9c2d-77516fe64d44@3b75d",
       "imported": true,
       "files": [
         ".json"
@@ -150,7 +164,9 @@
       "subMetas": {},
       "userData": {
         "gltfIndex": 0
-      }
+      },
+      "id": "3b75d",
+      "name": "DamagedHelmet.prefab"
     }
   },
   "userData": {
@@ -158,10 +174,10 @@
     "normals": 0,
     "tangents": 3,
     "dumpMaterials": false,
-    "redirect": "339e5be0-71d2-45f9-9c2d-77516fe64d44@DamagedHelmet.prefab",
+    "redirect": "339e5be0-71d2-45f9-9c2d-77516fe64d44@3b75d",
     "assetFinder": {
       "meshes": [
-        "339e5be0-71d2-45f9-9c2d-77516fe64d44@mesh_helmet_LP_13930damagedHelmet.mesh"
+        "339e5be0-71d2-45f9-9c2d-77516fe64d44@92175"
       ],
       "images": [
         {
@@ -186,17 +202,17 @@
         }
       ],
       "textures": [
-        "339e5be0-71d2-45f9-9c2d-77516fe64d44@UnnamedTexture-0.texture",
-        "339e5be0-71d2-45f9-9c2d-77516fe64d44@UnnamedTexture-1.texture",
-        "339e5be0-71d2-45f9-9c2d-77516fe64d44@UnnamedTexture-2.texture",
-        "339e5be0-71d2-45f9-9c2d-77516fe64d44@UnnamedTexture-3.texture",
-        "339e5be0-71d2-45f9-9c2d-77516fe64d44@UnnamedTexture-4.texture"
+        "339e5be0-71d2-45f9-9c2d-77516fe64d44@3effa",
+        "339e5be0-71d2-45f9-9c2d-77516fe64d44@221a5",
+        "339e5be0-71d2-45f9-9c2d-77516fe64d44@0089c",
+        "339e5be0-71d2-45f9-9c2d-77516fe64d44@9b633",
+        "339e5be0-71d2-45f9-9c2d-77516fe64d44@9b782"
       ],
       "materials": [
-        "339e5be0-71d2-45f9-9c2d-77516fe64d44@Material_MR.material"
+        "339e5be0-71d2-45f9-9c2d-77516fe64d44@28803"
       ],
       "scenes": [
-        "339e5be0-71d2-45f9-9c2d-77516fe64d44@DamagedHelmet.prefab"
+        "339e5be0-71d2-45f9-9c2d-77516fe64d44@3b75d"
       ]
     }
   }

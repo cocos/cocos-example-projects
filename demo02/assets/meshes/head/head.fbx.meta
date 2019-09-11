@@ -1,5 +1,5 @@
 {
-  "ver": "1.1.2225",
+  "ver": "1.1.2425",
   "importer": "fbx",
   "imported": true,
   "uuid": "3990b73c-4dcd-4ad8-91f5-e1a4e09d6fe1",
@@ -8,10 +8,13 @@
     ".fbx"
   ],
   "subMetas": {
-    "head.mesh": {
+    "e97a2": {
       "ver": "1.0.2",
       "importer": "gltf-mesh",
-      "uuid": "3990b73c-4dcd-4ad8-91f5-e1a4e09d6fe1@head.mesh",
+      "name": "head.mesh",
+      "id": "e97a2",
+      "displayName": "",
+      "uuid": "3990b73c-4dcd-4ad8-91f5-e1a4e09d6fe1@e97a2",
       "imported": true,
       "files": [
         ".json",
@@ -22,10 +25,13 @@
         "gltfIndex": 0
       }
     },
-    "Map #1.texture": {
+    "6e70c": {
       "ver": "1.0.19",
       "importer": "texture",
-      "uuid": "3990b73c-4dcd-4ad8-91f5-e1a4e09d6fe1@Map #1.texture",
+      "name": "Map #1.texture",
+      "id": "6e70c",
+      "displayName": "",
+      "uuid": "3990b73c-4dcd-4ad8-91f5-e1a4e09d6fe1@6e70c",
       "imported": true,
       "files": [
         ".json"
@@ -43,10 +49,13 @@
         "imageUuidOrDatabaseUri": "db://assets/meshes/head/diffuse.jpg"
       }
     },
-    "head.prefab": {
+    "aa48e": {
       "ver": "1.0.8",
       "importer": "gltf-scene",
-      "uuid": "3990b73c-4dcd-4ad8-91f5-e1a4e09d6fe1@head.prefab",
+      "name": "head.prefab",
+      "id": "aa48e",
+      "displayName": "",
+      "uuid": "3990b73c-4dcd-4ad8-91f5-e1a4e09d6fe1@aa48e",
       "imported": true,
       "files": [
         ".json"
@@ -67,10 +76,10 @@
     "normals": 2,
     "tangents": 2,
     "dumpMaterials": true,
-    "redirect": "3990b73c-4dcd-4ad8-91f5-e1a4e09d6fe1@head.prefab",
+    "redirect": "3990b73c-4dcd-4ad8-91f5-e1a4e09d6fe1@aa48e",
     "assetFinder": {
       "meshes": [
-        "3990b73c-4dcd-4ad8-91f5-e1a4e09d6fe1@head.mesh"
+        "3990b73c-4dcd-4ad8-91f5-e1a4e09d6fe1@e97a2"
       ],
       "images": [
         {
@@ -79,13 +88,13 @@
         }
       ],
       "textures": [
-        "3990b73c-4dcd-4ad8-91f5-e1a4e09d6fe1@Map #1.texture"
+        "3990b73c-4dcd-4ad8-91f5-e1a4e09d6fe1@6e70c"
       ],
       "materials": [
         "09e8b5f1-46e1-4d0f-86cb-6d00e856df89"
       ],
       "scenes": [
-        "3990b73c-4dcd-4ad8-91f5-e1a4e09d6fe1@head.prefab"
+        "3990b73c-4dcd-4ad8-91f5-e1a4e09d6fe1@aa48e"
       ]
     }
   }

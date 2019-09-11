@@ -1,5 +1,5 @@
 {
-  "ver": "1.1.22",
+  "ver": "1.1.24",
   "importer": "gltf",
   "imported": true,
   "uuid": "c8e79217-7978-4900-b7de-2987723f4a92",
@@ -7,10 +7,10 @@
     ".gltf"
   ],
   "subMetas": {
-    "pCube49.mesh": {
+    "d9c96": {
       "ver": "1.0.2",
       "importer": "gltf-mesh",
-      "uuid": "c8e79217-7978-4900-b7de-2987723f4a92@pCube49.mesh",
+      "uuid": "c8e79217-7978-4900-b7de-2987723f4a92@d9c96",
       "imported": true,
       "files": [
         ".json",
@@ -19,12 +19,14 @@
       "subMetas": {},
       "userData": {
         "gltfIndex": 0
-      }
+      },
+      "id": "d9c96",
+      "name": "pCube49.mesh"
     },
-    "UnnamedTexture-0.texture": {
+    "3effa": {
       "ver": "1.0.19",
       "importer": "texture",
-      "uuid": "c8e79217-7978-4900-b7de-2987723f4a92@UnnamedTexture-0.texture",
+      "uuid": "c8e79217-7978-4900-b7de-2987723f4a92@3effa",
       "imported": true,
       "files": [
         ".json"
@@ -40,12 +42,14 @@
         "anisotropy": 1,
         "isUuid": false,
         "imageUuidOrDatabaseUri": "db://assets/meshes/corset/Corset_baseColor.png"
-      }
+      },
+      "id": "3effa",
+      "name": "UnnamedTexture-0.texture"
     },
-    "UnnamedTexture-1.texture": {
+    "221a5": {
       "ver": "1.0.19",
       "importer": "texture",
-      "uuid": "c8e79217-7978-4900-b7de-2987723f4a92@UnnamedTexture-1.texture",
+      "uuid": "c8e79217-7978-4900-b7de-2987723f4a92@221a5",
       "imported": true,
       "files": [
         ".json"
@@ -61,12 +65,14 @@
         "anisotropy": 1,
         "isUuid": false,
         "imageUuidOrDatabaseUri": "db://assets/meshes/corset/Corset_occlusionRoughnessMetallic.png"
-      }
+      },
+      "id": "221a5",
+      "name": "UnnamedTexture-1.texture"
     },
-    "UnnamedTexture-2.texture": {
+    "0089c": {
       "ver": "1.0.19",
       "importer": "texture",
-      "uuid": "c8e79217-7978-4900-b7de-2987723f4a92@UnnamedTexture-2.texture",
+      "uuid": "c8e79217-7978-4900-b7de-2987723f4a92@0089c",
       "imported": true,
       "files": [
         ".json"
@@ -82,12 +88,14 @@
         "anisotropy": 1,
         "isUuid": false,
         "imageUuidOrDatabaseUri": "db://assets/meshes/corset/Corset_normal.png"
-      }
+      },
+      "id": "0089c",
+      "name": "UnnamedTexture-2.texture"
     },
-    "Corset_O.material": {
+    "ddb15": {
       "ver": "1.0.10",
       "importer": "gltf-material",
-      "uuid": "c8e79217-7978-4900-b7de-2987723f4a92@Corset_O.material",
+      "uuid": "c8e79217-7978-4900-b7de-2987723f4a92@ddb15",
       "imported": true,
       "files": [
         ".json"
@@ -95,12 +103,14 @@
       "subMetas": {},
       "userData": {
         "gltfIndex": 0
-      }
+      },
+      "id": "ddb15",
+      "name": "Corset_O.material"
     },
-    "Corset.prefab": {
+    "796a3": {
       "ver": "1.0.8",
       "importer": "gltf-scene",
-      "uuid": "c8e79217-7978-4900-b7de-2987723f4a92@Corset.prefab",
+      "uuid": "c8e79217-7978-4900-b7de-2987723f4a92@796a3",
       "imported": true,
       "files": [
         ".json"
@@ -108,7 +118,9 @@
       "subMetas": {},
       "userData": {
         "gltfIndex": 0
-      }
+      },
+      "id": "796a3",
+      "name": "Corset.prefab"
     }
   },
   "userData": {
@@ -140,12 +152,12 @@
       ]
     },
     "imageLocations": {},
-    "redirect": "c8e79217-7978-4900-b7de-2987723f4a92@Corset.prefab",
+    "redirect": "c8e79217-7978-4900-b7de-2987723f4a92@796a3",
     "normals": 0,
     "tangents": 1,
     "assetFinder": {
       "meshes": [
-        "c8e79217-7978-4900-b7de-2987723f4a92@pCube49.mesh"
+        "c8e79217-7978-4900-b7de-2987723f4a92@d9c96"
       ],
       "images": [
         {
@@ -162,15 +174,15 @@
         }
       ],
       "textures": [
-        "c8e79217-7978-4900-b7de-2987723f4a92@UnnamedTexture-0.texture",
-        "c8e79217-7978-4900-b7de-2987723f4a92@UnnamedTexture-1.texture",
-        "c8e79217-7978-4900-b7de-2987723f4a92@UnnamedTexture-2.texture"
+        "c8e79217-7978-4900-b7de-2987723f4a92@3effa",
+        "c8e79217-7978-4900-b7de-2987723f4a92@221a5",
+        "c8e79217-7978-4900-b7de-2987723f4a92@0089c"
       ],
       "materials": [
-        "c8e79217-7978-4900-b7de-2987723f4a92@Corset_O.material"
+        "c8e79217-7978-4900-b7de-2987723f4a92@ddb15"
       ],
       "scenes": [
-        "c8e79217-7978-4900-b7de-2987723f4a92@Corset.prefab"
+        "c8e79217-7978-4900-b7de-2987723f4a92@796a3"
       ]
     }
   }
