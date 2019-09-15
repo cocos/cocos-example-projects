@@ -26,8 +26,8 @@ export class MotorState {
 
     update (deltaTime: number) {
         let fdBtns = InstanceMgr.FourDirButtons;
-        let isForwardDown = fdBtns.check(EFourDirType.FORWARD, EButtonState.START) || fdBtns.check(EFourDirType.FORWARD, EButtonState.MOVE);
-        let isBackwardDown = fdBtns.check(EFourDirType.BACKWARD, EButtonState.START) || fdBtns.check(EFourDirType.BACKWARD, EButtonState.MOVE);
+        let isForwardDown = fdBtns.check(EFourDirType.FORWARD, EButtonState.TOUCH_START) || fdBtns.check(EFourDirType.FORWARD, EButtonState.TOUCH_MOVE);
+        let isBackwardDown = fdBtns.check(EFourDirType.BACKWARD, EButtonState.TOUCH_START) || fdBtns.check(EFourDirType.BACKWARD, EButtonState.TOUCH_MOVE);
         if (isForwardDown) {
             if (isBackwardDown) {
                 this._verticalState = EMotionState.NONE;
@@ -42,8 +42,8 @@ export class MotorState {
             }
         }
 
-        let isTurnleftDown = fdBtns.check(EFourDirType.TURNLEFT, EButtonState.START) || fdBtns.check(EFourDirType.TURNLEFT, EButtonState.MOVE);
-        let isTurnRightDown = fdBtns.check(EFourDirType.TURNRIGHT, EButtonState.START) || fdBtns.check(EFourDirType.TURNRIGHT, EButtonState.MOVE);
+        let isTurnleftDown = fdBtns.check(EFourDirType.TURNLEFT, EButtonState.TOUCH_START) || fdBtns.check(EFourDirType.TURNLEFT, EButtonState.TOUCH_MOVE);
+        let isTurnRightDown = fdBtns.check(EFourDirType.TURNRIGHT, EButtonState.TOUCH_START) || fdBtns.check(EFourDirType.TURNRIGHT, EButtonState.TOUCH_MOVE);
         if (isTurnleftDown) {
             if (isTurnRightDown) {
                 this._horizontalState = EMotionState.NONE;

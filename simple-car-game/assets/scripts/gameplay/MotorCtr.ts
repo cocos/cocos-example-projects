@@ -58,16 +58,17 @@ export class MotorCtr {
     }
 
     update (deltaTime: number) {
+        this._force.set(0, 0, 0);
         if (InstanceMgr.MotorState.verticalState == EMotionState.POSITIVE) {
-            this._force.z += this._z_positive * deltaTime;
+            this._force.z += this._z_positive;
         } else if (InstanceMgr.MotorState.verticalState == EMotionState.NEGATIVE) {
-            this._force.z += this._z_negative * deltaTime;
+            this._force.z += this._z_negative;
         }
 
         if (InstanceMgr.MotorState.horizontalState == EMotionState.POSITIVE) {
-            this._force.x += this._x_positive * deltaTime;
+            this._force.x += this._x_positive;
         } else if (InstanceMgr.MotorState.horizontalState == EMotionState.NEGATIVE) {
-            this._force.x += this._x_negative * deltaTime;
+            this._force.x += this._x_negative;
         }
 
         this._force.z = math.clamp(this._force.z, this.range.x, this.range.y);

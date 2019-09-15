@@ -8,10 +8,10 @@ export enum EFourDirType {
 
 export enum EButtonState {
     NONE = 0,
-    START = 1,
-    MOVE = 2,
-    END = 3,
-    CANCEL = 4
+    TOUCH_START = 1,
+    TOUCH_MOVE = 2,
+    TOUCH_END = 3,
+    TOUCH_CANCEL = 4
 }
 
 export enum EMotionState {

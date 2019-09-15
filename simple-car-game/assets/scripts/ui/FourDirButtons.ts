@@ -14,24 +14,23 @@ export class FourDirButtons extends Component {
 
     public turnRightNode: Node = null;
 
-    private _forward: number = 0;
+    private _button = {};
 
-    private _backward: number = 0;
-
-    private _turnleft: number = 0;
-
-    private _turnright: number = 0;
+    // public readonly  
 
     public check (dirType: EFourDirType, buttonState: EButtonState) {
-        let _t: number = this._forward;
-        if (dirType == EFourDirType.BACKWARD) {
-            _t = this._backward;
-        } else if (dirType == EFourDirType.TURNLEFT) {
-            _t = this._turnleft;
-        } else if (dirType == EFourDirType.TURNRIGHT) {
-            _t = this._turnright;
-        }
-        return _t & (dirType << buttonState);
+        // let _t: number = this._forward;
+        // if (dirType == EFourDirType.FORWARD) {
+        //     _t = this._forward;
+        // } else if (dirType == EFourDirType.BACKWARD) {
+        //     _t = this._backward;
+        // } else if (dirType == EFourDirType.TURNLEFT) {
+        //     _t = this._turnleft;
+        // } else if (dirType == EFourDirType.TURNRIGHT) {
+        //     _t = this._turnright;
+        // }
+
+        return this._button[dirType] & (dirType << buttonState);
     }
 
     onLoad () {
@@ -96,45 +95,47 @@ export class FourDirButtons extends Component {
     }
 
     private _onForward (event: EventTouch) {
-        console.log(event);
+        // console.log(event);
         this._setValue(event.type as SystemEventType, EFourDirType.FORWARD);
     }
 
     private _onBackward (event: EventTouch) {
-        console.log(event);
+        // console.log(event);
         this._setValue(event.type as SystemEventType, EFourDirType.BACKWARD);
     }
 
     private _onTurnleft (event: EventTouch) {
-        console.log(event);
+        // console.log(event);
         this._setValue(event.type as SystemEventType, EFourDirType.TURNLEFT);
     }
 
     private _onTurnright (event: EventTouch) {
-        console.log(event);
+        // console.log(event);
         this._setValue(event.type as SystemEventType, EFourDirType.TURNRIGHT);
     }
 
     private _setValue (type: SystemEventType, dirType: EFourDirType) {
-        let _btnState: EButtonState = EButtonState.MOVE;
+        let _btnState: EButtonState = EButtonState.TOUCH_MOVE;
         if (type == SystemEventType.TOUCH_START) {
-            _btnState = EButtonState.START;
+            _btnState = EButtonState.TOUCH_START;
         } else if (type == SystemEventType.TOUCH_END) {
-            _btnState = EButtonState.END;
+            _btnState = EButtonState.TOUCH_END;
         } else if (type == SystemEventType.TOUCH_CANCEL) {
-            _btnState = EButtonState.CANCEL;
+            _btnState = EButtonState.TOUCH_CANCEL;
         }
 
-        let _t = dirType << _btnState;
-        if (dirType == EFourDirType.FORWARD) {
-            this._forward = _t;
-        } else if (dirType == EFourDirType.BACKWARD) {
-            this._backward = _t;
-        } else if (dirType == EFourDirType.TURNLEFT) {
-            this._turnleft = _t;
-        } else {
-            this._turnright = _t;
-        }
+        // let _t = dirType << _btnState;
+        // if (dirType == EFourDirType.FORWARD) {
+        //     this._forward = _t;
+        // } else if (dirType == EFourDirType.BACKWARD) {
+        //     this._backward = _t;
+        // } else if (dirType == EFourDirType.TURNLEFT) {
+        //     this._turnleft = _t;
+        // } else {
+        //     this._turnright = _t;
+        // }
+
+        this._button[dirType] = dirType << _btnState;
     }
 
 }
