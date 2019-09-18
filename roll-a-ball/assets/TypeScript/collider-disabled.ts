@@ -5,12 +5,12 @@ const { ccclass, property } = _decorator;
 export class colliderdisabled extends Component {
     public start () {
         let Collider = this.getComponent(ColliderComponent);
-        Collider.on('onCollisionStay', this.onCollision, this);
+        Collider.on('onCollisionEnter', this.onCollision, this);
     }
-    
+
     private onCollision (event: ICollisionEvent) {
-        console.log(event.type, event);
-        if(event.otherCollider.node.name!="Ground"&&event.otherCollider.node.parent.name!="Ground"&&event.otherCollider.node.parent.parent.name!="Ground")
-        {event.otherCollider.node.active=false;}
+        if (event.otherCollider.node.name == "Bonus") {
+            event.otherCollider.node.active = false;
+        }
     }
 }
