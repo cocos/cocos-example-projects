@@ -15,7 +15,7 @@ enum EKey {
 @ccclass("ballcontrol")
 export class ballcontrol extends Component {
 
-    @property({ slide: true, range: [1, 4, 0.01] })
+    @property({ slide: true, range: [1, 3, 0.01] })
     public readonly shiftScale = 2;
 
     private _rigidBody: RigidBodyComponent = null;
@@ -87,7 +87,4 @@ export class ballcontrol extends Component {
         }
     }
 
-    onTouchStart (event: Touch, eventTouch: EventTouch) {
-
-    }
 }

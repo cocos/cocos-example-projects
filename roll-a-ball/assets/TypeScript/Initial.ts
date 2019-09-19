@@ -1,7 +1,6 @@
 import { _decorator, Component, Node, Prefab, math, instantiate, Quat, Vec3 } from "cc";
 const { ccclass, property } = _decorator;
-const _tmpVec3 = new math.Vec3;
-_tmpVec3.y = 1;
+
 const _v3_0 = new Vec3();
 const _quat_0 = new Quat();
 
@@ -14,14 +13,18 @@ export class Instantiate extends Component {
     public boxAmount: number = 30;
 
     start () {
+        _v3_0.y = 1;
+        const radianPart = 2 * Math.PI / this.boxAmount;
         for (let i = this.boxAmount; i--;) {
             const boxNode = instantiate(this.boxPrefab) as Node;
             boxNode.setParent(this.node as Node);
             boxNode.active = true;
-            let t = i / this.boxAmount * Math.PI * 2 + 0.5;
-            _tmpVec3.x = t * 1 * Math.cos(t * 7);
-            _tmpVec3.z = t * 1 * Math.sin(t * 7);
-            boxNode.setWorldPosition(_tmpVec3.x, _tmpVec3.y, _tmpVec3.z);
+
+            let rad = radianPart * i;
+            _v3_0.x = 4 * Math.cos(rad);
+            _v3_0.z = 8 * Math.sin(rad);
+
+            boxNode.setWorldPosition(_v3_0);
         }
         const boxNode1 = instantiate(this.boxPrefab) as Node;
         boxNode1.setParent(this.node as Node);
