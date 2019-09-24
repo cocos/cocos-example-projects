@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, ConstantForce } from "cc";
+import { _decorator, Component, Node } from "cc";
 import { MotorState } from "./MotorState";
 import { MotorCtr } from "./MotorCtr";
 import { InstanceMgr } from "../InstanceMgr";
@@ -14,11 +14,14 @@ export class MotorCom extends Component {
 
     onLoad () {
         this.MotorState.onLoad();
-
-        this.MotorCtr.constForce = this.getComponent(ConstantForce);
         this.MotorCtr.onLoad();
 
         InstanceMgr.registerInstance('MotorCom', this);
+    }
+
+    start () {
+        this.MotorState.start();
+        this.MotorCtr.start();
     }
 
     update (deltaTime: number) {

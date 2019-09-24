@@ -1,78 +1,64 @@
-import { _decorator, Component, Node, Vec2, ConstantForce, Vec3, math } from "cc";
+import { _decorator, Vec2, Vec3, math, RigidBodyComponent } from "cc";
 import { InstanceMgr } from "../InstanceMgr";
-import { EFourDirType, EButtonState, EMotionState } from "../const/EnumDefine";
+import { EMotionState } from "../const/EnumDefine";
 const { ccclass, property, menu, requireComponent } = _decorator;
 
 /**
  * @zh
- * MotorCtr 用来控制主角的动力
+ * MotorCtr 用来控制主角动力
  * 由 MotorCom 来驱动
  */
 
 @ccclass("MotorCtr")
-@requireComponent(ConstantForce)
+@menu("motor/MotorCtr")
+@requireComponent(RigidBodyComponent)
 export class MotorCtr {
 
-    /**
-     * 力量的范围
-     */
     @property({ type: Vec2 })
-    public readonly range: Vec2 = new Vec2(-100, 100);
+    public readonly vertical: Vec2 = new Vec2();
 
-    /**
-     * 每帧前进和后退的力量值
-     */
     @property({ type: Vec2 })
-    public readonly vertical: Vec2 = new Vec2(1, 1);
+    public readonly horizontal: Vec2 = new Vec2();
 
-    /**
-     * 每帧向左和向右的力量值
-     */
     @property({ type: Vec2 })
-    public readonly horizontal: Vec2 = new Vec2(1, 1);
+    public readonly torque: Vec2 = new Vec2();
 
-    public constForce: ConstantForce = null;
+    public rigidBody: RigidBodyComponent;
 
     private _force: Vec3 = new Vec3();
-
-    private get _z_positive () {
-        return this.vertical.x;
-    }
-
-    private get _z_negative () {
-        return -this.vertical.y;
-    }
-
-    private get _x_positive () {
-        return this.horizontal.x;
-    }
-
-    private get _x_negative () {
-        return -this.horizontal.y;
-    }
+    private _torque: Vec3 = new Vec3();
 
     onLoad () {
-        this._force.set(this.constForce.localForce);
-
         InstanceMgr.registerInstance('MotorCtr', this);
     }
 
+    start () {
+        this.rigidBody = InstanceMgr.MotorCom.getComponent(RigidBodyComponent);
+    }
+
     update (deltaTime: number) {
+
+        this._torque.set(0, 0, 0);
+        if (InstanceMgr.MotorState.horizontalState == EMotionState.POSITIVE) {
+            this._torque.y = this.torque.x;
+        } else if (InstanceMgr.MotorState.horizontalState == EMotionState.NEGATIVE) {
+            this._torque.y = -this.torque.y;
+        }
+
+        if (!this._torque.strictEquals(Vec3.ZERO)) {
+            this.rigidBody.applyTorque(this._torque);
+        }
+
         this._force.set(0, 0, 0);
         if (InstanceMgr.MotorState.verticalState == EMotionState.POSITIVE) {
-            this._force.z += this._z_positive;
+            this._force.z = this.vertical.x;
         } else if (InstanceMgr.MotorState.verticalState == EMotionState.NEGATIVE) {
-            this._force.z += this._z_negative;
+            this._force.z = -this.vertical.y;
         }
 
-        if (InstanceMgr.MotorState.horizontalState == EMotionState.POSITIVE) {
-            this._force.x += this._x_positive;
-        } else if (InstanceMgr.MotorState.horizontalState == EMotionState.NEGATIVE) {
-            this._force.x += this._x_negative;
+        if (!this._force.strictEquals(Vec3.ZERO)) {
+            this.rigidBody.applyLocalForce(this._force);
         }
 
-        this._force.z = math.clamp(this._force.z, this.range.x, this.range.y);
-        this._force.x = math.clamp(this._force.x, this.range.x, this.range.y);
-        this.constForce.localForce = this._force;
     }
 }

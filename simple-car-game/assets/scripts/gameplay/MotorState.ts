@@ -2,6 +2,8 @@ import { InstanceMgr } from "../InstanceMgr";
 import { EFourDirType, EButtonState, EMotionState } from "../const/EnumDefine";
 
 /**
+ * @zh
+ * MotorState 用来标记运动状态
  * 由 MotorCom 驱动
  */
 
@@ -22,6 +24,10 @@ export class MotorState {
 
     onLoad () {
         InstanceMgr.registerInstance('MotorState', this);
+    }
+
+    start () {
+
     }
 
     update (deltaTime: number) {

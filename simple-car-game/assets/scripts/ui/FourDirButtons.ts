@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, ButtonComponent, SystemEventType, EventTouch } from "cc";
+import { _decorator, Component, Node, ButtonComponent, SystemEventType, EventTouch, systemEvent, EventKeyboard, macro } from "cc";
 import { EFourDirType, EButtonState } from "../const/EnumDefine";
 import { InstanceMgr } from "../InstanceMgr";
 const { ccclass, property } = _decorator;
@@ -19,17 +19,6 @@ export class FourDirButtons extends Component {
     // public readonly  
 
     public check (dirType: EFourDirType, buttonState: EButtonState) {
-        // let _t: number = this._forward;
-        // if (dirType == EFourDirType.FORWARD) {
-        //     _t = this._forward;
-        // } else if (dirType == EFourDirType.BACKWARD) {
-        //     _t = this._backward;
-        // } else if (dirType == EFourDirType.TURNLEFT) {
-        //     _t = this._turnleft;
-        // } else if (dirType == EFourDirType.TURNRIGHT) {
-        //     _t = this._turnright;
-        // }
-
         return this._button[dirType] & (dirType << buttonState);
     }
 
@@ -70,6 +59,11 @@ export class FourDirButtons extends Component {
         this.turnRightNode.on(SystemEventType.TOUCH_CANCEL, this._onTurnright, this);
         this.turnRightNode.on(SystemEventType.TOUCH_MOVE, this._onTurnright, this);
         this.turnRightNode.on(SystemEventType.TOUCH_END, this._onTurnright, this);
+
+        if (cc.sys.isBrowser) {
+            systemEvent.on(SystemEventType.KEY_DOWN, this._onKeyDown, this);
+            systemEvent.on(SystemEventType.KEY_UP, this._onKeyUp, this);
+        }
     }
 
     removeEvents () {
@@ -92,25 +86,26 @@ export class FourDirButtons extends Component {
         this.turnRightNode.off(SystemEventType.TOUCH_CANCEL, this._onTurnright, this);
         this.turnRightNode.off(SystemEventType.TOUCH_MOVE, this._onTurnright, this);
         this.turnRightNode.off(SystemEventType.TOUCH_END, this._onTurnright, this);
+
+        if (cc.sys.isBrowser) {
+            systemEvent.off(SystemEventType.KEY_DOWN, this._onKeyDown, this);
+            systemEvent.off(SystemEventType.KEY_UP, this._onKeyUp, this);
+        }
     }
 
     private _onForward (event: EventTouch) {
-        // console.log(event);
         this._setValue(event.type as SystemEventType, EFourDirType.FORWARD);
     }
 
     private _onBackward (event: EventTouch) {
-        // console.log(event);
         this._setValue(event.type as SystemEventType, EFourDirType.BACKWARD);
     }
 
     private _onTurnleft (event: EventTouch) {
-        // console.log(event);
         this._setValue(event.type as SystemEventType, EFourDirType.TURNLEFT);
     }
 
     private _onTurnright (event: EventTouch) {
-        // console.log(event);
         this._setValue(event.type as SystemEventType, EFourDirType.TURNRIGHT);
     }
 
@@ -124,18 +119,31 @@ export class FourDirButtons extends Component {
             _btnState = EButtonState.TOUCH_CANCEL;
         }
 
-        // let _t = dirType << _btnState;
-        // if (dirType == EFourDirType.FORWARD) {
-        //     this._forward = _t;
-        // } else if (dirType == EFourDirType.BACKWARD) {
-        //     this._backward = _t;
-        // } else if (dirType == EFourDirType.TURNLEFT) {
-        //     this._turnleft = _t;
-        // } else {
-        //     this._turnright = _t;
-        // }
-
         this._button[dirType] = dirType << _btnState;
+    }
+
+    private _onKeyDown (event: EventKeyboard) {
+        if (event.keyCode == macro.KEY.w) {
+            this._setValue(SystemEventType.TOUCH_START, EFourDirType.FORWARD);
+        } else if (event.keyCode == macro.KEY.a) {
+            this._setValue(SystemEventType.TOUCH_START, EFourDirType.TURNLEFT);
+        } else if (event.keyCode == macro.KEY.s) {
+            this._setValue(SystemEventType.TOUCH_START, EFourDirType.BACKWARD);
+        } else if (event.keyCode == macro.KEY.d) {
+            this._setValue(SystemEventType.TOUCH_START, EFourDirType.TURNRIGHT);
+        }
+    }
+
+    private _onKeyUp (event: EventKeyboard) {
+        if (event.keyCode == macro.KEY.w) {
+            this._setValue(SystemEventType.TOUCH_END, EFourDirType.FORWARD);
+        } else if (event.keyCode == macro.KEY.a) {
+            this._setValue(SystemEventType.TOUCH_END, EFourDirType.TURNLEFT);
+        } else if (event.keyCode == macro.KEY.s) {
+            this._setValue(SystemEventType.TOUCH_END, EFourDirType.BACKWARD);
+        } else if (event.keyCode == macro.KEY.d) {
+            this._setValue(SystemEventType.TOUCH_END, EFourDirType.TURNRIGHT);
+        }
     }
 
 }
