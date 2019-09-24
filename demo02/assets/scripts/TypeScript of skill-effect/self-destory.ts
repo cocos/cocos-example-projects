@@ -12,7 +12,7 @@ export class selfdestory extends Component {
 
     start () {
         setTimeout(() => {
-            if(this.node.destroy()==true){
+            if(this.node && this.node.destroy()==true){
             console.log('destroy complete');
            }
         }, 5000);
