@@ -30,10 +30,8 @@ export class CameraFollow extends Component {
         _pos.lerp(v3_0, 0.2);
         this.node.worldPosition = _pos;
 
-        if (!_look.equals(this.lookTarget.worldPosition, this.epsilon)) {
-            v3_0.set(this.lookTarget.worldPosition);
-            _look.lerp(v3_0, 0.2);
-            this.node.lookAt(_look);
-        }
+        v3_0.set(this.lookTarget.worldPosition);
+        _look.lerp(v3_0, 0.2);
+        this.node.lookAt(_look);
     }
 }

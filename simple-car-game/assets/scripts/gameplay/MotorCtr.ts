@@ -18,15 +18,13 @@ export class MotorCtr {
     public readonly vertical: Vec2 = new Vec2();
 
     @property({ type: Vec2 })
-    public readonly horizontal: Vec2 = new Vec2();
-
-    @property({ type: Vec2 })
     public readonly torque: Vec2 = new Vec2();
 
     public rigidBody: RigidBodyComponent;
 
     private _force: Vec3 = new Vec3();
     private _torque: Vec3 = new Vec3();
+    private _linearVelocity: Vec3 = new Vec3();
 
     onLoad () {
         InstanceMgr.registerInstance('MotorCtr', this);
@@ -37,6 +35,10 @@ export class MotorCtr {
     }
 
     update (deltaTime: number) {
+        // is in air ?
+        if (this.rigidBody.node.worldPosition.y > 0.1) {
+            return;
+        }
 
         this._torque.set(0, 0, 0);
         if (InstanceMgr.MotorState.horizontalState == EMotionState.POSITIVE) {
@@ -46,7 +48,7 @@ export class MotorCtr {
         }
 
         if (!this._torque.strictEquals(Vec3.ZERO)) {
-            this.rigidBody.applyTorque(this._torque);
+            this.rigidBody.setAngularVelocity(this._torque);
         }
 
         this._force.set(0, 0, 0);
@@ -57,7 +59,11 @@ export class MotorCtr {
         }
 
         if (!this._force.strictEquals(Vec3.ZERO)) {
-            this.rigidBody.applyLocalForce(this._force);
+            Vec3.transformQuat(this._force, this._force, this.rigidBody.node.worldRotation);
+            this.rigidBody.getLinearVelocity(this._linearVelocity);
+            this._linearVelocity.x = this._force.x;
+            this._linearVelocity.z = this._force.z;
+            this.rigidBody.setLinearVelocity(this._linearVelocity);
         }
 
     }
