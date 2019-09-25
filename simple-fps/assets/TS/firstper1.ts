@@ -1,4 +1,4 @@
-import { _decorator, Component, Vec3, systemEvent, SystemEvent, macro, game, math } from "cc";
+import { _decorator, Component, Vec3, systemEvent, SystemEvent, macro, game, math, director, SpriteComponent, AnimationComponent } from "cc";
 const { ccclass} = _decorator;
 import { Con } from './Constants';
 
@@ -134,14 +134,11 @@ export class firstper1 extends Component {
     start () {
         // Your initialization goes here.
         //获取血量组件
-        const canvas = cc.director.getScene().getChildByName('Canvas');
+        const canvas = director.getScene().getChildByName('Canvas');
         const playerhp = canvas.getChildByName('PlayerHp');
-        this._sprite = playerhp.getComponent(cc.SpriteComponent);
+        this._sprite = playerhp.getComponent(SpriteComponent);
         //获取动画组件
-        this._animationComponent = this.node.getComponent(cc.AnimationComponent);
-
-        //鼠标消失
-        game.canvas.requestPointerLock();
+        this._animationComponent = this.node.getComponent(AnimationComponent);
 
     }
 
