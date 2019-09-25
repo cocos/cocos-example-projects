@@ -1,0 +1,172 @@
+{
+  "ver": "1.1.2525",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "14c08caf-9370-4796-ba18-4f8f5b61131f",
+  "displayName": "",
+  "files": [
+    ".fbx"
+  ],
+  "subMetas": {
+    "274e2": {
+      "ver": "1.0.2",
+      "importer": "gltf-mesh",
+      "name": "girl02.mesh",
+      "id": "274e2",
+      "displayName": "",
+      "uuid": "14c08caf-9370-4796-ba18-4f8f5b61131f@274e2",
+      "imported": true,
+      "files": [
+        ".json",
+        ".bin"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 0
+      }
+    },
+    "73b7f": {
+      "ver": "1.0.10",
+      "importer": "gltf-animation",
+      "name": "Take 001.animation",
+      "id": "73b7f",
+      "displayName": "",
+      "uuid": "14c08caf-9370-4796-ba18-4f8f5b61131f@73b7f",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 0,
+        "sample": 30,
+        "span": {
+          "from": 0,
+          "to": 0
+        },
+        "events": []
+      }
+    },
+    "438fe": {
+      "ver": "1.0.0",
+      "importer": "gltf-skeleton",
+      "name": "UnnamedSkeleton.skeleton",
+      "id": "438fe",
+      "displayName": "",
+      "uuid": "14c08caf-9370-4796-ba18-4f8f5b61131f@438fe",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 0
+      }
+    },
+    "59f96": {
+      "ver": "1.0.19",
+      "importer": "texture",
+      "name": "贴图 #2.texture",
+      "id": "59f96",
+      "displayName": "",
+      "uuid": "14c08caf-9370-4796-ba18-4f8f5b61131f@59f96",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {},
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "premultiplyAlpha": false,
+        "anisotropy": 1,
+        "isUuid": false,
+        "imageUuidOrDatabaseUri": "db://assets/model/customer/1/girl01.jpg"
+      }
+    },
+    "fe5ee": {
+      "ver": "1.0.10",
+      "importer": "gltf-material",
+      "name": "Material #5.material",
+      "id": "fe5ee",
+      "displayName": "",
+      "uuid": "14c08caf-9370-4796-ba18-4f8f5b61131f@fe5ee",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 0
+      }
+    },
+    "7b338": {
+      "ver": "1.0.8",
+      "importer": "gltf-scene",
+      "name": "girl01.prefab",
+      "id": "7b338",
+      "displayName": "",
+      "uuid": "14c08caf-9370-4796-ba18-4f8f5b61131f@7b338",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 0
+      }
+    }
+  },
+  "userData": {
+    "imageLocations": {
+      "girl02.png": {
+        "originalPath": "girl02.png",
+        "targetDatabaseUrl": "db://assets/model/customer/1/girl01.jpg"
+      }
+    },
+    "normals": 2,
+    "tangents": 2,
+    "dumpMaterials": false,
+    "redirect": "14c08caf-9370-4796-ba18-4f8f5b61131f@7b338",
+    "animationImportSettings": [
+      {
+        "name": "Take 001",
+        "duration": 0.6666666865348816,
+        "fps": 30,
+        "splits": [
+          {
+            "name": "Take 001",
+            "from": 0,
+            "to": 0
+          }
+        ]
+      }
+    ],
+    "assetFinder": {
+      "meshes": [
+        "14c08caf-9370-4796-ba18-4f8f5b61131f@274e2"
+      ],
+      "skeletons": [
+        "14c08caf-9370-4796-ba18-4f8f5b61131f@438fe"
+      ],
+      "images": [
+        {
+          "embeded": false,
+          "uuidOrDatabaseUri": "db://assets/model/customer/1/girl01.jpg"
+        }
+      ],
+      "textures": [
+        "14c08caf-9370-4796-ba18-4f8f5b61131f@59f96"
+      ],
+      "materials": [
+        "14c08caf-9370-4796-ba18-4f8f5b61131f@fe5ee"
+      ],
+      "scenes": [
+        "14c08caf-9370-4796-ba18-4f8f5b61131f@7b338"
+      ]
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import { _decorator, Vec2, Vec3, math, RigidBodyComponent } from "cc";
+import { _decorator, Vec2, Vec3, math, RigidBodyComponent, Quat } from "cc";
 import { InstanceMgr } from "../InstanceMgr";
 import { EMotionState } from "../const/EnumDefine";
 const { ccclass, property, menu, requireComponent } = _decorator;
@@ -36,20 +36,30 @@ export class MotorCtr {
 
     update (deltaTime: number) {
         // is in air ?
-        if (this.rigidBody.node.worldPosition.y > 0.1) {
-            return;
-        }
+        // if (this.rigidBody.node.worldPosition.y > 0.1) {
+        //     return;
+        // }
 
-        this._torque.set(0, 0, 0);
+        // this._torque.set(0, 0, 0);
+        // if (InstanceMgr.MotorState.horizontalState == EMotionState.POSITIVE) {
+        //     this._torque.y = this.torque.x;
+        // } else if (InstanceMgr.MotorState.horizontalState == EMotionState.NEGATIVE) {
+        //     this._torque.y = -this.torque.y;
+        // }
+
+        // if (!this._torque.strictEquals(Vec3.ZERO)) {
+        //     this.rigidBody.setAngularVelocity(this._torque);
+        // }
+
+        // rotation
+
         if (InstanceMgr.MotorState.horizontalState == EMotionState.POSITIVE) {
-            this._torque.y = this.torque.x;
+            this.rigidBody.node.rotate(Quat.fromEuler(new Quat(), 0, this.torque.x * deltaTime, 0), 1);
         } else if (InstanceMgr.MotorState.horizontalState == EMotionState.NEGATIVE) {
-            this._torque.y = -this.torque.y;
+            this.rigidBody.node.rotate(Quat.fromEuler(new Quat(), 0, -this.torque.x * deltaTime, 0), 1);
         }
 
-        if (!this._torque.strictEquals(Vec3.ZERO)) {
-            this.rigidBody.setAngularVelocity(this._torque);
-        }
+        // add world velocity
 
         this._force.set(0, 0, 0);
         if (InstanceMgr.MotorState.verticalState == EMotionState.POSITIVE) {
