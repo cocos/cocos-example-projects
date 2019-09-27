@@ -77,7 +77,7 @@ CCProgram standard-vs %{
     v_normal = normalize((cc_matWorldIT * vec4(In.normal, 0.0)).xyz);
     #if USE_NORMAL_MAP
       v_tangent = normalize((cc_matWorldIT * vec4(In.tangent.xyz, 0.0)).xyz);
-      v_bitangent = cross(v_tangent, v_normal) * In.tangent.w;
+      v_bitangent = cross(v_normal, v_tangent) * In.tangent.w; // note the cross order
     #endif
 
     #if USE_ALBEDO_MAP || USE_NORMAL_MAP || USE_PBR_MAP || USE_EMISSIVE_MAP || USE_METALLIC_ROUGHNESS_MAP || USE_OCCLUSION_MAP
