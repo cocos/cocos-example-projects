@@ -117,7 +117,9 @@ export class monster1 extends Component {
         var HpPosition=new Vec3(this.node.getPosition().x,this.node.getPosition().y+1.7,this.node.getPosition().z)
         var ddddd=new Vec3(10,10,10);
         cc.pipelineUtils.WorldNode3DToLocalNodeUI(this.CameraNode.getComponent(CameraComponent),HpPosition,this.UINode,ddddd);
+        if(ddddd.z<1){
         this.UINode.setPosition(ddddd);
+        }
         if(this._anidea==false){
         //远程
         if(this._Switch){
