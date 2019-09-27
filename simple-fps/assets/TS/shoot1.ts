@@ -36,7 +36,6 @@ export class shoot1 extends Component {
 
      onMouseDown(event) {
         if (event.getButton() === 0&&this._timer>Con.Shoootinterval&&Con.buttonevent==false) {
-            console.log(Con.buttonevent);
             this.mouevent=true;
             this.PrefabBullet();
             this._ifcontinuous=true;

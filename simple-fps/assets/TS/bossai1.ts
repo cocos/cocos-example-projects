@@ -85,7 +85,9 @@ export class bossai1 extends Component {
         var HpPosition=new Vec3(this.node.getPosition().x,this.node.getPosition().y+1.7,this.node.getPosition().z)
         var ddddd=new Vec3(10,10,10);
         cc.pipelineUtils.WorldNode3DToLocalNodeUI(this.CameraNode.getComponent(CameraComponent),HpPosition,this.UINode,ddddd);
+        if(ddddd.z<1){
         this.UINode.setPosition(ddddd);
+        }
     if(Con.BossHp>0){
         //面向玩家
         const _Player = director.getScene().getChildByName('Player');
