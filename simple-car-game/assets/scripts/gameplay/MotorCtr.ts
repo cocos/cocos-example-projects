@@ -1,4 +1,4 @@
-import { _decorator, Vec2, Vec3, math, RigidBodyComponent, Quat } from "cc";
+import { _decorator, Vec2, Vec3, math, RigidBodyComponent, Quat, clamp } from "cc";
 import { InstanceMgr } from "../InstanceMgr";
 import { EMotionState } from "../const/EnumDefine";
 const { ccclass, property, menu, requireComponent } = _decorator;
@@ -22,8 +22,9 @@ export class MotorCtr {
 
     public rigidBody: RigidBodyComponent;
 
-    private _force: Vec3 = new Vec3();
     private _torque: Vec3 = new Vec3();
+    private _forceZ: number = 0;
+    private _force: Vec3 = new Vec3();
     private _linearVelocity: Vec3 = new Vec3();
 
     onLoad () {
@@ -51,24 +52,21 @@ export class MotorCtr {
         //     this.rigidBody.setAngularVelocity(this._torque);
         // }
 
-        // rotation
-
-        if (InstanceMgr.MotorState.horizontalState == EMotionState.POSITIVE) {
-            this.rigidBody.node.rotate(Quat.fromEuler(new Quat(), 0, this.torque.x * deltaTime, 0), 1);
-        } else if (InstanceMgr.MotorState.horizontalState == EMotionState.NEGATIVE) {
-            this.rigidBody.node.rotate(Quat.fromEuler(new Quat(), 0, -this.torque.x * deltaTime, 0), 1);
-        }
-
         // add world velocity
 
-        this._force.set(0, 0, 0);
         if (InstanceMgr.MotorState.verticalState == EMotionState.POSITIVE) {
-            this._force.z = this.vertical.x;
+            this._forceZ += this.vertical.x * deltaTime;
         } else if (InstanceMgr.MotorState.verticalState == EMotionState.NEGATIVE) {
-            this._force.z = -this.vertical.y;
+            this._forceZ += -this.vertical.x * deltaTime;
+        } else {
+            this._forceZ = 0;
         }
 
-        if (!this._force.strictEquals(Vec3.ZERO)) {
+        // translate by velocity
+
+        if (this._forceZ != 0) {
+            this._forceZ = clamp(this._forceZ, -this.vertical.y, this.vertical.y);
+            this._force.set(0, 0, this._forceZ);
             Vec3.transformQuat(this._force, this._force, this.rigidBody.node.worldRotation);
             this.rigidBody.getLinearVelocity(this._linearVelocity);
             this._linearVelocity.x = this._force.x;
@@ -76,5 +74,29 @@ export class MotorCtr {
             this.rigidBody.setLinearVelocity(this._linearVelocity);
         }
 
+        // translate by transform
+
+        // if (this._forceZ != 0) {
+        //     this._forceZ = clamp(this._forceZ, -this.vertical.y, this.vertical.y);
+        //     this._force.set(0, 0, this._forceZ * deltaTime);
+        //     this.rigidBody.node.translate(this._force, 0);
+        // }
+
+        // rotation by transform
+
+        if (this._forceZ != 0) {
+            const factor = Math.abs(1.5 * this._forceZ / this.vertical.y);
+            if (InstanceMgr.MotorState.horizontalState == EMotionState.POSITIVE) {
+                this.rigidBody.node.rotate(Quat.fromEuler(new Quat(), 0, this.torque.x * deltaTime * factor, 0), 1);
+            } else if (InstanceMgr.MotorState.horizontalState == EMotionState.NEGATIVE) {
+                this.rigidBody.node.rotate(Quat.fromEuler(new Quat(), 0, -this.torque.x * deltaTime * factor, 0), 1);
+            }
+        }
+
+        // reset angular velocity
+
+        this.rigidBody.getAngularVelocity(this._force);
+        this._force.y = 0;
+        this.rigidBody.setAngularVelocity(this._force);
     }
 }

@@ -38,8 +38,6 @@ export class FirstPersonCamera extends Component {
 	onLoad () {
 		math.Vec3.copy(this._euler, this.node.eulerAngles);
 		math.Vec3.copy(this._position, this.node.position);
-		this.enabled = false;
-		profiler.showStats()
 	}
 
 	onDestroy () {
@@ -82,11 +80,6 @@ export class FirstPersonCamera extends Component {
 		cc.systemEvent.off(cc.SystemEvent.EventType.TOUCH_START, this.onTouchStart, this);
 		cc.systemEvent.off(cc.SystemEvent.EventType.TOUCH_MOVE, this.onTouchMove, this);
 		cc.systemEvent.off(cc.SystemEvent.EventType.TOUCH_END, this.onTouchEnd, this);
-	}
-
-	public enable () {
-		this.enabled = !this.enabled;
-		profiler.showStats();
 	}
 
 	onMouseWheel (e) {

@@ -5,7 +5,7 @@ const { ccclass, property } = _decorator;
 export class PhysicsConfig extends Component {
 
     __preload () {
-        PhysicsSystem.instance.maxSubStep = 20;
+        PhysicsSystem.instance.maxSubStep = 5;
         PhysicsSystem.instance.gravity = new Vec3(0, -20, 0);
     }
 }
