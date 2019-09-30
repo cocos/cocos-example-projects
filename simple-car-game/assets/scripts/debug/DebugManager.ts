@@ -1,5 +1,5 @@
 import { _decorator, Component, Node, game, EventTouch } from "cc";
-import { InstanceMgr } from "../InstanceMgr";
+import { InstanceMgr } from "../gameplay/InstanceMgr";
 const { ccclass, property } = _decorator;
 
 @ccclass("DebugManager")

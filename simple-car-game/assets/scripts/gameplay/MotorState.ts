@@ -1,13 +1,12 @@
-import { InstanceMgr } from "../InstanceMgr";
+import { InstanceMgr } from "./InstanceMgr";
 import { EFourDirType, EButtonState, EMotionState } from "../const/EnumDefine";
 
 /**
- * @zh
- * MotorState 用来标记运动状态
+ * MotorState 用来标记运动状态的行为
  * 由 MotorCom 驱动
  */
 
-export class MotorState {
+export class MotorState implements IMotorBehaviour {
 
     public get verticalState () {
         return this._verticalState;

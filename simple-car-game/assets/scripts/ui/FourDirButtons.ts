@@ -1,7 +1,11 @@
 import { _decorator, Component, Node, ButtonComponent, SystemEventType, EventTouch, systemEvent, EventKeyboard, macro } from "cc";
 import { EFourDirType, EButtonState } from "../const/EnumDefine";
-import { InstanceMgr } from "../InstanceMgr";
+import { InstanceMgr } from "../gameplay/InstanceMgr";
 const { ccclass, property } = _decorator;
+
+/**
+ * 四个方向按钮的控制器
+ */
 
 @ccclass("FourDirButtons")
 export class FourDirButtons extends Component {

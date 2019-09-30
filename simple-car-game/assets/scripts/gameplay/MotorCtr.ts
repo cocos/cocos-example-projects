@@ -1,18 +1,17 @@
 import { _decorator, Vec2, Vec3, math, RigidBodyComponent, Quat, clamp } from "cc";
-import { InstanceMgr } from "../InstanceMgr";
+import { InstanceMgr } from "./InstanceMgr";
 import { EMotionState } from "../const/EnumDefine";
 const { ccclass, property, menu, requireComponent } = _decorator;
 
 /**
- * @zh
- * MotorCtr 用来控制主角动力
+ * MotorCtr 用来控制主角运动的行为
  * 由 MotorCom 来驱动
  */
 
 @ccclass("MotorCtr")
 @menu("motor/MotorCtr")
 @requireComponent(RigidBodyComponent)
-export class MotorCtr {
+export class MotorCtr implements IMotorBehaviour {
 
     @property({ type: Vec2 })
     public readonly vertical: Vec2 = new Vec2();

@@ -1,6 +1,10 @@
 import { _decorator, Component, Node, PhysicMaterial, ColliderComponent, Vec3 } from "cc";
 const { ccclass, property } = _decorator;
 
+/**
+ * 简单的物理材质修改，辅助修改 Collider 的物理材质属性
+ */
+
 @ccclass("PhysicMaterialSetup")
 export class PhysicMaterialSetup extends Component {
 

@@ -1,8 +1,12 @@
 import { _decorator, Component, Node } from "cc";
 import { MotorState } from "./MotorState";
 import { MotorCtr } from "./MotorCtr";
-import { InstanceMgr } from "../InstanceMgr";
+import { InstanceMgr } from "./InstanceMgr";
 const { ccclass, property } = _decorator;
+
+/**
+ * 挂在 Node 上的组件，起到一个驱动器的作用，按顺序去执行其它行为的生命周期
+ */
 
 @ccclass("MotorCom")
 export class MotorCom extends Component {
