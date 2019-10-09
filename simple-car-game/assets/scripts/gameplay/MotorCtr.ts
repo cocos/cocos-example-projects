@@ -21,7 +21,6 @@ export class MotorCtr implements IMotorBehaviour {
 
     public rigidBody: RigidBodyComponent;
 
-    private _torque: Vec3 = new Vec3();
     private _forceZ: number = 0;
     private _force: Vec3 = new Vec3();
     private _linearVelocity: Vec3 = new Vec3();
@@ -35,21 +34,6 @@ export class MotorCtr implements IMotorBehaviour {
     }
 
     update (deltaTime: number) {
-        // is in air ?
-        // if (this.rigidBody.node.worldPosition.y > 0.1) {
-        //     return;
-        // }
-
-        // this._torque.set(0, 0, 0);
-        // if (InstanceMgr.MotorState.horizontalState == EMotionState.POSITIVE) {
-        //     this._torque.y = this.torque.x;
-        // } else if (InstanceMgr.MotorState.horizontalState == EMotionState.NEGATIVE) {
-        //     this._torque.y = -this.torque.y;
-        // }
-
-        // if (!this._torque.strictEquals(Vec3.ZERO)) {
-        //     this.rigidBody.setAngularVelocity(this._torque);
-        // }
 
         // add world velocity
 
@@ -72,14 +56,6 @@ export class MotorCtr implements IMotorBehaviour {
             this._linearVelocity.z = this._force.z;
             this.rigidBody.setLinearVelocity(this._linearVelocity);
         }
-
-        // translate by transform
-
-        // if (this._forceZ != 0) {
-        //     this._forceZ = clamp(this._forceZ, -this.vertical.y, this.vertical.y);
-        //     this._force.set(0, 0, this._forceZ * deltaTime);
-        //     this.rigidBody.node.translate(this._force, 0);
-        // }
 
         // rotation by transform
 
