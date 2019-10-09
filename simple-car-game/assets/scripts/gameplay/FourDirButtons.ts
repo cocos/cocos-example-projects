@@ -1,6 +1,6 @@
-import { _decorator, Component, Node, ButtonComponent, SystemEventType, EventTouch, systemEvent, EventKeyboard, macro } from "cc";
+import { _decorator, Component, Node, SystemEventType, EventTouch, systemEvent, EventKeyboard, macro } from "cc";
 import { EFourDirType, EButtonState } from "../const/EnumDefine";
-import { InstanceMgr } from "../gameplay/InstanceMgr";
+import { InstanceMgr } from "./InstanceMgr";
 const { ccclass, property } = _decorator;
 
 /**
