@@ -31,11 +31,23 @@ export class SceneChange extends Component {
         button.clickEvents.push(this.clickEventHandler);
     }
 
+    checkWeChatGame() {
+        if (CC_WECHATGAME) {
+           if (this.preSceneName === 'sponza') {
+               this.preSceneName = 'particle-compare';
+           }
+           if (this.nextSceneName === 'sponza') {
+               this.nextSceneName = 'tangents';
+           }
+        }
+    }
+
     nextscene(event, customEventData) {
         var node = event.target;
         var button = node.getComponent(ButtonComponent);
         button.interactable = false;
         console.log("111");
+        this.checkWeChatGame();
         cc.director.loadScene(this.nextSceneName);
     }
 
@@ -44,6 +56,7 @@ export class SceneChange extends Component {
         var button = node.getComponent(ButtonComponent);
         button.interactable = false;
         console.log("222");
+        this.checkWeChatGame();
         cc.director.loadScene(this.preSceneName);
     }
 
