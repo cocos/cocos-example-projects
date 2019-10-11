@@ -63,7 +63,7 @@ let JellyFish = cc.Class({
 
         // this.dstPos.sub(_pos, this.dir);
         this.dir.normalize();
-        this.dir.scale(this.speed);
+        this.dir.multiplyScalar(this.speed);
 
         this._changing = true;
         this._time = 0;
@@ -93,7 +93,7 @@ let JellyFish = cc.Class({
 
         _pos.subtract(this.dstPos);
 
-        if (_pos.mag() < 5) {
+        if (_pos.length() < 5) {
             this.newDst();
         }
     },
