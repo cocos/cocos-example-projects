@@ -1,0 +1,117 @@
+CCEffect %{
+  techniques:
+  - name: opaque
+    passes:
+    - vert: bonus-unlit-vs:vert
+      frag: bonus-unlit-fs:frag
+      properties: &props
+        color:        { value: [1, 1, 1, 1], inspector: { type: color } }
+        tilingOffset: { value: [1, 1, 0, 0] }
+        mainTexture:  { value: grey         }        
+        clipColor: { value: [0, 0, 0, 0.01] }
+  - name: transparent
+    passes:
+    - vert: bonus-unlit-vs:vert
+      frag: bonus-unlit-fs:frag
+      depthStencilState:
+        depthTest: true
+        depthWrite: false
+      blendState:
+        targets:
+        - blend: true
+          blendSrc: src_alpha
+          blendDst: one_minus_src_alpha
+          blendDstAlpha: one_minus_src_alpha
+      properties: *props
+}%
+
+CCProgram bonus-unlit-vs %{
+  precision highp float;
+  #include <cc-global>
+  #include <cc-local>
+  #include <input>
+
+  #if USE_VERTEX_COLOR
+    in vec4 a_color;
+    out vec4 v_color;
+  #endif
+
+  #if USE_TEXTURE
+    in vec2 a_texCoord;
+    out vec2 v_uv;
+    uniform TexCoords {
+      vec4 tilingOffset;
+    };
+  #endif
+
+  highp vec4 vert () {
+    vec4 position;
+    CCVertInput(position);
+
+    highp vec4 pos = cc_matViewProj * cc_matWorld * position;
+
+    #if USE_TEXTURE
+
+      v_uv = a_texCoord;
+    #if FLIP_UV
+      v_uv.y = 1.0 - v_uv.y;
+    #endif
+
+      v_uv = v_uv * tilingOffset.xy + tilingOffset.zw;
+    #endif
+
+    #if USE_VERTEX_COLOR
+      v_color = a_color;
+    #endif
+
+    return pos;
+  }
+}%
+
+CCProgram bonus-unlit-fs %{
+  precision highp float;
+  #include <output>
+
+  #if USE_TEXTURE
+    in vec2 v_uv;
+    uniform sampler2D mainTexture;
+  #endif
+
+  #if USE_COLOR
+    uniform Constant {
+      vec4 color;
+    };
+  #endif
+
+  #if USE_VERTEX_COLOR
+    in vec4 v_color;
+  #endif
+
+  uniform fragConstant {
+    vec4 clipColor;
+  };
+
+  
+
+  vec4 frag () {
+    vec4 o = vec4(1, 1, 1, 1);
+
+    #if USE_TEXTURE
+      o *= texture(mainTexture, v_uv);
+    #endif
+
+    if(abs(o.r - clipColor.r) <= clipColor.a && abs(o.g - clipColor.g) <= clipColor.a && abs(o.b - clipColor.b) <= clipColor.a) {
+      discard;
+    }
+    
+    #if USE_COLOR
+      o *= color;
+    #endif
+
+    #if USE_VERTEX_COLOR
+      o *= v_color;
+    #endif
+
+    return CCFragOutput(o);
+  }
+}%

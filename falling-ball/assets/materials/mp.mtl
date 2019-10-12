@@ -6,7 +6,7 @@
   "_effectAsset": {
     "__uuid__": "1baf0fc9-befa-459c-8bdd-af1a450a0319"
   },
-  "_techIdx": 0,
+  "_techIdx": "1",
   "_defines": [
     {
       "USE_ALBEDO_MAP": true
@@ -25,15 +25,22 @@
   ],
   "_props": [
     {
-      "tilingOffset": {
-        "__type__": "cc.Vec4",
-        "x": 10,
-        "y": 20,
-        "z": 0,
-        "w": 0
+      "albedo": {
+        "__type__": "cc.Color",
+        "r": 255,
+        "g": 255,
+        "b": 255,
+        "a": 60
+      },
+      "emissive": {
+        "__type__": "cc.Color",
+        "r": 69,
+        "g": 77,
+        "b": 72,
+        "a": 255
       },
       "albedoMap": {
-        "__uuid__": "bb5a23d6-d3e3-42ff-8265-64b82f2903ae@6c48a"
+        "__uuid__": "e3ec5ffa-2c47-41b1-bbbc-6daa4db0294e@6c48a"
       }
     }
   ]

@@ -14,12 +14,23 @@ export class GameConfig extends Component {
     deltaTime = 1 / 60;
 
     @property
+    friction = 0;
+
+    @property
+    restitution = 0;
+
+    @property
     showStat = false;
+
+    // @property
+    // lineheight = 8;
 
     onLoad () {
         PhysicsSystem.instance.gravity = new Vec3(0, this.gravity_y, 0);
         PhysicsSystem.instance.maxSubStep = this.maxSubStep;
         PhysicsSystem.instance.deltaTime = this.deltaTime;
+        PhysicsSystem.instance.defaultMaterial.friction = this.friction;
+        PhysicsSystem.instance.defaultMaterial.restitution = this.restitution;
     }
 
     start () {
