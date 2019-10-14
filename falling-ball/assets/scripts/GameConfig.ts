@@ -8,7 +8,7 @@ export class GameConfig extends Component {
     gravity_y = -20;
 
     @property
-    maxSubStep = 10;
+    maxSubStep = 1;
 
     @property
     deltaTime = 1 / 60;

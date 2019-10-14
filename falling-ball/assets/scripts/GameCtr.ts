@@ -87,7 +87,7 @@ export class GameCtr extends Component {
         this._tick = 0;
         this._timingLb.string = parseTime2String(this.totalSecond);
         this._scoreLb.string = '0';
-        this._intervalId = setInterval(this.gameLoop.bind(this), 1000);
+        this._intervalId = setInterval(this.gameTick.bind(this), 1000);
         this._state = EGameSate.GAMING;
     }
 
@@ -108,15 +108,21 @@ export class GameCtr extends Component {
         this.floorFlagCtr.reset();
         this.cameraCtr.reset();
         this.floorFlagCtr.reset();
+
+        this._timingLb.string = parseTime2String(this.totalSecond);
+        const score = localStorage.getItem('score');
+        if (score != null) {
+            this._scoreLb.string = score;
+        }
     }
 
-    private gameLoop () {
+    private gameTick () {
         this._tick++;
         const dt = this.totalSecond - this._tick;
-        if (dt < 0) {
+        if (dt < 0 || this.ballCtr.hitRed) {
             this.columnCtr.enabled = false;
 
-            if (this.ballCtr.isDeadlock && this._state != EGameSate.GAMEOVER) {
+            if ((this.ballCtr.isDeadlock || this.ballCtr.hitRed) && this._state != EGameSate.GAMEOVER) {
                 /** GAME OVER */
                 this._state = EGameSate.GAMEOVER;
                 clearInterval(this._intervalId);

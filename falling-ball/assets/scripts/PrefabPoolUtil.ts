@@ -29,6 +29,7 @@ export class PrefabPoolUtil {
         if (time != null) {
             // delay recover node with pool name
             setTimeout(() => {
+                node.removeFromParent();
                 this.recoverItemByPoolName(poolName, node);
             }, time * 1000);
         }

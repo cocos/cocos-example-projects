@@ -24,6 +24,9 @@ export class FloorFlagCtr extends Component {
     @property({ type: Prefab })
     cubePrefab: Prefab = null;
 
+    @property({ type: Prefab })
+    cubeRedPrefab: Prefab = null;
+
     @property({ type: Node })
     cubeRoot: Node = null;
 
@@ -38,14 +41,18 @@ export class FloorFlagCtr extends Component {
 
             const len = this.floorRoot.children.length;
             const floorNode = this.floorRoot.children[this._flag % len];
-
-            for (let i = 0; i < floorNode.children.length; i++) {
-                const clone = PrefabPoolUtil.getItemByPoolName('Cube', this.cubePrefab, 6);
-                if (clone.parent == null) {
-                    this.cubeRoot.addChild(clone);
+            const colliders = floorNode.getComponentsInChildren(ColliderComponent);
+            for (let i = 0; i < colliders.length; i++) {
+                let clone: Node;
+                if (colliders[i].node.name == "Cube") {
+                    clone = PrefabPoolUtil.getItemByPoolName(colliders[i].node.name, this.cubePrefab, 5);
+                } else {
+                    clone = PrefabPoolUtil.getItemByPoolName(colliders[i].node.name, this.cubeRedPrefab, 5);
                 }
-                clone.worldPosition = floorNode.children[i].worldPosition;
-                clone.worldRotation = floorNode.children[i].worldRotation;
+                this.cubeRoot.addChild(clone);
+
+                clone.worldPosition = colliders[i].node.worldPosition;
+                clone.worldRotation = colliders[i].node.worldRotation;
 
                 const cBody = clone.getComponent(RigidBodyComponent);
                 cBody.sleep();

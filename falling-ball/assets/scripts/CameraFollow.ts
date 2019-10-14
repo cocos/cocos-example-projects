@@ -14,9 +14,6 @@ export class CameraFollow extends Component {
     @property
     step = 0.1;
 
-    @property
-    maxGap = 2;
-
     private _offset = 0;
 
     start () {
