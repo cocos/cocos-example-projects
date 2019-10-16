@@ -615,16 +615,7 @@
     "_materials": [
       {
         "__uuid__": "2cd6d989-f2b6-4705-9c77-f0c0f452fd28"
-      },
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
+      }
     ],
     "_visFlags": 0,
     "_enableDynamicBatching": false,
@@ -736,7 +727,7 @@
       "__type__": "cc.Vec3",
       "x": 0,
       "y": 0,
-      "z": -2.159
+      "z": -1
     },
     "_lrot": {
       "__type__": "cc.Quat",
@@ -784,7 +775,7 @@
   },
   {
     "__type__": "cc.SphereColliderComponent",
-    "_name": "",
+    "_name": "Sphere<SphereColliderComponent>",
     "_objFlags": 0,
     "node": {
       "__id__": 21
@@ -803,7 +794,7 @@
   },
   {
     "__type__": "cc.RigidBodyComponent",
-    "_name": "",
+    "_name": "Sphere<RigidBodyComponent>",
     "_objFlags": 0,
     "node": {
       "__id__": 21
@@ -871,7 +862,7 @@
       "__type__": "cc.Vec3",
       "x": 0,
       "y": 0,
-      "z": 0
+      "z": 1
     },
     "_lrot": {
       "__type__": "cc.Quat",
@@ -1737,14 +1728,14 @@
     },
     "_enabled": true,
     "_material": null,
-    "_isTrigger": false,
+    "_isTrigger": true,
     "_center": {
       "__type__": "cc.Vec3",
       "x": 0,
       "y": 0,
       "z": 0
     },
-    "_radius": 0,
+    "_radius": 3,
     "_id": "c5HgH6pCpNz5W5v/AX0XOG"
   },
   {
