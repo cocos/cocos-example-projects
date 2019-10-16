@@ -4,7 +4,7 @@ const { ccclass, property } = _decorator;
 
 const _dir = new math.Vec3;
 _dir.y = 1;
-const _impluse = new math.Vec3(2, 8, 2);
+const _impluse = new math.Vec3(2, 6, 2);
 
 @ccclass("EntitySetup")
 export class EntitySetup extends Component {
@@ -70,10 +70,7 @@ export class EntitySetup extends Component {
 
     private _onTriggerExit0 (event: ITriggerEvent) {
         if (event.otherCollider.node.name == 'Body') {
-            if (event.otherCollider.node.worldPosition.y < 0) {
-                event.otherCollider.node.active = false;
-                return;
-            } else {
+            if (event.otherCollider.node.worldPosition.y >= 0) {
                 event.otherCollider.setMask(-1);
             }
         }
