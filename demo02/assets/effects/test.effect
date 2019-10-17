@@ -18,7 +18,7 @@ CCProgram vs %{
   out vec2 uv;
   out vec3 normal;
 
-  vec4 vert () {
+  highp vec4 vert () {
     StandardVertInput In;
     CCVertInput(In);
 

@@ -31,8 +31,6 @@ cc.Class({
 
     // LIFE-CYCLE CALLBACKS:
 
-    onLoad () {},
-
     start () {
         this.node.children.forEach(n => {
             let m = n.getComponent(cc.ModelComponent).material;
@@ -51,14 +49,6 @@ cc.Class({
         //     dif = cc.TextureCube.fromTexture2DArray(asset);
         // });
 
-		const keyListener = cc.EventListener.create({
-			event: cc.EventListener.KEYBOARD,
-			onKeyReleased: this._keyUpHandler.bind(this)
-		});
-        cc.eventManager.addListener(keyListener, 1);
-    },
-
-    updateTexture() {
         // cc.director.getScene().getChildByName('camera').getComponent('sky').enabled = true;
         cc.director.getScene().getChildByName('geoms-procedural').getComponent('geometries').enabled = true;
         // mats.forEach(m => {
@@ -66,12 +56,4 @@ cc.Class({
         //     m.setProperty('specularEnvTexture', spe);
         // });
     },
-
-	_keyUpHandler(keycode) {
-		if (keycode === 'R'.charCodeAt(0)) this.updateTexture();
-    },
-
-    onDisable () {
-		cc.eventManager.removeAllListeners();
-	}
 });

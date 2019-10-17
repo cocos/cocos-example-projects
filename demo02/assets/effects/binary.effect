@@ -21,8 +21,8 @@ CCProgram binary-vs %{
     vec4 tilingOffset;
   };
 
-  vec4 vert () {
-    vec4 position;
+  highp vec4 vert () {
+    highp vec4 position;
     CCVertInput(position);
 
     v_uv = a_texCoord * tilingOffset.xy + tilingOffset.zw;
