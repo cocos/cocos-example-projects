@@ -1,23 +1,7 @@
 import { _decorator, Component, Node, Prefab } from "cc";
 const { ccclass, property } = _decorator;
 
-export const sceneArray:string[] = CC_WECHATGAME ?
-[
-    "helmet",
-    "jellyfish",
-    "knight",
-    "particle-compare",
-    "tangents",
-    "winter",
-] : [
-    "helmet",
-    "jellyfish",
-    "knight",
-    "particle-compare",
-    "sponza",
-    "tangents",
-    "winter",
-]
+export const sceneArray:string[] = []
 
 @ccclass("scenemanager")
 export class SceneManager extends Component {

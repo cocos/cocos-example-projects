@@ -14,6 +14,23 @@ export class backbutton extends Component {
     private static _prevButton : ButtonComponent;
     private static _nextButton : ButtonComponent;
 
+    __preload() {
+        let sceneInfo = cc.game._sceneInfos;
+        let firstIndex = 0;
+        let lastIndex = 0;
+        let sceneString:string = '';
+        for(let i = 0; i < sceneInfo.length; i++){
+            sceneString = sceneInfo[i].url;
+            firstIndex = sceneString.lastIndexOf('/') + 1;
+            lastIndex = sceneString.lastIndexOf('.scene');
+            sceneString = sceneString.substring(firstIndex,lastIndex);
+            if(sceneString === "testlist" || (sceneString === "sponza" && CC_WECHATGAME)) {
+                continue;
+            }
+            sceneArray.push(sceneString);
+        }
+    }
+
     public static get offset() {
         return backbutton._offset;
     }
