@@ -1,20 +1,7 @@
 import { _decorator, Component, Node, Prefab } from "cc";
 const { ccclass, property } = _decorator;
 
-export const sceneArray:string[] = [
-    "ambient",
-    "audio",
-    "blade-strom",
-    "collision-detection",
-    "custom-effect",
-    "heal-spell",
-    "particles",
-    "pbr",
-    "physics",
-    "shadows",
-    "skin",
-    "toon",
-]
+export const sceneArray:string[] = []
 
 @ccclass("scenemanager")
 export class SceneManager extends Component {
