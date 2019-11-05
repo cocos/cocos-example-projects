@@ -1,14 +1,12 @@
 {
-  "ver": "1.1.2525",
+  "ver": "1.3.7",
   "importer": "fbx",
   "imported": true,
   "uuid": "011cfd8d-7044-46ab-a65b-d0783db10ebf",
-  "files": [
-    ".fbx"
-  ],
+  "files": [],
   "subMetas": {
     "44034": {
-      "ver": "1.0.2",
+      "ver": "1.0.7",
       "importer": "gltf-mesh",
       "name": "001.mesh",
       "id": "44034",
@@ -18,23 +16,6 @@
       "files": [
         ".json",
         ".bin"
-      ],
-      "subMetas": {},
-      "userData": {
-        "gltfIndex": 0
-      }
-    },
-    "3bd65": {
-      "ver": "1.0.0",
-      "importer": "gltf-embeded-image",
-      "name": "road03.jpg.image",
-      "id": "3bd65",
-      "displayName": "",
-      "uuid": "011cfd8d-7044-46ab-a65b-d0783db10ebf@3bd65",
-      "imported": true,
-      "files": [
-        ".jpg",
-        ".json"
       ],
       "subMetas": {},
       "userData": {
@@ -61,8 +42,8 @@
         "mipfilter": "none",
         "premultiplyAlpha": false,
         "anisotropy": 1,
-        "isUuid": true,
-        "imageUuidOrDatabaseUri": "011cfd8d-7044-46ab-a65b-d0783db10ebf@3bd65"
+        "isUuid": false,
+        "imageUuidOrDatabaseUri": "db://assets/models/road/road03.jpg"
       }
     },
     "8dbc3": {
@@ -99,16 +80,6 @@
     }
   },
   "userData": {
-    "imageLocations": {
-      "贴图 #7": {
-        "originalPath": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg==",
-        "targetDatabaseUrl": "db://assets/model/road/road03.jpg"
-      },
-      "road03.jpg": {
-        "originalPath": "road03.jpg",
-        "targetDatabaseUrl": null
-      }
-    },
     "normals": 0,
     "tangents": 1,
     "dumpMaterials": false,
@@ -116,12 +87,6 @@
     "assetFinder": {
       "meshes": [
         "011cfd8d-7044-46ab-a65b-d0783db10ebf@44034"
-      ],
-      "images": [
-        {
-          "embeded": true,
-          "uuidOrDatabaseUri": "011cfd8d-7044-46ab-a65b-d0783db10ebf@3bd65"
-        }
       ],
       "textures": [
         "011cfd8d-7044-46ab-a65b-d0783db10ebf@4b8d7"
@@ -131,7 +96,14 @@
       ],
       "scenes": [
         "011cfd8d-7044-46ab-a65b-d0783db10ebf@23c23"
-      ]
-    }
+      ],
+      "skeletons": []
+    },
+    "imageMetas": [
+      {
+        "name": "road03.jpg",
+        "uri": "db://assets/models/road/road03.jpg"
+      }
+    ]
   }
 }

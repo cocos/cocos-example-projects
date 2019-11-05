@@ -1,15 +1,12 @@
 {
-  "ver": "1.1.2525",
+  "ver": "1.3.7",
   "importer": "fbx",
   "imported": true,
   "uuid": "76563dac-7b68-4f3f-a880-d1be43e5a601",
-  "displayName": "",
-  "files": [
-    ".fbx"
-  ],
+  "files": [],
   "subMetas": {
     "44034": {
-      "ver": "1.0.2",
+      "ver": "1.0.7",
       "importer": "gltf-mesh",
       "name": "001.mesh",
       "id": "44034",
@@ -83,20 +80,6 @@
     }
   },
   "userData": {
-    "imageLocations": {
-      "贴图 #7": {
-        "originalPath": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg==",
-        "targetDatabaseUrl": "db://assets/model/road/road03.jpg"
-      },
-      "贴图 #4": {
-        "originalPath": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg==",
-        "targetDatabaseUrl": "db://assets/model/road/road01.jpg"
-      },
-      "road03.jpg": {
-        "originalPath": "road03.jpg",
-        "targetDatabaseUrl": "db://assets/model/road/road03.jpg"
-      }
-    },
     "normals": 0,
     "tangents": 1,
     "dumpMaterials": false,
@@ -104,12 +87,6 @@
     "assetFinder": {
       "meshes": [
         "76563dac-7b68-4f3f-a880-d1be43e5a601@44034"
-      ],
-      "images": [
-        {
-          "embeded": false,
-          "uuidOrDatabaseUri": "db://assets/model/road/road03.jpg"
-        }
       ],
       "textures": [
         "76563dac-7b68-4f3f-a880-d1be43e5a601@bc797"
@@ -119,7 +96,15 @@
       ],
       "scenes": [
         "76563dac-7b68-4f3f-a880-d1be43e5a601@396f2"
-      ]
-    }
+      ],
+      "skeletons": []
+    },
+    "imageMetas": [
+      {
+        "name": "road03.jpg",
+        "remap": "db://assets/model/road/road03.jpg",
+        "uri": "db://assets/models/road/road03.jpg"
+      }
+    ]
   }
 }

@@ -1,15 +1,12 @@
 {
-  "ver": "1.1.2525",
+  "ver": "1.3.7",
   "importer": "fbx",
   "imported": true,
   "uuid": "b431a460-d1b5-451d-969a-0b3e60ec8068",
-  "displayName": "",
-  "files": [
-    ".fbx"
-  ],
+  "files": [],
   "subMetas": {
     "b01e4": {
-      "ver": "1.0.2",
+      "ver": "1.0.7",
       "importer": "gltf-mesh",
       "name": "passat.mesh",
       "id": "b01e4",
@@ -26,7 +23,7 @@
       }
     },
     "14b6a": {
-      "ver": "1.0.2",
+      "ver": "1.0.7",
       "importer": "gltf-mesh",
       "name": "light1.mesh",
       "id": "14b6a",
@@ -43,7 +40,7 @@
       }
     },
     "4166c": {
-      "ver": "1.0.2",
+      "ver": "1.0.7",
       "importer": "gltf-mesh",
       "name": "tyre2.mesh",
       "id": "4166c",
@@ -60,7 +57,7 @@
       }
     },
     "801a3": {
-      "ver": "1.0.2",
+      "ver": "1.0.7",
       "importer": "gltf-mesh",
       "name": "tyre4.mesh",
       "id": "801a3",
@@ -77,7 +74,7 @@
       }
     },
     "8c383": {
-      "ver": "1.0.2",
+      "ver": "1.0.7",
       "importer": "gltf-mesh",
       "name": "tyre1.mesh",
       "id": "8c383",
@@ -94,7 +91,7 @@
       }
     },
     "6726b": {
-      "ver": "1.0.2",
+      "ver": "1.0.7",
       "importer": "gltf-mesh",
       "name": "tyre3.mesh",
       "id": "6726b",
@@ -108,23 +105,6 @@
       "subMetas": {},
       "userData": {
         "gltfIndex": 5
-      }
-    },
-    "cac8f": {
-      "ver": "1.0.0",
-      "importer": "gltf-embeded-image",
-      "name": "taxi07Black.png.image",
-      "id": "cac8f",
-      "displayName": "",
-      "uuid": "b431a460-d1b5-451d-969a-0b3e60ec8068@cac8f",
-      "imported": true,
-      "files": [
-        ".png",
-        ".json"
-      ],
-      "subMetas": {},
-      "userData": {
-        "gltfIndex": 0
       }
     },
     "36f89": {
@@ -147,8 +127,8 @@
         "mipfilter": "none",
         "premultiplyAlpha": false,
         "anisotropy": 1,
-        "isUuid": true,
-        "imageUuidOrDatabaseUri": "b431a460-d1b5-451d-969a-0b3e60ec8068@cac8f"
+        "isUuid": false,
+        "imageUuidOrDatabaseUri": "db://assets/models/taxi07/taxi07Black.png"
       }
     },
     "ba3df": {
@@ -169,16 +149,6 @@
     }
   },
   "userData": {
-    "imageLocations": {
-      "贴图 #14": {
-        "originalPath": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg==",
-        "targetDatabaseUrl": null
-      },
-      "taxi07Black.png": {
-        "originalPath": "taxi07Black.png",
-        "targetDatabaseUrl": null
-      }
-    },
     "normals": 2,
     "tangents": 2,
     "dumpMaterials": true,
@@ -192,12 +162,6 @@
         "b431a460-d1b5-451d-969a-0b3e60ec8068@8c383",
         "b431a460-d1b5-451d-969a-0b3e60ec8068@6726b"
       ],
-      "images": [
-        {
-          "embeded": true,
-          "uuidOrDatabaseUri": "b431a460-d1b5-451d-969a-0b3e60ec8068@cac8f"
-        }
-      ],
       "textures": [
         "b431a460-d1b5-451d-969a-0b3e60ec8068@36f89"
       ],
@@ -206,7 +170,14 @@
       ],
       "scenes": [
         "b431a460-d1b5-451d-969a-0b3e60ec8068@ba3df"
-      ]
-    }
+      ],
+      "skeletons": []
+    },
+    "imageMetas": [
+      {
+        "name": "taxi07Black.png",
+        "uri": "db://assets/models/taxi07/taxi07Black.png"
+      }
+    ]
   }
 }
