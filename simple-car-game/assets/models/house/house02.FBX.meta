@@ -1,15 +1,12 @@
 {
-  "ver": "1.1.2525",
+  "ver": "1.3.7",
   "importer": "fbx",
   "imported": true,
   "uuid": "c4995fba-9b4b-4968-957c-6eb66f4e73eb",
-  "displayName": "",
-  "files": [
-    ".fbx"
-  ],
+  "files": [],
   "subMetas": {
     "604e5": {
-      "ver": "1.0.2",
+      "ver": "1.0.7",
       "importer": "gltf-mesh",
       "name": "Box022.mesh",
       "id": "604e5",
@@ -19,23 +16,6 @@
       "files": [
         ".json",
         ".bin"
-      ],
-      "subMetas": {},
-      "userData": {
-        "gltfIndex": 0
-      }
-    },
-    "546af": {
-      "ver": "1.0.0",
-      "importer": "gltf-embeded-image",
-      "name": "house02.jpg.image",
-      "id": "546af",
-      "displayName": "",
-      "uuid": "c4995fba-9b4b-4968-957c-6eb66f4e73eb@546af",
-      "imported": true,
-      "files": [
-        ".jpg",
-        ".json"
       ],
       "subMetas": {},
       "userData": {
@@ -62,8 +42,8 @@
         "mipfilter": "none",
         "premultiplyAlpha": false,
         "anisotropy": 1,
-        "isUuid": true,
-        "imageUuidOrDatabaseUri": "c4995fba-9b4b-4968-957c-6eb66f4e73eb@546af"
+        "isUuid": false,
+        "imageUuidOrDatabaseUri": "db://assets/models/house/house02.jpg"
       }
     },
     "4eb3d": {
@@ -100,16 +80,6 @@
     }
   },
   "userData": {
-    "imageLocations": {
-      "贴图 #1": {
-        "originalPath": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg==",
-        "targetDatabaseUrl": "db://assets/model/house/house02.jpg"
-      },
-      "house02.jpg": {
-        "originalPath": "house02.jpg",
-        "targetDatabaseUrl": null
-      }
-    },
     "normals": 0,
     "tangents": 1,
     "dumpMaterials": false,
@@ -117,12 +87,6 @@
     "assetFinder": {
       "meshes": [
         "c4995fba-9b4b-4968-957c-6eb66f4e73eb@604e5"
-      ],
-      "images": [
-        {
-          "embeded": true,
-          "uuidOrDatabaseUri": "c4995fba-9b4b-4968-957c-6eb66f4e73eb@546af"
-        }
       ],
       "textures": [
         "c4995fba-9b4b-4968-957c-6eb66f4e73eb@a96a6"
@@ -132,7 +96,14 @@
       ],
       "scenes": [
         "c4995fba-9b4b-4968-957c-6eb66f4e73eb@ad709"
-      ]
-    }
+      ],
+      "skeletons": []
+    },
+    "imageMetas": [
+      {
+        "name": "house02.jpg",
+        "uri": "db://assets/models/house/house02.jpg"
+      }
+    ]
   }
 }

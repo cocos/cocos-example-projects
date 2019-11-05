@@ -1,15 +1,12 @@
 {
-  "ver": "1.1.2525",
+  "ver": "1.3.7",
   "importer": "fbx",
   "imported": true,
   "uuid": "9fa22f3f-a37f-4e4b-9693-98864b9a26a8",
-  "displayName": "",
-  "files": [
-    ".fbx"
-  ],
+  "files": [],
   "subMetas": {
     "50b92": {
-      "ver": "1.0.2",
+      "ver": "1.0.7",
       "importer": "gltf-mesh",
       "name": "TS_FaGuangSuiPian_01.mesh",
       "id": "50b92",
@@ -24,6 +21,23 @@
       "userData": {
         "gltfIndex": 0
       }
+    },
+    "1cdc4": {
+      "ver": "1.0.2",
+      "importer": "gltf-embeded-image",
+      "uuid": "9fa22f3f-a37f-4e4b-9693-98864b9a26a8@1cdc4",
+      "imported": true,
+      "files": [
+        ".png",
+        ".json"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 0
+      },
+      "displayName": "",
+      "id": "1cdc4",
+      "name": "贴图 #3.image"
     },
     "bfae8": {
       "ver": "1.0.19",
@@ -83,12 +97,6 @@
     }
   },
   "userData": {
-    "imageLocations": {
-      "贴图 #3": {
-        "originalPath": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg==",
-        "targetDatabaseUrl": "db://assets/model/tree/stone01.png"
-      }
-    },
     "normals": 2,
     "tangents": 2,
     "dumpMaterials": false,
@@ -96,12 +104,6 @@
     "assetFinder": {
       "meshes": [
         "9fa22f3f-a37f-4e4b-9693-98864b9a26a8@50b92"
-      ],
-      "images": [
-        {
-          "embeded": false,
-          "uuidOrDatabaseUri": "db://assets/model/tree/stone01.png"
-        }
       ],
       "textures": [
         "9fa22f3f-a37f-4e4b-9693-98864b9a26a8@bfae8"
@@ -111,7 +113,15 @@
       ],
       "scenes": [
         "9fa22f3f-a37f-4e4b-9693-98864b9a26a8@c8229"
-      ]
-    }
+      ],
+      "skeletons": []
+    },
+    "imageMetas": [
+      {
+        "name": "贴图 #3",
+        "remap": "db://assets/model/tree/stone01.png",
+        "uri": "9fa22f3f-a37f-4e4b-9693-98864b9a26a8@1cdc4"
+      }
+    ]
   }
 }

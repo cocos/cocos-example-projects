@@ -1,15 +1,12 @@
 {
-  "ver": "1.1.2525",
+  "ver": "1.3.7",
   "importer": "fbx",
   "imported": true,
   "uuid": "96668fae-e56b-4b88-a2fc-3b63df2ace75",
-  "displayName": "",
-  "files": [
-    ".fbx"
-  ],
+  "files": [],
   "subMetas": {
     "b8a2d": {
-      "ver": "1.0.2",
+      "ver": "1.0.7",
       "importer": "gltf-mesh",
       "name": "Plane001.mesh",
       "id": "b8a2d",
@@ -24,6 +21,23 @@
       "userData": {
         "gltfIndex": 0
       }
+    },
+    "9defe": {
+      "ver": "1.0.2",
+      "importer": "gltf-embeded-image",
+      "uuid": "96668fae-e56b-4b88-a2fc-3b63df2ace75@9defe",
+      "imported": true,
+      "files": [
+        ".png",
+        ".json"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 0
+      },
+      "displayName": "",
+      "id": "9defe",
+      "name": "贴图 #8.image"
     },
     "bc797": {
       "ver": "1.0.19",
@@ -83,12 +97,6 @@
     }
   },
   "userData": {
-    "imageLocations": {
-      "贴图 #8": {
-        "originalPath": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg==",
-        "targetDatabaseUrl": "db://assets/model/sign/sign.jpg"
-      }
-    },
     "normals": 0,
     "tangents": 1,
     "dumpMaterials": false,
@@ -96,12 +104,6 @@
     "assetFinder": {
       "meshes": [
         "96668fae-e56b-4b88-a2fc-3b63df2ace75@b8a2d"
-      ],
-      "images": [
-        {
-          "embeded": false,
-          "uuidOrDatabaseUri": "db://assets/model/sign/sign.jpg"
-        }
       ],
       "textures": [
         "96668fae-e56b-4b88-a2fc-3b63df2ace75@bc797"
@@ -111,7 +113,15 @@
       ],
       "scenes": [
         "96668fae-e56b-4b88-a2fc-3b63df2ace75@c0431"
-      ]
-    }
+      ],
+      "skeletons": []
+    },
+    "imageMetas": [
+      {
+        "name": "贴图 #8",
+        "remap": "db://assets/model/sign/sign.jpg",
+        "uri": "96668fae-e56b-4b88-a2fc-3b63df2ace75@9defe"
+      }
+    ]
   }
 }
