@@ -1,5 +1,5 @@
 {
-  "ver": "1.3.7",
+  "ver": "1.3.11",
   "importer": "fbx",
   "imported": true,
   "uuid": "7aa1e8c8-3187-4384-824c-4e2a6efaa708",
@@ -22,6 +22,40 @@
         "gltfIndex": 0
       }
     },
+    "3bd65": {
+      "ver": "1.0.2",
+      "importer": "gltf-embeded-image",
+      "uuid": "7aa1e8c8-3187-4384-824c-4e2a6efaa708@3bd65",
+      "imported": true,
+      "files": [
+        ".jpg",
+        ".json"
+      ],
+      "subMetas": {},
+      "userData": {
+        "externalURI": "file:///D:/Github/Cocos/example-3d/simple-car-game/temp/asset-db/assets/fbx2gltf-7aa1e8c8-3187-4384-824c-4e2a6efaa708/out/road03.jpg"
+      },
+      "displayName": "",
+      "id": "3bd65",
+      "name": "road03.jpg.image"
+    },
+    "1b048": {
+      "ver": "1.0.2",
+      "importer": "gltf-embeded-image",
+      "uuid": "7aa1e8c8-3187-4384-824c-4e2a6efaa708@1b048",
+      "imported": true,
+      "files": [
+        ".jpg",
+        ".json"
+      ],
+      "subMetas": {},
+      "userData": {
+        "externalURI": "file:///D:/Github/Cocos/example-3d/simple-car-game/temp/asset-db/assets/fbx2gltf-7aa1e8c8-3187-4384-824c-4e2a6efaa708/out/road01.jpg"
+      },
+      "displayName": "",
+      "id": "1b048",
+      "name": "road01.jpg.image"
+    },
     "4b8d7": {
       "ver": "1.0.19",
       "importer": "texture",
@@ -42,8 +76,8 @@
         "mipfilter": "none",
         "premultiplyAlpha": false,
         "anisotropy": 1,
-        "isUuid": false,
-        "imageUuidOrDatabaseUri": "db://assets/models/road/road03.jpg"
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "7aa1e8c8-3187-4384-824c-4e2a6efaa708@3bd65"
       }
     },
     "442db": {
@@ -66,8 +100,8 @@
         "mipfilter": "none",
         "premultiplyAlpha": false,
         "anisotropy": 1,
-        "isUuid": false,
-        "imageUuidOrDatabaseUri": "db://assets/models/road/road01.jpg"
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "7aa1e8c8-3187-4384-824c-4e2a6efaa708@1b048"
       }
     },
     "8dbc3": {
@@ -144,11 +178,11 @@
     "imageMetas": [
       {
         "name": "road03.jpg",
-        "uri": "db://assets/models/road/road03.jpg"
+        "uri": "7aa1e8c8-3187-4384-824c-4e2a6efaa708@3bd65"
       },
       {
         "name": "road01.jpg",
-        "uri": "db://assets/models/road/road01.jpg"
+        "uri": "7aa1e8c8-3187-4384-824c-4e2a6efaa708@1b048"
       }
     ]
   }

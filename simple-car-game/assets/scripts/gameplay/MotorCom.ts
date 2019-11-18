@@ -1,4 +1,4 @@
-import { _decorator, Component, Node } from "cc";
+import { _decorator, Component, Node, systemEvent } from "cc";
 import { MotorState } from "./MotorState";
 import { MotorCtr } from "./MotorCtr";
 import { InstanceMgr } from "./InstanceMgr";
@@ -26,11 +26,20 @@ export class MotorCom extends Component {
     start () {
         this.MotorState.start();
         this.MotorCtr.start();
+
+        this.enabled = false;
+        this.MotorCtr.rigidBody.useGravity = false;
+        systemEvent.on('onMapLoaded' as any, this.onMapLoaded, this);
     }
 
     update (deltaTime: number) {
         // Your update function goes here.
         this.MotorState.update(deltaTime);
         this.MotorCtr.update(deltaTime);
+    }
+
+    onMapLoaded () {
+        this.enabled = true;
+        this.MotorCtr.rigidBody.useGravity = true;
     }
 }
