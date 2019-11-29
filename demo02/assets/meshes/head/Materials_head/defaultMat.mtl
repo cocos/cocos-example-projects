@@ -8,11 +8,7 @@
   },
   "_techIdx": 0,
   "_defines": [
-    {
-      "USE_NORMAL_MAP": true,
-      "USE_ALBEDO_MAP": true,
-      "USE_OCCLUSION_MAP": true
-    }
+    {}
   ],
   "_states": [
     {
@@ -27,20 +23,6 @@
   ],
   "_props": [
     {
-      "albedoScale": {
-        "__type__": "cc.Vec4",
-        "x": 1,
-        "y": 1,
-        "z": 1,
-        "w": 1
-      },
-      "pbrParams": {
-        "__type__": "cc.Vec4",
-        "x": 0.9,
-        "y": 0.1,
-        "z": 1,
-        "w": 0.5
-      },
       "albedoMap": {
         "__uuid__": "6edb6c05-1626-40bc-a4e5-989ef4f63365@6c48a"
       },
@@ -49,7 +31,9 @@
       },
       "occlusionMap": {
         "__uuid__": "4d295f3f-2a72-456f-87d8-04745310bae4@6c48a"
-      }
+      },
+      "roughness": 0.9,
+      "metallic": 0.1
     }
   ]
 }

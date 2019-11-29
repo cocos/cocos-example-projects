@@ -4,7 +4,6 @@ const { ccclass, property } = _decorator;
 const hintMesh = cc.utils.createMesh(cc.primitives.capsule(1));
 const sphereMesh = cc.utils.createMesh(cc.primitives.sphere(1));
 const outOfBounds = (v, border = 20) => Math.abs(v.x) > border || Math.abs(v.y) > border || Math.abs(v.z) > border;
-const pbrParams = cc.v4(0.8, 0.1, 1, 1);
 
 const v3_1 = new Vec3();
 
@@ -54,7 +53,7 @@ export class Emitter extends Component {
       const hintMat = new Material();
       hintMat.initialize({ effectName: 'builtin-standard' });
       hintMat.setProperty('albedo', this.color);
-      hintMat.setProperty('pbrParams', pbrParams);
+      hintMat.setProperty('metallic', 0.1);
       hintModel.material = hintMat;
       hintModel.mesh = hintMesh;
       hint.parent = this.node;
@@ -72,7 +71,7 @@ export class Emitter extends Component {
             effectName: 'builtin-standard',
             technique: 1, // transparent
         });
-        mat.setProperty('pbrParams', pbrParams);
+        mat.setProperty('metallic', 0.1);
         info.pass = mat.passes[0];
         info.hColor = info.pass.getHandle('albedo');
         info.pass.setUniform(info.hColor, info.color);

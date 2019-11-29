@@ -1,37 +1,8 @@
-// Learn cc.Class:
-//  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/class.html
-//  - [English] http://www.cocos2d-x.org/docs/creator/en/scripting/class.html
-// Learn Attribute:
-//  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/reference/attributes.html
-//  - [English] http://www.cocos2d-x.org/docs/creator/en/scripting/reference/attributes.html
-// Learn life-cycle callbacks:
-//  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
-//  - [English] http://www.cocos2d-x.org/docs/creator/en/scripting/life-cycle-callbacks.html
+import { _decorator, Component } from "cc";
+const { ccclass } = _decorator;
 
-cc.Class({
-    extends: cc.Component,
-
-    properties: {
-        // foo: {
-        //     // ATTRIBUTES:
-        //     default: null,        // The default value will be used only when the component attaching
-        //                           // to a node for the first time
-        //     type: cc.SpriteFrame, // optional, default is typeof default
-        //     serializable: true,   // optional, default is true
-        // },
-        // bar: {
-        //     get () {
-        //         return this._bar;
-        //     },
-        //     set (value) {
-        //         this._bar = value;
-        //     }
-        // },
-    },
-
-    // LIFE-CYCLE CALLBACKS:
-
-    // onLoad () {},
+@ccclass("Geometries")
+export class Geometries extends Component {
 
     start () {
         let models = [];
@@ -49,7 +20,8 @@ cc.Class({
                 m.initialize({
                     effectName: 'builtin-standard',
                 });
-                m.setProperty('pbrParams', cc.v4(cc.math.clamp(j / cols, 0.05, 1), i / rows, 1, 7));
+                m.setProperty('roughness', cc.math.clamp(j / cols, 0.05, 1));
+                m.setProperty('metallic', i / rows);
                 m.setProperty('albedo', albedo);
                 comp.material = m; models.push(comp);
             }
@@ -65,7 +37,5 @@ cc.Class({
         //     let texture = cc.TextureCube.fromTexture2DArray(asset);
         //     models.forEach(m => m.material.setProperty('specularEnvTexture', texture));
         // });
-    },
-
-    // update (dt) {},
-});
+    }
+}

@@ -19,9 +19,9 @@ export class Collider extends Component {
         this._body = this.node.getComponent(RigidBodyComponent);
         const mat = this.node.getComponent(ModelComponent).material;
         // Vec4 and Color are compatible with each other, but Vec4 is more efficient when updated frequently
-        this._initialColor = new Vec4(mat.getProperty('albedo'));
+        this._initialColor = new Vec4(mat.getProperty('mainColor'));
         this._pass = mat.passes[0];
-        this._handle = this._pass.getHandle('albedo');
+        this._handle = this._pass.getHandle('mainColor');
     }
 
     update () {
