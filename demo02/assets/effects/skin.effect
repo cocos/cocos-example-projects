@@ -38,7 +38,7 @@ CCProgram skin-fs %{
   void surf (out StandardSurface s) {
     s.position = v_position;
     vec3 nmmp = texture(normalMap, v_uv).xyz - vec3(0.5);
-    s.normal = // not normalized
+    s.normal = // not normalized yet
       nmmp.x * normalize(v_tangent) +
       nmmp.y * normalize(v_bitangent) +
       nmmp.z * normalize(v_normal);

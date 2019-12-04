@@ -10,7 +10,10 @@
   "_defines": [
     {
       "USE_NORMAL_MAP": true,
-      "USE_ALBEDO_MAP": true
+      "USE_ALBEDO_MAP": true,
+      "OCCLUSION_CHANNEL": "b",
+      "ROUGHNESS_CHANNEL": "r",
+      "METALLIC_CHANNEL": "g"
     }
   ],
   "_states": [
@@ -40,11 +43,15 @@
         "z": 1,
         "w": 0.1
       },
-      "albedoMap": {
-        "__uuid__": "8ee2b3cb-3584-498c-b287-46716c2efdbc@6c48a"
-      },
       "normalMap": {
         "__uuid__": "ca15e015-207f-492a-bb5e-40bdcd80023f@6c48a"
+      },
+      "occlusion": 1,
+      "roughness": 1,
+      "metallic": 0,
+      "normalStrenth": 0.1,
+      "mainTexture": {
+        "__uuid__": "8ee2b3cb-3584-498c-b287-46716c2efdbc@6c48a"
       }
     }
   ]
