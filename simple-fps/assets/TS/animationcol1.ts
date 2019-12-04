@@ -1,4 +1,4 @@
-import { _decorator, Component, Node } from "cc";
+import { _decorator, Component, Node, AnimationComponent } from "cc";
 const { ccclass, property } = _decorator;
 import { Con } from './Constants';
 
@@ -14,7 +14,7 @@ export class animationcol1 extends Component {
     private _animationComponent:any=null;
     private _isanideath1:boolean=false;
     onLoad(){
-        this._animationComponent = this.node.getComponent(cc.AnimationComponent);
+        this._animationComponent = this.node.getComponent(AnimationComponent);
      }
     start () {
         // Your initialization goes here.

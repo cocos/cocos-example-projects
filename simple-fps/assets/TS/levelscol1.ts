@@ -1,4 +1,4 @@
-import { _decorator, Component, Node } from "cc";
+import { _decorator, Component, Node, math } from "cc";
 const { ccclass, property } = _decorator;
 import { Con } from './Constants';
 @ccclass("levelscol1")
@@ -12,7 +12,7 @@ export class levelscol1 extends Component {
 
     start () {
         // Your initialization goes here.
-        Con._LevelsCount=cc.math.randomRangeInt(4,6);
+        Con._LevelsCount = math.randomRangeInt(4,6);
     }
 
      update (deltaTime: number) {

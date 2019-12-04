@@ -1,4 +1,4 @@
-import { _decorator, Component, Node } from "cc";
+import { _decorator, Component, Node, director } from "cc";
 const { ccclass } = _decorator;
 import { Con } from './Constants';
 @ccclass("ButtonCol")
@@ -18,7 +18,7 @@ export class ButtonCol extends Component {
     private ShootButton:Node=null;
     onLoad(){
         //按钮组件获取
-        const canvas = cc.director.getScene().getChildByName('Canvas');
+        const canvas = director.getScene().getChildByName('Canvas');
         this.RightButton =canvas.getChildByName('Right');
         this.ForwardButton =canvas.getChildByName('Forward');
         this.LeftButton =canvas.getChildByName('Left');

@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, ColliderComponent, Vec3, math } from "cc";
+import { _decorator, Component, Node, ColliderComponent, Vec3, math, RigidBodyComponent } from "cc";
 const { ccclass, property } = _decorator;
 import { Con } from './Constants';
 
@@ -33,7 +33,7 @@ export class bossbullet1 extends Component {
         if(this.ParentNode!=null){
         const q = this.ParentNode.getWorldRotation();
         math.Vec3.transformQuat(velocity,velocity,q);
-        this.rigidbody=this.node.getComponent(cc.RigidBodyComponent);
+        this.rigidbody=this.node.getComponent(RigidBodyComponent);
         this.rigidbody.setLinearVelocity(velocity);
         }
     }

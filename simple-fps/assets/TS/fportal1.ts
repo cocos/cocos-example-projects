@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, Prefab, director, instantiate, math } from "cc";
+import { _decorator, Component, Node, Prefab, director, instantiate, math, ColliderComponent } from "cc";
 const { ccclass, property } = _decorator;
 import { Con } from './Constants';
 @ccclass("fportal1")
@@ -53,7 +53,7 @@ export class fportal1 extends Component {
     start () {
         // Your initialization goes here.
         //触发事件
-        this.collider = this.node.getComponent(cc.ColliderComponent);
+        this.collider = this.node.getComponent(ColliderComponent);
         this.collider.on('onTriggerEnter',this.onTrigger,this);
         Con.RepeatPotal=true;
     }

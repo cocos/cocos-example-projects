@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, LabelComponent } from "cc";
+import { _decorator, Component, Node, LabelComponent, director } from "cc";
 import { sceneArray } from "./scenelist";
 import { backbutton } from "./backbutton";
 const { ccclass, property } = _decorator;
@@ -27,7 +27,7 @@ export class ListItem extends Component {
     public loadScene() {
         backbutton.saveOffset();
         backbutton.saveIndex(this.index);
-        cc.director.loadScene(this._name);
+        director.loadScene(this._name);
     }
 
     public updateItem(idx: number, name: string) {
