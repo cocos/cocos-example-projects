@@ -24,7 +24,7 @@ export class backbutton extends Component {
             firstIndex = sceneString.lastIndexOf('/') + 1;
             lastIndex = sceneString.lastIndexOf('.scene');
             sceneString = sceneString.substring(firstIndex,lastIndex);
-            if(sceneString === "testlist" || (sceneString === "sponza" && CC_WECHATGAME)) {
+            if(sceneString === "testlist" || (sceneString === "sponza" && CC_WECHAT)) {
                 continue;
             }
             sceneArray.push(sceneString);
