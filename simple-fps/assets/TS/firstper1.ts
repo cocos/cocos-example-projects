@@ -1,4 +1,4 @@
-import { _decorator, Component, Vec3, systemEvent, SystemEvent, macro, game, math, director, SpriteComponent, AnimationComponent } from "cc";
+import { _decorator, Component, Vec3, systemEvent, SystemEvent, macro, game, math, director, SpriteComponent, AnimationComponent, RigidBodyComponent } from "cc";
 const { ccclass} = _decorator;
 import { Con } from './Constants';
 
@@ -220,9 +220,9 @@ export class firstper1 extends Component {
             //只要按了跳跃 先让其他动画都等于false
             Con.AniJump=true;
             this._ifJump=true;
-            const velocity = new cc.Vec3(0,Con.PlayerJump,0);
+            const velocity = new math.Vec3(0,Con.PlayerJump,0);
             math.Vec3.transformQuat(velocity,velocity,this.node.getWorldRotation());
-            this.rigidbody=this.node.getComponent(cc.RigidBodyComponent);
+            this.rigidbody=this.node.getComponent(RigidBodyComponent);
             this.rigidbody.setLinearVelocity(velocity);
         }
         //跳跃动画管理

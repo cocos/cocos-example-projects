@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, ScrollViewComponent, Vec3, ButtonComponent } from "cc";
+import { _decorator, Component, Node, ScrollViewComponent, Vec3, ButtonComponent, game, director } from "cc";
 const { ccclass, property } = _decorator;
 import { sceneArray } from "./scenelist";
 
@@ -15,7 +15,7 @@ export class backbutton extends Component {
     private static _nextButton : ButtonComponent;
 
     __preload() {
-        let sceneInfo = cc.game._sceneInfos;
+        let sceneInfo = game._sceneInfos;
         let firstIndex = 0;
         let lastIndex = 0;
         let sceneString:string = '';
@@ -61,7 +61,7 @@ export class backbutton extends Component {
     }
 
     start () {
-        cc.game.addPersistRootNode(this.node);
+        game.addPersistRootNode(this.node);
         backbutton._scrollNode = this.node.getParent().getChildByPath('Canvas/ScrollView') as Node;
         if (backbutton._scrollNode) {
             backbutton._scrollCom = backbutton._scrollNode.getComponent(ScrollViewComponent);
@@ -76,7 +76,7 @@ export class backbutton extends Component {
     }
 
     backToList () {
-        cc.director.loadScene('testlist');
+        director.loadScene('testlist');
         backbutton._sceneIndex = -1;
         backbutton.refreshButton();
         let self = this;
@@ -92,7 +92,7 @@ export class backbutton extends Component {
     nextscene () {
         backbutton._nextButton.interactable = false;
         this.updateSceneIndex(true);
-        cc.director.loadScene(this.getSceneName());
+        director.loadScene(this.getSceneName());
         this.scheduleOnce(function(){
             backbutton._nextButton.interactable = true;
         },0.5);
@@ -101,7 +101,7 @@ export class backbutton extends Component {
     prescene () {
         backbutton._prevButton.interactable = false;
         this.updateSceneIndex(false);
-        cc.director.loadScene(this.getSceneName());
+        director.loadScene(this.getSceneName());
         this.scheduleOnce(function(){
             backbutton._prevButton.interactable = true;
         },0.5);

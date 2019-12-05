@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, LabelComponent, SpriteComponent, Vec3, SpriteFrame, ImageAsset, tweenUtil, Tween } from "cc";
+import { _decorator, Component, Node, LabelComponent, SpriteComponent, Vec3, SpriteFrame, ImageAsset, tweenUtil, Tween, loader } from "cc";
 const { ccclass, property } = _decorator;
 
 @ccclass("Launch")
@@ -74,7 +74,7 @@ export class Launch extends Component {
 
             this.nickName.string = userInfo.nickName;
 
-            cc.loader.load({ url: userInfo.avatarUrl, type: 'png' }, (err, image: ImageAsset) => {
+            loader.load({ url: userInfo.avatarUrl, type: 'png' }, (err, image: ImageAsset) => {
                 if (err) {
                     console.error(err);
                     return;

@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, Prefab, instantiate, director, math, AnimationComponent, SpriteComponent, RigidBodyComponent, CameraComponent, Vec3 } from "cc";
+import { _decorator, Component, Node, Prefab, instantiate, director, math, AnimationComponent, SpriteComponent, RigidBodyComponent, CameraComponent, Vec3, ColliderComponent, convertUtils } from "cc";
 const { ccclass, property } = _decorator;
 import { Con } from './Constants';
 
@@ -82,7 +82,7 @@ export class monster1 extends Component {
         // Your initialization goes here.
         this.PrefarHP();
         //碰撞事件
-        this.collider = this.node.getComponent(cc.ColliderComponent);
+        this.collider = this.node.getComponent(ColliderComponent);
         this.collider.on('onCollisionStay',this.onCollision,this);
         this.collider.on('onTriggerEnter',this.onTrigger,this);
 
@@ -116,7 +116,7 @@ export class monster1 extends Component {
         //血条跟随
         var HpPosition=new Vec3(this.node.getPosition().x,this.node.getPosition().y+1.7,this.node.getPosition().z)
         var ddddd=new Vec3(10,10,10);
-        cc.pipelineUtils.WorldNode3DToLocalNodeUI(this.CameraNode.getComponent(CameraComponent),HpPosition,this.UINode,ddddd);
+        convertUtils.WorldNode3DToLocalNodeUI(this.CameraNode.getComponent(CameraComponent),HpPosition,this.UINode,ddddd);
         if(ddddd.z<1){
         this.UINode.setPosition(ddddd);
         }
@@ -163,7 +163,7 @@ export class monster1 extends Component {
            this._anirun=true;
            const _Player = director.getScene().getChildByName('Player');
            this.node.lookAt(_Player.getPosition());
-           const velocity = new cc.Vec3(0,0,-this._MonsterMove);  
+           const velocity = new math.Vec3(0,0,-this._MonsterMove);  
            math.Vec3.transformQuat(velocity,velocity,this.node.getRotation());
            this.rigidbody.setLinearVelocity(velocity);
 

@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, systemEvent, SystemEvent, math, director, Vec3, Vec2 } from "cc";
+import { _decorator, Component, Node, systemEvent, SystemEvent, math, director, Vec3, Vec2, v3 } from "cc";
 const { ccclass, property } = _decorator;
 import { Con } from './Constants';
 
@@ -50,7 +50,7 @@ export class recoil1 extends Component {
     
     onTouchMove(event){
         if(event.getDelta().y!=0){
-            const up =cc.v3(0,1,0);
+            const up = v3(0,1,0);
             const rotationx = this.node.getRotation();
             math.Quat.rotateAround(rotationx, rotationx,this._getDirection(-1, 0, 0), -event.getDelta().y/5/ 360.0 * 3.1415926535);
             this.node.setRotation(rotationx);

@@ -1,4 +1,4 @@
-import { _decorator, Component, CameraComponent, Vec3, Quat, Node } from "cc";
+import { _decorator, Component, CameraComponent, Vec3, Quat, Node, convertUtils } from "cc";
 const { ccclass, property, menu } = _decorator;
 
 const _v3_0 = new Vec3();
@@ -18,7 +18,7 @@ export class CoordinateUi3D extends Component {
     lateUpdate (deltaTime: number) {
         this.D3Node.getWorldPosition(_v3_0);
         _v3_0.y += 1.5;
-        cc.pipelineUtils.WorldNode3DToLocalNodeUI(this.mainCamera, _v3_0, this.UINode, _v3_0);
+        convertUtils.WorldNode3DToLocalNodeUI(this.mainCamera, _v3_0, this.UINode, _v3_0);
         this.UINode.setPosition(_v3_0);
     }
 }

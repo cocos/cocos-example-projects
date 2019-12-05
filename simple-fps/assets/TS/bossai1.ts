@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, Prefab, instantiate, director, ColliderComponent, AnimationComponent, SpriteComponent, Vec3, CameraComponent, math } from "cc";
+import { _decorator, Component, Node, Prefab, instantiate, director, ColliderComponent, AnimationComponent, SpriteComponent, Vec3, CameraComponent, math, convertUtils } from "cc";
 const { ccclass, property } = _decorator;
 import { Con } from './Constants';
 @ccclass("bossai1")
@@ -84,7 +84,7 @@ export class bossai1 extends Component {
         //血条跟随
         var HpPosition=new Vec3(this.node.getPosition().x,this.node.getPosition().y+1.7,this.node.getPosition().z)
         var ddddd=new Vec3(10,10,10);
-        cc.pipelineUtils.WorldNode3DToLocalNodeUI(this.CameraNode.getComponent(CameraComponent),HpPosition,this.UINode,ddddd);
+        convertUtils.WorldNode3DToLocalNodeUI(this.CameraNode.getComponent(CameraComponent),HpPosition,this.UINode,ddddd);
         if(ddddd.z<1){
         this.UINode.setPosition(ddddd);
         }
@@ -92,7 +92,7 @@ export class bossai1 extends Component {
         //面向玩家
         const _Player = director.getScene().getChildByName('Player');
         this.node.lookAt(_Player.getPosition());
-        const velocity = new cc.Vec3(0,0,0);  
+        const velocity = new math.Vec3(0,0,0);  
         math.Vec3.transformQuat(velocity,velocity,this.node.getRotation());
         //攻击间隔
         this._timer+=2*deltaTime;
