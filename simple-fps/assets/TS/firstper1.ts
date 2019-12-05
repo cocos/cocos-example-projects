@@ -1,5 +1,5 @@
-import { _decorator, Component, Vec3, systemEvent, SystemEvent, macro, game, math, director, SpriteComponent, AnimationComponent, RigidBodyComponent } from "cc";
-const { ccclass} = _decorator;
+import { _decorator, Component, Vec3, systemEvent, SystemEvent, macro, game, math, director, SpriteComponent, AnimationComponent, RigidBodyComponent, LabelComponent } from "cc";
+const { ccclass, property} = _decorator;
 import { Con } from './Constants';
 
 @ccclass("firstper1")
@@ -8,8 +8,12 @@ export class firstper1 extends Component {
     // dummy = '';
 
     /* use `property` decorator if your want the member to be serializable */
-    // @property
-    // serializableDummy = 0;
+    @property({
+        type: LabelComponent,
+    })
+    gameoverLabel = null;
+
+    
     private _startLeft:boolean = false;
     private _startRight:boolean =false;
     private _startForward:boolean =false;
@@ -284,7 +288,8 @@ export class firstper1 extends Component {
            Con.AniDel=true;
            this._Deltimmer+=1*deltaTime;
         }
-        if(this._Deltimmer>0.8){
+        if (this._Deltimmer>0.8){
+            this.gameoverLabel.node.active = true;
             game.pause();
         }
      }
