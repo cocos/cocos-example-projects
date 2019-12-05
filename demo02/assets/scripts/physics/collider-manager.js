@@ -16,7 +16,12 @@ export class ColliderManager extends Component {
     @property([Node])
     prefabs = [];
 
+    @property({type:Node})
+    tipsNode = null;    
+
     start () {
+        this.tipsNode.active = CC_PHYSICS_BUILTIN;
+
         this.node.removeAllChildren();
         for (let i = 0; i < this.count; i++) {
             const node = instantiate(this.prefabs[Math.round(Math.random())]);
