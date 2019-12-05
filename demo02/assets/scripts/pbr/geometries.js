@@ -5,6 +5,7 @@ const { ccclass } = _decorator;
 export class Geometries extends Component {
 
     start () {
+        this.node.removeAllChildren();
         let models = [];
         let rows = 7, cols = 7, stride = 2.5;
         let albedo = cc.color(128, 0, 0);
@@ -13,7 +14,7 @@ export class Geometries extends Component {
             for (let j = 0; j < cols; j++) {
                 let node = new cc.Node();
                 node.parent = this.node;
-                node.setPosition((j-cols/2)*stride, (i-rows/2)*stride, -2);
+                node.setPosition((j-Math.floor(cols/2))*stride, (i-Math.floor(rows/2))*stride, 0);
                 let comp = node.addComponent(cc.ModelComponent);
                 comp.mesh = meshSphere;
                 let m = new cc.Material();
@@ -26,16 +27,5 @@ export class Geometries extends Component {
                 comp.material = m; models.push(comp);
             }
         }
-        // cc.loader.loadRes('brdfLUT/brdfLUT', cc.Texture2D, 'internal', null, (err, asset) => {
-        //     models.forEach(m => m.material.setProperty('brdfLUT', asset));
-        // });
-        // cc.loader.loadResDir('papermill/diffuse', cc.Texture2D, (err, asset) => {
-        //     let texture = cc.TextureCube.fromTexture2DArray(asset);
-        //     models.forEach(m => m.material.setProperty('diffuseEnvTexture', texture));
-        // });
-        // cc.loader.loadResDir('papermill/specular', cc.Texture2D, (err, asset) => {
-        //     let texture = cc.TextureCube.fromTexture2DArray(asset);
-        //     models.forEach(m => m.material.setProperty('specularEnvTexture', texture));
-        // });
     }
 }

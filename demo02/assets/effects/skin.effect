@@ -49,6 +49,7 @@ CCProgram skin-fs %{
     s.occlusion = params.x * texture(occlusionMap, v_uv).b;
     s.roughness = params.y;
     s.metallic = params.z;
+    s.emissive = vec3(0);
   }
 
   vec4 frag () {
