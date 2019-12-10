@@ -102,7 +102,7 @@ export class FirstPersonCamera extends Component {
 
     onTouchMove (e) {
         e.getStartLocation(v2_1);
-        if (v2_1.x > cc.winSize.width * 0.4) { // rotation
+        if (v2_1.x > cc.game.canvas.width * 0.4) { // rotation
             e.getDelta(v2_2);
             this._euler.y -= v2_2.x * this.rotateSpeed * 0.1;
             this._euler.x += v2_2.y * this.rotateSpeed * 0.1;
@@ -117,7 +117,7 @@ export class FirstPersonCamera extends Component {
     onTouchEnd (e) {
         if (document.exitPointerLock) document.exitPointerLock();
         e.getStartLocation(v2_1);
-        if (v2_1.x < cc.winSize.width * 0.4) { // position
+        if (v2_1.x < cc.game.canvas.width * 0.4) { // position
             this._velocity.x = 0;
             this._velocity.z = 0;
         }

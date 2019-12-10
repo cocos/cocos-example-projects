@@ -49,6 +49,7 @@ cc.Class({
         };
         source.clip.once('started', () => {
           // animate audio 1
+          const s2 = source2;
           startTime1 = performance.now();
           cc.director.on(cc.Director.EVENT_BEFORE_UPDATE, animation1);
           setTimeout(() => {
@@ -56,7 +57,7 @@ cc.Class({
           }, t1 * 1000);
           // animate audio 2
           setTimeout(() => {
-            source2.play();
+            s2.play();
             startTime2 = performance.now();
             cc.director.on(cc.Director.EVENT_BEFORE_UPDATE, animation2);
           }, off2 * 1000);

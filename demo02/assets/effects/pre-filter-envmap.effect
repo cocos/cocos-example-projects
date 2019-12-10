@@ -1,0 +1,146 @@
+CCEffect %{
+  techniques:
+  - passes:
+    - vert: pre-filter-vs:vert
+      frag: pre-filter-fs:frag
+      properties:
+        roughness: {}
+}%
+
+CCProgram pre-filter-vs %{
+  precision highp float;
+  #include <decode>
+  #include <cc-global>
+  #include <cc-local>
+
+  out vec3 worldPos;
+
+  vec4 vert () {
+    vec4 position;
+    CCDecode(position);
+    worldPos = position.xyz;
+    return cc_matViewProj * cc_matWorld * position;
+  }
+}%
+
+CCProgram pre-filter-fs %{
+  precision highp float;
+  #include <common>
+  #include <gamma>
+  #include <unpack>
+  #include <texture-lod>
+  #include <cc-environment>
+
+  in vec3 worldPos;
+
+  uniform Constant {
+    float roughness;
+  };
+
+  float DistributionGGX (vec3 N, vec3 H, float roughness) {
+    float a = roughness * roughness;
+    float a2 = a * a;
+    float NdotH = max(dot(N, H), 0.0);
+    float NdotH2 = NdotH * NdotH;
+
+    float nom = a2;
+    float denom = (NdotH2 * (a2 - 1.0) + 1.0);
+    denom = PI * denom * denom;
+
+    return nom / denom;
+  }
+
+  float VanDerCorpus (int n, int base) {
+    float invBase = 1.0 / float(base);
+    float denom   = 1.0;
+    float result  = 0.0;
+    for (int i = 0; i < 32; i++) {
+      if (n > 0) {
+        denom   = mod(float(n), 2.0);
+        result += denom * invBase;
+        invBase = invBase / 2.0;
+        n       = int(float(n) / 2.0);
+      }
+    }
+    return result;
+  }
+
+  vec2 HammersleyNoBitOps (int i, int N) {
+    return vec2(float(i) / float(N), VanDerCorpus(i, 2));
+  }
+
+  vec3 ImportanceSampleGGX (vec2 Xi, vec3 N, float roughness) {
+    float a = roughness * roughness;
+
+    float phi = 2.0 * PI * Xi.x;
+    float cosTheta = sqrt((1.0 - Xi.y) / (1.0 + (a * a - 1.0) * Xi.y));
+    float sinTheta = sqrt(1.0 - cosTheta * cosTheta);
+
+    // from spherical coordinates to cartesian coordinates - halfway vector
+    vec3 H;
+    H.x = cos(phi) * sinTheta;
+    H.y = sin(phi) * sinTheta;
+    H.z = cosTheta;
+
+    // from tangent-space H vector to world-space sample vector
+    vec3 up        = abs(N.z) < 0.999 ? vec3(0.0, 0.0, 1.0) : vec3(1.0, 0.0, 0.0);
+    vec3 tangent   = normalize(cross(up, N));
+    vec3 bitangent = cross(N, tangent);
+
+    vec3 sampleVec = tangent * H.x + bitangent * H.y + N * H.z;
+    return normalize(sampleVec);
+  }
+
+  vec4 frag () {
+    vec3 N = normalize(worldPos);
+
+    // make the simplyfying assumption that V equals R equals the normal
+    vec3 R = N;
+    vec3 V = R;
+
+    const int SAMPLE_COUNT = 1024;
+    vec3 prefilteredColor = vec3(0.0);
+    float totalWeight = 0.0;
+
+    for(int i = 0; i < SAMPLE_COUNT; i++) {
+      // generates a sample vector that's biased towards the preferred alignment direction (importance sampling).
+      vec2 Xi = HammersleyNoBitOps(i, SAMPLE_COUNT);
+      vec3 H  = ImportanceSampleGGX(Xi, N, roughness);
+      vec3 L  = normalize(2.0 * dot(V, H) * H - V);
+      float NdotL = max(dot(N, L), 0.0);
+      if (NdotL > 0.0) {
+        // sample from the environment's mip level based on roughness/pdf
+        float D   = DistributionGGX(N, H, roughness);
+        float NdotH = max(dot(N, H), 0.0);
+        float HdotV = max(dot(H, V), 0.0);
+        float pdf = D * NdotH / (4.0 * HdotV) + 0.0001;
+
+        float resolution = 512.0; // resolution of source cubemap (per face)
+        float saTexel  = 4.0 * PI / (6.0 * resolution * resolution);
+        float saSample = 1.0 / (float(SAMPLE_COUNT) * pdf + 0.0001);
+
+        float mipLevel = roughness == 0.0 ? 0.0 : 0.5 * log2(saSample / saTexel);
+
+        vec4 envmap = fragTextureLod(cc_environment, L, mipLevel);
+        #if CC_USE_IBL == IBL_RGBE
+          vec3 env = unpackRGBE(envmap);
+        #else
+          vec3 env = SRGBToLinear(envmap.rgb);
+        #endif
+        prefilteredColor += env * NdotL;
+        totalWeight      += NdotL;
+      }
+    }
+
+    prefilteredColor = prefilteredColor / totalWeight;
+
+    #if CC_USE_IBL == IBL_RGBE
+      float v = max(max(prefilteredColor.r, prefilteredColor.g), prefilteredColor.b);
+      float e = ceil(log2(v));
+      float s = 1.0 / pow(2.0, e);
+      return vec4(prefilteredColor * s, e * (1.0 / 255.0) + (128.0 / 255.0));
+    #else
+      return vec4(LinearToSRGB(prefilteredColor), 1.0);
+    #endif
+  }
+}%

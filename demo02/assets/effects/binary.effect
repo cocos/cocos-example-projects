@@ -38,14 +38,14 @@ CCProgram binary-fs %{
   in vec2 v_uv;
   uniform Constant {
     vec4 color;
-    vec2 border;
+    highp vec2 border;
     vec2 padding;
   };
 
   vec4 frag () {
     vec4 o = vec4(0, 0, 0, 1);
 
-    vec2 uv = v_uv - floor(v_uv);
+    highp vec2 uv = v_uv - floor(v_uv);
     if (any(lessThan(vec4(uv, 1.0 - border), vec4(border, uv))))
       o = vec4(1);
 
