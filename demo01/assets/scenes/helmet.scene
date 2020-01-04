@@ -324,12 +324,10 @@
       }
     ],
     "_visFlags": 0,
-    "_enableDynamicBatching": false,
     "_mesh": {
       "__uuid__": "339e5be0-71d2-45f9-9c2d-77516fe64d44@92175"
     },
     "_shadowCastingMode": 0,
-    "_receiveShadows": false,
     "_id": "0e+1TM+zFC/YOsA1cJ8TcS"
   },
   {
@@ -472,7 +470,7 @@
     "_screenScale": 1,
     "_visibility": 524288,
     "_targetTexture": {
-      "__uuid__": "74c6314a-fa34-44d4-8de8-46627617e403"
+      "__uuid__": "a92a9894-6777-4ee6-9fc0-9a8a9d94b86d"
     },
     "_id": "9cXb5tk59G9Y5bNSiSFLAS"
   },
@@ -524,10 +522,10 @@
     "ambient": {
       "__id__": 19
     },
-    "skybox": {
+    "planarShadows": {
       "__id__": 20
     },
-    "planarShadows": {
+    "_skybox": {
       "__id__": 21
     }
   },
@@ -550,15 +548,6 @@
     }
   },
   {
-    "__type__": "cc.SkyboxInfo",
-    "_envmap": {
-      "__uuid__": "94de26e0-7fc3-4bb2-bec0-919b02c99285@b47c0"
-    },
-    "_isRGBE": true,
-    "_enabled": true,
-    "_useIBL": true
-  },
-  {
     "__type__": "cc.PlanarShadowInfo",
     "_enabled": false,
     "_normal": {
@@ -575,5 +564,14 @@
       "b": 0,
       "a": 76
     }
+  },
+  {
+    "__type__": "cc.SkyboxInfo",
+    "_envmap": {
+      "__uuid__": "94de26e0-7fc3-4bb2-bec0-919b02c99285@b47c0"
+    },
+    "_isRGBE": true,
+    "_enabled": true,
+    "_useIBL": true
   }
 ]

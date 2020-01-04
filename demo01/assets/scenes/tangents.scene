@@ -262,12 +262,10 @@
       }
     ],
     "_visFlags": 0,
-    "_enableDynamicBatching": false,
     "_mesh": {
       "__uuid__": "2e546bc3-ff51-4b10-aeed-6449412a0fe5@9c834"
     },
     "_shadowCastingMode": 0,
-    "_receiveShadows": false,
     "_id": "5c2iDitEhJ0KAJpgz7hZP3"
   },
   {
@@ -327,12 +325,10 @@
       }
     ],
     "_visFlags": 0,
-    "_enableDynamicBatching": false,
     "_mesh": {
       "__uuid__": "240292d3-f298-40b0-973f-4ba31f95461d@9c834"
     },
     "_shadowCastingMode": 0,
-    "_receiveShadows": false,
     "_id": "8f6HGrp/5Lw707Eeebr9n0"
   },
   {
@@ -612,12 +608,10 @@
       }
     ],
     "_visFlags": 0,
-    "_enableDynamicBatching": false,
     "_mesh": {
       "__uuid__": "8c722836-849e-42f2-b198-39ef6bbfb248@420b6"
     },
     "_shadowCastingMode": 0,
-    "_receiveShadows": false,
     "_id": "14nYE/f0xDGKhXGXVobPGN"
   },
   {
@@ -694,12 +688,10 @@
       }
     ],
     "_visFlags": 0,
-    "_enableDynamicBatching": false,
     "_mesh": {
       "__uuid__": "8c722836-849e-42f2-b198-39ef6bbfb248@85552"
     },
     "_shadowCastingMode": 0,
-    "_receiveShadows": false,
     "_id": "b8r/tT9vNPRKrmX7FaB3Ep"
   },
   {
@@ -776,12 +768,10 @@
       }
     ],
     "_visFlags": 0,
-    "_enableDynamicBatching": false,
     "_mesh": {
       "__uuid__": "8c722836-849e-42f2-b198-39ef6bbfb248@d502a"
     },
     "_shadowCastingMode": 0,
-    "_receiveShadows": false,
     "_id": "4aT7hl2bNACorFcUYvojad"
   },
   {
@@ -1192,7 +1182,7 @@
     "_screenScale": 1,
     "_visibility": 524288,
     "_targetTexture": {
-      "__uuid__": "74c6314a-fa34-44d4-8de8-46627617e403"
+      "__uuid__": "a92a9894-6777-4ee6-9fc0-9a8a9d94b86d"
     },
     "_id": "77FlOtiztBeYEUFqmum3G3"
   },
@@ -1241,10 +1231,10 @@
     "ambient": {
       "__id__": 43
     },
-    "skybox": {
+    "planarShadows": {
       "__id__": 44
     },
-    "planarShadows": {
+    "_skybox": {
       "__id__": 45
     }
   },
@@ -1267,15 +1257,6 @@
     }
   },
   {
-    "__type__": "cc.SkyboxInfo",
-    "_envmap": {
-      "__uuid__": "b0b5859a-4668-471d-931a-7e05301b0bee@b47c0"
-    },
-    "_isRGBE": false,
-    "_enabled": false,
-    "_useIBL": true
-  },
-  {
     "__type__": "cc.PlanarShadowInfo",
     "_enabled": false,
     "_normal": {
@@ -1292,5 +1273,14 @@
       "b": 0,
       "a": 76
     }
+  },
+  {
+    "__type__": "cc.SkyboxInfo",
+    "_envmap": {
+      "__uuid__": "b0b5859a-4668-471d-931a-7e05301b0bee@b47c0"
+    },
+    "_isRGBE": false,
+    "_enabled": false,
+    "_useIBL": true
   }
 ]
