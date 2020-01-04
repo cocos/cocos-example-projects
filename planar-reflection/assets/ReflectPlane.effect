@@ -1,0 +1,126 @@
+CCEffect %{
+  techniques:
+  - name: opaque
+    passes:
+    - vert: unlit-vs:vert
+      frag: unlit-fs:frag
+      properties: &props
+        mainTexture:    { value: grey }
+        reflectTexture: { value: black }
+        reflectAlpha:   { value: 1 }
+        tilingOffset:   { value: [1, 1, 0, 0] }
+        mainColor:      { value: [1, 1, 1, 1], editor: { type: color, formerlySerializedAs: color } }
+        colorScale:     { value: [1, 1, 1], target: colorScaleAndCutoff.xyz }
+        alphaThreshold: { value: 0.5, target: colorScaleAndCutoff.w, editor: { parent: USE_ALPHA_TEST } }
+  - name: transparent
+    passes:
+    - vert: unlit-vs:vert
+      frag: unlit-fs:frag
+      blendState:
+        targets:
+        - blend: true
+          blendSrc: src_alpha
+          blendDst: one_minus_src_alpha
+          blendSrcAlpha: src_alpha
+          blendDstAlpha: one_minus_src_alpha
+      properties: *props
+}%
+
+CCProgram unlit-vs %{
+  precision mediump float;
+  #include <cc-global>
+  #include <cc-local-batch>
+  #include <input>
+
+  #if USE_VERTEX_COLOR
+    in vec4 a_color;
+    out vec4 v_color;
+  #endif
+
+  #if USE_TEXTURE
+    in vec2 a_texCoord;
+    out vec2 v_uv;
+    uniform TexCoords {
+      vec4 tilingOffset;
+    };
+  #endif
+
+  out vec2 v_screenPos;
+
+  highp vec4 vert () {
+    vec4 position;
+    CCVertInput(position);
+
+    highp mat4 matWorld;
+    CCGetWorldMatrix(matWorld);
+
+    highp vec4 pos = cc_matProj * (cc_matView * matWorld) * position;
+
+    #if USE_TEXTURE
+      v_uv = a_texCoord;
+      #if FLIP_UV
+        v_uv.y = 1.0 - v_uv.y;
+      #endif
+      v_uv = v_uv * tilingOffset.xy + tilingOffset.zw;
+    #endif
+
+    #if USE_VERTEX_COLOR
+      v_color = a_color;
+    #endif
+
+    v_screenPos.x = ((pos.x / pos.w) * 0.5 + 0.5);
+    v_screenPos.y = ((pos.y / pos.w) * 0.5 + 0.5);
+
+    return pos;
+  }
+}%
+
+CCProgram unlit-fs %{
+  precision mediump float;
+  #include <output>
+
+  #if USE_ALPHA_TEST
+    #pragma define ALPHA_TEST_CHANNEL options([a, r, g, b])
+  #endif
+
+  #if USE_TEXTURE
+    in vec2 v_uv;
+    uniform sampler2D mainTexture;
+  #endif
+
+  uniform Constant {
+    vec4 mainColor;
+    vec4 colorScaleAndCutoff;
+    float reflectAlpha;
+  };
+
+  #if USE_VERTEX_COLOR
+    in vec4 v_color;
+  #endif
+
+  in vec2 v_screenPos;
+  uniform sampler2D reflectTexture;
+
+  vec4 frag () {
+    vec4 o = mainColor;
+    o.rgb *= colorScaleAndCutoff.xyz;
+
+    #if USE_VERTEX_COLOR
+      o *= v_color;
+    #endif
+
+    #if USE_TEXTURE
+      o *= texture(mainTexture, v_uv);
+    #endif
+
+    vec4 refColor = texture(reflectTexture, v_screenPos);
+    float a = refColor.a * reflectAlpha;
+    o.xyz = refColor.xyz * a + o.xyz * (1. - a);
+
+    #if USE_ALPHA_TEST
+      if (o.ALPHA_TEST_CHANNEL < colorScaleAndCutoff.w) discard;
+    #endif
+
+    return CCFragOutput(o);
+  }
+}%
