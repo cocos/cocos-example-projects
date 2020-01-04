@@ -116,7 +116,7 @@ export class monster1 extends Component {
         //血条跟随
         var HpPosition=new Vec3(this.node.getPosition().x,this.node.getPosition().y+1.7,this.node.getPosition().z)
         var ddddd=new Vec3(10,10,10);
-        convertUtils.WorldNode3DToLocalNodeUI(this.CameraNode.getComponent(CameraComponent),HpPosition,this.UINode,ddddd);
+        this.CameraNode.getComponent(CameraComponent).convertToUINode(HpPosition,this.UINode.parent,ddddd);
         if(ddddd.z<1){
         this.UINode.setPosition(ddddd);
         }
