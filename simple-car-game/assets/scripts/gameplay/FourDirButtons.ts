@@ -64,10 +64,8 @@ export class FourDirButtons extends Component {
         this.turnRightNode.on(SystemEventType.TOUCH_MOVE, this._onTurnright, this);
         this.turnRightNode.on(SystemEventType.TOUCH_END, this._onTurnright, this);
 
-        if (cc.sys.isBrowser) {
-            systemEvent.on(SystemEventType.KEY_DOWN, this._onKeyDown, this);
-            systemEvent.on(SystemEventType.KEY_UP, this._onKeyUp, this);
-        }
+        systemEvent.on(SystemEventType.KEY_DOWN, this._onKeyDown, this);
+        systemEvent.on(SystemEventType.KEY_UP, this._onKeyUp, this);
     }
 
     removeEvents () {
@@ -91,10 +89,8 @@ export class FourDirButtons extends Component {
         this.turnRightNode.off(SystemEventType.TOUCH_MOVE, this._onTurnright, this);
         this.turnRightNode.off(SystemEventType.TOUCH_END, this._onTurnright, this);
 
-        if (cc.sys.isBrowser) {
-            systemEvent.off(SystemEventType.KEY_DOWN, this._onKeyDown, this);
-            systemEvent.off(SystemEventType.KEY_UP, this._onKeyUp, this);
-        }
+        systemEvent.off(SystemEventType.KEY_DOWN, this._onKeyDown, this);
+        systemEvent.off(SystemEventType.KEY_UP, this._onKeyUp, this);
     }
 
     private _onForward (event: EventTouch) {
