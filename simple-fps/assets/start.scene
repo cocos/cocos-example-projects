@@ -22,32 +22,6 @@
     "_active": true,
     "_components": [],
     "_prefab": null,
-    "_lpos": {
-      "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 0,
-      "z": 0
-    },
-    "_lrot": {
-      "__type__": "cc.Quat",
-      "x": 0,
-      "y": 0,
-      "z": 0,
-      "w": 1
-    },
-    "_lscale": {
-      "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
-      "z": 1
-    },
-    "_layer": 1,
-    "_euler": {
-      "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 0,
-      "z": 0
-    },
     "autoReleaseAssets": false,
     "_globals": {
       "__id__": 13
@@ -208,12 +182,13 @@
   },
   {
     "__type__": "cc.UITransformComponent",
-    "_name": "",
+    "_name": "Desc<UITransformComponent>",
     "_objFlags": 0,
     "node": {
       "__id__": 4
     },
     "_enabled": true,
+    "_priority": 0,
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 684.55,
@@ -224,12 +199,11 @@
       "x": 0.5,
       "y": 0.5
     },
-    "_id": "84subUJthPcJcIb489OV8E",
-    "_priority": 0
+    "_id": "84subUJthPcJcIb489OV8E"
   },
   {
     "__type__": "cc.LabelComponent",
-    "_name": "",
+    "_name": "Desc<LabelComponent>",
     "_objFlags": 0,
     "node": {
       "__id__": 4
@@ -265,12 +239,13 @@
   },
   {
     "__type__": "cc.UITransformComponent",
-    "_name": "",
+    "_name": "PhysicsEnvSprite<UITransformComponent>",
     "_objFlags": 0,
     "node": {
       "__id__": 3
     },
     "_enabled": true,
+    "_priority": 0,
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 960,
@@ -281,12 +256,11 @@
       "x": 0.5,
       "y": 0.5
     },
-    "_id": "32v5Q8L2VJ8b482pzetOd1",
-    "_priority": 0
+    "_id": "32v5Q8L2VJ8b482pzetOd1"
   },
   {
     "__type__": "cc.SpriteComponent",
-    "_name": "",
+    "_name": "PhysicsEnvSprite<SpriteComponent>",
     "_objFlags": 0,
     "node": {
       "__id__": 3
@@ -316,12 +290,13 @@
     "_fillStart": 0,
     "_fillRange": 0,
     "_isTrimmedMode": true,
+    "_useGrayscale": false,
     "_atlas": null,
     "_id": "08KwBpX91ISKHxa+IPfEn1"
   },
   {
     "__type__": "cc.WidgetComponent",
-    "_name": "",
+    "_name": "PhysicsEnvSprite<WidgetComponent>",
     "_objFlags": 0,
     "node": {
       "__id__": 3
@@ -348,12 +323,13 @@
   },
   {
     "__type__": "cc.UITransformComponent",
-    "_name": "",
+    "_name": "Canvas<UITransformComponent>",
     "_objFlags": 0,
     "node": {
       "__id__": 2
     },
     "_enabled": true,
+    "_priority": 0,
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 960,
@@ -368,7 +344,7 @@
   },
   {
     "__type__": "cc.CanvasComponent",
-    "_name": "",
+    "_name": "Canvas<CanvasComponent>",
     "_objFlags": 0,
     "node": {
       "__id__": 2
@@ -376,7 +352,7 @@
     "_enabled": true,
     "_priority": 0,
     "_targetTexture": null,
-    "_clearFlag": 0,
+    "_clearFlag": 7,
     "_color": {
       "__type__": "cc.Color",
       "r": 0,
@@ -389,7 +365,7 @@
   },
   {
     "__type__": "aa3b7iZ7WxDvraMKdd/min8",
-    "_name": "",
+    "_name": "Canvas<PhysicsConfig>",
     "_objFlags": 0,
     "node": {
       "__id__": 2
@@ -406,10 +382,10 @@
       "__id__": 14
     },
     "planarShadows": {
-      "__id__": 16
+      "__id__": 15
     },
     "_skybox": {
-      "__id__": 15
+      "__id__": 16
     }
   },
   {
@@ -431,13 +407,6 @@
     }
   },
   {
-    "__type__": "cc.SkyboxInfo",
-    "_envmap": null,
-    "_isRGBE": false,
-    "_enabled": false,
-    "_useIBL": false
-  },
-  {
     "__type__": "cc.PlanarShadowInfo",
     "_enabled": false,
     "_normal": {
@@ -454,5 +423,12 @@
       "b": 0,
       "a": 76
     }
+  },
+  {
+    "__type__": "cc.SkyboxInfo",
+    "_envmap": null,
+    "_isRGBE": false,
+    "_enabled": false,
+    "_useIBL": false
   }
 ]
