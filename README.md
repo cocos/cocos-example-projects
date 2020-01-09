@@ -1,11 +1,13 @@
-# Examples for Cocos Creator 3D
+# Cocos Creator 3D Example cases
 
 ## demo01
 
 1. scenes/helmet: PBR material showcase, skybox
 2. scenes/jellyfish: animation, transparent material, simple prefab instantiation
 3. scenes/knight: animation, light
+3. scenes/particle-compare: various particle effects
 5. scenes/sponza: multiple render target, particle system, lights
+5. scenes/tangents: glTF tangent space data conformance test
 6. scenes/winter: particle system, emitter editing
 
 ## demo02
@@ -14,9 +16,12 @@
 2. scenes/audio: audio system baseline test
 3. scenes/collision-detection: simple collision detection
 4. scenes/custom-effect: custom shader
-5. scenes/pbr: PBR baseline test (tbc.)
+5. scenes/pbr: PBR baseline
 6. scenes/physics: rigidbody physics simulation
-7. scenes/shadows: planar shadow demo
+7. scenes/shadertoy: simple example on importing shadertoy resources
+8. scenes/shadows: planar shadow demo
+9. scenes/skin: pre-integrated SSS demo
+10. scenes/toon: NPR baseline
 
 ## simple-fps
 
@@ -32,7 +37,7 @@ If some bug is forcing you to do some hacking, workaround, or any kind of strang
 
 Every 'unpleasant surprise' encountered along the road is a big deal:
 
-Either something is not working, or some designed feature is far less intuitive than what the designer thought it would.
+Either something is not working, or some designed feature is far less intuitive than what the designer thought it would be.
 
 So make sure to do all the followings:
 
