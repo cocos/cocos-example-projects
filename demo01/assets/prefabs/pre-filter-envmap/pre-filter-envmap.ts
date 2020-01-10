@@ -95,12 +95,12 @@ export class PreFilterEnvmap extends Component {
             writeRegion.texSubres.baseMipLevel = m;
             this._material.setProperty('roughness', m / mipLevel);
             const length = size * size * 4;
-            const buffers: ArrayBuffer[] = [];
+            const buffers: Uint8Array[] = [];
             for (let i = 0; i < 6; i++) {
-                buffers[i] = new ArrayBuffer(length);
+                buffers[i] = new Uint8Array(length);
                 this._camera.node.setRotation(rotations[i]);
                 director.root.pipeline.render(view);
-                director.root.device.copyFramebufferToBuffer(view.window.framebuffer, buffers[i], readRegions);
+                director.root.device.copyFramebufferToBuffer(view.window.framebuffer, buffers[i].buffer, readRegions);
             }
             director.root.device.copyBuffersToTexture(buffers, newEnvMap.getGFXTexture(), writeRegions);
             size >>= 1;
