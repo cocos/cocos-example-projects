@@ -2,6 +2,7 @@ import { _decorator, Component, math, systemEvent, macro, RigidBodyComponent, To
 const { ccclass, property } = _decorator;
 
 const v3_0 = new math.Vec3();
+const v2_0 = new math.Vec2();
 
 enum EKey {
     NONE = 0,
@@ -52,11 +53,17 @@ export class ballcontrol extends Component {
     onEnable () {
         systemEvent.on(SystemEventType.KEY_DOWN, this.onKeyDown, this);
         systemEvent.on(SystemEventType.KEY_UP, this.onKeyUp, this);
+
+        systemEvent.on(SystemEventType.TOUCH_MOVE, this.onTouchMove, this);
+        systemEvent.on(SystemEventType.TOUCH_END, this.onTouchEnd, this);
     }
 
     onDisable () {
         systemEvent.off(SystemEventType.KEY_DOWN, this.onKeyDown, this);
         systemEvent.off(SystemEventType.KEY_UP, this.onKeyUp, this);
+
+        systemEvent.off(SystemEventType.TOUCH_MOVE, this.onTouchMove, this);
+        systemEvent.off(SystemEventType.TOUCH_END, this.onTouchEnd, this);
     }
 
     onKeyDown (event: EventKeyboard) {
@@ -87,4 +94,25 @@ export class ballcontrol extends Component {
         }
     }
 
+    onTouchMove (touch: Touch, event: EventTouch) {
+        touch.getDelta(v2_0);
+        if (v2_0.x > 2) {
+            this._key |= EKey.D;
+            this._key &= ~EKey.A;
+        } else if (v2_0.x < -2) {
+            this._key |= EKey.A;
+            this._key &= ~EKey.D;
+        }
+        if (v2_0.y > 2) {
+            this._key |= EKey.W;
+            this._key &= ~EKey.S;
+        } else if (v2_0.y < -2) {
+            this._key |= EKey.S;
+            this._key &= ~EKey.W;
+        }
+    }
+
+    onTouchEnd (touch: Touch, event: EventTouch) {
+        this._key = EKey.NONE;
+    }
 }
