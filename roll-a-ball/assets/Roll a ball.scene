@@ -37,7 +37,7 @@
         "__id__": 47
       },
       {
-        "__id__": 63
+        "__id__": 65
       }
     ],
     "_active": true,
@@ -45,7 +45,7 @@
     "_prefab": null,
     "autoReleaseAssets": false,
     "_globals": {
-      "__id__": 82
+      "__id__": 84
     },
     "_id": "bc01cca4-da47-4c1d-9567-6af6aded1ce4"
   },
@@ -1427,10 +1427,10 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 61
+        "__id__": 63
       },
       {
-        "__id__": 62
+        "__id__": 64
       }
     ],
     "_prefab": null,
@@ -1477,16 +1477,16 @@
         "__id__": 48
       },
       {
-        "__id__": 56
+        "__id__": 57
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 59
+        "__id__": 61
       },
       {
-        "__id__": 60
+        "__id__": 62
       }
     ],
     "_prefab": null,
@@ -1540,13 +1540,16 @@
       },
       {
         "__id__": 54
+      },
+      {
+        "__id__": 56
       }
     ],
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 368.395,
-      "y": 230.229,
+      "x": 382,
+      "y": 204,
       "z": 0
     },
     "_lrot": {
@@ -1804,6 +1807,33 @@
     "customEventData": ""
   },
   {
+    "__type__": "cc.WidgetComponent",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 48
+    },
+    "_enabled": true,
+    "_alignFlags": 33,
+    "_target": null,
+    "_left": 0,
+    "_right": 0.05,
+    "_top": 0.15,
+    "_bottom": 0,
+    "_horizontalCenter": 0,
+    "_verticalCenter": 0,
+    "_isAbsLeft": true,
+    "_isAbsRight": false,
+    "_isAbsTop": false,
+    "_isAbsBottom": true,
+    "_isAbsHorizontalCenter": true,
+    "_isAbsVerticalCenter": true,
+    "_originalWidth": 0,
+    "_originalHeight": 0,
+    "_alignMode": 1,
+    "_id": "1bElbWVqRIWpXBDYh8Q10U"
+  },
+  {
     "__type__": "cc.Node",
     "_name": "desc",
     "_objFlags": 0,
@@ -1814,17 +1844,20 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 57
+        "__id__": 58
       },
       {
-        "__id__": 58
+        "__id__": 59
+      },
+      {
+        "__id__": 60
       }
     ],
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -240,
-      "y": 221,
+      "x": -240.32,
+      "y": 176,
       "z": 0
     },
     "_lrot": {
@@ -1854,14 +1887,14 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 56
+      "__id__": 57
     },
     "_enabled": true,
     "_priority": 0,
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 383.36,
-      "height": 120
+      "height": 160
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1875,7 +1908,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 56
+      "__id__": 57
     },
     "_enabled": true,
     "_srcBlendFactor": 2,
@@ -1889,7 +1922,7 @@
     },
     "_sharedMaterial": null,
     "_useOriginalSize": true,
-    "_string": "让小球滚动起来\n按 W A S D 将会对小球中心施加冲量\n点击 Reset 按钮将会重置物体和小球的位置",
+    "_string": "让小球滚动起来\nPC 上按 W A S D 将会对小球中心施加冲量\n移动端可以通过滑动屏幕\n点击 Reset 按钮将会重置物体和小球的位置",
     "_horizontalAlign": 0,
     "_verticalAlign": 0,
     "_actualFontSize": 20,
@@ -1905,6 +1938,33 @@
     "_isUnderline": false,
     "_cacheMode": 0,
     "_id": "d7vxy8nbVLfpt642ZL+x9i"
+  },
+  {
+    "__type__": "cc.WidgetComponent",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 57
+    },
+    "_enabled": true,
+    "_alignFlags": 9,
+    "_target": null,
+    "_left": 0.05,
+    "_right": 0,
+    "_top": 0.1,
+    "_bottom": 0,
+    "_horizontalCenter": 0,
+    "_verticalCenter": 0,
+    "_isAbsLeft": false,
+    "_isAbsRight": true,
+    "_isAbsTop": false,
+    "_isAbsBottom": true,
+    "_isAbsHorizontalCenter": true,
+    "_isAbsVerticalCenter": true,
+    "_originalWidth": 0,
+    "_originalHeight": 0,
+    "_alignMode": 1,
+    "_id": "e3AcO0yydLnJvwIWZavWVT"
   },
   {
     "__type__": "cc.UITransformComponent",
@@ -2014,29 +2074,29 @@
     },
     "_children": [
       {
-        "__id__": 64
+        "__id__": 66
       },
       {
-        "__id__": 69
+        "__id__": 71
       },
       {
-        "__id__": 73
+        "__id__": 75
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 78
-      },
-      {
-        "__id__": 79
-      },
-      {
         "__id__": 80
+      },
+      {
+        "__id__": 81
+      },
+      {
+        "__id__": 82
       }
     ],
     "_prefab": {
-      "__id__": 81
+      "__id__": 83
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -2071,23 +2131,23 @@
     "_name": "bg",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 63
+      "__id__": 65
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 65
-      },
-      {
-        "__id__": 66
-      },
-      {
         "__id__": 67
+      },
+      {
+        "__id__": 68
+      },
+      {
+        "__id__": 69
       }
     ],
     "_prefab": {
-      "__id__": 68
+      "__id__": 70
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -2122,7 +2182,7 @@
     "_name": "cannon<UITransformComponent>",
     "_objFlags": 0,
     "node": {
-      "__id__": 64
+      "__id__": 66
     },
     "_enabled": true,
     "_priority": 0,
@@ -2143,7 +2203,7 @@
     "_name": "cannon<SpriteComponent>",
     "_objFlags": 0,
     "node": {
-      "__id__": 64
+      "__id__": 66
     },
     "_enabled": false,
     "_srcBlendFactor": 2,
@@ -2179,7 +2239,7 @@
     "_name": "cannon<WidgetComponent>",
     "_objFlags": 0,
     "node": {
-      "__id__": 64
+      "__id__": 66
     },
     "_enabled": true,
     "_alignFlags": 45,
@@ -2204,7 +2264,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 63
+      "__id__": 65
     },
     "asset": {
       "__uuid__": "72646783-7364-46b5-b3e9-cacd802c42f8"
@@ -2221,20 +2281,20 @@
     "_name": "lb",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 63
+      "__id__": 65
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 70
+        "__id__": 72
       },
       {
-        "__id__": 71
+        "__id__": 73
       }
     ],
     "_prefab": {
-      "__id__": 72
+      "__id__": 74
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -2269,7 +2329,7 @@
     "_name": "lb<UITransformComponent>",
     "_objFlags": 0,
     "node": {
-      "__id__": 69
+      "__id__": 71
     },
     "_enabled": true,
     "_priority": 0,
@@ -2290,7 +2350,7 @@
     "_name": "lb<LabelComponent>",
     "_objFlags": 0,
     "node": {
-      "__id__": 69
+      "__id__": 71
     },
     "_enabled": false,
     "_srcBlendFactor": 2,
@@ -2324,7 +2384,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 63
+      "__id__": 65
     },
     "asset": {
       "__uuid__": "72646783-7364-46b5-b3e9-cacd802c42f8"
@@ -2341,23 +2401,23 @@
     "_name": "desc",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 63
+      "__id__": 65
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 74
-      },
-      {
-        "__id__": 75
-      },
-      {
         "__id__": 76
+      },
+      {
+        "__id__": 77
+      },
+      {
+        "__id__": 78
       }
     ],
     "_prefab": {
-      "__id__": 77
+      "__id__": 79
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -2392,7 +2452,7 @@
     "_name": "lb<UITransformComponent>",
     "_objFlags": 0,
     "node": {
-      "__id__": 73
+      "__id__": 75
     },
     "_enabled": true,
     "_priority": 0,
@@ -2413,7 +2473,7 @@
     "_name": "lb<LabelComponent>",
     "_objFlags": 0,
     "node": {
-      "__id__": 73
+      "__id__": 75
     },
     "_enabled": true,
     "_srcBlendFactor": 2,
@@ -2449,7 +2509,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 73
+      "__id__": 75
     },
     "_enabled": true,
     "_alignFlags": 1,
@@ -2474,7 +2534,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 63
+      "__id__": 65
     },
     "asset": {
       "__uuid__": "72646783-7364-46b5-b3e9-cacd802c42f8"
@@ -2491,7 +2551,7 @@
     "_name": "CanvasCheck<UITransformComponent>",
     "_objFlags": 0,
     "node": {
-      "__id__": 63
+      "__id__": 65
     },
     "_enabled": true,
     "_priority": 0,
@@ -2512,7 +2572,7 @@
     "_name": "CanvasCheck<CanvasComponent>",
     "_objFlags": 0,
     "node": {
-      "__id__": 63
+      "__id__": 65
     },
     "_enabled": true,
     "_priority": 0,
@@ -2533,7 +2593,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 63
+      "__id__": 65
     },
     "_enabled": true,
     "_id": "ebaGkeO1dOnII0cDBA0S1U"
@@ -2541,7 +2601,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 63
+      "__id__": 65
     },
     "asset": {
       "__uuid__": "72646783-7364-46b5-b3e9-cacd802c42f8"
@@ -2553,13 +2613,13 @@
   {
     "__type__": "cc.SceneGlobals",
     "ambient": {
-      "__id__": 83
+      "__id__": 85
     },
     "planarShadows": {
-      "__id__": 84
+      "__id__": 86
     },
     "_skybox": {
-      "__id__": 85
+      "__id__": 87
     }
   },
   {
