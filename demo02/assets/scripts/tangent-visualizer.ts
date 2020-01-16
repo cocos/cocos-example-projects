@@ -48,7 +48,7 @@ export class TangentVisualizer extends Component {
     }
 
     _updateModel (comp, pos, data, color, stride = 3) {
-        comp.material = Material.getInstantiatedMaterial(this._material);
+        comp.material = this._material;
         comp.mesh = utils.createMesh({
             positions: Array(pos.length / 3 * 2).fill(0).map((_, i) => {
                 const ofs = Math.floor(i / 2);
