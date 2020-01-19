@@ -3,12 +3,6 @@ const { ccclass, property } = _decorator;
 
 @ccclass("PlanarReflectionStage")
 export class PlanarReflectionStage extends RenderStage {
-    /* class member could be defined like this */
-    // dummy = '';
-
-    /* use `property` decorator if your want the member to be serializable */
-    // @property
-    // serializableDummy = 0;
 
     public activate (flow: RenderFlow) {
         super.activate(flow);
@@ -33,7 +27,5 @@ export class PlanarReflectionStage extends RenderStage {
         this.executeCommandBuffer(view);
     }
 
-    public resize (width: number, height: number) {
-
-    }
+    public resize (width: number, height: number) {}
 }

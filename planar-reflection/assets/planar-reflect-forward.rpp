@@ -33,12 +33,12 @@
       },
       {
         "__id__": 17
+      },
+      {
+        "__id__": 18
       }
     ],
     "framebuffers": [
-      {
-        "__id__": 18
-      },
       {
         "__id__": 19
       },
@@ -50,14 +50,17 @@
       },
       {
         "__id__": 22
+      },
+      {
+        "__id__": 23
       }
     ],
     "renderPasses": [
       {
-        "__id__": 23
+        "__id__": 24
       },
       {
-        "__id__": 26
+        "__id__": 27
       }
     ]
   },
@@ -136,6 +139,11 @@
     "_stages": [
       {
         "__id__": 8
+      }
+    ],
+    "planes": [
+      {
+        "__type__": "cc.Vec4"
       }
     ]
   },
@@ -240,9 +248,19 @@
     "height": -1
   },
   {
+    "__type__": "RenderTextureDesc",
+    "name": "depthStencil2",
+    "type": 1,
+    "viewType": 1,
+    "usage": 32,
+    "format": 0,
+    "width": -1,
+    "height": -1
+  },
+  {
     "__type__": "FrameBufferDesc",
     "name": "msaaShading",
-    "renderPass": 1,
+    "renderPass": 0,
     "colorViews": [
       "msaaShading"
     ],
@@ -251,7 +269,7 @@
   {
     "__type__": "FrameBufferDesc",
     "name": "shading",
-    "renderPass": 1,
+    "renderPass": 0,
     "colorViews": [
       "shading"
     ],
@@ -260,7 +278,7 @@
   {
     "__type__": "FrameBufferDesc",
     "name": "smaaEdge",
-    "renderPass": 2,
+    "renderPass": 1,
     "colorViews": [
       "smaaEdge"
     ],
@@ -269,7 +287,7 @@
   {
     "__type__": "FrameBufferDesc",
     "name": "smaaBlend",
-    "renderPass": 2,
+    "renderPass": 1,
     "colorViews": [
       "smaaBlend"
     ],
@@ -278,22 +296,22 @@
   {
     "__type__": "FrameBufferDesc",
     "name": "reflect",
-    "renderPass": 2,
+    "renderPass": 1,
     "colorViews": [
       "reflection"
     ],
-    "depthStencilView": ""
+    "depthStencilView": "depthStencil2"
   },
   {
     "__type__": "RenderPassDesc",
-    "index": 1,
+    "index": 0,
     "colorAttachments": [
       {
-        "__id__": 24
+        "__id__": 25
       }
     ],
     "depthStencilAttachment": {
-      "__id__": 25
+      "__id__": 26
     }
   },
   {
@@ -307,7 +325,7 @@
   },
   {
     "__type__": "DepthStencilDesc",
-    "format": 0,
+    "format": 56,
     "depthLoadOp": 1,
     "depthStoreOp": 0,
     "stencilLoadOp": 1,
@@ -318,14 +336,14 @@
   },
   {
     "__type__": "RenderPassDesc",
-    "index": 2,
+    "index": 1,
     "colorAttachments": [
       {
-        "__id__": 27
+        "__id__": 28
       }
     ],
     "depthStencilAttachment": {
-      "__id__": 28
+      "__id__": 29
     }
   },
   {
@@ -339,7 +357,7 @@
   },
   {
     "__type__": "DepthStencilDesc",
-    "format": 0,
+    "format": 56,
     "depthLoadOp": 1,
     "depthStoreOp": 0,
     "stencilLoadOp": 1,

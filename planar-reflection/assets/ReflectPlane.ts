@@ -1,29 +1,21 @@
-import { _decorator, Component, Node, Layers, director } from "cc";
+import { _decorator, Component, director, Vec3 } from "cc";
+import { PlanarReflectionFlow } from "./PlanarReflectionFlow";
 const { ccclass, property, executeInEditMode } = _decorator;
 
 @ccclass("ReflectPlane")
 @executeInEditMode
 export class ReflectPlane extends Component {
-    /* class member could be defined like this */
-    // dummy = '';
 
-    /* use `property` decorator if your want the member to be serializable */
-    // @property
-    // serializableDummy = 0;
+    @property
+    localNormal = new Vec3(0, 1, 0);
 
-    @property({
-        type: Node,
-    })
-    camera = null;
+    _flow: PlanarReflectionFlow = null!;
 
     start () {
-        Layers.addLayer('reflect', 1);
-        this.node.layer = Layers.BitMask['reflect'];
-        this.camera.visibility |= this.node.layer;
-        (director.root.pipeline.getFlow('PlanarReflect') as PlanarReflectionFlow).reflectNode = this.node;
+        this._flow = director.root.pipeline.getFlow('PlanarReflect') as PlanarReflectionFlow;
     }
 
-    // update (deltaTime: number) {
-    //     // Your update function goes here.
-    // }
+    update () {
+        this._flow.setPlaneFromNode(0, this.node, this.localNormal);
+    }
 }

@@ -45,8 +45,6 @@ CCProgram unlit-vs %{
     };
   #endif
 
-  out vec2 v_screenPos;
-
   highp vec4 vert () {
     vec4 position;
     CCVertInput(position);
@@ -67,9 +65,6 @@ CCProgram unlit-vs %{
     #if USE_VERTEX_COLOR
       v_color = a_color;
     #endif
-
-    v_screenPos.x = ((pos.x / pos.w) * 0.5 + 0.5);
-    v_screenPos.y = ((pos.y / pos.w) * 0.5 + 0.5);
 
     return pos;
   }
@@ -98,7 +93,6 @@ CCProgram unlit-fs %{
     in vec4 v_color;
   #endif
 
-  in vec2 v_screenPos;
   uniform sampler2D reflectTexture;
 
   vec4 frag () {
@@ -113,7 +107,7 @@ CCProgram unlit-fs %{
       o *= texture(mainTexture, v_uv);
     #endif
 
-    vec4 refColor = texture(reflectTexture, v_screenPos);
+    vec4 refColor = texture(reflectTexture, gl_FragCoord.xy / cc_screenSize.xy);
     float a = refColor.a * reflectAlpha;
     o.xyz = refColor.xyz * a + o.xyz * (1. - a);
 
