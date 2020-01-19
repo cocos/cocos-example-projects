@@ -27,7 +27,7 @@ export class Instantiate extends Component {
 
     onLoad () {
         // Your initialization goes here.
-        PhysicsSystem.ins.gravity = this.gravity;
+        PhysicsSystem.instance.gravity = this.gravity;
         this.spawnEntity();
     }
 
