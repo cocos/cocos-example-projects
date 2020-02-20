@@ -34,8 +34,8 @@ export class AudioController extends Component {
         case cc.AudioClip.AudioType.DOM_AUDIO:
             loadMode = 'DOM Audio Mode';
             break;
-        case cc.AudioClip.AudioType.WX_GAME_AUDIO:
-            loadMode = 'wx.InnerAudioContext Mode';
+        case cc.AudioClip.AudioType.JSB_AUDIO:
+            loadMode = 'JSB Audio Mode';
             break;
         }
         this.node.getChildByName('loadMode').getComponent(LabelComponent).string = loadMode;
