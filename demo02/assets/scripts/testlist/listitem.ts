@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, LabelComponent, director } from "cc";
+import { _decorator, Component, Node, LabelComponent, director, ButtonComponent } from "cc";
 import { sceneArray } from "./scenelist";
 import { backbutton } from "./backbutton";
 const { ccclass, property } = _decorator;
@@ -9,6 +9,7 @@ export class ListItem extends Component {
     index = -1;
     _name = "";
     label : LabelComponent | null = null;
+    button : ButtonComponent | null = null;
 
     onload () {
 
@@ -20,6 +21,7 @@ export class ListItem extends Component {
         this._name = "";
         if(this.node){
             this.label = this.node.getComponentInChildren(LabelComponent) as LabelComponent;
+            this.button = this.node.getComponent(ButtonComponent) as ButtonComponent;
         }
         this.updateItem(this.index,sceneArray[this.index]);
     }
@@ -27,7 +29,8 @@ export class ListItem extends Component {
     public loadScene() {
         backbutton.saveOffset();
         backbutton.saveIndex(this.index);
-        director.loadScene(this._name);
+        this.button.interactable = false;
+        director.loadScene(this._name,backbutton.refreshButton);
     }
 
     public updateItem(idx: number, name: string) {
