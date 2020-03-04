@@ -47,7 +47,6 @@ export class backbutton extends Component {
 
     public static saveIndex ( index : number) {
         backbutton._sceneIndex = index;
-        backbutton.refreshButton();
     }
 
     public static refreshButton () {
@@ -92,19 +91,17 @@ export class backbutton extends Component {
     nextscene () {
         backbutton._nextButton.interactable = false;
         this.updateSceneIndex(true);
-        director.loadScene(this.getSceneName());
-        this.scheduleOnce(function(){
+        director.loadScene(this.getSceneName(), function() {
             backbutton._nextButton.interactable = true;
-        },0.5);
+        });
     }
 
     prescene () {
         backbutton._prevButton.interactable = false;
         this.updateSceneIndex(false);
-        director.loadScene(this.getSceneName());
-        this.scheduleOnce(function(){
+        director.loadScene(this.getSceneName(), function() {
             backbutton._prevButton.interactable = true;
-        },0.5);
+        });
     }
 
     updateSceneIndex(next:Boolean) {
