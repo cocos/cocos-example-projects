@@ -1,4 +1,4 @@
-import { _decorator, Component, math, systemEvent, SystemEvent, game, macro } from "cc";
+import { _decorator, Component, math, systemEvent, SystemEvent, game, macro, director } from "cc";
 const { ccclass, property } = _decorator;
 
 const v2_1 = new math.Vec2();
@@ -42,8 +42,8 @@ export class MotionCtr extends Component {
         math.Vec3.scaleAndAdd(this._position, this._position, v3_1, this.moveSpeed * this._speedScale);
         math.Vec3.lerp(v3_1, this.node.position, this._position, dt / this.damp);
 
-        v3_1.x = math.clamp(v3_1.x, -47.5, 47.5);
-        v3_1.z = math.clamp(v3_1.z, -47.5, 47.5);
+        v3_1.x = math.clamp(v3_1.x, -45, 45);
+        v3_1.z = math.clamp(v3_1.z, -45, 45);
         this.node.setPosition(v3_1);
     }
 
@@ -108,6 +108,8 @@ export class MotionCtr extends Component {
         math.Vec2.subtract(v2_2, v2_2, v2_1);
         this._velocity.x = v2_2.x * 0.01;
         this._velocity.z = -v2_2.y * 0.01;
+        this._velocity.x = this._velocity.x < 0 ? this._velocity.x - 0.75 : this._velocity.x + 0.75;
+        this._velocity.z = this._velocity.z < 0 ? this._velocity.z - 0.75 : this._velocity.z + 0.75;
     }
 
     onTouchEnd (e) {
