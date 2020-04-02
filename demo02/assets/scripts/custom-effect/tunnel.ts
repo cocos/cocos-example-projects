@@ -1,17 +1,17 @@
-import { _decorator, Component, ModelComponent, Vec4, Vec2 } from "cc";
+import { _decorator, Component, ModelComponent, Vec2, Vec4 } from 'cc';
 const { ccclass } = _decorator;
 
-@ccclass("Tunnel")
+@ccclass('Tunnel')
 export class Tunnel extends Component {
 
-    _passes = [];
-    _colorHandles = [];
-    _borderHandles = [];
+    private _passes = [];
+    private _colorHandles = [];
+    private _borderHandles = [];
 
-    _color = new Vec4(1, 0, 0, 1);
-    _border = new Vec2(0, 0);
+    private _color = new Vec4(1, 0, 0, 1);
+    private _border = new Vec2(0, 0);
 
-    start () {
+    public start () {
         const comps = this.getComponentsInChildren(ModelComponent);
         for (const comp of comps) {
             const mat = comp.material;
@@ -22,9 +22,9 @@ export class Tunnel extends Component {
         }
     }
 
-    update () {
-        let time = cc.director.getTotalFrames() * 0.1;
-        let margin = time % (Math.PI * 4) > Math.PI ? 0.1 : Math.abs(Math.cos(time)) * 0.1;
+    public update () {
+        const time = cc.director.getTotalFrames() * 0.1;
+        const margin = time % (Math.PI * 4) > Math.PI ? 0.1 : Math.abs(Math.cos(time)) * 0.1;
         this._color.y = this._color.z = margin * 10;
         this._border.x = this._border.y = margin;
 
@@ -35,7 +35,7 @@ export class Tunnel extends Component {
         }
     }
 
-    onDisable () {
-		cc.eventManager.removeAllListeners();
-	}
+    public onDisable () {
+        cc.eventManager.removeAllListeners();
+    }
 }

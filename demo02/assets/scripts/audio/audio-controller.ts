@@ -1,21 +1,21 @@
-import { _decorator, Component, AudioSourceComponent, LabelComponent, SliderComponent, ToggleComponent } from "cc";
+import { _decorator, AudioSourceComponent, Component, LabelComponent, SliderComponent, ToggleComponent } from 'cc';
 const { ccclass, property } = _decorator;
 
-@ccclass("AudioController")
+@ccclass('AudioController')
 export class AudioController extends Component {
 
     @property(AudioSourceComponent)
-    source = null;
+    public source = null;
 
-    volume = null;
-    currentTime = null;
-    volumeLabel = null;
-    currentTimeLabel = null;
-    loop = null;
-    playOnAwake = null;
-    playing = null;
+    public volume = null;
+    public currentTime = null;
+    public volumeLabel = null;
+    public currentTimeLabel = null;
+    public loop = null;
+    public playOnAwake = null;
+    public playing = null;
 
-    start () {
+    public start () {
         this.volume = this.node.getChildByName('volume').getComponent(SliderComponent);
         this.currentTime = this.node.getChildByName('currentTime').getComponent(SliderComponent);
         this.volumeLabel = this.volume.node.getChildByName('Numbers').getComponent(LabelComponent);
@@ -41,7 +41,7 @@ export class AudioController extends Component {
         this.node.getChildByName('loadMode').getComponent(LabelComponent).string = loadMode;
     }
 
-    update () {
+    public update () {
         this.volume.progress = this.source.volume;
         this.currentTime.progress = this.source.currentTime / this.source.duration;
         this.volumeLabel.string = `${this.source.volume.toFixed(2)} / 1`;
@@ -52,33 +52,33 @@ export class AudioController extends Component {
         this.playing.isChecked = this.source.playing;
     }
 
-    play () {
+    public play () {
         this.source.play();
     }
 
-    pause () {
+    public pause () {
         this.source.pause();
     }
 
-    stop () {
+    public stop () {
         this.source.stop();
     }
 
     // slider callback
-    setVolume (e) {
+    public setVolume (e) {
         this.source.volume = e.progress;
     }
     // slider callback
-    setCurrentTime (e) {
+    public setCurrentTime (e) {
         this.source.currentTime = e.progress * this.source.duration;
     }
 
     // toggle callback
-    setLoop (e) {
+    public setLoop (e) {
         this.source.loop = e.isChecked;
     }
     // toggle callback
-    setPlayOnAwake (e) {
+    public setPlayOnAwake (e) {
         this.source.playOnAwake = e.isChecked;
     }
 }

@@ -16,12 +16,14 @@
 2. scenes/audio: audio system baseline test
 3. scenes/collision-detection: simple collision detection
 4. scenes/custom-effect: custom shader
-5. scenes/pbr: PBR baseline
-6. scenes/physics: rigidbody physics simulation
-7. scenes/shadertoy: simple example on importing shadertoy resources
-8. scenes/shadows: planar shadow demo
-9. scenes/skin: pre-integrated SSS demo
-10. scenes/toon: NPR baseline
+5. scenes/instanced-skinning: massive skinning models using GPU instancing
+6. scenes/particles: simple particles
+7. scenes/pbr: PBR baseline
+8. scenes/physics: rigidbody physics simulation
+9. scenes/shadertoy: simple example on importing shadertoy resources
+10. scenes/shadows: planar shadow demo
+11. scenes/skin: pre-integrated SSS demo
+12. scenes/toon: NPR baseline
 
 ## simple-fps
 

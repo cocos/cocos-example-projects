@@ -1,27 +1,27 @@
 
-import { _decorator, Component, Node } from "cc";
+import { _decorator, Component, Node, SliderComponent, ToggleComponent } from 'cc';
 const { ccclass, property } = _decorator;
 
-const sineLerp = (b, e, t) => {
+const sineLerp = (b: number, e: number, t: number) => {
     return b + (e - b) * (Math.sin((t - 0.5) * Math.PI) + 1) * 0.5;
 };
 
-@ccclass("PhysicsGround")
+@ccclass('PhysicsGround')
 export class PhysicsGround extends Component {
 
     @property
-    spinDuration = 5;
+    public spinDuration = 5;
     @property
-    spinInterval = 20;
+    public spinInterval = 20;
 
     @property(Node)
-    manualSpinSliderNode = null;
+    public manualSpinSliderNode = null;
 
-    _time = 0;
-    _angle = 0;
-    _autoSpin = true;
+    public _time = 0;
+    public _angle = 0;
+    public _autoSpin = true;
 
-    update (deltaTime) { // spin once in a while
+    public update (deltaTime: number) { // spin once in a while
         if (this._autoSpin) {
             this._time += deltaTime;
             const t = Math.min(this.spinInterval - (this._time % this.spinInterval), this.spinDuration);
@@ -32,13 +32,13 @@ export class PhysicsGround extends Component {
     }
 
     // toggle callback
-    toggleSpin (e) {
+    public toggleSpin (e: ToggleComponent) {
         this._autoSpin = e.isChecked;
         this.manualSpinSliderNode.active = !e.isChecked;
     }
 
     // slider callback
-    setAngle (e) {
+    public setAngle (e: SliderComponent) {
         this._angle = (0.5 - e.progress) * 180;
     }
 }

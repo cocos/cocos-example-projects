@@ -1,9 +1,9 @@
-import { _decorator, Component } from "cc";
+import { _decorator, Component } from 'cc';
 const { ccclass } = _decorator;
 
-@ccclass("Toggler")
+@ccclass('Toggler')
 export class Toggler extends Component {
-    toggleActive () {
+    public toggleActive () {
         this.node.active = !this.node.active;
     }
 }

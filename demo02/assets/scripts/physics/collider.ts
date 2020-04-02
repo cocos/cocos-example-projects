@@ -1,30 +1,30 @@
 
-import { _decorator, Component, ModelComponent, RigidBodyComponent, Vec3, Vec4 } from "cc";
+import { _decorator, Component, ModelComponent, RigidBodyComponent, Vec3, Vec4 } from 'cc';
 const { ccclass } = _decorator;
 
 const v3_1 = new Vec3();
 const static_color = new Vec4(0.3, 0.3, 0.3, 1.0);
 
-@ccclass("Collider")
+@ccclass('Collider')
 export class Collider extends Component {
 
-    _body = null;
-    _initialColor = null;
-    _pass = null;
-    _handle = 0;
+    private _body = null;
+    private _initialColor = null;
+    private _pass = null;
+    private _handle = 0;
 
-    _color = new Vec4();
+    private _color = new Vec4();
 
-    start () {
+    public start () {
         this._body = this.node.getComponent(RigidBodyComponent);
         const mat = this.node.getComponent(ModelComponent).material;
         // Vec4 and Color are compatible with each other, but Vec4 is more efficient when updated frequently
-        this._initialColor = new Vec4(mat.getProperty('mainColor'));
+        this._initialColor = new Vec4(mat.getProperty('mainColor') as Vec4);
         this._pass = mat.passes[0];
         this._handle = this._pass.getHandle('mainColor');
     }
 
-    update () {
+    public update () {
         // visualize speed
         this._body.getLinearVelocity(v3_1);
         let speed = v3_1.length(); speed /= speed + 1;

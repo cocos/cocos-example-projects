@@ -1,8 +1,8 @@
-import { _decorator, Component, Node } from "cc";
+import { _decorator, Component, Node } from 'cc';
 const { ccclass, property } = _decorator;
 
-@ccclass("selfdestory")
-export class selfdestory extends Component {
+@ccclass('SelfDestory')
+export class SelfDestory extends Component {
     /* class member could be defined like this */
     // dummy = '';
 
@@ -10,11 +10,11 @@ export class selfdestory extends Component {
     // @property
     // serializableDummy = 0;
 
-    start () {
+    public start () {
         setTimeout(() => {
-            if(this.node && this.node.destroy()==true){
-            console.log('destroy complete');
-           }
+            if (this.node && this.node.destroy()){
+                console.log('destroy complete');
+            }
         }, 5000);
     }
 

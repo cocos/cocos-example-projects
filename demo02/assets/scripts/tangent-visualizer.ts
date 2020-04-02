@@ -1,21 +1,21 @@
-import { _decorator, Component, ModelComponent, Material, utils, Color, Vec3 } from "cc";
+import { _decorator, Color, Component, Material, ModelComponent, utils, Vec3 } from 'cc';
 const { ccclass, property, executeInEditMode, requireComponent } = _decorator;
 
 const v3_1 = new Vec3();
 const v3_2 = new Vec3();
 
-@ccclass("TangentVisualizer")
+@ccclass('TangentVisualizer')
 @requireComponent(ModelComponent)
 @executeInEditMode
 export class TangentVisualizer extends Component {
 
     @property(ModelComponent)
-    target = null;
+    public target = null;
 
     @property
-    scale = 0.1;
+    public scale = 0.1;
 
-    _material = new Material();
+    public _material = new Material();
 
     @property
     set apply (val) {
@@ -25,16 +25,16 @@ export class TangentVisualizer extends Component {
         return false;
     }
 
-    start () {
+    public start () {
         this._material.initialize({
             effectName: 'builtin-unlit',
             defines: { USE_VERTEX_COLOR: true },
-            states: { primitive: cc.GFXPrimitiveMode.LINE_LIST }
+            states: { primitive: cc.GFXPrimitiveMode.LINE_LIST },
         });
         this.refresh();
     }
 
-    refresh () {
+    public refresh () {
         if (!this.target) { return; }
         const comps = this.node.getComponents(ModelComponent);
         if (comps.length < 3) { console.warn('three model component on this node is needed'); return; }
@@ -47,13 +47,13 @@ export class TangentVisualizer extends Component {
         this._updateModel(comps[2], position, bitangent, Color.YELLOW);
     }
 
-    _updateModel (comp, pos, data, color, stride = 3) {
+    public _updateModel (comp, pos, data, color, stride = 3) {
         comp.material = this._material;
         comp.mesh = utils.createMesh({
             positions: Array(pos.length / 3 * 2).fill(0).map((_, i) => {
                 const ofs = Math.floor(i / 2);
                 Vec3.fromArray(v3_1, pos, ofs * 3);
-                if (i % 2) Vec3.scaleAndAdd(v3_1, v3_1, Vec3.fromArray(v3_2, data, ofs * stride), this.scale);
+                if (i % 2) { Vec3.scaleAndAdd(v3_1, v3_1, Vec3.fromArray(v3_2, data, ofs * stride), this.scale); }
                 return Vec3.toArray([], v3_1);
             }).reduce((acc, cur) => (cur.forEach((c) => acc.push(c)), acc), []),
             colors: Array(pos.length / 3 * 2).fill(0).map((_, i) => {
@@ -65,7 +65,7 @@ export class TangentVisualizer extends Component {
         });
     }
 
-    _generateBitangent (normal, tangent) {
+    public _generateBitangent (normal, tangent) {
         const bitangent = normal.slice();
         const vCount = normal.length / 3;
         for (let i = 0; i < vCount; i++) {

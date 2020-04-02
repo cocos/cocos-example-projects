@@ -1,4 +1,4 @@
-import { _decorator, Component, EffectAsset, ModelComponent, SphereColliderComponent, Color, Vec3, Node, Material } from "cc";
+import { _decorator, Color, Component, EffectAsset, Material, ModelComponent, Node, SphereColliderComponent, Vec3 } from 'cc';
 const { ccclass, property } = _decorator;
 
 const hintMesh = cc.utils.createMesh(cc.primitives.capsule(1));
@@ -8,45 +8,45 @@ const outOfBounds = (v, border = 20) => Math.abs(v.x) > border || Math.abs(v.y) 
 const v3_1 = new Vec3();
 
 class Element extends Component {
-    velocity = new Vec3();
-    color = new Color();
-    collided = false;
-    framesRemaining = 0;
-    pass = null;
-    hColor = 0;
+    public velocity = new Vec3();
+    public color = new Color();
+    public collided = false;
+    public framesRemaining = 0;
+    public pass = null;
+    public hColor = 0;
 }
 
 // encapsulate an interesting emitter, emitted particles will
 // annihilate after collision, if satisfying filter condition
-@ccclass("Emitter")
+@ccclass('Emitter')
 export class Emitter extends Component {
 
     @property
-    poolSize = 50;
+    public poolSize = 50;
 
     @property
-    group = 0;
+    public group = 0;
 
     @property
-    mask = 0;
+    public mask = 0;
 
     @property
-    leftAngle = 0;
+    public leftAngle = 0;
 
     @property
-    rightAngle = 0;
+    public rightAngle = 0;
 
     @property
-    color = new Color();
+    public color = new Color();
 
     @property(EffectAsset)
-    effectAsset = null;
+    public effectAsset = null;
 
-    _deadpool = [];
-    _livepool = [];
+    public _deadpool = [];
+    public _livepool = [];
 
     // generate everything procedurally
-    start () {
+    public start () {
       // emitter hint
       const hint = new Node();
       const hintModel = hint.addComponent(ModelComponent);
@@ -83,15 +83,15 @@ export class Emitter extends Component {
         col.isTrigger = true;
         col.setGroup(this.group); col.setMask(this.mask);
         col.on('onTriggerEnter', (e) => {
-          const col = e.selfCollider;
-          const ele = col.node.getComponent(Element);
-          if (ele.collided) return;
+          const collider = e.selfCollider;
+          const ele = collider.node.getComponent(Element);
+          if (ele.collided) { return; }
           ele.color.a = 255;
           ele.pass.setUniform(ele.hColor, ele.color);
           ele.collided = true;
           ele.framesRemaining = 5;
           Vec3.set(ele.velocity, 0, 0, 0);
-          col.setGroup(0); col.setMask(0);
+          collider.setGroup(0); collider.setMask(0);
         });
         // store
         node.active = false;
@@ -99,41 +99,41 @@ export class Emitter extends Component {
       }
     }
 
-    update () {
+    public update () {
       for (let i = 0; i < this._livepool.length; i++) {
-        let ele = this._livepool[i];
+        const ele = this._livepool[i];
         if (ele.collided) {
-          if (ele.framesRemaining-- <= 0) this.reap(ele);
+          if (ele.framesRemaining-- <= 0) { this.reap(ele); }
         } else {
           Vec3.add(v3_1, ele.node.position, ele.velocity);
           ele.node.setPosition(v3_1);
-          if (outOfBounds(v3_1)) this.reap(ele);
+          if (outOfBounds(v3_1)) { this.reap(ele); }
         }
       }
-      if (this._deadpool.length > 0) this.resurrect();
+      if (this._deadpool.length > 0) { this.resurrect(); }
       // for (let i = 0; i < this._deadpool.length; i++) this.resurrect();
     }
 
-    reap (ele) {
+    public reap (ele) {
       ele.node.active = false;
       this._livepool.splice(this._livepool.indexOf(ele), 1);
       this._deadpool.push(ele);
     }
 
-    reapAll () {
+    public reapAll () {
       for (let i = 0; i < this._livepool.length; i++) {
-        let ele = this._livepool[i];
+        const ele = this._livepool[i];
         ele.node.active = false;
         this._deadpool.push(ele);
       }
       this._livepool.length = 0;
     }
 
-    resurrect () {
-      let ele = this._deadpool.pop();
-      let theta = cc.math.toRadian(cc.math.randomRange(this.leftAngle, this.rightAngle));
-      let phi = cc.math.randomRange(1, 2);
-      let speed = cc.math.randomRange(0.1, 0.3);
+    public resurrect () {
+      const ele = this._deadpool.pop();
+      const theta = cc.math.toRadian(cc.math.randomRange(this.leftAngle, this.rightAngle));
+      const phi = cc.math.randomRange(1, 2);
+      const speed = cc.math.randomRange(0.1, 0.3);
       Vec3.set(ele.velocity, Math.cos(theta) * Math.sin(phi) * speed,
         Math.cos(phi) * speed, Math.sin(theta) * Math.sin(phi) * speed);
       ele.color.a = this.color.a; ele.collided = false;

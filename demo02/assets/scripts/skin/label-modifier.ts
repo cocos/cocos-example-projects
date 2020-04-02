@@ -1,19 +1,19 @@
-import { _decorator, Component, LabelComponent } from "cc";
+import { _decorator, Component, LabelComponent, SliderComponent } from 'cc';
 const { ccclass, property } = _decorator;
 
-@ccclass("LabelModifier")
+@ccclass('LabelModifier')
 export class LabelModifier extends Component {
 
     @property
-    prefix = '';
+    public prefix = '';
 
-    _label = null;
+    public _label = null;
 
-    start () {
+    public start () {
         this._label = this.node.getComponent(LabelComponent);
     }
 
-    setStringBySliderValue (e) {
+    public setStringBySliderValue (e: SliderComponent) {
         if (this._label) { this._label.string = this.prefix + e.progress.toFixed(2); }
     }
 }

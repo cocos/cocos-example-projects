@@ -1,23 +1,23 @@
-import { _decorator, Component, Node, Prefab, instantiate } from "cc";
+import { _decorator, Component, instantiate, Node, Prefab } from 'cc';
 const { ccclass, property } = _decorator;
 
-export const sceneArray:string[] = []
+export const sceneArray: string[] = [];
 
-@ccclass("scenemanager")
+@ccclass('SceneManager')
 export class SceneManager extends Component {
 
     @property ({ type: Prefab })
-    itemPrefab: Prefab | null  = null;
+    public itemPrefab: Prefab | null  = null;
 
-    onLoad() {
-        if(this.itemPrefab){
-            for(let i = 0; i<sceneArray.length; i++ ) {
-                let item = instantiate(this.itemPrefab);
+    public onLoad () {
+        if (this.itemPrefab){
+            for (let i = 0; i < sceneArray.length; i++ ) {
+                const item = instantiate(this.itemPrefab);
                 this.node.addChild(item);
             }
         }
     }
 
-    start () {
+    public start () {
     }
 }

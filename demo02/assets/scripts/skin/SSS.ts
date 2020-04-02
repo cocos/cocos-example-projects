@@ -1,22 +1,23 @@
-import { _decorator, Component, ModelComponent } from "cc";
+import { _decorator, Component, ModelComponent, SliderComponent, ToggleComponent } from 'cc';
 const { ccclass } = _decorator;
 
-@ccclass("SSS")
+@ccclass('SSS')
 export class SSS extends Component {
 
-    _handle = null;
+    private _handle = null;
+    private _pass = null;
 
-    start () {
+    public start () {
         const mat = this.node.getComponent(ModelComponent).material;
         this._pass = mat.passes[0];
         this._handle = this._pass.getHandle('scattering');
     }
 
-    setSSSIntensity (e) {
+    public setSSSIntensity (e: SliderComponent) {
         this._pass.setUniform(this._handle, e.progress);
     }
 
-    toggle (e) {
+    public toggle (e: ToggleComponent) {
         this.node.active = e.isChecked;
     }
 }

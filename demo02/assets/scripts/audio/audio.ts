@@ -1,20 +1,22 @@
 // @ts-check
 
-import { _decorator, Component, Node, AudioSourceComponent, Director, director } from 'cc';
+import { _decorator, AudioSourceComponent, Component, Director, director, Node } from 'cc';
+const { ccclass, property } = _decorator;
 
-@_decorator.ccclass('audio')
+@ccclass('audio')
 export class Audio extends Component {
-    @_decorator.type(Node)
-    node1 = null;
 
-    @_decorator.type(Node)
-    node2 = null;
+    @property(Node)
+    public node1: Node = null;
 
-    start() {
+    @property(Node)
+    public node2: Node = null;
+
+    public start () {
         const source = this.node1.getComponent(AudioSourceComponent);
         const source2 = this.node2.getComponent(AudioSourceComponent);
 
-        let t1 = 17, off2 = 5, t2 = 15;
+        const t1 = 17; const off2 = 5; const t2 = 15;
         /* discrete callbacks *
         source.clip.once('started', () => {
           setTimeout(function(){ source.volume = 0.55; }, t1 * 500);
@@ -25,8 +27,8 @@ export class Audio extends Component {
           setTimeout(function(){ source2.volume = 1; }, (off2 + t2) * 1000);
         });
         /* smooth transition */
-        let startTime1, startTime2;
-        const sineLerp = (b, e, t) => {
+        let startTime1: number; let startTime2: number;
+        const sineLerp = (b: number, e: number, t: number) => {
           return b + (e - b) * (Math.sin((t - 0.5) * Math.PI) + 1) * 0.5;
         };
         const animation1 = () => {
@@ -56,7 +58,7 @@ export class Audio extends Component {
         /**/
     }
 
-    onDisable () {
+    public onDisable () {
         this.node1.getComponent(AudioSourceComponent).stop();
         this.node2.getComponent(AudioSourceComponent).stop();
       }

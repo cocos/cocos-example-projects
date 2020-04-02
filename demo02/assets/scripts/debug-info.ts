@@ -1,20 +1,20 @@
-import { _decorator, Component, ModelComponent } from "cc";
+import { _decorator, Component, ModelComponent } from 'cc';
 const { ccclass, property } = _decorator;
 
-@ccclass("DebugInfo")
+@ccclass('DebugInfo')
 export class DebugInfo extends Component {
 
     @property([ModelComponent])
-    targets = [];
+    public targets: ModelComponent[] = [];
 
-    printActiveUniforms () {
+    public printActiveUniforms () {
         this.targets.forEach((comp) => {
             console.log(comp.node.name, '---------------------------------------');
-            const pso = comp._model._subModels[0]._psos[0];
-            const shader = pso._shader._gpuShader;
+            // @ts-ignore
+            const pso = comp._model._subModels[0]._psos[0]; const shader = pso._shader._gpuShader;
             const gl = cc.director.root.device.gl;
             shader.glBlocks.reduce((acc, cur) => acc.concat(cur.glActiveUniforms), []).forEach((u) => {
-                const data = gl.getUniform(shader.glProgram, gl.getUniformLocation(shader.glProgram, u.name));
+                const data = gl.getUniform(shader.glProgram, gl.getUniformLocation(shader.glProgram, u.name)) as Float32Array;
                 console.log(u.name, Array.from(data).reduce((acc, cur) => `${acc} ${cur.toFixed(2)}`, ''));
             });
         });
@@ -23,7 +23,7 @@ export class DebugInfo extends Component {
         console.log('view', cc.director.root._views);
     }
 
-    printJointsTexture () {
+    public printJointsTexture () {
         const info = cc.director._scene._renderScene._texturePool._pool._chunks[0].texture;
         const texture = info._gpuTexture.glTexture;
         const pixels = new Float32Array(info.width * info.height * 4);

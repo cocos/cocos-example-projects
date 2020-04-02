@@ -1,6 +1,5 @@
-import { _decorator, Component, math } from "cc";
+import { _decorator, Component, Quat, Vec2, Vec3 } from 'cc';
 const { ccclass, property } = _decorator;
-const { Vec2, Vec3, Quat } = math;
 
 const v2_1 = new Vec2();
 const v2_2 = new Vec2();
@@ -20,23 +19,23 @@ const KEYCODE = {
 export class FirstPersonCamera extends Component {
 
     @property
-    moveSpeed = 1;
+    public moveSpeed = 1;
 
     @property
-    moveSpeedShiftScale = 5;
+    public moveSpeedShiftScale = 5;
 
     @property({ slide: true, range: [0.05, 0.5, 0.01] })
-    damp = 0.2;
+    public damp = 0.2;
 
     @property
-    rotateSpeed = 1;
+    public rotateSpeed = 1;
 
-    _euler = new Vec3();
-    _velocity = new Vec3();
-    _position = new Vec3();
-    _speedScale = 1;
+    private _euler = new Vec3();
+    private _velocity = new Vec3();
+    private _position = new Vec3();
+    private _speedScale = 1;
 
-    onLoad () {
+    public onLoad () {
         cc.systemEvent.on(cc.SystemEvent.EventType.MOUSE_WHEEL, this.onMouseWheel, this);
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
@@ -47,7 +46,7 @@ export class FirstPersonCamera extends Component {
         Vec3.copy(this._position, this.node.position);
     }
 
-    onDestroy () {
+    public onDestroy () {
         cc.systemEvent.off(cc.SystemEvent.EventType.MOUSE_WHEEL, this.onMouseWheel, this);
         cc.systemEvent.off(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
         cc.systemEvent.off(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
@@ -56,7 +55,7 @@ export class FirstPersonCamera extends Component {
         cc.systemEvent.off(cc.SystemEvent.EventType.TOUCH_END, this.onTouchEnd, this);
     }
 
-    update (dt) {
+    public update (dt) {
         // position
         Vec3.transformQuat(v3_1, this._velocity, this.node.rotation);
         Vec3.scaleAndAdd(this._position, this._position, v3_1, this.moveSpeed * this._speedScale);
@@ -68,13 +67,13 @@ export class FirstPersonCamera extends Component {
         this.node.setRotation(qt_1);
     }
 
-    onMouseWheel (e) {
+    public onMouseWheel (e) {
         const delta = -e.getScrollY() * this.moveSpeed * 0.1; // delta is positive when scroll down
         Vec3.transformQuat(v3_1, Vec3.UNIT_Z, this.node.rotation);
         Vec3.scaleAndAdd(this._position, this.node.position, v3_1, delta);
     }
 
-    onKeyDown (e) {
+    public onKeyDown (e) {
         const v = this._velocity;
         if      (e.keyCode === KEYCODE.SHIFT) { this._speedScale = this.moveSpeedShiftScale; }
         else if (e.keyCode === KEYCODE.W) { if (v.z === 0) { v.z = -1; } }
@@ -85,7 +84,7 @@ export class FirstPersonCamera extends Component {
         else if (e.keyCode === KEYCODE.E) { if (v.y === 0) { v.y =  1; } }
     }
 
-    onKeyUp (e) {
+    public onKeyUp (e) {
         const v = this._velocity;
         if      (e.keyCode === KEYCODE.SHIFT) { this._speedScale = 1; }
         else if (e.keyCode === KEYCODE.W) { if (v.z < 0) { v.z = 0; } }
@@ -96,11 +95,11 @@ export class FirstPersonCamera extends Component {
         else if (e.keyCode === KEYCODE.E) { if (v.y > 0) { v.y = 0; } }
     }
 
-    onTouchStart (e) {
-        if (cc.game.canvas.requestPointerLock) cc.game.canvas.requestPointerLock();
+    public onTouchStart (e) {
+        if (cc.game.canvas.requestPointerLock) { cc.game.canvas.requestPointerLock(); }
     }
 
-    onTouchMove (e) {
+    public onTouchMove (e) {
         e.getStartLocation(v2_1);
         if (v2_1.x > cc.game.canvas.width * 0.4) { // rotation
             e.getDelta(v2_2);
@@ -108,14 +107,14 @@ export class FirstPersonCamera extends Component {
             this._euler.x += v2_2.y * this.rotateSpeed * 0.1;
         } else { // position
             e.getLocation(v2_2);
-            Vec3.subtract(v2_2, v2_2, v2_1);
+            Vec2.subtract(v2_2, v2_2, v2_1);
             this._velocity.x = v2_2.x * 0.01;
             this._velocity.z = -v2_2.y * 0.01;
         }
     }
 
-    onTouchEnd (e) {
-        if (document.exitPointerLock) document.exitPointerLock();
+    public onTouchEnd (e) {
+        if (document.exitPointerLock) { document.exitPointerLock(); }
         e.getStartLocation(v2_1);
         if (v2_1.x < cc.game.canvas.width * 0.4) { // position
             this._velocity.x = 0;
