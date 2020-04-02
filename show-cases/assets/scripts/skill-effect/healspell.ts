@@ -10,12 +10,12 @@ export class HealSpell extends Component {
     public Point: Node[] = [];
 
     public heal (){
-        if (!this.enabled){
+        if (!this.enabled) {
             return;
        }
         const point0 = instantiate(this.effect[0]) as Node;
-        point0.setParent(this.node.parent);
-        point0.setWorldPosition(1, 2, 4.5);
+        point0.setParent(this.node);
+        point0.setPosition(0, 0, 0);
         const point1 = instantiate(this.effect[1]) as Node;
         point1.setParent(this.Point[0]);
         point1.setWorldPosition(this.Point[0].getWorldPosition());
