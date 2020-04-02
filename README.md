@@ -1,29 +1,25 @@
 # Cocos Creator 3D Example cases
 
-## demo01
-
-1. scenes/helmet: PBR material showcase, skybox
-2. scenes/jellyfish: animation, transparent material, simple prefab instantiation
-3. scenes/knight: animation, light
-3. scenes/particle-compare: various particle effects
-5. scenes/sponza: multiple render target, particle system, lights
-5. scenes/tangents: glTF tangent space data conformance test
-6. scenes/winter: particle system, emitter editing
-
-## demo02
+## show-cases
 
 1. scenes/ambient: ambient lighting
 2. scenes/audio: audio system baseline test
 3. scenes/collision-detection: simple collision detection
 4. scenes/custom-effect: custom shader
-5. scenes/instanced-skinning: massive skinning models using GPU instancing
-6. scenes/particles: simple particles
-7. scenes/pbr: PBR baseline
-8. scenes/physics: rigidbody physics simulation
-9. scenes/shadertoy: simple example on importing shadertoy resources
-10. scenes/shadows: planar shadow demo
-11. scenes/skin: pre-integrated SSS demo
-12. scenes/toon: NPR baseline
+5. scenes/helmet: PBR material showcase, skybox
+6. scenes/instanced-skinning: massive skinning models using GPU instancing
+7. scenes/jellyfish: animation, transparent material, simple prefab instantiation
+8. scenes/knight: animation, light
+9. scenes/particle-compare: various particle effects
+10.  scenes/pbr: PBR baseline
+11. scenes/physics: rigidbody physics simulation
+12. scenes/shadertoy: simple example on importing shadertoy resources
+13. scenes/shadows: planar shadow demo
+14. scenes/skin: pre-integrated SSS demo
+15. scenes/sponza: multiple render target, particle effects, spot lights
+16. scenes/tangents: glTF tangent space data conformance test
+17. scenes/toon: NPR baseline
+18. scenes/winter: particle system, emitter editing
 
 ## simple-fps
 
