@@ -1,5 +1,5 @@
 import { _decorator, CameraComponent, Component, director, EffectAsset, GFXBufferTextureCopy,
-    GFXCullMode, Material, ModelComponent, Node, primitives, Quat, RenderTexture, TextureCube, utils } from "cc";
+    GFXCullMode, Material, ModelComponent, Node, primitives, Quat, RenderTexture, TextureCube, utils } from 'cc';
 const { ccclass, property } = _decorator;
 
 const rotations = [
@@ -31,6 +31,9 @@ export class PreFilterEnvmap extends Component {
 
     @property(EffectAsset)
     public effect = null;
+
+    @property
+    public blurriness = 0;
 
     private _camera: CameraComponent = null;
     private _material: Material = null;
@@ -85,6 +88,8 @@ export class PreFilterEnvmap extends Component {
         const writeRegion = writeRegions[0];
         const mipLevel = getMipLevel(size);
         const newEnvMap = new TextureCube();
+        const pass = this._material.passes[0];
+        const handle = pass.getHandle('roughness');
         newEnvMap.reset({ width: size, height: size, mipmapLevel: mipLevel });
         for (let m = 0; m < mipLevel; m++) {
             // need to resize both window and camera
@@ -93,7 +98,7 @@ export class PreFilterEnvmap extends Component {
             readRegion.texExtent.width = readRegion.texExtent.height = size;
             writeRegion.texExtent.width = writeRegion.texExtent.height = size;
             writeRegion.texSubres.baseMipLevel = m;
-            this._material.setProperty('roughness', m / mipLevel);
+            pass.setUniform(handle, this.blurriness + m / (mipLevel - 1) * (1 - this.blurriness));
             const length = size * size * 4;
             const buffers: Uint8Array[] = [];
             for (let i = 0; i < 6; i++) {
