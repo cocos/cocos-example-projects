@@ -40,32 +40,6 @@
     "_active": true,
     "_components": [],
     "_prefab": null,
-    "_lpos": {
-      "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 0,
-      "z": 0
-    },
-    "_lrot": {
-      "__type__": "cc.Quat",
-      "x": 0,
-      "y": 0,
-      "z": 0,
-      "w": 1
-    },
-    "_lscale": {
-      "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
-      "z": 1
-    },
-    "_layer": 1073741824,
-    "_euler": {
-      "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 0,
-      "z": 0
-    },
     "autoReleaseAssets": false,
     "_globals": {
       "__id__": 23
@@ -132,6 +106,7 @@
     },
     "_useColorTemperature": false,
     "_colorTemperature": 6550,
+    "_bakeType": 0,
     "_illuminance": 65000,
     "_id": "597uMYCbhEtJQc0ffJlcgA"
   },
@@ -307,7 +282,7 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 302.62499999999994,
+      "x": 316.79999999999995,
       "y": 246,
       "z": 0
     },
@@ -341,9 +316,10 @@
       "__id__": 8
     },
     "_enabled": true,
+    "_priority": 0,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 28.35,
+      "width": 0,
       "height": 20
     },
     "_anchorPoint": {
@@ -351,8 +327,7 @@
       "x": 0.5,
       "y": 0.5
     },
-    "_id": "a6QUqtX9JHdpg11Zv30oIP",
-    "_priority": 0
+    "_id": "a6QUqtX9JHdpg11Zv30oIP"
   },
   {
     "__type__": "cc.LabelComponent",
@@ -425,6 +400,7 @@
       "__id__": 7
     },
     "_enabled": true,
+    "_priority": 0,
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 960,
@@ -746,10 +722,10 @@
       "__id__": 24
     },
     "planarShadows": {
-      "__id__": 26
+      "__id__": 25
     },
     "_skybox": {
-      "__id__": 25
+      "__id__": 26
     }
   },
   {
@@ -771,13 +747,6 @@
     }
   },
   {
-    "__type__": "cc.SkyboxInfo",
-    "_envmap": null,
-    "_isRGBE": false,
-    "_enabled": false,
-    "_useIBL": false
-  },
-  {
     "__type__": "cc.PlanarShadowInfo",
     "_enabled": false,
     "_normal": {
@@ -794,5 +763,12 @@
       "b": 0,
       "a": 76
     }
+  },
+  {
+    "__type__": "cc.SkyboxInfo",
+    "_envmap": null,
+    "_isRGBE": false,
+    "_enabled": false,
+    "_useIBL": false
   }
 ]

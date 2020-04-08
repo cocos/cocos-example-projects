@@ -1,5 +1,5 @@
 import { _decorator, Component, instantiate, Node, Prefab, Scene, SkeletalAnimationComponent, SliderComponent, Texture2D, ToggleComponent } from 'cc';
-import { UnlitQuadComponent } from './unlit-quad';
+import { UnlitQuadComponent } from '../unlit-quad';
 const { ccclass, property } = _decorator;
 
 @ccclass('InstancedSkinning')
