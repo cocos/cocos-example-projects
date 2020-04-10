@@ -1,0 +1,1 @@
+Files under this directory are fetched from [long.js](https://github.com/dcodeIO/long.js) at commit ce11b4b2bd3ba1240a057d62018563d99db318f9
