@@ -74,7 +74,7 @@ export class InstancedSkinning extends Component {
             label.texture = this.labelImages[i]; this._nameLabels.push(label.node);
             const animComp = inst.getChildByName('Model').getComponent(SkeletalAnimationComponent);
             const clipName = inst.name = animComp.clips[i].name;
-            setTimeout(() => animComp.play(clipName), 100); // [HACK]
+            animComp.play(clipName);
         }
         return group;
     }
