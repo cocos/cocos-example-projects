@@ -1,0 +1,1 @@
+Files under this directory are fetched from [protobuf.js](https://github.com/protobufjs/protobuf.js) at commit 0f8008c9aa7da53d119805c038b9389d58283b2f
