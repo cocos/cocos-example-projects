@@ -1,7 +1,7 @@
 import { _decorator, Prefab, Node, instantiate } from "cc";
 const { ccclass } = _decorator;
 
-@ccclass("PrefabPoolUtil")
+@ccclass("FALLING-BALL.PrefabPoolUtil")
 export class PrefabPoolUtil {
 
     private static _pool = {};

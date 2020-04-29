@@ -3,7 +3,7 @@ import { v3_t, quat_t } from "./TempConst";
 import { PrefabPoolUtil } from "./PrefabPoolUtil";
 const { ccclass, property } = _decorator;
 
-@ccclass("FloorFlagCtr")
+@ccclass("FALLING-BALL.FloorFlagCtr")
 export class FloorFlagCtr extends Component {
 
     @property({ type: Node })

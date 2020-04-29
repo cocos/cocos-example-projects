@@ -3,7 +3,7 @@ import { v3_t } from "./TempConst";
 import { ColumnCtr } from "./ColumnCtr";
 const { ccclass, property, requireComponent } = _decorator;
 
-@ccclass("BallCtr")
+@ccclass("FALLING-BALL.BallCtr")
 @requireComponent(RigidBodyComponent)
 export class BallCtr extends Component {
 

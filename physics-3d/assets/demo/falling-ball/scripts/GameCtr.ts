@@ -3,7 +3,8 @@ import { ColumnCtr } from "./ColumnCtr";
 import { parseTime2String } from "./TempConst";
 import { BallCtr } from "./BallCtr";
 import { FloorFlagCtr } from "./FloorFlagCtr";
-import { CameraFollowFB } from "./CameraFollowFB";
+import { CameraFollow } from "./CameraFollow";
+
 const { ccclass, property } = _decorator;
 
 enum EGameSate {
@@ -12,7 +13,7 @@ enum EGameSate {
     GAMEOVER
 }
 
-@ccclass("GameCtr")
+@ccclass("FALLING-BALL.GameCtr")
 export class GameCtr extends Component {
 
     @property({ type: Node })
@@ -24,8 +25,8 @@ export class GameCtr extends Component {
     @property({ type: Node })
     overPanel: Node = null;
 
-    @property({ type: CameraFollowFB })
-    cameraCtr: CameraFollowFB = null;
+    @property({ type: CameraFollow })
+    cameraCtr: CameraFollow = null;
 
     @property({ type: ColumnCtr })
     columnCtr: ColumnCtr = null;
@@ -51,21 +52,21 @@ export class GameCtr extends Component {
         const startBtn = this.loginPanel.getChildByName('StartBtn').getComponent(ButtonComponent);
         const startEvent = new EventHandler();
         startEvent.target = this.node as Node;
-        startEvent.component = "GameCtr";
+        startEvent.component = "FALLING-BALL.GameCtr";
         startEvent.handler = "gameStart";
         startBtn.clickEvents.push(startEvent);
 
         const backToLoginBtn = this.overPanel.getChildByName('BackBtn').getComponent(ButtonComponent);
         const backToLoginEvent = new EventHandler();
         backToLoginEvent.target = this.node as Node;
-        backToLoginEvent.component = "GameCtr";
+        backToLoginEvent.component = "FALLING-BALL.GameCtr";
         backToLoginEvent.handler = "gameBackToLogin";
         backToLoginBtn.clickEvents.push(backToLoginEvent);
 
         const RestartBtn = this.overPanel.getChildByName('RestartBtn').getComponent(ButtonComponent);
         const restartEvent = new EventHandler();
         restartEvent.target = this.node as Node;
-        restartEvent.component = "GameCtr";
+        restartEvent.component = "FALLING-BALL.GameCtr";
         restartEvent.handler = "gameRestart";
         RestartBtn.clickEvents.push(restartEvent);
 

@@ -1,7 +1,8 @@
 import { _decorator, Component, Node, js } from "cc";
-const { ccclass, property } = _decorator;
+const { ccclass, property, menu } = _decorator;
 
-@ccclass("MapSpawner")
+@ccclass("SIMPLE-CAR.MapSpawner")
+@menu("simple-car/MapSpawner")
 export class MapSpawner extends Component {
 
     private _isFinish = true;

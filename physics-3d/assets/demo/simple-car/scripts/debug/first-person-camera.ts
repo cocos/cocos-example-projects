@@ -1,5 +1,5 @@
 import { _decorator, Component, math, systemEvent, SystemEvent, macro, game } from "cc";
-const { ccclass, property } = _decorator;
+const { ccclass, property, menu } = _decorator;
 const v2_1 = new math.Vec2();
 const v2_2 = new math.Vec2();
 const v3_1 = new math.Vec3();
@@ -15,7 +15,8 @@ const KEYCODE = {
 	SHIFT: macro.KEY.shift,
 };
 
-@ccclass
+@ccclass("SIMPLE-CAR.FirstPersonCamera")
+@menu("simple-car/FirstPersonCamera")
 export class FirstPersonCamera extends Component {
 
 	@property

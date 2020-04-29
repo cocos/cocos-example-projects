@@ -1,11 +1,12 @@
 import { _decorator, Component, Node, Vec3, director, Director, easing, math, Quat, Mat4 } from "cc";
-const { ccclass, property } = _decorator;
+const { ccclass, property, menu } = _decorator;
 
 const v3_0 = new Vec3();
 const _pos = new Vec3();
 const _look = new Vec3();
 
-@ccclass("CameraFollow")
+@ccclass("SIMPLE-CAR.CameraFollow")
+@menu("simple-car/CameraFollow")
 export class CameraFollow extends Component {
 
     @property({ type: Node })

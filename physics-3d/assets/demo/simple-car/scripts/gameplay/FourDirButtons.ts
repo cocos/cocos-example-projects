@@ -1,13 +1,14 @@
 import { _decorator, Component, Node, SystemEventType, EventTouch, systemEvent, EventKeyboard, macro } from "cc";
 import { EFourDirType, EButtonState } from "../const/EnumDefine";
 import { InstanceMgr } from "./InstanceMgr";
-const { ccclass, property } = _decorator;
+const { ccclass, property, menu } = _decorator;
 
 /**
  * 四个方向按钮的控制器
  */
 
-@ccclass("FourDirButtons")
+@ccclass("SIMPLE-CAR.FourDirButtons")
+@menu("simple-car/FourDirButtons")
 export class FourDirButtons extends Component {
 
     public forwardNode: Node = null;

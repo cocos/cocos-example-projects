@@ -2,7 +2,7 @@ import { _decorator, Component, Node, systemEvent, SystemEventType, EventKeyboar
 import { v2_t, quat_t, v3_t } from "./TempConst";
 const { ccclass, property } = _decorator;
 
-@ccclass("ColumnCtr")
+@ccclass("FALLING-BALL.ColumnCtr")
 export class ColumnCtr extends Component {
 
     @property

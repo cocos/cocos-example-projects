@@ -2,8 +2,8 @@ import { _decorator, Component, Node, director, Director, lerp } from "cc";
 import { v3_t } from "./TempConst";
 const { ccclass, property } = _decorator;
 
-@ccclass("CameraFollowFB")
-export class CameraFollowFB extends Component {
+@ccclass("FALLING-BALL.CameraFollow")
+export class CameraFollow extends Component {
 
     @property({ type: Node })
     targetNode: Node = null;
@@ -37,3 +37,4 @@ export class CameraFollowFB extends Component {
         this.node.worldPosition = v3_t;
     }
 }
+

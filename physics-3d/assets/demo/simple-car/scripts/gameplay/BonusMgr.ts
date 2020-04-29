@@ -1,8 +1,9 @@
 import { _decorator, Component, Node, LabelComponent, Quat, systemEvent, ColliderComponent, ITriggerEvent } from "cc";
 import { InstanceMgr } from "./InstanceMgr";
-const { ccclass, property } = _decorator;
+const { ccclass, property, menu } = _decorator;
 
-@ccclass("BonusMgr")
+@ccclass("SIMPLE-CAR.BonusMgr")
+@menu("simple-car/BonusMgr")
 export class BonusMgr extends Component {
 
     @property({ type: LabelComponent })

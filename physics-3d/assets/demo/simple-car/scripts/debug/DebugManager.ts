@@ -1,8 +1,9 @@
 import { _decorator, Component, Node, game, EventTouch } from "cc";
 import { InstanceMgr } from "../gameplay/InstanceMgr";
-const { ccclass, property } = _decorator;
+const { ccclass, property, menu } = _decorator;
 
-@ccclass("DebugManager")
+@ccclass("SIMPLE-CAR.DebugManager")
+@menu("simple-car/DebugManager")
 export class DebugManager extends Component {
 
     onLoad () {

@@ -2,8 +2,8 @@ import { _decorator, Component, Node, JsonAsset, instantiate, loader, Prefab, Ve
 import { IMapStruct } from "../const/Interface";
 const { ccclass, property, menu } = _decorator;
 
-@ccclass("MapLoaderTesing")
-@menu("Tesing/MapLoaderTesing")
+@ccclass("SIMPLE-CAR.MapLoaderTesing")
+@menu("simple-car/MapLoaderTesing")
 export class MapLoaderTesing extends Component {
 
     @property({ type: JsonAsset })
