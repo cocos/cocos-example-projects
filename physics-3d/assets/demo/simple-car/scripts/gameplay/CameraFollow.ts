@@ -17,8 +17,12 @@ export class CameraFollow extends Component {
     @property
     epsilon: number = 0.001;
 
-    start () {
+    onEnable () {
         director.on(Director.EVENT_BEFORE_DRAW, this.beforeDraw, this);
+    }
+
+    onDisable () {
+        director.off(Director.EVENT_BEFORE_DRAW, this.beforeDraw, this);
     }
 
     beforeDraw () {

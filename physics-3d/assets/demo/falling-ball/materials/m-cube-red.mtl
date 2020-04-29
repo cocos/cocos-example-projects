@@ -9,6 +9,7 @@
   "_techIdx": 0,
   "_defines": [
     {
+      "USE_INSTANCING": true,
       "OCCLUSION_CHANNEL": "b",
       "ROUGHNESS_CHANNEL": "r",
       "METALLIC_CHANNEL": "g"
@@ -27,13 +28,6 @@
   ],
   "_props": [
     {
-      "emissive": {
-        "__type__": "cc.Color",
-        "r": 59,
-        "g": 19,
-        "b": 29,
-        "a": 255
-      },
       "mainColor": {
         "__type__": "cc.Color",
         "r": 253,
@@ -41,9 +35,13 @@
         "b": 0,
         "a": 255
       },
-      "occlusion": 1,
-      "roughness": 0.8,
-      "metallic": 0.6
+      "emissive": {
+        "__type__": "cc.Color",
+        "r": 59,
+        "g": 19,
+        "b": 29,
+        "a": 255
+      }
     }
   ]
 }

@@ -106,9 +106,15 @@
       "__id__": 2
     },
     "_enabled": true,
-    "gravity_y": -20,
+    "allowSleep": true,
+    "gravity": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": -20,
+      "z": 0
+    },
     "maxSubStep": 1,
-    "deltaTime": 0.016666666666666666,
+    "frameRate": 60,
     "friction": 0,
     "restitution": 0,
     "showStat": false,
@@ -2498,7 +2504,7 @@
     "_enabled": true,
     "_materials": [
       {
-        "__uuid__": "ba2e235c-e42a-4f6d-beb9-0cc503a2f73d"
+        "__uuid__": "aff81f65-1c68-47ff-919e-78ed1601241b"
       }
     ],
     "_visFlags": 0,
@@ -2537,7 +2543,7 @@
     "_enabled": true,
     "_materials": [
       {
-        "__uuid__": "1e021a4d-d366-43b4-9b82-610a3585d575"
+        "__uuid__": "745820e2-81cf-4f91-bcfa-1d5d6b85768e"
       }
     ],
     "_visFlags": 0,
@@ -4058,7 +4064,7 @@
   },
   {
     "__type__": "cc.BoxColliderComponent",
-    "_name": "",
+    "_name": "Cube<BoxColliderComponent>",
     "_objFlags": 0,
     "node": {
       "__id__": 155
@@ -7481,7 +7487,7 @@
     },
     "fileId": "57r1NJa1ZEMpiY0enYfIAb",
     "sync": false,
-    "_synced": true
+    "_synced": {}
   },
   {
     "__type__": "cc.SceneGlobals",

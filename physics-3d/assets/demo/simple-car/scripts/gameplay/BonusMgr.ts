@@ -17,7 +17,11 @@ export class BonusMgr extends Component {
 
     onLoad () {
         InstanceMgr.registerInstance('BonusMgr', this);
-        systemEvent.on('onMapLoaded' as any, this.onMapLoaded, this);
+        systemEvent.once('onMapLoaded' as any, this.onMapLoaded, this);
+    }
+
+    onDisable () {
+        systemEvent.off('onMapLoaded' as any, this.onMapLoaded, this);
     }
 
     start () {

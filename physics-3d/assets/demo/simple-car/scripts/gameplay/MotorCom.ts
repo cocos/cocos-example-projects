@@ -29,11 +29,10 @@ export class MotorCom extends Component {
 
         this.enabled = false;
         this.MotorCtr.rigidBody.useGravity = false;
-        systemEvent.on('onMapLoaded' as any, this.onMapLoaded, this);
+        systemEvent.once('onMapLoaded' as any, this.onMapLoaded, this);
     }
 
     update (deltaTime: number) {
-        // Your update function goes here.
         this.MotorState.update(deltaTime);
         this.MotorCtr.update(deltaTime);
     }
@@ -41,5 +40,10 @@ export class MotorCom extends Component {
     onMapLoaded () {
         this.enabled = true;
         this.MotorCtr.rigidBody.useGravity = true;
+    }
+
+    onDestroy () {
+        systemEvent.off('onMapLoaded' as any, this.onMapLoaded, this);
+        InstanceMgr.reset();
     }
 }

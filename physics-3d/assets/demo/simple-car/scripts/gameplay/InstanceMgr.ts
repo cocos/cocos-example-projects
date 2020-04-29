@@ -30,4 +30,13 @@ export class InstanceMgr {
             InstanceMgr[name] = entity;
         }
     }
+
+    static reset () {
+        if (InstanceMgr.FourDirButtons) (InstanceMgr.FourDirButtons as any) = null;
+        if (InstanceMgr.MotorCom) (InstanceMgr.MotorCom as any) = null;
+        if (InstanceMgr.MotorState) (InstanceMgr.MotorState as any) = null;
+        if (InstanceMgr.MotorCtr) (InstanceMgr.MotorCtr as any) = null;
+        if (InstanceMgr.DebugManager) (InstanceMgr.DebugManager as any) = null;
+        if (InstanceMgr.BonusMgr) (InstanceMgr.BonusMgr as any) = null;
+    }
 }

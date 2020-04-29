@@ -3,7 +3,7 @@ import { ColumnCtr } from "./ColumnCtr";
 import { parseTime2String } from "./TempConst";
 import { BallCtr } from "./BallCtr";
 import { FloorFlagCtr } from "./FloorFlagCtr";
-import { CameraFollow } from "./CameraFollow";
+import { CameraFollowFB } from "./CameraFollowFB";
 const { ccclass, property } = _decorator;
 
 enum EGameSate {
@@ -24,8 +24,8 @@ export class GameCtr extends Component {
     @property({ type: Node })
     overPanel: Node = null;
 
-    @property({ type: CameraFollow })
-    cameraCtr: CameraFollow = null;
+    @property({ type: CameraFollowFB })
+    cameraCtr: CameraFollowFB = null;
 
     @property({ type: ColumnCtr })
     columnCtr: ColumnCtr = null;

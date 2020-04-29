@@ -5,13 +5,16 @@ const { ccclass, property } = _decorator;
 export class GameConfig extends Component {
 
     @property
-    gravity_y = -20;
+    allowSleep = true;
+
+    @property
+    gravity = new Vec3(0, -20, 0);
 
     @property
     maxSubStep = 1;
 
     @property
-    deltaTime = 1 / 60;
+    frameRate = 60;
 
     @property
     friction = 0;
@@ -22,23 +25,19 @@ export class GameConfig extends Component {
     @property
     showStat = false;
 
-    // @property
-    // lineheight = 8;
-
-    onLoad () {
-        PhysicsSystem.instance.gravity = new Vec3(0, this.gravity_y, 0);
+    __preload () {
+        PhysicsSystem.instance.allowSleep = this.allowSleep;
+        PhysicsSystem.instance.gravity = this.gravity;
         PhysicsSystem.instance.maxSubStep = this.maxSubStep;
-        PhysicsSystem.instance.deltaTime = this.deltaTime;
-        if (!CC_PHYSICS_BUILTIN) {
-            PhysicsSystem.instance.defaultMaterial.friction = this.friction;
-            PhysicsSystem.instance.defaultMaterial.restitution = this.restitution;
-        }
+        PhysicsSystem.instance.deltaTime = this.frameRate == 0 ? 1E+100 : 1 / this.frameRate;
+        PhysicsSystem.instance.defaultMaterial.friction = this.friction;
+        PhysicsSystem.instance.defaultMaterial.restitution = this.restitution;
     }
 
     start () {
-        if (!this.showStat && !CC_BUILD) {
+        if (!this.showStat && !window.CC_BUILD) {
             setTimeout(() => {
-                profiler.hideStats();
+                if (profiler) profiler.hideStats();
             }, 100);
         }
     }

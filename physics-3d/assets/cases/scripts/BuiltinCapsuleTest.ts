@@ -4,7 +4,7 @@ const { ccclass, property, menu } = _decorator;
 const rot = Quat.fromEuler(new Quat(), 0, 2, 0);
 
 @ccclass("BuiltinCapsuleTest")
-@menu("physics/BuiltinCapsuleTest")
+@menu("cases/BuiltinCapsuleTest")
 export class BuiltinCapsuleTest extends Component {
 
     @property({ type: Material })
