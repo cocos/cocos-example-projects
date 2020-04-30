@@ -1,19 +1,20 @@
-import { _decorator, Component, Node, ColliderComponent } from "cc";
-const { ccclass, property, menu } = _decorator;
+import { _decorator, Component, Node } from 'cc';
+const { ccclass, property } = _decorator;
 
-@ccclass("mask-setup")
-@menu("physics/mask-setup")
-export class masksetup extends Component {
+@ccclass('MaskSetu')
+export class MaskSetu extends Component {
+    /* class member could be defined like this */
+    // dummy = '';
 
-    @property
-    public maskBit: number = 0;
+    /* use `property` decorator if your want the member to be serializable */
+    // @property
+    // serializableDummy = 0;
 
     start () {
         // Your initialization goes here.
-        let colliderCom = this.getComponent(ColliderComponent);
-        if (colliderCom) {
-            colliderCom.setMask(this.maskBit == -1 ? -1 : 1 << this.maskBit);
-        }
     }
 
+    // update (deltaTime: number) {
+    //     // Your update function goes here.
+    // }
 }

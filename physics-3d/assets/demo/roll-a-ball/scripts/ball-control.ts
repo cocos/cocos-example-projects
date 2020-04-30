@@ -13,7 +13,7 @@ enum EKey {
     SHIFT = 1 << 4,
 }
 
-@ccclass("ballcontrol")
+@ccclass("RALL-A-BALL.ballcontrol")
 export class ballcontrol extends Component {
 
     @property({ slide: true, range: [1, 3, 0.01] })

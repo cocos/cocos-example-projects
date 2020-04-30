@@ -6,7 +6,7 @@ enum ERaycastType {
     CLOSEST
 }
 
-@ccclass("RaycastTest")
+@ccclass("CASES.RaycastTest")
 @menu("physics/grouptesting")
 export class RaycastTest extends Component {
 

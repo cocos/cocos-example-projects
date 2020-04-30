@@ -32,7 +32,7 @@ export class GroupMaskTestItem {
     mask = EPHY_MASK.M_012;
 }
 
-@ccclass('GroupMaskTest')
+@ccclass('CASES.GroupMaskTest')
 @menu("cases/GroupMaskTest")
 export class GroupMaskTest extends Component {
 

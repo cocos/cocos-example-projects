@@ -11,9 +11,9 @@ enum SupportPhysics {
 }
 Enum(SupportPhysics);
 
-@ccclass("DeactiveCom")
-@menu("physics/DeactiveCom")
-export class DeactiveCom extends Component {
+@ccclass("CASES.SupportPhyiscs")
+@menu("cases/SupportPhyiscs")
+export class SupportPhyiscs extends Component {
 
     @property({ type: SupportPhysics })
     support: SupportPhysics = SupportPhysics.AMMO;
@@ -22,37 +22,37 @@ export class DeactiveCom extends Component {
         // Your initialization goes here.
         switch (this.support) {
             case SupportPhysics.BUILTIN:
-                if (CC_PHYSICS_BUILTIN)
+                if (globalThis.CC_PHYSICS_BUILTIN)
                     return;
 
                 this.node.active = false;
                 break;
             case SupportPhysics.CANNON:
-                if (CC_PHYSICS_CANNON)
+                if (globalThis.CC_PHYSICS_CANNON)
                     return;
 
                 this.node.active = false;
                 break;
             case SupportPhysics.AMMO:
-                if (CC_PHYSICS_AMMO)
+                if (globalThis.CC_PHYSICS_AMMO)
                     return;
 
                 this.node.active = false;
                 break;
             case SupportPhysics.BUILTIN_CANNON:
-                if (CC_PHYSICS_BUILTIN || CC_PHYSICS_CANNON)
+                if (globalThis.CC_PHYSICS_BUILTIN || globalThis.CC_PHYSICS_CANNON)
                     return;
 
                 this.node.active = false;
                 break;
             case SupportPhysics.BUILTIN_AMMO:
-                if (CC_PHYSICS_BUILTIN || CC_PHYSICS_AMMO)
+                if (globalThis.CC_PHYSICS_BUILTIN || globalThis.CC_PHYSICS_AMMO)
                     return;
 
                 this.node.active = false;
                 break;
             case SupportPhysics.CANNON_AMMO:
-                if (CC_PHYSICS_CANNON || CC_PHYSICS_AMMO)
+                if (globalThis.CC_PHYSICS_CANNON || globalThis.CC_PHYSICS_AMMO)
                     return;
 
                 this.node.active = false;

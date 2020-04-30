@@ -1,7 +1,7 @@
 import { _decorator, Component, ITriggerEvent, ColliderComponent, LabelComponent, ICollisionEvent, Color, UITransformComponent, Size, VerticalTextAlignment } from "cc";
 const { ccclass, property, menu } = _decorator;
 
-@ccclass("CollisionTest")
+@ccclass("CASES.CollisionTest")
 @menu("physics/CollisionTest")
 export class CollisionTest extends Component {
 

@@ -4,7 +4,7 @@ const { ccclass, property } = _decorator;
 const _v3_0 = new Vec3();
 const _quat_0 = new Quat();
 
-@ccclass("Instantiate")
+@ccclass("RALL-A-BALL.Instantiate")
 export class Instantiate extends Component {
     @property({ type: Prefab })
     public boxPrefab: Prefab = null;

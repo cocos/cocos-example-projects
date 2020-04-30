@@ -4,7 +4,7 @@ const { ccclass, property } = _decorator;
 export const KEY_INIT_STR = "KEY_INIT_STR";
 const v3_0 = new Vec3(0, 3, 0);
 
-@ccclass("Benchmark")
+@ccclass("BENCHMARK.Benchmark")
 export class Benchmark extends Component {
 
     /** PREFAB */

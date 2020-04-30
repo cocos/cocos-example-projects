@@ -1,9 +1,9 @@
 import { _decorator, Component, Node, Vec3, RigidBodyComponent } from "cc";
 const { ccclass, property, menu } = _decorator;
 
-@ccclass("AmmoMeshColliderTest")
-@menu("physics/AmmoMeshColliderTest")
-export class AmmoMeshColliderTest extends Component {
+@ccclass("CASES.MeshColliderTest")
+@menu("physics/MeshColliderTest")
+export class MeshColliderTest extends Component {
 
     startPos: Vec3[] = [];
 

@@ -1,15 +1,16 @@
 import { _decorator, Component, Node, PhysicsSystem } from 'cc';
 const { ccclass, property } = _decorator;
 
-@ccclass('physicsSyncTest')
-export class physicsSyncTest extends Component {
+@ccclass('CASES.SyncTest')
+@_decorator.menu('cases/SyncTest')
+export class SyncTest extends Component {
 
     count = 0;
 
     onEnable () {
         PhysicsSystem.instance.enable = false;
     }
-    
+
     onDisable () {
         PhysicsSystem.instance.enable = true;
     }

@@ -1,7 +1,7 @@
 import { _decorator, Component, Node, ColliderComponent, ICollisionEvent } from "cc";
 const { ccclass, property } = _decorator;
 
-@ccclass("colliderdisabled")
+@ccclass("RALL-A-BALL.colliderdisabled")
 export class colliderdisabled extends Component {
     public start () {
         let Collider = this.getComponent(ColliderComponent);
