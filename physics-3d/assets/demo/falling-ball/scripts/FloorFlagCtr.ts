@@ -1,6 +1,6 @@
 import { _decorator, Component, Node, LabelComponent, Quat, randomRange, ColliderComponent, director, Director, Prefab, instantiate, RigidBodyComponent, Vec3 } from "cc";
 import { v3_t, quat_t } from "./TempConst";
-import { PrefabPoolUtil } from "./PrefabPoolUtil";
+import { PrefabPoolUtil } from "./../../../common/scripts/PrefabPoolUtil";
 const { ccclass, property } = _decorator;
 
 @ccclass("FALLING-BALL.FloorFlagCtr")
@@ -45,9 +45,9 @@ export class FloorFlagCtr extends Component {
             for (let i = 0; i < colliders.length; i++) {
                 let clone: Node;
                 if (colliders[i].node.name == "Cube") {
-                    clone = PrefabPoolUtil.getItemByPoolName(colliders[i].node.name, this.cubePrefab, 5);
+                    clone = PrefabPoolUtil.getItemByPoolName("FALLING-BALL." + colliders[i].node.name, this.cubePrefab, 5);
                 } else {
-                    clone = PrefabPoolUtil.getItemByPoolName(colliders[i].node.name, this.cubeRedPrefab, 5);
+                    clone = PrefabPoolUtil.getItemByPoolName("FALLING-BALL." + colliders[i].node.name, this.cubeRedPrefab, 5);
                 }
                 clone.parent = null;
                 this.cubeRoot.addChild(clone);
