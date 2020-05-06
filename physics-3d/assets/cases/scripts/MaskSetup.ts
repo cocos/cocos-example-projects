@@ -1,8 +1,8 @@
 import { _decorator, Component, Node } from 'cc';
 const { ccclass, property } = _decorator;
 
-@ccclass('MaskSetu')
-export class MaskSetu extends Component {
+@ccclass('MaskSetup')
+export class MaskSetup extends Component {
     /* class member could be defined like this */
     // dummy = '';
 

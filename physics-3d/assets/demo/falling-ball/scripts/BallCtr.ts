@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, ICollisionEvent, ColliderComponent, RigidBodyComponent, Vec3 } from "cc";
+import { _decorator, Component, Node, ICollisionEvent, ColliderComponent, RigidBodyComponent, Vec3, Texture2D } from "cc";
 import { v3_t } from "./TempConst";
 import { ColumnCtr } from "./ColumnCtr";
 const { ccclass, property, requireComponent } = _decorator;
@@ -44,7 +44,7 @@ export class BallCtr extends Component {
 
         if (event.otherCollider.node.name == "CubeRed") {
             this._hitRedFlag = 1;
-            this.rigidBody.enabled = false;
+            this.rigidBody.mass = 0;
             this.columnCtr.enabled = false;
         } else if (event.otherCollider.node.name == "Cube") {
             v3_t.set(0, this.velocity_y, 0);
@@ -68,7 +68,7 @@ export class BallCtr extends Component {
     }
 
     reset () {
-        this.rigidBody.enabled = true;
+        this.rigidBody.mass = 10;
         this._hitRedFlag = 0;
         v3_t.set(0, 6, 4.5);
         this.node.worldPosition = v3_t;
