@@ -9,7 +9,7 @@ const { ccclass, property, menu, requireComponent } = _decorator;
  * 由 MotorCom 来驱动
  */
 
-@ccclass("SIMPLE-CAR.MotorCtr")
+@ccclass("MotorCtr")
 @menu("simple-car/MotorCtr")
 @requireComponent(RigidBodyComponent)
 export class MotorCtr implements IMotorBehaviour {
