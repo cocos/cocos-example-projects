@@ -41,7 +41,7 @@ export class GameCtr extends Component {
     totalSecond: number = 90;
 
     _tick = 0;
-    _intervalId = 0;
+    _intervalId = -1;
 
     _state: EGameSate = EGameSate.LOBBY;
 
@@ -70,8 +70,8 @@ export class GameCtr extends Component {
         restartEvent.handler = "gameRestart";
         RestartBtn.clickEvents.push(restartEvent);
 
-        /** hack */
         this.columnCtr.enabled = false;
+        this.floorFlagCtr.enabled = false;
         this._timingLb = this.gamePanel.getChildByName('TimingLabel').getComponent(LabelComponent);
         this._scoreLb = this.gamePanel.getChildByName('ScoreLabel').getComponent(LabelComponent);
 
@@ -84,6 +84,7 @@ export class GameCtr extends Component {
 
     gameStart () {
         this.columnCtr.enabled = true;
+        this.floorFlagCtr.enabled = true;
         this.loginPanel.active = false;
         this._tick = 0;
         this._timingLb.string = parseTime2String(this.totalSecond);
@@ -146,4 +147,9 @@ export class GameCtr extends Component {
             this._timingLb.string = parseTime2String(dt);
         }
     }
+
+    onDestroy () {
+        clearInterval(this._intervalId);
+    }
+
 }

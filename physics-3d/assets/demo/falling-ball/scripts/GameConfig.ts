@@ -30,8 +30,8 @@ export class GameConfig extends Component {
         PhysicsSystem.instance.gravity = this.gravity;
         PhysicsSystem.instance.maxSubStep = this.maxSubStep;
         PhysicsSystem.instance.deltaTime = this.frameRate == 0 ? 1E+100 : 1 / this.frameRate;
-        PhysicsSystem.instance.defaultMaterial.friction = this.friction;
-        PhysicsSystem.instance.defaultMaterial.restitution = this.restitution;
+        // PhysicsSystem.instance.defaultMaterial.friction = this.friction;
+        // PhysicsSystem.instance.defaultMaterial.restitution = this.restitution;
     }
 
     start () {

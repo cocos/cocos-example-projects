@@ -1,6 +1,7 @@
-import { _decorator, Component, Node, ICollisionEvent, ColliderComponent, RigidBodyComponent, Vec3, Texture2D } from "cc";
+import { _decorator, Component, Node, ICollisionEvent, ColliderComponent, RigidBodyComponent, Vec3, Texture2D, SphereColliderComponent } from "cc";
 import { v3_t } from "./TempConst";
 import { ColumnCtr } from "./ColumnCtr";
+import { FloorFlagCtr } from "./FloorFlagCtr";
 const { ccclass, property, requireComponent } = _decorator;
 
 @ccclass("FALLING-BALL.BallCtr")
@@ -14,6 +15,9 @@ export class BallCtr extends Component {
 
     @property({ type: ColumnCtr })
     columnCtr: ColumnCtr = null;
+
+    @property({ type: FloorFlagCtr })
+    floorFlagCtr: FloorFlagCtr = null;
 
     private _deadlockCount = 0;
     private _tempUuid = '';
@@ -44,8 +48,15 @@ export class BallCtr extends Component {
 
         if (event.otherCollider.node.name == "CubeRed") {
             this._hitRedFlag = 1;
+            if (window.CC_PHYSICS_AMMO) {
+                this.rigidBody.body.impl.clearState();
+            } else if (window.CC_PHYSICS_CANNON) {
+                this.rigidBody.body.impl.sleep();
+                this.rigidBody.body.impl.wakeUp();
+            }
             this.rigidBody.mass = 0;
             this.columnCtr.enabled = false;
+            this.floorFlagCtr.enabled = false;
         } else if (event.otherCollider.node.name == "Cube") {
             v3_t.set(0, this.velocity_y, 0);
             this.rigidBody.setLinearVelocity(v3_t);
@@ -65,10 +76,17 @@ export class BallCtr extends Component {
             v3_t.set(0, this.velocity_y, 0);
             this.rigidBody.setLinearVelocity(v3_t);
         }
+        if (v3_t.y < -60) {
+            v3_t.set(0, -60, 0);
+            this.rigidBody.setLinearVelocity(v3_t);
+        }
     }
 
     reset () {
         this.rigidBody.mass = 10;
+        if (window.CC_PHYSICS_CANNON) {
+            (this.rigidBody.body.impl as CANNON.Body).type = CANNON.Body.DYNAMIC;
+        }
         this._hitRedFlag = 0;
         v3_t.set(0, 6, 4.5);
         this.node.worldPosition = v3_t;
