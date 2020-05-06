@@ -17,12 +17,6 @@ export class GameConfig extends Component {
     frameRate = 60;
 
     @property
-    friction = 0;
-
-    @property
-    restitution = 0;
-
-    @property
     showStat = false;
 
     __preload () {
@@ -30,8 +24,6 @@ export class GameConfig extends Component {
         PhysicsSystem.instance.gravity = this.gravity;
         PhysicsSystem.instance.maxSubStep = this.maxSubStep;
         PhysicsSystem.instance.deltaTime = this.frameRate == 0 ? 1E+100 : 1 / this.frameRate;
-        // PhysicsSystem.instance.defaultMaterial.friction = this.friction;
-        // PhysicsSystem.instance.defaultMaterial.restitution = this.restitution;
     }
 
     start () {
@@ -40,5 +32,12 @@ export class GameConfig extends Component {
                 if (profiler) profiler.hideStats();
             }, 100);
         }
+    }
+
+    onDestroy () {
+        PhysicsSystem.instance.allowSleep = true;
+        PhysicsSystem.instance.maxSubStep = 2;
+        PhysicsSystem.instance.deltaTime = 1 / 60;
+        PhysicsSystem.instance.gravity = new Vec3(0, -10, 0);
     }
 }

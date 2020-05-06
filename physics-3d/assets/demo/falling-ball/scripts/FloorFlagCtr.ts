@@ -49,6 +49,7 @@ export class FloorFlagCtr extends Component {
                 } else {
                     clone = PrefabPoolUtil.getItemByPoolName(colliders[i].node.name, this.cubeRedPrefab, 5);
                 }
+                clone.parent = null;
                 this.cubeRoot.addChild(clone);
 
                 clone.worldPosition = colliders[i].node.worldPosition;
@@ -87,4 +88,7 @@ export class FloorFlagCtr extends Component {
         this.floorFlag1.worldPosition = v3_t;
     }
 
+    onDestroy () {
+        PrefabPoolUtil.clear();
+    }
 }

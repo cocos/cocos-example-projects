@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, systemEvent } from "cc";
+import { _decorator, Component, Node, systemEvent, js, PhysicsSystem, Vec3 } from "cc";
 import { MotorState } from "./MotorState";
 import { MotorCtr } from "./MotorCtr";
 import { InstanceMgr } from "./InstanceMgr";
@@ -12,10 +12,15 @@ const { ccclass, property, menu } = _decorator;
 @menu("simple-car/MotorCom")
 export class MotorCom extends Component {
 
+    // @property({ type: js.getClassByName("SIMPLE-CAR.MotorCtr") })
     @property({ type: MotorCtr })
     public MotorCtr: MotorCtr = new MotorCtr();
 
     public MotorState: MotorState = new MotorState();
+
+    __preload () {
+        PhysicsSystem.instance.gravity = new Vec3(0, -30, 0);
+    }
 
     onLoad () {
         this.MotorState.onLoad();
@@ -46,5 +51,6 @@ export class MotorCom extends Component {
     onDestroy () {
         systemEvent.off('onMapLoaded' as any, this.onMapLoaded, this);
         InstanceMgr.reset();
+        PhysicsSystem.instance.gravity = new Vec3(0, -10, 0);
     }
 }

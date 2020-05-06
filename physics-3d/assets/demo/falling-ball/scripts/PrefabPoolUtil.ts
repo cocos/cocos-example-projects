@@ -1,10 +1,11 @@
-import { _decorator, Prefab, Node, instantiate } from "cc";
+import { _decorator, Prefab, Node, instantiate, isValid } from "cc";
 const { ccclass } = _decorator;
 
 @ccclass("FALLING-BALL.PrefabPoolUtil")
 export class PrefabPoolUtil {
 
     private static _pool = {};
+    private static _recoverAmount = 0;
 
     /**
      * get a entity with pool name
@@ -28,9 +29,15 @@ export class PrefabPoolUtil {
 
         if (time != null) {
             // delay recover node with pool name
+            this._recoverAmount++;
             setTimeout(() => {
-                node.removeFromParent();
-                this.recoverItemByPoolName(poolName, node);
+                if (isValid(node)) {
+                    node.parent = null;
+                    if (this._recoverAmount > 0) {
+                        this.recoverItemByPoolName(poolName, node);
+                        this._recoverAmount--;
+                    }
+                }
             }, time * 1000);
         }
 
@@ -52,5 +59,10 @@ export class PrefabPoolUtil {
         if (index == -1) {
             pool.push(entity);
         }
+    }
+
+    public static clear () {
+        this._pool = {};
+        this._recoverAmount = 0;
     }
 }
