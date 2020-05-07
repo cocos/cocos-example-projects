@@ -2,7 +2,7 @@ import { _decorator, Component, Vec3, Quat, Node } from "cc";
 const { menu, ccclass, property } = _decorator;
 
 @ccclass("CASES.LoopMotion")
-@menu("physics/LoopMotion")
+@menu("cases/LoopMotion")
 export class LoopMotion extends Component {
 
     @property

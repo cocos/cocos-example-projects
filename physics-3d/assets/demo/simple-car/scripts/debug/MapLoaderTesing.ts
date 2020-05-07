@@ -3,7 +3,7 @@ import { IMapStruct } from "../const/Interface";
 const { ccclass, property, menu } = _decorator;
 
 @ccclass("SIMPLE-CAR.MapLoaderTesing")
-@menu("simple-car/MapLoaderTesing")
+@menu("demo/simple-car/MapLoaderTesing")
 export class MapLoaderTesing extends Component {
 
     @property({ type: JsonAsset })

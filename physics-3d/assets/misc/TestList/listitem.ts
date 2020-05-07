@@ -1,9 +1,10 @@
 import { _decorator, Component, Node, LabelComponent, director } from "cc";
 import { sceneArray } from "./scenelist";
 import { BackButton } from "./backbutton";
-const { ccclass, property } = _decorator;
+const { ccclass, property, menu } = _decorator;
 
-@ccclass("ListItem")
+@ccclass("TEST-LIST.ListItem")
+@menu("misc/test-list/ListItem")
 export class ListItem extends Component {
 
     index = -1;

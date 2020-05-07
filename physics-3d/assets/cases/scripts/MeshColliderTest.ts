@@ -2,7 +2,7 @@ import { _decorator, Component, Node, Vec3, RigidBodyComponent } from "cc";
 const { ccclass, property, menu } = _decorator;
 
 @ccclass("CASES.MeshColliderTest")
-@menu("physics/MeshColliderTest")
+@menu("cases/MeshColliderTest")
 export class MeshColliderTest extends Component {
 
     startPos: Vec3[] = [];

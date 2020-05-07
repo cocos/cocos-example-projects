@@ -7,7 +7,7 @@ enum ERaycastType {
 }
 
 @ccclass("CASES.RaycastTest")
-@menu("physics/grouptesting")
+@menu("cases/RaycastTest")
 export class RaycastTest extends Component {
 
     @property({ type: Material })

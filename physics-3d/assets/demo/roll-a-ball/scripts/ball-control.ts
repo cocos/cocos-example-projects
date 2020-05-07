@@ -1,5 +1,5 @@
 import { _decorator, Component, math, systemEvent, macro, RigidBodyComponent, Touch, EventTouch, SystemEventType, EventKeyboard } from "cc";
-const { ccclass, property } = _decorator;
+const { ccclass, property, menu } = _decorator;
 
 const v3_0 = new math.Vec3();
 const v2_0 = new math.Vec2();
@@ -14,6 +14,7 @@ enum EKey {
 }
 
 @ccclass("RALL-A-BALL.ballcontrol")
+@menu("demo/roll-a-ball/ballcontrol")
 export class ballcontrol extends Component {
 
     @property({ slide: true, range: [1, 3, 0.01] })

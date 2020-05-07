@@ -1,10 +1,11 @@
 import { _decorator, Component, Node, Prefab, math, instantiate, Quat, Vec3 } from "cc";
-const { ccclass, property } = _decorator;
+const { ccclass, property, menu } = _decorator;
 
 const _v3_0 = new Vec3();
 const _quat_0 = new Quat();
 
 @ccclass("RALL-A-BALL.Instantiate")
+@menu("demo/roll-a-ball/Instantiate")
 export class Instantiate extends Component {
     @property({ type: Prefab })
     public boxPrefab: Prefab = null;

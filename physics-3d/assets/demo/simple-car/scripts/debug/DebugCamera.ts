@@ -2,7 +2,7 @@ import { _decorator, Component, Node, CameraComponent } from "cc";
 const { ccclass, property, menu } = _decorator;
 
 @ccclass("SIMPLE-CAR.DebugCamera")
-@menu("simple-car/DebugCamera")
+@menu("demo/simple-car/DebugCamera")
 export class DebugCamera extends Component {
 
     @property({ type: CameraComponent })

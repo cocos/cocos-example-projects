@@ -8,7 +8,7 @@ const { ccclass, property, menu } = _decorator;
  */
 
 @ccclass("SIMPLE-CAR.FourDirButtons")
-@menu("simple-car/FourDirButtons")
+@menu("demo/simple-car/FourDirButtons")
 export class FourDirButtons extends Component {
 
     public forwardNode: Node = null;

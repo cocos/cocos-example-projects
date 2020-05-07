@@ -1,12 +1,13 @@
 import { _decorator, Component, Node, ColliderComponent, SphereColliderComponent, ITriggerEvent, math, isValid } from "cc";
 import { EGroup } from "./EGroupMask";
-const { ccclass, property } = _decorator;
+const { ccclass, property, menu } = _decorator;
 
 const _dir = new math.Vec3;
 _dir.y = 1;
 const _impluse = new math.Vec3(2, 6, 2);
 
 @ccclass("SIMPLE-HOLE.EntitySetup")
+@menu("demo/simple-hole/EntitySetup")
 export class EntitySetup extends Component {
 
     @property({ type: Node })

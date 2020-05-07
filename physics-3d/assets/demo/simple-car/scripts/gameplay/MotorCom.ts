@@ -9,7 +9,7 @@ const { ccclass, property, menu } = _decorator;
  */
 
 @ccclass("SIMPLE-CAR.MotorCom")
-@menu("simple-car/MotorCom")
+@menu("demo/simple-car/MotorCom")
 export class MotorCom extends Component {
 
     // @property({ type: js.getClassByName("SIMPLE-CAR.MotorCtr") })

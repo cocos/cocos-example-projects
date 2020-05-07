@@ -2,7 +2,7 @@ import { _decorator, Component, ITriggerEvent, ColliderComponent, LabelComponent
 const { ccclass, property, menu } = _decorator;
 
 @ccclass("CASES.CollisionTest")
-@menu("physics/CollisionTest")
+@menu("cases/CollisionTest")
 export class CollisionTest extends Component {
 
     private static _idCounter = 0;

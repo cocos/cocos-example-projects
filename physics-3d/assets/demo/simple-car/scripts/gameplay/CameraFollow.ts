@@ -6,7 +6,7 @@ const _pos = new Vec3();
 const _look = new Vec3();
 
 @ccclass("SIMPLE-CAR.CameraFollow")
-@menu("simple-car/CameraFollow")
+@menu("demo/simple-car/CameraFollow")
 export class CameraFollow extends Component {
 
     @property({ type: Node })

@@ -3,7 +3,7 @@ import { InstanceMgr } from "./InstanceMgr";
 const { ccclass, property, menu } = _decorator;
 
 @ccclass("SIMPLE-CAR.BonusMgr")
-@menu("simple-car/BonusMgr")
+@menu("demo/simple-car/BonusMgr")
 export class BonusMgr extends Component {
 
     @property({ type: LabelComponent })

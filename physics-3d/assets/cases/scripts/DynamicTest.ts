@@ -2,7 +2,7 @@ import { _decorator, Component, RigidBodyComponent, Vec3 } from "cc";
 const { menu, ccclass, property, requireComponent } = _decorator;
 
 @ccclass("CASES.DynamicTest")
-@menu("physics/DynamicTest")
+@menu("cases/DynamicTest")
 @requireComponent(RigidBodyComponent)
 export class DynamicTest extends Component {
 

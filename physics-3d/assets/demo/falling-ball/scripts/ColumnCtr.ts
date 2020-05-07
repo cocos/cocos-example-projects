@@ -1,8 +1,9 @@
 import { _decorator, Component, Node, systemEvent, SystemEventType, EventKeyboard, macro, Quat, EventTouch, Touch, Vec3 } from "cc";
 import { v2_t, quat_t, v3_t } from "./TempConst";
-const { ccclass, property } = _decorator;
+const { ccclass, property, menu } = _decorator;
 
 @ccclass("FALLING-BALL.ColumnCtr")
+@menu("demo/falling-ball/ColumnCtr")
 export class ColumnCtr extends Component {
 
     @property

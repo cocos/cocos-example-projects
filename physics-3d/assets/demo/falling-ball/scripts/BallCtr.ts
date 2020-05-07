@@ -2,10 +2,11 @@ import { _decorator, Component, Node, ICollisionEvent, ColliderComponent, RigidB
 import { v3_t } from "./TempConst";
 import { ColumnCtr } from "./ColumnCtr";
 import { FloorFlagCtr } from "./FloorFlagCtr";
-const { ccclass, property, requireComponent } = _decorator;
+const { ccclass, property, requireComponent, menu } = _decorator;
 
 @ccclass("FALLING-BALL.BallCtr")
 @requireComponent(RigidBodyComponent)
+@menu("demo/falling-ball/BallCtr")
 export class BallCtr extends Component {
 
     rigidBody: RigidBodyComponent = null;

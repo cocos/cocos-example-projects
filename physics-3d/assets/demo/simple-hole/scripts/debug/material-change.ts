@@ -1,7 +1,8 @@
 import { _decorator, Component, Material, ModelComponent } from "cc";
-const { ccclass, property } = _decorator;
+const { ccclass, property, menu } = _decorator;
 
 @ccclass("SIMPLE-HOLE.material-change")
+@menu("demo/simple-hole/material-change")
 export class materialchange extends Component {
 
     @property({ type: Material })

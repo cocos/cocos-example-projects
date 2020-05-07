@@ -1,5 +1,5 @@
 import { _decorator, Component, math, systemEvent, SystemEvent, game, macro, director } from "cc";
-const { ccclass, property } = _decorator;
+const { ccclass, property, menu } = _decorator;
 
 const v2_1 = new math.Vec2();
 const v2_2 = new math.Vec2();
@@ -15,6 +15,7 @@ const KEYCODE = {
 };
 
 @ccclass("SIMPLE-HOLE.MotionCtr")
+@menu("demo/simple-hole/MotionCtr")
 export class MotionCtr extends Component {
 
     @property

@@ -1,24 +1,25 @@
 import { _decorator, Component, Node, ScrollViewComponent, Vec3, ButtonComponent, LayoutComponent, game, LabelComponent, director, Director } from "cc";
-const { ccclass, property } = _decorator;
+const { ccclass, property, menu } = _decorator;
 import { sceneArray } from "./scenelist";
 
-@ccclass("BackButton")
+@ccclass("TEST-LIST.BackButton")
+@menu("misc/test-list/BackButton")
 export class BackButton extends Component {
     private static _offset = new Vec3();
-    public static _scrollNode : Node | null  = null;
-    private static _scrollCom : ScrollViewComponent | null = null;
+    public static _scrollNode: Node | null = null;
+    private static _scrollCom: ScrollViewComponent | null = null;
 
-    private static _sceneIndex : number = -1;
-    private static _prevNode : Node;
-    private static _nextNode : Node;
-    private static _prevButton : ButtonComponent;
-    private static _nextButton : ButtonComponent;
-    private sceneName : LabelComponent;
+    private static _sceneIndex: number = -1;
+    private static _prevNode: Node;
+    private static _nextNode: Node;
+    private static _prevButton: ButtonComponent;
+    private static _nextButton: ButtonComponent;
+    private sceneName: LabelComponent;
 
-    __preload() {
+    __preload () {
         const sceneInfo = game._sceneInfos;
         const array: string[] = sceneInfo.map((i) => i.url).sort();
-        for (let i = 0;  i< array.length; i++) {
+        for (let i = 0; i < array.length; i++) {
             let str = array[i];
             if (str.includes("TestList") || str.includes("subPack") || str.includes('editor-only')) {
                 continue;
@@ -29,21 +30,21 @@ export class BackButton extends Component {
         }
     }
 
-    public static get offset() {
+    public static get offset () {
         return BackButton._offset;
     }
 
-    public static set offset( value ) {
+    public static set offset (value) {
         BackButton._offset = value;
     }
 
     public static saveOffset () {
-        if (BackButton._scrollNode ) {
+        if (BackButton._scrollNode) {
             BackButton._offset = new Vec3(0, BackButton._scrollCom.getScrollOffset().y, 0);
         }
     }
 
-    public static saveIndex ( index : number) {
+    public static saveIndex (index: number) {
         BackButton._sceneIndex = index;
         BackButton.refreshButton();
     }
@@ -59,7 +60,7 @@ export class BackButton extends Component {
     }
 
     start () {
-        this.sceneName = director.getScene().getChildByName("backRoot").getChildByName("sceneName").getComponent(LabelComponent); 
+        this.sceneName = director.getScene().getChildByName("backRoot").getChildByName("sceneName").getComponent(LabelComponent);
         game.addPersistRootNode(this.node);
         BackButton._scrollNode = this.node.getParent().getChildByPath('Canvas/ScrollView') as Node;
         if (BackButton._scrollNode) {
@@ -72,22 +73,22 @@ export class BackButton extends Component {
             BackButton._nextButton = BackButton._nextNode.getComponent(ButtonComponent);
             BackButton.refreshButton();
         }
-        director.on(Director.EVENT_BEFORE_SCENE_LOADING,this.switchSceneName,this); 
+        director.on(Director.EVENT_BEFORE_SCENE_LOADING, this.switchSceneName, this);
     }
 
-    switchSceneName(){ 
+    switchSceneName () {
         if (this.getSceneName() == null) {
             return;
         }
         this.sceneName.node.active = true;
-        this.sceneName.string = this.getSceneName(); 
-    } 
+        this.sceneName.string = this.getSceneName();
+    }
 
     backToList () {
         if (game.isPaused()) {
             game.resume();
         }
-        director.loadScene("TestList", function() {
+        director.loadScene("TestList", function () {
             this.sceneName.node.active = false;
             BackButton._sceneIndex = -1;
             BackButton.refreshButton();
@@ -95,37 +96,37 @@ export class BackButton extends Component {
             if (BackButton._scrollNode) {
                 BackButton._scrollCom = BackButton._scrollNode.getComponent(ScrollViewComponent);
                 BackButton._scrollCom._content.getComponent(LayoutComponent).updateLayout();
-                BackButton._scrollCom.scrollToOffset(BackButton.offset,0.1,true);
+                BackButton._scrollCom.scrollToOffset(BackButton.offset, 0.1, true);
             }
         }.bind(this));
     }
 
     nextScene () {
-        if(game.isPaused()){
-            game.resume();    
+        if (game.isPaused()) {
+            game.resume();
         }
         BackButton._nextButton.interactable = false;
         this.updateSceneIndex(true);
-        director.loadScene(this.getSceneName(), function() {
+        director.loadScene(this.getSceneName(), function () {
             BackButton._nextButton.interactable = true;
         });
     }
 
     preScene () {
-        if(game.isPaused()){
+        if (game.isPaused()) {
             game.resume();
         }
         BackButton._prevButton.interactable = false;
         this.updateSceneIndex(false);
-        director.loadScene(this.getSceneName(), function() {
+        director.loadScene(this.getSceneName(), function () {
             BackButton._prevButton.interactable = true;
         });
     }
 
-    updateSceneIndex(next:Boolean) {
+    updateSceneIndex (next: Boolean) {
         if (next) {
             (BackButton._sceneIndex + 1) >= sceneArray.length ? BackButton._sceneIndex = 0 : BackButton._sceneIndex += 1;
-        }else {
+        } else {
             (BackButton._sceneIndex - 1) < 0 ? BackButton._sceneIndex = sceneArray.length - 1 : BackButton._sceneIndex -= 1;
         }
     }

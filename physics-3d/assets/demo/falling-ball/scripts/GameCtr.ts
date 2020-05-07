@@ -5,7 +5,7 @@ import { BallCtr } from "./BallCtr";
 import { FloorFlagCtr } from "./FloorFlagCtr";
 import { CameraFollow } from "./CameraFollow";
 
-const { ccclass, property } = _decorator;
+const { ccclass, property, menu } = _decorator;
 
 enum EGameSate {
     LOBBY,
@@ -14,6 +14,7 @@ enum EGameSate {
 }
 
 @ccclass("FALLING-BALL.GameCtr")
+@menu("demo/falling-ball/GameCtr")
 export class GameCtr extends Component {
 
     @property({ type: Node })

@@ -1,8 +1,8 @@
 import { _decorator, Component, RigidBodyComponent, Node, Vec3, EventTouch } from "cc";
 const { menu, ccclass, property } = _decorator;
 
-@ccclass('VelocityTestItem')
-export class VelocityTestItem {
+@ccclass('CASES.VelocityTestItem')
+class VelocityTestItem {
     @property({ type: Node })
     target: Node = null;
 

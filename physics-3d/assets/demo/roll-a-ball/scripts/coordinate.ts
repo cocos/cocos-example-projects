@@ -4,6 +4,7 @@ const { ccclass, property, menu } = _decorator;
 const _v3_0 = new Vec3();
 
 @ccclass("RALL-A-BALL.coordinate-ui-3d")
+@menu("demo/roll-a-ball/coordinate-ui-3d")
 export class CoordinateUi3D extends Component {
 
     @property({ type: Node })

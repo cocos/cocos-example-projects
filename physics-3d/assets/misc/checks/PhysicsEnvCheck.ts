@@ -11,21 +11,21 @@ enum EPhysicsItem {
 }
 Enum(EPhysicsItem);
 
-@ccclass("PhysicsEnvCheck")
-@menu("physics/PhysicsEnvCheck")
+@ccclass("CHECKS.PhysicsEnvCheck")
+@menu("misc/checks/PhysicsEnvCheck")
 export class PhysicsEnvCheck extends Component {
 
     // @property({ type: EPhysicsItem })
     physics: EPhysicsItem = EPhysicsItem.CANNON_AMMO;
 
     onLoad () {
-        if (CC_PHYSICS_BUILTIN) {
+        if (window.CC_PHYSICS_BUILTIN) {
             const lbCom = this.node.getChildByName('desc').getComponent(LabelComponent);
             lbCom.string = "当前物理：builtin";
-        } else if (CC_PHYSICS_CANNON) {
+        } else if (window.CC_PHYSICS_CANNON) {
             const lbCom = this.node.getChildByName('desc').getComponent(LabelComponent);
             lbCom.string = "当前物理：cannon.js";
-        } else if (CC_PHYSICS_AMMO) {
+        } else if (window.CC_PHYSICS_AMMO) {
             const lbCom = this.node.getChildByName('desc').getComponent(LabelComponent);
             lbCom.string = "当前物理：ammo.js";
         } else {
@@ -52,7 +52,7 @@ export class PhysicsEnvCheck extends Component {
             case EPhysicsItem.ALL:
                 break;
             case EPhysicsItem.CANNON_AMMO:
-                if (CC_PHYSICS_CANNON || CC_PHYSICS_AMMO) {
+                if (window.CC_PHYSICS_CANNON || window.CC_PHYSICS_AMMO) {
                     break;
                 }
 
@@ -64,7 +64,7 @@ export class PhysicsEnvCheck extends Component {
                 break;
 
             case EPhysicsItem.BUILTIN_AMMO:
-                if (CC_PHYSICS_BUILTIN || CC_PHYSICS_AMMO) {
+                if (window.CC_PHYSICS_BUILTIN || window.CC_PHYSICS_AMMO) {
                     break;
                 }
 
@@ -76,7 +76,7 @@ export class PhysicsEnvCheck extends Component {
                 break;
 
             case EPhysicsItem.CANNON:
-                if (!CC_PHYSICS_CANNON) {
+                if (!window.CC_PHYSICS_CANNON) {
                     let lbCom = this.node.getChildByName('lb').getComponent(LabelComponent);
                     lbCom.enabled = true;
                     lbCom.string = "测试此场景需要将物理模块设置为 cannon.js";
@@ -85,7 +85,7 @@ export class PhysicsEnvCheck extends Component {
                 }
                 break;
             case EPhysicsItem.AMMO:
-                if (!CC_PHYSICS_AMMO) {
+                if (!window.CC_PHYSICS_AMMO) {
                     let lbCom = this.node.getChildByName('lb').getComponent(LabelComponent);
                     lbCom.enabled = true;
                     lbCom.string = "测试此场景需要将物理模块设置为 ammo.js";
@@ -94,7 +94,7 @@ export class PhysicsEnvCheck extends Component {
                 }
                 break;
             case EPhysicsItem.BUILTIN:
-                if (!CC_PHYSICS_BUILTIN) {
+                if (!window.CC_PHYSICS_BUILTIN) {
                     let lbCom = this.node.getChildByName('lb').getComponent(LabelComponent);
                     lbCom.enabled = true;
                     lbCom.string = "测试此场景需要将物理模块设置为 builtin";

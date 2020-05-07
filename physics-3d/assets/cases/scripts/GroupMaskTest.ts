@@ -20,8 +20,8 @@ export enum EPHY_MASK {
 
 Enum(EPHY_MASK);
 
-@ccclass('GroupMaskTestItem')
-export class GroupMaskTestItem {
+@ccclass('CASES.GroupMaskTestItem')
+class GroupMaskTestItem {
     @property({ type: Node })
     target: Node = null;
 

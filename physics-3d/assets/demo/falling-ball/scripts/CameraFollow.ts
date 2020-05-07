@@ -1,8 +1,9 @@
 import { _decorator, Component, Node, director, Director, lerp } from "cc";
 import { v3_t } from "./TempConst";
-const { ccclass, property } = _decorator;
+const { ccclass, property, menu } = _decorator;
 
 @ccclass("FALLING-BALL.CameraFollow")
+@menu("demo/falling-ball/CameraFollow")
 export class CameraFollow extends Component {
 
     @property({ type: Node })

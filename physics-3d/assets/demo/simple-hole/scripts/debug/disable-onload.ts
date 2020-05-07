@@ -1,7 +1,8 @@
 import { _decorator, Component, Node } from "cc";
-const { ccclass, property } = _decorator;
+const { ccclass, property, menu } = _decorator;
 
 @ccclass("SIMPLE-HOLE.disable-onload")
+@menu("demo/simple-hole/disable-onload")
 export class disableonload extends Component {
 
     @property

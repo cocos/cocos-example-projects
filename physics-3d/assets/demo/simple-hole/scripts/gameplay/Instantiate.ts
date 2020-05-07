@@ -2,9 +2,10 @@ import { _decorator, Component, Prefab, PhysicsSystem, ColliderComponent, math, 
 import { PrefabPoolUtil } from "../../../../common/scripts/PrefabPoolUtil";
 import { EShapeAlgorithm, random_algorithm, x_square_2_algorithm, spiral_algorithm } from "./EShapeAlgorithm";
 import { EGroup } from "./EGroupMask";
-const { ccclass, property } = _decorator;
+const { ccclass, property, menu } = _decorator;
 
 @ccclass("SIMPLE-HOLE.Instantiate")
+@menu("demo/simple-hole/Instantiate")
 export class Instantiate extends Component {
 
     @property({ type: EShapeAlgorithm })

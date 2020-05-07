@@ -1,9 +1,10 @@
 import { _decorator, Component, Node, LabelComponent, Quat, randomRange, ColliderComponent, director, Director, Prefab, instantiate, RigidBodyComponent, Vec3 } from "cc";
 import { v3_t, quat_t } from "./TempConst";
 import { PrefabPoolUtil } from "./../../../common/scripts/PrefabPoolUtil";
-const { ccclass, property } = _decorator;
+const { ccclass, property, menu } = _decorator;
 
 @ccclass("FALLING-BALL.FloorFlagCtr")
+@menu("demo/falling-ball/FloorFlagCtr")
 export class FloorFlagCtr extends Component {
 
     @property({ type: Node })

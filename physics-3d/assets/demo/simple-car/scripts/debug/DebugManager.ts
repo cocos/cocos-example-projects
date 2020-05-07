@@ -3,7 +3,7 @@ import { InstanceMgr } from "../gameplay/InstanceMgr";
 const { ccclass, property, menu } = _decorator;
 
 @ccclass("SIMPLE-CAR.DebugManager")
-@menu("simple-car/DebugManager")
+@menu("demo/simple-car/DebugManager")
 export class DebugManager extends Component {
 
     onLoad () {

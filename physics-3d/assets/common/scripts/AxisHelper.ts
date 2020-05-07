@@ -1,8 +1,8 @@
 import { _decorator, Component, Node, Prefab, instantiate, loader } from 'cc';
-const { ccclass, property } = _decorator;
+const { ccclass, property, menu } = _decorator;
 
 @ccclass('COMMON.AxisHelper')
-@_decorator.menu('common/AxisHelper')
+@menu('common/AxisHelper')
 export class AxisHelper extends Component {
 
     private static _axis: Prefab = null;

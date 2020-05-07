@@ -11,7 +11,7 @@ const { ccclass, property, menu, requireComponent } = _decorator;
 
 // @ccclass("SIMPLE-CAR.MotorCtr")
 @ccclass("MotorCtr")
-@menu("simple-car/MotorCtr")
+@menu("demo/simple-car/MotorCtr")
 @requireComponent(RigidBodyComponent)
 export class MotorCtr implements IMotorBehaviour {
 

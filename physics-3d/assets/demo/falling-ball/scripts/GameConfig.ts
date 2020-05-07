@@ -1,7 +1,8 @@
 import { _decorator, Component, Node, PhysicsSystem, Vec3, profiler } from "cc";
-const { ccclass, property } = _decorator;
+const { ccclass, property, menu } = _decorator;
 
 @ccclass("FALLING-BALL.GameConfig")
+@menu("demo/falling-ball/GameConfig")
 export class GameConfig extends Component {
 
     @property

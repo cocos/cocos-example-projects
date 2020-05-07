@@ -1,10 +1,11 @@
 import { _decorator, Component, Node, Prefab, instantiate, Vec2, EventTouch, EditBoxComponent, Vec3, randomRange, random, LabelComponent, Quat, ToggleComponent, PhysicsSystem, profiler, RigidBodyComponent } from "cc";
-const { ccclass, property } = _decorator;
+const { ccclass, property, menu } = _decorator;
 
 export const KEY_INIT_STR = "KEY_INIT_STR";
 const v3_0 = new Vec3(0, 3, 0);
 
 @ccclass("BENCHMARK.Benchmark")
+@menu("demo/benchmark/Benchmark")
 export class Benchmark extends Component {
 
     /** PREFAB */
