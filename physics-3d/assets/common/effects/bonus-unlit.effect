@@ -28,7 +28,7 @@ CCEffect %{
 CCProgram bonus-unlit-vs %{
   precision mediump float;
   #include <cc-global>
-  #include <cc-local>
+  #include <cc-local-batch>
   #include <input>
 
   #if USE_VERTEX_COLOR
@@ -48,7 +48,10 @@ CCProgram bonus-unlit-vs %{
     vec4 position;
     CCVertInput(position);
 
-    highp vec4 pos = cc_matViewProj * cc_matWorld * position;
+    mat4 matWorld;
+    CCGetWorldMatrix(matWorld);
+
+    highp vec4 pos = cc_matViewProj * matWorld * position;
 
     #if USE_TEXTURE
 
