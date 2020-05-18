@@ -22,9 +22,11 @@
 18. scenes/toon: NPR baseline
 19. scenes/winter: particle system, emitter editing
 
-## simple-fps
+## simple-games
 
-A really simple and lame FPS shooting game demo
+1. lobby: lobby for all simple games.
+2. simple-shooting: a simple shooting game demo.
+3. simple-run: a simple parkour game demo.
 
 ## Contribution
 

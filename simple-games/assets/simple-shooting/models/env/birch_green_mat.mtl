@@ -1,0 +1,55 @@
+{
+  "__type__": "cc.Material",
+  "_name": "birch_green_mat",
+  "_objFlags": 0,
+  "_native": "",
+  "_effectAsset": {
+    "__uuid__": "1baf0fc9-befa-459c-8bdd-af1a450a0319"
+  },
+  "_techIdx": 0,
+  "_defines": [
+    {
+      "USE_ALBEDO_MAP": true,
+      "USE_METALLIC_ROUGHNESS_MAP": true
+    }
+  ],
+  "_states": [
+    {
+      "rasterizerState": {
+        "cullMode": 0
+      },
+      "blendState": {
+        "targets": [
+          {}
+        ]
+      },
+      "depthStencilState": {}
+    }
+  ],
+  "_props": [
+    {
+      "mainTexture": {
+        "__uuid__": "ad30e782-f9b8-40d5-8ccf-23e1730268dd@50743"
+      },
+      "albedoScale": {
+        "__type__": "cc.Vec3",
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "metallicRoughnessMap": {
+        "__uuid__": "ad30e782-f9b8-40d5-8ccf-23e1730268dd@99ea5"
+      },
+      "metallic": 1,
+      "roughness": 1,
+      "emissiveScale": {
+        "__type__": "cc.Vec4",
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "w": 1
+      },
+      "alphaThreshold": 0
+    }
+  ]
+}
