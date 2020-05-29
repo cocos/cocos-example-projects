@@ -1,4 +1,4 @@
-import { _decorator, ButtonComponent, Component, director, game, Node, ScrollViewComponent, Vec3 } from 'cc';
+import { _decorator, ButtonComponent, Component, director, game, Node, ScrollViewComponent, Vec3, LayoutComponent } from 'cc';
 const { ccclass, property } = _decorator;
 import { sceneArray } from './scenelist';
 
@@ -38,10 +38,9 @@ export class BackButton extends Component {
     private static _scrollCom: ScrollViewComponent | null = null;
 
     private static _sceneIndex: number = -1;
+    private static _blockInput : Node;
     private static _prevNode: Node;
     private static _nextNode: Node;
-    private static _prevButton: ButtonComponent;
-    private static _nextButton: ButtonComponent;
 
     public __preload () {
         const sceneInfo = game._sceneInfos;
@@ -66,42 +65,43 @@ export class BackButton extends Component {
         if (BackButton._scrollNode) {
             BackButton._scrollCom = BackButton._scrollNode.getComponent(ScrollViewComponent);
         }
+        BackButton._blockInput = this.node.getChildByName('BlockInput') as Node;
+        BackButton._blockInput.active = false;
         BackButton._prevNode = this.node.getChildByName('PrevButton') as Node;
         BackButton._nextNode = this.node.getChildByName('NextButton') as Node;
         if (BackButton._prevNode && BackButton._nextNode) {
-            BackButton._prevButton = BackButton._prevNode.getComponent(ButtonComponent);
-            BackButton._nextButton = BackButton._nextNode.getComponent(ButtonComponent);
             BackButton.refreshButton();
         }
     }
 
     public backToList () {
-        director.loadScene('testlist');
-        BackButton._sceneIndex = -1;
-        BackButton.refreshButton();
-        const self = this;
-        setTimeout(() => {
+        BackButton._blockInput.active = true;
+        director.loadScene('testlist', function () {
+            BackButton._sceneIndex = -1;
+            BackButton.refreshButton();
             BackButton._scrollNode = self.node.getParent().getChildByPath('Canvas/ScrollView') as Node;
             if (BackButton._scrollNode) {
                 BackButton._scrollCom = BackButton._scrollNode.getComponent(ScrollViewComponent);
+                BackButton._scrollCom._content.getComponent(LayoutComponent).updateLayout();
                 BackButton._scrollCom.scrollToOffset(BackButton.offset, 0.1, true);
             }
-        }, 100);
+            BackButton._blockInput.active = false;
+        }.bind(this));
     }
 
     public nextscene () {
-        BackButton._nextButton.interactable = false;
+        BackButton._blockInput.active = true;
         this.updateSceneIndex(true);
         director.loadScene(this.getSceneName(), () => {
-            BackButton._nextButton.interactable = true;
+            BackButton._blockInput.active = false;
         });
     }
 
     public prescene () {
-        BackButton._prevButton.interactable = false;
+        BackButton._blockInput.active = true;
         this.updateSceneIndex(false);
         director.loadScene(this.getSceneName(), () => {
-            BackButton._prevButton.interactable = true;
+            BackButton._blockInput.active = false;
         });
     }
 
