@@ -79,7 +79,7 @@ export class BackButton extends Component {
         director.loadScene('testlist', function () {
             BackButton._sceneIndex = -1;
             BackButton.refreshButton();
-            BackButton._scrollNode = self.node.getParent().getChildByPath('Canvas/ScrollView') as Node;
+            BackButton._scrollNode = this.node.getParent().getChildByPath('Canvas/ScrollView') as Node;
             if (BackButton._scrollNode) {
                 BackButton._scrollCom = BackButton._scrollNode.getComponent(ScrollViewComponent);
                 BackButton._scrollCom._content.getComponent(LayoutComponent).updateLayout();
