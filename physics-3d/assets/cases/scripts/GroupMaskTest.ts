@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, Enum, ColliderComponent, EventTouch } from 'cc';
+import { _decorator, Component, Node, Enum, ColliderComponent, EventTouch, RigidBodyComponent } from 'cc';
 const { ccclass, property, menu } = _decorator;
 
 export enum EPHY_GROUP {
@@ -53,6 +53,13 @@ export class GroupMaskTest extends Component {
         const int = parseInt(index);
         let c = this.items[int].target.getComponent(ColliderComponent);
         c.setMask(EPHY_MASK.M_NONE);
+
+        this.items.forEach((i: GroupMaskTestItem) => {
+            if (i.target) {
+                let c = i.target.getComponent(RigidBodyComponent);
+                if (c) c.wakeUp();
+            }
+        });
     }
 
 }
