@@ -1,4 +1,5 @@
 import { _decorator, Component, Node, PhysicsSystem, Vec3, profiler } from "cc";
+import { ProfilerManager } from "../../../common/scripts/ProfilerManager";
 const { ccclass, property, menu } = _decorator;
 
 @ccclass("FALLING-BALL.GameConfig")
@@ -28,10 +29,9 @@ export class GameConfig extends Component {
     }
 
     start () {
-        if (!this.showStat && !window.CC_BUILD) {
-            setTimeout(() => {
-                if (profiler) profiler.hideStats();
-            }, 100);
+        this.node.addComponent(ProfilerManager);
+        if (!this.showStat) {
+            if (profiler) profiler.hideStats();
         }
     }
 
