@@ -1,4 +1,4 @@
-import { _decorator, Component, Prefab } from 'cc';
+import { _decorator, Component, Prefab, instantiate } from 'cc';
 import { JellyFish } from './jellyfish';
 const { ccclass, property } = _decorator;
 
@@ -18,7 +18,7 @@ export class Spawn extends Component {
         for (let i = 0; i < this.count; ++i) {
             setTimeout(() => {
                 if (!this.prefab) { return; }
-                const node = cc.instantiate(this.prefab);
+                const node = instantiate(this.prefab);
                 node.getComponent(JellyFish).range = this.range;
                 this.node.addChild(node);
             }, Math.random() * 3000);

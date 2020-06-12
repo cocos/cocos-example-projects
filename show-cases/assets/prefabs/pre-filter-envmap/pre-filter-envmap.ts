@@ -61,7 +61,7 @@ export class PreFilterEnvmap extends Component {
             const testNode = new Node();
             const testMat = new Material();
             testMat.initialize({ effectName: 'builtin-standard', defines: { USE_ALBEDO_MAP: true } });
-            testMat.setProperty('albedoMap', this._renderTarget.getGFXTextureView());
+            testMat.setProperty('albedoMap', this._renderTarget.getGFXTexture());
             const testModelComp = testNode.addComponent(ModelComponent);
             testModelComp.mesh = utils.createMesh(primitives.quad());
             testModelComp.material = testMat;

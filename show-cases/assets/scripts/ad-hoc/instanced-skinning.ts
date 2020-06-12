@@ -29,12 +29,10 @@ export class InstancedSkinning extends Component {
         return this._groupCount;
     }
 
-    private _baselineNode: Node | null = null;
     private _testNodes: Node[] = [];
     private _nameLabels: Node[] = [];
 
     public start () {
-        this._baselineNode = this._initGroup('Baseline', this.baseline, 0);
         this._updateGroups();
     }
 

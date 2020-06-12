@@ -76,17 +76,18 @@ export class BackButton extends Component {
 
     public backToList () {
         BackButton._blockInput.active = true;
-        director.loadScene('testlist', function () {
+        director.loadScene('testlist', () => {
             BackButton._sceneIndex = -1;
             BackButton.refreshButton();
             BackButton._scrollNode = this.node.getParent().getChildByPath('Canvas/ScrollView') as Node;
             if (BackButton._scrollNode) {
                 BackButton._scrollCom = BackButton._scrollNode.getComponent(ScrollViewComponent);
+                // @ts-ignore
                 BackButton._scrollCom._content.getComponent(LayoutComponent).updateLayout();
                 BackButton._scrollCom.scrollToOffset(BackButton.offset, 0.1, true);
             }
             BackButton._blockInput.active = false;
-        }.bind(this));
+        });
     }
 
     public nextscene () {

@@ -1,4 +1,4 @@
-import { _decorator, CameraComponent, Color, Component } from 'cc';
+import { _decorator, CameraComponent, Color, Component, director } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('Sponza')
@@ -23,10 +23,10 @@ export class Sponza extends Component {
 
     public update (deltaTime: number) {
         let illum = 0;
-        const t = cc.director.getTotalFrames() % this.loopTime;
+        const t = director.getTotalFrames() % this.loopTime;
         if (t > this.halfLoopTime) { illum = Math.sin((t - this.halfLoopTime) / this.halfLoopTime * Math.PI); }
         this.ambient.skyIllum = illum * this.maxIllum;
         this.color.r = this.color.g = this.color.b = illum * 255;
-        this.camera.color = this.color;
+        this.camera.clearColor = this.color;
     }
 }

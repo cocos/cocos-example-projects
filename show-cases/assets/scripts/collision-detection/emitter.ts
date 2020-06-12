@@ -1,9 +1,9 @@
-import { _decorator, Color, Component, EffectAsset, Material, ModelComponent, Node, SphereColliderComponent, Vec3 } from 'cc';
+import { _decorator, Color, Component, EffectAsset, Material, ModelComponent, Node, SphereColliderComponent, Vec3, utils, primitives, Mesh, math, ITriggerEvent } from 'cc';
 const { ccclass, property } = _decorator;
 
-const hintMesh = cc.utils.createMesh(cc.primitives.capsule(1));
-const sphereMesh = cc.utils.createMesh(cc.primitives.sphere(1));
-const outOfBounds = (v, border = 20) => Math.abs(v.x) > border || Math.abs(v.y) > border || Math.abs(v.z) > border;
+let hintMesh: Mesh;
+let sphereMesh: Mesh;
+const outOfBounds = (v: Vec3, border = 20) => Math.abs(v.x) > border || Math.abs(v.y) > border || Math.abs(v.z) > border;
 
 const v3_1 = new Vec3();
 
@@ -42,11 +42,15 @@ export class Emitter extends Component {
     @property(EffectAsset)
     public effectAsset = null;
 
-    public _deadpool = [];
-    public _livepool = [];
+    public _deadpool: Element[] = [];
+    public _livepool: Element[] = [];
 
     // generate everything procedurally
     public start () {
+      if (!hintMesh) {
+        hintMesh = utils.createMesh(primitives.capsule(1));
+        sphereMesh = utils.createMesh(primitives.sphere(1));
+      }
       // emitter hint
       const hint = new Node();
       const hintModel = hint.addComponent(ModelComponent);
@@ -82,7 +86,7 @@ export class Emitter extends Component {
         col.radius = 1;
         col.isTrigger = true;
         col.setGroup(this.group); col.setMask(this.mask);
-        col.on('onTriggerEnter', (e) => {
+        col.on('onTriggerEnter', (e: ITriggerEvent) => {
           const collider = e.selfCollider;
           const ele = collider.node.getComponent(Element);
           if (ele.collided) { return; }
@@ -114,7 +118,7 @@ export class Emitter extends Component {
       // for (let i = 0; i < this._deadpool.length; i++) this.resurrect();
     }
 
-    public reap (ele) {
+    public reap (ele: Element) {
       ele.node.active = false;
       this._livepool.splice(this._livepool.indexOf(ele), 1);
       this._deadpool.push(ele);
@@ -131,9 +135,9 @@ export class Emitter extends Component {
 
     public resurrect () {
       const ele = this._deadpool.pop();
-      const theta = cc.math.toRadian(cc.math.randomRange(this.leftAngle, this.rightAngle));
-      const phi = cc.math.randomRange(1, 2);
-      const speed = cc.math.randomRange(0.1, 0.3);
+      const theta = math.toRadian(math.randomRange(this.leftAngle, this.rightAngle));
+      const phi = math.randomRange(1, 2);
+      const speed = math.randomRange(0.1, 0.3);
       Vec3.set(ele.velocity, Math.cos(theta) * Math.sin(phi) * speed,
         Math.cos(phi) * speed, Math.sin(theta) * Math.sin(phi) * speed);
       ele.color.a = this.color.a; ele.collided = false;

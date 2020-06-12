@@ -1,4 +1,4 @@
-import { _decorator, Component, ModelComponent, Vec2, Vec4 } from 'cc';
+import { _decorator, Component, ModelComponent, Vec2, Vec4, director, eventManager } from 'cc';
 const { ccclass } = _decorator;
 
 @ccclass('Tunnel')
@@ -23,7 +23,7 @@ export class Tunnel extends Component {
     }
 
     public update () {
-        const time = cc.director.getTotalFrames() * 0.1;
+        const time = director.getTotalFrames() * 0.1;
         const margin = time % (Math.PI * 4) > Math.PI ? 0.1 : Math.abs(Math.cos(time)) * 0.1;
         this._color.y = this._color.z = margin * 10;
         this._border.x = this._border.y = margin;
@@ -36,6 +36,6 @@ export class Tunnel extends Component {
     }
 
     public onDisable () {
-        cc.eventManager.removeAllListeners();
+        eventManager.removeAllListeners();
     }
 }

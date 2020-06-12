@@ -18,28 +18,16 @@
       "METALLIC_CHANNEL": "g"
     },
     {
-      "USE_PLANAR_SHADOW": true
+      "USE_ALBEDO_MAP": true,
+      "USE_NORMAL_MAP": true,
+      "USE_PBR_MAP": true,
+      "USE_EMISSIVE_MAP": true,
+      "OCCLUSION_CHANNEL": "b",
+      "ROUGHNESS_CHANNEL": "r",
+      "METALLIC_CHANNEL": "g"
     }
   ],
   "_states": [
-    {
-      "blendState": {
-        "targets": [
-          {}
-        ]
-      },
-      "depthStencilState": {},
-      "rasterizerState": {}
-    },
-    {
-      "blendState": {
-        "targets": [
-          {}
-        ]
-      },
-      "depthStencilState": {},
-      "rasterizerState": {}
-    }
   ],
   "_props": [
     {
@@ -66,6 +54,29 @@
       "roughness": 1,
       "metallic": 1
     },
-    {}
+    {
+      "emissive": {
+        "__type__": "cc.Color",
+        "r": 255,
+        "g": 255,
+        "b": 255,
+        "a": 255
+      },
+      "normalMap": {
+        "__uuid__": "f3bec9be-a874-48cf-81ae-bb3a1f62d765@3c318"
+      },
+      "pbrMap": {
+        "__uuid__": "2fc069fc-3eb7-4e50-b073-f57540471f50@6c48a"
+      },
+      "emissiveMap": {
+        "__uuid__": "6a5e6bf4-5b33-47e1-bfb4-9d1006133f6f@6c48a"
+      },
+      "mainTexture": {
+        "__uuid__": "5770dbea-5e20-432b-9604-dc751443c502@6c48a"
+      },
+      "occlusion": 1,
+      "roughness": 1,
+      "metallic": 1
+    }
   ]
 }

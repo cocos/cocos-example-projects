@@ -1,9 +1,8 @@
 import { _decorator, Component, Quat, Vec3 } from 'cc';
 const { ccclass, property } = _decorator;
 
-const _pos = new cc.Vec3();
-const _cross = new cc.Vec3();
-const _quat = new cc.Quat();
+const _pos = new Vec3();
+const _quat = new Quat();
 
 @ccclass('JellyFish')
 export class JellyFish extends Component {
@@ -37,7 +36,7 @@ export class JellyFish extends Component {
         this._dstPos.z = Math.random() * this.range - this.range / 2;
 
         this.node.getPosition(_pos);
-        const temp = new cc.Vec3();
+        const temp = new Vec3();
         temp.set(this._dstPos);
         this._dstPos.subtract(_pos);
         this._dir.set(this._dstPos);
@@ -47,7 +46,7 @@ export class JellyFish extends Component {
         this._dstRot.y = 1 * Math.sin( angle / 2 );
         this._dstRot.z = 0;
         this._dstRot.w = Math.cos( angle / 2 );
-        cc.Quat.normalize(this._dstRot, this._dstRot);
+        Quat.normalize(this._dstRot, this._dstRot);
 
         // let angle = cc.Vec3.angle(_pos, this._dstPos);
         // this._dstRot.x = _pos.x * Math.sin(angle/2);
@@ -64,9 +63,7 @@ export class JellyFish extends Component {
         this._time = 0;
     }
 
-    // start() {},
-
-    public update (dt) {
+    public update (dt: number) {
         this._time += dt;
         if (this._changing) {
             if (this._time >= this.mixDuration) {

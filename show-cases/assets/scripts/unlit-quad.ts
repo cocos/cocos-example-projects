@@ -1,10 +1,38 @@
 import {
     _decorator, builtinResMgr, GFXAttributeName, GFXBlendFactor, GFXCullMode, GFXFormat, GFXFormatInfos, Material, ModelComponent,
-    SpriteFrame, Texture2D, utils, Vec3,
+    SpriteFrame, Texture2D, utils, Vec3, Mesh,
 } from 'cc';
 const { ccclass, property } = _decorator;
 
+let mesh: Mesh | null = null;
+let vbInfo: Mesh.IBufferView | null = null;
+let vbuffer: ArrayBuffer | null = null;
 let material: Material | null = null;
+
+const materialInfo = {
+    effectName: 'builtin-unlit',
+    technique: 0,
+    defines: { USE_TEXTURE: true },
+    states: { rasterizerState: { cullMode: GFXCullMode.NONE } },
+};
+const default_uvs = [
+    0, 1,
+    1, 1,
+    0, 0,
+    1, 0,
+];
+const meshInfo = {
+    positions: [
+        -0.5, -0.5, 0, // bottom-left
+        0.5, -0.5, 0, // bottom-right
+        -0.5,  0.5, 0, // top-left
+        0.5,  0.5, 0, // top-right
+    ],
+    uvs: default_uvs,
+    indices: [ 0, 1, 2, 2, 1, 3 ],
+    minPos: new Vec3(-0.5, -0.5, 0),
+    maxPos: new Vec3( 0.5,  0.5, 0),
+};
 const enableBlend = {
     blendState: { targets: [ {
         blend: true,
@@ -13,27 +41,6 @@ const enableBlend = {
         blendDstAlpha: GFXBlendFactor.ONE_MINUS_SRC_ALPHA,
     } ] },
 };
-
-const default_uvs = [
-    0, 1,
-    1, 1,
-    0, 0,
-    1, 0,
-];
-const mesh = utils.createMesh({
-    positions: [
-        -0.5, -0.5, 0, // bottom-left
-         0.5, -0.5, 0, // bottom-right
-        -0.5,  0.5, 0, // top-left
-         0.5,  0.5, 0, // top-right
-    ],
-    uvs: default_uvs,
-    indices: [ 0, 1, 2, 2, 1, 3 ],
-    minPos: new Vec3(-0.5, -0.5, 0),
-    maxPos: new Vec3( 0.5,  0.5, 0),
-});
-const vbInfo = mesh.struct.vertexBundles[0].view;
-const vbuffer = mesh.data.buffer.slice(vbInfo.offset, vbInfo.offset + vbInfo.length);
 
 @ccclass('UnlitQuadComponent')
 export class UnlitQuadComponent extends ModelComponent {
@@ -93,12 +100,10 @@ export class UnlitQuadComponent extends ModelComponent {
     public onLoad () {
         if (!material) {
             material = new Material();
-            material.initialize({
-                effectName: 'builtin-unlit',
-                technique: 0,
-                defines: { USE_TEXTURE: true },
-                states: { rasterizerState: { cullMode: GFXCullMode.NONE } },
-            });
+            material.initialize(materialInfo);
+            mesh = utils.createMesh(meshInfo);
+            vbInfo = mesh.struct.vertexBundles[0].view;
+            vbuffer = mesh.data.buffer.slice(vbInfo.offset, vbInfo.offset + vbInfo.length);
         }
         this.material = material;
         this._mesh = mesh;
@@ -113,7 +118,7 @@ export class UnlitQuadComponent extends ModelComponent {
         const binding = pass && pass.getBinding('mainTexture');
         if (typeof binding !== 'number') { return; }
         const target = this._sprite ? this._sprite : this._texture ? this._texture : builtinResMgr.get<Texture2D>('grey-texture');
-        pass.bindTextureView(binding, target.getGFXTextureView());
+        pass.bindTexture(binding, target.getGFXTexture());
         // update UV (handle atlas)
         const model = this.model && this.model.getSubModel(0);
         const ia = model && model.inputAssembler;
