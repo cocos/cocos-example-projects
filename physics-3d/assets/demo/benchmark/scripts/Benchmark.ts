@@ -1,4 +1,5 @@
 import { _decorator, Component, Node, Prefab, instantiate, Vec2, EventTouch, EditBoxComponent, Vec3, randomRange, random, LabelComponent, Quat, ToggleComponent, PhysicsSystem, profiler, RigidBodyComponent } from "cc";
+import { ProfilerManager } from "../../../common/scripts/ProfilerManager";
 const { ccclass, property, menu } = _decorator;
 
 export const KEY_INIT_STR = "KEY_INIT_STR";
@@ -89,13 +90,13 @@ export class Benchmark extends Component {
     private enableRotate = true;
 
     start () {
-        if (CC_PHYSICS_AMMO) {
+        if (window.CC_PHYSICS_AMMO) {
             this.l_engineInfo.string = "ammo";
-        } else if (CC_PHYSICS_CANNON) {
+        } else if (window.CC_PHYSICS_CANNON) {
             this.l_engineInfo.string = "cannon";
         }
 
-        profiler.showStats();
+        this.node.addComponent(ProfilerManager);
 
         const item = localStorage.getItem(KEY_INIT_STR);
         let value = '';
