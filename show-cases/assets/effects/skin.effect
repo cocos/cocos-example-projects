@@ -22,6 +22,12 @@ CCProgram skin-fs %{
   #include <output-standard>
   #include <gamma>
 
+  #if USE_LIGHTMAP
+    in vec2 v_luv;
+    #pragma builtin(local)
+    layout(binding = 30) uniform sampler2D cc_lightingMap;
+  #endif
+
   in vec3 v_position;
   in vec3 v_normal;
   in vec3 v_tangent;
