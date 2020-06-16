@@ -97,7 +97,7 @@ export class PreFilterEnvmap extends Component {
             view.camera.resize(size, size);
             readRegion.texExtent.width = readRegion.texExtent.height = size;
             writeRegion.texExtent.width = writeRegion.texExtent.height = size;
-            writeRegion.texSubres.baseMipLevel = m;
+            writeRegion.texSubres.mipLevel = m;
             pass.setUniform(handle, this.blurriness + m / (mipLevel - 1) * (1 - this.blurriness));
             const length = size * size * 4;
             const buffers: Uint8Array[] = [];

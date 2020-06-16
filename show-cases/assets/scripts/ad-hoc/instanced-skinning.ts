@@ -29,16 +29,17 @@ export class InstancedSkinning extends Component {
         return this._groupCount;
     }
 
+    private _baselineNode: Node | null = null;
     private _testNodes: Node[] = [];
     private _nameLabels: Node[] = [];
 
     public start () {
+        this._baselineNode = this._initGroup('Baseline', this.baseline, 0);
         this._updateGroups();
     }
 
     public toggleBaselineGroup (e: ToggleComponent) {
-        const baseline = (this.node.scene as Scene).getChildByName('Baseline');
-        baseline.active = e.isChecked;
+        this._baselineNode.active = e.isChecked;
     }
 
     public toggleAnimNames (e: ToggleComponent) {
