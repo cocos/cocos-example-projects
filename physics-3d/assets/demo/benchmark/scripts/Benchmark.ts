@@ -265,9 +265,9 @@ export class Benchmark extends Component {
         const v = parseInt(editBox.string);
         if (isNaN(v)) return;
 
-        if (v > 0) {
-            PhysicsSystem.instance.deltaTime = 1 / v;
-        }
+        let fr = math.clamp(v, 30, 300);
+        editBox.string = fr + '';
+        PhysicsSystem.instance.deltaTime = 1 / fr;
     }
 
     onEditSubStep (editBox: EditBoxComponent) {
