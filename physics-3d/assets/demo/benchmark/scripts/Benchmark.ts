@@ -133,6 +133,8 @@ export class Benchmark extends Component {
         this.onEditFrameRate(this.r_frameRateEditBox);
         this.onEditSubStep(this.r_subStepEditBox);
         this.onEditInterval(this.r_IntervalEditBox);
+
+        this.updateCurrentLab();
     }
 
     update () {
@@ -148,6 +150,10 @@ export class Benchmark extends Component {
             this.rotateDynamics.setAngularVelocity(v3_0);
         else
             this.rotateDynamics.setAngularVelocity(Vec3.ZERO);
+    }
+
+    onDestroy () {
+        PhysicsSystem.instance.enable = true;
     }
 
     private instantiate (count: number, prefab: Prefab, container: Node) {
@@ -279,6 +285,7 @@ export class Benchmark extends Component {
 
         if (v >= 0) {
             this.intervalNumber = v;
+            this.intervalCurrent = v;
         }
     }
 }
