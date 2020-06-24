@@ -133,6 +133,8 @@ export class Benchmark extends Component {
         this.onEditFrameRate(this.r_frameRateEditBox);
         this.onEditSubStep(this.r_subStepEditBox);
         this.onEditInterval(this.r_IntervalEditBox);
+
+        this.updateCurrentLab();
     }
 
     update () {
@@ -148,6 +150,10 @@ export class Benchmark extends Component {
             this.rotateDynamics.setAngularVelocity(v3_0);
         else
             this.rotateDynamics.setAngularVelocity(Vec3.ZERO);
+    }
+
+    onDestroy () {
+        PhysicsSystem.instance.enable = true;
     }
 
     private instantiate (count: number, prefab: Prefab, container: Node) {
@@ -259,9 +265,9 @@ export class Benchmark extends Component {
         const v = parseInt(editBox.string);
         if (isNaN(v)) return;
 
-        if (v > 0) {
-            PhysicsSystem.instance.deltaTime = 1 / v;
-        }
+        let fr = math.clamp(v, 30, 300);
+        editBox.string = fr + '';
+        PhysicsSystem.instance.deltaTime = 1 / fr;
     }
 
     onEditSubStep (editBox: EditBoxComponent) {
@@ -279,6 +285,7 @@ export class Benchmark extends Component {
 
         if (v >= 0) {
             this.intervalNumber = v;
+            this.intervalCurrent = v;
         }
     }
 }
