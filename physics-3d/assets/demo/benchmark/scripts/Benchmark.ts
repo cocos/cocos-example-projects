@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, Prefab, instantiate, Vec2, EventTouch, EditBoxComponent, Vec3, randomRange, random, LabelComponent, Quat, ToggleComponent, PhysicsSystem, profiler, RigidBodyComponent } from "cc";
+import { _decorator, Component, Node, Prefab, instantiate, Vec2, EventTouch, EditBoxComponent, Vec3, randomRange, random, LabelComponent, Quat, ToggleComponent, PhysicsSystem, profiler, RigidBodyComponent, math } from "cc";
 import { ProfilerManager } from "../../../common/scripts/ProfilerManager";
 const { ccclass, property, menu } = _decorator;
 
