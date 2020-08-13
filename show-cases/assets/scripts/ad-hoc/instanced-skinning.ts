@@ -18,7 +18,13 @@ export class InstancedSkinning extends Component {
     public maxGroupCount = 10;
 
     @property
+    public baselineVisible = true;
+
+    @property
     private _groupCount = 1;
+
+    @property
+    public groupPerColumn = 100;
 
     @property
     set groupCount (val) {
@@ -36,6 +42,7 @@ export class InstancedSkinning extends Component {
     public start () {
         this._baselineNode = this._initGroup('Baseline', this.baseline, 0);
         this._updateGroups();
+        this._baselineNode.active = this.baselineVisible;
     }
 
     public toggleBaselineGroup (e: ToggleComponent) {
@@ -67,8 +74,8 @@ export class InstancedSkinning extends Component {
         const group = new Node(name);
         group.parent = this.node.scene;
         for (let i = 0; i < len; i++) {
-            const posX = Math.floor(posZ / 100) * 30 + i * 3;
-            const inst = instantiate(prefab) as Node; inst.setPosition(posX, 0, posZ % 100); inst.parent = group;
+            const posX = Math.floor(posZ / this.groupPerColumn) * 30 + i * 3;
+            const inst = instantiate(prefab) as Node; inst.setPosition(posX, 0, posZ % this.groupPerColumn); inst.parent = group;
             const label = inst.getChildByName('Label').getComponent(UnlitQuadComponent);
             label.texture = this.labelImages[i]; this._nameLabels.push(label.node);
             const animComp = inst.getChildByName('Model').getComponent(SkeletalAnimationComponent);

@@ -120,7 +120,7 @@ export class UnlitQuadComponent extends ModelComponent {
         const target = this._sprite ? this._sprite : this._texture ? this._texture : builtinResMgr.get<Texture2D>('grey-texture');
         pass.bindTexture(binding, target.getGFXTexture());
         // update UV (handle atlas)
-        const model = this.model && this.model.getSubModel(0);
+        const model = this.model && this.model.subModels[0];
         const ia = model && model.inputAssembler;
         if (!ia) { return; }
         let uv = default_uvs;
