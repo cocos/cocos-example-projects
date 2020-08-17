@@ -3,7 +3,6 @@ import { _decorator, Prefab, Node, instantiate, isValid } from "cc";
 export class PrefabPoolUtil {
 
     private static _pool = {};
-    private static _recoverAmount = 0;
 
     /**
      * get a entity with pool name
@@ -27,14 +26,10 @@ export class PrefabPoolUtil {
 
         if (time != null) {
             // delay recover node with pool name
-            this._recoverAmount++;
             setTimeout(() => {
                 if (isValid(node)) {
                     node.parent = null;
-                    if (this._recoverAmount > 0) {
-                        this.recoverItemByPoolName(poolName, node);
-                        this._recoverAmount--;
-                    }
+                    this.recoverItemByPoolName(poolName, node);
                 }
             }, time * 1000);
         }
@@ -47,7 +42,7 @@ export class PrefabPoolUtil {
      * @param poolName the pool name
      * @param entity  the node need to recover
      */
-    public static recoverItemByPoolName (poolName: string, entity: Node) {
+    public static recoverItemByPoolName (poolName: string, entity: Node, removeFromParent?: boolean) {
 
         if (this._pool == null)
             return;
@@ -55,12 +50,12 @@ export class PrefabPoolUtil {
         const pool = this._pool[poolName];
         let index = pool.indexOf(entity);
         if (index == -1) {
+            if (removeFromParent) entity.removeFromParent();
             pool.push(entity);
         }
     }
 
-    public static clear () {
-        this._pool = {};
-        this._recoverAmount = 0;
+    public static clear (poolName: string) {
+        delete this._pool[poolName];
     }
 }

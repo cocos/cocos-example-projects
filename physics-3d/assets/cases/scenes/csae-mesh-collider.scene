@@ -396,6 +396,7 @@
     "_mesh": {
       "__uuid__": "054daf25-262f-4267-92ba-e8bd2d1c2bb7@82fcb"
     },
+    "_convex": false,
     "_id": "51lhAi7LJNR4WVcmgFPwmU"
   },
   {
@@ -492,24 +493,26 @@
       "__id__": 6
     },
     "_enabled": true,
+    "USE_TRANSLATE": false,
     "deltaMotion": {
       "__type__": "cc.Vec3",
       "x": 0,
       "y": 0,
       "z": 0
     },
-    "maxPostion": {
+    "USE_LOOP": false,
+    "displacement": {
       "__type__": "cc.Vec3",
       "x": 0,
       "y": 0,
       "z": 0
     },
-    "deltaRot": {
-      "__type__": "cc.Quat",
+    "USE_ROTATION": true,
+    "deltaEuler": {
+      "__type__": "cc.Vec3",
       "x": 0,
-      "y": 0.01,
-      "z": 0,
-      "w": 1
+      "y": 1,
+      "z": 0
     },
     "_id": "beOjZMom5JF5J8c/k42jaa"
   },
@@ -679,6 +682,7 @@
     "_mesh": {
       "__uuid__": "adca0157-a318-4226-91df-7c401429c552@a781f"
     },
+    "_convex": false,
     "_id": "53Oe72rT1Bwo+3/TzbvOHN"
   },
   {

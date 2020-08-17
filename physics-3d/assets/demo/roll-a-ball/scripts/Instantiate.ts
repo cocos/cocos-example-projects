@@ -14,7 +14,7 @@ export class Instantiate extends Component {
     public boxAmount: number = 30;
 
     start () {
-        _v3_0.y = 1;
+        _v3_0.y = 0.5;
         const radianPart = 2 * Math.PI / this.boxAmount;
         for (let i = this.boxAmount; i--;) {
             const boxNode = instantiate(this.boxPrefab) as Node;

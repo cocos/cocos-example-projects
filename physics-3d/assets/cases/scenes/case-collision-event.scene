@@ -34,13 +34,13 @@
         "__id__": 32
       },
       {
-        "__id__": 38
+        "__id__": 37
       },
       {
-        "__id__": 43
+        "__id__": 42
       },
       {
-        "__id__": 48
+        "__id__": 47
       },
       {
         "__id__": 53
@@ -838,10 +838,10 @@
     },
     "_lrot": {
       "__type__": "cc.Quat",
-      "x": 0,
+      "x": 0.05117686792206018,
       "y": 0,
       "z": 0,
-      "w": 1
+      "w": 0.9986896055280079
     },
     "_lscale": {
       "__type__": "cc.Vec3",
@@ -852,7 +852,7 @@
     "_layer": 1073741824,
     "_euler": {
       "__type__": "cc.Vec3",
-      "x": 0,
+      "x": 5.867,
       "y": 0,
       "z": 0
     },
@@ -959,7 +959,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "球A",
+    "_name": "圆圈",
     "_objFlags": 0,
     "_parent": {
       "__id__": 1
@@ -975,157 +975,6 @@
       },
       {
         "__id__": 36
-      },
-      {
-        "__id__": 37
-      }
-    ],
-    "_prefab": null,
-    "_lpos": {
-      "__type__": "cc.Vec3",
-      "x": 0.452,
-      "y": 5.519,
-      "z": 1.851
-    },
-    "_lrot": {
-      "__type__": "cc.Quat",
-      "x": 0,
-      "y": 0,
-      "z": 0,
-      "w": 1
-    },
-    "_lscale": {
-      "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
-      "z": 1
-    },
-    "_layer": 1073741824,
-    "_euler": {
-      "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 0,
-      "z": 0
-    },
-    "_id": "e5sLZsfz1KKZ+TANusQBJL"
-  },
-  {
-    "__type__": "cc.ModelComponent",
-    "_name": "Sphere<ModelComponent>",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 32
-    },
-    "_enabled": true,
-    "_materials": [
-      {
-        "__uuid__": "0b58b9a4-2431-48a4-8f78-fec8c06357b1"
-      }
-    ],
-    "_visFlags": 0,
-    "lightmapSettings": {
-      "__id__": 34
-    },
-    "_mesh": {
-      "__uuid__": "1263d74c-8167-4928-91a6-4e2672411f47@17020"
-    },
-    "_shadowCastingMode": 0,
-    "_enableMorph": true,
-    "_id": "84t1T/Y9pLUrPkfndPwdDV"
-  },
-  {
-    "__type__": "cc.ModelLightmapSettings",
-    "texture": null,
-    "uvParam": {
-      "__type__": "cc.Vec4",
-      "x": 0,
-      "y": 0,
-      "z": 0,
-      "w": 0
-    },
-    "_bakeable": false,
-    "_castShadow": false,
-    "_recieveShadow": false,
-    "_lightmapSize": 64
-  },
-  {
-    "__type__": "cc.SphereColliderComponent",
-    "_name": "球A<SphereColliderComponent>",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 32
-    },
-    "_enabled": true,
-    "_material": null,
-    "_isTrigger": false,
-    "_center": {
-      "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 0,
-      "z": 0
-    },
-    "_radius": 0.5,
-    "_id": "8aL1E2RUJKYaq+dJVyp6qt"
-  },
-  {
-    "__type__": "cc.RigidBodyComponent",
-    "_name": "球A<RigidBodyComponent>",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 32
-    },
-    "_enabled": true,
-    "_mass": 10,
-    "_linearDamping": 0.1,
-    "_angularDamping": 0.1,
-    "_fixedRotation": false,
-    "_isKinematic": false,
-    "_useGravity": true,
-    "_linearFactor": {
-      "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
-      "z": 1
-    },
-    "_angularFactor": {
-      "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
-      "z": 1
-    },
-    "_id": "efgBsfjwJJwpXCJMNl6H0G"
-  },
-  {
-    "__type__": "9ccc3xH9R9Aw6dEmQwYXzGP",
-    "_name": "球B<CollisionTest>",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 32
-    },
-    "_enabled": true,
-    "label": {
-      "__id__": 12
-    },
-    "_id": "66SsV35sFDMLpZjmBg2lwg"
-  },
-  {
-    "__type__": "cc.Node",
-    "_name": "圆圈",
-    "_objFlags": 0,
-    "_parent": {
-      "__id__": 1
-    },
-    "_children": [],
-    "_active": true,
-    "_components": [
-      {
-        "__id__": 39
-      },
-      {
-        "__id__": 41
-      },
-      {
-        "__id__": 42
       }
     ],
     "_prefab": null,
@@ -1162,7 +1011,7 @@
     "_name": "Torus<ModelComponent>",
     "_objFlags": 0,
     "node": {
-      "__id__": 38
+      "__id__": 32
     },
     "_enabled": true,
     "_materials": [
@@ -1172,7 +1021,7 @@
     ],
     "_visFlags": 0,
     "lightmapSettings": {
-      "__id__": 40
+      "__id__": 34
     },
     "_mesh": {
       "__uuid__": "1263d74c-8167-4928-91a6-4e2672411f47@40ece"
@@ -1201,7 +1050,7 @@
     "_name": "Torus<MeshColliderComponent>",
     "_objFlags": 0,
     "node": {
-      "__id__": 38
+      "__id__": 32
     },
     "_enabled": true,
     "_material": null,
@@ -1215,6 +1064,7 @@
     "_mesh": {
       "__uuid__": "1263d74c-8167-4928-91a6-4e2672411f47@40ece"
     },
+    "_convex": false,
     "_id": "6dsRdSFjdH/7ZzxyhPDwEU"
   },
   {
@@ -1222,7 +1072,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 38
+      "__id__": 32
     },
     "_enabled": true,
     "support": 5,
@@ -1239,13 +1089,13 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 44
+        "__id__": 38
       },
       {
-        "__id__": 46
+        "__id__": 40
       },
       {
-        "__id__": 47
+        "__id__": 41
       }
     ],
     "_prefab": null,
@@ -1282,7 +1132,7 @@
     "_name": "Cone<ModelComponent>",
     "_objFlags": 0,
     "node": {
-      "__id__": 43
+      "__id__": 37
     },
     "_enabled": true,
     "_materials": [
@@ -1292,7 +1142,7 @@
     ],
     "_visFlags": 0,
     "lightmapSettings": {
-      "__id__": 45
+      "__id__": 39
     },
     "_mesh": {
       "__uuid__": "1263d74c-8167-4928-91a6-4e2672411f47@38fd2"
@@ -1321,7 +1171,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 43
+      "__id__": 37
     },
     "_enabled": true,
     "_material": null,
@@ -1335,6 +1185,7 @@
     "_mesh": {
       "__uuid__": "1263d74c-8167-4928-91a6-4e2672411f47@38fd2"
     },
+    "_convex": false,
     "_id": "22KNTs8HFKkL2Qqv/Qltqy"
   },
   {
@@ -1342,7 +1193,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 43
+      "__id__": 37
     },
     "_enabled": true,
     "support": 2,
@@ -1359,13 +1210,13 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 49
+        "__id__": 43
       },
       {
-        "__id__": 51
+        "__id__": 45
       },
       {
-        "__id__": 52
+        "__id__": 46
       }
     ],
     "_prefab": null,
@@ -1402,7 +1253,7 @@
     "_name": "Cylinder<ModelComponent>",
     "_objFlags": 0,
     "node": {
-      "__id__": 48
+      "__id__": 42
     },
     "_enabled": true,
     "_materials": [
@@ -1412,7 +1263,7 @@
     ],
     "_visFlags": 0,
     "lightmapSettings": {
-      "__id__": 50
+      "__id__": 44
     },
     "_mesh": {
       "__uuid__": "1263d74c-8167-4928-91a6-4e2672411f47@8abdc"
@@ -1441,7 +1292,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 48
+      "__id__": 42
     },
     "_enabled": true,
     "_material": null,
@@ -1462,7 +1313,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 48
+      "__id__": 42
     },
     "_enabled": true,
     "_mass": 10,
@@ -1484,6 +1335,157 @@
       "z": 1
     },
     "_id": "e711x0E01InYcUeP8yPCr2"
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "球A",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 1
+    },
+    "_children": [],
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 48
+      },
+      {
+        "__id__": 50
+      },
+      {
+        "__id__": 51
+      },
+      {
+        "__id__": 52
+      }
+    ],
+    "_prefab": null,
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": 0.279,
+      "y": 5.519,
+      "z": 1.049
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_layer": 1073741824,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_id": "e5sLZsfz1KKZ+TANusQBJL"
+  },
+  {
+    "__type__": "cc.ModelComponent",
+    "_name": "Sphere<ModelComponent>",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 47
+    },
+    "_enabled": true,
+    "_materials": [
+      {
+        "__uuid__": "0b58b9a4-2431-48a4-8f78-fec8c06357b1"
+      }
+    ],
+    "_visFlags": 0,
+    "lightmapSettings": {
+      "__id__": 49
+    },
+    "_mesh": {
+      "__uuid__": "1263d74c-8167-4928-91a6-4e2672411f47@17020"
+    },
+    "_shadowCastingMode": 0,
+    "_enableMorph": true,
+    "_id": "84t1T/Y9pLUrPkfndPwdDV"
+  },
+  {
+    "__type__": "cc.ModelLightmapSettings",
+    "texture": null,
+    "uvParam": {
+      "__type__": "cc.Vec4",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 0
+    },
+    "_bakeable": false,
+    "_castShadow": false,
+    "_recieveShadow": false,
+    "_lightmapSize": 64
+  },
+  {
+    "__type__": "cc.SphereColliderComponent",
+    "_name": "球A<SphereColliderComponent>",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 47
+    },
+    "_enabled": true,
+    "_material": null,
+    "_isTrigger": false,
+    "_center": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_radius": 0.5,
+    "_id": "8aL1E2RUJKYaq+dJVyp6qt"
+  },
+  {
+    "__type__": "cc.RigidBodyComponent",
+    "_name": "球A<RigidBodyComponent>",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 47
+    },
+    "_enabled": true,
+    "_mass": 10,
+    "_linearDamping": 0.1,
+    "_angularDamping": 0.1,
+    "_fixedRotation": false,
+    "_isKinematic": false,
+    "_useGravity": true,
+    "_linearFactor": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_angularFactor": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_id": "efgBsfjwJJwpXCJMNl6H0G"
+  },
+  {
+    "__type__": "9ccc3xH9R9Aw6dEmQwYXzGP",
+    "_name": "球B<CollisionTest>",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 47
+    },
+    "_enabled": true,
+    "label": {
+      "__id__": 12
+    },
+    "_id": "66SsV35sFDMLpZjmBg2lwg"
   },
   {
     "__type__": "cc.Node",
