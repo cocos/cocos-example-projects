@@ -46,9 +46,9 @@ export class FloorFlagCtr extends Component {
             for (let i = 0; i < colliders.length; i++) {
                 let clone: Node;
                 if (colliders[i].node.name == "Cube") {
-                    clone = PrefabPoolUtil.getItemByPoolName("FALLING-BALL." + colliders[i].node.name, this.cubePrefab, 5);
+                    clone = PrefabPoolUtil.getItemByPoolName("FALLING-BALL.Cube", this.cubePrefab, 5);
                 } else {
-                    clone = PrefabPoolUtil.getItemByPoolName("FALLING-BALL." + colliders[i].node.name, this.cubeRedPrefab, 5);
+                    clone = PrefabPoolUtil.getItemByPoolName("FALLING-BALL.CubeRed", this.cubeRedPrefab, 5);
                 }
                 clone.parent = null;
                 this.cubeRoot.addChild(clone);
@@ -90,6 +90,7 @@ export class FloorFlagCtr extends Component {
     }
 
     onDestroy () {
-        PrefabPoolUtil.clear();
+        PrefabPoolUtil.clear("FALLING-BALL.Cube");
+        PrefabPoolUtil.clear("FALLING-BALL.CubeRed");
     }
 }

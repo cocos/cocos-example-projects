@@ -2,10 +2,22 @@
 declare function Ammo (): Promise<void>;
 
 declare namespace Ammo {
+  type Constructor<T = {}> = new (...args: any[]) => T;
   type VoidPtr = number;
-  const HEAPF32: Float32Array;
+  const NULL: {};
   const PHY_FLOAT: number;
+  const HEAPF32: Float32Array;
+  function destroy (obj: Ammo.Type): void;
+  function castObject<T1, T2 extends Ammo.Type> (obj: T1, fun: Constructor<T2>): T2;
+  function wrapPointer<T extends Ammo.Type> (params: number, obj: Constructor<T>): T;
+  function addFunction (params: Function): number;
+  function getClass (obj: Ammo.Type): void;
+  function getPointer (obj: Ammo.Type): void;
+  function getCache (fun: Constructor<Ammo.Type>): void;
   function _malloc (byte: number): number;
+  function _free (...args: any): any;
+  function compare (obj1: Ammo.Type, obj2: Ammo.Type): boolean;
+
   interface btIDebugDraw {
     drawLine (from: btVector3, to: btVector3, color: btVector3): void;
     drawContactPoint (
@@ -152,6 +164,7 @@ declare namespace Ammo {
     public setRestitution (rest: number): void;
     public setFriction (frict: number): void;
     public setRollingFriction (frict: number): void;
+    public setSpinningFriction (frict: number): void;
     public getWorldTransform (): btTransform;
     public getCollisionFlags (): number;
     public setCollisionFlags (flags: number): void;
@@ -197,15 +210,16 @@ declare namespace Ammo {
   }
   interface btNumberArray extends btArray<number> { }
   interface btConstCollisionObjectArray extends btArray<btCollisionObject> { }
+  interface btVector3Array extends btArray<btVector3> { }
 
   class AllHitsRayResultCallback extends RayResultCallback {
     public m_rayFromWorld: btVector3;
     public m_rayToWorld: btVector3;
-    public m_hitNormalWorld: btVector3;
-    public m_hitPointWorld: btVector3;
+    public m_hitNormalWorld: btVector3Array;
+    public m_hitPointWorld: btVector3Array;
     constructor (from: btVector3, to: btVector3);
-    public get_m_hitPointWorld (): btVector3;
-    public get_m_hitNormalWorld (): btVector3;
+    public get_m_hitPointWorld (): btVector3Array;
+    public get_m_hitNormalWorld (): btVector3Array;
     public m_hitFractions: btNumberArray;
     public m_collisionObjects: btConstCollisionObjectArray;
     public m_shapeParts: btNumberArray;
@@ -302,6 +316,10 @@ declare namespace Ammo {
     public getMargin (): number;
     public setUserIndex (i: number): void;
     public isCompound (): boolean;
+    public getAabb (t: btTransform, min: btVector3, max: btVector3): void;
+
+    ///XXX
+    public getLocalBoundingSphere (): number;
   }
 
   class btConvexShape extends btCollisionShape { }
@@ -417,7 +435,7 @@ declare namespace Ammo {
     public setMargin (margin: number): void;
     public getMargin (): number;
     public updateChildTransform (childIndex: number, newChildTransform: btTransform, shouldRecalculateLocalAabb?: boolean): void;
-    public setMaterial (childShapeindex: number, f: number, r: number, rf?: number): void;
+    public setMaterial (childShapeindex: number, f: number, r: number, rf?: number, sf?: number): void;
   }
 
   class btStridingMeshInterface { }
@@ -445,6 +463,10 @@ declare namespace Ammo {
 
   class btStaticPlaneShape extends btConcaveShape {
     constructor (planeNormal: btVector3, planeConstant: number);
+    // [Const, Ref] btVector3 getPlaneNormal();
+    getPlaneNormal (): btVector3;
+    // void setPlaneConstant(float v);
+    setPlaneConstant (v: number): void;
   }
 
   class btTriangleMeshShape extends btConcaveShape { }
@@ -474,6 +496,12 @@ declare namespace Ammo {
   }
 
   class btDefaultCollisionConstructionInfo {
+    // m_persistentManifoldPool: btPoolAllocator;
+    // m_collisionAlgorithmPool: btPoolAllocator;
+    m_defaultMaxPersistentManifoldPoolSize: number | 1;
+    m_defaultMaxCollisionAlgorithmPoolSize: number | 1;
+    m_customCollisionAlgorithmMaxElementSize: number | 1;
+    m_useEpaPenetrationAlgorithm: number | 1;
     constructor ();
   }
 
@@ -496,6 +524,7 @@ declare namespace Ammo {
 
   class btCollisionDispatcher extends btDispatcher {
     constructor (conf: btDefaultCollisionConfiguration);
+    public setDispatcherFlags (flags: number): void;
   }
 
   class btOverlappingPairCallback { }
@@ -591,8 +620,11 @@ declare namespace Ammo {
     public getFlags (): number;
     public setFlags (flags: number): void;
     public wantsSleeping (): boolean;
+    public clearForces (): void;
+    public getTotalForce (): btVector3;
+    public getTotalTorque (): btVector3;
 
-    // XXX
+    //XXX
     public clearState (): void;
   }
 
@@ -958,7 +990,7 @@ declare namespace Ammo {
       ghostObject: btPairCachingGhostObject,
       convexShape: btConvexShape,
       stepHeight: number,
-      upAxis?: number,
+      upAxis?: btVector3,
     );
     public setUpAxis (axis: number): void;
     public setWalkDirection (walkDirection: btVector3): void;
@@ -970,8 +1002,8 @@ declare namespace Ammo {
     public setJumpSpeed (jumpSpeed: number): void;
     public setMaxJumpHeight (maxJumpHeight: number): void;
     public canJump (): boolean;
-    public jump (): void;
-    public setGravity (gravity: number): void;
+    public jump (v?: btVector3): void;
+    public setGravity (gravity: btVector3): void;
     public getGravity (): number;
     public setMaxSlope (slopeRadians: number): void;
     public getMaxSlope (): number;
@@ -1379,14 +1411,6 @@ declare namespace Ammo {
     | btSoftBodyArray
     | btSoftRigidDynamicsWorld
     | btSoftBodyHelpers;
-
-  function destroy (obj: Ammo.Type): void;
-
-  function castObject<T> (...args: any): any;
-
-  function wrapPointer<T extends Ammo.Type> (params: number, obj: new (...args: any[]) => T): T;
-
-  function addFunction (params: Function): number;
 }
 
 declare module '@cocos/ammo' {

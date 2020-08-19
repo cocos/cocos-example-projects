@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, Prefab, instantiate, Vec2, EventTouch, EditBoxComponent, Vec3, randomRange, random, LabelComponent, Quat, ToggleComponent, PhysicsSystem, profiler, RigidBodyComponent, math } from "cc";
+import { _decorator, Component, Node, Prefab, instantiate, Vec2, EventTouch, EditBoxComponent, Vec3, randomRange, random, LabelComponent, Quat, ToggleComponent, PhysicsSystem, profiler, RigidBodyComponent, director, Director } from "cc";
 import { ProfilerManager } from "../../../common/scripts/ProfilerManager";
 const { ccclass, property, menu } = _decorator;
 
@@ -64,9 +64,6 @@ export class Benchmark extends Component {
     @property({ type: ToggleComponent })
     readonly r_rotateToggle: ToggleComponent = null;
 
-    @property({ type: ToggleComponent })
-    readonly r_useFixToggle: ToggleComponent = null;
-
     @property({ type: EditBoxComponent })
     readonly r_frameRateEditBox: EditBoxComponent = null;
 
@@ -129,12 +126,13 @@ export class Benchmark extends Component {
         this.instantiate(this.initSphereRBCount, this.sphereRB, this.sphereRBContainer);
 
         this.onRotateToggole(this.r_rotateToggle);
-        this.onUseFixTimeToggole(this.r_useFixToggle);
         this.onEditFrameRate(this.r_frameRateEditBox);
         this.onEditSubStep(this.r_subStepEditBox);
         this.onEditInterval(this.r_IntervalEditBox);
 
-        this.updateCurrentLab();
+        director.once(Director.EVENT_BEFORE_PHYSICS, () => {
+            PhysicsSystem.instance['_accumulator'] = 0;
+        })
     }
 
     update () {
@@ -150,10 +148,6 @@ export class Benchmark extends Component {
             this.rotateDynamics.setAngularVelocity(v3_0);
         else
             this.rotateDynamics.setAngularVelocity(Vec3.ZERO);
-    }
-
-    onDestroy () {
-        PhysicsSystem.instance.enable = true;
     }
 
     private instantiate (count: number, prefab: Prefab, container: Node) {
@@ -251,23 +245,13 @@ export class Benchmark extends Component {
         this.enableRotate = toggle.isChecked;
     }
 
-    onUseFixTimeToggole (toggle: ToggleComponent) {
-        if (toggle.isChecked) {
-            PhysicsSystem.instance.useFixedTime = true;
-            this.r_subStepEditBox.node.active = false;
-        } else {
-            PhysicsSystem.instance.useFixedTime = false;
-            this.r_subStepEditBox.node.active = true;
-        }
-    }
-
     onEditFrameRate (editBox: EditBoxComponent) {
         const v = parseInt(editBox.string);
         if (isNaN(v)) return;
 
-        let fr = math.clamp(v, 30, 300);
-        editBox.string = fr + '';
-        PhysicsSystem.instance.deltaTime = 1 / fr;
+        if (v > 0) {
+            PhysicsSystem.instance.deltaTime = 1 / v;
+        }
     }
 
     onEditSubStep (editBox: EditBoxComponent) {
@@ -285,7 +269,6 @@ export class Benchmark extends Component {
 
         if (v >= 0) {
             this.intervalNumber = v;
-            this.intervalCurrent = v;
         }
     }
 }

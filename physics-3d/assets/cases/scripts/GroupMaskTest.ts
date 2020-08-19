@@ -1,21 +1,15 @@
-import { _decorator, Component, Node, Enum, ColliderComponent, EventTouch, RigidBodyComponent } from 'cc';
+import { _decorator, Component, Node, Enum, ColliderComponent, EventTouch, RigidBodyComponent, PhysicsSystem, Layers } from 'cc';
 const { ccclass, property, menu } = _decorator;
 
 export enum EPHY_GROUP {
-    G_0 = 1 << 0,
-    G_1 = 1 << 1,
-    G_2 = 1 << 2,
+    DEFAULT = Layers.Enum.DEFAULT,
 };
 
 Enum(EPHY_GROUP);
 
 export enum EPHY_MASK {
     M_NONE = 0,
-    M_0 = EPHY_GROUP.G_0,
-    M_1 = EPHY_GROUP.G_1,
-    M_2 = EPHY_GROUP.G_2,
-    M_012 = EPHY_GROUP.G_0 + EPHY_GROUP.G_1 + EPHY_GROUP.G_2,
-    M_3 = EPHY_GROUP.G_2 << 1,
+    M_ALL = 0xffffffff
 };
 
 Enum(EPHY_MASK);
@@ -26,10 +20,10 @@ class GroupMaskTestItem {
     target: Node = null;
 
     @property({ type: EPHY_GROUP })
-    group = EPHY_GROUP.G_0;
+    group = EPHY_GROUP.DEFAULT;
 
     @property({ type: EPHY_MASK })
-    mask = EPHY_MASK.M_012;
+    mask = EPHY_MASK.M_ALL;
 }
 
 @ccclass('CASES.GroupMaskTest')
@@ -43,8 +37,13 @@ export class GroupMaskTest extends Component {
         this.items.forEach((i: GroupMaskTestItem) => {
             if (i.target) {
                 let c = i.target.getComponent(ColliderComponent);
-                c.setGroup(i.group);
-                c.setMask(i.mask);
+                if (PhysicsSystem.instance.useCollisionMatrix) {
+                    c.setGroup(i.group);
+                    PhysicsSystem.instance[i.group] = i.mask;
+                } else {
+                    c.setGroup(i.group);
+                    c.setMask(i.mask);
+                }
             }
         });
     }
@@ -52,7 +51,11 @@ export class GroupMaskTest extends Component {
     setItemMaskToNone (event: EventTouch, index: string) {
         const int = parseInt(index);
         let c = this.items[int].target.getComponent(ColliderComponent);
-        c.setMask(EPHY_MASK.M_NONE);
+        if (PhysicsSystem.instance.useCollisionMatrix) {
+            PhysicsSystem.instance.collisionMatrix[c.getGroup()] = EPHY_MASK.M_NONE;
+        } else {
+            c.setMask(EPHY_MASK.M_NONE);
+        }
 
         this.items.forEach((i: GroupMaskTestItem) => {
             if (i.target) {
@@ -60,6 +63,11 @@ export class GroupMaskTest extends Component {
                 if (c) c.wakeUp();
             }
         });
+    }
+
+    onDestroy () {
+        if (PhysicsSystem.instance.useCollisionMatrix)
+            PhysicsSystem.instance['resetCollisionMatrix']();
     }
 
 }

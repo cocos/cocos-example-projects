@@ -9,11 +9,6 @@ export class AxisHelper extends Component {
     private static _insArr: AxisHelper[] = [];
     private _ins: Node = null;
 
-    constructor () {
-        super();
-        AxisHelper._insArr.push(this);
-    }
-
     __preload () {
         if (AxisHelper._axis == null) {
             loader.loadRes('common/prefabs/Axis', Prefab, (...args) => {
@@ -29,6 +24,10 @@ export class AxisHelper extends Component {
                 }
             });
         }
+    }
+
+    onLoad () {
+        AxisHelper._insArr.push(this);
     }
 
     onEnable () {

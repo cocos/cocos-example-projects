@@ -21,7 +21,7 @@ export class BackButton extends Component {
         const array: string[] = sceneInfo.map((i) => i.url).sort();
         for (let i = 0; i < array.length; i++) {
             let str = array[i];
-            if (str.includes("TestList") || str.includes("subPack") || str.includes('editor-only')) {
+            if (str.includes("TestList") || str.includes("subPack") || str.includes('editor-only') || str.includes('experiment')) {
                 continue;
             }
             const firstIndex = str.lastIndexOf('/') + 1;
