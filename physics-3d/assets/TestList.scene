@@ -300,7 +300,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 300,
+      "y": 320,
       "z": 1
     },
     "_lrot": {
@@ -744,7 +744,7 @@
     "cancelInnerEvents": true,
     "scrollEvents": [],
     "_content": {
-      "__id__": 8
+      "__id__": 7
     },
     "_horizontalScrollBar": null,
     "_verticalScrollBar": {
@@ -1731,7 +1731,7 @@
     "ambient": {
       "__id__": 54
     },
-    "planarShadows": {
+    "shadows": {
       "__id__": 55
     },
     "_skybox": {
@@ -1760,7 +1760,8 @@
     }
   },
   {
-    "__type__": "cc.PlanarShadowInfo",
+    "__type__": "cc.ShadowsInfo",
+    "_type": 0,
     "_enabled": false,
     "_normal": {
       "__type__": "cc.Vec3",
@@ -1775,6 +1776,16 @@
       "g": 0,
       "b": 0,
       "a": 76
+    },
+    "_pcf": 0,
+    "_near": 1,
+    "_far": 30,
+    "_aspect": 1,
+    "_orthoSize": 5,
+    "_size": {
+      "__type__": "cc.Vec2",
+      "x": 512,
+      "y": 512
     }
   },
   {
