@@ -7,7 +7,13 @@ enum ERaycastType {
     CLOSEST,
 }
 Enum(ERaycastType);
-Enum(macro.KEY);
+
+enum EKey {
+    r = macro.KEY.r,
+    g = macro.KEY.g,
+    b = macro.KEY.b,
+}
+Enum(EKey);
 
 @ccclass('COMMON.RaycastHelper')
 @menu('common/RaycastHelper')
@@ -26,7 +32,7 @@ export class RaycastHelper extends Component {
     raycastType: ERaycastType = ERaycastType.CLOSEST;
 
     @property({
-        type: macro.KEY,
+        type: EKey,
         tooltip: "开关，控制全局",
     })
     switch: number = macro.KEY.r;

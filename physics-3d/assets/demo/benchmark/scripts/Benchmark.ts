@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, Prefab, instantiate, Vec2, EventTouch, EditBoxComponent, Vec3, randomRange, random, LabelComponent, Quat, ToggleComponent, PhysicsSystem, profiler, RigidBodyComponent, director, Director } from "cc";
+import { _decorator, Component, Node, Prefab, instantiate, Vec2, EventTouch, EditBoxComponent, Vec3, randomRange, random, LabelComponent, Quat, ToggleComponent, PhysicsSystem, profiler, RigidBodyComponent, director, Director, math } from "cc";
 import { ProfilerManager } from "../../../common/scripts/ProfilerManager";
 const { ccclass, property, menu } = _decorator;
 
@@ -87,9 +87,9 @@ export class Benchmark extends Component {
     private enableRotate = true;
 
     start () {
-        if (window.CC_PHYSICS_AMMO) {
+        if (globalThis.CC_PHYSICS_AMMO) {
             this.l_engineInfo.string = "ammo";
-        } else if (window.CC_PHYSICS_CANNON) {
+        } else if (globalThis.CC_PHYSICS_CANNON) {
             this.l_engineInfo.string = "cannon";
         }
 
@@ -148,6 +148,10 @@ export class Benchmark extends Component {
             this.rotateDynamics.setAngularVelocity(v3_0);
         else
             this.rotateDynamics.setAngularVelocity(Vec3.ZERO);
+    }
+
+    onDestroy () {
+        PhysicsSystem.instance.enable = true;
     }
 
     private instantiate (count: number, prefab: Prefab, container: Node) {
@@ -249,9 +253,9 @@ export class Benchmark extends Component {
         const v = parseInt(editBox.string);
         if (isNaN(v)) return;
 
-        if (v > 0) {
-            PhysicsSystem.instance.deltaTime = 1 / v;
-        }
+        let fr = math.clamp(v, 30, 300);
+        editBox.string = fr + '';
+        PhysicsSystem.instance.fixedTimeStep = 1 / fr;
     }
 
     onEditSubStep (editBox: EditBoxComponent) {
@@ -259,7 +263,7 @@ export class Benchmark extends Component {
         if (isNaN(v)) return;
 
         if (v >= 0) {
-            PhysicsSystem.instance.maxSubStep = v;
+            PhysicsSystem.instance.maxSubSteps = v;
         }
     }
 
