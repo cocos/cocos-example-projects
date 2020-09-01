@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, Scene, renderer, SliderComponent, CameraComponent } from 'cc';
+import { _decorator, Component, Node, Scene, renderer, SliderComponent, CameraComponent, director } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('Exposure')
@@ -9,7 +9,8 @@ export class Exposure extends Component {
 
     start () {
         const scene = this.node.scene as Scene;
-        this._ambient = scene.renderScene.ambient;
+        const pipeline = director.root.pipeline;
+        this._ambient = pipeline.ambient;
         this._camera = scene.getComponentInChildren(CameraComponent).camera;
     }
 
