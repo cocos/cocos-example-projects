@@ -120,6 +120,7 @@ export class Benchmark extends Component {
             }
         }
 
+        this.l_current.string = "目前数量：" + this.initBoxCount + "-" + this.initSphereCount + "-" + this.initBoxRBCount + "-" + this.initSphereRBCount;
         this.instantiate(this.initBoxCount, this.box, this.boxContainer);
         this.instantiate(this.initSphereCount, this.sphere, this.sphereContainer);
         this.instantiate(this.initBoxRBCount, this.boxRB, this.boxRBContainer);
