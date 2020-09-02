@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, Material, systemEvent, SystemEventType, EventTouch, CameraComponent, geometry, Touch, PhysicsSystem, Layers, ModelComponent, ToggleComponent, LabelComponent, EditBoxComponent } from "cc";
+import { _decorator, Component, Node, Material, systemEvent, SystemEventType, EventTouch, CameraComponent, geometry, Touch, PhysicsSystem, ModelComponent, ToggleComponent, LabelComponent, EditBoxComponent } from "cc";
 const { ccclass, property, menu } = _decorator;
 
 enum ERaycastType {

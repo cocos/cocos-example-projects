@@ -1,11 +1,5 @@
-import { _decorator, Component, Node, Enum, ColliderComponent, EventTouch, RigidBodyComponent, PhysicsSystem, Layers } from 'cc';
+import { _decorator, Component, Node, Enum, ColliderComponent, EventTouch, RigidBodyComponent, PhysicsSystem } from 'cc';
 const { ccclass, property, menu } = _decorator;
-
-export enum EPHY_GROUP {
-    DEFAULT = Layers.Enum.DEFAULT,
-};
-
-Enum(EPHY_GROUP);
 
 export enum EPHY_MASK {
     M_NONE = 0,
@@ -19,8 +13,8 @@ class GroupMaskTestItem {
     @property({ type: Node })
     target: Node = null;
 
-    @property({ type: EPHY_GROUP })
-    group = EPHY_GROUP.DEFAULT;
+    @property({ type: PhysicsSystem.PhysicsGroup })
+    group = PhysicsSystem.PhysicsGroup.DEFAULT;
 
     @property({ type: EPHY_MASK })
     mask = EPHY_MASK.M_ALL;
@@ -33,19 +27,27 @@ export class GroupMaskTest extends Component {
     @property({ type: [GroupMaskTestItem] })
     items: GroupMaskTestItem[] = []
 
+    @property({ type: RigidBodyComponent })
+    testBody: RigidBodyComponent = null;
+
     start () {
         this.items.forEach((i: GroupMaskTestItem) => {
             if (i.target) {
                 let c = i.target.getComponent(ColliderComponent);
                 if (PhysicsSystem.instance.useCollisionMatrix) {
                     c.setGroup(i.group);
-                    PhysicsSystem.instance[i.group] = i.mask;
+                    PhysicsSystem.instance.collisionMatrix[i.group] = i.mask;
                 } else {
                     c.setGroup(i.group);
                     c.setMask(i.mask);
                 }
             }
         });
+
+        // test mask when not use collision matrix
+        if (this.testBody && !PhysicsSystem.instance.useCollisionMatrix) {
+            this.testBody.setMask(0);
+        }
     }
 
     setItemMaskToNone (event: EventTouch, index: string) {
