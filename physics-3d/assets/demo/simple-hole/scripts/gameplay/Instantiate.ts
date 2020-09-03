@@ -26,9 +26,13 @@ export class Instantiate extends Component {
     @property
     public gravity: math.Vec3 = new math.Vec3(0, -10, 0);
 
+    private ucm = false;
+
     start () {
         // Your initialization goes here.
         PhysicsSystem.instance.gravity = this.gravity;
+        this.ucm = PhysicsSystem.instance.useCollisionMatrix;
+        (PhysicsSystem.instance as any)['useCollisionMatrix'] = false;
         this.spawnEntity();
         director.once(Director.EVENT_BEFORE_PHYSICS, () => {
             PhysicsSystem.instance.resetAccumulator()
@@ -36,6 +40,7 @@ export class Instantiate extends Component {
     }
 
     onDestroy () {
+        (PhysicsSystem.instance as any)['useCollisionMatrix'] = this.ucm;
         PhysicsSystem.instance.gravity = new Vec3(0, -10, 0);
         PrefabPoolUtil.clear('SIMPLE-HOLE.box');
         PrefabPoolUtil.clear('SIMPLE-HOLE.sphere');
