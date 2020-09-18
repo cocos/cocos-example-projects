@@ -12,6 +12,9 @@ export class Instantiate extends Component {
 
     @property
     public boxAmount: number = 30;
+    
+    @property({type:Node})
+    public ballNode:Node=null;
 
     start () {
         _v3_0.y = 0.5;
@@ -52,7 +55,7 @@ export class Instantiate extends Component {
         for (let i = 0; i < this.node.children.length; i++) {
             this.node.children[i].active = true;
         }
-        this.node.parent.children[1].setWorldPosition(0, 4, 0);
+        this.ballNode.setWorldPosition(0, 4, 0);
     }
 
 }

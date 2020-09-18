@@ -28,10 +28,10 @@
         "__id__": 46
       },
       {
-        "__id__": 48
+        "__id__": 55
       },
       {
-        "__id__": 50
+        "__id__": 48
       },
       {
         "__id__": 58
@@ -1411,69 +1411,10 @@
       "__uuid__": "90e8afb4-42e2-4a5c-8c64-5eeb3dd095cd"
     },
     "boxAmount": 20,
-    "_id": "45lNAy5D9FDY2WA4ngGOEs"
-  },
-  {
-    "__type__": "cc.Node",
-    "_name": "coordinate",
-    "_objFlags": 0,
-    "_parent": {
-      "__id__": 1
-    },
-    "_children": [],
-    "_active": true,
-    "_components": [
-      {
-        "__id__": 49
-      }
-    ],
-    "_prefab": null,
-    "_lpos": {
-      "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 0,
-      "z": 0
-    },
-    "_lrot": {
-      "__type__": "cc.Quat",
-      "x": 0,
-      "y": 0,
-      "z": 0,
-      "w": 1
-    },
-    "_lscale": {
-      "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
-      "z": 1
-    },
-    "_layer": 1073741824,
-    "_euler": {
-      "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 0,
-      "z": 0
-    },
-    "_id": "8a3CY/5C9JjL+AVyuf9iJn"
-  },
-  {
-    "__type__": "02ed7cn+2NAF7MpI5E0DT6/",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
+    "ballNode": {
       "__id__": 48
     },
-    "_enabled": true,
-    "D3Node": {
-      "__id__": 50
-    },
-    "UINode": {
-      "__id__": 57
-    },
-    "mainCamera": {
-      "__id__": 6
-    },
-    "_id": "6f0A7TYpBM4699hJyXnHZL"
+    "_id": "45lNAy5D9FDY2WA4ngGOEs"
   },
   {
     "__type__": "cc.Node",
@@ -1486,19 +1427,19 @@
     "_active": true,
     "_components": [
       {
+        "__id__": 49
+      },
+      {
         "__id__": 51
+      },
+      {
+        "__id__": 52
       },
       {
         "__id__": 53
       },
       {
         "__id__": 54
-      },
-      {
-        "__id__": 55
-      },
-      {
-        "__id__": 56
       }
     ],
     "_prefab": null,
@@ -1535,7 +1476,7 @@
     "_name": "Sphere<MeshRenderer>",
     "_objFlags": 0,
     "node": {
-      "__id__": 50
+      "__id__": 48
     },
     "_enabled": true,
     "_materials": [
@@ -1545,7 +1486,7 @@
     ],
     "_visFlags": 0,
     "lightmapSettings": {
-      "__id__": 52
+      "__id__": 50
     },
     "_mesh": {
       "__uuid__": "1263d74c-8167-4928-91a6-4e2672411f47@17020"
@@ -1576,7 +1517,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 50
+      "__id__": 48
     },
     "_enabled": true,
     "_group": 1,
@@ -1606,7 +1547,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 50
+      "__id__": 48
     },
     "_enabled": true,
     "_material": {
@@ -1627,7 +1568,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 50
+      "__id__": 48
     },
     "_enabled": true,
     "shiftScale": 2,
@@ -1638,10 +1579,72 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 50
+      "__id__": 48
     },
     "_enabled": true,
     "_id": "2cN8yrUchIa7V5R3gZX/tv"
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "coordinate",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 1
+    },
+    "_children": [],
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 56
+      }
+    ],
+    "_prefab": null,
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_layer": 1073741824,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_id": "8a3CY/5C9JjL+AVyuf9iJn"
+  },
+  {
+    "__type__": "02ed7cn+2NAF7MpI5E0DT6/",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 55
+    },
+    "_enabled": true,
+    "D3Node": {
+      "__id__": 48
+    },
+    "UINode": {
+      "__id__": 57
+    },
+    "mainCamera": {
+      "__id__": 6
+    },
+    "_id": "6f0A7TYpBM4699hJyXnHZL"
   },
   {
     "__type__": "cc.Node",
