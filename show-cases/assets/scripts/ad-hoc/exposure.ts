@@ -19,7 +19,6 @@ export class Exposure extends Component {
     }
 
     setExposure (e: SliderComponent) {
-        // @ts-ignore
-        this._camera._exposure = Math.pow(2, (e.progress - 1) * 30.46); // defaul exposure 1/38400, at progress 0.5
+        this._camera.aperture = Math.floor((1 - e.progress) * 22.99); // defaul aperture F16, at progress 0.17
     }
 }
