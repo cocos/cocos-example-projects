@@ -1,4 +1,5 @@
-import { _decorator, Color, Component, EffectAsset, Material, ModelComponent, Node, SphereColliderComponent, Vec3, utils, primitives, Mesh, math, ITriggerEvent } from 'cc';
+import { _decorator, Color, Component, EffectAsset, Material, ModelComponent, Node,
+  SphereColliderComponent, Vec3, utils, primitives, Mesh, math, ITriggerEvent } from 'cc';
 const { ccclass, property } = _decorator;
 
 let hintMesh: Mesh;
