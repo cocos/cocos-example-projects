@@ -1,4 +1,5 @@
-import { _decorator, Component, instantiate, Node, Prefab, Scene, SkeletalAnimationComponent, SliderComponent, Texture2D, ToggleComponent } from 'cc';
+import { _decorator, Component, instantiate, Node, Prefab, SkeletalAnimationComponent,
+    SliderComponent, Texture2D, ToggleComponent, director, GFXFeature, Label } from 'cc';
 import { UnlitQuadComponent } from '../unlit-quad';
 const { ccclass, property } = _decorator;
 
@@ -35,11 +36,20 @@ export class InstancedSkinning extends Component {
         return this._groupCount;
     }
 
+    @property(Node)
+    warningSign: Node | null = null;
+
     private _baselineNode: Node | null = null;
     private _testNodes: Node[] = [];
     private _nameLabels: Node[] = [];
 
     public start () {
+        // clamp the initial count if instancing is not supported
+        if (!director.root.device.hasFeature(GFXFeature.INSTANCED_ARRAYS)) {
+            this._groupCount = Math.min(this._groupCount, 1);
+            if (this.warningSign) { this.warningSign.active = true; }
+        }
+
         this._baselineNode = this._initGroup('Baseline', this.baseline, 0);
         this._updateGroups();
         this._baselineNode.active = this.baselineVisible;

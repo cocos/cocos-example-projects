@@ -22,6 +22,9 @@ export class RaycastTest extends Component {
     @property({ type: LabelComponent })
     readonly label: LabelComponent = null;
 
+    @property({ type: PhysicsSystem.PhysicsGroup })
+    ingnoreLayer: number = 0;
+
     private _raycastType: ERaycastType = ERaycastType.ALL;
     private _ray: geometry.ray = new geometry.ray();
     private _maxDistance: number = 100;
@@ -34,6 +37,7 @@ export class RaycastTest extends Component {
 
     start () {
         this.maxDistance = this._maxDistance;
+        this._mask &= ~this.ingnoreLayer;
     }
 
     onEnable () {
@@ -47,7 +51,7 @@ export class RaycastTest extends Component {
     onTouchStart (touch: Touch, event: EventTouch) {
         this.resetAll();
 
-        this.camera.screenPointToRay(touch._point.x, touch._point.y, this._ray);
+        this.camera.screenPointToRay(touch['_point'].x, touch['_point'].y, this._ray);
         switch (this._raycastType) {
             case ERaycastType.ALL:
                 if (PhysicsSystem.instance.raycast(this._ray, this._mask, this._maxDistance)) {
@@ -93,11 +97,11 @@ export class RaycastTest extends Component {
 
     onMaskBtn (event: EventTouch) {
         const lb = (event.target as Node).getComponentInChildren(LabelComponent);
-        if (this._mask == 0xffffffff) {
+        if (this._mask != 0) {
             this._mask = 0;
             lb.string = "检测状态：off";
         } else {
-            this._mask = 0xffffffff;
+            this._mask = 0xffffffff & ~this.ingnoreLayer;
             lb.string = "检测状态：on";
         }
     }

@@ -56,9 +56,6 @@ export class Benchmark extends Component {
     @property({ type: LabelComponent })
     readonly l_current: LabelComponent = null;
 
-    @property({ type: LabelComponent })
-    readonly l_engineInfo: LabelComponent = null;
-
     /** RIGHT */
 
     @property({ type: ToggleComponent })
@@ -87,12 +84,6 @@ export class Benchmark extends Component {
     private enableRotate = true;
 
     start () {
-        if (globalThis.CC_PHYSICS_AMMO) {
-            this.l_engineInfo.string = "ammo";
-        } else if (globalThis.CC_PHYSICS_CANNON) {
-            this.l_engineInfo.string = "cannon";
-        }
-
         this.node.addComponent(ProfilerManager);
 
         const item = localStorage.getItem(KEY_INIT_STR);
@@ -220,19 +211,19 @@ export class Benchmark extends Component {
     }
 
     onAddBox (touch: EventTouch, custom?: string) {
-        this.instantiateSingle(this.box, this.boxContainer);
+        this.instantiate(5, this.box, this.boxContainer);
     }
 
     onAddSphere (touch: EventTouch, custom?: string) {
-        this.instantiateSingle(this.sphere, this.sphereContainer);
+        this.instantiate(5, this.sphere, this.sphereContainer);
     }
 
     onAddBoxRB (touch: EventTouch, custom?: string) {
-        this.instantiateSingle(this.boxRB, this.boxRBContainer);
+        this.instantiate(5, this.boxRB, this.boxRBContainer);
     }
 
     onAddSphereRB (touch: EventTouch, custom?: string) {
-        this.instantiateSingle(this.sphereRB, this.sphereRBContainer);
+        this.instantiate(5, this.sphereRB, this.sphereRBContainer);
     }
 
     onEditFinish (editBox: EditBoxComponent) {
