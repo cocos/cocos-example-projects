@@ -9,16 +9,16 @@ export class TriggerTest extends Component {
     USE_MATERIAL = true;
 
     @property({ type: Material, visible: function (this: TriggerTest) { return this.USE_MATERIAL; } })
-    enterMat: Material = null;
+    enterMat: Material = null as any;
 
     @property({ type: Material, visible: function (this: TriggerTest) { return this.USE_MATERIAL; } })
-    exitMat: Material = null;
+    exitMat: Material = null as any;
 
     @property
     USE_LABEL = false;
 
     @property({ type: LabelComponent, visible: function (this: TriggerTest) { return this.USE_LABEL; } })
-    label: LabelComponent = null;
+    label: LabelComponent = null as any;
 
     private _prev: Boolean[] = [];
     private _amount: number = 0;
@@ -60,19 +60,19 @@ export class TriggerTest extends Component {
             this.label.fontSize = 40;
             this.label.lineHeight = 40;
             this.label.verticalAlign = VerticalTextAlignment.CENTER;
-            this.label.getComponent(UITransformComponent).contentSize = new Size(400, 400);
+            this.label.getComponent(UITransformComponent)!.contentSize = new Size(400, 400);
             this.label.color = Color.RED;
             this.enabled = false;
             return;
         }
         if (event.type == 'onTriggerStay') {
-            if (!this._prev[event.otherCollider._id]) {
-                this._prev[event.otherCollider._id] = true;
+            if (!this._prev[event.otherCollider.uuid]) {
+                this._prev[event.otherCollider.uuid] = true;
             } else {
                 return;
             }
         } else if (event.type == 'onTriggerExit') {
-            this._prev[event.otherCollider._id] = false;
+            this._prev[event.otherCollider.uuid] = false;
         }
 
         if (this.label) {

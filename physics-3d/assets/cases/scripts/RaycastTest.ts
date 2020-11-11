@@ -11,16 +11,16 @@ enum ERaycastType {
 export class RaycastTest extends Component {
 
     @property({ type: Material })
-    readonly defaultMaterial: Material = null;
+    readonly defaultMaterial: Material = null as any;
 
     @property({ type: Material })
-    readonly rayMaterial: Material = null;
+    readonly rayMaterial: Material = null as any;
 
     @property({ type: CameraComponent })
-    readonly camera: CameraComponent = null;
+    readonly camera: CameraComponent = null as any;
 
     @property({ type: LabelComponent })
-    readonly label: LabelComponent = null;
+    readonly label: LabelComponent = null as any;
 
     @property({ type: PhysicsSystem.PhysicsGroup })
     ingnoreLayer: number = 0;
@@ -51,14 +51,14 @@ export class RaycastTest extends Component {
     onTouchStart (touch: Touch, event: EventTouch) {
         this.resetAll();
 
-        this.camera.screenPointToRay(touch['_point'].x, touch['_point'].y, this._ray);
+        this.camera.screenPointToRay(touch.getLocationX(), touch.getLocationY(), this._ray);
         switch (this._raycastType) {
             case ERaycastType.ALL:
                 if (PhysicsSystem.instance.raycast(this._ray, this._mask, this._maxDistance)) {
                     const r = PhysicsSystem.instance.raycastResults;
                     for (let i = 0; i < r.length; i++) {
                         const item = r[i];
-                        const modelCom = item.collider.node.getComponent(ModelComponent);
+                        const modelCom = item.collider.node.getComponent(ModelComponent)!;
                         modelCom.material = this.rayMaterial;
                     }
                 }
@@ -66,7 +66,7 @@ export class RaycastTest extends Component {
             case ERaycastType.CLOSEST:
                 if (PhysicsSystem.instance.raycastClosest(this._ray, this._mask, this._maxDistance)) {
                     const r = PhysicsSystem.instance.raycastClosestResult;
-                    const modelCom = r.collider.node.getComponent(ModelComponent);
+                    const modelCom = r.collider.node.getComponent(ModelComponent)!;
                     modelCom.material = this.rayMaterial;
                 }
                 break;
@@ -75,7 +75,7 @@ export class RaycastTest extends Component {
 
     resetAll () {
         for (let i = 0; i < this.node.children.length; i++) {
-            let modelCom = this.node.children[i].getComponent(ModelComponent);
+            let modelCom = this.node.children[i].getComponent(ModelComponent)!;
             modelCom.material = this.defaultMaterial;
         }
     }
@@ -96,7 +96,7 @@ export class RaycastTest extends Component {
     }
 
     onMaskBtn (event: EventTouch) {
-        const lb = (event.target as Node).getComponentInChildren(LabelComponent);
+        const lb = (event.target as Node).getComponentInChildren(LabelComponent)!;
         if (this._mask != 0) {
             this._mask = 0;
             lb.string = "检测状态：off";

@@ -11,7 +11,7 @@ Enum(EPHY_MASK);
 @ccclass('CASES.GroupMaskTestItem')
 class GroupMaskTestItem {
     @property({ type: Node })
-    target: Node = null;
+    target: Node = null as any;
 
     @property({ type: PhysicsSystem.PhysicsGroup })
     group = PhysicsSystem.PhysicsGroup.DEFAULT;
@@ -28,36 +28,24 @@ export class GroupMaskTest extends Component {
     items: GroupMaskTestItem[] = []
 
     @property({ type: RigidBodyComponent })
-    testBody: RigidBodyComponent = null;
+    testBody: RigidBodyComponent = null as any;
 
     start () {
         this.items.forEach((i: GroupMaskTestItem) => {
             if (i.target) {
-                let c = i.target.getComponent(ColliderComponent);
-                if (PhysicsSystem.instance.useCollisionMatrix) {
-                    c.setGroup(i.group);
-                    PhysicsSystem.instance.collisionMatrix[i.group] = i.mask;
-                } else {
-                    c.setGroup(i.group);
-                    c.setMask(i.mask);
-                }
+                let c = i.target.getComponent(ColliderComponent)!;
+                c.setGroup(i.group);
+                c.setMask(i.mask);
             }
         });
 
-        // test mask when not use collision matrix
-        if (this.testBody && !PhysicsSystem.instance.useCollisionMatrix) {
-            this.testBody.setMask(0);
-        }
+        this.testBody.setMask(0);
     }
 
     setItemMaskToNone (event: EventTouch, index: string) {
         const int = parseInt(index);
-        let c = this.items[int].target.getComponent(ColliderComponent);
-        if (PhysicsSystem.instance.useCollisionMatrix) {
-            PhysicsSystem.instance.collisionMatrix[c.getGroup()] = EPHY_MASK.M_NONE;
-        } else {
-            c.setMask(EPHY_MASK.M_NONE);
-        }
+        let c = this.items[int].target.getComponent(ColliderComponent)!;
+        c.setMask(EPHY_MASK.M_NONE);
 
         this.items.forEach((i: GroupMaskTestItem) => {
             if (i.target) {
@@ -65,11 +53,6 @@ export class GroupMaskTest extends Component {
                 if (c) c.wakeUp();
             }
         });
-    }
-
-    onDestroy () {
-        if (PhysicsSystem.instance.useCollisionMatrix)
-            PhysicsSystem.instance['resetCollisionMatrix']();
     }
 
 }

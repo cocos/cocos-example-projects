@@ -5,9 +5,9 @@ const { ccclass, property, menu } = _decorator;
 @menu('common/AxisHelper')
 export class AxisHelper extends Component {
 
-    private static _axis: Prefab = null;
+    private static _axis: Prefab = null as any;
     private static _insArr: AxisHelper[] = [];
-    private _ins: Node = null;
+    private _ins: Node = null as any;
 
     __preload () {
         if (AxisHelper._axis == null) {
@@ -32,25 +32,22 @@ export class AxisHelper extends Component {
 
     onEnable () {
         if (AxisHelper._axis) {
-            if (this._ins == null) this._ins = instantiate(AxisHelper._axis);
-
-            this.node.addChild(this._ins);
+            if (this._ins == null) {
+                this._ins = instantiate(AxisHelper._axis);
+                this.node.addChild(this._ins);
+            }
+            this._ins.active = true;
         }
     }
 
     onDisable () {
-        if (AxisHelper._axis) {
-            this.node.removeChild(this._ins);
-        }
+        if (this._ins) this._ins.active = false;
     }
 
     onDestroy () {
         const index = AxisHelper._insArr.indexOf(this);
         if (index >= 0) {
             AxisHelper._insArr.splice(index, 1);
-        }
-        if (this._ins) {
-            this._ins.destroy();
         }
     }
 }

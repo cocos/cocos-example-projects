@@ -19,7 +19,7 @@ export class MeshColliderTest extends Component {
         for (let i = 0; i < this.node.children.length; i++) {
             if (this.node.children[i].worldPosition.y < -10) {
                 this.node.children[i].worldPosition = this.startPos[i];
-                this.node.children[i].getComponent(RigidBodyComponent).setLinearVelocity(Vec3.ZERO);
+                this.node.children[i].getComponent(RigidBodyComponent)!.setLinearVelocity(Vec3.ZERO);
             }
         }
     }

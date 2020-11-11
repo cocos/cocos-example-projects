@@ -16,7 +16,7 @@ export class EnumCommand extends Component {
     }
 
     @property({ type: Node })
-    private _objNode: Node = null;
+    private _objNode: Node = null as any;
 
     @property
     command = '';
