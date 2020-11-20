@@ -9,6 +9,6 @@ export class VelocitySetup extends Component {
     lv = new Vec3();
 
     start () {
-        this.node.getComponent(RigidBodyComponent).setLinearVelocity(this.lv);
+        this.node.getComponent(RigidBodyComponent)!.setLinearVelocity(this.lv);
     }
 }
