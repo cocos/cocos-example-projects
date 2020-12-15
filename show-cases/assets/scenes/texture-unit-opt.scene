@@ -46,9 +46,9 @@
     "_active": true,
     "_components": [],
     "_prefab": null,
-    "autoReleaseAssets": false,
+    "autoReleaseAssets": true,
     "_globals": {
-      "__id__": 480
+      "__id__": 481
     },
     "_id": "9bd527c0-7bb0-4694-8d66-87b5c6cae719"
   },
@@ -103,6 +103,7 @@
       "__id__": 2
     },
     "_enabled": true,
+    "__prefab": null,
     "_color": {
       "__type__": "cc.Color",
       "r": 255,
@@ -175,6 +176,7 @@
       "__id__": 5
     },
     "_enabled": true,
+    "__prefab": null,
     "_projection": 1,
     "_priority": 0,
     "_fov": 45,
@@ -2193,6 +2195,7 @@
       "__id__": 68
     },
     "_enabled": true,
+    "__prefab": null,
     "_materials": [
       {
         "__uuid__": "c6c827fd-27e0-4ff7-bbe5-8b9cdf37034d"
@@ -2457,6 +2460,7 @@
       "__id__": 7
     },
     "_enabled": true,
+    "__prefab": null,
     "playOnLoad": true,
     "_clips": [
       {
@@ -4468,6 +4472,7 @@
       "__id__": 145
     },
     "_enabled": true,
+    "__prefab": null,
     "_materials": [
       {
         "__uuid__": "9400725f-e73a-4aa3-9e68-6c681df99a5f"
@@ -4732,6 +4737,7 @@
       "__id__": 84
     },
     "_enabled": true,
+    "__prefab": null,
     "playOnLoad": true,
     "_clips": [
       {
@@ -6743,6 +6749,7 @@
       "__id__": 222
     },
     "_enabled": true,
+    "__prefab": null,
     "_materials": [
       {
         "__uuid__": "5b6ca184-bae6-4e08-a012-d7b5e4527412"
@@ -7007,6 +7014,7 @@
       "__id__": 161
     },
     "_enabled": true,
+    "__prefab": null,
     "playOnLoad": true,
     "_clips": [
       {
@@ -9018,6 +9026,7 @@
       "__id__": 299
     },
     "_enabled": true,
+    "__prefab": null,
     "_materials": [
       {
         "__uuid__": "9a96a9d8-bf4e-4ebb-8731-a885a7c20a85"
@@ -9282,6 +9291,7 @@
       "__id__": 238
     },
     "_enabled": true,
+    "__prefab": null,
     "playOnLoad": true,
     "_clips": [
       {
@@ -11293,6 +11303,7 @@
       "__id__": 376
     },
     "_enabled": true,
+    "__prefab": null,
     "_materials": [
       {
         "__uuid__": "60ee1656-3221-4805-b2d9-a8282d13198d"
@@ -11557,6 +11568,7 @@
       "__id__": 315
     },
     "_enabled": true,
+    "__prefab": null,
     "playOnLoad": true,
     "_clips": [
       {
@@ -13568,6 +13580,7 @@
       "__id__": 453
     },
     "_enabled": true,
+    "__prefab": null,
     "_materials": [
       {
         "__uuid__": "eb1260a7-fa18-43aa-b6cc-2ba33efae537"
@@ -13832,6 +13845,7 @@
       "__id__": 392
     },
     "_enabled": true,
+    "__prefab": null,
     "playOnLoad": true,
     "_clips": [
       {
@@ -13879,6 +13893,9 @@
       },
       {
         "__id__": 479
+      },
+      {
+        "__id__": 480
       }
     ],
     "_prefab": null,
@@ -13886,7 +13903,7 @@
       "__type__": "cc.Vec3",
       "x": 480,
       "y": 320,
-      "z": 1
+      "z": 0
     },
     "_lrot": {
       "__type__": "cc.Quat",
@@ -13967,6 +13984,7 @@
       "__id__": 470
     },
     "_enabled": true,
+    "__prefab": null,
     "_priority": 0,
     "_contentSize": {
       "__type__": "cc.Size",
@@ -13988,8 +14006,9 @@
       "__id__": 470
     },
     "_enabled": true,
-    "_materials": [],
+    "__prefab": null,
     "_visFlags": 0,
+    "_customMaterial": null,
     "_srcBlendFactor": 2,
     "_dstBlendFactor": 4,
     "_color": {
@@ -13999,7 +14018,6 @@
       "b": 255,
       "a": 255
     },
-    "_useOriginalSize": true,
     "_string": "Capture this scene in Spector.js and observe\nthe texture binding pattern for the models.",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
@@ -14014,6 +14032,7 @@
     "_isItalic": false,
     "_isBold": false,
     "_isUnderline": false,
+    "_underlineHeight": 2,
     "_cacheMode": 0,
     "_id": "23436doN1Fw5m08PNhWgl4"
   },
@@ -14025,6 +14044,7 @@
       "__id__": 470
     },
     "_enabled": true,
+    "__prefab": null,
     "_alignFlags": 33,
     "_target": null,
     "_left": 0,
@@ -14102,6 +14122,7 @@
       "__id__": 474
     },
     "_enabled": true,
+    "__prefab": null,
     "_priority": 0,
     "_contentSize": {
       "__type__": "cc.Size",
@@ -14123,8 +14144,9 @@
       "__id__": 474
     },
     "_enabled": true,
-    "_materials": [],
+    "__prefab": null,
     "_visFlags": 0,
+    "_customMaterial": null,
     "_srcBlendFactor": 2,
     "_dstBlendFactor": 4,
     "_color": {
@@ -14134,7 +14156,6 @@
       "b": 255,
       "a": 255
     },
-    "_useOriginalSize": true,
     "_string": "No texture should be rebound through out\nsix different materials, except for the first one.",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
@@ -14149,6 +14170,7 @@
     "_isItalic": false,
     "_isBold": false,
     "_isUnderline": false,
+    "_underlineHeight": 2,
     "_cacheMode": 0,
     "_id": "5fMrwkjdtCX40fRnr3A6dI"
   },
@@ -14160,6 +14182,7 @@
       "__id__": 474
     },
     "_enabled": true,
+    "__prefab": null,
     "_alignFlags": 33,
     "_target": null,
     "_left": 0,
@@ -14188,6 +14211,7 @@
       "__id__": 469
     },
     "_enabled": true,
+    "__prefab": null,
     "_priority": 0,
     "_contentSize": {
       "__type__": "cc.Size",
@@ -14209,6 +14233,7 @@
       "__id__": 469
     },
     "_enabled": true,
+    "__prefab": null,
     "_priority": 0,
     "_targetTexture": null,
     "_clearFlag": 6,
@@ -14223,18 +14248,47 @@
     "_id": "a5OtuTyz1E1ZvjcGayjM0j"
   },
   {
+    "__type__": "cc.Widget",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 469
+    },
+    "_enabled": true,
+    "__prefab": null,
+    "_alignFlags": 45,
+    "_target": null,
+    "_left": 0,
+    "_right": 0,
+    "_top": 0,
+    "_bottom": 0,
+    "_horizontalCenter": 0,
+    "_verticalCenter": 0,
+    "_isAbsLeft": true,
+    "_isAbsRight": true,
+    "_isAbsTop": true,
+    "_isAbsBottom": true,
+    "_isAbsHorizontalCenter": true,
+    "_isAbsVerticalCenter": true,
+    "_originalWidth": 0,
+    "_originalHeight": 0,
+    "_alignMode": 2,
+    "_lockFlags": 0,
+    "_id": "39Cx8wwvtBhJa15LjVeKet"
+  },
+  {
     "__type__": "cc.SceneGlobals",
     "ambient": {
-      "__id__": 481
-    },
-    "shadows": {
       "__id__": 482
     },
-    "_skybox": {
+    "shadows": {
       "__id__": 483
     },
-    "fog": {
+    "_skybox": {
       "__id__": 484
+    },
+    "fog": {
+      "__id__": 485
     }
   },
   {
@@ -14273,11 +14327,14 @@
       "b": 76,
       "a": 255
     },
+    "_autoAdapt": true,
     "_pcf": 0,
+    "_bias": 0.00001,
     "_near": 1,
     "_far": 30,
     "_aspect": 1,
     "_orthoSize": 5,
+    "_maxReceived": 4,
     "_size": {
       "__type__": "cc.Vec2",
       "x": 512,

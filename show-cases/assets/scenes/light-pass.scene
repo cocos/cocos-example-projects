@@ -52,7 +52,7 @@
     "_active": true,
     "_components": [],
     "_prefab": null,
-    "autoReleaseAssets": false,
+    "autoReleaseAssets": true,
     "_globals": {
       "__id__": 35
     },
@@ -102,13 +102,14 @@
     "_id": "c0y6F5f+pAvI805TdmxIjx"
   },
   {
-    "__type__": "cc.DirectionalLightComponent",
+    "__type__": "cc.DirectionalLight",
     "_name": "",
     "_objFlags": 0,
     "node": {
       "__id__": 2
     },
     "_enabled": true,
+    "__prefab": null,
     "_color": {
       "__type__": "cc.Color",
       "r": 255,
@@ -177,13 +178,14 @@
     "_id": "c9DMICJLFO5IeO07EPon7U"
   },
   {
-    "__type__": "cc.CameraComponent",
+    "__type__": "cc.Camera",
     "_name": "",
     "_objFlags": 0,
     "node": {
       "__id__": 5
     },
     "_enabled": true,
+    "__prefab": null,
     "_projection": 1,
     "_priority": 0,
     "_fov": 45,
@@ -224,6 +226,7 @@
       "__id__": 5
     },
     "_enabled": true,
+    "__prefab": null,
     "moveSpeed": 1,
     "moveSpeedShiftScale": 5,
     "damp": 0.2,
@@ -274,13 +277,14 @@
     "_id": "08EpXtxptO5o3JqAxe132P"
   },
   {
-    "__type__": "cc.ModelComponent",
-    "_name": "Quad<ModelComponent>",
+    "__type__": "cc.MeshRenderer",
+    "_name": "Quad<MeshRenderer>",
     "_objFlags": 0,
     "node": {
       "__id__": 8
     },
     "_enabled": true,
+    "__prefab": null,
     "_materials": [
       {
         "__uuid__": "d3c7820c-2a98-4429-8bc7-b8453bc9ac41"
@@ -358,13 +362,14 @@
     "_id": "c4DQJkiXdHfaU2KfkLCN7d"
   },
   {
-    "__type__": "cc.SpotLightComponent",
+    "__type__": "cc.SpotLight",
     "_name": "",
     "_objFlags": 0,
     "node": {
       "__id__": 11
     },
     "_enabled": true,
+    "__prefab": null,
     "_color": {
       "__type__": "cc.Color",
       "r": 72,
@@ -434,13 +439,14 @@
     "_id": "761otVXihGw4OhiLPHXSBr"
   },
   {
-    "__type__": "cc.SphereLightComponent",
+    "__type__": "cc.SphereLight",
     "_name": "",
     "_objFlags": 0,
     "node": {
       "__id__": 14
     },
     "_enabled": true,
+    "__prefab": null,
     "_color": {
       "__type__": "cc.Color",
       "r": 255,
@@ -509,13 +515,14 @@
     "_id": "d3/1eZ95ZCC7ageBq8F6+I"
   },
   {
-    "__type__": "cc.SpotLightComponent",
+    "__type__": "cc.SpotLight",
     "_name": "",
     "_objFlags": 0,
     "node": {
       "__id__": 17
     },
     "_enabled": true,
+    "__prefab": null,
     "_color": {
       "__type__": "cc.Color",
       "r": 87,
@@ -585,13 +592,14 @@
     "_id": "4cCLVwdbdB85IHZeZgJx6u"
   },
   {
-    "__type__": "cc.SpotLightComponent",
+    "__type__": "cc.SpotLight",
     "_name": "",
     "_objFlags": 0,
     "node": {
       "__id__": 20
     },
     "_enabled": true,
+    "__prefab": null,
     "_color": {
       "__type__": "cc.Color",
       "r": 78,
@@ -661,13 +669,14 @@
     "_id": "cevTC7/MhEeZ29duMxMFgQ"
   },
   {
-    "__type__": "cc.ModelComponent",
-    "_name": "Capsule<ModelComponent>",
+    "__type__": "cc.MeshRenderer",
+    "_name": "Capsule<MeshRenderer>",
     "_objFlags": 0,
     "node": {
       "__id__": 23
     },
     "_enabled": true,
+    "__prefab": null,
     "_materials": [
       {
         "__uuid__": "d3c7820c-2a98-4429-8bc7-b8453bc9ac41"
@@ -745,13 +754,14 @@
     "_id": "2azMZQUaZBjYiam64mzvEJ"
   },
   {
-    "__type__": "cc.ModelComponent",
-    "_name": "Torus<ModelComponent>",
+    "__type__": "cc.MeshRenderer",
+    "_name": "Torus<MeshRenderer>",
     "_objFlags": 0,
     "node": {
       "__id__": 26
     },
     "_enabled": true,
+    "__prefab": null,
     "_materials": [
       {
         "__uuid__": "d3c7820c-2a98-4429-8bc7-b8453bc9ac41"
@@ -829,13 +839,14 @@
     "_id": "eage3dtvhLULLmoqB5J9vj"
   },
   {
-    "__type__": "cc.ModelComponent",
-    "_name": "Cone<ModelComponent>",
+    "__type__": "cc.MeshRenderer",
+    "_name": "Cone<MeshRenderer>",
     "_objFlags": 0,
     "node": {
       "__id__": 29
     },
     "_enabled": true,
+    "__prefab": null,
     "_materials": [
       {
         "__uuid__": "d3c7820c-2a98-4429-8bc7-b8453bc9ac41"
@@ -913,13 +924,14 @@
     "_id": "70WvHaOeJElIBqqTGSMX7O"
   },
   {
-    "__type__": "cc.ModelComponent",
-    "_name": "Cube<ModelComponent>",
+    "__type__": "cc.MeshRenderer",
+    "_name": "Cube<MeshRenderer>",
     "_objFlags": 0,
     "node": {
       "__id__": 32
     },
     "_enabled": true,
+    "__prefab": null,
     "_materials": [
       {
         "__uuid__": "d3c7820c-2a98-4429-8bc7-b8453bc9ac41"
@@ -958,7 +970,7 @@
     "ambient": {
       "__id__": 36
     },
-    "planarShadows": {
+    "shadows": {
       "__id__": 37
     },
     "_skybox": {
@@ -987,7 +999,8 @@
     }
   },
   {
-    "__type__": "cc.PlanarShadowInfo",
+    "__type__": "cc.ShadowsInfo",
+    "_type": 0,
     "_enabled": false,
     "_normal": {
       "__type__": "cc.Vec3",
@@ -1002,6 +1015,19 @@
       "g": 0,
       "b": 0,
       "a": 76
+    },
+    "_autoAdapt": true,
+    "_pcf": 0,
+    "_bias": 0.00001,
+    "_near": 1,
+    "_far": 30,
+    "_aspect": 1,
+    "_orthoSize": 5,
+    "_maxReceived": 4,
+    "_size": {
+      "__type__": "cc.Vec2",
+      "x": 512,
+      "y": 512
     }
   },
   {
