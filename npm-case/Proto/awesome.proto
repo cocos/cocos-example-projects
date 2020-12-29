@@ -1,0 +1,8 @@
+package awesome;
+syntax = "proto3";
+
+message AwesomeMessage {
+    string s = 1;
+    int32 i = 2;
+    bytes b = 3;
+}
