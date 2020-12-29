@@ -12,7 +12,7 @@ export class Audio extends Component {
     @property(Node)
     public node2: Node = null;
 
-    public start () {
+    public onLoad () {
         const source = this.node1.getComponent(AudioSourceComponent);
         const source2 = this.node2.getComponent(AudioSourceComponent);
 
