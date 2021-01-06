@@ -1,0 +1,79 @@
+{
+  "macroConfig": {
+    "ENABLE_TILEDMAP_CULLING": true,
+    "TOUCH_TIMEOUT": 5000,
+    "DOWNLOAD_MAX_CONCURRENT": 64,
+    "ENABLE_TRANSPARENT_CANVAS": false,
+    "ENABLE_WEBGL_ANTIALIAS": true,
+    "CLEANUP_IMAGE_CACHE": false,
+    "ENABLE_MULTI_TOUCH": true
+  },
+  "modules": {
+    "cache": {
+      "Audio": {
+        "value": false
+      },
+      "Core": {
+        "value": true
+      },
+      "Graphcis API": {
+        "value": true
+      },
+      "Intersection 2D": {
+        "value": false
+      },
+      "Particle System": {
+        "value": true
+      },
+      "Physics": {
+        "option": "0",
+        "value": true
+      },
+      "Physics 2D": {
+        "option": 0,
+        "value": false
+      },
+      "Terrain": {
+        "value": true
+      },
+      "TiledMap": {
+        "value": false
+      },
+      "Tween": {
+        "value": true
+      },
+      "UI": {
+        "value": true
+      },
+      "VideoPlayer": {
+        "value": true
+      },
+      "WebGL 1.0": {
+        "value": true
+      },
+      "WebGL 2.0": {
+        "value": false
+      },
+      "WebView": {
+        "value": true
+      }
+    },
+    "includeModules": [
+      "base",
+      "gfx-webgl",
+      "ui",
+      "particle",
+      "physics-cannon",
+      "physics-framework",
+      "video",
+      "webview",
+      "tween",
+      "terrain"
+    ],
+    "noDeprecatedFeatures": {
+      "value": false,
+      "version": ""
+    }
+  },
+  "__version__": "1.0.3"
+}
