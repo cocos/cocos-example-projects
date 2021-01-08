@@ -28,3 +28,10 @@ log(protobufjsUtils);
 // Note the extension is required.
 import Awesome from '../../Proto.js/awesome.js';
 log(Awesome.awesome.AwesomeMessage);
+
+// Toggle "Enable Guess CommonJS exports"
+// This is amazing. The `@protobufjs/float/index.js` is in CommonJS but Creator deduced the exports.
+// TRY TO AVOID THIS and simply use "import default" form.
+// import protobufjsFloatIndex from '@protobufjs/float/index.js';
+// import { writeDoubleBE } from '@protobufjs/float/index.js';
+// log(`Guess exports: ${protobufjsFloatIndex.writeDoubleBE === writeDoubleBE}`);
