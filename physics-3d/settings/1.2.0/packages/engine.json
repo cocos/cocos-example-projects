@@ -1,0 +1,56 @@
+{
+  "macroConfig": {
+    "ENABLE_TILEDMAP_CULLING": true,
+    "TOUCH_TIMEOUT": 5000,
+    "DOWNLOAD_MAX_CONCURRENT": 64,
+    "ENABLE_TRANSPARENT_CANVAS": false,
+    "ENABLE_WEBGL_ANTIALIAS": false,
+    "CLEANUP_IMAGE_CACHE": false,
+    "ENABLE_MULTI_TOUCH": true
+  },
+  "modules": {
+    "cache": {
+      "Audio": {
+        "value": false
+      },
+      "Core": {
+        "value": true
+      },
+      "Graphcis API": {
+        "value": true
+      },
+      "Particle System": {
+        "value": false
+      },
+      "Physics": {
+        "option": "2",
+        "value": true
+      },
+      "Terrain": {
+        "value": true
+      },
+      "Tween": {
+        "value": false
+      },
+      "UI": {
+        "value": true
+      },
+      "WebGL 1.0": {
+        "value": true
+      },
+      "WebGL 2.0": {
+        "value": false
+      }
+    },
+    "includeModules": [
+      "base",
+      "gfx-webgl",
+      "ui",
+      "physics-ammo",
+      "physics-framework",
+      "wait-for-ammo-instantiation",
+      "terrain"
+    ]
+  },
+  "__version__": "1.0.1"
+}

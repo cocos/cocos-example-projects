@@ -1,0 +1,46 @@
+{
+  "general": {
+    "designResolution": {
+      "fitHeight": true,
+      "fitWidth": false,
+      "width": 960,
+      "height": 640
+    }
+  },
+  "layer": [
+    {
+      "name": "A",
+      "value": 524288
+    }
+  ],
+  "physics": {
+    "fixedTimeStep": 0.01666666,
+    "useCollsionMatrix": true,
+    "defaultMaterial": {
+      "friction": 0.6,
+      "restitution": 0.1
+    },
+    "autoSimulation": true,
+    "useNodeChains": true,
+    "collisionGroups": [
+      {
+        "index": 1,
+        "name": "BIT_1"
+      },
+      {
+        "index": 2,
+        "name": "BIT_2"
+      }
+    ],
+    "collisionMatrix": {
+      "0": 5,
+      "1": 6,
+      "2": 7
+    }
+  },
+  "__version__": "1.0.1",
+  "script": {
+    "useDefineForClassFields": false,
+    "allowDeclareFields": false
+  }
+}

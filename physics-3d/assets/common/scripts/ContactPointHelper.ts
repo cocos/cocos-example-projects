@@ -1,15 +1,15 @@
-import { _decorator, Component, Node, Prefab, loader, instantiate, ICollisionEvent, ColliderComponent, game, Vec3 } from 'cc';
+import { _decorator, Component, Node, Prefab, loader, instantiate, ICollisionEvent, ColliderComponent, game, Vec3, Quat } from 'cc';
 const { ccclass, property, menu } = _decorator;
-
+const q_0 = new Quat();
 @ccclass('COMMON.ContactPointHelper')
 @menu('common/ContactPointHelper')
 export class ContactPointHelper extends Component {
 
-    private static _point: Prefab = null;
-    private static _arrow: Prefab = null;
+    private static _point: Prefab = null!;
+    private static _arrow: Prefab = null!;
     private static _flag = 0;
     private static _insArr: ContactPointHelper[] = [];
-    private static _container: Node = null;
+    private static _container: Node = null!;
 
     private _entityMap: Map<string, { pt: Node[], aw: Node[] }> = new Map<string, { pt: Node[], aw: Node[] }>();
 
@@ -71,14 +71,19 @@ export class ContactPointHelper extends Component {
     onCollision (event: ICollisionEvent) {
         if (ContactPointHelper._point && ContactPointHelper._arrow) {
             if (!this._entityMap.has(event.otherCollider.uuid)) this._entityMap.set(event.otherCollider.uuid, { pt: [], aw: [] });
-            const map = this._entityMap.get(event.otherCollider.uuid);
+            const map = this._entityMap.get(event.otherCollider.uuid)!;
             map.pt.forEach((e) => { e.active = false; });
             map.aw.forEach((e) => { e.active = false; });
             event.contacts.forEach((e, i) => {
-                const wpb = new Vec3();
-                e.getWorldPointOnB(wpb);
-                const wnb = new Vec3();
-                e.getWorldNormalOnB(wnb);
+                const wp = new Vec3();
+                const wn = new Vec3();
+                if (e.isBodyA) {
+                    e.getWorldPointOnA(wp);
+                    e.getWorldNormalOnB(wn);
+                } else {
+                    e.getWorldPointOnB(wp);
+                    e.getWorldNormalOnA(wn);
+                }
 
                 let pt: Node, aw: Node;
                 if (map.pt.length > i) {
@@ -95,9 +100,10 @@ export class ContactPointHelper extends Component {
                     map.pt.push(pt);
                     map.aw.push(aw);
                 }
-                pt.setWorldPosition(wpb);
-                aw.setWorldPosition(wpb);
-                aw.forward = wnb;
+                pt.setWorldPosition(wp);
+                aw.setWorldPosition(wp);
+                Quat.rotationTo(q_0, Vec3.UNIT_Z, wn);
+                aw.setWorldRotation(q_0);
             })
         }
     }
