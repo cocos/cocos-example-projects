@@ -1,4 +1,4 @@
-import { _decorator, ButtonComponent, Component, director, game, Node, ScrollViewComponent, Vec3, LayoutComponent } from 'cc';
+import { _decorator, ButtonComponent, Component, director, game, Node, ScrollViewComponent, Vec3, LayoutComponent, Canvas, Layers } from 'cc';
 const { ccclass, property } = _decorator;
 import { sceneArray } from './scenelist';
 
@@ -60,6 +60,8 @@ export class BackButton extends Component {
     }
 
     public start () {
+        let camera = this.node.getComponent(Canvas)!.cameraComponent!;
+        if (camera.visibility | Layers.Enum.UI_2D) camera.visibility = ~Layers.Enum.UI_2D;
         game.addPersistRootNode(this.node);
         BackButton._scrollNode = this.node.getParent().getChildByPath('Canvas/ScrollView') as Node;
         if (BackButton._scrollNode) {
