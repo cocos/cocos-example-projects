@@ -3,13 +3,10 @@
 
 此 Cocos Creator 项目需要一些步骤来安装外部模块。
 
-## 需要环境
+## 测试环境
 
 - Node.js
 - Visual Studio Code
-- TypeScript
-  
-  在安装完 Node.js 之后在任意地方执行命令行 `npm install -g typescript`
 
 ## 设置步骤
 
@@ -28,6 +25,13 @@
 
 - 项目中唯一的空场景应该正常加载并且没有任何错误。
 
-- 在**编辑器打开的情况**下，以 Visual Studio Code 打开 `/npm-case` 目录，并运行：
-  `[Visual Studio Code 菜单栏]/[终端]/[运行任务]/[typescript]/[tsc:构建]`。
-  之后 Visual Studio Code 的终端面板应该没有任何错误输出。
+- 项目中的 TypeScript 代码应该没有任何错误提示。可选择以下两种方式验证，注意以下两种方式都要求 **在编辑器打开的情况下进行**：
+    - 在 Visual Studio Code 中打开 `/npm-case` 目录，并运行：
+    `[Visual Studio Code 菜单栏]/[终端]/[运行任务]/[typescript]/[tsc:构建]`。
+    之后 Visual Studio Code 的终端面板应该没有任何错误输出。
+
+    - 运行命令行并切换至 `/npm-case` 目录，并运行：
+    ```bash
+    npx tsc
+    ```
+    命令行应该没有任何输出。
