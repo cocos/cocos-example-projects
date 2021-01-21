@@ -18,15 +18,23 @@ import * as directoryImport from './dir';
 chai.expect(extensionLess.obj.value).to.equal('dir/index');
 chai.expect(extensionLess === directoryImport);
 
-// NPM package
+// Node.js package
 import protobufjs from 'protobufjs';
 chai.expect(typeof protobufjs).to.equal('object');
 
-// NPM package subpath
+// Node.js package subpath
 // Note the extension is required.
 // @ts-expect-error: have no .d.ts for this module
 import protobufjsUtils from 'protobufjs/src/util.js';
 chai.expect(typeof protobufjsUtils).to.equal('object');
+
+// Scoped Node.js package
+import protobufTsRuntime from '@protobuf-ts/runtime';
+chai.expect(typeof protobufTsRuntime.base64decode).to.equal('function');
+
+// Another Node.js package
+import jsZip from 'jszip/dist/jszip.min.js';
+chai.expect(jsZip.version).to.equal('3.5.0');
 
 // Modules out of assets dir(non-project-modules)
 // Note the extension is required.

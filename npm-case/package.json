@@ -9,7 +9,9 @@
     "build-proto:pbts": "pbts --main --out ./Proto.js/awesome.d.ts ./Proto.js/awesome.js"
   },
   "dependencies": {
+    "@protobuf-ts/runtime": "^1.0.12",
     "chai": "^4.2.0",
+    "jszip": "^3.5.0",
     "protobufjs": "^6.10.2"
   },
   "devDependencies": {
