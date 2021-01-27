@@ -1,3 +1,4 @@
+# NPM 测试例
 
 此示例用于演示 Cocos Creator 中各种模块交互的情形，尤其是 NPM 模块的使用。
 
@@ -6,7 +7,7 @@
 ## 测试环境
 
 - Node.js
-- Visual Studio Code
+- Visual Studio Code（推荐、可选）
 
 ## 设置步骤
 
@@ -14,8 +15,6 @@
 以 `/npm-case/` 为当前目录，执行命令行：
 
 - 执行 `npm install --no-save` 来安装 `node_modules/` 目录。
-
-- 执行 `npm run build-proto` 会清理并重新生成 `Proto.js/` 目录下的 “proto”文件（用于 protobufjs 示例）。
 
 除此之外不需要任何步骤，例如**不需要**手动清理 `node_modules/`。
 
@@ -25,7 +24,7 @@
 
 - 项目中唯一的空场景应该正常加载和显示，如果目标平台有控制台，那么控制台应该没有任何错误。
 
-- 项目中的 TypeScript 代码应该没有任何错误提示。可选择以下两种方式验证，注意以下两种方式都要求 **在编辑器打开的情况下进行**：
+- 项目中的 TypeScript 代码应该没有任何错误提示。可选择以下两种方式验证，⚠ 以下两种方式都要求 **在编辑器打开的情况下进行**：
     - 在 Visual Studio Code 中打开 `/npm-case` 目录，并运行：
     `[Visual Studio Code 菜单栏]/[终端]/[运行任务]/[typescript]/[tsc:构建]`。
     之后 Visual Studio Code 的终端面板应该没有任何错误输出。
