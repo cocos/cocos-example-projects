@@ -9,7 +9,7 @@ chai.expect(typeof log).to.equal('function');
 
 // Module `'cc/env'`
 import * as ccEnv from 'cc/env';
-chai.expect(ccEnv).to.be.a('Module');
+chai.expect(typeof ccEnv).to.equal('object');
 
 // Import from module written in TypeScript, the extension should be omitted.
 import * as extensionLess from './dir/index';
