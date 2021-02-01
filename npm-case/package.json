@@ -5,11 +5,13 @@
   "scripts": {
     "postinstall": "npm run build-proto",
     "build-proto": "node ./Tools/clear-proto.js && npm run build-proto:pbjs && npm run build-proto:pbts",
-    "build-proto:pbjs": "pbjs --target static-module --wrap commonjs --out ./Proto.js/awesome.js ./Proto/awesome.proto",
-    "build-proto:pbts": "pbts --main --out ./Proto.js/awesome.d.ts ./Proto.js/awesome.js"
+    "build-proto:pbjs": "pbjs --dependency protobufjs/minimal.js --target static-module --wrap commonjs --out ./Proto.js/proto.js ./Proto/*.proto",
+    "build-proto:pbts": "pbts --main --out ./Proto.js/proto.d.ts ./Proto.js/*.js & node ./Tools/wrap-pbts-result.js"
   },
   "dependencies": {
+    "@protobuf-ts/runtime": "^1.0.12",
     "chai": "^4.2.0",
+    "jszip": "^3.5.0",
     "protobufjs": "^6.10.2"
   },
   "devDependencies": {
