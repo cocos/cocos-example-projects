@@ -1,5 +1,5 @@
-import { _decorator, CameraComponent, Component, director, EffectAsset, GFXBufferTextureCopy,
-    GFXCullMode, Material, ModelComponent, Node, primitives, Quat, RenderTexture, TextureCube, utils } from 'cc';
+import { _decorator, CameraComponent, Component, director, EffectAsset, gfx,
+    Material, ModelComponent, Node, primitives, Quat, RenderTexture, TextureCube, utils } from 'cc';
 const { ccclass, property } = _decorator;
 
 const rotations = [
@@ -11,10 +11,10 @@ const rotations = [
     Quat.fromEuler(new Quat(),   0,   0, 0), // -Z
 ];
 
-const readRegions = [new GFXBufferTextureCopy()];
+const readRegions = [new gfx.BufferTextureCopy()];
 readRegions[0].texExtent.depth = 1;
 
-const writeRegions = [new GFXBufferTextureCopy()];
+const writeRegions = [new gfx.BufferTextureCopy()];
 writeRegions[0].texExtent.depth = 1;
 writeRegions[0].texSubres.layerCount = 6; // 6 faces
 
@@ -35,18 +35,18 @@ export class PreFilterEnvmap extends Component {
     @property
     public blurriness = 0;
 
-    private _camera: CameraComponent = null;
-    private _material: Material = null;
-    private _renderTarget: RenderTexture = null;
+    private _camera: CameraComponent = null!;
+    private _material: Material = null!;
+    private _renderTarget: RenderTexture = null!;
 
     public onLoad () {
-        this._camera = this.node.getComponentInChildren(CameraComponent);
-        this._renderTarget = this._camera.targetTexture;
+        this._camera = this.node.getComponentInChildren(CameraComponent)!;
+        this._renderTarget = this._camera.targetTexture!;
         this._material = new Material();
         this._material.initialize({
             effectAsset: this.effect,
             states: {
-                rasterizerState: { cullMode: GFXCullMode.FRONT },
+                rasterizerState: { cullMode: gfx.CullMode.FRONT },
                 depthStencilState: { depthTest: false, depthWrite: false },
             },
         });
@@ -81,20 +81,20 @@ export class PreFilterEnvmap extends Component {
         this.node.active = true;
         envmap.setMipFilter(TextureCube.Filter.LINEAR);
         let size = envmap.width; // has to be square
-        const view = this._camera.camera.view;
+        const camera = this._camera.camera;
         const readRegion = readRegions[0];
         const writeRegion = writeRegions[0];
         const mipLevel = getMipLevel(size);
         const newEnvMap = new TextureCube();
         const pass = this._material.passes[0];
         const handle = pass.getHandle('roughness');
-        this.node.setScale(1, director.root.device.UVSpaceSignY, 1); // GL-specific: flip both model and camera so front face stays the same
-        view.camera.scene.update(0); // should update scene after flipping
+        this.node.setScale(1, director.root!.device.UVSpaceSignY, 1); // GL-specific: flip both model and camera so front face stays the same
+        camera.scene!.update(0); // should update scene after flipping
         newEnvMap.reset({ width: size, height: size, mipmapLevel: mipLevel });
         for (let m = 0; m < mipLevel; m++) {
             // need to resize both window and camera
-            view.window.resize(size, size);
-            view.camera.resize(size, size);
+            camera.window!.resize(size, size);
+            camera.resize(size, size);
             readRegion.texExtent.width = readRegion.texExtent.height = size;
             writeRegion.texExtent.width = writeRegion.texExtent.height = size;
             writeRegion.texSubres.mipLevel = m;
@@ -106,10 +106,10 @@ export class PreFilterEnvmap extends Component {
                 buffers[i] = new Uint8Array(length);
                 this._camera.node.setRotation(rotations[i]);
                 this._camera.camera.update();
-                director.root.pipeline.render([view]);
-                director.root.device.copyFramebufferToBuffer(view.window.framebuffer, buffers[i].buffer, readRegions);
+                director.root!.pipeline.render([camera]);
+                director.root!.device.copyFramebufferToBuffer(camera.window!.framebuffer, buffers[i].buffer, readRegions);
             }
-            director.root.device.copyBuffersToTexture(buffers, newEnvMap.getGFXTexture(), writeRegions);
+            director.root!.device.copyBuffersToTexture(buffers, newEnvMap.getGFXTexture()!, writeRegions);
             size >>= 1;
         }
         this.node.active = false;

@@ -1,5 +1,5 @@
 import {
-    _decorator, builtinResMgr, GFXAttributeName, GFXBlendFactor, GFXCullMode, GFXFormat, GFXFormatInfos, Material, ModelComponent,
+    _decorator, builtinResMgr, gfx, Material, ModelComponent,
     SpriteFrame, Texture2D, utils, Vec3, Mesh,
 } from 'cc';
 const { ccclass, property } = _decorator;
@@ -13,7 +13,7 @@ const materialInfo = {
     effectName: 'unlit',
     technique: 0,
     defines: { USE_TEXTURE: true },
-    states: { rasterizerState: { cullMode: GFXCullMode.NONE } },
+    states: { rasterizerState: { cullMode: gfx.CullMode.NONE } },
 };
 const default_uvs = [
     0, 1,
@@ -36,9 +36,9 @@ const meshInfo = {
 const enableBlend = {
     blendState: { targets: [ {
         blend: true,
-        blendSrc: GFXBlendFactor.SRC_ALPHA,
-        blendDst: GFXBlendFactor.ONE_MINUS_SRC_ALPHA,
-        blendDstAlpha: GFXBlendFactor.ONE_MINUS_SRC_ALPHA,
+        blendSrc: gfx.BlendFactor.SRC_ALPHA,
+        blendDst: gfx.BlendFactor.ONE_MINUS_SRC_ALPHA,
+        blendDstAlpha: gfx.BlendFactor.ONE_MINUS_SRC_ALPHA,
     } ] },
 };
 
@@ -91,7 +91,7 @@ export class UnlitQuadComponent extends ModelComponent {
     @property
     set transparent (val: boolean) {
         this._transparent = val;
-        this.material.overridePipelineStates(val ? enableBlend : {});
+        this.material!.overridePipelineStates(val ? enableBlend : {});
     }
     get transparent () {
         return this._transparent;
@@ -118,7 +118,7 @@ export class UnlitQuadComponent extends ModelComponent {
         const binding = pass && pass.getBinding('mainTexture');
         if (typeof binding !== 'number') { return; }
         const target = this._sprite ? this._sprite : this._texture ? this._texture : builtinResMgr.get<Texture2D>('grey-texture');
-        pass.bindTexture(binding, target.getGFXTexture());
+        pass!.bindTexture(binding, target.getGFXTexture());
         // update UV (handle atlas)
         const model = this.model && this.model.subModels[0];
         const ia = model && model.inputAssembler;
@@ -127,13 +127,13 @@ export class UnlitQuadComponent extends ModelComponent {
         if (this._sprite) { this._sprite._calculateUV(); uv = this._sprite.uv; }
 
         let offset = 0;
-        let format = GFXFormat.UNKNOWN;
+        let format = gfx.Format.UNKNOWN;
         for (const a of ia.attributes) {
-            if (a.name === GFXAttributeName.ATTR_TEX_COORD) { format = a.format; break; }
-            offset += GFXFormatInfos[a.format].size;
+            if (a.name === gfx.AttributeName.ATTR_TEX_COORD) { format = a.format; break; }
+            offset += gfx.FormatInfos[a.format].size;
         }
         const vb = ia.vertexBuffers[0];
         utils.writeBuffer(new DataView(vbuffer as ArrayBuffer), uv, format, offset, vb.stride);
-        vb.update(vbuffer);
+        vb.update(vbuffer!);
     }
 }
