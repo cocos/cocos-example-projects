@@ -1,21 +1,9 @@
-import { _decorator, Component, Node, Enum, ColliderComponent, EventTouch, RigidBodyComponent } from 'cc';
+import { _decorator, Component, Node, Enum, ColliderComponent, EventTouch, RigidBodyComponent, PhysicsSystem } from 'cc';
 const { ccclass, property, menu } = _decorator;
-
-export enum EPHY_GROUP {
-    G_0 = 1 << 0,
-    G_1 = 1 << 1,
-    G_2 = 1 << 2,
-};
-
-Enum(EPHY_GROUP);
 
 export enum EPHY_MASK {
     M_NONE = 0,
-    M_0 = EPHY_GROUP.G_0,
-    M_1 = EPHY_GROUP.G_1,
-    M_2 = EPHY_GROUP.G_2,
-    M_012 = EPHY_GROUP.G_0 + EPHY_GROUP.G_1 + EPHY_GROUP.G_2,
-    M_3 = EPHY_GROUP.G_2 << 1,
+    M_ALL = 0xffffffff
 };
 
 Enum(EPHY_MASK);
@@ -23,13 +11,13 @@ Enum(EPHY_MASK);
 @ccclass('CASES.GroupMaskTestItem')
 class GroupMaskTestItem {
     @property({ type: Node })
-    target: Node = null;
+    target: Node = null as any;
 
-    @property({ type: EPHY_GROUP })
-    group = EPHY_GROUP.G_0;
+    @property({ type: PhysicsSystem.PhysicsGroup })
+    group = PhysicsSystem.PhysicsGroup.DEFAULT;
 
     @property({ type: EPHY_MASK })
-    mask = EPHY_MASK.M_012;
+    mask = EPHY_MASK.M_ALL;
 }
 
 @ccclass('CASES.GroupMaskTest')
@@ -39,19 +27,24 @@ export class GroupMaskTest extends Component {
     @property({ type: [GroupMaskTestItem] })
     items: GroupMaskTestItem[] = []
 
+    @property({ type: RigidBodyComponent })
+    testBody: RigidBodyComponent = null as any;
+
     start () {
         this.items.forEach((i: GroupMaskTestItem) => {
             if (i.target) {
-                let c = i.target.getComponent(ColliderComponent);
+                let c = i.target.getComponent(ColliderComponent)!;
                 c.setGroup(i.group);
                 c.setMask(i.mask);
             }
         });
+
+        this.testBody.setMask(0);
     }
 
     setItemMaskToNone (event: EventTouch, index: string) {
         const int = parseInt(index);
-        let c = this.items[int].target.getComponent(ColliderComponent);
+        let c = this.items[int].target.getComponent(ColliderComponent)!;
         c.setMask(EPHY_MASK.M_NONE);
 
         this.items.forEach((i: GroupMaskTestItem) => {

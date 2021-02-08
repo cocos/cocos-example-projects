@@ -4,7 +4,7 @@ const { menu, ccclass, property } = _decorator;
 @ccclass('CASES.VelocityTestItem')
 class VelocityTestItem {
     @property({ type: Node })
-    target: Node = null;
+    target: Node = null as any;
 
     @property
     USE_LINEAR = false;
@@ -40,7 +40,7 @@ export class VelocityTest extends Component {
     setItemVelocity (event: EventTouch, index: string) {
         const int = parseInt(index);
         const i = this.items[int];
-        let r = i.target.getComponent(RigidBodyComponent);
+        let r = i.target.getComponent(RigidBodyComponent)!;
         i.USE_LINEAR && r.setLinearVelocity(i.linearVelocity);
         i.USE_ANGULAR && r.setAngularVelocity(i.angularVelocity);
     }

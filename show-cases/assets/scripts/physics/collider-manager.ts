@@ -1,5 +1,6 @@
 
 import { _decorator, Component, instantiate, Node, Vec3 } from 'cc';
+import { math } from 'cc';
 const { ccclass, property } = _decorator;
 
 const v3_1 = new Vec3();
@@ -26,8 +27,8 @@ export class ColliderManager extends Component {
         for (let i = 0; i < this.count; i++) {
             const node = instantiate(this.prefabs[Math.round(Math.random())]);
             node.parent = this.node;
-            node.setPosition(cc.math.randomRange(-2, 2), 3 + i * 2, cc.math.randomRange(-2, 2));
-            node.setRotationFromEuler(cc.math.randomRange(0, 180), cc.math.randomRange(0, 180), cc.math.randomRange(0, 180));
+            node.setPosition(math.randomRange(-2, 2), 3 + i * 2, math.randomRange(-2, 2));
+            node.setRotationFromEuler(math.randomRange(0, 180), math.randomRange(0, 180), math.randomRange(0, 180));
         }
     }
 

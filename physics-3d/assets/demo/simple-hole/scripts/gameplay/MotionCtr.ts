@@ -9,8 +9,6 @@ const KEYCODE = {
     S: 'S'.charCodeAt(0),
     A: 'A'.charCodeAt(0),
     D: 'D'.charCodeAt(0),
-    Q: 'Q'.charCodeAt(0),
-    E: 'E'.charCodeAt(0),
     SHIFT: macro.KEY.shift,
 };
 
@@ -83,8 +81,6 @@ export class MotionCtr extends Component {
         else if (e.keyCode === KEYCODE.S) { if (v.z === 0) { v.z = 1; } }
         else if (e.keyCode === KEYCODE.A) { if (v.x === 0) { v.x = -1; } }
         else if (e.keyCode === KEYCODE.D) { if (v.x === 0) { v.x = 1; } }
-        else if (e.keyCode === KEYCODE.Q) { if (v.y === 0) { v.y = -1; } }
-        else if (e.keyCode === KEYCODE.E) { if (v.y === 0) { v.y = 1; } }
     }
 
     onKeyUp (e) {
@@ -94,8 +90,6 @@ export class MotionCtr extends Component {
         else if (e.keyCode === KEYCODE.S) { if (v.z > 0) { v.z = 0; } }
         else if (e.keyCode === KEYCODE.A) { if (v.x < 0) { v.x = 0; } }
         else if (e.keyCode === KEYCODE.D) { if (v.x > 0) { v.x = 0; } }
-        else if (e.keyCode === KEYCODE.Q) { if (v.y < 0) { v.y = 0; } }
-        else if (e.keyCode === KEYCODE.E) { if (v.y > 0) { v.y = 0; } }
     }
 
     onTouchStart (e) {

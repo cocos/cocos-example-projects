@@ -1,0 +1,32 @@
+{
+  "macroConfig": {
+    "ENABLE_TILEDMAP_CULLING": true,
+    "TOUCH_TIMEOUT": 5000,
+    "DOWNLOAD_MAX_CONCURRENT": 64,
+    "ENABLE_TRANSPARENT_CANVAS": false,
+    "ENABLE_WEBGL_ANTIALIAS": false,
+    "CLEANUP_IMAGE_CACHE": false,
+    "ENABLE_MULTI_TOUCH": true
+  },
+  "modules": {
+    "cache": {},
+    "includeModules": [
+      "base",
+      "gfx-webgl",
+      "gfx-webgl2",
+      "ui",
+      "particle",
+      "physics-cannon",
+      "physics-framework",
+      "physics-2d-box2d",
+      "physics-2d-framework",
+      "intersection-2d",
+      "audio",
+      "video",
+      "webview",
+      "tween",
+      "terrain"
+    ]
+  },
+  "__version__": "1.0.1"
+}

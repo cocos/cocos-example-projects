@@ -1,4 +1,4 @@
-import { _decorator, Component, Quat, Vec2, Vec3 } from 'cc';
+import { _decorator, Component, Quat, Vec2, Vec3, macro, systemEvent, SystemEvent, game, Touch, EventKeyboard, EventMouse } from 'cc';
 const { ccclass, property } = _decorator;
 
 const v2_1 = new Vec2();
@@ -12,7 +12,7 @@ const KEYCODE = {
     D: 'D'.charCodeAt(0),
     Q: 'Q'.charCodeAt(0),
     E: 'E'.charCodeAt(0),
-    SHIFT: cc.macro.KEY.shift,
+    SHIFT: macro.KEY.shift,
 };
 
 @ccclass
@@ -36,26 +36,26 @@ export class FirstPersonCamera extends Component {
     private _speedScale = 1;
 
     public onLoad () {
-        cc.systemEvent.on(cc.SystemEvent.EventType.MOUSE_WHEEL, this.onMouseWheel, this);
-        cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
-        cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
-        cc.systemEvent.on(cc.SystemEvent.EventType.TOUCH_START, this.onTouchStart, this);
-        cc.systemEvent.on(cc.SystemEvent.EventType.TOUCH_MOVE, this.onTouchMove, this);
-        cc.systemEvent.on(cc.SystemEvent.EventType.TOUCH_END, this.onTouchEnd, this);
+        systemEvent.on(SystemEvent.EventType.MOUSE_WHEEL, this.onMouseWheel, this);
+        systemEvent.on(SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
+        systemEvent.on(SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
+        systemEvent.on(SystemEvent.EventType.TOUCH_START, this.onTouchStart, this);
+        systemEvent.on(SystemEvent.EventType.TOUCH_MOVE, this.onTouchMove, this);
+        systemEvent.on(SystemEvent.EventType.TOUCH_END, this.onTouchEnd, this);
         Vec3.copy(this._euler, this.node.eulerAngles);
         Vec3.copy(this._position, this.node.position);
     }
 
     public onDestroy () {
-        cc.systemEvent.off(cc.SystemEvent.EventType.MOUSE_WHEEL, this.onMouseWheel, this);
-        cc.systemEvent.off(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
-        cc.systemEvent.off(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
-        cc.systemEvent.off(cc.SystemEvent.EventType.TOUCH_START, this.onTouchStart, this);
-        cc.systemEvent.off(cc.SystemEvent.EventType.TOUCH_MOVE, this.onTouchMove, this);
-        cc.systemEvent.off(cc.SystemEvent.EventType.TOUCH_END, this.onTouchEnd, this);
+        systemEvent.off(SystemEvent.EventType.MOUSE_WHEEL, this.onMouseWheel, this);
+        systemEvent.off(SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
+        systemEvent.off(SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
+        systemEvent.off(SystemEvent.EventType.TOUCH_START, this.onTouchStart, this);
+        systemEvent.off(SystemEvent.EventType.TOUCH_MOVE, this.onTouchMove, this);
+        systemEvent.off(SystemEvent.EventType.TOUCH_END, this.onTouchEnd, this);
     }
 
-    public update (dt) {
+    public update (dt: number) {
         // position
         Vec3.transformQuat(v3_1, this._velocity, this.node.rotation);
         Vec3.scaleAndAdd(this._position, this._position, v3_1, this.moveSpeed * this._speedScale);
@@ -67,13 +67,13 @@ export class FirstPersonCamera extends Component {
         this.node.setRotation(qt_1);
     }
 
-    public onMouseWheel (e) {
+    public onMouseWheel (e: EventMouse) {
         const delta = -e.getScrollY() * this.moveSpeed * 0.1; // delta is positive when scroll down
         Vec3.transformQuat(v3_1, Vec3.UNIT_Z, this.node.rotation);
         Vec3.scaleAndAdd(this._position, this.node.position, v3_1, delta);
     }
 
-    public onKeyDown (e) {
+    public onKeyDown (e: EventKeyboard) {
         const v = this._velocity;
         if      (e.keyCode === KEYCODE.SHIFT) { this._speedScale = this.moveSpeedShiftScale; }
         else if (e.keyCode === KEYCODE.W) { if (v.z === 0) { v.z = -1; } }
@@ -84,7 +84,7 @@ export class FirstPersonCamera extends Component {
         else if (e.keyCode === KEYCODE.E) { if (v.y === 0) { v.y =  1; } }
     }
 
-    public onKeyUp (e) {
+    public onKeyUp (e: EventKeyboard) {
         const v = this._velocity;
         if      (e.keyCode === KEYCODE.SHIFT) { this._speedScale = 1; }
         else if (e.keyCode === KEYCODE.W) { if (v.z < 0) { v.z = 0; } }
@@ -95,13 +95,13 @@ export class FirstPersonCamera extends Component {
         else if (e.keyCode === KEYCODE.E) { if (v.y > 0) { v.y = 0; } }
     }
 
-    public onTouchStart (e) {
-        if (cc.game.canvas.requestPointerLock) { cc.game.canvas.requestPointerLock(); }
+    public onTouchStart (e: Touch) {
+        if (game.canvas.requestPointerLock) { game.canvas.requestPointerLock(); }
     }
 
-    public onTouchMove (e) {
+    public onTouchMove (e: Touch) {
         e.getStartLocation(v2_1);
-        if (v2_1.x > cc.game.canvas.width * 0.4) { // rotation
+        if (v2_1.x > game.canvas.width * 0.4) { // rotation
             e.getDelta(v2_2);
             this._euler.y -= v2_2.x * this.rotateSpeed * 0.1;
             this._euler.x += v2_2.y * this.rotateSpeed * 0.1;
@@ -113,10 +113,10 @@ export class FirstPersonCamera extends Component {
         }
     }
 
-    public onTouchEnd (e) {
+    public onTouchEnd (e: Touch) {
         if (document.exitPointerLock) { document.exitPointerLock(); }
         e.getStartLocation(v2_1);
-        if (v2_1.x < cc.game.canvas.width * 0.4) { // position
+        if (v2_1.x < game.canvas.width * 0.4) { // position
             this._velocity.x = 0;
             this._velocity.z = 0;
         }

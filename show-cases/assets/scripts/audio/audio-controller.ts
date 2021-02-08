@@ -65,20 +65,20 @@ export class AudioController extends Component {
     }
 
     // slider callback
-    public setVolume (e) {
+    public setVolume (e: SliderComponent) {
         this.source.volume = e.progress;
     }
     // slider callback
-    public setCurrentTime (e) {
+    public setCurrentTime (e: SliderComponent) {
         this.source.currentTime = e.progress * this.source.duration;
     }
 
     // toggle callback
-    public setLoop (e) {
+    public setLoop (e: ToggleComponent) {
         this.source.loop = e.isChecked;
     }
     // toggle callback
-    public setPlayOnAwake (e) {
+    public setPlayOnAwake (e: ToggleComponent) {
         this.source.playOnAwake = e.isChecked;
     }
 }

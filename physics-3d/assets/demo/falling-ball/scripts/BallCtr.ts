@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, ICollisionEvent, ColliderComponent, RigidBodyComponent, Vec3, Texture2D, SphereColliderComponent } from "cc";
+import { _decorator, Component, Node, ICollisionEvent, ColliderComponent, RigidBodyComponent, Vec3, Texture2D, SphereColliderComponent, ERigidBodyType } from "cc";
 import { v3_t } from "./TempConst";
 import { ColumnCtr } from "./ColumnCtr";
 import { FloorFlagCtr } from "./FloorFlagCtr";
@@ -9,16 +9,16 @@ const { ccclass, property, requireComponent, menu } = _decorator;
 @menu("demo/falling-ball/BallCtr")
 export class BallCtr extends Component {
 
-    rigidBody: RigidBodyComponent = null;
+    rigidBody: RigidBodyComponent = null!;
 
     @property
     velocity_y: number = 10;
 
     @property({ type: ColumnCtr })
-    columnCtr: ColumnCtr = null;
+    columnCtr: ColumnCtr = null!;
 
     @property({ type: FloorFlagCtr })
-    floorFlagCtr: FloorFlagCtr = null;
+    floorFlagCtr: FloorFlagCtr = null!;
 
     private _deadlockCount = 0;
     private _tempUuid = '';
@@ -33,12 +33,12 @@ export class BallCtr extends Component {
     }
 
     onLoad () {
-        this.rigidBody = this.getComponent(RigidBodyComponent);
+        this.rigidBody = this.getComponent(RigidBodyComponent)!;
         this.rigidBody.allowSleep = false;
     }
 
     start () {
-        const collider = this.getComponent(ColliderComponent);
+        const collider = this.getComponent(ColliderComponent)!;
         collider.on('onCollisionEnter', this.onCollisionEnter, this);
     }
 
@@ -49,13 +49,8 @@ export class BallCtr extends Component {
 
         if (event.otherCollider.node.name == "CubeRed") {
             this._hitRedFlag = 1;
-            if (window.CC_PHYSICS_AMMO) {
-                this.rigidBody.body.impl.clearState();
-            } else if (window.CC_PHYSICS_CANNON) {
-                this.rigidBody.body.impl.sleep();
-                this.rigidBody.body.impl.wakeUp();
-            }
-            this.rigidBody.mass = 0;
+            this.rigidBody.clearState();
+            this.rigidBody.type = ERigidBodyType.KINEMATIC;
             this.columnCtr.enabled = false;
             this.floorFlagCtr.enabled = false;
         } else if (event.otherCollider.node.name == "Cube") {
@@ -83,11 +78,8 @@ export class BallCtr extends Component {
         }
     }
 
-    reset () {
-        this.rigidBody.mass = 10;
-        if (window.CC_PHYSICS_CANNON) {
-            (this.rigidBody.body.impl as CANNON.Body).type = CANNON.Body.DYNAMIC;
-        }
+    reset () {        
+        this.rigidBody.type = ERigidBodyType.DYNAMIC;
         this._hitRedFlag = 0;
         v3_t.set(0, 6, 4.5);
         this.node.worldPosition = v3_t;

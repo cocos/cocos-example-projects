@@ -12,7 +12,7 @@ export class CollisionTest extends Component {
     private messageAmount = 0;
 
     @property({ type: LabelComponent })
-    public label: LabelComponent = null;
+    public label: LabelComponent = null as any;
 
     constructor () {
         super();
@@ -36,7 +36,7 @@ export class CollisionTest extends Component {
             this.label.fontSize = 40;
             this.label.lineHeight = 40;
             this.label.verticalAlign =VerticalTextAlignment.CENTER;
-            this.label.getComponent(UITransformComponent).contentSize = new Size(400, 400);
+            this.label.getComponent(UITransformComponent)!.contentSize = new Size(400, 400);
             this.label.color = Color.RED;
             this.enabled = false;
             return;

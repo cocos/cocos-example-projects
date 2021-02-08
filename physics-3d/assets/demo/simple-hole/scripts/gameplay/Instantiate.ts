@@ -1,4 +1,4 @@
-import { _decorator, Component, Prefab, PhysicsSystem, ColliderComponent, math, ToggleComponent, BoxColliderComponent, Node, Vec3 } from "cc";
+import { _decorator, Component, Prefab, PhysicsSystem, ColliderComponent, math, ToggleComponent, BoxColliderComponent, Node, Vec3, director, Director, Quat } from "cc";
 import { PrefabPoolUtil } from "../../../../common/scripts/PrefabPoolUtil";
 import { EShapeAlgorithm, random_algorithm, x_square_2_algorithm, spiral_algorithm } from "./EShapeAlgorithm";
 import { EGroup } from "./EGroupMask";
@@ -12,10 +12,10 @@ export class Instantiate extends Component {
     public algorithms = EShapeAlgorithm.RANDOM;
 
     @property({ type: Prefab })
-    public boxPrefab: Prefab = null;
+    public boxPrefab: Prefab = null as any;
 
     @property({ type: Prefab })
-    public spherePrefab: Prefab = null;
+    public spherePrefab: Prefab = null as any;
 
     @property
     public boxAmount: number = 50;
@@ -24,65 +24,70 @@ export class Instantiate extends Component {
     public sphereAmount: number = 50;
 
     @property
-    public gravity: math.Vec3 = new math.Vec3(0, -200, 0);
+    public gravity: math.Vec3 = new math.Vec3(0, -10, 0);
 
-    onLoad () {
+    start () {
         // Your initialization goes here.
         PhysicsSystem.instance.gravity = this.gravity;
         this.spawnEntity();
+        director.once(Director.EVENT_BEFORE_PHYSICS, () => {
+            PhysicsSystem.instance.resetAccumulator()
+        })
     }
 
     onDestroy () {
         PhysicsSystem.instance.gravity = new Vec3(0, -10, 0);
-        PrefabPoolUtil.clear();
+        PrefabPoolUtil.clear('SIMPLE-HOLE.box');
+        PrefabPoolUtil.clear('SIMPLE-HOLE.sphere');
     }
 
     spawnEntity () {
+        let nodes: Node[] = [];
         for (let i = this.boxAmount; i--;) {
-            let boxNode = PrefabPoolUtil.getItemByPoolName('SIMPLE-HOLE.box', this.boxPrefab);
-            this.node.addChild(boxNode);
-            boxNode.name = 'Body';
-            let collider = boxNode.getComponent(ColliderComponent);
-            if (collider) {
-                collider.setGroup(EGroup.G_BODY);
-                collider.setMask(-1);
-            }
+            let n = PrefabPoolUtil.getItemByPoolName('SIMPLE-HOLE.box', this.boxPrefab);
+            n.name = 'Body';
+            nodes.push(n);
         }
 
         for (let i = this.sphereAmount; i--;) {
-            let sphereNode = PrefabPoolUtil.getItemByPoolName('SIMPLE-HOLE.sphere', this.spherePrefab);
-            this.node.addChild(sphereNode);
-            sphereNode.name = 'Body';
-            let collider = sphereNode.getComponent(ColliderComponent);
-            if (collider) {
-                collider.setGroup(EGroup.G_BODY);
-                collider.setMask(-1);
-            }
+            let n = PrefabPoolUtil.getItemByPoolName('SIMPLE-HOLE.sphere', this.spherePrefab);
+            n.name = 'Body';
+            nodes.push(n);
         }
 
         switch (this.algorithms) {
             case EShapeAlgorithm.RANDOM:
-                for (let i = 0; i < this.node.children.length; i++) {
-                    this.node.children[i].position = random_algorithm(-45, 45);
+                for (let i = 0; i < nodes.length; i++) {
+                    nodes[i].worldPosition = random_algorithm(-45, 45);
                 }
                 break;
 
             case EShapeAlgorithm.X_SQUARE_2:
-                for (let i = 0; i < this.node.children.length; i++) {
-                    this.node.children[i].position = x_square_2_algorithm(i, this.node.children.length);
+                for (let i = 0; i < nodes.length; i++) {
+                    nodes[i].worldPosition = x_square_2_algorithm(i, nodes.length);
                 }
                 break;
 
             case EShapeAlgorithm.SPIRAL:
-                for (let i = 0; i < this.node.children.length; i++) {
-                    this.node.children[i].position = spiral_algorithm(i, this.node.children.length);
+                for (let i = 0; i < nodes.length; i++) {
+                    nodes[i].worldPosition = spiral_algorithm(i, nodes.length);
                 }
                 break;
         }
 
-
-        for (let i = 0; i < this.node.children.length; i++) {
-            this.node.children[i].active = true;
+        /**
+         * 先设置 Transform 再添加到节点树中，避免一些 BUG
+         */
+        for (let i = 0; i < nodes.length; i++) {
+            let n = nodes[i];
+            n.worldRotation = Quat.IDENTITY;
+            n.active = true;
+            this.node.addChild(n);
+            let collider = n.getComponent(ColliderComponent);
+            if (collider) {
+                collider.setGroup(EGroup.G_BODY);
+                collider.setMask(-1);
+            }
         }
     }
 

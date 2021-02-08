@@ -1,39 +1,46 @@
 import {
-    _decorator, builtinResMgr, GFXAttributeName, GFXBlendFactor, GFXCullMode, GFXFormat, GFXFormatInfos, Material, ModelComponent,
-    SpriteFrame, Texture2D, utils, Vec3,
+    _decorator, builtinResMgr, gfx, Material, ModelComponent,
+    SpriteFrame, Texture2D, utils, Vec3, Mesh,
 } from 'cc';
 const { ccclass, property } = _decorator;
 
+let mesh: Mesh | null = null;
+let vbInfo: Mesh.IBufferView | null = null;
+let vbuffer: ArrayBuffer | null = null;
 let material: Material | null = null;
-const enableBlend = {
-    blendState: { targets: [ {
-        blend: true,
-        blendSrc: GFXBlendFactor.SRC_ALPHA,
-        blendDst: GFXBlendFactor.ONE_MINUS_SRC_ALPHA,
-        blendDstAlpha: GFXBlendFactor.ONE_MINUS_SRC_ALPHA,
-    } ] },
-};
 
+const materialInfo = {
+    effectName: 'unlit',
+    technique: 0,
+    defines: { USE_TEXTURE: true },
+    states: { rasterizerState: { cullMode: gfx.CullMode.NONE } },
+};
 const default_uvs = [
     0, 1,
     1, 1,
     0, 0,
     1, 0,
 ];
-const mesh = utils.createMesh({
+const meshInfo = {
     positions: [
         -0.5, -0.5, 0, // bottom-left
-         0.5, -0.5, 0, // bottom-right
+        0.5, -0.5, 0, // bottom-right
         -0.5,  0.5, 0, // top-left
-         0.5,  0.5, 0, // top-right
+        0.5,  0.5, 0, // top-right
     ],
     uvs: default_uvs,
     indices: [ 0, 1, 2, 2, 1, 3 ],
     minPos: new Vec3(-0.5, -0.5, 0),
     maxPos: new Vec3( 0.5,  0.5, 0),
-});
-const vbInfo = mesh.struct.vertexBundles[0].view;
-const vbuffer = mesh.data.buffer.slice(vbInfo.offset, vbInfo.offset + vbInfo.length);
+};
+const enableBlend = {
+    blendState: { targets: [ {
+        blend: true,
+        blendSrc: gfx.BlendFactor.SRC_ALPHA,
+        blendDst: gfx.BlendFactor.ONE_MINUS_SRC_ALPHA,
+        blendDstAlpha: gfx.BlendFactor.ONE_MINUS_SRC_ALPHA,
+    } ] },
+};
 
 @ccclass('UnlitQuadComponent')
 export class UnlitQuadComponent extends ModelComponent {
@@ -84,7 +91,7 @@ export class UnlitQuadComponent extends ModelComponent {
     @property
     set transparent (val: boolean) {
         this._transparent = val;
-        this.material.overridePipelineStates(val ? enableBlend : {});
+        this.material!.overridePipelineStates(val ? enableBlend : {});
     }
     get transparent () {
         return this._transparent;
@@ -93,12 +100,10 @@ export class UnlitQuadComponent extends ModelComponent {
     public onLoad () {
         if (!material) {
             material = new Material();
-            material.initialize({
-                effectName: 'builtin-unlit',
-                technique: 0,
-                defines: { USE_TEXTURE: true },
-                states: { rasterizerState: { cullMode: GFXCullMode.NONE } },
-            });
+            material.initialize(materialInfo);
+            mesh = utils.createMesh(meshInfo);
+            vbInfo = mesh.struct.vertexBundles[0].view;
+            vbuffer = mesh.data.buffer.slice(vbInfo.offset, vbInfo.offset + vbInfo.length);
         }
         this.material = material;
         this._mesh = mesh;
@@ -113,22 +118,22 @@ export class UnlitQuadComponent extends ModelComponent {
         const binding = pass && pass.getBinding('mainTexture');
         if (typeof binding !== 'number') { return; }
         const target = this._sprite ? this._sprite : this._texture ? this._texture : builtinResMgr.get<Texture2D>('grey-texture');
-        pass.bindTextureView(binding, target.getGFXTextureView());
+        pass!.bindTexture(binding, target.getGFXTexture());
         // update UV (handle atlas)
-        const model = this.model && this.model.getSubModel(0);
+        const model = this.model && this.model.subModels[0];
         const ia = model && model.inputAssembler;
         if (!ia) { return; }
         let uv = default_uvs;
         if (this._sprite) { this._sprite._calculateUV(); uv = this._sprite.uv; }
 
         let offset = 0;
-        let format = GFXFormat.UNKNOWN;
+        let format = gfx.Format.UNKNOWN;
         for (const a of ia.attributes) {
-            if (a.name === GFXAttributeName.ATTR_TEX_COORD) { format = a.format; break; }
-            offset += GFXFormatInfos[a.format].size;
+            if (a.name === gfx.AttributeName.ATTR_TEX_COORD) { format = a.format; break; }
+            offset += gfx.FormatInfos[a.format].size;
         }
         const vb = ia.vertexBuffers[0];
         utils.writeBuffer(new DataView(vbuffer as ArrayBuffer), uv, format, offset, vb.stride);
-        vb.update(vbuffer);
+        vb.update(vbuffer!);
     }
 }

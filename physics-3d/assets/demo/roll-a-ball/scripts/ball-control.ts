@@ -1,7 +1,8 @@
-import { _decorator, Component, math, systemEvent, macro, RigidBodyComponent, Touch, EventTouch, SystemEventType, EventKeyboard } from "cc";
+import { _decorator, Component, math, systemEvent, macro, RigidBodyComponent, Touch, EventTouch, SystemEventType, EventKeyboard, Vec3, clamp } from "cc";
 const { ccclass, property, menu } = _decorator;
 
 const v3_0 = new math.Vec3();
+const v3_1 = new math.Vec3();
 const v2_0 = new math.Vec2();
 
 enum EKey {
@@ -48,6 +49,11 @@ export class ballcontrol extends Component {
         if (v3_0.z != 0 || v3_0.x != 0) {
             this._rigidBody.applyImpulse(v3_0);
             v3_0.set(0, 0, 0);
+            this._rigidBody.getLinearVelocity(v3_1);
+            v3_1.x = clamp(v3_1.x, -4, 4);
+            v3_1.y = clamp(v3_1.y, -4, 4);
+            v3_1.z = clamp(v3_1.z, -4, 4);
+            this._rigidBody.setLinearVelocity(v3_1);
         }
     }
 

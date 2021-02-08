@@ -6,10 +6,10 @@ const { ccclass, property, menu } = _decorator;
 export class colliderdisabled extends Component {
     public start () {
         let Collider = this.getComponent(ColliderComponent);
-        Collider.on('onCollisionEnter', this.onCollision, this);
+        Collider.on('onTriggerEnter', this.onTrigger, this);
     }
 
-    private onCollision (event: ICollisionEvent) {
+    private onTrigger (event: ICollisionEvent) {
         if (event.otherCollider.node.name == "Bonus") {
             event.otherCollider.node.active = false;
         }

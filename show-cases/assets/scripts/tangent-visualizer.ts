@@ -1,4 +1,4 @@
-import { _decorator, Color, Component, Material, ModelComponent, utils, Vec3 } from 'cc';
+import { _decorator, Color, Component, Material, ModelComponent, utils, Vec3, GFXPrimitiveMode, GFXAttributeName } from 'cc';
 const { ccclass, property, executeInEditMode, requireComponent } = _decorator;
 
 const v3_1 = new Vec3();
@@ -29,7 +29,7 @@ export class TangentVisualizer extends Component {
         this._material.initialize({
             effectName: 'builtin-unlit',
             defines: { USE_VERTEX_COLOR: true },
-            states: { primitive: cc.GFXPrimitiveMode.LINE_LIST },
+            states: { primitive: GFXPrimitiveMode.LINE_LIST },
         });
         this.refresh();
     }
@@ -38,16 +38,16 @@ export class TangentVisualizer extends Component {
         if (!this.target) { return; }
         const comps = this.node.getComponents(ModelComponent);
         if (comps.length < 3) { console.warn('three model component on this node is needed'); return; }
-        const position = this.target.mesh.readAttribute(0, cc.GFXAttributeName.ATTR_POSITION);
-        const normal = this.target.mesh.readAttribute(0, cc.GFXAttributeName.ATTR_NORMAL);
-        const tangent = this.target.mesh.readAttribute(0, cc.GFXAttributeName.ATTR_TANGENT);
-        const bitangent = this._generateBitangent(normal, tangent);
+        const position: TypedArray = this.target.mesh.readAttribute(0, GFXAttributeName.ATTR_POSITION);
+        const normal: TypedArray = this.target.mesh.readAttribute(0, GFXAttributeName.ATTR_NORMAL);
+        const tangent: TypedArray = this.target.mesh.readAttribute(0, GFXAttributeName.ATTR_TANGENT);
+        const bitangent: TypedArray = this._generateBitangent(normal, tangent);
         this._updateModel(comps[0], position, normal, Color.MAGENTA);
         this._updateModel(comps[1], position, tangent, Color.CYAN, 4);
         this._updateModel(comps[2], position, bitangent, Color.YELLOW);
     }
 
-    public _updateModel (comp, pos, data, color, stride = 3) {
+    public _updateModel (comp: ModelComponent, pos: TypedArray, data: TypedArray, color: Color, stride = 3) {
         comp.material = this._material;
         comp.mesh = utils.createMesh({
             positions: Array(pos.length / 3 * 2).fill(0).map((_, i) => {
@@ -59,13 +59,13 @@ export class TangentVisualizer extends Component {
             colors: Array(pos.length / 3 * 2).fill(0).map((_, i) => {
                 return Color.toArray([], i % 2 ? color : Color.WHITE);
             }).reduce((acc, cur) => (cur.forEach((c) => acc.push(c)), acc), []),
-            primitiveMode: cc.GFXPrimitiveMode.LINE_LIST,
+            primitiveMode: GFXPrimitiveMode.LINE_LIST,
             minPos: new Vec3(-Infinity, -Infinity, -Infinity),
             maxPos: new Vec3( Infinity,  Infinity,  Infinity),
         });
     }
 
-    public _generateBitangent (normal, tangent) {
+    public _generateBitangent (normal: TypedArray, tangent: TypedArray) {
         const bitangent = normal.slice();
         const vCount = normal.length / 3;
         for (let i = 0; i < vCount; i++) {

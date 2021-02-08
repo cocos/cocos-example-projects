@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, Prefab, instantiate, Vec2, EventTouch, EditBoxComponent, Vec3, randomRange, random, LabelComponent, Quat, ToggleComponent, PhysicsSystem, profiler, RigidBodyComponent, math } from "cc";
+import { _decorator, Component, Node, Prefab, instantiate, Vec2, EventTouch, EditBoxComponent, Vec3, randomRange, random, LabelComponent, Quat, ToggleComponent, PhysicsSystem, profiler, RigidBodyComponent, director, Director, math } from "cc";
 import { ProfilerManager } from "../../../common/scripts/ProfilerManager";
 const { ccclass, property, menu } = _decorator;
 
@@ -56,16 +56,10 @@ export class Benchmark extends Component {
     @property({ type: LabelComponent })
     readonly l_current: LabelComponent = null;
 
-    @property({ type: LabelComponent })
-    readonly l_engineInfo: LabelComponent = null;
-
     /** RIGHT */
 
     @property({ type: ToggleComponent })
     readonly r_rotateToggle: ToggleComponent = null;
-
-    @property({ type: ToggleComponent })
-    readonly r_useFixToggle: ToggleComponent = null;
 
     @property({ type: EditBoxComponent })
     readonly r_frameRateEditBox: EditBoxComponent = null;
@@ -90,12 +84,6 @@ export class Benchmark extends Component {
     private enableRotate = true;
 
     start () {
-        if (window.CC_PHYSICS_AMMO) {
-            this.l_engineInfo.string = "ammo";
-        } else if (window.CC_PHYSICS_CANNON) {
-            this.l_engineInfo.string = "cannon";
-        }
-
         this.node.addComponent(ProfilerManager);
 
         const item = localStorage.getItem(KEY_INIT_STR);
@@ -123,18 +111,20 @@ export class Benchmark extends Component {
             }
         }
 
+        this.l_current.string = "目前数量：" + this.initBoxCount + "-" + this.initSphereCount + "-" + this.initBoxRBCount + "-" + this.initSphereRBCount;
         this.instantiate(this.initBoxCount, this.box, this.boxContainer);
         this.instantiate(this.initSphereCount, this.sphere, this.sphereContainer);
         this.instantiate(this.initBoxRBCount, this.boxRB, this.boxRBContainer);
         this.instantiate(this.initSphereRBCount, this.sphereRB, this.sphereRBContainer);
 
         this.onRotateToggole(this.r_rotateToggle);
-        this.onUseFixTimeToggole(this.r_useFixToggle);
         this.onEditFrameRate(this.r_frameRateEditBox);
         this.onEditSubStep(this.r_subStepEditBox);
         this.onEditInterval(this.r_IntervalEditBox);
 
-        this.updateCurrentLab();
+        director.once(Director.EVENT_BEFORE_PHYSICS, () => {
+            PhysicsSystem.instance['_accumulator'] = 0;
+        })
     }
 
     update () {
@@ -221,19 +211,19 @@ export class Benchmark extends Component {
     }
 
     onAddBox (touch: EventTouch, custom?: string) {
-        this.instantiateSingle(this.box, this.boxContainer);
+        this.instantiate(5, this.box, this.boxContainer);
     }
 
     onAddSphere (touch: EventTouch, custom?: string) {
-        this.instantiateSingle(this.sphere, this.sphereContainer);
+        this.instantiate(5, this.sphere, this.sphereContainer);
     }
 
     onAddBoxRB (touch: EventTouch, custom?: string) {
-        this.instantiateSingle(this.boxRB, this.boxRBContainer);
+        this.instantiate(5, this.boxRB, this.boxRBContainer);
     }
 
     onAddSphereRB (touch: EventTouch, custom?: string) {
-        this.instantiateSingle(this.sphereRB, this.sphereRBContainer);
+        this.instantiate(5, this.sphereRB, this.sphereRBContainer);
     }
 
     onEditFinish (editBox: EditBoxComponent) {
@@ -251,23 +241,13 @@ export class Benchmark extends Component {
         this.enableRotate = toggle.isChecked;
     }
 
-    onUseFixTimeToggole (toggle: ToggleComponent) {
-        if (toggle.isChecked) {
-            PhysicsSystem.instance.useFixedTime = true;
-            this.r_subStepEditBox.node.active = false;
-        } else {
-            PhysicsSystem.instance.useFixedTime = false;
-            this.r_subStepEditBox.node.active = true;
-        }
-    }
-
     onEditFrameRate (editBox: EditBoxComponent) {
         const v = parseInt(editBox.string);
         if (isNaN(v)) return;
 
         let fr = math.clamp(v, 30, 300);
         editBox.string = fr + '';
-        PhysicsSystem.instance.deltaTime = 1 / fr;
+        PhysicsSystem.instance.fixedTimeStep = 1 / fr;
     }
 
     onEditSubStep (editBox: EditBoxComponent) {
@@ -275,7 +255,7 @@ export class Benchmark extends Component {
         if (isNaN(v)) return;
 
         if (v >= 0) {
-            PhysicsSystem.instance.maxSubStep = v;
+            PhysicsSystem.instance.maxSubSteps = v;
         }
     }
 
@@ -285,7 +265,6 @@ export class Benchmark extends Component {
 
         if (v >= 0) {
             this.intervalNumber = v;
-            this.intervalCurrent = v;
         }
     }
 }

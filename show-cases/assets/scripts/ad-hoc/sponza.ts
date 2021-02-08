@@ -27,6 +27,6 @@ export class Sponza extends Component {
         if (t > this.halfLoopTime) { illum = Math.sin((t - this.halfLoopTime) / this.halfLoopTime * Math.PI); }
         this.ambient.skyIllum = illum * this.maxIllum;
         this.color.r = this.color.g = this.color.b = illum * 255;
-        this.camera.color = this.color;
+        this.camera.clearColor = this.color;
     }
 }

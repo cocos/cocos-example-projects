@@ -8,7 +8,7 @@ export enum EShapeAlgorithm {
 Enum(EShapeAlgorithm);
 
 const _tmpVec3 = new math.Vec3;
-_tmpVec3.y = 1;
+_tmpVec3.y = 1.5;
 
 export function random_algorithm (max: number, min: number): math.Vec3 {
     _tmpVec3.x = Math.random() * (max - min) + min;

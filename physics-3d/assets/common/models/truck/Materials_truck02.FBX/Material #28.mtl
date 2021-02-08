@@ -1,6 +1,6 @@
 {
   "__type__": "cc.Material",
-  "_name": "Material #28",
+  "_name": "",
   "_objFlags": 0,
   "_native": "",
   "_effectAsset": {
@@ -9,54 +9,60 @@
   "_techIdx": 0,
   "_defines": [
     {
-      "OCCLUSION_CHANNEL": "r",
-      "ROUGHNESS_CHANNEL": "g",
-      "METALLIC_CHANNEL": "b",
+      "USE_ALBEDO_MAP": true
+    },
+    {
+      "USE_ALBEDO_MAP": true
+    },
+    {
       "USE_ALBEDO_MAP": true
     }
   ],
   "_states": [
     {
-      "rasterizerState": {},
       "blendState": {
         "targets": [
           {}
         ]
       },
-      "depthStencilState": {}
+      "depthStencilState": {},
+      "rasterizerState": {}
+    },
+    {
+      "blendState": {
+        "targets": [
+          {}
+        ]
+      },
+      "depthStencilState": {},
+      "rasterizerState": {}
+    },
+    {
+      "blendState": {
+        "targets": [
+          {}
+        ]
+      },
+      "depthStencilState": {},
+      "rasterizerState": {}
     }
   ],
   "_props": [
     {
-      "pbrParams": {
-        "__type__": "cc.Vec4",
-        "x": 1,
-        "y": 1,
-        "z": 1,
-        "w": 1
-      },
-      "pbrScale": {
-        "__type__": "cc.Vec4",
-        "x": 1,
-        "y": 0.70710676908493,
-        "z": 0.400000005960464,
-        "w": 1
-      },
       "albedoScale": {
-        "__type__": "cc.Vec4",
+        "__type__": "cc.Vec3",
         "x": 1,
         "y": 1,
-        "z": 1,
-        "w": 1
+        "z": 1
       },
-      "occlusion": 1,
+      "alphaThreshold": 1,
       "roughness": 0.70710676908493,
       "metallic": 0.400000005960464,
-      "alphaThreshold": 1,
-      "normalStrenth": 1,
       "mainTexture": {
-        "__uuid__": "933a6531-2595-4085-91a3-307eba7061ec@442db"
+        "__uuid__": "5fddd986-b83e-4843-9837-c0ca94635b35@6c48a"
       }
-    }
+    },
+    {},
+    {}
   ]
 }
