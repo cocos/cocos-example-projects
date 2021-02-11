@@ -68,9 +68,8 @@ export class PreFilterEnvmap extends Component {
 
     public start () {
         if (!enableDebug) {
-            // @ts-ignore
-            const skybox = director.root.pipeline.skybox;
-            skybox.envmap = this.filter(skybox.envmap);
+            const skybox = director.root!.pipeline.pipelineSceneData.skybox;
+            skybox.envmap = this.filter(skybox.envmap!);
             // skybox.isRGBE = false;
         }
     }
