@@ -12,10 +12,10 @@ export class ReflectPlane extends Component {
     _flow: PlanarReflectionFlow = null!;
 
     start () {
-        this._flow = director.root.pipeline.getFlow('PlanarReflect') as PlanarReflectionFlow;
+        // this._flow = director.root.pipeline.getFlow('PlanarReflect') as PlanarReflectionFlow;
     }
 
     update () {
-        this._flow.setPlaneFromNode(0, this.node, this.localNormal);
+        // this._flow.setPlaneFromNode(0, this.node, this.localNormal);
     }
 }
