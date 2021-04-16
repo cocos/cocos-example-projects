@@ -1,0 +1,89 @@
+{
+  "__type__": "cc.Material",
+  "_name": "",
+  "_objFlags": 0,
+  "_native": "",
+  "_effectAsset": {
+    "__uuid__": "3f117105-2bca-4bb2-a6f4-ee10548e4499"
+  },
+  "_techIdx": 0,
+  "_defines": [
+    {
+      "USE_NORMAL_MAP": true,
+      "USE_ALBEDO_MAP": true,
+      "USE_METALLIC_ROUGHNESS_MAP": true,
+      "USE_OCCLUSION_MAP": true,
+      "USE_IBL": true
+    },
+    {},
+    {}
+  ],
+  "_states": [
+    {
+      "rasterizerState": {},
+      "depthStencilState": {},
+      "blendState": {
+        "targets": [
+          {}
+        ]
+      }
+    },
+    {},
+    {}
+  ],
+  "_props": [
+    {
+      "mainColor": {
+        "__type__": "cc.Color",
+        "r": 153,
+        "g": 153,
+        "b": 153,
+        "a": 255
+      },
+      "highlightColor": {
+        "__type__": "cc.Color",
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0
+      },
+      "Fresnelcol": {
+        "__type__": "cc.Color",
+        "r": 211,
+        "g": 255,
+        "b": 253,
+        "a": 17
+      },
+      "_fresnelBase": 0.1,
+      "_fresnelScale": 0.5,
+      "metallic": 2,
+      "emissive": {
+        "__type__": "cc.Color",
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0
+      },
+      "mainTexture": {
+        "__uuid__": "067e8878-bd68-41a9-b750-4a85753c1c9f@6c48a"
+      },
+      "normalMap": {
+        "__uuid__": "f0dd5a1d-d84c-4847-84d3-fdb500b1ca95@6c48a"
+      },
+      "pbrMap": {
+        "__uuid__": "6552baef-9754-4423-99dd-6fa233d3d19c@6c48a"
+      },
+      "metallicRoughnessMap": {
+        "__uuid__": "04754b13-9254-4812-9fc8-f5c4e87ca369@6c48a"
+      },
+      "occlusionMap": {
+        "__uuid__": "52d82a9e-2b5c-414c-b7e7-220685a3d83b@6c48a"
+      },
+      "emissiveMap": {
+        "__uuid__": "dbb9bd73-728b-48c9-a267-c181af9be863@6c48a"
+      }
+    },
+    {},
+    {}
+  ]
+}
