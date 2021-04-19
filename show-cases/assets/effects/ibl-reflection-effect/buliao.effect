@@ -194,7 +194,7 @@ CCProgram standard-vs %{
 CCProgram standard-fs %{
   precision highp float;
   #include <cc-global>
-  #include <shading-standard>
+  #include <./shading-standard-ibl>
   #include <output-standard>
   #include <gamma>
   #include <shared-ubos>
