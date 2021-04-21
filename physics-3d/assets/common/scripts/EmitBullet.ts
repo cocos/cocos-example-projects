@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, systemEvent, SystemEventType, Touch, EventTouch, CameraComponent, Vec3, SphereColliderComponent, RigidBodyComponent, instantiate, ModelComponent, Material, BoxColliderComponent, Primitive, CapsuleColliderComponent, CylinderColliderComponent, ConeColliderComponent, GFXBlendFactor, GFXBlendOp, Vec4, Color } from 'cc';
+import { _decorator, Component, Node, systemEvent, SystemEventType, Touch, EventTouch, CameraComponent, Vec3, SphereColliderComponent, RigidBodyComponent, instantiate, ModelComponent, Material, BoxColliderComponent, Primitive, CapsuleColliderComponent, CylinderColliderComponent, ConeColliderComponent, gfx, Vec4, Color } from 'cc';
 const { ccclass, property, menu, requireComponent } = _decorator;
 
 @ccclass('COMMON.EmitBullet')
@@ -31,15 +31,15 @@ export class EmitBullet extends Component {
                         {
                             'blend': true,
 
-                            // 'blendSrc': GFXBlendFactor.SRC_COLOR,
-                            // 'blendDst': GFXBlendFactor.DST_COLOR,
-                            // // 'blendEq': GFXBlendOp.ADD,
+                            // 'blendSrc': gfx.BlendFactor.SRC_COLOR,
+                            // 'blendDst': gfx.BlendFactor.DST_COLOR,
+                            // // 'blendEq': gfx.BlendOp.ADD,
 
-                            'blendSrc': GFXBlendFactor.SRC_ALPHA,
-                            'blendDst': GFXBlendFactor.ONE_MINUS_SRC_ALPHA,
-                            'blendSrcAlpha': GFXBlendFactor.SRC_ALPHA,
-                            'blendDstAlpha': GFXBlendFactor.ONE_MINUS_SRC_ALPHA,
-                            // 'blendAlphaEq': GFXBlendOp.ADD,
+                            'blendSrc': gfx.BlendFactor.SRC_ALPHA,
+                            'blendDst': gfx.BlendFactor.ONE_MINUS_SRC_ALPHA,
+                            'blendSrcAlpha': gfx.BlendFactor.SRC_ALPHA,
+                            'blendDstAlpha': gfx.BlendFactor.ONE_MINUS_SRC_ALPHA,
+                            // 'blendAlphaEq': gfx.BlendOp.ADD,
                         }
                     ]
                 }
