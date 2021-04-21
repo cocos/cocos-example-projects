@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, LabelComponent, SpriteComponent, Enum } from "cc";
+import { _decorator, Component, Node, LabelComponent, SpriteComponent, Enum, physics } from "cc";
 const { ccclass, property, menu } = _decorator;
 
 enum EPhysicsItem {
@@ -19,19 +19,15 @@ export class PhysicsEnvCheck extends Component {
     physics: EPhysicsItem = EPhysicsItem.CANNON_AMMO;
 
     onLoad () {
-        if (window.CC_PHYSICS_BUILTIN) {
-            const lbCom = this.node.getChildByName('desc').getComponent(LabelComponent);
-            lbCom.string = "当前物理：builtin";
-        } else if (window.CC_PHYSICS_CANNON) {
-            const lbCom = this.node.getChildByName('desc').getComponent(LabelComponent);
-            lbCom.string = "当前物理：cannon.js";
-        } else if (window.CC_PHYSICS_AMMO) {
-            const lbCom = this.node.getChildByName('desc').getComponent(LabelComponent);
-            lbCom.string = "当前物理：ammo.js";
+        if (physics.PhysicsSystem.PHYSICS_AMMO) {
+            const lbCom = this.node.getChildByName('desc')!.getComponent(LabelComponent)!;
+            lbCom.string = "当前物理：bullet(ammo.js)";
         } else {
-            const lbCom = this.node.getChildByName('desc').getComponent(LabelComponent);
-            lbCom.string = "当前物理：none";
+            const lbCom = this.node.getChildByName('desc')!.getComponent(LabelComponent)!;
+            lbCom.string = "当前物理：" + physics.selector.id;
         }
+
+        if(physics.PhysicsSystem.PHYSICS_PHYSX) return;
 
         const name = this.node.name;
         if (name == "cannon-ammo") {
@@ -52,53 +48,53 @@ export class PhysicsEnvCheck extends Component {
             case EPhysicsItem.ALL:
                 break;
             case EPhysicsItem.CANNON_AMMO:
-                if (window.CC_PHYSICS_CANNON || window.CC_PHYSICS_AMMO) {
+                if (physics.PhysicsSystem.PHYSICS_CANNON || physics.PhysicsSystem.PHYSICS_AMMO) {
                     break;
                 }
 
-                let lbCom = this.node.getChildByName('lb').getComponent(LabelComponent);
+                let lbCom = this.node.getChildByName('lb')!.getComponent(LabelComponent)!;
                 lbCom.enabled = true;
                 lbCom.string = "测试此场景需要将物理模块设置为 cannon.js 或 ammo.js";
-                let sprCom = this.getComponentInChildren(SpriteComponent);
+                let sprCom = this.getComponentInChildren(SpriteComponent)!;
                 sprCom.enabled = true;
                 break;
 
             case EPhysicsItem.BUILTIN_AMMO:
-                if (window.CC_PHYSICS_BUILTIN || window.CC_PHYSICS_AMMO) {
+                if (physics.PhysicsSystem.PHYSICS_BUILTIN || physics.PhysicsSystem.PHYSICS_AMMO) {
                     break;
                 }
 
-                let lbCom1 = this.node.getChildByName('lb').getComponent(LabelComponent);
+                let lbCom1 = this.node.getChildByName('lb')!.getComponent(LabelComponent)!;
                 lbCom1.enabled = true;
                 lbCom1.string = "测试此场景需要将物理模块设置为 builtin 或 ammo.js";
-                let sprCom1 = this.getComponentInChildren(SpriteComponent);
+                let sprCom1 = this.getComponentInChildren(SpriteComponent)!;
                 sprCom1.enabled = true;
                 break;
 
             case EPhysicsItem.CANNON:
-                if (!window.CC_PHYSICS_CANNON) {
-                    let lbCom = this.node.getChildByName('lb').getComponent(LabelComponent);
+                if (!physics.PhysicsSystem.PHYSICS_CANNON) {
+                    let lbCom = this.node.getChildByName('lb')!.getComponent(LabelComponent)!;
                     lbCom.enabled = true;
                     lbCom.string = "测试此场景需要将物理模块设置为 cannon.js";
-                    let sprCom = this.getComponentInChildren(SpriteComponent);
+                    let sprCom = this.getComponentInChildren(SpriteComponent)!;
                     sprCom.enabled = true;
                 }
                 break;
             case EPhysicsItem.AMMO:
-                if (!window.CC_PHYSICS_AMMO) {
-                    let lbCom = this.node.getChildByName('lb').getComponent(LabelComponent);
+                if (!physics.PhysicsSystem.PHYSICS_AMMO) {
+                    let lbCom = this.node.getChildByName('lb')!.getComponent(LabelComponent)!;
                     lbCom.enabled = true;
                     lbCom.string = "测试此场景需要将物理模块设置为 ammo.js";
-                    let sprCom = this.getComponentInChildren(SpriteComponent);
+                    let sprCom = this.getComponentInChildren(SpriteComponent)!;
                     sprCom.enabled = true;
                 }
                 break;
             case EPhysicsItem.BUILTIN:
-                if (!window.CC_PHYSICS_BUILTIN) {
-                    let lbCom = this.node.getChildByName('lb').getComponent(LabelComponent);
+                if (!physics.PhysicsSystem.PHYSICS_BUILTIN) {
+                    let lbCom = this.node.getChildByName('lb')!.getComponent(LabelComponent)!;
                     lbCom.enabled = true;
                     lbCom.string = "测试此场景需要将物理模块设置为 builtin";
-                    let sprCom = this.getComponentInChildren(SpriteComponent);
+                    let sprCom = this.getComponentInChildren(SpriteComponent)!;
                     sprCom.enabled = true;
                 }
                 break;
