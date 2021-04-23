@@ -39,7 +39,7 @@ export class AudioController extends Component {
                 loadMode = 'DOM Audio Mode';
                 break;
             case AudioClip.AudioType.NATIVE_AUDIO:
-                loadMode = 'JSB Audio Mode';
+                loadMode = 'Native Audio Mode';
                 break;
             case AudioClip.AudioType.MINIGAME_AUDIO:
                 loadMode = 'MINIGAME Audio Mode';
