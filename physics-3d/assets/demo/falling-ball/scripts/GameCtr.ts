@@ -110,7 +110,6 @@ export class GameCtr extends Component {
         this.columnCtr.reset();
         this.floorFlagCtr.reset();
         this.cameraCtr.reset();
-        this.floorFlagCtr.reset();
 
         this._timingLb.string = parseTime2String(this.totalSecond);
         const score = localStorage.getItem('score');
