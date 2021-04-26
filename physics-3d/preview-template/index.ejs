@@ -19,8 +19,14 @@
     </head>
     <body>
         <script src="./physx/physx.release.asm.js"></script>
+        <!-- <script src="./physx/physx.debug.asm.js"></script> -->
         <script>
             globalThis.PhysX = PHYSX;
+            // globalThis.PhysX = PHYSX({
+            //   onRuntimeInitialized () {
+            //     console.log('PhysX loaded')
+            //   },
+            // })
         </script>
         <%- include(cocosToolBar, {config: config}) %>
         <div id="content" class="content">
