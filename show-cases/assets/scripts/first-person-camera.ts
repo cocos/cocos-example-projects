@@ -56,14 +56,15 @@ export class FirstPersonCamera extends Component {
     }
 
     public update (dt: number) {
+        const t = Math.min(dt / this.damp, 1);
         // position
         Vec3.transformQuat(v3_1, this._velocity, this.node.rotation);
         Vec3.scaleAndAdd(this._position, this._position, v3_1, this.moveSpeed * this._speedScale);
-        Vec3.lerp(v3_1, this.node.position, this._position, dt / this.damp);
+        Vec3.lerp(v3_1, this.node.position, this._position, t);
         this.node.setPosition(v3_1);
         // rotation
         Quat.fromEuler(qt_1, this._euler.x, this._euler.y, this._euler.z);
-        Quat.slerp(qt_1, this.node.rotation, qt_1, dt / this.damp);
+        Quat.slerp(qt_1, this.node.rotation, qt_1, t);
         this.node.setRotation(qt_1);
     }
 
