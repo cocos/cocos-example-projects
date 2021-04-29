@@ -58,7 +58,7 @@ export class SupportPhyiscs extends Component {
                     return;
                 break;
             case SupportPhysics.CANNON_AMMO_PHYSX:
-                if (PhysicsSystem.PHYSICS_AMMO || PhysicsSystem.PHYSICS_PHYSX)
+                if (PhysicsSystem.PHYSICS_CANNON || PhysicsSystem.PHYSICS_AMMO || PhysicsSystem.PHYSICS_PHYSX)
                     return;
                 break;
         }
