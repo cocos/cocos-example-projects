@@ -1,0 +1,130 @@
+// Copyright (c) 2017-2020 Xiamen Yaji Software Co., Ltd.
+CCEffect %{
+  techniques:
+  - name: opaque
+    passes:
+    - vert: unlit-vs:vert
+      frag: unlit-fs:frag
+      properties: &props
+        mainTexture:    { value: grey }    
+        mainColor:      { value: [1, 1, 1, 1], editor: { type: color } }
+        color:          { target: mainColor, editor: { visible: false } } # backward compability
+        noiseTexture:    { value: white }
+        noiseTexture2:    { value: white }
+        noiseTexture3:    { value: white }
+
+      migrations: &migs
+        properties:
+          mainColor:    { formerlySerializedAs: color }
+  - name: transparent
+    passes:
+    - vert: unlit-vs:vert
+      frag: unlit-fs:frag
+      depthStencilState: &d1
+        depthTest: true
+        depthWrite: false
+      blendState:
+        targets:
+        - blend: true
+          blendSrc: src_alpha
+          blendDst: one_minus_src_alpha
+          blendDstAlpha: one_minus_src_alpha
+      properties: *props
+      migrations: *migs
+  
+}%
+
+CCProgram unlit-vs %{
+  precision highp float;
+  #include <input-standard>
+  #include <cc-global>
+  #include <cc-local-batch>
+  
+  #include <cc-fog-vs>
+
+  out vec3 v_position;
+  out vec3 v_view;
+
+  out vec3 v_normal;
+
+  out vec2 v_uv;
+  out vec2 v_uv2;
+  out vec2 v_uv3;
+  
+  vec4 vert () {
+    // vec4 position;
+    // CCVertInput(position);
+    StandardVertInput In;
+    CCVertInput(In);
+
+    mat4 matWorld, matWorldIT;
+    CCGetWorldMatrixFull(matWorld, matWorldIT);
+
+    vec4 worldPos = matWorld * In.position;
+    vec4 viewPos = cc_matView * worldPos;
+  
+    v_position = worldPos.xyz;
+    v_view = (cc_cameraPos.xyz - v_position); 
+
+    v_normal = normalize((matWorldIT * vec4(In.normal, 0.0)).xyz);
+
+    v_uv.xy = worldPos.xz * 0.3 + cc_time.x * 0.14;
+    v_uv2.xy = worldPos.xz * 0.2 + cc_time.y * 0.1;
+    v_uv3.xy = worldPos.xz * 0.4 + cc_time.y * 0.2;
+    return cc_matProj * cc_matView * worldPos;
+  }
+}%
+
+CCProgram unlit-fs %{
+  precision highp float;
+  precision highp int;
+  #include <output>
+  #include <input-standard>
+  #include <cc-fog-fs>
+  #include <cc-global>
+  #include <cc-environment>
+  #include <cc-local-batch>
+
+  #define forward vec4(0.0, 0.0, -0.1, 0.0)
+         
+  in vec3 v_normal;
+
+  in vec3 v_position;
+  in vec3 v_view;
+  in vec2 v_uv;
+  in vec2 v_uv2;
+  in vec2 v_uv3;
+  uniform sampler2D mainTexture;
+  
+  uniform sampler2D noiseTexture;
+  uniform sampler2D noiseTexture2;
+  uniform sampler2D noiseTexture3;
+  in float factor_fog;
+
+
+  uniform Constant {
+    vec4 mainColor;
+
+  };
+
+
+  vec4 frag () {
+
+    
+   float t = texture(noiseTexture, v_uv.xy).r;
+   float t2 = texture(noiseTexture2, v_uv2.xy).r;
+   float t3 =texture(noiseTexture3, v_uv3.xy).r;
+   float mt =(t*t2+t3);
+  
+    vec3  v = normalize(v_view);
+    vec3 n = normalize( v_normal );
+
+    vec3  r = (v - 2.0 * dot(n, v) * n)+ mt * 0.1;
+    vec3  reflectColor = texture(cc_environment, -r).rgb;
+    
+    float fresnel = mix(0.15, 1.0, pow(1.0 - dot(n, v), 3.0));
+    vec3  color = mix(mainColor.rgb, reflectColor, fresnel);
+    // color = mix(color, vec3(1.0), smoothstep(0.9, 0.901, mt));
+    return  vec4(color, mainColor.a);
+  }
+}%
