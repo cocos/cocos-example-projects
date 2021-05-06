@@ -1,6 +1,6 @@
 
 import { _decorator, Component, Node, RigidBody, Collider, Vec3, PhysicsSystem, clamp, lerp, Mat4, Quat, Material, Mesh, Primitive, Color, MeshRenderer, gfx } from 'cc';
-import { WaterWaves } from './water/WaterWaves';
+import { WaterWaves } from './WaterWaves';
 const { ccclass, property, menu, requireComponent } = _decorator;
 
 const v3_0 = new Vec3();
