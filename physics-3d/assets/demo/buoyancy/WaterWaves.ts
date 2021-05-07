@@ -49,11 +49,14 @@ export class WaterWaves extends Component {
 
     private _mesh: Mesh = null!;
     private _meshRenderer: MeshRenderer = null!;
+    private _indices: Uint16Array = null!;
     private _positions: Float32Array = null!;
     private _basePositions: Float32Array = null!;
     private _worldPositions: Float32Array = null!;
-    private _positionLength = 0;
-    private _positionsDirty = false;
+    private _normals: Float32Array = null!;
+    private _faceLength = 0;
+    private _vertexLength = 0;
+    private _meshDirty = false;
     private _offsetX = 0;
     private _offsetZ = 0;
 
@@ -160,12 +163,15 @@ export class WaterWaves extends Component {
         mr.enabled = false;
         this._meshRenderer = this.addComponent(MeshRenderer)!;
         this.generateWaterMesh();
+        this._vertexLength = (this.columns * this.rows - 1);
+        this._faceLength = 2 * (this.rows - 1) * (this.columns - 1);
         this._meshRenderer.material = mr.material;
         this._meshRenderer.mesh = this._mesh;
+        this._indices = this._mesh.readIndices(0) as Uint16Array;
         this._positions = this._mesh.readAttribute(0, gfx.AttributeName.ATTR_POSITION) as Float32Array;
+        this._normals = this._mesh.readAttribute(0, gfx.AttributeName.ATTR_NORMAL) as Float32Array;
         this._basePositions = new Float32Array(this._positions);
         this._worldPositions = new Float32Array(this._positions);
-        this._positionLength = this._positions.length / 3;
 
         if (this.debugPosition) {
             this._debugPosRoot = new Node('debugPosRoot');
@@ -176,7 +182,7 @@ export class WaterWaves extends Component {
             game.addPersistRootNode(this._debugHeightRoot);
         }
 
-        for (let i = 0; i < this._positionLength; i++) {
+        for (let i = 0; i < this._vertexLength; i++) {
             const index = i * 3;
             v3_0.set(this._positions[index], this._positions[index + 1], this._positions[index + 2]);
             Vec3.transformMat4(v3_0, v3_0, this.node.worldMatrix);
@@ -196,40 +202,30 @@ export class WaterWaves extends Component {
     }
 
     update(deltaTime: number) {
-        for (var i = 0; i < this._positionLength; i++) {
-            const index = i * 3;
-            let y = this._basePositions[index + 1];
-            if (y < -this.height / this.node.scale.y - 1e-3) return;
-            y += Math.sin(director.getTotalTime() / 1000 * this.speed + this._basePositions[index] + this._basePositions[index + 1] + this._basePositions[index + 2])
-                * (this.height / this.node.scale.y);
-            y += Noise.snoise(this._basePositions[index] + this.noiseWalk, this._basePositions[index + 1] /*+ Mathf.Sin(Time.time * 0.1f)*/)
-                * this.noiseStrength;
-            this._positions[index + 1] = y;
-            v3_0.set(this._positions[index], this._positions[index + 1], this._positions[index + 2]);
-            Vec3.transformMat4(v3_0, v3_0, this.node.worldMatrix);
-            this._worldPositions[index] = v3_0.x;
-            this._worldPositions[index + 1] = v3_0.y;
-            this._worldPositions[index + 2] = v3_0.z;
-            this._positionsDirty = true;
-        }
+        this.updateWaves();
     }
 
     lateUpdate() {
-        if (this._positionsDirty) {
+        if (this._meshDirty) {
+            this.recalculateNormals();
             const data = this._mesh.data;
             const dataView = new DataView(data.buffer);
             const struct = this._mesh.struct;
             const vertexView = struct.vertexBundles[0].view;
             const count = vertexView.count;
             for (let i = 0; i < count; i++) {
-                const offset = vertexView.stride * i + Float32Array.BYTES_PER_ELEMENT;
-                dataView.setFloat32(offset, this._positions[i * 3 + 1], sys.isLittleEndian);
+                const offset = vertexView.stride * i;
+                const index = i * 3;
+                dataView.setFloat32(offset + Float32Array.BYTES_PER_ELEMENT, this._positions[index + 1], sys.isLittleEndian);
+                dataView.setFloat32(offset + 3 * Float32Array.BYTES_PER_ELEMENT, this._normals[index], sys.isLittleEndian);
+                dataView.setFloat32(offset + 4 * Float32Array.BYTES_PER_ELEMENT, this._normals[index + 1], sys.isLittleEndian);
+                dataView.setFloat32(offset + 5 * Float32Array.BYTES_PER_ELEMENT, this._normals[index + 2], sys.isLittleEndian);
             }
             this._mesh.reset({ struct: this._mesh.struct, data: this._mesh.data, });
             this._meshRenderer.mesh = this._mesh;
 
             if (this.debugPosition) {
-                for (let i = 0; i < this._positionLength; i++) {
+                for (let i = 0; i < this._vertexLength; i++) {
                     const n = this._debugPosRoot.children[i];
                     const index = i * 3;
                     v3_0.set(this._worldPositions[index], this._worldPositions[index + 1], this._worldPositions[index + 2]);
@@ -237,7 +233,7 @@ export class WaterWaves extends Component {
                 }
             }
 
-            this._positionsDirty = false;
+            this._meshDirty = false;
         }
     }
 
@@ -437,6 +433,42 @@ export class WaterWaves extends Component {
             }
             mesh.reset({ struct: mesh.struct, data: mesh.data, });
             m.mesh = mesh;
+        }
+    }
+
+    updateWaves() {
+        for (let i = 0; i < this._vertexLength; i++) {
+            const index = i * 3;
+            let y = this._basePositions[index + 1];
+            if (y < -this.height / this.node.scale.y - 1e-3) return; // continue;
+            y += Math.sin(director.getTotalTime() / 1000 * this.speed + this._basePositions[index] + this._basePositions[index + 1] + this._basePositions[index + 2])
+                * (this.height / this.node.scale.y);
+            y += Noise.snoise(this._basePositions[index] + this.noiseWalk, this._basePositions[index + 1] /*+ Math.sin(director.getTotalTime() / 1000 * 0.1)*/)
+                * this.noiseStrength;
+            this._positions[index + 1] = y;
+            v3_0.set(this._positions[index], this._positions[index + 1], this._positions[index + 2]);
+            Vec3.transformMat4(v3_0, v3_0, this.node.worldMatrix);
+            this._worldPositions[index] = v3_0.x;
+            this._worldPositions[index + 1] = v3_0.y;
+            this._worldPositions[index + 2] = v3_0.z;
+            this._meshDirty = true;
+        }
+    }
+
+    recalculateNormals() {
+        this._normals.fill(0, 0, this._vertexLength * 3 + 2);
+        for (let i = 0; i < this._faceLength; i++) {
+            const index = i * 3;
+            const i0 = this._indices[index], i1 = this._indices[index + 1], i2 = this._indices[index + 2];
+            const v0 = i0 * 3, v1 = i1 * 3, v2 = i2 * 3;
+            const va = v3_arr[0], vb = v3_arr[1], vc = v3_arr[2];
+            va.set(this._worldPositions[v0], this._worldPositions[v0 + 1], this._worldPositions[v0 + 2]);
+            vb.set(this._worldPositions[v1], this._worldPositions[v1 + 1], this._worldPositions[v1 + 2]);
+            vc.set(this._worldPositions[v2], this._worldPositions[v2 + 1], this._worldPositions[v2 + 2]);
+            Vec3.subtract(vb, va, vb); Vec3.subtract(vc, va, vc); Vec3.cross(vb, vb, vc);
+            this._normals[v0] += vb.x; this._normals[v0 + 1] += vb.y; this._normals[v0 + 2] += vb.z;
+            this._normals[v1] += vb.x; this._normals[v1 + 1] += vb.y; this._normals[v1 + 2] += vb.z;
+            this._normals[v2] += vb.x; this._normals[v2 + 1] += vb.y; this._normals[v2 + 2] += vb.z;
         }
     }
 }
