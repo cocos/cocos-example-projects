@@ -102,8 +102,8 @@
     "_id": ""
   },
   {
-    "__type__": "cc.ModelComponent",
-    "_name": "Cylinder<ModelComponent>",
+    "__type__": "cc.MeshRenderer",
+    "_name": "Cylinder<MeshRenderer>",
     "_objFlags": 0,
     "node": {
       "__id__": 2
@@ -123,7 +123,10 @@
     },
     "_shadowCastingMode": 0,
     "_enableMorph": true,
-    "_id": ""
+    "_id": "",
+    "__prefab": {
+      "__id__": 11
+    }
   },
   {
     "__type__": "cc.ModelLightmapSettings",
@@ -149,12 +152,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "c5D20UbipMm5u2gjRCS54C",
-    "sync": false,
-    "_synced": {
-      "default": false,
-      "serializable": false
-    }
+    "fileId": "c5D20UbipMm5u2gjRCS54C"
   },
   {
     "__type__": "cc.Node",
@@ -202,8 +200,8 @@
     "_id": ""
   },
   {
-    "__type__": "cc.ModelComponent",
-    "_name": "Cone<ModelComponent>",
+    "__type__": "cc.MeshRenderer",
+    "_name": "Cone<MeshRenderer>",
     "_objFlags": 0,
     "node": {
       "__id__": 6
@@ -223,7 +221,10 @@
     },
     "_shadowCastingMode": 0,
     "_enableMorph": true,
-    "_id": ""
+    "_id": "",
+    "__prefab": {
+      "__id__": 12
+    }
   },
   {
     "__type__": "cc.ModelLightmapSettings",
@@ -249,12 +250,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "14JdBZUTpJpo1NBsdaGt6F",
-    "sync": false,
-    "_synced": {
-      "default": false,
-      "serializable": false
-    }
+    "fileId": "14JdBZUTpJpo1NBsdaGt6F"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -264,11 +260,14 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "d3GUbPmRBAVJAi6PfRJxi1",
-    "sync": false,
-    "_synced": {
-      "default": false,
-      "serializable": false
-    }
+    "fileId": "d3GUbPmRBAVJAi6PfRJxi1"
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "99w2zPT0RAda104lCrdDWH"
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "c2p9i6cwVHDZJu/QAPpexJ"
   }
 ]

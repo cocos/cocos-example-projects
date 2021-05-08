@@ -18,16 +18,16 @@ export class PhysicsEnvCheck extends Component {
     // @property({ type: EPhysicsItem })
     physics: EPhysicsItem = EPhysicsItem.CANNON_AMMO;
 
-    onLoad () {
+    onLoad() {
         if (physics.PhysicsSystem.PHYSICS_AMMO) {
             const lbCom = this.node.getChildByName('desc')!.getComponent(LabelComponent)!;
-            lbCom.string = "当前物理：bullet(ammo.js)";
+            lbCom.string = "bullet";
         } else {
             const lbCom = this.node.getChildByName('desc')!.getComponent(LabelComponent)!;
-            lbCom.string = "当前物理：" + physics.selector.id;
+            lbCom.string = physics.selector.id;
         }
 
-        if(physics.PhysicsSystem.PHYSICS_PHYSX) return;
+        if (physics.PhysicsSystem.PHYSICS_PHYSX) return;
 
         const name = this.node.name;
         if (name == "cannon-ammo") {

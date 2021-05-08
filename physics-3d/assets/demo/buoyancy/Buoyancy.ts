@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node, RigidBody, Collider, Vec3, PhysicsSystem, clamp, lerp, Mat4, Quat, Material, Mesh, Primitive, Color, MeshRenderer, gfx } from 'cc';
+import { _decorator, Component, Node, RigidBody, Collider, Vec3, PhysicsSystem, clamp, lerp, Mat4, Quat, Material, Mesh, Primitive, Color, MeshRenderer, gfx, physics } from 'cc';
 import { WaterWaves } from './WaterWaves';
 const { ccclass, property, menu, requireComponent } = _decorator;
 

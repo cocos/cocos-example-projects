@@ -57,8 +57,8 @@
     "_id": ""
   },
   {
-    "__type__": "cc.ModelComponent",
-    "_name": "Quad<ModelComponent>",
+    "__type__": "cc.MeshRenderer",
+    "_name": "Quad<MeshRenderer>",
     "_objFlags": 0,
     "node": {
       "__id__": 1
@@ -78,7 +78,10 @@
     },
     "_shadowCastingMode": 0,
     "_enableMorph": true,
-    "_id": ""
+    "_id": "",
+    "__prefab": {
+      "__id__": 6
+    }
   },
   {
     "__type__": "cc.ModelLightmapSettings",
@@ -96,7 +99,7 @@
     "_lightmapSize": 64
   },
   {
-    "__type__": "cc.BoxColliderComponent",
+    "__type__": "cc.BoxCollider",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -117,7 +120,10 @@
       "y": 1,
       "z": 0.1
     },
-    "_id": ""
+    "_id": "",
+    "__prefab": {
+      "__id__": 7
+    }
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -127,11 +133,14 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "b2+pbHJbFGhpcIyTgBvWWR",
-    "sync": false,
-    "_synced": {
-      "default": false,
-      "serializable": false
-    }
+    "fileId": "b2+pbHJbFGhpcIyTgBvWWR"
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "aaVXT1b2VJXZ4G+RxxwtGT"
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "90Nj1SLnFFkLOCRsT1pLb3"
   }
 ]
