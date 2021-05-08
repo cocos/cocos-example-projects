@@ -1,4 +1,4 @@
-import { _decorator, Component, math, systemEvent, SystemEvent, game, macro, director, EventTouch, EventKeyboard, Touch } from "cc";
+import { _decorator, Component, math, systemEvent, SystemEvent, game, macro, director, EventTouch, EventKeyboard, Touch, clamp } from "cc";
 const { ccclass, property, menu } = _decorator;
 
 const v2_1 = new math.Vec2();
@@ -45,8 +45,12 @@ export class MotionCtr extends Component {
         math.Vec3.scaleAndAdd(this._position, this._position, v3_1, this.moveSpeed * this._speedScale);
         math.Vec3.lerp(v3_1, this.node.position, this._position, dt / this.damp);
 
-        v3_1.x = math.clamp(v3_1.x, -45, 45);
-        v3_1.z = math.clamp(v3_1.z, -45, 45);
+        if (v3_1.x < -17 || v3_1.x > 17 || v3_1.z < -17 || v3_1.z > 17)
+            this._position.set(v3_1);
+
+        v3_1.x = clamp(v3_1.x, -17, 17);
+        v3_1.z = clamp(v3_1.z, -17, 17);
+
         this.node.setPosition(v3_1);
     }
 
@@ -79,10 +83,10 @@ export class MotionCtr extends Component {
     onKeyDown(e: EventKeyboard) {
         const v = this._velocity;
         if (e.keyCode === KEYCODE.SHIFT) { this._speedScale = this.moveSpeedShiftScale; }
-        else if (e.keyCode === KEYCODE.W || e.keyCode === KEYCODE.w) { if (v.z === 0) { v.z = -1; } }
-        else if (e.keyCode === KEYCODE.S || e.keyCode === KEYCODE.s) { if (v.z === 0) { v.z = 1; } }
-        else if (e.keyCode === KEYCODE.A || e.keyCode === KEYCODE.a) { if (v.x === 0) { v.x = -1; } }
-        else if (e.keyCode === KEYCODE.D || e.keyCode === KEYCODE.d) { if (v.x === 0) { v.x = 1; } }
+        else if (e.keyCode === KEYCODE.W || e.keyCode === KEYCODE.w) { if (v.z === 0) { v.z = -1.25; } }
+        else if (e.keyCode === KEYCODE.S || e.keyCode === KEYCODE.s) { if (v.z === 0) { v.z = 1.25; } }
+        else if (e.keyCode === KEYCODE.A || e.keyCode === KEYCODE.a) { if (v.x === 0) { v.x = -1.25; } }
+        else if (e.keyCode === KEYCODE.D || e.keyCode === KEYCODE.d) { if (v.x === 0) { v.x = 1.25; } }
     }
 
     onKeyUp(e: EventKeyboard) {
@@ -103,6 +107,8 @@ export class MotionCtr extends Component {
         this._velocity.z = -v2_2.y * 0.01;
         this._velocity.x = this._velocity.x < 0 ? this._velocity.x - 0.75 : this._velocity.x + 0.75;
         this._velocity.z = this._velocity.z < 0 ? this._velocity.z - 0.75 : this._velocity.z + 0.75;
+        this._velocity.x = clamp(this._velocity.x, -1.25, 1.25);
+        this._velocity.z = clamp(this._velocity.z, -1.25, 1.25);
     }
 
     onTouchEnd(e: Touch) {
