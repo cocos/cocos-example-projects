@@ -131,6 +131,7 @@ export class RiggedBow extends Component {
             this.appleResetState = true;
             const that = this;
             setTimeout(() => {
+                if (!that.apple.isValid) return;
                 that.appleResetState = false;
                 that.apple.position = that.appleInitPosition;
                 that.apple.rotation = that.appleInitRotation;
@@ -146,6 +147,7 @@ export class RiggedBow extends Component {
             this.arrowResetState = true;
             const that = this;
             setTimeout(() => {
+                if (!that.arrow.isValid) return;
                 that.arrowResetState = false;
                 that.isShootArrowFinish = true;
                 const body = that.arrow.getComponent(RigidBody);
