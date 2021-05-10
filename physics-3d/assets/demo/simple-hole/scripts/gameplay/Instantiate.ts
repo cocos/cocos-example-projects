@@ -58,7 +58,7 @@ export class Instantiate extends Component {
         switch (this.algorithms) {
             case EShapeAlgorithm.RANDOM:
                 for (let i = 0; i < nodes.length; i++) {
-                    nodes[i].worldPosition = random_algorithm(-45, 45);
+                    nodes[i].worldPosition = random_algorithm(-17, 17);
                 }
                 break;
 
