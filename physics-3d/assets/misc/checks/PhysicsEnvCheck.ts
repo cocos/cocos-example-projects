@@ -19,12 +19,12 @@ export class PhysicsEnvCheck extends Component {
     physics: EPhysicsItem = EPhysicsItem.CANNON_AMMO;
 
     onLoad() {
+        const title = this.node.getChildByName('desc')!.getComponent(LabelComponent)!;
+        title.fontSize = 30;
         if (physics.PhysicsSystem.PHYSICS_AMMO) {
-            const lbCom = this.node.getChildByName('desc')!.getComponent(LabelComponent)!;
-            lbCom.string = "bullet";
+            title.string = "bullet";
         } else {
-            const lbCom = this.node.getChildByName('desc')!.getComponent(LabelComponent)!;
-            lbCom.string = physics.selector.id;
+            title.string = physics.selector.id;
         }
 
         if (physics.PhysicsSystem.PHYSICS_PHYSX) return;
