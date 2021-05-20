@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node, systemEvent, SystemEventType, EventMouse, EventKeyboard, Vec3, macro, RigidBody, physics, Collider, ITriggerEvent, ICollisionEvent, Quat, v3, math, PhysicsSystem, CameraComponent, geometry, Prefab, Vec2 } from 'cc';
+import { _decorator, Component, Node, systemEvent, SystemEventType, EventMouse, EventKeyboard, Vec3, macro, RigidBody, physics, Collider, ITriggerEvent, ICollisionEvent, Quat, v3, math, PhysicsSystem, CameraComponent, geometry, Prefab, Vec2, Touch, Event, Button, Label, Canvas, sys } from 'cc';
 const { ccclass, property, menu } = _decorator;
 
 @ccclass('simple-bow.RiggedBow')
@@ -52,7 +52,13 @@ export class RiggedBow extends Component {
     fixTimePre = 1 / 60;
     maxSubstepsPre = 1;
 
+    @property(Node)
+    canvasForMobile: Node = null!;
+
+    touchStateOnMobile = 0;
+
     start() {
+        this.canvasForMobile.active = sys.isMobile;
         this.fixTimePre = physics.PhysicsSystem.instance.fixedTimeStep;
         this.maxSubstepsPre = physics.PhysicsSystem.instance.maxSubSteps;
         physics.PhysicsSystem.instance.fixedTimeStep = 1 / 120;
@@ -91,6 +97,10 @@ export class RiggedBow extends Component {
         systemEvent.on(SystemEventType.MOUSE_UP, this.onMouseUp, this);
         systemEvent.on(SystemEventType.KEY_DOWN, this.onKeyDown, this);
         systemEvent.on(SystemEventType.KEY_UP, this.onKeyUp, this);
+
+        systemEvent.on(SystemEventType.TOUCH_START, this.onTouchStart, this);
+        systemEvent.on(SystemEventType.TOUCH_MOVE, this.onTouchMove, this);
+        systemEvent.on(SystemEventType.TOUCH_END, this.onTouchEnd, this);
     }
 
     onDisable() {
@@ -99,6 +109,10 @@ export class RiggedBow extends Component {
         systemEvent.off(SystemEventType.MOUSE_UP, this.onMouseUp, this);
         systemEvent.off(SystemEventType.KEY_DOWN, this.onKeyDown, this);
         systemEvent.off(SystemEventType.KEY_UP, this.onKeyUp, this);
+
+        systemEvent.off(SystemEventType.TOUCH_START, this.onTouchStart, this);
+        systemEvent.off(SystemEventType.TOUCH_MOVE, this.onTouchMove, this);
+        systemEvent.off(SystemEventType.TOUCH_END, this.onTouchEnd, this);
     }
 
     onMouseDown(event: EventMouse) {
@@ -111,6 +125,41 @@ export class RiggedBow extends Component {
 
     onMouseUp(event: EventMouse) {
         this.isAiming = false;
+    }
+
+    onTouchStart(touch: Touch) {
+        if (this.touchStateOnMobile) {
+            this.isDrawBow = true;
+        } else {
+            this.isAiming = true;
+        }
+    }
+
+    onTouchMove(touch: Touch) {
+        if (!this.touchStateOnMobile) {
+            const delta = touch.getDelta();
+            this.aimDelta.set(-delta.x / 100000, delta.y / 100000, 0);
+        }
+    }
+
+    onTouchEnd(touch: Touch) {
+        if (this.touchStateOnMobile) {
+            this.isDrawBow = false;
+        } else {
+            this.isAiming = false;
+        }
+    }
+
+    onClickBtn(event: Event) {
+        const node = event.target as Node;
+        const buttonLab = node.getComponentsInChildren(Label)[0];
+        if (buttonLab.string == "Aiming") {
+            buttonLab.string = "Pull Bow";
+            this.touchStateOnMobile = 1;
+        } else {
+            buttonLab.string = "Aiming";
+            this.touchStateOnMobile = 0;
+        }
     }
 
     onKeyDown(event: EventKeyboard) {
