@@ -53,12 +53,16 @@ export class RiggedBow extends Component {
     maxSubstepsPre = 1;
 
     @property(Node)
-    canvasForMobile: Node = null!;
+    buttonForMobile: Node = null!;
+
+    @property(Node)
+    labelForPC: Node = null!;
 
     touchStateOnMobile = 0;
 
     start() {
-        this.canvasForMobile.active = sys.isMobile;
+        this.labelForPC.active = !sys.isMobile;
+        this.buttonForMobile.active = sys.isMobile;
         this.fixTimePre = physics.PhysicsSystem.instance.fixedTimeStep;
         this.maxSubstepsPre = physics.PhysicsSystem.instance.maxSubSteps;
         physics.PhysicsSystem.instance.fixedTimeStep = 1 / 120;
