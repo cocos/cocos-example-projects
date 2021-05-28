@@ -14,7 +14,7 @@ export class LightHint extends Component {
         this._camera = this.node.scene.getComponentInChildren(CameraComponent);
         const size = light.size * 4;
         this.node.setWorldScale(size, size, size);
-        this._material.setProperty('color', light.color);
+        this._material.setProperty('mainColor', light.color);
         this._material.setProperty('intensitySize', new Vec2(light.luminance, 0.4));
     }
 
