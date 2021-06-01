@@ -54,7 +54,7 @@ export class PhysicsEnvCheck extends Component {
 
                 let lbCom = this.node.getChildByName('lb')!.getComponent(LabelComponent)!;
                 lbCom.enabled = true;
-                lbCom.string = "测试此场景需要将物理模块设置为 cannon.js 或 ammo.js";
+                lbCom.string = "测试此场景需要将物理模块设置为 cannon.js, physx 或 ammo.js";
                 let sprCom = this.getComponentInChildren(SpriteComponent)!;
                 sprCom.enabled = true;
                 break;
@@ -66,7 +66,7 @@ export class PhysicsEnvCheck extends Component {
 
                 let lbCom1 = this.node.getChildByName('lb')!.getComponent(LabelComponent)!;
                 lbCom1.enabled = true;
-                lbCom1.string = "测试此场景需要将物理模块设置为 builtin 或 ammo.js";
+                lbCom1.string = "测试此场景需要将物理模块设置为 builtin, physx 或 ammo.js";
                 let sprCom1 = this.getComponentInChildren(SpriteComponent)!;
                 sprCom1.enabled = true;
                 break;
@@ -75,7 +75,7 @@ export class PhysicsEnvCheck extends Component {
                 if (!physics.PhysicsSystem.PHYSICS_CANNON) {
                     let lbCom = this.node.getChildByName('lb')!.getComponent(LabelComponent)!;
                     lbCom.enabled = true;
-                    lbCom.string = "测试此场景需要将物理模块设置为 cannon.js";
+                    lbCom.string = "测试此场景需要将物理模块设置为 cannon.js 或 physx";
                     let sprCom = this.getComponentInChildren(SpriteComponent)!;
                     sprCom.enabled = true;
                 }
@@ -84,7 +84,7 @@ export class PhysicsEnvCheck extends Component {
                 if (!physics.PhysicsSystem.PHYSICS_AMMO) {
                     let lbCom = this.node.getChildByName('lb')!.getComponent(LabelComponent)!;
                     lbCom.enabled = true;
-                    lbCom.string = "测试此场景需要将物理模块设置为 ammo.js";
+                    lbCom.string = "测试此场景需要将物理模块设置为 ammo.js 或 physx";
                     let sprCom = this.getComponentInChildren(SpriteComponent)!;
                     sprCom.enabled = true;
                 }
@@ -93,7 +93,7 @@ export class PhysicsEnvCheck extends Component {
                 if (!physics.PhysicsSystem.PHYSICS_BUILTIN) {
                     let lbCom = this.node.getChildByName('lb')!.getComponent(LabelComponent)!;
                     lbCom.enabled = true;
-                    lbCom.string = "测试此场景需要将物理模块设置为 builtin";
+                    lbCom.string = "测试此场景需要将物理模块设置为 builtin 或 physx";
                     let sprCom = this.getComponentInChildren(SpriteComponent)!;
                     sprCom.enabled = true;
                 }
