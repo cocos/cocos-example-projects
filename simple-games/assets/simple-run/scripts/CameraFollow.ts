@@ -15,8 +15,6 @@ export class CameraFollow extends Component {
 
     @property({type: Node})
     public target: Node = null;
-    @property({type: CCFloat})
-    public smoothSpeed: number = 0.125;
     @property(Vec3)
     public offset: Vec3 = new Vec3();
     @property(Vec3)
@@ -26,11 +24,10 @@ export class CameraFollow extends Component {
         // Your initialization goes here.
     }
 
-    update (deltaTime: number) {
+    lateUpdate (deltaTime: number) {
         // Your update function goes here.
         this.target.getWorldPosition(v3_a);
         Vec3.add(v3_b, v3_a, this.offset);
-        Vec3.lerp(v3_b, this.node.position, v3_b, this.smoothSpeed);
         this.node.setWorldPosition(v3_b);
 
         Vec3.add(v3_a, v3_a, this.lookAtOffset);
