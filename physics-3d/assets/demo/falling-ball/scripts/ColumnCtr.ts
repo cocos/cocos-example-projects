@@ -41,7 +41,7 @@ export class ColumnCtr extends Component {
         cnode.worldPosition = Vec3.ZERO;
         cnode.worldRotation = Quat.IDENTITY;
 
-        for (let i = 1; i < this.node.children.length; i++) {
+        for (let i = 0; i < this.node.children.length; i++) {
             const cnode = this.node.children[i];
             v3_t.set(0, i * -8, 0);
             cnode.worldPosition = v3_t;

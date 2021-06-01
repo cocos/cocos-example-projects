@@ -3,6 +3,17 @@ import { EFourDirType, EButtonState } from "../const/EnumDefine";
 import { InstanceMgr } from "./InstanceMgr";
 const { ccclass, property, menu } = _decorator;
 
+const KEYCODE = {
+    W: 'W'.charCodeAt(0),
+    S: 'S'.charCodeAt(0),
+    A: 'A'.charCodeAt(0),
+    D: 'D'.charCodeAt(0),
+    w: 'w'.charCodeAt(0),
+    s: 's'.charCodeAt(0),
+    a: 'a'.charCodeAt(0),
+    d: 'd'.charCodeAt(0),
+};
+
 /**
  * 四个方向按钮的控制器
  */
@@ -11,15 +22,15 @@ const { ccclass, property, menu } = _decorator;
 @menu("demo/simple-car/FourDirButtons")
 export class FourDirButtons extends Component {
 
-    public forwardNode: Node = null;
+    public forwardNode: Node = null!;
 
-    public backwardNode: Node = null;
+    public backwardNode: Node = null!;
 
-    public turnleftNode: Node = null;
+    public turnleftNode: Node = null!;
 
-    public turnRightNode: Node = null;
+    public turnRightNode: Node = null!;
 
-    private _button = {};
+    private _button:any = {};
 
     public check (dirType: EFourDirType, buttonState: EButtonState) {
         return this._button[dirType] & (dirType << buttonState);
@@ -122,25 +133,25 @@ export class FourDirButtons extends Component {
     }
 
     private _onKeyDown (event: EventKeyboard) {
-        if (event.keyCode == macro.KEY.w) {
+        if (event.keyCode == KEYCODE.w || event.keyCode == KEYCODE.W) {
             this._setValue(SystemEventType.TOUCH_START, EFourDirType.FORWARD);
-        } else if (event.keyCode == macro.KEY.a) {
+        } else if (event.keyCode == KEYCODE.a || event.keyCode == KEYCODE.A) {
             this._setValue(SystemEventType.TOUCH_START, EFourDirType.TURNLEFT);
-        } else if (event.keyCode == macro.KEY.s) {
+        } else if (event.keyCode == KEYCODE.s || event.keyCode == KEYCODE.S) {
             this._setValue(SystemEventType.TOUCH_START, EFourDirType.BACKWARD);
-        } else if (event.keyCode == macro.KEY.d) {
+        } else if (event.keyCode == KEYCODE.d || event.keyCode == KEYCODE.D) {
             this._setValue(SystemEventType.TOUCH_START, EFourDirType.TURNRIGHT);
         }
     }
 
     private _onKeyUp (event: EventKeyboard) {
-        if (event.keyCode == macro.KEY.w) {
+        if (event.keyCode == KEYCODE.w || event.keyCode == KEYCODE.W) {
             this._setValue(SystemEventType.TOUCH_END, EFourDirType.FORWARD);
-        } else if (event.keyCode == macro.KEY.a) {
+        } else if (event.keyCode == KEYCODE.a || event.keyCode == KEYCODE.A) {
             this._setValue(SystemEventType.TOUCH_END, EFourDirType.TURNLEFT);
-        } else if (event.keyCode == macro.KEY.s) {
+        } else if (event.keyCode == KEYCODE.s || event.keyCode == KEYCODE.S) {
             this._setValue(SystemEventType.TOUCH_END, EFourDirType.BACKWARD);
-        } else if (event.keyCode == macro.KEY.d) {
+        } else if (event.keyCode == KEYCODE.d || event.keyCode == KEYCODE.D) {
             this._setValue(SystemEventType.TOUCH_END, EFourDirType.TURNRIGHT);
         }
     }

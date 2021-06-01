@@ -118,8 +118,8 @@
     "_id": ""
   },
   {
-    "__type__": "cc.ModelComponent",
-    "_name": "Cube<ModelComponent>",
+    "__type__": "cc.MeshRenderer",
+    "_name": "Cube<MeshRenderer>",
     "_objFlags": 0,
     "node": {
       "__id__": 2
@@ -139,7 +139,10 @@
     },
     "_shadowCastingMode": 0,
     "_enableMorph": true,
-    "_id": ""
+    "_id": "",
+    "__prefab": {
+      "__id__": 26
+    }
   },
   {
     "__type__": "cc.ModelLightmapSettings",
@@ -157,8 +160,8 @@
     "_lightmapSize": 64
   },
   {
-    "__type__": "cc.BoxColliderComponent",
-    "_name": "前面<BoxColliderComponent>",
+    "__type__": "cc.BoxCollider",
+    "_name": "前面<BoxCollider>",
     "_objFlags": 0,
     "node": {
       "__id__": 2
@@ -178,7 +181,10 @@
       "y": 1,
       "z": 1
     },
-    "_id": ""
+    "_id": "",
+    "__prefab": {
+      "__id__": 27
+    }
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -188,12 +194,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "bc9cvuMnZObKJ1GbB8Vchj",
-    "sync": false,
-    "_synced": {
-      "default": false,
-      "serializable": false
-    }
+    "fileId": "bc9cvuMnZObKJ1GbB8Vchj"
   },
   {
     "__type__": "cc.Node",
@@ -244,8 +245,8 @@
     "_id": ""
   },
   {
-    "__type__": "cc.ModelComponent",
-    "_name": "Cube<ModelComponent>",
+    "__type__": "cc.MeshRenderer",
+    "_name": "Cube<MeshRenderer>",
     "_objFlags": 0,
     "node": {
       "__id__": 7
@@ -265,7 +266,10 @@
     },
     "_shadowCastingMode": 0,
     "_enableMorph": true,
-    "_id": ""
+    "_id": "",
+    "__prefab": {
+      "__id__": 28
+    }
   },
   {
     "__type__": "cc.ModelLightmapSettings",
@@ -283,8 +287,8 @@
     "_lightmapSize": 64
   },
   {
-    "__type__": "cc.BoxColliderComponent",
-    "_name": "后面<BoxColliderComponent>",
+    "__type__": "cc.BoxCollider",
+    "_name": "后面<BoxCollider>",
     "_objFlags": 0,
     "node": {
       "__id__": 7
@@ -304,7 +308,10 @@
       "y": 1,
       "z": 1
     },
-    "_id": ""
+    "_id": "",
+    "__prefab": {
+      "__id__": 29
+    }
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -314,12 +321,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "baaQkPnENEa5O+xniTeAU0",
-    "sync": false,
-    "_synced": {
-      "default": false,
-      "serializable": false
-    }
+    "fileId": "baaQkPnENEa5O+xniTeAU0"
   },
   {
     "__type__": "cc.Node",
@@ -370,8 +372,8 @@
     "_id": ""
   },
   {
-    "__type__": "cc.ModelComponent",
-    "_name": "Cube<ModelComponent>",
+    "__type__": "cc.MeshRenderer",
+    "_name": "Cube<MeshRenderer>",
     "_objFlags": 0,
     "node": {
       "__id__": 12
@@ -391,7 +393,10 @@
     },
     "_shadowCastingMode": 0,
     "_enableMorph": true,
-    "_id": ""
+    "_id": "",
+    "__prefab": {
+      "__id__": 30
+    }
   },
   {
     "__type__": "cc.ModelLightmapSettings",
@@ -409,8 +414,8 @@
     "_lightmapSize": 64
   },
   {
-    "__type__": "cc.BoxColliderComponent",
-    "_name": "左面<BoxColliderComponent>",
+    "__type__": "cc.BoxCollider",
+    "_name": "左面<BoxCollider>",
     "_objFlags": 0,
     "node": {
       "__id__": 12
@@ -430,7 +435,10 @@
       "y": 1,
       "z": 1
     },
-    "_id": ""
+    "_id": "",
+    "__prefab": {
+      "__id__": 31
+    }
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -440,12 +448,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "b5GGEmACZJtbw158ia4rXI",
-    "sync": false,
-    "_synced": {
-      "default": false,
-      "serializable": false
-    }
+    "fileId": "b5GGEmACZJtbw158ia4rXI"
   },
   {
     "__type__": "cc.Node",
@@ -496,8 +499,8 @@
     "_id": ""
   },
   {
-    "__type__": "cc.ModelComponent",
-    "_name": "Cube<ModelComponent>",
+    "__type__": "cc.MeshRenderer",
+    "_name": "Cube<MeshRenderer>",
     "_objFlags": 0,
     "node": {
       "__id__": 17
@@ -517,7 +520,10 @@
     },
     "_shadowCastingMode": 0,
     "_enableMorph": true,
-    "_id": ""
+    "_id": "",
+    "__prefab": {
+      "__id__": 32
+    }
   },
   {
     "__type__": "cc.ModelLightmapSettings",
@@ -535,8 +541,8 @@
     "_lightmapSize": 64
   },
   {
-    "__type__": "cc.BoxColliderComponent",
-    "_name": "右面<BoxColliderComponent>",
+    "__type__": "cc.BoxCollider",
+    "_name": "右面<BoxCollider>",
     "_objFlags": 0,
     "node": {
       "__id__": 17
@@ -556,7 +562,10 @@
       "y": 1,
       "z": 1
     },
-    "_id": ""
+    "_id": "",
+    "__prefab": {
+      "__id__": 33
+    }
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -566,16 +575,11 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "3dOkB7j6NHSrjTMNgC2CF9",
-    "sync": false,
-    "_synced": {
-      "default": false,
-      "serializable": false
-    }
+    "fileId": "3dOkB7j6NHSrjTMNgC2CF9"
   },
   {
-    "__type__": "cc.ModelComponent",
-    "_name": "Plane<ModelComponent>",
+    "__type__": "cc.MeshRenderer",
+    "_name": "Plane<MeshRenderer>",
     "_objFlags": 0,
     "node": {
       "__id__": 1
@@ -595,7 +599,10 @@
     },
     "_shadowCastingMode": 0,
     "_enableMorph": true,
-    "_id": ""
+    "_id": "",
+    "__prefab": {
+      "__id__": 34
+    }
   },
   {
     "__type__": "cc.ModelLightmapSettings",
@@ -613,8 +620,8 @@
     "_lightmapSize": 64
   },
   {
-    "__type__": "cc.BoxColliderComponent",
-    "_name": "地面<BoxColliderComponent>",
+    "__type__": "cc.BoxCollider",
+    "_name": "地面<BoxCollider>",
     "_objFlags": 0,
     "node": {
       "__id__": 1
@@ -634,7 +641,10 @@
       "y": 1,
       "z": 10
     },
-    "_id": ""
+    "_id": "",
+    "__prefab": {
+      "__id__": 35
+    }
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -644,11 +654,46 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "2eRpg2INdL+I9BM2q0LUin",
-    "sync": false,
-    "_synced": {
-      "default": false,
-      "serializable": false
-    }
+    "fileId": "2eRpg2INdL+I9BM2q0LUin"
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "21Ph0epE9A9LKoUMWAEXRG"
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "d75jPu4q5L1o/lQefyzkAG"
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "c71W50Sn5HkZ2/NSEb/D5B"
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "c4cxmgyTFGQpK/P8Rv3ae1"
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "dfRpiFZdVEA5o7rpZuGNc2"
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "90CwLluMlBda1NPJ3PE/a0"
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "02CU2H6qJO04aMeCb3f9ZY"
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "5fLTmG/Y5Iwqd+Tp7f3k7h"
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "ea+KvntoROs4UqHza9/vuZ"
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "5f4lNTYMZDK5whxygXdPd2"
   }
 ]

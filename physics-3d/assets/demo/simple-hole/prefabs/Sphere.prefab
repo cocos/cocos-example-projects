@@ -60,8 +60,8 @@
     "_id": ""
   },
   {
-    "__type__": "cc.ModelComponent",
-    "_name": "Sphere<ModelComponent>",
+    "__type__": "cc.MeshRenderer",
+    "_name": "Sphere<MeshRenderer>",
     "_objFlags": 0,
     "node": {
       "__id__": 1
@@ -81,7 +81,10 @@
     },
     "_shadowCastingMode": 0,
     "_enableMorph": true,
-    "_id": ""
+    "_id": "",
+    "__prefab": {
+      "__id__": 7
+    }
   },
   {
     "__type__": "cc.ModelLightmapSettings",
@@ -100,8 +103,8 @@
     "_lightmapSize": 64
   },
   {
-    "__type__": "cc.SphereColliderComponent",
-    "_name": "Sphere<SphereColliderComponent>",
+    "__type__": "cc.SphereCollider",
+    "_name": "Sphere<SphereCollider>",
     "_objFlags": 0,
     "node": {
       "__id__": 1
@@ -116,11 +119,14 @@
       "z": 0
     },
     "_radius": 0.5,
-    "_id": ""
+    "_id": "",
+    "__prefab": {
+      "__id__": 8
+    }
   },
   {
-    "__type__": "cc.RigidBodyComponent",
-    "_name": "Sphere<RigidBodyComponent>",
+    "__type__": "cc.RigidBody",
+    "_name": "Sphere<RigidBody>",
     "_objFlags": 0,
     "node": {
       "__id__": 1
@@ -145,7 +151,10 @@
       "y": 1,
       "z": 1
     },
-    "_id": ""
+    "_id": "",
+    "__prefab": {
+      "__id__": 9
+    }
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -155,11 +164,18 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "daf5pA+WdOjJ3Q1V9SCs6I",
-    "sync": false,
-    "_synced": {
-      "default": false,
-      "serializable": false
-    }
+    "fileId": "daf5pA+WdOjJ3Q1V9SCs6I"
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "dbe9qPYo9CTYCm19pYojGJ"
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "d5jSOP4FxDRp4NEuWz5Zv7"
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "5fXJILxcRPs7NJH/K5fUB3"
   }
 ]
