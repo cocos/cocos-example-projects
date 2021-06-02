@@ -26,7 +26,7 @@ export class CameraFollow extends Component {
         // Your initialization goes here.
     }
 
-    update (deltaTime: number) {
+    lateUpdate (deltaTime: number) {
         // Your update function goes here.
         this.target.getWorldPosition(v3_a);
         Vec3.add(v3_b, v3_a, this.offset);
