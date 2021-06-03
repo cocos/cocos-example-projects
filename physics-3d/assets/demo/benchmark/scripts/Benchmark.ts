@@ -12,30 +12,30 @@ export class Benchmark extends Component {
     /** PREFAB */
 
     @property({ type: Prefab })
-    readonly box: Prefab = null;
+    readonly box: Prefab = null!;
 
     @property({ type: Prefab })
-    readonly sphere: Prefab = null;
+    readonly sphere: Prefab = null!;
 
     @property({ type: Prefab })
-    readonly boxRB: Prefab = null;
+    readonly boxRB: Prefab = null!;
 
     @property({ type: Prefab })
-    readonly sphereRB: Prefab = null;
+    readonly sphereRB: Prefab = null!;
 
     /** CONTAINER */
 
     @property({ type: Node })
-    readonly boxContainer: Node = null;
+    readonly boxContainer: Node = null!;
 
     @property({ type: Node })
-    readonly sphereContainer: Node = null;
+    readonly sphereContainer: Node = null!;
 
     @property({ type: Node })
-    readonly boxRBContainer: Node = null;
+    readonly boxRBContainer: Node = null!;
 
     @property({ type: Node })
-    readonly sphereRBContainer: Node = null;
+    readonly sphereRBContainer: Node = null!;
 
     /** RANGE */
 
@@ -51,27 +51,27 @@ export class Benchmark extends Component {
     /** LEFT */
 
     @property({ type: EditBoxComponent })
-    readonly l_editBox: EditBoxComponent = null;
+    readonly l_editBox: EditBoxComponent = null!;
 
     @property({ type: LabelComponent })
-    readonly l_current: LabelComponent = null;
+    readonly l_current: LabelComponent = null!;
 
     /** RIGHT */
 
     @property({ type: ToggleComponent })
-    readonly r_rotateToggle: ToggleComponent = null;
+    readonly r_rotateToggle: ToggleComponent = null!;
 
     @property({ type: EditBoxComponent })
-    readonly r_frameRateEditBox: EditBoxComponent = null;
+    readonly r_frameRateEditBox: EditBoxComponent = null!;
 
     @property({ type: EditBoxComponent })
-    readonly r_subStepEditBox: EditBoxComponent = null;
+    readonly r_subStepEditBox: EditBoxComponent = null!;
 
     @property({ type: EditBoxComponent })
-    readonly r_IntervalEditBox: EditBoxComponent = null;
+    readonly r_IntervalEditBox: EditBoxComponent = null!;
 
     @property({ type: RigidBodyComponent })
-    readonly rotateDynamics: RigidBodyComponent = null;
+    readonly rotateDynamics: RigidBodyComponent = null!;
 
     private initBoxCount: number = 0;
     private initSphereCount: number = 0;
@@ -122,9 +122,7 @@ export class Benchmark extends Component {
         this.onEditSubStep(this.r_subStepEditBox);
         this.onEditInterval(this.r_IntervalEditBox);
 
-        director.once(Director.EVENT_BEFORE_PHYSICS, () => {
-            PhysicsSystem.instance['_accumulator'] = 0;
-        })
+        PhysicsSystem.instance.resetAccumulator(0);
     }
 
     update () {
@@ -144,6 +142,9 @@ export class Benchmark extends Component {
 
     onDestroy () {
         PhysicsSystem.instance.enable = true;
+        PhysicsSystem.instance.fixedTimeStep = 1 / 60;
+        PhysicsSystem.instance.maxSubSteps = 1;
+        PhysicsSystem.instance.gravity = new Vec3(0, -10, 0);
     }
 
     private instantiate (count: number, prefab: Prefab, container: Node) {
