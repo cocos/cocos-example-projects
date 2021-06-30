@@ -61,15 +61,8 @@ export class GameCtr extends Component {
         const backToLoginEvent = new EventHandler();
         backToLoginEvent.target = this.node as Node;
         backToLoginEvent.component = "FALLING-BALL.GameCtr";
-        backToLoginEvent.handler = "gameBackToLogin";
+        backToLoginEvent.handler = "gameRestart";
         backToLoginBtn.clickEvents.push(backToLoginEvent);
-
-        const RestartBtn = this.overPanel.getChildByName('RestartBtn').getComponent(ButtonComponent);
-        const restartEvent = new EventHandler();
-        restartEvent.target = this.node as Node;
-        restartEvent.component = "FALLING-BALL.GameCtr";
-        restartEvent.handler = "gameRestart";
-        RestartBtn.clickEvents.push(restartEvent);
 
         this.columnCtr.enabled = false;
         this.floorFlagCtr.enabled = false;
