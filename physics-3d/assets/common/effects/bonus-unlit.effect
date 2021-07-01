@@ -3,7 +3,7 @@ CCEffect %{
   - name: opaque
     passes:
     - vert: bonus-unlit-vs:vert
-      frag: bonus-unlit-fs:frag
+      frag: bonus-unlit-fs
       properties: &props
         color:        { value: [1, 1, 1, 1], editor: { type: color } }
         tilingOffset: { value: [1, 1, 0, 0] }
@@ -12,7 +12,7 @@ CCEffect %{
   - name: transparent
     passes:
     - vert: bonus-unlit-vs:vert
-      frag: bonus-unlit-fs:frag
+      frag: bonus-unlit-fs
       depthStencilState:
         depthTest: true
         depthWrite: false
@@ -94,9 +94,10 @@ CCProgram bonus-unlit-fs %{
     vec4 clipColor;
   };
 
-  
+  layout(location = 0) out vec4 fragColorX;
 
-  vec4 frag () {
+  void main()
+  {
     vec4 o = vec4(1, 1, 1, 1);
 
     #if USE_TEXTURE
@@ -106,15 +107,16 @@ CCProgram bonus-unlit-fs %{
     if(abs(o.r - clipColor.r) <= clipColor.a && abs(o.g - clipColor.g) <= clipColor.a && abs(o.b - clipColor.b) <= clipColor.a) {
       discard;
     }
-    
-    #if USE_COLOR
-      o *= color;
-    #endif
+    else
+    {
+      #if USE_COLOR
+        o *= color;
+      #endif
 
-    #if USE_VERTEX_COLOR
-      o *= v_color;
-    #endif
-
-    return CCFragOutput(o);
+      #if USE_VERTEX_COLOR
+        o *= v_color;
+      #endif
+      fragColorX = o;
+    }
   }
 }%
