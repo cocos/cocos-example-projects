@@ -179,6 +179,7 @@ export class GameManager extends Component {
         const downName = 'block_down';
         const state = animComp.getState(downName);
         state.setTime(0);
+        state.sample();
 
         return roadBlock;
     }
