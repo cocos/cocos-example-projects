@@ -10,7 +10,7 @@ export class Exposure extends Component {
     start () {
         const scene = this.node.scene as Scene;
         const pipeline = director.root.pipeline;
-        this._ambient = pipeline.ambient;
+        this._ambient = pipeline.pipelineSceneData.ambient;
         this._camera = scene.getComponentInChildren(CameraComponent).camera;
     }
 

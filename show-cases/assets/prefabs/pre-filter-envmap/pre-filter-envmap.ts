@@ -87,7 +87,7 @@ export class PreFilterEnvmap extends Component {
         const newEnvMap = new TextureCube();
         const pass = this._material.passes[0];
         const handle = pass.getHandle('roughness');
-        this.node.setScale(1, director.root!.device.UVSpaceSignY, 1); // GL-specific: flip both model and camera so front face stays the same
+        this.node.setScale(1, director.root!.device.capabilities.UVSpaceSignY, 1); // GL-specific: flip both model and camera so front face stays the same
         camera.scene!.update(0); // should update scene after flipping
         newEnvMap.reset({ width: size, height: size, mipmapLevel: mipLevel });
         for (let m = 0; m < mipLevel; m++) {
