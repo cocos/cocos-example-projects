@@ -36,7 +36,7 @@
       },
       "physics": {
         "_value": true,
-        "_option": "physics-ammo"
+        "_option": "physics-physx"
       },
       "physics-ammo": {
         "_value": true
@@ -107,15 +107,15 @@
       "base",
       "gfx-webgl",
       "gfx-webgl2",
-      "3d",
-      "2d",
-      "ui",
-      "particle",
-      "physics-ammo",
-      "primitive",
       "profiler",
       "tween",
-      "terrain"
+      "3d",
+      "particle",
+      "physics-physx",
+      "primitive",
+      "terrain",
+      "2d",
+      "ui"
     ],
     "noDeprecatedFeatures": {
       "value": false,
