@@ -4,23 +4,18 @@ import { EMotionState } from "../const/EnumDefine";
 import { IMotorBehaviour } from "../const/Interface";
 const { ccclass, property, menu, requireComponent } = _decorator;
 
-/**
- * MotorCtr 用来控制主角运动的行为
- * 由 MotorCom 来驱动
- */
-
 @ccclass("SIMPLE-CAR.MotorCtr")
-@menu("demo/simple-car/MotorCtr")
-@requireComponent(RigidBodyComponent)
+// @menu("demo/simple-car/MotorCtr")
+// @requireComponent(RigidBodyComponent)
 export class MotorCtr implements IMotorBehaviour {
 
-    @property({ type: Vec2 })
+    @property
     public readonly vertical: Vec2 = new Vec2();
 
-    @property({ type: Vec2 })
+    @property
     public readonly torque: Vec2 = new Vec2();
 
-    public rigidBody: RigidBodyComponent;
+    public rigidBody!: RigidBodyComponent;
 
     private _forceZ: number = 0;
     private _force: Vec3 = new Vec3();
@@ -31,7 +26,7 @@ export class MotorCtr implements IMotorBehaviour {
     }
 
     start () {
-        this.rigidBody = InstanceMgr.MotorCom.getComponent(RigidBodyComponent);
+        this.rigidBody = InstanceMgr.MotorCom.getComponent(RigidBodyComponent)!;
     }
 
     update (deltaTime: number) {
