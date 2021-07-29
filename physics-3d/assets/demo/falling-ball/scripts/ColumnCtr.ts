@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, systemEvent, SystemEventType, EventKeyboard, macro, Quat, EventTouch, Touch, Vec3 } from "cc";
+import { _decorator, Component, Node, systemEvent, SystemEventType, EventKeyboard, KeyCode, Quat, EventTouch, Touch, Vec3 } from "cc";
 import { v2_t, quat_t, v3_t } from "./TempConst";
 const { ccclass, property, menu } = _decorator;
 
@@ -20,9 +20,9 @@ export class ColumnCtr extends Component {
     }
 
     onKeyDown (event: EventKeyboard) {
-        if (event.keyCode == macro.KEY.a) {
+        if (event.keyCode == KeyCode.KEY_A) {
             Quat.fromEuler(quat_t, 0, 3, 0);
-        } else if (event.keyCode == macro.KEY.d) {
+        } else if (event.keyCode == KeyCode.KEY_D) {
             Quat.fromEuler(quat_t, 0, -3, 0);
         }
         this.node.rotate(quat_t);
