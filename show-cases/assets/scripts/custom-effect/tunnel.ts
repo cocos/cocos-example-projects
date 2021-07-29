@@ -1,4 +1,4 @@
-import { _decorator, Component, ModelComponent, Vec2, Vec4, director, eventManager } from 'cc';
+import { _decorator, Component, ModelComponent, Vec2, Vec4, director } from 'cc';
 const { ccclass } = _decorator;
 
 @ccclass('Tunnel')
@@ -33,9 +33,5 @@ export class Tunnel extends Component {
             this._passes[i].setUniform(this._colorHandles[i], this._color);
             this._passes[i].setUniform(this._borderHandles[i], this._border);
         }
-    }
-
-    public onDisable () {
-        eventManager.removeAllListeners();
     }
 }
