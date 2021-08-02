@@ -1,4 +1,4 @@
-import { _decorator, Component, math, systemEvent, macro, RigidBodyComponent, Touch, EventTouch, SystemEventType, EventKeyboard, Vec3, clamp } from "cc";
+import { _decorator, Component, math, systemEvent, KeyCode, RigidBodyComponent, Touch, EventTouch, SystemEventType, EventKeyboard, Vec3, clamp } from "cc";
 const { ccclass, property, menu } = _decorator;
 
 const v3_0 = new math.Vec3();
@@ -93,7 +93,7 @@ export class ballcontrol extends Component {
             this._key |= EKey.A;
         } else if (event.keyCode === KEYCODE.d || event.keyCode === KEYCODE.D) {
             this._key |= EKey.D;
-        } else if (event.keyCode === macro.KEY.shift) {
+        } else if (event.keyCode === KeyCode.SHIFT_LEFT ) {
             this._key |= EKey.SHIFT;
         }
     }
@@ -107,7 +107,7 @@ export class ballcontrol extends Component {
             this._key &= ~EKey.A;
         } else if (event.keyCode === KEYCODE.d || event.keyCode === KEYCODE.D) {
             this._key &= ~EKey.D;
-        } else if (event.keyCode === macro.KEY.shift) {
+        } else if (event.keyCode === KeyCode.SHIFT_LEFT ) {
             this._key &= ~EKey.SHIFT;
         }
     }

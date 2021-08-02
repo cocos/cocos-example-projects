@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node, systemEvent, SystemEventType, EventMouse, EventKeyboard, Vec3, macro, RigidBody, physics, Collider, ITriggerEvent, ICollisionEvent, Quat, v3, math, PhysicsSystem, CameraComponent, geometry, Prefab, Vec2, Touch, Event, Button, Label, Canvas, sys } from 'cc';
+import { _decorator, Component, Node, systemEvent, SystemEventType, EventMouse, EventKeyboard, Vec3, KeyCode, RigidBody, physics, Collider, ITriggerEvent, ICollisionEvent, Quat, v3, math, PhysicsSystem, CameraComponent, geometry, Prefab, Vec2, Touch, Event, Button, Label, Canvas, sys } from 'cc';
 const { ccclass, property, menu } = _decorator;
 
 @ccclass('simple-bow.RiggedBow')
@@ -167,13 +167,13 @@ export class RiggedBow extends Component {
     }
 
     onKeyDown(event: EventKeyboard) {
-        if (event.keyCode == macro.KEY.space) {
+        if (event.keyCode == KeyCode.SPACE) {
             this.isDrawBow = true;
         }
     }
 
     onKeyUp(event: EventKeyboard) {
-        if (event.keyCode == macro.KEY.space) {
+        if (event.keyCode == KeyCode.SPACE) {
             this.isDrawBow = false;
         }
     }

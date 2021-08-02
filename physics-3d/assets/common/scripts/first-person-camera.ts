@@ -1,4 +1,4 @@
-import { _decorator, Component, math, systemEvent, SystemEvent, macro, game, cclegacy, Touch, EventKeyboard, EventMouse } from "cc";
+import { _decorator, Component, math, systemEvent, SystemEvent, KeyCode, game, cclegacy, Touch, EventKeyboard, EventMouse } from "cc";
 const { ccclass, property, menu } = _decorator;
 const v2_1 = new math.Vec2();
 const v2_2 = new math.Vec2();
@@ -18,7 +18,7 @@ const KEYCODE = {
 	d: 'd'.charCodeAt(0),
 	q: 'q'.charCodeAt(0),
 	e: 'e'.charCodeAt(0),
-	SHIFT: macro.KEY.shift,
+	SHIFT: KeyCode.SHIFT_LEFT ,
 };
 
 @ccclass("COMMON.FirstPersonCamera")

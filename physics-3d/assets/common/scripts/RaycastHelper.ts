@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, Prefab, loader, systemEvent, SystemEventType, Touch, geometry, CameraComponent, PhysicsSystem, Enum, macro, EventKeyboard, game } from 'cc';
+import { _decorator, Component, Node, Prefab, loader, systemEvent, SystemEventType, Touch, geometry, CameraComponent, PhysicsSystem, Enum, KeyCode, EventKeyboard, game } from 'cc';
 import { PrefabPoolUtil } from './PrefabPoolUtil';
 const { ccclass, property, menu } = _decorator;
 
@@ -9,9 +9,9 @@ enum ERaycastType {
 Enum(ERaycastType);
 
 enum EKey {
-    r = macro.KEY.r,
-    g = macro.KEY.g,
-    b = macro.KEY.b,
+    r = KeyCode.KEY_R,
+    g = KeyCode.KEY_G,
+    b = KeyCode.KEY_B,
 }
 Enum(EKey);
 
@@ -19,14 +19,14 @@ Enum(EKey);
 @menu('common/RaycastHelper')
 export class RaycastHelper extends Component {
 
-    private static _point: Prefab = null;
+    private static _point: Prefab = null!;
     private static _enable = false;
     private static _container = new Node("_RAYCAST_CONTAINER_");
 
     private _cache: Node[] = [];
 
     @property({ type: CameraComponent })
-    cameraCom: CameraComponent = null;
+    cameraCom: CameraComponent = null!;
 
     @property({ type: ERaycastType })
     raycastType: ERaycastType = ERaycastType.CLOSEST;
@@ -35,7 +35,7 @@ export class RaycastHelper extends Component {
         type: EKey,
         tooltip: "开关，控制全局",
     })
-    switch: number = macro.KEY.r;
+    switch: number = KeyCode.KEY_R;
 
     @property
     scale: number = 1;
@@ -109,7 +109,7 @@ export class RaycastHelper extends Component {
     recover () {
         let len = this._cache.length;
         while (len--) {
-            PrefabPoolUtil.recoverItemByPoolName('COMMON.Point', this._cache.pop(), true);
+            PrefabPoolUtil.recoverItemByPoolName('COMMON.Point', this._cache.pop()!, true);
         }
     }
 

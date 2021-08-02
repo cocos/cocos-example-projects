@@ -24,10 +24,10 @@ export class InstanceMgr {
     static readonly BonusMgr: BonusMgr;
 
     static registerInstance (name: string, entity: any) {
-        if (InstanceMgr[name] != null) {
+        if ((InstanceMgr as any)[name] != null) {
             console.error(name, 'is duplicate');
         } else {
-            InstanceMgr[name] = entity;
+            (InstanceMgr as any)[name] = entity;
         }
     }
 
