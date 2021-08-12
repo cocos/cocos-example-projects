@@ -1,4 +1,4 @@
-import { _decorator, Component, Quat, Vec2, Vec3, macro, systemEvent, SystemEvent, game, Touch, EventKeyboard, EventMouse } from 'cc';
+import { _decorator, Component, Quat, Vec2, Vec3, systemEvent, SystemEvent, game, Touch, EventKeyboard, EventMouse, KeyCode } from 'cc';
 const { ccclass, property } = _decorator;
 
 const v2_1 = new Vec2();
@@ -12,7 +12,7 @@ const KEYCODE = {
     D: 'D'.charCodeAt(0),
     Q: 'Q'.charCodeAt(0),
     E: 'E'.charCodeAt(0),
-    SHIFT: macro.KEY.shift,
+    SHIFT: KeyCode.SHIFT_LEFT,
 };
 
 @ccclass
