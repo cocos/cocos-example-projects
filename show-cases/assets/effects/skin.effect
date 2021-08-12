@@ -49,7 +49,6 @@ CCProgram skin-fs %{
     s.roughness = params.y;
     s.metallic = params.z;
     s.emissive = SSSShading(normalize(s.normal), params.w) * s.albedo.rgb * s.occlusion;
-    s.SpecularIntensity = 0.0;
   }
 
   CC_STANDARD_SURFACE_ENTRY()
