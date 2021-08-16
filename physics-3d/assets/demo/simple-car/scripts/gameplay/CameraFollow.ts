@@ -10,9 +10,9 @@ const _look = new Vec3();
 export class CameraFollow extends Component {
 
     @property({ type: Node })
-    lookTarget: Node = null;
+    lookTarget: Node = null!;
 
-    @property({ type: Vec3 })
+    @property
     offset: Vec3 = new Vec3();
 
     @property

@@ -1,4 +1,4 @@
-import { _decorator, Component, math, systemEvent, SystemEvent, game, macro, director, EventTouch, EventKeyboard, Touch, clamp } from "cc";
+import { _decorator, Component, math, systemEvent, SystemEvent, game, KeyCode, director, EventTouch, EventKeyboard, Touch, clamp } from "cc";
 const { ccclass, property, menu } = _decorator;
 
 const v2_1 = new math.Vec2();
@@ -13,7 +13,7 @@ const KEYCODE = {
     s: 's'.charCodeAt(0),
     a: 'a'.charCodeAt(0),
     d: 'd'.charCodeAt(0),
-    SHIFT: macro.KEY.shift,
+    SHIFT: KeyCode.SHIFT_LEFT ,
 };
 
 @ccclass("SIMPLE-HOLE.MotionCtr")

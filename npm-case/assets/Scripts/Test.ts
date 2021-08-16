@@ -36,6 +36,10 @@ chai.expect(typeof protobufTsRuntime.base64decode).to.equal('function');
 import jsZip from 'jszip/dist/jszip.min.js';
 chai.expect(jsZip.version).to.equal('3.5.0');
 
+// Another Node.js package
+import colyseus from 'colyseus.js';
+chai.expect(typeof colyseus.Protocol).to.equal('object');
+
 // import { hideBin } from 'yargs/helpers'
 // chai.expect(typeof hideBin).to.equal('string');
 

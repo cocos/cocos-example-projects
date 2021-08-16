@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, EAxisDirection, PhysicsSystem, director, Director, systemEvent, SystemEventType, EventKeyboard, macro, ModelComponent, Vec3, Enum, Mesh, warn } from 'cc';
+import { _decorator, Component, Node, EAxisDirection, PhysicsSystem, director, Director, systemEvent, SystemEventType, EventKeyboard, ModelComponent, Vec3, Enum, Mesh, warn } from 'cc';
 const { ccclass, property, menu } = _decorator;
 
 

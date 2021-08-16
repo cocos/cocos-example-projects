@@ -39,13 +39,13 @@ export class Benchmark extends Component {
 
     /** RANGE */
 
-    @property({ type: Vec2 })
+    @property
     readonly rangeY = new Vec2(10, 100);
 
-    @property({ type: Vec2 })
+    @property
     readonly rangeXZ = new Vec2(-50, 50);
 
-    @property({ type: Vec2 })
+    @property
     readonly rangeSize = new Vec2(0.5, 5);
 
     /** LEFT */
@@ -83,7 +83,7 @@ export class Benchmark extends Component {
 
     private enableRotate = true;
 
-    start () {
+    start() {
         this.node.addComponent(ProfilerManager);
 
         const item = localStorage.getItem(KEY_INIT_STR);
@@ -125,7 +125,7 @@ export class Benchmark extends Component {
         PhysicsSystem.instance.resetAccumulator(0);
     }
 
-    update () {
+    update() {
         if (this.intervalCurrent == 0) {
             PhysicsSystem.instance.enable = true;
             this.intervalCurrent = this.intervalNumber;
@@ -137,30 +137,30 @@ export class Benchmark extends Component {
         if (this.enableRotate)
             this.rotateDynamics.setAngularVelocity(v3_0);
         else
-            this.rotateDynamics.setAngularVelocity(Vec3.ZERO);
+            this.rotateDynamics.setAngularVelocity(Vec3.ZERO as Vec3);
     }
 
-    onDestroy () {
+    onDestroy() {
         PhysicsSystem.instance.enable = true;
         PhysicsSystem.instance.fixedTimeStep = 1 / 60;
         PhysicsSystem.instance.maxSubSteps = 1;
         PhysicsSystem.instance.gravity = new Vec3(0, -10, 0);
     }
 
-    private instantiate (count: number, prefab: Prefab, container: Node) {
+    private instantiate(count: number, prefab: Prefab, container: Node) {
         for (let i = 0; i < count; i++) {
             this.instantiateSingle(prefab, container);
         }
     }
 
-    private instantiateSingle (prefab: Prefab, container: Node) {
+    private instantiateSingle(prefab: Prefab, container: Node) {
         const entity = instantiate(prefab) as Node;
         this.resetTransformSingle(entity);
         container.addChild(entity);
         this.updateCurrentLab();
     }
 
-    private resetTransforms () {
+    private resetTransforms() {
         for (let i = 0; i < this.boxContainer.children.length; i++) {
             const entity = this.boxContainer.children[i];
             this.resetTransformSingle(entity);
@@ -182,7 +182,7 @@ export class Benchmark extends Component {
         }
     }
 
-    private resetTransformSingle (entity: Node) {
+    private resetTransformSingle(entity: Node) {
         let y = randomRange(this.rangeY.x, this.rangeY.y);
         let x = randomRange(this.rangeXZ.x, this.rangeXZ.y);
         let z = randomRange(this.rangeXZ.x, this.rangeXZ.y);
@@ -203,7 +203,7 @@ export class Benchmark extends Component {
         }
     }
 
-    private updateCurrentLab () {
+    private updateCurrentLab() {
         const a = this.boxContainer.children.length;
         const b = this.sphereContainer.children.length;
         const c = this.boxRBContainer.children.length;
@@ -211,38 +211,38 @@ export class Benchmark extends Component {
         this.l_current.string = "目前数量：" + a + "-" + b + "-" + c + "-" + d;
     }
 
-    onAddBox (touch: EventTouch, custom?: string) {
+    onAddBox(touch: EventTouch, custom?: string) {
         this.instantiate(5, this.box, this.boxContainer);
     }
 
-    onAddSphere (touch: EventTouch, custom?: string) {
+    onAddSphere(touch: EventTouch, custom?: string) {
         this.instantiate(5, this.sphere, this.sphereContainer);
     }
 
-    onAddBoxRB (touch: EventTouch, custom?: string) {
+    onAddBoxRB(touch: EventTouch, custom?: string) {
         this.instantiate(5, this.boxRB, this.boxRBContainer);
     }
 
-    onAddSphereRB (touch: EventTouch, custom?: string) {
+    onAddSphereRB(touch: EventTouch, custom?: string) {
         this.instantiate(5, this.sphereRB, this.sphereRBContainer);
     }
 
-    onEditFinish (editBox: EditBoxComponent) {
+    onEditFinish(editBox: EditBoxComponent) {
         const str = editBox.string;
         if (str != '') {
             localStorage.setItem(KEY_INIT_STR, str);
         }
     }
 
-    onReset (touch: EventTouch, custom?: string) {
+    onReset(touch: EventTouch, custom?: string) {
         this.resetTransforms();
     }
 
-    onRotateToggole (toggle: ToggleComponent) {
+    onRotateToggole(toggle: ToggleComponent) {
         this.enableRotate = toggle.isChecked;
     }
 
-    onEditFrameRate (editBox: EditBoxComponent) {
+    onEditFrameRate(editBox: EditBoxComponent) {
         const v = parseInt(editBox.string);
         if (isNaN(v)) return;
 
@@ -251,7 +251,7 @@ export class Benchmark extends Component {
         PhysicsSystem.instance.fixedTimeStep = 1 / fr;
     }
 
-    onEditSubStep (editBox: EditBoxComponent) {
+    onEditSubStep(editBox: EditBoxComponent) {
         const v = parseInt(editBox.string);
         if (isNaN(v)) return;
 
@@ -260,7 +260,7 @@ export class Benchmark extends Component {
         }
     }
 
-    onEditInterval (editBox: EditBoxComponent) {
+    onEditInterval(editBox: EditBoxComponent) {
         const v = parseInt(editBox.string);
         if (isNaN(v)) return;
 
