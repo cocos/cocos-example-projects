@@ -206,8 +206,7 @@ export class ShootingPlayerController extends Component {
         if (event.getButton() === 0) {  // 鼠标左键
             this.changeToAnimState(PlayerAnimState.Shooting);
             this.shoot();
-        } 
-        if (event.getButton() === 2) {
+        } else if (event.getButton() === 2) {
             document.exitPointerLock?.();
         } 
     }
