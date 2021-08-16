@@ -4,6 +4,9 @@
 
   "compilerOptions": {
       "allowSyntheticDefaultImports": true,
-      "skipLibCheck": true
+      "skipLibCheck": true,
+      "paths": {
+        "foo": ["./assets/Scripts/Foo"]
+      }
   }
 }
