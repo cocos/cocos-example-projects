@@ -30,6 +30,21 @@ export class DynamicTest extends Component {
     @property({ visible: function (this: DynamicTest) { return this.USE_TORQUE } })
     readonly torque = new Vec3();
 
+    start () {
+        // deactive dynamic body, test with some api
+        let rigidbody = this.getComponent(RigidBodyComponent)!;
+        rigidbody.node.active = false;
+        rigidbody.applyForce(Vec3.ONE);
+        rigidbody.clearState();
+        rigidbody.wakeUp();
+        rigidbody.sleep();
+        rigidbody.isAwake;
+        rigidbody.isSleeping;
+        rigidbody.isSleepy;
+
+        rigidbody.node.active = true;
+    }
+
     applyImpulse () {
         if (!this.USE_IMPULSE) return;
         let rigidbody = this.getComponent(RigidBodyComponent);
