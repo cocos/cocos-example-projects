@@ -57,7 +57,9 @@ export class Emitter extends Component {
       const hintModel = hint.addComponent(ModelComponent);
       const hintMat = new Material();
       hintMat.initialize({ effectName: 'builtin-standard' });
-      hintMat.setProperty('albedo', this.color);
+      const hintcolor = this.color.clone();
+      hintcolor.a = 255;
+      hintMat.setProperty('albedo', hintcolor);
       hintMat.setProperty('metallic', 0.1);
       hintModel.material = hintMat;
       hintModel.mesh = hintMesh;
@@ -92,7 +94,7 @@ export class Emitter extends Component {
           const ele = collider.node.getComponent(Element);
           if (ele.collided) { return; }
           ele.color.a = 255;
-          ele.pass.setUniform(ele.hColor, ele.color);
+          ele.pass.setUniform(ele.hColor, this.color);
           ele.collided = true;
           ele.framesRemaining = 5;
           Vec3.set(ele.velocity, 0, 0, 0);
