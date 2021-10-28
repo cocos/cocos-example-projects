@@ -7,10 +7,10 @@ const { ccclass, property, menu } = _decorator;
 export class BonusMgr extends Component {
 
     @property({ type: LabelComponent })
-    scoreLb: LabelComponent = null;
+    scoreLb: LabelComponent = null!;
 
     @property({ type: Node })
-    mapNode: Node = null;
+    mapNode: Node = null!;
 
     allBonus: Node[] = [];
 

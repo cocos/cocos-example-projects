@@ -1,5 +1,5 @@
 {
-  "ver": "1.3.22",
+  "ver": "2.1.2",
   "importer": "fbx",
   "imported": true,
   "uuid": "97b5ed3f-f707-4d41-8adb-a1526f1b4f26",
@@ -14,8 +14,8 @@
       "uuid": "97b5ed3f-f707-4d41-8adb-a1526f1b4f26@b8a2d",
       "imported": true,
       "files": [
-        ".json",
-        ".bin"
+        ".bin",
+        ".json"
       ],
       "subMetas": {},
       "userData": {
@@ -23,7 +23,7 @@
       }
     },
     "1e5ef": {
-      "ver": "1.0.2",
+      "ver": "1.0.3",
       "importer": "gltf-embeded-image",
       "uuid": "97b5ed3f-f707-4d41-8adb-a1526f1b4f26@1e5ef",
       "imported": true,
@@ -40,7 +40,7 @@
       "name": "贴图 #10.image"
     },
     "c774a": {
-      "ver": "1.0.20",
+      "ver": "1.0.21",
       "importer": "texture",
       "name": "贴图 #10.texture",
       "id": "c774a",
@@ -58,7 +58,7 @@
         "magfilter": "linear",
         "mipfilter": "none",
         "premultiplyAlpha": false,
-        "anisotropy": 1,
+        "anisotropy": 0,
         "isUuid": false,
         "imageUuidOrDatabaseUri": "db://assets/model/sign/start.jpg"
       }
@@ -69,7 +69,7 @@
       "displayName": "",
       "id": "93c57",
       "name": "start.prefab",
-      "ver": "1.0.11",
+      "ver": "1.0.12",
       "imported": true,
       "files": [
         ".json"
@@ -103,9 +103,11 @@
     "imageMetas": [
       {
         "name": "贴图 #10",
-        "remap": "db://assets/model/sign/start.jpg",
+        "remap": "db://assets/common/models/sign/start.jpg",
         "uri": "97b5ed3f-f707-4d41-8adb-a1526f1b4f26@1e5ef"
       }
-    ]
+    ],
+    "legacyFbxImporter": true,
+    "materialDumpDir": "db://assets/common/models/sign/Materials_start"
   }
 }

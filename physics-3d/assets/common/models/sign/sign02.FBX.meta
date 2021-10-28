@@ -1,5 +1,5 @@
 {
-  "ver": "1.3.22",
+  "ver": "2.1.2",
   "importer": "fbx",
   "imported": true,
   "uuid": "96668fae-e56b-4b88-a2fc-3b63df2ace75",
@@ -14,8 +14,8 @@
       "uuid": "96668fae-e56b-4b88-a2fc-3b63df2ace75@b8a2d",
       "imported": true,
       "files": [
-        ".json",
-        ".bin"
+        ".bin",
+        ".json"
       ],
       "subMetas": {},
       "userData": {
@@ -23,7 +23,7 @@
       }
     },
     "9defe": {
-      "ver": "1.0.2",
+      "ver": "1.0.3",
       "importer": "gltf-embeded-image",
       "uuid": "96668fae-e56b-4b88-a2fc-3b63df2ace75@9defe",
       "imported": true,
@@ -40,7 +40,7 @@
       "name": "贴图 #8.image"
     },
     "bc797": {
-      "ver": "1.0.20",
+      "ver": "1.0.21",
       "importer": "texture",
       "name": "贴图 #8.texture",
       "id": "bc797",
@@ -58,7 +58,7 @@
         "magfilter": "linear",
         "mipfilter": "none",
         "premultiplyAlpha": false,
-        "anisotropy": 1,
+        "anisotropy": 0,
         "isUuid": false,
         "imageUuidOrDatabaseUri": "db://assets/model/sign/sign.jpg"
       }
@@ -85,7 +85,7 @@
       "displayName": "",
       "id": "5b89f",
       "name": "sign02.prefab",
-      "ver": "1.0.11",
+      "ver": "1.0.12",
       "imported": true,
       "files": [
         ".json"
@@ -119,9 +119,10 @@
     "imageMetas": [
       {
         "name": "贴图 #8",
-        "remap": "db://assets/model/sign/sign.jpg",
+        "remap": "db://assets/common/models/sign/sign.jpg",
         "uri": "96668fae-e56b-4b88-a2fc-3b63df2ace75@9defe"
       }
-    ]
+    ],
+    "legacyFbxImporter": true
   }
 }

@@ -1,4 +1,4 @@
-import { _decorator, Component, math, systemEvent, SystemEvent, game, macro, director } from "cc";
+import { _decorator, Component, math, systemEvent, SystemEvent, game, KeyCode, director, EventTouch, EventKeyboard, Touch, clamp } from "cc";
 const { ccclass, property, menu } = _decorator;
 
 const v2_1 = new math.Vec2();
@@ -9,7 +9,11 @@ const KEYCODE = {
     S: 'S'.charCodeAt(0),
     A: 'A'.charCodeAt(0),
     D: 'D'.charCodeAt(0),
-    SHIFT: macro.KEY.shift,
+    w: 'w'.charCodeAt(0),
+    s: 's'.charCodeAt(0),
+    a: 'a'.charCodeAt(0),
+    d: 'd'.charCodeAt(0),
+    SHIFT: KeyCode.SHIFT_LEFT ,
 };
 
 @ccclass("SIMPLE-HOLE.MotionCtr")
@@ -30,73 +34,71 @@ export class MotionCtr extends Component {
     _position = new math.Vec3();
     _speedScale = 1;
 
-    start () {
+    start() {
         math.Vec3.copy(this._euler, this.node.eulerAngles);
         math.Vec3.copy(this._position, this.node.position);
     }
 
-    update (dt) {
+    update(dt: number) {
         // position
         math.Vec3.transformQuat(v3_1, this._velocity, this.node.rotation);
         math.Vec3.scaleAndAdd(this._position, this._position, v3_1, this.moveSpeed * this._speedScale);
         math.Vec3.lerp(v3_1, this.node.position, this._position, dt / this.damp);
 
-        v3_1.x = math.clamp(v3_1.x, -45, 45);
-        v3_1.z = math.clamp(v3_1.z, -45, 45);
+        if (v3_1.x < -17 || v3_1.x > 17 || v3_1.z < -17 || v3_1.z > 17)
+            this._position.set(v3_1);
+
+        v3_1.x = clamp(v3_1.x, -17, 17);
+        v3_1.z = clamp(v3_1.z, -17, 17);
+
         this.node.setPosition(v3_1);
     }
 
-    onDestroy () {
+    onDestroy() {
         this._removeEvents();
     }
 
-    onEnable () {
+    onEnable() {
         this._addEvents();
     }
 
-    onDisable () {
+    onDisable() {
         this._removeEvents();
     }
 
-    private _addEvents () {
+    private _addEvents() {
         systemEvent.on(SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
         systemEvent.on(SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
-        systemEvent.on(SystemEvent.EventType.TOUCH_START, this.onTouchStart, this);
         systemEvent.on(SystemEvent.EventType.TOUCH_MOVE, this.onTouchMove, this);
         systemEvent.on(SystemEvent.EventType.TOUCH_END, this.onTouchEnd, this);
     }
 
-    private _removeEvents () {
+    private _removeEvents() {
         systemEvent.off(SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
         systemEvent.off(SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
-        systemEvent.off(SystemEvent.EventType.TOUCH_START, this.onTouchStart, this);
         systemEvent.off(SystemEvent.EventType.TOUCH_MOVE, this.onTouchMove, this);
         systemEvent.off(SystemEvent.EventType.TOUCH_END, this.onTouchEnd, this);
     }
 
-    onKeyDown (e) {
+    onKeyDown(e: EventKeyboard) {
         const v = this._velocity;
         if (e.keyCode === KEYCODE.SHIFT) { this._speedScale = this.moveSpeedShiftScale; }
-        else if (e.keyCode === KEYCODE.W) { if (v.z === 0) { v.z = -1; } }
-        else if (e.keyCode === KEYCODE.S) { if (v.z === 0) { v.z = 1; } }
-        else if (e.keyCode === KEYCODE.A) { if (v.x === 0) { v.x = -1; } }
-        else if (e.keyCode === KEYCODE.D) { if (v.x === 0) { v.x = 1; } }
+        else if (e.keyCode === KEYCODE.W || e.keyCode === KEYCODE.w) { if (v.z === 0) { v.z = -1.25; } }
+        else if (e.keyCode === KEYCODE.S || e.keyCode === KEYCODE.s) { if (v.z === 0) { v.z = 1.25; } }
+        else if (e.keyCode === KEYCODE.A || e.keyCode === KEYCODE.a) { if (v.x === 0) { v.x = -1.25; } }
+        else if (e.keyCode === KEYCODE.D || e.keyCode === KEYCODE.d) { if (v.x === 0) { v.x = 1.25; } }
     }
 
-    onKeyUp (e) {
+    onKeyUp(e: EventKeyboard) {
         const v = this._velocity;
         if (e.keyCode === KEYCODE.SHIFT) { this._speedScale = 1; }
-        else if (e.keyCode === KEYCODE.W) { if (v.z < 0) { v.z = 0; } }
-        else if (e.keyCode === KEYCODE.S) { if (v.z > 0) { v.z = 0; } }
-        else if (e.keyCode === KEYCODE.A) { if (v.x < 0) { v.x = 0; } }
-        else if (e.keyCode === KEYCODE.D) { if (v.x > 0) { v.x = 0; } }
+        else if (e.keyCode === KEYCODE.W || e.keyCode === KEYCODE.w) { if (v.z < 0) { v.z = 0; } }
+        else if (e.keyCode === KEYCODE.S || e.keyCode === KEYCODE.s) { if (v.z > 0) { v.z = 0; } }
+        else if (e.keyCode === KEYCODE.A || e.keyCode === KEYCODE.a) { if (v.x < 0) { v.x = 0; } }
+        else if (e.keyCode === KEYCODE.D || e.keyCode === KEYCODE.d) { if (v.x > 0) { v.x = 0; } }
     }
 
-    onTouchStart (e) {
-        if (game.canvas.requestPointerLock) game.canvas.requestPointerLock();
-    }
-
-    onTouchMove (e) {
+    onTouchMove(e: Touch) {
         e.getStartLocation(v2_1);
 
         e.getLocation(v2_2);
@@ -105,16 +107,17 @@ export class MotionCtr extends Component {
         this._velocity.z = -v2_2.y * 0.01;
         this._velocity.x = this._velocity.x < 0 ? this._velocity.x - 0.75 : this._velocity.x + 0.75;
         this._velocity.z = this._velocity.z < 0 ? this._velocity.z - 0.75 : this._velocity.z + 0.75;
+        this._velocity.x = clamp(this._velocity.x, -1.25, 1.25);
+        this._velocity.z = clamp(this._velocity.z, -1.25, 1.25);
     }
 
-    onTouchEnd (e) {
-        if (document.exitPointerLock) document.exitPointerLock();
+    onTouchEnd(e: Touch) {
         e.getStartLocation(v2_1);
         this._velocity.x = 0;
         this._velocity.z = 0;
     }
 
-    changeEnable () {
+    changeEnable() {
         this.enabled = !this.enabled;
     }
 }

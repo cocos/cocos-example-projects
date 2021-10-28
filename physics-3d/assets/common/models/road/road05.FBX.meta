@@ -1,5 +1,5 @@
 {
-  "ver": "1.3.22",
+  "ver": "2.0.14",
   "importer": "fbx",
   "imported": true,
   "uuid": "76563dac-7b68-4f3f-a880-d1be43e5a601",
@@ -14,8 +14,8 @@
       "uuid": "76563dac-7b68-4f3f-a880-d1be43e5a601@44034",
       "imported": true,
       "files": [
-        ".json",
-        ".bin"
+        ".bin",
+        ".json"
       ],
       "subMetas": {},
       "userData": {
@@ -23,7 +23,7 @@
       }
     },
     "3bd65": {
-      "ver": "1.0.2",
+      "ver": "1.0.3",
       "importer": "gltf-embeded-image",
       "uuid": "76563dac-7b68-4f3f-a880-d1be43e5a601@3bd65",
       "imported": true,
@@ -41,7 +41,7 @@
       "name": "road03.jpg.image"
     },
     "bc797": {
-      "ver": "1.0.20",
+      "ver": "1.0.21",
       "importer": "texture",
       "name": "贴图 #8.texture",
       "id": "bc797",
@@ -59,7 +59,7 @@
         "magfilter": "linear",
         "mipfilter": "none",
         "premultiplyAlpha": false,
-        "anisotropy": 1,
+        "anisotropy": 0,
         "isUuid": false,
         "imageUuidOrDatabaseUri": "db://assets/model/road/road03.jpg"
       }
@@ -86,7 +86,7 @@
       "displayName": "",
       "id": "77f73",
       "name": "road05.prefab",
-      "ver": "1.0.11",
+      "ver": "1.0.12",
       "imported": true,
       "files": [
         ".json"
@@ -120,9 +120,10 @@
     "imageMetas": [
       {
         "name": "road03.jpg",
-        "remap": "db://assets/model/road/road03.jpg",
+        "remap": "db://assets/common/models/road/road03.jpg",
         "uri": "76563dac-7b68-4f3f-a880-d1be43e5a601@3bd65"
       }
-    ]
+    ],
+    "legacyFbxImporter": true
   }
 }

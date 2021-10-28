@@ -2,12 +2,17 @@
   "general": {
     "designResolution": {
       "fitHeight": true,
-      "fitWidth": false,
+      "fitWidth": true,
       "width": 960,
       "height": 640
-    }
+    },
+    "renderPipeline": "fd8ec536-a354-4a17-9c74-4f3883c378c8"
   },
   "layer": [
+    {
+      "name": "canvas_14",
+      "value": 16384
+    },
     {
       "name": "canvas_15",
       "value": 32768
@@ -30,7 +35,7 @@
     }
   ],
   "physics": {
-    "fixedTimeStep": 0.01666666,
+    "fixedTimeStep": 0.01666667,
     "useCollsionMatrix": true,
     "defaultMaterial": {
       "friction": 0.6,
@@ -53,7 +58,8 @@
       "0": 5,
       "1": 6,
       "2": 7
-    }
+    },
+    "maxSubSteps": 1
   },
   "__version__": "1.0.1",
   "script": {

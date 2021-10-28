@@ -1,9 +1,20 @@
-import { _decorator, Component, math, systemEvent, macro, RigidBodyComponent, Touch, EventTouch, SystemEventType, EventKeyboard, Vec3, clamp } from "cc";
+import { _decorator, Component, math, systemEvent, KeyCode, RigidBodyComponent, Touch, EventTouch, SystemEventType, EventKeyboard, Vec3, clamp } from "cc";
 const { ccclass, property, menu } = _decorator;
 
 const v3_0 = new math.Vec3();
 const v3_1 = new math.Vec3();
 const v2_0 = new math.Vec2();
+
+const KEYCODE = {
+    W: 'W'.charCodeAt(0),
+    S: 'S'.charCodeAt(0),
+    A: 'A'.charCodeAt(0),
+    D: 'D'.charCodeAt(0),
+    w: 'w'.charCodeAt(0),
+    s: 's'.charCodeAt(0),
+    a: 'a'.charCodeAt(0),
+    d: 'd'.charCodeAt(0),
+};
 
 enum EKey {
     NONE = 0,
@@ -21,12 +32,12 @@ export class ballcontrol extends Component {
     @property({ slide: true, range: [1, 3, 0.01] })
     public readonly shiftScale = 2;
 
-    private _rigidBody: RigidBodyComponent = null;
+    private _rigidBody: RigidBodyComponent = null!;
 
     private _key: number = EKey.NONE;
 
     start () {
-        this._rigidBody = this.getComponent(RigidBodyComponent);
+        this._rigidBody = this.getComponent(RigidBodyComponent)!;
     }
 
     update (dt: number) {
@@ -74,29 +85,29 @@ export class ballcontrol extends Component {
     }
 
     onKeyDown (event: EventKeyboard) {
-        if (event.keyCode == macro.KEY.w) {
+        if (event.keyCode == KEYCODE.w || event.keyCode == KEYCODE.W) {
             this._key |= EKey.W;
-        } else if (event.keyCode === macro.KEY.s) {
+        } else if (event.keyCode === KEYCODE.s || event.keyCode === KEYCODE.S) {
             this._key |= EKey.S;
-        } else if (event.keyCode === macro.KEY.a) {
+        } else if (event.keyCode === KEYCODE.a || event.keyCode === KEYCODE.A) {
             this._key |= EKey.A;
-        } else if (event.keyCode === macro.KEY.d) {
+        } else if (event.keyCode === KEYCODE.d || event.keyCode === KEYCODE.D) {
             this._key |= EKey.D;
-        } else if (event.keyCode === macro.KEY.shift) {
+        } else if (event.keyCode === KeyCode.SHIFT_LEFT ) {
             this._key |= EKey.SHIFT;
         }
     }
 
     onKeyUp (event: EventKeyboard) {
-        if (event.keyCode == macro.KEY.w) {
+        if (event.keyCode == KEYCODE.w || event.keyCode == KEYCODE.W) {
             this._key &= ~EKey.W;
-        } else if (event.keyCode === macro.KEY.s) {
+        } else if (event.keyCode === KEYCODE.s || event.keyCode === KEYCODE.S) {
             this._key &= ~EKey.S;
-        } else if (event.keyCode === macro.KEY.a) {
+        } else if (event.keyCode === KEYCODE.a || event.keyCode === KEYCODE.A) {
             this._key &= ~EKey.A;
-        } else if (event.keyCode === macro.KEY.d) {
+        } else if (event.keyCode === KEYCODE.d || event.keyCode === KEYCODE.D) {
             this._key &= ~EKey.D;
-        } else if (event.keyCode === macro.KEY.shift) {
+        } else if (event.keyCode === KeyCode.SHIFT_LEFT ) {
             this._key &= ~EKey.SHIFT;
         }
     }

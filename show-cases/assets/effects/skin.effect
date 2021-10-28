@@ -4,7 +4,7 @@ CCEffect %{
   techniques:
   - passes:
     - vert: general-vs:vert # builtin header
-      frag: skin-fs:frag
+      frag: skin-fs
       properties:
         albedoMap:     { value: white  }
         normalMap:     { value: normal }
@@ -18,8 +18,7 @@ CCEffect %{
 CCProgram skin-fs %{
   precision highp float;
   #include <pre-integrated-sss>
-  #include <shading-standard>
-  #include <output-standard>
+  #include <standard-surface-entry>
   #include <gamma>
 
   in vec3 v_position;
@@ -49,15 +48,10 @@ CCProgram skin-fs %{
     s.occlusion = params.x * texture(occlusionMap, v_uv).b;
     s.roughness = params.y;
     s.metallic = params.z;
-    s.emissive = vec3(0);
+    s.emissive = SSSShading(normalize(s.normal), params.w) * s.albedo.rgb * s.occlusion;
   }
 
-  vec4 frag () {
-    StandardSurface s; surf(s);
-    vec4 color = CCStandardShading(s);
-    color.rgb += SSSShading(normalize(s.normal), params.w) * s.albedo.rgb * s.occlusion;
-    return CCFragOutput(color);
-  }
+  CC_STANDARD_SURFACE_ENTRY()
 }%
 
 CCProgram pre-integrated-sss %{

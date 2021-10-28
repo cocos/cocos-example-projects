@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, Enum } from "cc";
+import { _decorator, Component, Node, Enum, PhysicsSystem } from "cc";
 const { ccclass, property, menu } = _decorator;
 
 enum SupportPhysics {
@@ -7,7 +7,11 @@ enum SupportPhysics {
     AMMO,
     BUILTIN_CANNON,
     BUILTIN_AMMO,
-    CANNON_AMMO
+    CANNON_AMMO,
+    PHYSX,
+    AMMO_PHYSX,
+    BUILTIN_AMMO_PHYSX,
+    CANNON_AMMO_PHYSX,
 }
 Enum(SupportPhysics);
 
@@ -18,45 +22,47 @@ export class SupportPhyiscs extends Component {
     @property({ type: SupportPhysics })
     support: SupportPhysics = SupportPhysics.AMMO;
 
-    start () {
+    start() {
         // Your initialization goes here.
         switch (this.support) {
             case SupportPhysics.BUILTIN:
-                if (globalThis.CC_PHYSICS_BUILTIN)
+                if (PhysicsSystem.PHYSICS_BUILTIN)
                     return;
-
-                this.node.active = false;
                 break;
             case SupportPhysics.CANNON:
-                if (globalThis.CC_PHYSICS_CANNON)
+                if (PhysicsSystem.PHYSICS_CANNON)
                     return;
-
-                this.node.active = false;
                 break;
             case SupportPhysics.AMMO:
-                if (globalThis.CC_PHYSICS_AMMO)
+                if (PhysicsSystem.PHYSICS_AMMO)
                     return;
-
-                this.node.active = false;
                 break;
             case SupportPhysics.BUILTIN_CANNON:
-                if (globalThis.CC_PHYSICS_BUILTIN || globalThis.CC_PHYSICS_CANNON)
+                if (PhysicsSystem.PHYSICS_BUILTIN || PhysicsSystem.PHYSICS_CANNON)
                     return;
-
-                this.node.active = false;
                 break;
             case SupportPhysics.BUILTIN_AMMO:
-                if (globalThis.CC_PHYSICS_BUILTIN || globalThis.CC_PHYSICS_AMMO)
+                if (PhysicsSystem.PHYSICS_BUILTIN || PhysicsSystem.PHYSICS_AMMO)
                     return;
-
-                this.node.active = false;
                 break;
             case SupportPhysics.CANNON_AMMO:
-                if (globalThis.CC_PHYSICS_CANNON || globalThis.CC_PHYSICS_AMMO)
+                if (PhysicsSystem.PHYSICS_CANNON || PhysicsSystem.PHYSICS_AMMO)
                     return;
-
-                this.node.active = false;
+                break;
+            case SupportPhysics.AMMO_PHYSX:
+                if (PhysicsSystem.PHYSICS_AMMO || PhysicsSystem.PHYSICS_PHYSX)
+                    return;
+                break;
+            case SupportPhysics.BUILTIN_AMMO_PHYSX:
+                if (PhysicsSystem.PHYSICS_BUILTIN || PhysicsSystem.PHYSICS_AMMO || PhysicsSystem.PHYSICS_PHYSX)
+                    return;
+                break;
+            case SupportPhysics.CANNON_AMMO_PHYSX:
+                if (PhysicsSystem.PHYSICS_CANNON || PhysicsSystem.PHYSICS_AMMO || PhysicsSystem.PHYSICS_PHYSX)
+                    return;
                 break;
         }
+
+        this.node.active = false;
     }
 }

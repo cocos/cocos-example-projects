@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, EventKeyboard, systemEvent, SystemEventType, macro, Vec3, AnimationComponent, EventMouse, EventType, sys, Quat } from 'cc';
+import { _decorator, Component, Node, EventKeyboard, systemEvent, SystemEventType, KeyCode, Vec3, AnimationComponent, EventMouse, EventType, sys, Quat } from 'cc';
 import { CharacterController } from './CharacterController';
 const { ccclass, property, menu } = _decorator;
 
@@ -73,35 +73,35 @@ export class CharacterControllerTest extends Component {
     }
 
     protected onKeyDown (event: EventKeyboard) {
-        if (event.keyCode == macro.KEY.w) {
+        if (event.keyCode == KeyCode.KEY_W) {
             this._stateZ = 1;
-        } else if (event.keyCode == macro.KEY.s) {
+        } else if (event.keyCode == KeyCode.KEY_S) {
             this._stateZ = -1;
-        } else if (event.keyCode == macro.KEY.a) {
+        } else if (event.keyCode == KeyCode.KEY_A) {
             this._stateX = 1;
-        } else if (event.keyCode == macro.KEY.d) {
+        } else if (event.keyCode == KeyCode.KEY_D) {
             this._stateX = -1;
-        } else if (event.keyCode == macro.KEY.space) {
+        } else if (event.keyCode == KeyCode.SPACE) {
             this._isJump = true;
-        } else if (event.keyCode == macro.KEY.shift) {
+        } else if (event.keyCode == KeyCode.SHIFT_LEFT ) {
             this._shiftFactor = this.shiftScale;
-        } else if (event.keyCode == macro.KEY.alt) {
+        } else if (event.keyCode == KeyCode.ALT_LEFT) {
             this._isAltDown = true;
-        } else if (event.keyCode == macro.KEY.z) {
+        } else if (event.keyCode == KeyCode.KEY_Z) {
             this._combatFlag = 2;
         }
     }
 
     protected onKeyUp (event: EventKeyboard) {
-        if (event.keyCode == macro.KEY.w || event.keyCode == macro.KEY.s) {
+        if (event.keyCode == KeyCode.KEY_W || event.keyCode == KeyCode.KEY_S) {
             this._stateZ = 0;
-        } else if (event.keyCode == macro.KEY.d || event.keyCode == macro.KEY.a) {
+        } else if (event.keyCode == KeyCode.KEY_D || event.keyCode == KeyCode.KEY_A) {
             this._stateX = 0;
-        } else if (event.keyCode == macro.KEY.space) {
+        } else if (event.keyCode == KeyCode.SPACE) {
             this._isJump = false;
-        } else if (event.keyCode == macro.KEY.shift) {
+        } else if (event.keyCode == KeyCode.SHIFT_LEFT ) {
             this._shiftFactor = 1;
-        } else if (event.keyCode == macro.KEY.alt) {
+        } else if (event.keyCode == KeyCode.ALT_LEFT) {
             this._isAltDown = false;
         }
     }

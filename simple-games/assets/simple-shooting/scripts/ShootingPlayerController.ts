@@ -60,7 +60,7 @@ export class ShootingPlayerController extends Component {
         //鼠标监听
         systemEvent.on(SystemEvent.EventType.MOUSE_UP, this.onMouseUp, this);
         systemEvent.on(SystemEvent.EventType.MOUSE_DOWN, this.onMouseDown, this);
-        systemEvent.on(SystemEvent.EventType.MOUSE_MOVE,this.onMouseMove,this);
+        // systemEvent.on(SystemEvent.EventType.MOUSE_MOVE,this.onMouseMove,this);
         
         //触摸监听
         systemEvent.on(SystemEvent.EventType.TOUCH_MOVE,this.onTouchMove,this);
@@ -197,7 +197,7 @@ export class ShootingPlayerController extends Component {
 
     onMouseDown(event) {
         if (event.getButton() === 2) {
-            game.canvas.requestPointerLock();
+            game.canvas.requestPointerLock?.();
         } 
 
     }
@@ -206,6 +206,8 @@ export class ShootingPlayerController extends Component {
         if (event.getButton() === 0) {  // 鼠标左键
             this.changeToAnimState(PlayerAnimState.Shooting);
             this.shoot();
+        } else if (event.getButton() === 2) {
+            document.exitPointerLock?.();
         } 
     }
 
@@ -313,7 +315,7 @@ export class ShootingPlayerController extends Component {
         // 取消鼠标监听
         systemEvent.off(SystemEvent.EventType.MOUSE_UP, this.onMouseUp, this);
         systemEvent.off(SystemEvent.EventType.MOUSE_DOWN, this.onMouseDown, this);
-        systemEvent.off(SystemEvent.EventType.MOUSE_MOVE,this.onMouseMove,this);
+        // systemEvent.off(SystemEvent.EventType.MOUSE_MOVE,this.onMouseMove,this);
         
         // 取消触摸监听
         systemEvent.off(SystemEvent.EventType.TOUCH_MOVE,this.onTouchMove,this);

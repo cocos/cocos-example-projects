@@ -16,7 +16,7 @@ export class Sponza extends Component {
     private color = new Color();
 
     public start () {
-        this.ambient = director.root.pipeline.ambient;
+        this.ambient = director.root.pipeline.pipelineSceneData.ambient;
         this.halfLoopTime = this.loopTime * 0.5;
         this.camera = this.node.getComponent(CameraComponent);
     }

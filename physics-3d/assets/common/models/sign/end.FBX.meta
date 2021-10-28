@@ -1,5 +1,5 @@
 {
-  "ver": "1.3.22",
+  "ver": "2.0.14",
   "importer": "fbx",
   "imported": true,
   "uuid": "73c15f5f-8227-413d-a25d-c4844b6c4e87",
@@ -14,8 +14,8 @@
       "uuid": "73c15f5f-8227-413d-a25d-c4844b6c4e87@b8a2d",
       "imported": true,
       "files": [
-        ".json",
-        ".bin"
+        ".bin",
+        ".json"
       ],
       "subMetas": {},
       "userData": {
@@ -23,7 +23,7 @@
       }
     },
     "9defe": {
-      "ver": "1.0.2",
+      "ver": "1.0.3",
       "importer": "gltf-embeded-image",
       "uuid": "73c15f5f-8227-413d-a25d-c4844b6c4e87@9defe",
       "imported": true,
@@ -40,7 +40,7 @@
       "name": "贴图 #8.image"
     },
     "bc797": {
-      "ver": "1.0.20",
+      "ver": "1.0.21",
       "importer": "texture",
       "name": "贴图 #8.texture",
       "id": "bc797",
@@ -58,7 +58,7 @@
         "magfilter": "linear",
         "mipfilter": "none",
         "premultiplyAlpha": false,
-        "anisotropy": 1,
+        "anisotropy": 0,
         "isUuid": false,
         "imageUuidOrDatabaseUri": "db://assets/model/sign/end.jpg"
       }
@@ -69,7 +69,7 @@
       "displayName": "",
       "id": "5eade",
       "name": "end.prefab",
-      "ver": "1.0.11",
+      "ver": "1.0.12",
       "imported": true,
       "files": [
         ".json"
@@ -103,9 +103,11 @@
     "imageMetas": [
       {
         "name": "贴图 #8",
-        "remap": "db://assets/model/sign/end.jpg",
+        "remap": "db://assets/common/models/sign/end.jpg",
         "uri": "73c15f5f-8227-413d-a25d-c4844b6c4e87@9defe"
       }
-    ]
+    ],
+    "legacyFbxImporter": true,
+    "materialDumpDir": "db://assets/common/models/sign/Materials_end"
   }
 }
