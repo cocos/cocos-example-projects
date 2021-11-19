@@ -79,7 +79,7 @@ export class RaycastHelper extends Component {
     onTouchStart (touch: Touch) {
         if (!RaycastHelper._enable) return;
         this.recover();
-        const r = new geometry.ray();
+        const r = new geometry.Ray();
         const p = touch.getLocation();
         this.cameraCom.screenPointToRay(p.x, p.y, r);
         if (this.raycastType == ERaycastType.CLOSEST) {
