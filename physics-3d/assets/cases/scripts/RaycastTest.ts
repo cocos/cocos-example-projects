@@ -29,7 +29,7 @@ export class RaycastTest extends Component {
     queryTrigger = true;
 
     private _raycastType: ERaycastType = ERaycastType.ALL;
-    private _ray: geometry.ray = new geometry.ray();
+    private _ray: geometry.Ray = new geometry.Ray();
     private _maxDistance: number = 100;
     private _mask: number = 0xffffffff;
 

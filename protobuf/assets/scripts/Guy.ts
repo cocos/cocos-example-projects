@@ -20,7 +20,7 @@ export class Guy extends Component {
     private _modelComponent: ModelComponent | null = null;
     private _billboardNode: Node | null = null;
     private _label: LabelComponent | null = null;
-    private _ray: geometry.ray = new geometry.ray();
+    private _ray: geometry.Ray = new geometry.Ray();
     private _textLiveTime = 0;
     
     start() {

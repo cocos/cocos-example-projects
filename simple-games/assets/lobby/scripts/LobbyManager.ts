@@ -2,7 +2,7 @@ import { _decorator, Component, Node, Prefab, instantiate, Vec3, Quat, tween, Ev
     systemEvent, SystemEvent, EventMouse, CameraComponent, geometry, PhysicsSystem, loader, JsonAsset, ModelComponent, Texture2D, js, director, Vec2, game, find } from 'cc';
 const { ccclass, property } = _decorator;
 
-const { ray } = geometry;
+const { Ray } = geometry;
 const tempQuat_a: Quat = new Quat();
 
 interface ICoverData {
@@ -131,7 +131,7 @@ export class Lobby extends Component {
     }
 
     onClickPos(mousePos: Vec2) {
-        const outRay = new ray();
+        const outRay = new Ray();
         this.mainCamera.screenPointToRay(mousePos.x, mousePos.y, outRay);
         PhysicsSystem.instance.raycastClosest(outRay);
         if (PhysicsSystem.instance.raycastClosestResult.collider &&
