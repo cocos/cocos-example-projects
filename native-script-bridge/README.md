@@ -121,7 +121,7 @@ JsbBridge.sendToScript("SkeletonAnim001", "true");
 
 ## 示例工程：通过JAVA层的回调改变UI界面中不同的元素显示
 
-即本工程。由于js中onNative操作和java/objc中setCallback只能同一时间存在一份，不可避免的会有一些拘束，所以我们可以通过添加一个Map来存储我们需要的方法，来利用同一个callback做不同的事情。
+即本工程。由于js中onNative操作和java/objc中`setCallback`只能同一时间存在一份，不可避免的会有一些拘束，所以我们可以通过添加一个Map来存储我们需要的方法，来利用同一个callback做不同的事情。
 
 在这里我们定义一个工具类，命名为方法管理器（Method Manager）来储存不同的方法。
 
@@ -159,7 +159,7 @@ export class MethodManager {
     }
 }
 ```
-接着我们将在ccclass中创建多个标签并且给定不同的属性改变函数。利用刚刚的jsb.bridge.onNative调用方法管理器的applMethod方法。
+接着我们将在`ccclass`中创建多个标签并且给定不同的属性改变函数。利用刚刚的`jsb.bridge.onNative`调用方法管理器的`applyMethod`方法。
 
 ```ts
 @ccclass('CallNative')
@@ -228,10 +228,24 @@ export class CallNative extends Component {
 
 ```
 
-我们需要在原生层注册对应的callback函数，这应该是一个可以接收两个string参数的函数。并对第二个参数的有无进行判断。同理，我们声明一个HashMap来储存这些callback，并且存储一个统一的callback函数MyCallback。在AppActivity的创建时注册该函数。
+我们需要在原生层注册对应的callback函数，这应该是一个可以接收两个string参数的函数。并对第二个参数的有无进行判断。同理，我们声明一个HashMap来储存这些callback，并且存储一个统一的callback函数`MyCallback`。在`AppActivity`的创建时注册该函数。
 
 ### JAVA code for android
-
+首先需要在Java的应用入口初始化JsbBridgeTest。
+```JAVA
+public class AppActivity extends CocosActivity {
+    ...
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // Workaround in https://stackoverflow.com/questions/16283079/re-launch-of-activity-on-home-button-but-only-the-first-time/16447508
+        ...
+        JsbBridgeTest.start();
+    }
+    ...
+}
+```
+在这里`JsbBridgeTest`设置为了Static变量保证全局可访问。
 ```JAVA
 public class JsbBridgeTest {
     public interface MyCallback{
@@ -266,6 +280,71 @@ public class JsbBridgeTest {
 
 这样在Android应用初始化的时候就会将方法注册进去，并且该函数被触发时会通过JsbBridge反向执行JS的方法。
 ### Objective-c code for mac and iphone
+
+Objc中同样需要首先初始化一次`JsbBridgeTest`。在这里示例工程将其设置为单例模式，来保证全局唯一性。然后用block的形式来注册事件。
+```Objc
+//At AppDelegate.mm
+jsbBridget = [JsbBridgeTest sharedInstance];
+
+//At JsbBridgeTest.mm
+@implementation JsbBridgeTest{
+    NSMutableDictionary<NSString*, eventCallback> *cbDictionnary;
+    
+}
+static JsbBridgeTest* instance = nil;
+static ICallback cb = ^void (NSString* _arg0, NSString* _arg1){
+    [[JsbBridgeTest sharedInstance] applyMethod:_arg0 arg1:_arg1];
+};
++(instancetype)sharedInstance{
+    static dispatch_once_t pred = 0;
+    dispatch_once(&pred, ^{
+        instance = [[super allocWithZone:NULL]init];
+    });
+    return instance;
+}
+
++(id)allocWithZone:(struct _NSZone *)zone{
+    return [JsbBridgeTest sharedInstance];
+}
+
+-(id)copyWithZone:(struct _NSZone *)zone{
+    return [JsbBridgeTest sharedInstance];
+}
+
+-(void)addMethod:(NSString*)arg0 callback:(eventCallback)callback {
+    [cbDictionnary setValue:callback forKey:arg0];
+}
+-(void)applyMethod:(NSString*)name arg1:(NSString*)arg1 {
+    [cbDictionnary objectForKey:name](arg1);
+}
+-(id)init{
+    self = [super init];
+    cbDictionnary = [NSMutableDictionary new];
+    eventCallback requestLabelContent = ^void(NSString* arg){
+        JsbBridge* m = [JsbBridge sharedInstance];
+        [m sendToScript:@"changeLabelContent" arg1:@"Charlotte"];
+    };
+    eventCallback requestLabelColor = ^void(NSString* arg){
+        JsbBridge* m = [JsbBridge sharedInstance];
+        [m sendToScript:@"changeLabelColor"];
+    };
+    eventCallback requestBtnColor = ^void(NSString* arg){
+        JsbBridge* m = [JsbBridge sharedInstance];
+        [m sendToScript:@"changeLightColor"];
+    };
+    
+    [self addMethod:@"requestLabelContent" callback:requestLabelContent];
+    [self addMethod:@"requestLabelColor" callback:requestLabelColor];
+    [self addMethod:@"requestBtnColor" callback:requestBtnColor];
+    
+    JsbBridge* m = [JsbBridge sharedInstance];
+    [m setCallback:cb];
+    return self;
+}
+
+@end
+```
+需要注意的是，`JsbBridge`的`setCallback`需要是一个被定义的`block`，并且最好是全局变量，否则则会导致脱离作用域后指针为空。这也是为什么这里将`JsbBridgeTest`设为单例的原因。
 
 ### 预期效果
 
