@@ -41,6 +41,38 @@ if(COMMAND service_insert_library)
 endif()
 # --------------  END ----------------
 
+
+# -------------- SRART ---------------
+# USED BY COCOS SERVICE, DON'T REMOVE!
+if(COMMAND service_insert_library)
+    service_insert_library()
+endif()
+# --------------  END ----------------
+
+
+# -------------- SRART ---------------
+# USED BY COCOS SERVICE, DON'T REMOVE!
+if(COMMAND service_insert_library)
+    service_insert_library()
+endif()
+# --------------  END ----------------
+
+
+# -------------- SRART ---------------
+# USED BY COCOS SERVICE, DON'T REMOVE!
+if(COMMAND service_insert_library)
+    service_insert_library()
+endif()
+# --------------  END ----------------
+
+
+# -------------- SRART ---------------
+# USED BY COCOS SERVICE, DON'T REMOVE!
+if(COMMAND service_insert_library)
+    service_insert_library()
+endif()
+# --------------  END ----------------
+
 target_link_libraries(${LIB_NAME}
     "-Wl,--whole-archive" cocos2d_jni "-Wl,--no-whole-archive"
     cocos2d
