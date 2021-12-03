@@ -1,5 +1,5 @@
 {
-  "ver": "1.3.22",
+  "ver": "2.1.10",
   "importer": "fbx",
   "imported": true,
   "uuid": "3990b73c-4dcd-4ad8-91f5-e1a4e09d6fe1",
@@ -14,8 +14,8 @@
       "uuid": "3990b73c-4dcd-4ad8-91f5-e1a4e09d6fe1@e97a2",
       "imported": true,
       "files": [
-        ".json",
-        ".bin"
+        ".bin",
+        ".json"
       ],
       "subMetas": {},
       "userData": {
@@ -40,7 +40,7 @@
       }
     },
     "6e70c": {
-      "ver": "1.0.20",
+      "ver": "1.0.21",
       "importer": "texture",
       "name": "Map #1.texture",
       "id": "6e70c",
@@ -58,13 +58,13 @@
         "magfilter": "linear",
         "mipfilter": "none",
         "premultiplyAlpha": false,
-        "anisotropy": 1,
+        "anisotropy": 0,
         "isUuid": false,
         "imageUuidOrDatabaseUri": "db://assets/meshes/head/diffuse.jpg"
       }
     },
     "aa48e": {
-      "ver": "1.0.11",
+      "ver": "1.0.12",
       "importer": "gltf-scene",
       "name": "head.prefab",
       "id": "aa48e",
@@ -106,6 +106,8 @@
         "remap": "db://assets/meshes/head/diffuse.jpg",
         "uri": "3990b73c-4dcd-4ad8-91f5-e1a4e09d6fe1@a2364"
       }
-    ]
+    ],
+    "legacyFbxImporter": true,
+    "materialDumpDir": "db://assets/meshes/head/Materials_head"
   }
 }

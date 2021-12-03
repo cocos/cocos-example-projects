@@ -23,7 +23,7 @@
       }
     ],
     "_prefab": {
-      "__id__": 3
+      "__id__": 4
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -54,8 +54,8 @@
     "_id": ""
   },
   {
-    "__type__": "cc.ModelComponent",
-    "_name": "Cylinder<ModelComponent>",
+    "__type__": "cc.MeshRenderer",
+    "_name": "Cylinder<MeshRenderer>",
     "_objFlags": 0,
     "node": {
       "__id__": 1
@@ -73,7 +73,14 @@
     },
     "_shadowCastingMode": 1,
     "_receiveShadows": false,
-    "_id": ""
+    "_id": "",
+    "__prefab": {
+      "__id__": 3
+    }
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "768SkAD6FPRrEPi0EMN2z5"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -83,11 +90,6 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "af3UriqUBEI7U+Ubou1REG",
-    "sync": false,
-    "_synced": {
-      "default": false,
-      "serializable": false
-    }
+    "fileId": "af3UriqUBEI7U+Ubou1REG"
   }
 ]
