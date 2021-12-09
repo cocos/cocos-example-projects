@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Button, labelAssembler, game ,director,Node, Scene, renderer,CameraComponent} from 'cc';
+import { _decorator, Component, Button, labelAssembler, game ,director,Node, Scene, renderer,CameraComponent, Label} from 'cc';
 import { TangentVisualizer } from '../tangent-visualizer';
 //import { _decorator, Component, Node, Scene, renderer, SliderComponent, CameraComponent, director } from 'cc';
 const { ccclass, property } = _decorator;
@@ -26,18 +26,17 @@ export class SwitchHDR extends Component {
     // serializableDummy = 0;
     @property(Button)
     button: Button | null = null;
-    isHDR = true;
-
-    //private _ambient: renderer.scene.Ambient = null!;
-    //private _camera: renderer.scene.Camera = null!;
+    @property(Label)
+    label_hdr:Label| null = null;
+    @property(Label)
+    label_switch:Label| null = null;
     private _skyBox : renderer.scene.Skybox=null!; 
+    
     start ()
     {
-        const scene = this.node.scene as Scene;
         const pipeline = director.root!.pipeline;
-        //this._ambient = pipeline.pipelineSceneData.ambient;
-        //this._camera = scene.getComponentInChildren(CameraComponent)!.camera;
         this._skyBox = pipeline.pipelineSceneData.skybox;
+        this.setLabelContent();
     }
 
     onLoad () {
@@ -47,18 +46,34 @@ export class SwitchHDR extends Component {
 
     callback (button: Button)
     {
-        if(this.isHDR==true)
+        this._skyBox.useHDR=!this._skyBox.useHDR;
+        this.setLabelContent();
+    }
+    public setLabelContent()
+    {
+        if(this._skyBox.useHDR == true)
         {
-            this.isHDR=false;
-            this._skyBox.useHDR=false;
+            if(this.label_hdr!=null)
+            {
+                this.label_hdr.string="当前:HDR";
+            }
+            if(this.label_switch!=null)
+            {
+                this.label_switch.string="切换至LDR";
+            }
         }
         else
         {
-            this.isHDR=true;
-            this._skyBox.useHDR=true;
+            if(this.label_hdr!=null)
+            {
+                this.label_hdr.string="当前:LDR";
+            }
+            if(this.label_switch!=null)
+            {
+                this.label_switch.string="切换至HDR";
+            }
         }
-
-    }
+    } 
 
     // update (deltaTime: number) {
     //     // [4]
