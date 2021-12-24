@@ -1,6 +1,5 @@
 
 import { _decorator, Component, Node, Label, color, Color, MeshRenderer, Canvas, UITransform, Light, View, jsEventHandler, JsEventHandler, Game } from 'cc';
-import { CC_LOG_DEBUG, MethodManager } from './MethodManager';
 const { ccclass, property } = _decorator;
 
 @ccclass('CallNative')
@@ -30,7 +29,7 @@ export class CallNative extends Component {
     }
     //Methods to apply
     public changeLabelContent(user: string): void {
-        CC_LOG_DEBUG("Hello " + user + " I'm K");
+        console.log("Hello " + user + " I'm K");
         this.labelForContent!.string = "Hello " + user + " ! I'm K";
 
 
@@ -45,16 +44,16 @@ export class CallNative extends Component {
 
     //Button click event for SAY HELLO
     public sayHelloBtn() {
-        jsb.jsEventHandler.sendToNative("requestLabelContent");
+        jsb.jsEventHandler.dispatchNativeEvent("requestLabelContent");
     }
 
     //Button click event for CHANGE LABEL COLOR
     public changeLabelColorBtn() {
-        jsb.jsEventHandler.sendToNative("requestLabelColor");
+        jsb.jsEventHandler.dispatchNativeEvent("requestLabelColor");
     }
 
     public changeLightColorBtn() {
-        jsb.jsEventHandler.sendToNative("requestBtnColor", "50");
+        jsb.jsEventHandler.dispatchNativeEvent("requestBtnColor", "50");
     }
 
     private defaultEvent = "default";
@@ -68,22 +67,55 @@ export class CallNative extends Component {
         this.myCbList.push(cb);
         jsb.jsEventHandler.addCallback(this.defaultEvent,cb)
     }
+
+    /**
+     * Use a self defined map to save references to callback
+     */
     private eventId = 0;
+    private selfEventMap: Map<number, jsb.JsCallback[]> = new Map();
     public add100Callback() {
         var self = this;
         for (var i = 0; i < 100; i++) {
-            jsb.jsEventHandler.addCallback(self.eventId.toString(), (arg0: string) => {
+            var cb = (arg0: string) => {
                 console.log(`add one hundred for event ${self.eventId} with callback id ${i}`);
-            })
+            }
+            jsb.jsEventHandler.addCallback(self.eventId.toString(), cb);
+            this.selfEventMap.set(this.eventId,[]);
+            //Push callback references to selfEventMap
+            this.selfEventMap.get(this.eventId)?.push(cb);
         }
         this.eventId++;
     }
 
+    /**
+     * Remove one callback from default eventmap
+     */
     public removeOneCallback() {
-        var self = this;
         jsb.jsEventHandler.removeCallback(this.defaultEvent,this.myCbList[0]);
-
+        jsb.garbageCollect();
     }
 
-
+    public remove100Callback() {
+        var arr = this.selfEventMap.get(this.eventId)!;
+        for(var i = 0;i<100;i++){
+            jsb.jsEventHandler.removeCallback(this.eventId.toString(), arr[0]);
+            arr.slice(0,1);
+        }
+        jsb.garbageCollect();
+    }
+    public removeOneEvent(){
+        jsb.jsEventHandler.removeEvent(this.eventId.toString());
+        this.selfEventMap.get(this.eventId)?.slice(0,this.selfEventMap.get(this.eventId)?.length);
+        this.selfEventMap.delete(this.eventId);
+        this.eventId--;
+    }
+    public removeAllEvent(){
+        while(this.eventId>0){
+            jsb.jsEventHandler.removeEvent(this.eventId.toString());
+            //if we should delete arr??
+            this.selfEventMap.delete(this.eventId);
+            this.eventId--;
+        }
+    }
+    
 }
