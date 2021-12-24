@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node, Label, color, Color, MeshRenderer, Canvas, UITransform, Light } from 'cc';
+import { _decorator, Component, Node, Label, color, Color, MeshRenderer, Canvas, UITransform, Light, View, jsEventHandler, JsEventHandler, Game } from 'cc';
 import { CC_LOG_DEBUG, MethodManager } from './MethodManager';
 const { ccclass, property } = _decorator;
 
@@ -13,21 +13,18 @@ export class CallNative extends Component {
     @property(Light)
     public lightToChange: Light | undefined;
     start() {
-        new MethodManager;
-        jsb.bridge.onNative = (methodName: string, arg1?: string | null) => {
-            CC_LOG_DEBUG("Trigger event for " + methodName + " is " + MethodManager.instance.applyMethod(methodName, arg1!));
-        };
         this.registerAllScriptEvent();
+
     }
 
     public registerAllScriptEvent() {
-        MethodManager.instance.addMethod("changeLabelContent", (usr: string) => {
+        jsb.jsEventHandler.addCallback("changeLabelContent", (usr: string) => {
             this.changeLabelContent(usr);
         });
-        MethodManager.instance.addMethod("changeLabelColor", () => {
+        jsb.jsEventHandler.addCallback("changeLabelColor", () => {
             this.changeLabelColor();
         });
-        MethodManager.instance.addMethod("changeLightColor", () => {
+        jsb.jsEventHandler.addCallback("changeLightColor", () => {
             this.changeLightColor();
         });
     }
@@ -35,8 +32,8 @@ export class CallNative extends Component {
     public changeLabelContent(user: string): void {
         CC_LOG_DEBUG("Hello " + user + " I'm K");
         this.labelForContent!.string = "Hello " + user + " ! I'm K";
-        
-        
+
+
     }
     public changeLabelColor(): void {
         this.labelForColor!.color = new Color("#B8F768");
@@ -47,16 +44,46 @@ export class CallNative extends Component {
     }
 
     //Button click event for SAY HELLO
-    public sayHelloBtn(){
-        jsb.bridge.sendToNative("requestLabelContent");
+    public sayHelloBtn() {
+        jsb.jsEventHandler.sendToNative("requestLabelContent");
     }
 
     //Button click event for CHANGE LABEL COLOR
-    public changeLabelColorBtn(){
-        jsb.bridge.sendToNative("requestLabelColor");
+    public changeLabelColorBtn() {
+        jsb.jsEventHandler.sendToNative("requestLabelColor");
     }
 
-    public changeLightColorBtn(){
-        jsb.bridge.sendToNative("requestBtnColor", "50");
+    public changeLightColorBtn() {
+        jsb.jsEventHandler.sendToNative("requestBtnColor", "50");
     }
+
+    private defaultEvent = "default";
+    private defaultEventCbCount = 0;
+    private myCbList: jsb.JsCallback[] = [];
+    public addOneCallback() {
+        var self = this;
+        var cb = (arg0: string) => {
+            console.log(`trigger time with for event ${this.defaultEvent} with arg0 ${arg0} and defaultEventCbCount ${self.defaultEventCbCount} `);
+        }
+        this.myCbList.push(cb);
+        jsb.jsEventHandler.addCallback(this.defaultEvent,cb)
+    }
+    private eventId = 0;
+    public add100Callback() {
+        var self = this;
+        for (var i = 0; i < 100; i++) {
+            jsb.jsEventHandler.addCallback(self.eventId.toString(), (arg0: string) => {
+                console.log(`add one hundred for event ${self.eventId} with callback id ${i}`);
+            })
+        }
+        this.eventId++;
+    }
+
+    public removeOneCallback() {
+        var self = this;
+        jsb.jsEventHandler.removeCallback(this.defaultEvent,this.myCbList[0]);
+
+    }
+
+
 }

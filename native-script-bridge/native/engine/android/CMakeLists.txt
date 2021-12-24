@@ -15,7 +15,24 @@ set(PROJ_SOURCES
 )
 
 
+
+# -------------- SRART ---------------
+# USED BY COCOS SERVICE, DON'T REMOVE!
+if(EXISTS ${RES_DIR}/proj/service.cmake)
+    set(SERVICE_NATIVE_DIR ${CMAKE_CURRENT_LIST_DIR})
+    include(${RES_DIR}/proj/service.cmake)
+endif()
+# --------------  END ----------------
+
 add_library(${LIB_NAME} SHARED ${PROJ_SOURCES})
+
+
+# -------------- SRART ---------------
+# USED BY COCOS SERVICE, DON'T REMOVE!
+if(COMMAND service_insert_library)
+    service_insert_library()
+endif()
+# --------------  END ----------------
 
 
 # -------------- SRART ---------------
