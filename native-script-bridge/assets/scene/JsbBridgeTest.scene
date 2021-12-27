@@ -345,7 +345,7 @@
     "_priority": 1073741824,
     "_fov": 45,
     "_fovAxis": 0,
-    "_orthoHeight": 320,
+    "_orthoHeight": 456.53333333333336,
     "_near": 1,
     "_far": 2000,
     "_color": {
@@ -1499,7 +1499,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "add1Callback",
+    "_name": "add100Callback",
     "_objFlags": 0,
     "_parent": {
       "__id__": 2
@@ -1639,7 +1639,7 @@
       "b": 0,
       "a": 255
     },
-    "_string": "ADD 1 CALLBACK",
+    "_string": "ADD 100 CALLBACK",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 20,
@@ -1795,12 +1795,12 @@
     },
     "component": "",
     "_componentId": "666493ZgCNCZ5XcXOC8mQWw",
-    "handler": "sayHelloBtn",
+    "handler": "add100Callback",
     "customEventData": ""
   },
   {
     "__type__": "cc.Node",
-    "_name": "add100cbs",
+    "_name": "addNativeCallback",
     "_objFlags": 0,
     "_parent": {
       "__id__": 2
@@ -1940,7 +1940,7 @@
       "b": 0,
       "a": 255
     },
-    "_string": "ADD 100 CALLBACKS",
+    "_string": "ADD NATIVE CALLBACKS",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 20,
@@ -2096,12 +2096,12 @@
     },
     "component": "",
     "_componentId": "666493ZgCNCZ5XcXOC8mQWw",
-    "handler": "sayHelloBtn",
+    "handler": "addNativeCallback",
     "customEventData": ""
   },
   {
     "__type__": "cc.Node",
-    "_name": "remove1Callback",
+    "_name": "removeEvent",
     "_objFlags": 0,
     "_parent": {
       "__id__": 2
@@ -2241,7 +2241,7 @@
       "b": 0,
       "a": 255
     },
-    "_string": "REMOVE 1 CALLBACK",
+    "_string": "REMOVE EVENT",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 20,
@@ -2397,12 +2397,12 @@
     },
     "component": "",
     "_componentId": "666493ZgCNCZ5XcXOC8mQWw",
-    "handler": "sayHelloBtn",
+    "handler": "removeEvent",
     "customEventData": ""
   },
   {
     "__type__": "cc.Node",
-    "_name": "remove100Callback",
+    "_name": "removeNative",
     "_objFlags": 0,
     "_parent": {
       "__id__": 2
@@ -2542,7 +2542,7 @@
       "b": 0,
       "a": 255
     },
-    "_string": "REMOVE 100 CALLBACKS",
+    "_string": "REMOVE NATIVE EVENT",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 20,
@@ -2698,12 +2698,12 @@
     },
     "component": "",
     "_componentId": "666493ZgCNCZ5XcXOC8mQWw",
-    "handler": "sayHelloBtn",
+    "handler": "removeNativeCallback",
     "customEventData": ""
   },
   {
     "__type__": "cc.Node",
-    "_name": "remove1Event",
+    "_name": "dispatchJs",
     "_objFlags": 0,
     "_parent": {
       "__id__": 2
@@ -2843,7 +2843,7 @@
       "b": 0,
       "a": 255
     },
-    "_string": "REMOVE 1 EVENT",
+    "_string": "DISPATCH JS EVENT",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 20,
@@ -2999,12 +2999,12 @@
     },
     "component": "",
     "_componentId": "666493ZgCNCZ5XcXOC8mQWw",
-    "handler": "sayHelloBtn",
+    "handler": "dispatchDefaultEvent",
     "customEventData": ""
   },
   {
     "__type__": "cc.Node",
-    "_name": "removeAllEvent",
+    "_name": "dispatchNative",
     "_objFlags": 0,
     "_parent": {
       "__id__": 2
@@ -3144,7 +3144,7 @@
       "b": 0,
       "a": 255
     },
-    "_string": "REMOVE ALL EVENT",
+    "_string": "DISPATCH NATIVE EVENT",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 20,
@@ -3300,7 +3300,7 @@
     },
     "component": "",
     "_componentId": "666493ZgCNCZ5XcXOC8mQWw",
-    "handler": "sayHelloBtn",
+    "handler": "dispatchNative",
     "customEventData": ""
   },
   {

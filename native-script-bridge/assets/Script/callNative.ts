@@ -57,65 +57,46 @@ export class CallNative extends Component {
     }
 
     private defaultEvent = "default";
-    private defaultEventCbCount = 0;
-    private myCbList: jsb.JsCallback[] = [];
-    public addOneCallback() {
+    private addOneCallback() {
         var self = this;
         var cb = (arg0: string) => {
-            console.log(`trigger time with for event ${this.defaultEvent} with arg0 ${arg0} and defaultEventCbCount ${self.defaultEventCbCount} `);
+            console.log(`trigger time with for event ${this.defaultEvent} with arg0 ${arg0} and defaultEventCbCount `);
         }
-        this.myCbList.push(cb);
-        jsb.jsEventHandler.addCallback(this.defaultEvent,cb)
+        jsb.jsEventHandler.addCallback(this.defaultEvent,cb);
+        console.log(`add event  for defaultEvent`);
     }
 
     /**
      * Use a self defined map to save references to callback
      */
-    private eventId = 0;
-    private selfEventMap: Map<number, jsb.JsCallback[]> = new Map();
-    public add100Callback() {
-        var self = this;
-        for (var i = 0; i < 100; i++) {
-            var cb = (arg0: string) => {
-                console.log(`add one hundred for event ${self.eventId} with callback id ${i}`);
-            }
-            jsb.jsEventHandler.addCallback(self.eventId.toString(), cb);
-            this.selfEventMap.set(this.eventId,[]);
-            //Push callback references to selfEventMap
-            this.selfEventMap.get(this.eventId)?.push(cb);
+    public add100Callback(){
+        for(var i = 0;i<100;i++){
+            this.addOneCallback();
         }
-        this.eventId++;
+        console.log('add 100 default callback');
     }
 
     /**
-     * Remove one callback from default eventmap
+     * Remove all callback from default event
      */
-    public removeOneCallback() {
-        jsb.jsEventHandler.removeCallback(this.defaultEvent,this.myCbList[0]);
+    public removeEvent() {
+        jsb.jsEventHandler.removeEvent(this.defaultEvent);
+        console.log(`remove 100 callback for event ${this.defaultEvent}`);
         jsb.garbageCollect();
     }
 
-    public remove100Callback() {
-        var arr = this.selfEventMap.get(this.eventId)!;
-        for(var i = 0;i<100;i++){
-            jsb.jsEventHandler.removeCallback(this.eventId.toString(), arr[0]);
-            arr.slice(0,1);
-        }
-        jsb.garbageCollect();
+    public addNativeCallback(){
+        jsb.jsEventHandler.dispatchNativeEvent("generate100Callback");
     }
-    public removeOneEvent(){
-        jsb.jsEventHandler.removeEvent(this.eventId.toString());
-        this.selfEventMap.get(this.eventId)?.slice(0,this.selfEventMap.get(this.eventId)?.length);
-        this.selfEventMap.delete(this.eventId);
-        this.eventId--;
+    public dispatchDefaultEvent(){
+        jsb.jsEventHandler.dispatchNativeEvent("dispatchJsEvent");
     }
-    public removeAllEvent(){
-        while(this.eventId>0){
-            jsb.jsEventHandler.removeEvent(this.eventId.toString());
-            //if we should delete arr??
-            this.selfEventMap.delete(this.eventId);
-            this.eventId--;
-        }
+    public removeNativeCallback(){
+        jsb.jsEventHandler.dispatchNativeEvent("removeNativeCallback");
+    }
+
+    public dispatchNative(){
+        jsb.jsEventHandler.dispatchNativeEvent("AutoEvent");
     }
     
 }
