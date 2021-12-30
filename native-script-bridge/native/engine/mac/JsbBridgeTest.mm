@@ -2,60 +2,54 @@
 #include <string>
 #include "JsbBridgeTest.h"
 #import <Foundation/Foundation.h>
-#include "cocos/platform/apple/JsbBridge.h"
+#import "cocos/platform/apple/JsbBridgeWrapper.h"
 @implementation JsbBridgeTest{
-    NSMutableDictionary<NSString*, eventCallback> *cbDictionnary;
-    
-}
-static JsbBridgeTest* instance = nil;
-static ICallback cb = ^void (NSString* _arg0, NSString* _arg1){
-    [[JsbBridgeTest sharedInstance] applyMethod:_arg0 arg1:_arg1];
-};
-+(instancetype)sharedInstance{
-    static dispatch_once_t pred = 0;
-    dispatch_once(&pred, ^{
-        instance = [[super allocWithZone:NULL]init];
-    });
-    return instance;
 }
 
-+(id)allocWithZone:(struct _NSZone *)zone{
-    return [JsbBridgeTest sharedInstance];
-}
-
--(id)copyWithZone:(struct _NSZone *)zone{
-    return [JsbBridgeTest sharedInstance];
-}
-
--(void)addMethod:(NSString*)arg0 callback:(eventCallback)callback {
-    [cbDictionnary setValue:callback forKey:arg0];
-}
--(void)applyMethod:(NSString*)name arg1:(NSString*)arg1 {
-    [cbDictionnary objectForKey:name](arg1);
-}
 -(id)init{
     self = [super init];
-    cbDictionnary = [NSMutableDictionary new];
+    JsbBridgeWrapper* m = [JsbBridgeWrapper sharedInstance];
     eventCallback requestLabelContent = ^void(NSString* arg){
-        JsbBridge* m = [JsbBridge sharedInstance];
-        [m sendToScript:@"changeLabelContent" arg1:@"Charlotte"];
+        JsbBridgeWrapper* m = [JsbBridgeWrapper sharedInstance];
+        [m dispatchScriptEvent:@"changeLabelContent" arg:@"Charlotte"];
     };
     eventCallback requestLabelColor = ^void(NSString* arg){
-        JsbBridge* m = [JsbBridge sharedInstance];
-        [m sendToScript:@"changeLabelColor"];
+        JsbBridgeWrapper* m = [JsbBridgeWrapper sharedInstance];
+        [m dispatchScriptEvent:@"changeLabelColor"];
     };
     eventCallback requestBtnColor = ^void(NSString* arg){
-        JsbBridge* m = [JsbBridge sharedInstance];
-        [m sendToScript:@"changeLightColor"];
+        JsbBridgeWrapper* m = [JsbBridgeWrapper sharedInstance];
+        [m dispatchScriptEvent:@"changeLightColor"];
     };
-    
-    [self addMethod:@"requestLabelContent" callback:requestLabelContent];
-    [self addMethod:@"requestLabelColor" callback:requestLabelColor];
-    [self addMethod:@"requestBtnColor" callback:requestBtnColor];
-    
-    JsbBridge* m = [JsbBridge sharedInstance];
-    [m setCallback:cb];
+    [m addCallback:@"requestLabelContent" callback:requestLabelContent];
+    [m addCallback:@"requestLabelColor" callback:requestLabelColor];
+    [m addCallback:@"requestBtnColor" callback:requestBtnColor];
+    [m addCallback:@"generate100Callback" callback:^void(NSString*){
+        generate100Cb();
+    }];
+    [m addCallback:@"dispatchJsEvent" callback:^void(NSString*){
+        JsbBridgeWrapper* m = [JsbBridgeWrapper sharedInstance];
+        [m dispatchScriptEvent:@"default"];
+    }];
+    [m addCallback:@"removeNativeCallback" callback:^(NSString *) {
+        releaseCallback();
+    }];
     return self;
+}
+static void generate100Cb(void){
+    JsbBridgeWrapper* m = [JsbBridgeWrapper sharedInstance];
+    //cb is a object which will use some space to save code.
+    eventCallback cb = ^void(NSString* arg){
+        NSString* tmp = arg;
+        NSLog(@"Trigger callback with arg %@", arg);
+    };
+    for(int i = 0;i<10000;i++){
+        [m addCallback:@"AutoEvent" callback:cb];
+    }
+}
+static void releaseCallback(){
+    JsbBridgeWrapper* m = [JsbBridgeWrapper sharedInstance];
+    [m removeEvent:@"AutoEvent"];
 }
 
 @end
