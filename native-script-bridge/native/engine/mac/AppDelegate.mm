@@ -2,6 +2,7 @@
 #include <string>
 #import "Game.h"
 #import "ViewController.h"
+#import "platform/apple/JsbBridgeWrapper.h"
 #import "JsbBridgeTest.h"
 @interface AppDelegate () {
     NSWindow* _window;
@@ -46,7 +47,7 @@
                                              selector:@selector(windowWillCloseNotification)
                                                  name:NSWindowWillCloseNotification
                                                object:_window];
-    jsbBridget = [JsbBridgeTest sharedInstance];
+    jsbBridget = [JsbBridgeTest new];
 }
 
 - (void)windowWillMiniaturizeNotification {
@@ -66,6 +67,7 @@
 }
 
 - (void)applicationWillTerminate:(NSNotification*)aNotification {
+    [[JsbBridgeWrapper sharedInstance] dealloc];
     delete _game;
     //FIXME: will crash if relase it here.
     // [_window release];

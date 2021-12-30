@@ -1,9 +1,10 @@
 
-import { _decorator, Component, Node, Label, color, Color, MeshRenderer, Canvas, UITransform, Light, View, jsEventHandler, JsEventHandler, Game } from 'cc';
+import { _decorator, Component, Node, Label, color, Color, MeshRenderer, Canvas, UITransform, Light, View, Game, game } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('CallNative')
 export class CallNative extends Component {
+    
     //static eventMap: Map<string, Function> = new Map<string, Function>();    
     @property(Label)
     public labelForContent: Label | undefined;
@@ -13,17 +14,18 @@ export class CallNative extends Component {
     public lightToChange: Light | undefined;
     start() {
         this.registerAllScriptEvent();
-
     }
-
+    update(){
+        jsb.garbageCollect();
+    }
     public registerAllScriptEvent() {
-        jsb.jsEventHandler.addCallback("changeLabelContent", (usr: string) => {
+        jsb.jsbBridgeWrapper.addCallback("changeLabelContent", (usr: string) => {
             this.changeLabelContent(usr);
         });
-        jsb.jsEventHandler.addCallback("changeLabelColor", () => {
+        jsb.jsbBridgeWrapper.addCallback("changeLabelColor", () => {
             this.changeLabelColor();
         });
-        jsb.jsEventHandler.addCallback("changeLightColor", () => {
+        jsb.jsbBridgeWrapper.addCallback("changeLightColor", () => {
             this.changeLightColor();
         });
     }
@@ -44,16 +46,16 @@ export class CallNative extends Component {
 
     //Button click event for SAY HELLO
     public sayHelloBtn() {
-        jsb.jsEventHandler.dispatchNativeEvent("requestLabelContent");
+        jsb.jsbBridgeWrapper.dispatchNativeEvent("requestLabelContent");
     }
 
     //Button click event for CHANGE LABEL COLOR
     public changeLabelColorBtn() {
-        jsb.jsEventHandler.dispatchNativeEvent("requestLabelColor");
+        jsb.jsbBridgeWrapper.dispatchNativeEvent("requestLabelColor");
     }
 
     public changeLightColorBtn() {
-        jsb.jsEventHandler.dispatchNativeEvent("requestBtnColor", "50");
+        jsb.jsbBridgeWrapper.dispatchNativeEvent("requestBtnColor", "50");
     }
 
     private defaultEvent = "default";
@@ -62,7 +64,7 @@ export class CallNative extends Component {
         var cb = (arg0: string) => {
             console.log(`trigger time with for event ${this.defaultEvent} with arg0 ${arg0} and defaultEventCbCount `);
         }
-        jsb.jsEventHandler.addCallback(this.defaultEvent,cb);
+        jsb.jsbBridgeWrapper.addCallback(this.defaultEvent,cb);
         console.log(`add event  for defaultEvent`);
     }
 
@@ -80,23 +82,27 @@ export class CallNative extends Component {
      * Remove all callback from default event
      */
     public removeEvent() {
-        jsb.jsEventHandler.removeEvent(this.defaultEvent);
+        jsb.jsbBridgeWrapper.removeEvent(this.defaultEvent);
         console.log(`remove 100 callback for event ${this.defaultEvent}`);
         jsb.garbageCollect();
     }
 
     public addNativeCallback(){
-        jsb.jsEventHandler.dispatchNativeEvent("generate100Callback");
+        jsb.jsbBridgeWrapper.dispatchNativeEvent("generate100Callback");
     }
     public dispatchDefaultEvent(){
-        jsb.jsEventHandler.dispatchNativeEvent("dispatchJsEvent");
+        jsb.jsbBridgeWrapper.dispatchNativeEvent("dispatchJsEvent");
     }
     public removeNativeCallback(){
-        jsb.jsEventHandler.dispatchNativeEvent("removeNativeCallback");
+        jsb.jsbBridgeWrapper.dispatchNativeEvent("removeNativeCallback");
+        jsb.garbageCollect();
     }
 
     public dispatchNative(){
-        jsb.jsEventHandler.dispatchNativeEvent("AutoEvent");
+        jsb.jsbBridgeWrapper.dispatchNativeEvent("AutoEvent");
+    }
+    public restart(){
+        game.restart();
     }
     
 }
