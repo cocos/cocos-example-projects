@@ -36,7 +36,7 @@
       },
       "physics": {
         "_value": true,
-        "_option": "physics-ammo"
+        "_option": "physics-physx"
       },
       "physics-ammo": {
         "_value": true
@@ -96,6 +96,9 @@
       "dragon-bones": {
         "_value": false
       },
+      "marionette": {
+        "_value": true
+      },
       "dragonbones": {
         "_value": false
       },
@@ -109,9 +112,10 @@
       "gfx-webgl2",
       "profiler",
       "tween",
+      "marionette",
       "3d",
       "particle",
-      "physics-ammo",
+      "physics-physx",
       "primitive",
       "terrain",
       "2d",
@@ -120,7 +124,8 @@
     "noDeprecatedFeatures": {
       "value": false,
       "version": ""
-    }
+    },
+    "flags": {}
   },
   "__version__": "1.0.5"
 }
