@@ -118,7 +118,9 @@
       "__id__": 4
     },
     "_illuminance": 65000,
-    "_id": "597uMYCbhEtJQc0ffJlcgA"
+    "_id": "597uMYCbhEtJQc0ffJlcgA",
+    "_illuminanceLDR": 1.6927083333333335,
+    "_illuminanceHDR": 65000
   },
   {
     "__type__": "cc.StaticLightSettings",
@@ -4168,7 +4170,18 @@
   },
   {
     "__type__": "cc.PrefabInfo",
-    "fileId": ""
+    "fileId": "",
+    "nestedPrefabInstanceRoots": [
+      {
+        "__id__": 30
+      },
+      {
+        "__id__": 42
+      },
+      {
+        "__id__": 133
+      }
+    ]
   },
   {
     "__type__": "cc.SceneGlobals",
@@ -4188,20 +4201,50 @@
   {
     "__type__": "cc.AmbientInfo",
     "_skyColor": {
-      "__type__": "cc.Color",
-      "r": 197,
-      "g": 175,
-      "b": 74,
-      "a": 1
+      "__type__": "cc.Vec4",
+      "x": 0.7725490196078432,
+      "y": 0.6862745098039216,
+      "z": 0.2901960784313725,
+      "w": 0.520833125
     },
     "_skyIllum": 2000,
     "_groundAlbedo": {
-      "__type__": "cc.Color",
-      "r": 240,
-      "g": 193,
-      "b": 49,
-      "a": 255
-    }
+      "__type__": "cc.Vec4",
+      "x": 0.9411764705882353,
+      "y": 0.7568627450980392,
+      "z": 0.19215686274509802,
+      "w": 1
+    },
+    "_skyColorLDR": {
+      "__type__": "cc.Vec4",
+      "x": 0.7725490196078432,
+      "y": 0.6862745098039216,
+      "z": 0.2901960784313725,
+      "w": 0.520833125
+    },
+    "_skyColorHDR": {
+      "__type__": "cc.Vec4",
+      "x": 0.7725490196078432,
+      "y": 0.6862745098039216,
+      "z": 0.2901960784313725,
+      "w": 0.520833125
+    },
+    "_groundAlbedoLDR": {
+      "__type__": "cc.Vec4",
+      "x": 0.9411764705882353,
+      "y": 0.7568627450980392,
+      "z": 0.19215686274509802,
+      "w": 1
+    },
+    "_groundAlbedoHDR": {
+      "__type__": "cc.Vec4",
+      "x": 0.9411764705882353,
+      "y": 0.7568627450980392,
+      "z": 0.19215686274509802,
+      "w": 1
+    },
+    "_skyIllumLDR": 0.078125,
+    "_skyIllumHDR": 2000
   },
   {
     "__type__": "cc.ShadowsInfo",
@@ -4221,39 +4264,42 @@
       "b": 0,
       "a": 76
     },
-    "_autoAdapt": true,
     "_pcf": 0,
-    "_bias": 0.0035,
-    "_packing": false,
-    "_linear": true,
-    "_selfShadow": false,
+    "_bias": 1,
     "_normalBias": 0,
     "_near": 1,
     "_far": 30,
-    "_aspect": 1,
     "_orthoSize": 5,
     "_maxReceived": 4,
     "_size": {
       "__type__": "cc.Vec2",
       "x": 512,
       "y": 512
-    }
+    },
+    "_saturation": 0.2980392156862745,
+    "_fixedArea": false,
+    "_firstSetCSM": true
   },
   {
     "__type__": "cc.SkyboxInfo",
     "_envmap": null,
-    "_isRGBE": false,
     "_enabled": false,
-    "_useIBL": false
+    "_useIBL": false,
+    "_useHDR": true,
+    "_envmapLDR": null,
+    "_envmapHDR": null,
+    "_diffuseMapLDR": null,
+    "_diffuseMapHDR": null,
+    "_applyDiffuseMap": false
   },
   {
     "__type__": "cc.FogInfo",
     "_type": 0,
     "_fogColor": {
       "__type__": "cc.Color",
-      "r": 200,
-      "g": 200,
-      "b": 200,
+      "r": 225,
+      "g": 225,
+      "b": 225,
       "a": 255
     },
     "_enabled": false,
@@ -4262,6 +4308,7 @@
     "_fogEnd": 300,
     "_fogAtten": 5,
     "_fogTop": 1.5,
-    "_fogRange": 1.2
+    "_fogRange": 1.2,
+    "_accurate": false
   }
 ]
