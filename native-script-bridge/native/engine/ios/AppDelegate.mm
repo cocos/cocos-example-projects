@@ -57,7 +57,7 @@ JsbBridgeTest* jsbBridget;
     game->init();
 
     [self.window makeKeyAndVisible];
-    jsbBridget = [JsbBridgeTest sharedInstance];
+    jsbBridget = [JsbBridgeTest new];
     return YES;
 }
 

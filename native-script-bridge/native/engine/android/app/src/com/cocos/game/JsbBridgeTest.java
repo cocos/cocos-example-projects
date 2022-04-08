@@ -1,34 +1,28 @@
 //Script to add into com.cocos.game package, backup here
 package com.cocos.game;
-
-import com.cocos.lib.JsbBridge;
-import java.util.HashMap;
+import com.cocos.lib.JsbBridgeWrapper;
 
 public class JsbBridgeTest {
-    public interface MyCallback{
-        void onTrigger(String arg);
-    }
     public static void start(){
-        JsbBridgeTest.myCallbackHashMap.put("requestLabelContent", arg ->{
+        //Original method
+        JsbBridgeWrapper jbw = JsbBridgeWrapper.getInstance();
+        jbw.addScriptEventListener("requestLabelContent", arg ->{
             System.out.print("@JAVA: here is the argument transport in" + arg);
-            JsbBridge.sendToScript("changeLabelContent","Charlotte");
+            jbw.dispatchEventToScript("changeLabelContent","Charlotte");
         });
-        JsbBridgeTest.myCallbackHashMap.put("requestLabelColor", arg ->{
+        jbw.addScriptEventListener("requestLabelColor", arg ->{
             System.out.print("@JAVA: here is the argument transport in" + arg);
-            JsbBridge.sendToScript("changeLabelColor");
+            jbw.dispatchEventToScript("changeLabelColor");
         });
-        JsbBridgeTest.myCallbackHashMap.put("requestBtnColor", arg ->{
+        jbw.addScriptEventListener("requestBtnColor", arg ->{
             System.out.print("@JAVA: here is the argument transport in" + arg);
-            JsbBridge.sendToScript("changeLightColor");
+            jbw.dispatchEventToScript("changeLightColor");
         });
 
-        JsbBridge.setCallback(new JsbBridge.ICallback() {
-            @Override
-            public void onScript(String arg0, String arg1) {
-                JsbBridgeTest.myCallbackHashMap.get(arg0).onTrigger(arg1);
-            }
+        //Only use JavaEventHandler
+        jbw.addScriptEventListener("removeJSCallback", arg->{
+            jbw.removeAllListenersForEvent("requestBtnColor");
         });
+
     }
-    public static HashMap<String, MyCallback> myCallbackHashMap = new HashMap<>();
-    private static JsbBridgeTest instance;
 }
