@@ -77,7 +77,7 @@ export class TriggerTest extends Component {
 
         if (this.label) {
             if (this._amount++ > 11) { this.label.string = ''; this._amount = 0; }
-            this.label.string += event.selfCollider.node.name + '__' + event.type + '__' + event.otherCollider.node.name + ' ';
+            this.label.string += event.selfCollider.node.name + '__' + event.type + '__' + event.otherCollider.node.name + '\n';
         }
     }
 }
