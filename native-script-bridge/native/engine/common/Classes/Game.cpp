@@ -23,64 +23,49 @@
  THE SOFTWARE.
  ****************************************************************************/
 #include "Game.h"
-#include "cocos/bindings/event/CustomEventTypes.h"
-#include "cocos/bindings/event/EventDispatcher.h"
-#include "cocos/bindings/jswrapper/SeApi.h"
-#include "cocos/bindings/manual/jsb_classtype.h"
-#include "cocos/bindings/manual/jsb_global.h"
-#include "cocos/bindings/manual/jsb_module_register.h"
 
-#if (CC_PLATFORM == CC_PLATFORM_MAC_IOS)
-    #include "platform/Device.h"
+
+#ifndef GAME_NAME
+    #define GAME_NAME "CocosGame";
 #endif
 
-Game::Game(int width, int height) : cc::Application(width, height) {}
-
-bool Game::init() {
-    cc::Application::init();
-
-    se::ScriptEngine *se = se::ScriptEngine::getInstance();
-
-    jsb_set_xxtea_key("");
-    jsb_init_file_operation_delegate();
-
-#if defined(CC_DEBUG) && (CC_DEBUG > 0)
-    // Enable debugger here
-    jsb_enable_debugger("0.0.0.0", 6086, false);
+#ifndef SCRIPT_XXTEAKEY
+    #define SCRIPT_XXTEAKEY "";
 #endif
 
-    se->setExceptionCallback([](const char *location, const char *message, const char *stack) {
-        // Send exception information to server like Tencent Bugly.
-        CC_LOG_ERROR("\nUncaught Exception:\n - location :  %s\n - msg : %s\n - detail : \n      %s\n", location, message, stack);
-    });
+Game::Game() = default;
 
-    jsb_register_all_modules();
+int Game::init() {
+    _windowInfo.title = GAME_NAME;
+    // configurate window size
+    // _windowInfo.height = 600;
+    // _windowInfo.width  = 800;
 
-    se->start();
-
-    se::AutoHandleScope hs;
-    jsb_run_script("jsb-adapter/jsb-builtin.js");
-    jsb_run_script("main.js");
-
-#if (CC_PLATFORM == CC_PLATFORM_MAC_IOS)
-    cc::Vec2 logicSize  = getViewLogicalSize();
-    float    pixelRatio = cc::Device::getDevicePixelRatio();
-    cc::EventDispatcher::dispatchResizeEvent(logicSize.x * pixelRatio, logicSize.y * pixelRatio);
+#if CC_DEBUG
+    _debuggerInfo.enabled = true;
+#else
+    _debuggerInfo.enabled = false;
 #endif
-    return true;
+    _debuggerInfo.port         = 6086;
+    _debuggerInfo.address      = "0.0.0.0";
+    _debuggerInfo.pauseOnStart = false;
+
+    _xxteaKey = SCRIPT_XXTEAKEY;
+
+    BaseGame::init();
+    return 0;
 }
 
 void Game::onPause() {
-    cc::Application::onPause();
-    cc::EventDispatcher::dispatchEnterBackgroundEvent();
+    BaseGame::onPause();
 }
 
 void Game::onResume() {
-    cc::EventDispatcher::dispatchEnterForegroundEvent();
-    cc::Application::onResume();
+    BaseGame::onResume();
 }
 
 void Game::onClose() {
-    cc::Application::onClose();
-    cc::EventDispatcher::dispatchCloseEvent();
+    BaseGame::onClose();
 }
+
+CC_REGISTER_APPLICATION(Game);

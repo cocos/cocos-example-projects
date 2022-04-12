@@ -1,37 +1,24 @@
 cmake_minimum_required(VERSION 3.8)
 
-option(APP_NAME "Project Name" "JsbBridgeTest")
+option(APP_NAME "Project Name" "CXJ")
 project(${APP_NAME} CXX)
+set(CC_LIB_NAME cocos)
+set(CC_PROJECT_DIR ${CMAKE_CURRENT_LIST_DIR})
+set(CC_PROJ_SOURCES)
+set(CC_COMMON_SOURCES)
+set(CC_ALL_SOURCES)
 
 include(${CMAKE_CURRENT_LIST_DIR}/../common/CMakeLists.txt)
 
-
-set(LIB_NAME cocos)
-
-set(PROJ_SOURCES
-    ${CMAKE_CURRENT_LIST_DIR}/../common/Classes/Game.h
-    ${CMAKE_CURRENT_LIST_DIR}/../common/Classes/Game.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/jni/main.cpp
-)
-
-
-add_library(${LIB_NAME} SHARED ${PROJ_SOURCES})
-
+cc_android_before_target(${CC_LIB_NAME})
 
 # -------------- SRART ---------------
 # USED BY COCOS SERVICE, DON'T REMOVE!
-if(COMMAND service_insert_library)
-    service_insert_library()
+if(EXISTS ${RES_DIR}/proj/service.cmake)
+    set(SERVICE_NATIVE_DIR ${CMAKE_CURRENT_LIST_DIR})
+    include(${RES_DIR}/proj/service.cmake)
 endif()
 # --------------  END ----------------
 
-
-
-target_link_libraries(${LIB_NAME}
-    "-Wl,--whole-archive" cocos2d_jni "-Wl,--no-whole-archive"
-    cocos2d
-)
-
-target_include_directories(${LIB_NAME} PRIVATE
-    ${CMAKE_CURRENT_LIST_DIR}/../common/Classes
-)
+add_library(${CC_LIB_NAME} SHARED ${CC_ALL_SOURCES})
+cc_android_after_target(${CC_LIB_NAME})

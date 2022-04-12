@@ -1,5 +1,5 @@
 /****************************************************************************
- Copyright (c) 2017-2020 Xiamen Yaji Software Co., Ltd.
+ Copyright (c) 2021-2022 Xiamen Yaji Software Co., Ltd.
 
  http://www.cocos.com
 
@@ -21,9 +21,24 @@
  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
- ****************************************************************************/
-#include "Game.h"
+****************************************************************************/
 
-cc::Application *cocos_main(int width, int height) {
-    return new Game(width, height);
+#include <iostream>
+
+//#include "platform/BasePlatform.h"
+#include "MyMacPlatform.h"
+
+#define START_PLATFORM(argc, argv)                                    \
+    do {                                                              \
+        cc::MyMacPlatform* platform = new cc::MyMacPlatform(); \
+        if (platform->init()) {                                       \
+            CC_LOG_FATAL("Platform initialization failed");           \
+            return -1;                                                \
+        }                                                             \
+        return platform->run(argc, argv);                             \
+    } while (0)
+
+
+int main(int argc, const char * argv[]) {
+    START_PLATFORM(argc, (const char**)argv);
 }

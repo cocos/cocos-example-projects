@@ -1,7 +1,5 @@
 /****************************************************************************
- Copyright (c) 2010-2013 cocos2d-x.org
- Copyright (c) 2013-2016 Chukong Technologies Inc.
- Copyright (c) 2017-2022 Xiamen Yaji Software Co., Ltd.
+ Copyright (c) 2021-2022 Xiamen Yaji Software Co., Ltd.
 
  http://www.cocos.com
 
@@ -25,14 +23,21 @@
  THE SOFTWARE.
 ****************************************************************************/
 
-#import <UIKit/UIKit.h>
-#import "platform/ios/AppDelegateBridge.h"
+#include <iostream>
 
-@class ViewController;
+//#include "platform/BasePlatform.h"
+#include "MyIOSPlatform.h"
+#include "AppDelegate.h"
 
-@interface AppDelegate : NSObject <UIApplicationDelegate> {
+int main(int argc, const char * argv[]) {
+    cc::MyIOSPlatform* platform = new cc::MyIOSPlatform();
+    if (platform->init()) { 
+        return -1;                                                
+    }                                                            
+    platform->run(argc, argv);                                    
+    NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+    int retVal = UIApplicationMain(argc, (char**)argv, nil, @"AppDelegate");
+    [pool release];
+    return retVal;
 }
 
-@property (nonatomic, readonly) ViewController* viewController;
-@property (nonatomic, readonly) AppDelegateBridge* appDelegateBridge;
-@end
