@@ -30,8 +30,6 @@ export class CallNative extends Component {
     public changeLabelContent(user: string): void {
         console.log("Hello " + user + " I'm K");
         this.labelForContent!.string = "Hello " + user + " ! I'm K";
-
-
     }
     public changeLabelColor(): void {
         this.labelForColor!.color = new Color("#B8F768");
