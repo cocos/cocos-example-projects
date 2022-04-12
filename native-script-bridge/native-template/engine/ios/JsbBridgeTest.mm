@@ -2,10 +2,8 @@
 #include <string>
 #include "JsbBridgeTest.h"
 #import <Foundation/Foundation.h>
-#import "cocos/platform/apple/JsbBridgeWrapper.h"
-@implementation JsbBridgeTest{
-}
-
+#include "cocos/platform/apple/JsbBridgeWrapper.h"
+@implementation JsbBridgeTest
 -(id)init{
     self = [super init];
     JsbBridgeWrapper* m = [JsbBridgeWrapper sharedInstance];
@@ -31,6 +29,5 @@
     }];
     return self;
 }
-
 
 @end
