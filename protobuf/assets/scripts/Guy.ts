@@ -20,7 +20,7 @@ export class Guy extends Component {
     private _modelComponent: ModelComponent | null = null;
     private _billboardNode: Node | null = null;
     private _label: LabelComponent | null = null;
-    private _ray: geometry.ray = new geometry.ray();
+    private _ray: geometry.Ray = new geometry.Ray();
     private _textLiveTime = 0;
     
     start() {
@@ -32,6 +32,7 @@ export class Guy extends Component {
 
         const billboardNode = new Node(`Billboard-${this.nickName}`);
         this.canvasNode.addChild(billboardNode);
+        billboardNode.layer = this.canvasNode.layer;
         this._label = billboardNode.addComponent(LabelComponent);
         this._label.string = `我是 ${this.nickName}`
         this._label.color = new Color(0, 0, 0);

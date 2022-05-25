@@ -3,12 +3,12 @@ import { _decorator, CameraComponent, Component, director, EffectAsset, gfx,
 const { ccclass, property } = _decorator;
 
 const rotations = [
-    Quat.fromEuler(new Quat(),   0,  90, 0), // +X
-    Quat.fromEuler(new Quat(),   0, -90, 0), // -X
-    Quat.fromEuler(new Quat(),  90, 180, 0), // +Y
-    Quat.fromEuler(new Quat(), -90, 180, 0), // -Y
-    Quat.fromEuler(new Quat(),   0, 180, 0), // +Z
-    Quat.fromEuler(new Quat(),   0,   0, 0), // -Z
+    Quat.fromEuler(new Quat(),   0, -90, 180), // +X
+    Quat.fromEuler(new Quat(),   0,  90, 180), // -X
+    Quat.fromEuler(new Quat(), -90, 180, 180), // +Y
+    Quat.fromEuler(new Quat(),  90, 180, 180), // -Y
+    Quat.fromEuler(new Quat(),   0, 180, 180), // +Z
+    Quat.fromEuler(new Quat(),   0,   0, 180), // -Z
 ];
 
 const readRegions = [new gfx.BufferTextureCopy()];
@@ -87,9 +87,10 @@ export class PreFilterEnvmap extends Component {
         const newEnvMap = new TextureCube();
         const pass = this._material.passes[0];
         const handle = pass.getHandle('roughness');
-        this.node.setScale(1, director.root!.device.capabilities.UVSpaceSignY, 1); // GL-specific: flip both model and camera so front face stays the same
+        this.node.setScale(1, director.root!.device.capabilities.clipSpaceSignY, 1); // GL-specific: flip both model and camera so front face stays the same
         camera.scene!.update(0); // should update scene after flipping
         newEnvMap.reset({ width: size, height: size, mipmapLevel: mipLevel });
+        newEnvMap.isRGBE = true;
         for (let m = 0; m < mipLevel; m++) {
             // need to resize both window and camera
             camera.window!.resize(size, size);
@@ -106,7 +107,7 @@ export class PreFilterEnvmap extends Component {
                 this._camera.node.setRotation(rotations[i]);
                 this._camera.camera.update();
                 director.root!.pipeline.render([camera]);
-                director.root!.device.copyFramebufferToBuffer(camera.window!.framebuffer, buffers[i].buffer, readRegions);
+                director.root!.device.copyTextureToBuffers(camera.window!.framebuffer.colorTextures[0]!, [buffers[i]], readRegions);
             }
             director.root!.device.copyBuffersToTexture(buffers, newEnvMap.getGFXTexture()!, writeRegions);
             size >>= 1;

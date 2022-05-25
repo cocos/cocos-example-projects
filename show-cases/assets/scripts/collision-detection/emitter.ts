@@ -57,7 +57,9 @@ export class Emitter extends Component {
       const hintModel = hint.addComponent(ModelComponent);
       const hintMat = new Material();
       hintMat.initialize({ effectName: 'builtin-standard' });
-      hintMat.setProperty('albedo', this.color);
+      const hintColor = this.color.clone();
+      hintColor.a = 255;
+      hintMat.setProperty('albedo', hintColor);
       hintMat.setProperty('metallic', 0.1);
       hintModel.material = hintMat;
       hintModel.mesh = hintMesh;

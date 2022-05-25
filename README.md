@@ -1,4 +1,4 @@
-# Cocos Creator 3D Example cases
+# Cocos Creator 3.x Example cases
 
 ## show-cases
 

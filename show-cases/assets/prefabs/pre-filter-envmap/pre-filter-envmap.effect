@@ -136,8 +136,8 @@ CCProgram pre-filter-fs %{
 
     #if CC_USE_IBL == IBL_RGBE
       float v = max(max(prefilteredColor.r, prefilteredColor.g), prefilteredColor.b);
-      float e = ceil(log2(v));
-      float s = 1.0 / pow(2.0, e);
+      float e = ceil(log(v) / log(1.1));
+      float s = 1.0 / pow(1.1, e);
       return vec4(prefilteredColor * s, e * (1.0 / 255.0) + (128.0 / 255.0));
     #else
       return vec4(LinearToSRGB(prefilteredColor), 1.0);

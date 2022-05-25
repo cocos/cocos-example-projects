@@ -104,7 +104,14 @@ CCProgram bonus-unlit-fs %{
       o *= texture(mainTexture, v_uv);
     #endif
 
-    if(abs(o.r - clipColor.r) <= clipColor.a && abs(o.g - clipColor.g) <= clipColor.a && abs(o.b - clipColor.b) <= clipColor.a) {
+    float r = step(abs(o.r - clipColor.r),clipColor.a);
+    float g = step(abs(o.g - clipColor.g),clipColor.a);
+    float b = step(abs(o.b - clipColor.b),clipColor.a);
+    float result=r+g+b;
+    
+    //if(abs(o.r - clipColor.r) <= clipColor.a && abs(o.g - clipColor.g) <= clipColor.a && abs(o.b - clipColor.b) <= clipColor.a)
+    if(result-3.0 >= 0.0)
+    {
       discard;
     }
     else
