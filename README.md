@@ -21,7 +21,8 @@
 17. scenes/tangents: glTF tangent space data conformance test
 18. scenes/toon: NPR baseline
 19. scenes/winter: particle system, emitter editing
-
+20. scenes/AnimationEmbeddedParticles: embedded tracks, particles player, and animation player
+21. scenes/particle_noise_test: particle noise moudule
 ## simple-games
 
 1. lobby: lobby for all simple games.
