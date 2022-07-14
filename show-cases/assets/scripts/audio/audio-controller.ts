@@ -1,4 +1,4 @@
-import { _decorator, AudioSourceComponent, Component, LabelComponent, SliderComponent, ToggleComponent, AudioClip, Slider } from 'cc';
+import { _decorator, AudioSourceComponent, Component, LabelComponent, Toggle, AudioClip, Slider } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('AudioController')
@@ -7,22 +7,22 @@ export class AudioController extends Component {
     @property(AudioSourceComponent)
     public source: AudioSourceComponent = null!;
 
-    public volume?: SliderComponent;
-    public currentTime?: SliderComponent;
+    public volume?: Slider;
+    public currentTime?: Slider;
     public volumeLabel?: LabelComponent;
     public currentTimeLabel?: LabelComponent;
-    public loop?: ToggleComponent;
-    public playOnAwake?: ToggleComponent;
-    public playing?: ToggleComponent;
+    public loop?: Toggle;
+    public playOnAwake?: Toggle;
+    public playing?: Toggle;
 
     public start () {
-        this.volume = this.node.getChildByName('volume')!.getComponent(SliderComponent)!;
-        this.currentTime = this.node.getChildByName('currentTime')!.getComponent(SliderComponent)!;
+        this.volume = this.node.getChildByName('volume')!.getComponent(Slider)!;
+        this.currentTime = this.node.getChildByName('currentTime')!.getComponent(Slider)!;
         this.volumeLabel = this.volume.node.getChildByName('Numbers')!.getComponent(LabelComponent)!;
         this.currentTimeLabel = this.currentTime.node.getChildByName('Numbers')!.getComponent(LabelComponent)!;
-        this.loop = this.node.getChildByName('loop')!.getComponent(ToggleComponent)!;
-        this.playOnAwake = this.node.getChildByName('playOnAwake')!.getComponent(ToggleComponent)!;
-        this.playing = this.node.getChildByName('playing')!.getComponent(ToggleComponent)!;
+        this.loop = this.node.getChildByName('loop')!.getComponent(Toggle)!;
+        this.playOnAwake = this.node.getChildByName('playOnAwake')!.getComponent(Toggle)!;
+        this.playing = this.node.getChildByName('playing')!.getComponent(Toggle)!;
 
         this.node.getChildByName('name')!.getComponent(LabelComponent)!.string = this.source.node.name;
 
@@ -75,20 +75,20 @@ export class AudioController extends Component {
     }
 
     // slider callback
-    public setVolume (e: SliderComponent) {
+    public setVolume (e: Slider) {
         this.source.volume = e.progress;
     }
     // slider callback
-    public setCurrentTime (e: SliderComponent) {
+    public setCurrentTime (e: Slider) {
         this.source.currentTime = e.progress * this.source.duration;
     }
 
     // toggle callback
-    public setLoop (e: ToggleComponent) {
+    public setLoop (e: Toggle) {
         this.source.loop = e.isChecked;
     }
     // toggle callback
-    public setPlayOnAwake (e: ToggleComponent) {
+    public setPlayOnAwake (e: Toggle) {
         this.source.playOnAwake = e.isChecked;
     }
 }

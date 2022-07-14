@@ -1,5 +1,5 @@
 import { _decorator, Component, instantiate, Node, Prefab, SkeletalAnimationComponent,
-    SliderComponent, Texture2D, ToggleComponent, director, gfx } from 'cc';
+    Slider, Texture2D, Toggle, director, gfx } from 'cc';
 import { UnlitQuadComponent } from '../unlit-quad';
 const { ccclass, property } = _decorator;
 
@@ -55,17 +55,17 @@ export class InstancedSkinning extends Component {
         this._baselineNode.active = this.baselineVisible;
     }
 
-    public toggleBaselineGroup (e: ToggleComponent) {
+    public toggleBaselineGroup (e: Toggle) {
         this._baselineNode!.active = e.isChecked;
     }
 
-    public toggleAnimNames (e: ToggleComponent) {
+    public toggleAnimNames (e: Toggle) {
         for (let i = 0; i < this._nameLabels.length; i++) {
             this._nameLabels[i].active = e.isChecked;
         }
     }
 
-    public setGroups (e: SliderComponent) {
+    public setGroups (e: Slider) {
         this.groupCount = Math.floor(e.progress * this.maxGroupCount);
     }
 

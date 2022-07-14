@@ -1,7 +1,7 @@
 // 导入Player脚本
 import player from "./Player";
 
-import { _decorator, Component, Node, SystemEventType, EventMouse, Vec3, CCFloat, Vec2, EventTouch,animation,AnimationComponent } from 'cc';
+import { _decorator, Component, Node, Vec3, CCFloat, Vec2, EventTouch,animation } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('UI')
@@ -49,7 +49,7 @@ export class UI extends Component {
         let self = this;
 
         // 给canvas绑定触摸移动事件
-        this.target.on(SystemEventType.TOUCH_MOVE, function (e: EventTouch) {
+        this.target.on(Node.EventType.TOUCH_MOVE, function (e: EventTouch) { 
             
             // 获取鼠标距离上一次事件移动的距离对象，对象包含 x 和 y 属性
             let D = e.getDelta();
