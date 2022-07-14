@@ -1,7 +1,7 @@
 
 import { _decorator, Component, Button, labelAssembler, game ,director,Node, Scene, renderer,CameraComponent, Label} from 'cc';
 import { TangentVisualizer } from '../tangent-visualizer';
-//import { _decorator, Component, Node, Scene, renderer, SliderComponent, CameraComponent, director } from 'cc';
+//import { _decorator, Component, Node, Scene, renderer, CameraComponent, director } from 'cc';
 const { ccclass, property } = _decorator;
 
 /**

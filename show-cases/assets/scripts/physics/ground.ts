@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node, SliderComponent, ToggleComponent } from 'cc';
+import { _decorator, Component, Node, Slider, Toggle } from 'cc';
 const { ccclass, property } = _decorator;
 
 const sineLerp = (b: number, e: number, t: number) => {
@@ -32,13 +32,13 @@ export class PhysicsGround extends Component {
     }
 
     // toggle callback
-    public toggleSpin (e: ToggleComponent) {
+    public toggleSpin (e: Toggle) {
         this._autoSpin = e.isChecked;
         this.manualSpinSliderNode.active = !e.isChecked;
     }
 
     // slider callback
-    public setAngle (e: SliderComponent) {
+    public setAngle (e: Slider) {
         this._angle = (0.5 - e.progress) * 180;
     }
 }

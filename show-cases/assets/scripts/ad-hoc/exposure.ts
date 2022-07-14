@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, Scene, renderer, SliderComponent, CameraComponent, director } from 'cc';
+import { _decorator, Component, Node, Scene, renderer, Slider, CameraComponent, director } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('Exposure')
@@ -14,11 +14,11 @@ export class Exposure extends Component {
         this._camera = scene.getComponentInChildren(CameraComponent)!.camera;
     }
 
-    setSkyIllumination (e: SliderComponent) {
+    setSkyIllumination (e: Slider) {
         this._ambient.skyIllum = Math.pow(2, e.progress * 30.46); // default illum 38400, at progress 0.5
     }
 
-    setExposure (e: SliderComponent) {
+    setExposure (e: Slider) {
         this._camera.aperture = Math.floor((1 - e.progress) * 22.99); // defaul aperture F16, at progress 0.17
     }
 }
