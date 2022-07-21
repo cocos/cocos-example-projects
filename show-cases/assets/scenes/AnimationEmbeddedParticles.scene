@@ -112,14 +112,14 @@
     "_shadowSaturation": 1,
     "_shadowDistance": 59.35697094697471,
     "_shadowInvisibleOcclusionRange": 200,
+    "_csmLevel": 1,
+    "_csmLayerLambda": 0.75,
+    "_csmOptimizationMode": 2,
     "_shadowFixedArea": false,
     "_shadowNear": 1,
     "_shadowFar": 30,
     "_shadowOrthoSize": 5,
-    "_id": "597uMYCbhEtJQc0ffJlcgA",
-    "_csmLevel": 1,
-    "_csmLayerLambda": 0.75,
-    "_csmOptimizationMode": 2
+    "_id": "597uMYCbhEtJQc0ffJlcgA"
   },
   {
     "__type__": "cc.StaticLightSettings",
@@ -252,7 +252,7 @@
     "_priority": 1073741824,
     "_fov": 45,
     "_fovAxis": 0,
-    "_orthoHeight": 320,
+    "_orthoHeight": 367.6254180602007,
     "_near": 1,
     "_far": 2000,
     "_color": {
@@ -337,7 +337,7 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 960,
+      "width": 672,
       "height": 640
     },
     "_anchorPoint": {
@@ -358,14 +358,14 @@
     "__prefab": null,
     "_alignFlags": 45,
     "_target": null,
-    "_left": 0,
-    "_right": 0,
+    "_left": 0.15,
+    "_right": 0.15,
     "_top": -2,
     "_bottom": 2,
     "_horizontalCenter": 0,
     "_verticalCenter": 0,
-    "_isAbsLeft": true,
-    "_isAbsRight": true,
+    "_isAbsLeft": false,
+    "_isAbsRight": false,
     "_isAbsTop": true,
     "_isAbsBottom": true,
     "_isAbsHorizontalCenter": true,
@@ -516,7 +516,6 @@
     "__prefab": {
       "__id__": 16
     },
-    "_visFlags": 0,
     "_customMaterial": null,
     "_srcBlendFactor": 2,
     "_dstBlendFactor": 4,
@@ -634,7 +633,6 @@
     "__prefab": {
       "__id__": 21
     },
-    "_visFlags": 0,
     "_customMaterial": null,
     "_srcBlendFactor": 2,
     "_dstBlendFactor": 4,
@@ -883,7 +881,6 @@
     "__prefab": {
       "__id__": 30
     },
-    "_visFlags": 0,
     "_customMaterial": null,
     "_srcBlendFactor": 2,
     "_dstBlendFactor": 4,
@@ -955,7 +952,6 @@
     "__prefab": {
       "__id__": 34
     },
-    "_visFlags": 0,
     "_customMaterial": null,
     "_srcBlendFactor": 2,
     "_dstBlendFactor": 4,
@@ -1224,7 +1220,6 @@
     "__prefab": {
       "__id__": 43
     },
-    "_visFlags": 0,
     "_customMaterial": null,
     "_srcBlendFactor": 2,
     "_dstBlendFactor": 4,
@@ -1296,7 +1291,6 @@
     "__prefab": {
       "__id__": 47
     },
-    "_visFlags": 0,
     "_customMaterial": null,
     "_srcBlendFactor": 2,
     "_dstBlendFactor": 4,
@@ -2004,7 +1998,6 @@
     },
     "_enabled": true,
     "__prefab": null,
-    "_visFlags": 0,
     "_materials": [
       {
         "__uuid__": "27015d85-91e5-424f-a528-a87d04bb4bfb",
@@ -2012,6 +2005,7 @@
       },
       null
     ],
+    "_visFlags": 0,
     "startColor": {
       "__id__": 73
     },
@@ -2718,6 +2712,11 @@
     "_velocityScale": 1,
     "_lengthScale": 1,
     "_mesh": null,
+    "_cpuMaterial": {
+      "__uuid__": "27015d85-91e5-424f-a528-a87d04bb4bfb",
+      "__expectedType__": "cc.Material"
+    },
+    "_gpuMaterial": null,
     "_mainTexture": {
       "__uuid__": "b5b27ab1-e740-4398-b407-848fc2b2c897@6c48a",
       "__expectedType__": "cc.Texture2D"
@@ -3255,13 +3254,13 @@
     },
     "_enabled": true,
     "__prefab": null,
-    "_visFlags": 0,
     "_materials": [
       {
         "__uuid__": "d3c7820c-2a98-4429-8bc7-b8453bc9ac41",
         "__expectedType__": "cc.Material"
       }
     ],
+    "_visFlags": 0,
     "lightmapSettings": {
       "__id__": 175
     },
@@ -3439,7 +3438,8 @@
     "_diffuseMapHDR": null,
     "_diffuseMapLDR": null,
     "_enabled": true,
-    "_useHDR": true
+    "_useHDR": true,
+    "_editableMaterial": null
   },
   {
     "__type__": "cc.FogInfo",
