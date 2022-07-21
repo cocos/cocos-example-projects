@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node, Label, color, Color, MeshRenderer, Canvas, UITransform, Light, View, Game, game } from 'cc';
+import { _decorator, Component, Node, Label, color, Color, MeshRenderer, Canvas, UITransform, Light, View, Game, game, native } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('CallNative')
@@ -13,16 +13,21 @@ export class CallNative extends Component {
     @property(Light)
     public lightToChange: Light | undefined;
     start() {
+        this.downloaderTest();
         this.registerAllScriptEvent();
     }
+    public downloaderTest() {
+        let downloaderX = new native.Downloader();
+        downloaderX.createDownloadTask("https://www.baidu.com/", "test.html");
+    }
     public registerAllScriptEvent() {
-        jsb.jsbBridgeWrapper.addNativeEventListener("changeLabelContent", (usr: string) => {
+        native.jsbBridgeWrapper.addNativeEventListener("changeLabelContent", (usr: string) => {
             this.changeLabelContent(usr);
         });
-        jsb.jsbBridgeWrapper.addNativeEventListener("changeLabelColor", () => {
+        native.jsbBridgeWrapper.addNativeEventListener("changeLabelColor", () => {
             this.changeLabelColor();
         });
-        jsb.jsbBridgeWrapper.addNativeEventListener("changeLightColor", () => {
+        native.jsbBridgeWrapper.addNativeEventListener("changeLightColor", () => {
             this.changeLightColor();
         });
     }
@@ -41,24 +46,24 @@ export class CallNative extends Component {
 
     //Button click event for SAY HELLO
     public sayHelloBtn() {
-        jsb.jsbBridgeWrapper.dispatchEventToNative("requestLabelContent");
+        native.jsbBridgeWrapper.dispatchEventToNative("requestLabelContent");
     }
 
     //Button click event for CHANGE LABEL COLOR
     public changeLabelColorBtn() {
-        jsb.jsbBridgeWrapper.dispatchEventToNative("requestLabelColor");
+        native.jsbBridgeWrapper.dispatchEventToNative("requestLabelColor");
     }
 
     public changeLightColorBtn() {
-        jsb.jsbBridgeWrapper.dispatchEventToNative("requestBtnColor", "50");
+        native.jsbBridgeWrapper.dispatchEventToNative("requestBtnColor", "50");
     }
     //Remove all listener for requestLabelColor in js, once succeed, the requestLabelColor won't work
     public disableLabelColorChange() {
-        jsb.jsbBridgeWrapper.removeAllListenersForEvent("changeLabelColor");
+        native.jsbBridgeWrapper.removeAllListenersForEvent("changeLabelColor");
     }
     //Remove native listener for changeLightColor, once succeed, if the changeLightColor btn is clicked, the color of box won't change.
     public disableBoxColorChange(){
-        jsb.jsbBridgeWrapper.dispatchEventToNative("removeJSCallback");
+        native.jsbBridgeWrapper.dispatchEventToNative("removeJSCallback");
     }
     public restart(){
         game.restart();
