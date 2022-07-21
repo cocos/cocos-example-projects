@@ -10,7 +10,7 @@ let vbuffer: ArrayBuffer | null = null;
 let material: Material | null = null;
 
 const materialInfo = {
-    effectName: 'unlit',
+    effectName: 'builtin-unlit',
     technique: 0,
     defines: { USE_TEXTURE: true },
     states: { rasterizerState: { cullMode: gfx.CullMode.NONE } },
