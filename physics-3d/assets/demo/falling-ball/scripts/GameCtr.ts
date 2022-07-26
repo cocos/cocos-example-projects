@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, LabelComponent, ButtonComponent, EventHandler } from "cc";
+import { _decorator, Component, Node, LabelComponent, Button, EventHandler } from "cc";
 import { ColumnCtr } from "./ColumnCtr";
 import { parseTime2String } from "./TempConst";
 import { BallCtr } from "./BallCtr";
@@ -50,14 +50,14 @@ export class GameCtr extends Component {
     _scoreLb: LabelComponent = null;
 
     start () {
-        const startBtn = this.loginPanel.getChildByName('StartBtn').getComponent(ButtonComponent);
+        const startBtn = this.loginPanel.getChildByName('StartBtn').getComponent(Button);
         const startEvent = new EventHandler();
         startEvent.target = this.node as Node;
         startEvent.component = "FALLING-BALL.GameCtr";
         startEvent.handler = "gameStart";
         startBtn.clickEvents.push(startEvent);
 
-        const backToLoginBtn = this.overPanel.getChildByName('BackBtn').getComponent(ButtonComponent);
+        const backToLoginBtn = this.overPanel.getChildByName('BackBtn').getComponent(Button);
         const backToLoginEvent = new EventHandler();
         backToLoginEvent.target = this.node as Node;
         backToLoginEvent.component = "FALLING-BALL.GameCtr";

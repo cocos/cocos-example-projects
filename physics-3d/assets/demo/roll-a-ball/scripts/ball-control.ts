@@ -1,4 +1,4 @@
-import { _decorator, Component, math, systemEvent, KeyCode, RigidBodyComponent, Touch, EventTouch, SystemEventType, EventKeyboard, Vec3, clamp } from "cc";
+import { _decorator, Node, Component, math, input, Input, KeyCode, RigidBodyComponent, Touch, EventTouch, EventKeyboard, Vec3, clamp } from "cc";
 const { ccclass, property, menu } = _decorator;
 
 const v3_0 = new math.Vec3();
@@ -69,19 +69,19 @@ export class ballcontrol extends Component {
     }
 
     onEnable () {
-        systemEvent.on(SystemEventType.KEY_DOWN, this.onKeyDown, this);
-        systemEvent.on(SystemEventType.KEY_UP, this.onKeyUp, this);
+        input.on(Input.EventType.KEY_DOWN, this.onKeyDown, this);
+        input.on(Input.EventType.KEY_UP, this.onKeyUp, this);
 
-        systemEvent.on(SystemEventType.TOUCH_MOVE, this.onTouchMove, this);
-        systemEvent.on(SystemEventType.TOUCH_END, this.onTouchEnd, this);
+        input.on(Input.EventType.TOUCH_MOVE, this.onTouchMove, this);
+        input.on(Input.EventType.TOUCH_END, this.onTouchEnd, this);
     }
 
     onDisable () {
-        systemEvent.off(SystemEventType.KEY_DOWN, this.onKeyDown, this);
-        systemEvent.off(SystemEventType.KEY_UP, this.onKeyUp, this);
+        input.off(Input.EventType.KEY_DOWN, this.onKeyDown, this);
+        input.off(Input.EventType.KEY_UP, this.onKeyUp, this);
 
-        systemEvent.off(SystemEventType.TOUCH_MOVE, this.onTouchMove, this);
-        systemEvent.off(SystemEventType.TOUCH_END, this.onTouchEnd, this);
+        input.off(Input.EventType.TOUCH_MOVE, this.onTouchMove, this);
+        input.off(Input.EventType.TOUCH_END, this.onTouchEnd, this);
     }
 
     onKeyDown (event: EventKeyboard) {

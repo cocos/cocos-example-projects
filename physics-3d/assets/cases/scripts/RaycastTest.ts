@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, Material, systemEvent, SystemEventType, EventTouch, CameraComponent, geometry, Touch, PhysicsSystem, ModelComponent, ToggleComponent, LabelComponent, EditBoxComponent, Button, Toggle } from "cc";
+import { _decorator, Component, Node, Material, input, Input, EventTouch, CameraComponent, geometry, Touch, PhysicsSystem, ModelComponent, Toggle, LabelComponent, EditBox, Button } from "cc";
 const { ccclass, property, menu } = _decorator;
 
 enum ERaycastType {
@@ -44,11 +44,11 @@ export class RaycastTest extends Component {
     }
 
     onEnable() {
-        systemEvent.on(SystemEventType.TOUCH_START, this.onTouchStart, this);
+        input.on(Input.EventType.TOUCH_START, this.onTouchStart, this);
     }
 
     onDisable() {
-        systemEvent.off(SystemEventType.TOUCH_START, this.onTouchStart, this);
+        input.off(Input.EventType.TOUCH_START, this.onTouchStart, this);
     }
 
     onTouchStart(touch: Touch, event: EventTouch) {
@@ -83,7 +83,7 @@ export class RaycastTest extends Component {
         }
     }
 
-    onToggle(toggleCom: ToggleComponent) {
+    onToggle(toggleCom: Toggle) {
         if (toggleCom.node.name == 'Toggle1') {
             this._raycastType = ERaycastType.ALL;
         } else if (toggleCom.node.name == 'Toggle2') {
@@ -95,7 +95,7 @@ export class RaycastTest extends Component {
         this.queryTrigger = toggle.isChecked;
     }
 
-    onEditFinish(editBox: EditBoxComponent) {
+    onEditFinish(editBox: EditBox) {
         const v = parseFloat(editBox.string);
         if (!isNaN(v)) {
             this.maxDistance = v;

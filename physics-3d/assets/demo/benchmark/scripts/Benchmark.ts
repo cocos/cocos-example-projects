@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, Prefab, instantiate, Vec2, EventTouch, EditBoxComponent, Vec3, randomRange, random, LabelComponent, Quat, ToggleComponent, PhysicsSystem, profiler, RigidBodyComponent, director, Director, math } from "cc";
+import { _decorator, Component, Node, Prefab, instantiate, Vec2, EventTouch, EditBox, Vec3, randomRange, random, LabelComponent, Quat, Toggle, PhysicsSystem, profiler, RigidBodyComponent, director, Director, math } from "cc";
 import { ProfilerManager } from "../../../common/scripts/ProfilerManager";
 const { ccclass, property, menu } = _decorator;
 
@@ -50,25 +50,25 @@ export class Benchmark extends Component {
 
     /** LEFT */
 
-    @property({ type: EditBoxComponent })
-    readonly l_editBox: EditBoxComponent = null!;
+    @property({ type: EditBox })
+    readonly l_editBox: EditBox = null!;
 
     @property({ type: LabelComponent })
     readonly l_current: LabelComponent = null!;
 
     /** RIGHT */
 
-    @property({ type: ToggleComponent })
-    readonly r_rotateToggle: ToggleComponent = null!;
+    @property({ type: Toggle })
+    readonly r_rotateToggle: Toggle = null!;
 
-    @property({ type: EditBoxComponent })
-    readonly r_frameRateEditBox: EditBoxComponent = null!;
+    @property({ type: EditBox })
+    readonly r_frameRateEditBox: EditBox = null!;
 
-    @property({ type: EditBoxComponent })
-    readonly r_subStepEditBox: EditBoxComponent = null!;
+    @property({ type: EditBox })
+    readonly r_subStepEditBox: EditBox = null!;
 
-    @property({ type: EditBoxComponent })
-    readonly r_IntervalEditBox: EditBoxComponent = null!;
+    @property({ type: EditBox })
+    readonly r_IntervalEditBox: EditBox = null!;
 
     @property({ type: RigidBodyComponent })
     readonly rotateDynamics: RigidBodyComponent = null!;
@@ -227,7 +227,7 @@ export class Benchmark extends Component {
         this.instantiate(5, this.sphereRB, this.sphereRBContainer);
     }
 
-    onEditFinish(editBox: EditBoxComponent) {
+    onEditFinish(editBox: EditBox) {
         const str = editBox.string;
         if (str != '') {
             localStorage.setItem(KEY_INIT_STR, str);
@@ -238,11 +238,11 @@ export class Benchmark extends Component {
         this.resetTransforms();
     }
 
-    onRotateToggole(toggle: ToggleComponent) {
+    onRotateToggole(toggle: Toggle) {
         this.enableRotate = toggle.isChecked;
     }
 
-    onEditFrameRate(editBox: EditBoxComponent) {
+    onEditFrameRate(editBox: EditBox) {
         const v = parseInt(editBox.string);
         if (isNaN(v)) return;
 
@@ -251,7 +251,7 @@ export class Benchmark extends Component {
         PhysicsSystem.instance.fixedTimeStep = 1 / fr;
     }
 
-    onEditSubStep(editBox: EditBoxComponent) {
+    onEditSubStep(editBox: EditBox) {
         const v = parseInt(editBox.string);
         if (isNaN(v)) return;
 
@@ -260,7 +260,7 @@ export class Benchmark extends Component {
         }
     }
 
-    onEditInterval(editBox: EditBoxComponent) {
+    onEditInterval(editBox: EditBox) {
         const v = parseInt(editBox.string);
         if (isNaN(v)) return;
 
