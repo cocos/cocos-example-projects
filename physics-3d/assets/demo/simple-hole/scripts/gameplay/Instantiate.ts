@@ -1,4 +1,4 @@
-import { _decorator, Component, Prefab, PhysicsSystem, ColliderComponent, math, ToggleComponent, BoxColliderComponent, Node, Vec3, director, Director, Quat } from "cc";
+import { _decorator, Component, Prefab, PhysicsSystem, ColliderComponent, math, Toggle, BoxColliderComponent, Node, Vec3, director, Director, Quat } from "cc";
 import { PrefabPoolUtil } from "../../../../common/scripts/PrefabPoolUtil";
 import { EShapeAlgorithm, random_algorithm, x_square_2_algorithm, spiral_algorithm } from "./EShapeAlgorithm";
 import { EGroup } from "./EGroupMask";
@@ -104,7 +104,7 @@ export class Instantiate extends Component {
         }
     }
 
-    toggleAlgorithms (toggle: ToggleComponent, value: EShapeAlgorithm) {
+    toggleAlgorithms (toggle: Toggle, value: EShapeAlgorithm) {
         this.algorithms = Number(value);
 
         // recover

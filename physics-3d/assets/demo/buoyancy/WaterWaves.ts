@@ -441,9 +441,9 @@ export class WaterWaves extends Component {
             const index = i * 3;
             let y = this._basePositions[index + 1];
             if (y < -this.height / this.node.scale.y - 1e-3) return; // continue;
-            y += Math.sin(director.getTotalTime() / 1000 * this.speed + this._basePositions[index] + this._basePositions[index + 1] + this._basePositions[index + 2])
+            y += Math.sin(game.totalTime / 1000 * this.speed + this._basePositions[index] + this._basePositions[index + 1] + this._basePositions[index + 2])
                 * (this.height / this.node.scale.y);
-            y += Noise.snoise(this._basePositions[index] + this.noiseWalk, this._basePositions[index + 1] /*+ Math.sin(director.getTotalTime() / 1000 * 0.1)*/)
+            y += Noise.snoise(this._basePositions[index] + this.noiseWalk, this._basePositions[index + 1] /*+ Math.sin(game.totalTime / 1000 * 0.1)*/)
                 * this.noiseStrength;
             this._positions[index + 1] = y;
             v3_0.set(this._positions[index], this._positions[index + 1], this._positions[index + 2]);

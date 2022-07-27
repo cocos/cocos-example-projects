@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, Prefab, loader, systemEvent, SystemEventType, Touch, geometry, CameraComponent, PhysicsSystem, Enum, KeyCode, EventKeyboard, game } from 'cc';
+import { _decorator, Component, Node, Prefab, loader, input, Touch, geometry, CameraComponent, PhysicsSystem, Enum, KeyCode, EventKeyboard, game, Input } from 'cc';
 import { PrefabPoolUtil } from './PrefabPoolUtil';
 const { ccclass, property, menu } = _decorator;
 
@@ -57,13 +57,13 @@ export class RaycastHelper extends Component {
     }
 
     onEnable () {
-        systemEvent.on(SystemEventType.TOUCH_START, this.onTouchStart, this);
-        systemEvent.on(SystemEventType.KEY_DOWN, this.onKeyDown, this);
+        input.on(Input.EventType.TOUCH_START, this.onTouchStart, this);
+        input.on(Input.EventType.KEY_DOWN, this.onKeyDown, this);
     }
 
     onDisable () {
-        systemEvent.off(SystemEventType.TOUCH_START, this.onTouchStart, this);
-        systemEvent.off(SystemEventType.KEY_DOWN, this.onKeyDown, this);
+        input.off(Input.EventType.TOUCH_START, this.onTouchStart, this);
+        input.off(Input.EventType.KEY_DOWN, this.onKeyDown, this);
     }
 
     onDestroy () {

@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, systemEvent, SystemEventType, EventMouse, Vec3, sys, EventTouch } from 'cc';
+import { _decorator, Component, Node, input, Input, EventMouse, Vec3, sys, EventTouch } from 'cc';
 const { ccclass, property, menu } = _decorator;
 
 const v3_0 = new Vec3();
@@ -25,14 +25,14 @@ export class BearingController extends Component {
             this._bind = this.onFullScreenChange.bind(this);
             document.addEventListener('fullscreenchange', this._bind, false);
         }
-        this.fullScreen.children[0].on(SystemEventType.TOUCH_START, this.onTouchStart, this);
+        this.fullScreen.children[0].on(Input.EventType.TOUCH_START, this.onTouchStart, this);
     }
 
     protected onDisable () {
         if (sys.isBrowser) {
             document.removeEventListener('fullscreenchange', this._bind, false);
         }
-        this.fullScreen.children[0].off(SystemEventType.TOUCH_START, this.onTouchStart, this);
+        this.fullScreen.children[0].off(Input.EventType.TOUCH_START, this.onTouchStart, this);
     }
 
     protected onTouchStart (touch: EventTouch) {
@@ -49,14 +49,14 @@ export class BearingController extends Component {
             if (sys.isBrowser) {
                 document.removeEventListener('mousemove', this._bind2, false);
             } else {
-                systemEvent.off(SystemEventType.MOUSE_MOVE, this.onMouseMove, this);
+                input.off(Input.EventType.MOUSE_MOVE, this.onMouseMove, this);
             }
         } else {
             if (sys.isBrowser) {
                 this._bind2 = this.onMouseMove.bind(this);
                 document.addEventListener('mousemove', this._bind2, false);
             } else {
-                systemEvent.on(SystemEventType.MOUSE_MOVE, this.onMouseMove, this);
+                input.on(Input.EventType.MOUSE_MOVE, this.onMouseMove, this);
             }
         }
     }

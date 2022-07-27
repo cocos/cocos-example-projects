@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, ScrollViewComponent, Vec3, ButtonComponent, LayoutComponent, game, LabelComponent, director, Director, Canvas, Layers } from "cc";
+import { _decorator, Component, Node, ScrollView, Vec3, Button, Layout, game, LabelComponent, director, Director, Canvas, Layers } from "cc";
 const { ccclass, property, menu } = _decorator;
 import { sceneArray } from "./scenelist";
 
@@ -7,13 +7,13 @@ import { sceneArray } from "./scenelist";
 export class BackButton extends Component {
     private static _offset = new Vec3();
     public static _scrollNode: Node | null = null;
-    private static _scrollCom: ScrollViewComponent | null = null;
+    private static _scrollCom: ScrollView | null = null;
 
     private static _sceneIndex: number = -1;
     private static _prevNode: Node;
     private static _nextNode: Node;
-    private static _prevButton: ButtonComponent;
-    private static _nextButton: ButtonComponent;
+    private static _prevButton: Button;
+    private static _nextButton: Button;
     private sceneName: LabelComponent;
 
     __preload () {
@@ -66,13 +66,13 @@ export class BackButton extends Component {
         game.addPersistRootNode(this.node);
         BackButton._scrollNode = this.node.getParent().getChildByPath('Canvas/ScrollView') as Node;
         if (BackButton._scrollNode) {
-            BackButton._scrollCom = BackButton._scrollNode.getComponent(ScrollViewComponent);
+            BackButton._scrollCom = BackButton._scrollNode.getComponent(ScrollView);
         }
         BackButton._prevNode = this.node.getChildByName('PrevButton') as Node;
         BackButton._nextNode = this.node.getChildByName('NextButton') as Node;
         if (BackButton._prevNode && BackButton._nextNode) {
-            BackButton._prevButton = BackButton._prevNode.getComponent(ButtonComponent);
-            BackButton._nextButton = BackButton._nextNode.getComponent(ButtonComponent);
+            BackButton._prevButton = BackButton._prevNode.getComponent(Button);
+            BackButton._nextButton = BackButton._nextNode.getComponent(Button);
             BackButton.refreshButton();
         }
         director.on(Director.EVENT_BEFORE_SCENE_LOADING, this.switchSceneName, this);
@@ -96,8 +96,8 @@ export class BackButton extends Component {
             BackButton.refreshButton();
             BackButton._scrollNode = this.node.getParent().getChildByPath('Canvas/ScrollView') as Node;
             if (BackButton._scrollNode) {
-                BackButton._scrollCom = BackButton._scrollNode.getComponent(ScrollViewComponent);
-                BackButton._scrollCom._content.getComponent(LayoutComponent).updateLayout();
+                BackButton._scrollCom = BackButton._scrollNode.getComponent(ScrollView);
+                BackButton._scrollCom._content.getComponent(Layout).updateLayout();
                 BackButton._scrollCom.scrollToOffset(BackButton.offset, 0.1, true);
             }
         }.bind(this));

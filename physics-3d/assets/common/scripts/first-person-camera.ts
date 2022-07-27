@@ -1,4 +1,4 @@
-import { _decorator, Component, math, systemEvent, SystemEvent, KeyCode, game, cclegacy, Touch, EventKeyboard, EventMouse } from "cc";
+import { _decorator, Component, math, input, Input, KeyCode, game, cclegacy, Touch, EventKeyboard, EventMouse } from "cc";
 const { ccclass, property, menu } = _decorator;
 const v2_1 = new math.Vec2();
 const v2_2 = new math.Vec2();
@@ -72,19 +72,19 @@ export class FirstPersonCamera extends Component {
 	}
 
 	private _addEvents() {
-		systemEvent.on(SystemEvent.EventType.MOUSE_WHEEL, this.onMouseWheel, this);
-		systemEvent.on(SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
-		systemEvent.on(SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
-		systemEvent.on(SystemEvent.EventType.TOUCH_MOVE, this.onTouchMove, this);
-		systemEvent.on(SystemEvent.EventType.TOUCH_END, this.onTouchEnd, this);
+		input.on(Input.EventType.MOUSE_WHEEL, this.onMouseWheel, this);
+		input.on(Input.EventType.KEY_DOWN, this.onKeyDown, this);
+		input.on(Input.EventType.KEY_UP, this.onKeyUp, this);
+		input.on(Input.EventType.TOUCH_MOVE, this.onTouchMove, this);
+		input.on(Input.EventType.TOUCH_END, this.onTouchEnd, this);
 	}
 
 	private _removeEvents() {
-		systemEvent.off(SystemEvent.EventType.MOUSE_WHEEL, this.onMouseWheel, this);
-		systemEvent.off(SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
-		systemEvent.off(SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
-		systemEvent.off(SystemEvent.EventType.TOUCH_MOVE, this.onTouchMove, this);
-		systemEvent.off(SystemEvent.EventType.TOUCH_END, this.onTouchEnd, this);
+		input.off(Input.EventType.MOUSE_WHEEL, this.onMouseWheel, this);
+		input.off(Input.EventType.KEY_DOWN, this.onKeyDown, this);
+		input.off(Input.EventType.KEY_UP, this.onKeyUp, this);
+		input.off(Input.EventType.TOUCH_MOVE, this.onTouchMove, this);
+		input.off(Input.EventType.TOUCH_END, this.onTouchEnd, this);
 	}
 
 	onMouseWheel(e: EventMouse) {
