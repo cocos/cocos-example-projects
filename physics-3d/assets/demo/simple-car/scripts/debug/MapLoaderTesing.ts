@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, JsonAsset, instantiate, loader, Prefab, Vec3, Quat, systemEvent } from "cc";
+import { _decorator, Component, Node, JsonAsset, instantiate, loader, Prefab, Vec3, Quat, director } from "cc";
 import { IMapStruct } from "../const/Interface";
 const { ccclass, property, menu } = _decorator;
 
@@ -43,7 +43,7 @@ export class MapLoaderTesing extends Component {
                     }
                     cur++;
                     if (cur == tol) {
-                        systemEvent.emit('onMapLoaded');
+                        director.emit('onMapLoaded');
                     }
                 });
             }
