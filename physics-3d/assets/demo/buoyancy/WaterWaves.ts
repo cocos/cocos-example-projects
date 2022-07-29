@@ -243,6 +243,8 @@ export class WaterWaves extends Component {
                 dataView.setFloat32(offset + 5 * Float32Array.BYTES_PER_ELEMENT, this._normals[index + 2], sys.isLittleEndian);
             }
             this._mesh.reset({ struct: this._mesh.struct, data: this._mesh.data, });
+            this._meshRenderer.receiveShadow = 0;
+            this._meshRenderer.shadowCastingMode = 0;
             this._meshRenderer.mesh = this._mesh;
 
             if (this.debugPosition) {
