@@ -13,12 +13,7 @@ export class CallNative extends Component {
     @property(Light)
     public lightToChange: Light | undefined;
     start() {
-        this.downloaderTest();
         this.registerAllScriptEvent();
-    }
-    public downloaderTest() {
-        let downloaderX = new native.Downloader();
-        downloaderX.createDownloadTask("https://www.baidu.com/", "test.html");
     }
     public registerAllScriptEvent() {
         native.jsbBridgeWrapper.addNativeEventListener("changeLabelContent", (usr: string) => {
