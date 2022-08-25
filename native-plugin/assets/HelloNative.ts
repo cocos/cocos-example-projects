@@ -21,7 +21,7 @@ export class HelloNative extends Component {
                     "[empty]");
             } else {
                 const d = new Demo("Cocos");
-                this.stateLabel.string = "SUCCESS: see message⬆";
+                this.stateLabel.string = "SUCCESS: see message";
                 this.resultLabel.string = d.hello("World");
             }
         } else {
