@@ -27,4 +27,4 @@
 
 ### 错误效果
 
-![err](./doc/error.PNG)
+![err](./doc/error-case.png)
