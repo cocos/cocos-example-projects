@@ -1,4 +1,4 @@
-import { _decorator, Component, CameraComponent, Node, Vec3, Scene, CanvasComponent, LabelComponent, systemEvent, SystemEventType, EventTouch, geometry, ModelComponent, Color, randomRange, HorizontalTextAlignment } from 'cc';
+import { _decorator, Component, CameraComponent, Node, Vec3, Scene, CanvasComponent, LabelComponent, EventTouch, geometry, ModelComponent, Color, randomRange, HorizontalTextAlignment, Input, input } from 'cc';
 import { globalBroadcast } from './Broadcast';
 
 const v = new Vec3();
@@ -77,15 +77,15 @@ export class Guy extends Component {
     }
 
     onEnable () {
-        systemEvent.on(SystemEventType.TOUCH_START, this.onTouchStart, this);
+        input.on(Input.EventType.TOUCH_START, this.onTouchStart, this);
     }
 
     onDisable () {
-        systemEvent.off(SystemEventType.TOUCH_START, this.onTouchStart, this);
+        input.off(Input.EventType.TOUCH_START, this.onTouchStart, this);
     }
 
-    onTouchStart (touch: Touch, event: EventTouch) {
-        this.mainCamera.screenPointToRay(touch._point.x, touch._point.y, this._ray);
+    onTouchStart (event: EventTouch) {
+        this.mainCamera.screenPointToRay(event.touch!.getLocationX(), event.touch!.getLocationY(), this._ray);
         if (geometry.intersect.ray_model(this._ray, this._modelComponent.model)) {
             this._send();
         } else {
