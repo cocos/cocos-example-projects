@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node, CCFloat, CCBoolean, Vec2, Vec3, math, log, Event, EventTouch, UITransformComponent, UITransform, CameraComponent } from 'cc';
+import { _decorator, Component, Node, CCFloat, CCBoolean, Vec2, Vec3, math, log, Event, EventTouch, UITransform, CameraComponent } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('Main')
@@ -10,8 +10,8 @@ export default class Joystick extends Component {
     camera: CameraComponent = null!;
 
 
-    @property({displayName: "Parent Node", tooltip: "Parent node of background and joystick center，this node is used to convert location matrix.", type: UITransformComponent})
-    parent: UITransformComponent = null!;
+    @property({displayName: "Parent Node", tooltip: "Parent node of background and joystick center，this node is used to convert location matrix.", type: UITransform})
+    parent: UITransform = null!;
 
 
 
