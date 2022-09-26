@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, Quat, ITriggerEvent, Material, ColliderComponent, ModelComponent, LabelComponent, VerticalTextAlignment, UITransformComponent, Size, Color } from "cc";
+import { _decorator, Component, Node, Quat, ITriggerEvent, Material, ColliderComponent, ModelComponent, LabelComponent, VerticalTextAlignment, UITransform, Size, Color } from "cc";
 const { ccclass, property, menu } = _decorator;
 
 @ccclass("CASES.TriggerTest")
@@ -60,7 +60,7 @@ export class TriggerTest extends Component {
             this.label.fontSize = 40;
             this.label.lineHeight = 40;
             this.label.verticalAlign = VerticalTextAlignment.CENTER;
-            this.label.getComponent(UITransformComponent)!.contentSize = new Size(400, 400);
+            this.label.getComponent(UITransform)!.contentSize = new Size(400, 400);
             this.label.color = Color.RED;
             this.enabled = false;
             return;

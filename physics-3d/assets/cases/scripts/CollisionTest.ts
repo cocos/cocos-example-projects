@@ -1,4 +1,4 @@
-import { _decorator, Component, ITriggerEvent, ColliderComponent, LabelComponent, ICollisionEvent, Color, UITransformComponent, Size, VerticalTextAlignment } from "cc";
+import { _decorator, Component, ITriggerEvent, ColliderComponent, LabelComponent, ICollisionEvent, Color, UITransform, Size, VerticalTextAlignment } from "cc";
 const { ccclass, property, menu } = _decorator;
 
 @ccclass("CASES.CollisionTest")
@@ -36,7 +36,7 @@ export class CollisionTest extends Component {
             this.label.fontSize = 40;
             this.label.lineHeight = 40;
             this.label.verticalAlign =VerticalTextAlignment.CENTER;
-            this.label.getComponent(UITransformComponent)!.contentSize = new Size(400, 400);
+            this.label.getComponent(UITransform)!.contentSize = new Size(400, 400);
             this.label.color = Color.RED;
             this.enabled = false;
             return;
