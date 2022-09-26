@@ -1,4 +1,4 @@
-import { _decorator, Component, CameraComponent, Node, Vec3, Scene, CanvasComponent, LabelComponent, EventTouch, geometry, ModelComponent, Color, randomRange, HorizontalTextAlignment, Input, input } from 'cc';
+import { _decorator, Component, CameraComponent, Node, Vec3, Label, EventTouch, geometry, ModelComponent, Color, randomRange, HorizontalTextAlignment, Input, input } from 'cc';
 import { globalBroadcast } from './Broadcast';
 
 const v = new Vec3();
@@ -19,7 +19,7 @@ export class Guy extends Component {
 
     private _modelComponent: ModelComponent | null = null;
     private _billboardNode: Node | null = null;
-    private _label: LabelComponent | null = null;
+    private _label: Label | null = null;
     private _ray: geometry.Ray = new geometry.Ray();
     private _textLiveTime = 0;
     
@@ -33,7 +33,7 @@ export class Guy extends Component {
         const billboardNode = new Node(`Billboard-${this.nickName}`);
         this.canvasNode.addChild(billboardNode);
         billboardNode.layer = this.canvasNode.layer;
-        this._label = billboardNode.addComponent(LabelComponent);
+        this._label = billboardNode.addComponent(Label);
         this._label.string = `我是 ${this.nickName}`
         this._label.color = new Color(0, 0, 0);
         this._label.fontSize = 15;
@@ -129,9 +129,9 @@ export class Guy extends Component {
     }
 
     private _updateLabelAlpha(alpha: number) {
-        const c = this._label.color.clone();
+        const c = this._label!.color.clone();
         c.a = alpha * 255;
-        this._label.color = c;
+        this._label!.color = c;
     }
 }
 
