@@ -184,8 +184,8 @@ export class CurvecastHelper extends Component {
         }
         
         if (this.curvecastType == ECurvecastType.CLOSEST) {
-            if (PhysicsSystem.instance.lineSegmentsRaycastClosest(sampleArray)) {
-                const result = PhysicsSystem.instance.lineSegmentsRaycastClosestResult;
+            if (PhysicsSystem.instance.lineStripCastClosest(sampleArray)) {
+                const result = PhysicsSystem.instance.lineStripCastClosestResult;
                 const hitPoint = instantiate(this._hitPoint) as Node;
                 hitPoint.setWorldPosition(result.hitPoint);
                 hitPoint.setScale(this.hitSphereScale, this.hitSphereScale, this.hitSphereScale);
@@ -193,9 +193,9 @@ export class CurvecastHelper extends Component {
                 this.ResultLabel.string = this.ResultLabel.string.concat("hit line id: ").concat(result.id.toString());
             }
         } else if (this.curvecastType == ECurvecastType.ALL) {
-            if (PhysicsSystem.instance.lineSegmentsRaycast(sampleArray)) {
+            if (PhysicsSystem.instance.lineStripCast(sampleArray)) {
                 this.ResultLabel.string = this.ResultLabel.string.concat("hit line id: ");
-                const results = PhysicsSystem.instance.lineSegmentsRaycastResults;
+                const results = PhysicsSystem.instance.lineStripCastResults;
                 for (let i = 0; i < results.length; i++) {
                     const result = results[i];
                     const hitPoint = instantiate(this._hitPoint) as Node;
