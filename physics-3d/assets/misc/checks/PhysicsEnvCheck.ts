@@ -21,7 +21,7 @@ export class PhysicsEnvCheck extends Component {
     onLoad() {
         const title = this.node.getChildByName('desc')!.getComponent(LabelComponent)!;
         title.fontSize = 30;
-        if (physics.PhysicsSystem.PHYSICS_AMMO) {
+        if (physics.PhysicsSystem.PHYSICS_BULLET) {
             title.string = "bullet";
         } else {
             title.string = physics.selector.id;
@@ -48,7 +48,7 @@ export class PhysicsEnvCheck extends Component {
             case EPhysicsItem.ALL:
                 break;
             case EPhysicsItem.CANNON_AMMO:
-                if (physics.PhysicsSystem.PHYSICS_CANNON || physics.PhysicsSystem.PHYSICS_AMMO) {
+                if (physics.PhysicsSystem.PHYSICS_CANNON || physics.PhysicsSystem.PHYSICS_BULLET) {
                     break;
                 }
 
@@ -60,7 +60,7 @@ export class PhysicsEnvCheck extends Component {
                 break;
 
             case EPhysicsItem.BUILTIN_AMMO:
-                if (physics.PhysicsSystem.PHYSICS_BUILTIN || physics.PhysicsSystem.PHYSICS_AMMO) {
+                if (physics.PhysicsSystem.PHYSICS_BUILTIN || physics.PhysicsSystem.PHYSICS_BULLET) {
                     break;
                 }
 
@@ -81,7 +81,7 @@ export class PhysicsEnvCheck extends Component {
                 }
                 break;
             case EPhysicsItem.AMMO:
-                if (!physics.PhysicsSystem.PHYSICS_AMMO) {
+                if (!physics.PhysicsSystem.PHYSICS_BULLET) {
                     let lbCom = this.node.getChildByName('lb')!.getComponent(LabelComponent)!;
                     lbCom.enabled = true;
                     lbCom.string = "测试此场景需要将物理模块设置为 ammo.js 或 physx";

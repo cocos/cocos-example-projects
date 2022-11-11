@@ -283,7 +283,7 @@ export class RiggedBow extends Component {
 }
 
 function useCCD(rb: RigidBody, ms = 0.001, sr = 0.05) {
-    if (rb && PhysicsSystem.PHYSICS_AMMO) {
+    if (rb && PhysicsSystem.PHYSICS_BULLET) {
         const Ammo = window['Ammo'];
         const impl = rb.body!.impl;
         impl['useCCD'] = true;

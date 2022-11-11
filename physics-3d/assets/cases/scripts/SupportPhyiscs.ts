@@ -34,7 +34,7 @@ export class SupportPhyiscs extends Component {
                     return;
                 break;
             case SupportPhysics.AMMO:
-                if (PhysicsSystem.PHYSICS_AMMO)
+                if (PhysicsSystem.PHYSICS_BULLET)
                     return;
                 break;
             case SupportPhysics.BUILTIN_CANNON:
@@ -42,23 +42,23 @@ export class SupportPhyiscs extends Component {
                     return;
                 break;
             case SupportPhysics.BUILTIN_AMMO:
-                if (PhysicsSystem.PHYSICS_BUILTIN || PhysicsSystem.PHYSICS_AMMO)
+                if (PhysicsSystem.PHYSICS_BUILTIN || PhysicsSystem.PHYSICS_BULLET)
                     return;
                 break;
             case SupportPhysics.CANNON_AMMO:
-                if (PhysicsSystem.PHYSICS_CANNON || PhysicsSystem.PHYSICS_AMMO)
+                if (PhysicsSystem.PHYSICS_CANNON || PhysicsSystem.PHYSICS_BULLET)
                     return;
                 break;
             case SupportPhysics.AMMO_PHYSX:
-                if (PhysicsSystem.PHYSICS_AMMO || PhysicsSystem.PHYSICS_PHYSX)
+                if (PhysicsSystem.PHYSICS_BULLET || PhysicsSystem.PHYSICS_PHYSX)
                     return;
                 break;
             case SupportPhysics.BUILTIN_AMMO_PHYSX:
-                if (PhysicsSystem.PHYSICS_BUILTIN || PhysicsSystem.PHYSICS_AMMO || PhysicsSystem.PHYSICS_PHYSX)
+                if (PhysicsSystem.PHYSICS_BUILTIN || PhysicsSystem.PHYSICS_BULLET || PhysicsSystem.PHYSICS_PHYSX)
                     return;
                 break;
             case SupportPhysics.CANNON_AMMO_PHYSX:
-                if (PhysicsSystem.PHYSICS_CANNON || PhysicsSystem.PHYSICS_AMMO || PhysicsSystem.PHYSICS_PHYSX)
+                if (PhysicsSystem.PHYSICS_CANNON || PhysicsSystem.PHYSICS_BULLET || PhysicsSystem.PHYSICS_PHYSX)
                     return;
                 break;
         }
