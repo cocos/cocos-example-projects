@@ -10,7 +10,7 @@
   },
   {
     "__type__": "cc.Scene",
-    "_name": "case-fixed-constraint",
+    "_name": "case-constraint-fixed",
     "_objFlags": 0,
     "_parent": null,
     "_children": [
@@ -392,8 +392,8 @@
       "b": 255,
       "a": 255
     },
-    "_string": "相同颜色的物体通过 FixedConstraint 进行约束，在 demo 运行过程中，相同颜色的物体会保持运动状态一致，相对静止。",
-    "_horizontalAlign": 0,
+    "_string": "相同颜色的物体通过 FixedConstraint 进行约束，在 demo 运行过程中，相同颜色的物体会保持运动状态一致，相对静止。\n\n\n\n\n\n\n\n深蓝色组合的约束效果将会在掉落后失效。",
+    "_horizontalAlign": 2,
     "_verticalAlign": 2,
     "_actualFontSize": 20,
     "_fontSize": 20,
@@ -759,9 +759,9 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 2.394,
+      "x": 1.433,
       "y": 0.554,
-      "z": -1.812
+      "z": -2.245
     },
     "_lrot": {
       "__type__": "cc.Quat",
@@ -1749,9 +1749,9 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -0.879,
+      "x": -1.26,
       "y": 3.963,
-      "z": -2.299
+      "z": -1.641
     },
     "_lrot": {
       "__type__": "cc.Quat",
@@ -2330,16 +2330,16 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -2.293,
-      "y": 2.834,
-      "z": 1.339
+      "x": -1.066,
+      "y": 2.589,
+      "z": 1.074
     },
     "_lrot": {
       "__type__": "cc.Quat",
       "x": 0,
       "y": 0,
-      "z": -0.06977388451067647,
-      "w": 0.9975628326277451
+      "z": -0.10107366111158735,
+      "w": 0.9948789449121436
     },
     "_lscale": {
       "__type__": "cc.Vec3",
@@ -2353,7 +2353,7 @@
       "__type__": "cc.Vec3",
       "x": 0,
       "y": 0,
-      "z": -8.002
+      "z": -11.602
     },
     "_id": "c5h2SJPDVCiKp6IhPPva/z"
   },
@@ -2531,8 +2531,8 @@
     "_connectedBody": {
       "__id__": 82
     },
-    "_breakForce": 100000000,
-    "breakForce": 100000000,
+    "_breakForce": 1,
+    "breakForce": 1,
     "_breakTorque": 100000000,
     "breakTorque": 100000000,
     "_id": "cf5zBxsJVNsLkwOhuJbUrk"
@@ -2713,9 +2713,9 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 1.358,
+      "x": 2.343,
       "y": 1.269,
-      "z": 1.749
+      "z": 0.362
     },
     "_lrot": {
       "__type__": "cc.Quat",
@@ -3409,7 +3409,6 @@
   },
   {
     "__type__": "cc.LightProbeInfo",
-    "_enabled": false,
     "_giScale": 1,
     "_giSamples": 1024,
     "_bounces": 2,
@@ -3417,7 +3416,6 @@
     "_showProbe": true,
     "_showWireframe": true,
     "_showConvex": false,
-    "_data": null,
-    "_lightProbeGroups": []
+    "_data": null
   }
 ]
