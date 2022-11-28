@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, EventKeyboard, systemEvent, SystemEventType, KeyCode, Vec3, AnimationComponent, EventMouse, EventType, sys, Quat } from 'cc';
+import { _decorator, Component, Node, EventKeyboard, input, Input, KeyCode, Vec3, AnimationComponent, EventMouse, EventType, sys, Quat } from 'cc';
 import { CharacterController } from './CharacterController';
 const { ccclass, property, menu } = _decorator;
 
@@ -53,22 +53,22 @@ export class CharacterControllerTest extends Component {
     }
 
     protected onEnable () {
-        systemEvent.on(SystemEventType.KEY_DOWN, this.onKeyDown, this);
-        systemEvent.on(SystemEventType.KEY_UP, this.onKeyUp, this);
+        input.on(Input.EventType.KEY_DOWN, this.onKeyDown, this);
+        input.on(Input.EventType.KEY_UP, this.onKeyUp, this);
         if (sys.isBrowser) {
             document.addEventListener('mousedown', this.onMouseDown2, false);
         } else {
-            systemEvent.on(SystemEventType.MOUSE_DOWN, this.onMouseDown, this);
+            input.on(Input.EventType.MOUSE_DOWN, this.onMouseDown, this);
         }
     }
 
     protected onDisable () {
-        systemEvent.off(SystemEventType.KEY_DOWN, this.onKeyDown, this);
-        systemEvent.off(SystemEventType.KEY_UP, this.onKeyUp, this);
+        input.off(Input.EventType.KEY_DOWN, this.onKeyDown, this);
+        input.off(Input.EventType.KEY_UP, this.onKeyUp, this);
         if (sys.isBrowser) {
             document.removeEventListener('mousedown', this.onMouseDown2, false);
         } else {
-            systemEvent.off(SystemEventType.MOUSE_DOWN, this.onMouseDown, this);
+            input.off(Input.EventType.MOUSE_DOWN, this.onMouseDown, this);
         }
     }
 

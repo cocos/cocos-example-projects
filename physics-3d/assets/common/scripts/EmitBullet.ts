@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, systemEvent, SystemEventType, Touch, EventTouch, CameraComponent, Vec3, SphereColliderComponent, RigidBodyComponent, instantiate, ModelComponent, Material, BoxColliderComponent, Primitive, CapsuleColliderComponent, CylinderColliderComponent, ConeColliderComponent, gfx, Vec4, Color } from 'cc';
+import { _decorator, Component, Node, input, Input, Touch, EventTouch, CameraComponent, Vec3, SphereColliderComponent, RigidBodyComponent, instantiate, ModelComponent, Material, BoxColliderComponent, Primitive, CapsuleColliderComponent, CylinderColliderComponent, ConeColliderComponent, gfx, Vec4, Color } from 'cc';
 const { ccclass, property, menu, requireComponent } = _decorator;
 
 @ccclass('COMMON.EmitBullet')
@@ -88,11 +88,11 @@ export class EmitBullet extends Component {
     }
 
     onEnable () {
-        systemEvent.on(SystemEventType.TOUCH_START, this.onTouchStart, this);
+        input.on(Input.EventType.TOUCH_START, this.onTouchStart, this);
     }
 
     onDisable () {
-        systemEvent.off(SystemEventType.TOUCH_START, this.onTouchStart, this);
+        input.off(Input.EventType.TOUCH_START, this.onTouchStart, this);
     }
 
     onTouchStart (touch: Touch, event: EventTouch) {

@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, systemEvent, js, PhysicsSystem, Vec3 } from "cc";
+import { _decorator, Component, Node, director, js, PhysicsSystem, Vec3 } from "cc";
 import { MotorState } from "./MotorState";
 import { MotorCtr } from "./MotorCtr";
 import { InstanceMgr } from "./InstanceMgr";
@@ -31,7 +31,7 @@ export class MotorCom extends Component {
 
         this.enabled = false;
         this.MotorCtr.rigidBody.useGravity = false;
-        systemEvent.once('onMapLoaded' as any, this.onMapLoaded, this);
+        director.once('onMapLoaded' as any, this.onMapLoaded, this);
     }
 
     update (deltaTime: number) {
@@ -45,7 +45,7 @@ export class MotorCom extends Component {
     }
 
     onDestroy () {
-        systemEvent.off('onMapLoaded' as any, this.onMapLoaded, this);
+        director.off('onMapLoaded' as any, this.onMapLoaded, this);
         InstanceMgr.reset();
         PhysicsSystem.instance.gravity = new Vec3(0, -10, 0);
     }

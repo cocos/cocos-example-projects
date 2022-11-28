@@ -1,4 +1,4 @@
-import { _decorator, Component, Quat, Vec2, Vec3, systemEvent, SystemEvent, game, Touch, EventKeyboard, EventMouse, KeyCode } from 'cc';
+import { _decorator, Component, Quat, Vec2, Vec3, input, Input, game, EventKeyboard, EventMouse, KeyCode, EventTouch } from 'cc';
 const { ccclass, property } = _decorator;
 
 const v2_1 = new Vec2();
@@ -36,23 +36,23 @@ export class FirstPersonCamera extends Component {
     private _speedScale = 1;
 
     public onLoad () {
-        systemEvent.on(SystemEvent.EventType.MOUSE_WHEEL, this.onMouseWheel, this);
-        systemEvent.on(SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
-        systemEvent.on(SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
-        systemEvent.on(SystemEvent.EventType.TOUCH_START, this.onTouchStart, this);
-        systemEvent.on(SystemEvent.EventType.TOUCH_MOVE, this.onTouchMove, this);
-        systemEvent.on(SystemEvent.EventType.TOUCH_END, this.onTouchEnd, this);
+        input.on(Input.EventType.MOUSE_WHEEL, this.onMouseWheel, this);
+        input.on(Input.EventType.KEY_DOWN, this.onKeyDown, this);
+        input.on(Input.EventType.KEY_UP, this.onKeyUp, this);
+        input.on(Input.EventType.TOUCH_START, this.onTouchStart, this);
+        input.on(Input.EventType.TOUCH_MOVE, this.onTouchMove, this);
+        input.on(Input.EventType.TOUCH_END, this.onTouchEnd, this);
         Vec3.copy(this._euler, this.node.eulerAngles);
         Vec3.copy(this._position, this.node.position);
     }
 
     public onDestroy () {
-        systemEvent.off(SystemEvent.EventType.MOUSE_WHEEL, this.onMouseWheel, this);
-        systemEvent.off(SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
-        systemEvent.off(SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
-        systemEvent.off(SystemEvent.EventType.TOUCH_START, this.onTouchStart, this);
-        systemEvent.off(SystemEvent.EventType.TOUCH_MOVE, this.onTouchMove, this);
-        systemEvent.off(SystemEvent.EventType.TOUCH_END, this.onTouchEnd, this);
+        input.off(Input.EventType.MOUSE_WHEEL, this.onMouseWheel, this);
+        input.off(Input.EventType.KEY_DOWN, this.onKeyDown, this);
+        input.off(Input.EventType.KEY_UP, this.onKeyUp, this);
+        input.off(Input.EventType.TOUCH_START, this.onTouchStart, this);
+        input.off(Input.EventType.TOUCH_MOVE, this.onTouchMove, this);
+        input.off(Input.EventType.TOUCH_END, this.onTouchEnd, this);
     }
 
     public update (dt: number) {
@@ -96,11 +96,11 @@ export class FirstPersonCamera extends Component {
         else if (e.keyCode === KEYCODE.E) { if (v.y > 0) { v.y = 0; } }
     }
 
-    public onTouchStart (e: Touch) {
+    public onTouchStart (e: EventTouch) {
         if (game.canvas.requestPointerLock) { game.canvas.requestPointerLock(); }
     }
 
-    public onTouchMove (e: Touch) {
+    public onTouchMove (e: EventTouch) {
         e.getStartLocation(v2_1);
         if (v2_1.x > game.canvas.width * 0.4) { // rotation
             e.getDelta(v2_2);
@@ -114,7 +114,7 @@ export class FirstPersonCamera extends Component {
         }
     }
 
-    public onTouchEnd (e: Touch) {
+    public onTouchEnd (e: EventTouch) {
         if (document.exitPointerLock) { document.exitPointerLock(); }
         e.getStartLocation(v2_1);
         if (v2_1.x < game.canvas.width * 0.4) { // position

@@ -1,4 +1,4 @@
-import { _decorator, Component, CameraComponent, Material, ModelComponent, SpotLightComponent, SphereLightComponent, Vec2 } from "cc";
+import { _decorator, Component, CameraComponent, Material, ModelComponent, SpotLightComponent, SphereLightComponent, Vec2, Vec4 } from "cc";
 const { ccclass } = _decorator;
 
 @ccclass("LightHint")
@@ -15,7 +15,7 @@ export class LightHint extends Component {
         const size = light.size * 4;
         this.node.setWorldScale(size, size, size);
         this._material.setProperty('mainColor', light.color);
-        this._material.setProperty('intensitySize', new Vec2(light.luminance, 0.4));
+        this._material.setProperty('intensitySize', new Vec4(light.luminance, 0.4, 0, 0));
     }
 
     update () {

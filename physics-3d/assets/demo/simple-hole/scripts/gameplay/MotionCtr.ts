@@ -1,4 +1,4 @@
-import { _decorator, Component, math, systemEvent, SystemEvent, game, KeyCode, director, EventTouch, EventKeyboard, Touch, clamp } from "cc";
+import { _decorator, Component, math, input, Input, game, KeyCode, director, EventTouch, EventKeyboard, Touch, clamp } from "cc";
 const { ccclass, property, menu } = _decorator;
 
 const v2_1 = new math.Vec2();
@@ -67,17 +67,17 @@ export class MotionCtr extends Component {
     }
 
     private _addEvents() {
-        systemEvent.on(SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
-        systemEvent.on(SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
-        systemEvent.on(SystemEvent.EventType.TOUCH_MOVE, this.onTouchMove, this);
-        systemEvent.on(SystemEvent.EventType.TOUCH_END, this.onTouchEnd, this);
+        input.on(Input.EventType.KEY_DOWN, this.onKeyDown, this);
+        input.on(Input.EventType.KEY_UP, this.onKeyUp, this);
+        input.on(Input.EventType.TOUCH_MOVE, this.onTouchMove, this);
+        input.on(Input.EventType.TOUCH_END, this.onTouchEnd, this);
     }
 
     private _removeEvents() {
-        systemEvent.off(SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
-        systemEvent.off(SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
-        systemEvent.off(SystemEvent.EventType.TOUCH_MOVE, this.onTouchMove, this);
-        systemEvent.off(SystemEvent.EventType.TOUCH_END, this.onTouchEnd, this);
+        input.off(Input.EventType.KEY_DOWN, this.onKeyDown, this);
+        input.off(Input.EventType.KEY_UP, this.onKeyUp, this);
+        input.off(Input.EventType.TOUCH_MOVE, this.onTouchMove, this);
+        input.off(Input.EventType.TOUCH_END, this.onTouchEnd, this);
     }
 
     onKeyDown(e: EventKeyboard) {

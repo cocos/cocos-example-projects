@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, LabelComponent, Quat, systemEvent, ColliderComponent, ITriggerEvent } from "cc";
+import { _decorator, Component, Node, LabelComponent, Quat, ColliderComponent, ITriggerEvent, director } from "cc";
 import { InstanceMgr } from "./InstanceMgr";
 const { ccclass, property, menu } = _decorator;
 
@@ -18,11 +18,11 @@ export class BonusMgr extends Component {
 
     onLoad () {
         InstanceMgr.registerInstance('BonusMgr', this);
-        systemEvent.once('onMapLoaded' as any, this.onMapLoaded, this);
+        director.once('onMapLoaded' as any, this.onMapLoaded, this);
     }
 
     onDisable () {
-        systemEvent.off('onMapLoaded' as any, this.onMapLoaded, this);
+        director.off('onMapLoaded' as any, this.onMapLoaded, this);
     }
 
     start () {

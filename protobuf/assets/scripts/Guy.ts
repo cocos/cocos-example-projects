@@ -1,4 +1,4 @@
-import { _decorator, Component, CameraComponent, Node, Vec3, Scene, CanvasComponent, LabelComponent, systemEvent, SystemEventType, EventTouch, geometry, ModelComponent, Color, randomRange, HorizontalTextAlignment } from 'cc';
+import { _decorator, Component, CameraComponent, Node, Vec3, Label, EventTouch, geometry, ModelComponent, Color, randomRange, HorizontalTextAlignment, Input, input } from 'cc';
 import { globalBroadcast } from './Broadcast';
 
 const v = new Vec3();
@@ -19,7 +19,7 @@ export class Guy extends Component {
 
     private _modelComponent: ModelComponent | null = null;
     private _billboardNode: Node | null = null;
-    private _label: LabelComponent | null = null;
+    private _label: Label | null = null;
     private _ray: geometry.Ray = new geometry.Ray();
     private _textLiveTime = 0;
     
@@ -33,7 +33,7 @@ export class Guy extends Component {
         const billboardNode = new Node(`Billboard-${this.nickName}`);
         this.canvasNode.addChild(billboardNode);
         billboardNode.layer = this.canvasNode.layer;
-        this._label = billboardNode.addComponent(LabelComponent);
+        this._label = billboardNode.addComponent(Label);
         this._label.string = `我是 ${this.nickName}`
         this._label.color = new Color(0, 0, 0);
         this._label.fontSize = 15;
@@ -77,15 +77,15 @@ export class Guy extends Component {
     }
 
     onEnable () {
-        systemEvent.on(SystemEventType.TOUCH_START, this.onTouchStart, this);
+        input.on(Input.EventType.TOUCH_START, this.onTouchStart, this);
     }
 
     onDisable () {
-        systemEvent.off(SystemEventType.TOUCH_START, this.onTouchStart, this);
+        input.off(Input.EventType.TOUCH_START, this.onTouchStart, this);
     }
 
-    onTouchStart (touch: Touch, event: EventTouch) {
-        this.mainCamera.screenPointToRay(touch._point.x, touch._point.y, this._ray);
+    onTouchStart (event: EventTouch) {
+        this.mainCamera.screenPointToRay(event.touch!.getLocationX(), event.touch!.getLocationY(), this._ray);
         if (geometry.intersect.ray_model(this._ray, this._modelComponent.model)) {
             this._send();
         } else {
@@ -129,9 +129,9 @@ export class Guy extends Component {
     }
 
     private _updateLabelAlpha(alpha: number) {
-        const c = this._label.color.clone();
+        const c = this._label!.color.clone();
         c.a = alpha * 255;
-        this._label.color = c;
+        this._label!.color = c;
     }
 }
 

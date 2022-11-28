@@ -100,6 +100,9 @@ export class Buoyancy extends Component {
     }
 
     solver() {
+        if(!WaterWaves.instance._inited) 
+            return;
+
         const voxels = this._voxels;
         if (voxels.length > 0) {
             const singleForce = v3_0;

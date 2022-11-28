@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node, systemEvent, SystemEventType, EventMouse, EventKeyboard, Vec3, KeyCode, RigidBody, physics, Collider, ITriggerEvent, ICollisionEvent, Quat, v3, math, PhysicsSystem, CameraComponent, geometry, Prefab, Vec2, Touch, Event, Button, Label, Canvas, sys } from 'cc';
+import { _decorator, Component, Node, input, Input, EventMouse, EventKeyboard, Vec3, KeyCode, RigidBody, physics, Collider, ITriggerEvent, ICollisionEvent, Quat, v3, math, PhysicsSystem, CameraComponent, geometry, Prefab, Vec2, Touch, Event, Button, Label, Canvas, sys } from 'cc';
 const { ccclass, property, menu } = _decorator;
 
 @ccclass('simple-bow.RiggedBow')
@@ -96,27 +96,27 @@ export class RiggedBow extends Component {
     }
 
     onEnable() {
-        systemEvent.on(SystemEventType.MOUSE_DOWN, this.onMouseDown, this);
-        systemEvent.on(SystemEventType.MOUSE_MOVE, this.onMouseMove, this);
-        systemEvent.on(SystemEventType.MOUSE_UP, this.onMouseUp, this);
-        systemEvent.on(SystemEventType.KEY_DOWN, this.onKeyDown, this);
-        systemEvent.on(SystemEventType.KEY_UP, this.onKeyUp, this);
+        input.on(Input.EventType.MOUSE_DOWN, this.onMouseDown, this);
+        input.on(Input.EventType.MOUSE_MOVE, this.onMouseMove, this);
+        input.on(Input.EventType.MOUSE_UP, this.onMouseUp, this);
+        input.on(Input.EventType.KEY_DOWN, this.onKeyDown, this);
+        input.on(Input.EventType.KEY_UP, this.onKeyUp, this);
 
-        systemEvent.on(SystemEventType.TOUCH_START, this.onTouchStart, this);
-        systemEvent.on(SystemEventType.TOUCH_MOVE, this.onTouchMove, this);
-        systemEvent.on(SystemEventType.TOUCH_END, this.onTouchEnd, this);
+        input.on(Input.EventType.TOUCH_START, this.onTouchStart, this);
+        input.on(Input.EventType.TOUCH_MOVE, this.onTouchMove, this);
+        input.on(Input.EventType.TOUCH_END, this.onTouchEnd, this);
     }
 
     onDisable() {
-        systemEvent.off(SystemEventType.MOUSE_DOWN, this.onMouseDown, this);
-        systemEvent.off(SystemEventType.MOUSE_MOVE, this.onMouseMove, this);
-        systemEvent.off(SystemEventType.MOUSE_UP, this.onMouseUp, this);
-        systemEvent.off(SystemEventType.KEY_DOWN, this.onKeyDown, this);
-        systemEvent.off(SystemEventType.KEY_UP, this.onKeyUp, this);
+        input.off(Input.EventType.MOUSE_DOWN, this.onMouseDown, this);
+        input.off(Input.EventType.MOUSE_MOVE, this.onMouseMove, this);
+        input.off(Input.EventType.MOUSE_UP, this.onMouseUp, this);
+        input.off(Input.EventType.KEY_DOWN, this.onKeyDown, this);
+        input.off(Input.EventType.KEY_UP, this.onKeyUp, this);
 
-        systemEvent.off(SystemEventType.TOUCH_START, this.onTouchStart, this);
-        systemEvent.off(SystemEventType.TOUCH_MOVE, this.onTouchMove, this);
-        systemEvent.off(SystemEventType.TOUCH_END, this.onTouchEnd, this);
+        input.off(Input.EventType.TOUCH_START, this.onTouchStart, this);
+        input.off(Input.EventType.TOUCH_MOVE, this.onTouchMove, this);
+        input.off(Input.EventType.TOUCH_END, this.onTouchEnd, this);
     }
 
     onMouseDown(event: EventMouse) {
