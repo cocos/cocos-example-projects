@@ -4,52 +4,45 @@
   "_objFlags": 0,
   "_native": "",
   "_effectAsset": {
-    "__uuid__": "1baf0fc9-befa-459c-8bdd-af1a450a0319"
+    "__uuid__": "1baf0fc9-befa-459c-8bdd-af1a450a0319",
+    "__expectedType__": "cc.EffectAsset"
   },
   "_techIdx": 0,
   "_defines": [
     {
       "USE_ALBEDO_MAP": true,
-      "USE_PBR_MAP": true,
-      "USE_EMISSIVE_MAP": true
+      "USE_PBR_MAP": true
     },
-    {
-      "USE_ALBEDO_MAP": true,
-      "USE_METALLIC_ROUGHNESS_MAP": true,
-      "USE_OCCLUSION_MAP": true,
-      "USE_EMISSIVE_MAP": true
-    },
-    {
-      "USE_ALBEDO_MAP": true
-    }
+    {},
+    {}
   ],
   "_states": [
     {
+      "rasterizerState": {},
+      "depthStencilState": {},
       "blendState": {
         "targets": [
           {}
         ]
-      },
-      "depthStencilState": {},
-      "rasterizerState": {}
+      }
     },
     {
+      "rasterizerState": {},
+      "depthStencilState": {},
       "blendState": {
         "targets": [
           {}
         ]
-      },
-      "depthStencilState": {},
-      "rasterizerState": {}
+      }
     },
     {
+      "rasterizerState": {},
+      "depthStencilState": {},
       "blendState": {
         "targets": [
           {}
         ]
-      },
-      "depthStencilState": {},
-      "rasterizerState": {}
+      }
     }
   ],
   "_props": [
@@ -57,7 +50,8 @@
       "roughness": 0.1,
       "metallic": 0.2,
       "mainTexture": {
-        "__uuid__": "4196f13e-ae73-41cf-a3ef-b61f7414a2a4@6c48a"
+        "__uuid__": "4196f13e-ae73-41cf-a3ef-b61f7414a2a4@6c48a",
+        "__expectedType__": "cc.Texture2D"
       }
     },
     {},
