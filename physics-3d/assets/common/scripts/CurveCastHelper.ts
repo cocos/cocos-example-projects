@@ -1,5 +1,5 @@
 import { _decorator, Component, Node, CameraComponent, PhysicsSystem, Enum, Vec3, Primitive, 
-    MeshRenderer, instantiate, Material, Color, Quat, director, EditBox, Label, LabelComponent } from 'cc';
+    MeshRenderer, instantiate, Material, Color, Quat, director, EditBox, Label, LabelComponent, physics } from 'cc';
 const { ccclass, property, menu } = _decorator;
 
 enum ECurvecastType {
@@ -85,6 +85,14 @@ export class CurvecastHelper extends Component {
         modelCom.mesh = mesh;
         modelCom.material = lineSegmentMaterial;
         director.addPersistRootNode(this.lineSegmentContainer);
+    }
+
+    onLoad() {
+        const title = this.node.scene.getChildByName("Canvas")!.getChildByName("PhysicsEngineType")!.getComponent(LabelComponent)!;
+        title.fontSize = 20;
+        title.string = "Physics Engine: " + physics.selector.id;
+
+        this.OnCurveCast ();
     }
 
     onDestroy () {
