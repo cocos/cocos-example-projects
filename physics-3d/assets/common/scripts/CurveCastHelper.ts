@@ -35,7 +35,7 @@ export class CurvecastHelper extends Component {
     public EndPointHeight: number = 0;
     public SampleNumnber: number = 50;
 
-    private curvecastType: ECurvecastType = ECurvecastType.CLOSEST;
+    private curvecastType: ECurvecastType = ECurvecastType.ALL; 
     private hitSphereScale: number = 0.2;
     private controlPointScale: number = 0.2;
 
@@ -87,12 +87,12 @@ export class CurvecastHelper extends Component {
         director.addPersistRootNode(this.lineSegmentContainer);
 
         this.SetSampleNumber(this.SampleNumnber);
+
+        let expectationLabel = this.node.scene.getChildByName('Canvas')!.getChildByName('Expectation')!.getComponent(LabelComponent)!;
+        expectationLabel.string = "physx和bullet跟所有类型碰撞体都可以有碰撞点\n builtin跟圆柱/圆锥体没有碰撞点\n cannon.js跟胶囊体没有碰撞点";
     }
 
     onLoad() {
-        const title = this.node.scene.getChildByName("Canvas")!.getChildByName("PhysicsEngineType")!.getComponent(LabelComponent)!;
-        title.fontSize = 20;
-        title.string = "Physics Engine: " + physics.selector.id;   
     }
 
     start(){
