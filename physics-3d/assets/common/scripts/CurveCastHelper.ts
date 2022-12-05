@@ -1,5 +1,5 @@
 import { _decorator, Component, Node, CameraComponent, PhysicsSystem, Enum, Vec3, Primitive, 
-    MeshRenderer, instantiate, Material, Color, Quat, director, EditBox, Label, LabelComponent } from 'cc';
+    MeshRenderer, instantiate, Material, Color, Quat, director, EditBox, Label, LabelComponent, physics } from 'cc';
 const { ccclass, property, menu } = _decorator;
 
 enum ECurvecastType {
@@ -35,7 +35,7 @@ export class CurvecastHelper extends Component {
     public EndPointHeight: number = 0;
     public SampleNumnber: number = 50;
 
-    private curvecastType: ECurvecastType = ECurvecastType.CLOSEST;
+    private curvecastType: ECurvecastType = ECurvecastType.ALL; 
     private hitSphereScale: number = 0.2;
     private controlPointScale: number = 0.2;
 
@@ -85,6 +85,18 @@ export class CurvecastHelper extends Component {
         modelCom.mesh = mesh;
         modelCom.material = lineSegmentMaterial;
         director.addPersistRootNode(this.lineSegmentContainer);
+
+        this.SetSampleNumber(this.SampleNumnber);
+
+        let expectationLabel = this.node.scene.getChildByName('Canvas')!.getChildByName('Expectation')!.getComponent(LabelComponent)!;
+        expectationLabel.string = "physx和bullet跟所有类型碰撞体都可以有碰撞点\n builtin跟圆柱/圆锥体没有碰撞点\n cannon.js跟胶囊体没有碰撞点";
+    }
+
+    onLoad() {
+    }
+
+    start(){
+        this.OnCurveCast ();
     }
 
     onDestroy () {
@@ -135,28 +147,26 @@ export class CurvecastHelper extends Component {
     OnCurveCast () {
         this.ResultLabel.string = "";
 
-        //this.CurveOrigin = this.node.scene.getChildByName("Shooter")!.getWorldPosition();
         //remnove all existing controlPoint, hitPoint and lineSegment node
         this.controlPointContainer.removeAllChildren();
         this.hitPointContainer.removeAllChildren();
-        this.lineSegmentContainer.removeAllChildren();
-
+        
         this.updateCurveControlPoints(this.CP0, this.CP1, this.CP2);
 
         const controlPoint0 = instantiate(this._controlPoint) as Node;
         controlPoint0.setScale(this.controlPointScale, this.controlPointScale, this.controlPointScale);
         controlPoint0.setWorldPosition(this.CP0);
-        this.hitPointContainer.addChild(controlPoint0);
+        this.controlPointContainer.addChild(controlPoint0);
 
         const controlPoint1 = instantiate(this._controlPoint) as Node;
         controlPoint1.setScale(this.controlPointScale, this.controlPointScale, this.controlPointScale);
         controlPoint1.setWorldPosition(this.CP1);
-        this.hitPointContainer.addChild(controlPoint1);
+        this.controlPointContainer.addChild(controlPoint1);
         
         const controlPoint2 = instantiate(this._controlPoint) as Node;
         controlPoint2.setWorldPosition(this.CP2);
         controlPoint2.setScale(this.controlPointScale, this.controlPointScale, this.controlPointScale);
-        this.hitPointContainer.addChild(controlPoint2);
+        this.controlPointContainer.addChild(controlPoint2);
 
         let sampleArray = [];
         for(let s = 0; s < this.SampleNumnber; s++){
@@ -166,7 +176,7 @@ export class CurvecastHelper extends Component {
 
         let sampleDir = new Vec3();
         for(let s = 0; s < this.SampleNumnber - 1; s++){
-            const lineSegment = instantiate(this._lineSegment) as Node;
+            const lineSegment = this.lineSegmentContainer.children[s];
             let samplePos = sampleArray[s];
             
             Vec3.subtract(sampleDir, sampleArray[s+1], sampleArray[s]);
@@ -180,7 +190,6 @@ export class CurvecastHelper extends Component {
             lineSegment.setWorldScale(scale);
             lineSegment.setWorldRotation(rotation);
 
-            this.lineSegmentContainer.addChild(lineSegment);
         }
         
         if (this.curvecastType == ECurvecastType.CLOSEST) {
@@ -256,10 +265,21 @@ export class CurvecastHelper extends Component {
 
     onSetSampleNumber(editBox: EditBox) {
         const value = parseInt(editBox.string);
+        return this.SetSampleNumber(value);
+    }
+
+    SetSampleNumber(value : number){
         if (isNaN(value)) return;
-        if (value >= 2) {
-            this.SampleNumnber = value;
-            this.OnCurveCast();
+        if (value >= 2 ) {
+            if(value != this.lineSegmentContainer.children.length){
+                this.SampleNumnber = value;
+                this.lineSegmentContainer.removeAllChildren();
+                for(let s = 0; s < this.SampleNumnber - 1; s++){
+                    const lineSegment = instantiate(this._lineSegment) as Node;        
+                    this.lineSegmentContainer.addChild(lineSegment);
+                }
+                this.OnCurveCast();
+            }
         }
     }
 }
