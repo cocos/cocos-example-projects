@@ -1,7 +1,7 @@
 [
   {
     "__type__": "cc.SceneAsset",
-    "_name": "",
+    "_name": "case-constraint-fixed",
     "_objFlags": 0,
     "_native": "",
     "scene": {
@@ -27,13 +27,13 @@
         "__id__": 16
       },
       {
-        "__id__": 25
+        "__id__": 26
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 105
+      "__id__": 106
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -64,9 +64,8 @@
     },
     "autoReleaseAssets": false,
     "_globals": {
-      "__id__": 106
+      "__id__": 107
     },
-    "_reflectionProbeId": 0,
     "_id": "67c2115c-7cca-4e4e-bfdf-088ecc924dc4"
   },
   {
@@ -143,11 +142,14 @@
     "_shadowBias": 0.00001,
     "_shadowNormalBias": 0,
     "_shadowSaturation": 1,
-    "_shadowDistance": 150,
+    "_shadowDistance": 15,
     "_shadowInvisibleOcclusionRange": 300,
     "_csmLevel": 4,
     "_csmLayerLambda": 0.75,
     "_csmOptimizationMode": 2,
+    "_csmAdvancedOptions": false,
+    "_csmLayersTransition": false,
+    "_csmTransitionRange": 0.05,
     "_shadowFixedArea": false,
     "_shadowNear": 0.1,
     "_shadowFar": 10,
@@ -158,7 +160,6 @@
     "__type__": "cc.StaticLightSettings",
     "_baked": false,
     "_editorOnly": false,
-    "_bakeable": false,
     "_castShadow": true
   },
   {
@@ -585,11 +586,14 @@
     "fileId": "57r1NJa1ZEMpiY0enYfIAb",
     "instance": {
       "__id__": 18
-    }
+    },
+    "targetOverrides": null,
+    "nestedPrefabInstanceRoots": null
   },
   {
     "__type__": "cc.PrefabInstance",
     "fileId": "bdpXYs5hFM2qpBSyhuEEnt",
+    "prefabRootNode": null,
     "mountedChildren": [],
     "mountedComponents": [],
     "propertyOverrides": [
@@ -607,9 +611,34 @@
       },
       {
         "__id__": 24
+      },
+      {
+        "__id__": 25
       }
     ],
-    "removedComponents": []
+    "removedComponents": [],
+    "ids": [
+      "39W45CuiNISqtaWdNktvl8",
+      "aa/TJm7FFAIZL3XdAxFaMN",
+      "aeK2ppDu1Keqauz88ii8ab",
+      "b3Dfoe9sxCpKVeoir8Ehbl",
+      "4bEh64vK9EJbluDRuBp6Yy",
+      "10DwtMXpJKUIoC0sbJcRl5",
+      "deTEm3SOdPtphkGdWcc923",
+      "73q2p/4D1Pk4D75E/0ikNM",
+      "f4ruPym/FAWqmcGcl1gP3f",
+      "38kRjQx7FC+KQ1TfJxz1JU",
+      "97Cx6vUY5GzJ2ML59hg0tS",
+      "bbUvyu7dZOc413SPs31cjQ",
+      "71F9nBk75J0qqJ4nIbExhW",
+      "67odnNTKpHdob5CvyuG5Jc",
+      "2bJR0GFKZBmKGJUUppJnCi",
+      "4btHTUSBlNortxzbbY02GZ",
+      "faHlAAJzZEKKfDlk1tNNAo",
+      "24ROWeRxxLtJgzZ1oBiPui",
+      "4cF3nFwd5KXaBxgbd4H77I",
+      "25bSHd8QRCWY0Oi8Qawp4i"
+    ]
   },
   {
     "__type__": "CCPropertyOverrideInfo",
@@ -684,6 +713,16 @@
     }
   },
   {
+    "__type__": "CCPropertyOverrideInfo",
+    "targetInfo": {
+      "__id__": 20
+    },
+    "propertyPath": [
+      "_active"
+    ],
+    "value": true
+  },
+  {
     "__type__": "cc.Node",
     "_name": "Objects",
     "_objFlags": 0,
@@ -692,19 +731,19 @@
     },
     "_children": [
       {
-        "__id__": 26
+        "__id__": 27
       },
       {
-        "__id__": 57
+        "__id__": 58
       },
       {
-        "__id__": 69
+        "__id__": 70
       },
       {
-        "__id__": 75
+        "__id__": 76
       },
       {
-        "__id__": 87
+        "__id__": 88
       }
     ],
     "_active": true,
@@ -744,14 +783,14 @@
     "_name": "Collection",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 25
+      "__id__": 26
     },
     "_children": [
       {
-        "__id__": 27
+        "__id__": 28
       },
       {
-        "__id__": 45
+        "__id__": 46
       }
     ],
     "_active": true,
@@ -791,17 +830,17 @@
     "_name": "part1",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 26
+      "__id__": 27
     },
     "_children": [
       {
-        "__id__": 28
+        "__id__": 29
       },
       {
-        "__id__": 35
+        "__id__": 36
       },
       {
-        "__id__": 39
+        "__id__": 40
       }
     ],
     "_active": true,
@@ -841,22 +880,22 @@
     "_name": "Torus",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 27
+      "__id__": 28
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 29
-      },
-      {
-        "__id__": 31
+        "__id__": 30
       },
       {
         "__id__": 32
       },
       {
         "__id__": 33
+      },
+      {
+        "__id__": 34
       }
     ],
     "_prefab": null,
@@ -894,7 +933,7 @@
     "_name": "Torus<ModelComponent>",
     "_objFlags": 0,
     "node": {
-      "__id__": 28
+      "__id__": 29
     },
     "_enabled": true,
     "__prefab": null,
@@ -905,26 +944,22 @@
       }
     ],
     "_visFlags": 0,
-    "lightmapSettings": {
-      "__id__": 30
+    "bakeSettings": {
+      "__id__": 31
     },
     "_mesh": {
       "__uuid__": "1263d74c-8167-4928-91a6-4e2672411f47@40ece",
       "__expectedType__": "cc.Mesh"
     },
-    "_shadowCastingMode": 0,
+    "_shadowCastingMode": 1,
     "_shadowReceivingMode": 1,
     "_shadowBias": 0,
     "_shadowNormalBias": 0,
-    "_useLightProbe": false,
-    "_bakeToReflectionProbe": true,
-    "_reflectionProbeType": 0,
-    "_probeCubemap": null,
     "_enableMorph": true,
     "_id": "adG/aa0fVEDKl7M1hMSs9N"
   },
   {
-    "__type__": "cc.ModelLightmapSettings",
+    "__type__": "cc.ModelBakeSettings",
     "texture": null,
     "uvParam": {
       "__type__": "cc.Vec4",
@@ -937,14 +972,19 @@
     "_castShadow": false,
     "_receiveShadow": false,
     "_recieveShadow": false,
-    "_lightmapSize": 64
+    "_lightmapSize": 64,
+    "_useLightProbe": false,
+    "_bakeToLightProbe": true,
+    "_reflectionProbeType": 0,
+    "_bakeToReflectionProbe": true,
+    "_probeCubemap": null
   },
   {
     "__type__": "cc.MeshCollider",
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 28
+      "__id__": 29
     },
     "_enabled": true,
     "__prefab": null,
@@ -971,7 +1011,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 28
+      "__id__": 29
     },
     "_enabled": true,
     "__prefab": null,
@@ -1001,13 +1041,13 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 28
+      "__id__": 29
     },
     "_enabled": true,
     "__prefab": null,
     "_enableCollision": true,
     "_connectedBody": {
-      "__id__": 34
+      "__id__": 35
     },
     "_breakForce": 100000000,
     "breakForce": 100000000,
@@ -1020,7 +1060,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 35
+      "__id__": 36
     },
     "_enabled": true,
     "__prefab": null,
@@ -1050,19 +1090,19 @@
     "_name": "Torus-001",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 27
+      "__id__": 28
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 36
+        "__id__": 37
       },
       {
-        "__id__": 38
+        "__id__": 39
       },
       {
-        "__id__": 34
+        "__id__": 35
       }
     ],
     "_prefab": null,
@@ -1100,7 +1140,7 @@
     "_name": "Torus<ModelComponent>",
     "_objFlags": 0,
     "node": {
-      "__id__": 35
+      "__id__": 36
     },
     "_enabled": true,
     "__prefab": null,
@@ -1111,26 +1151,22 @@
       }
     ],
     "_visFlags": 0,
-    "lightmapSettings": {
-      "__id__": 37
+    "bakeSettings": {
+      "__id__": 38
     },
     "_mesh": {
       "__uuid__": "1263d74c-8167-4928-91a6-4e2672411f47@40ece",
       "__expectedType__": "cc.Mesh"
     },
-    "_shadowCastingMode": 0,
+    "_shadowCastingMode": 1,
     "_shadowReceivingMode": 1,
     "_shadowBias": 0,
     "_shadowNormalBias": 0,
-    "_useLightProbe": false,
-    "_bakeToReflectionProbe": true,
-    "_reflectionProbeType": 0,
-    "_probeCubemap": null,
     "_enableMorph": true,
     "_id": "44uh9N0UtNeqo18GFIeRe+"
   },
   {
-    "__type__": "cc.ModelLightmapSettings",
+    "__type__": "cc.ModelBakeSettings",
     "texture": null,
     "uvParam": {
       "__type__": "cc.Vec4",
@@ -1143,14 +1179,19 @@
     "_castShadow": false,
     "_receiveShadow": false,
     "_recieveShadow": false,
-    "_lightmapSize": 64
+    "_lightmapSize": 64,
+    "_useLightProbe": false,
+    "_bakeToLightProbe": true,
+    "_reflectionProbeType": 0,
+    "_bakeToReflectionProbe": true,
+    "_probeCubemap": null
   },
   {
     "__type__": "cc.MeshCollider",
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 35
+      "__id__": 36
     },
     "_enabled": true,
     "__prefab": null,
@@ -1177,22 +1218,22 @@
     "_name": "Cone",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 27
+      "__id__": 28
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 40
-      },
-      {
-        "__id__": 42
+        "__id__": 41
       },
       {
         "__id__": 43
       },
       {
         "__id__": 44
+      },
+      {
+        "__id__": 45
       }
     ],
     "_prefab": null,
@@ -1230,7 +1271,7 @@
     "_name": "Cone<ModelComponent>",
     "_objFlags": 0,
     "node": {
-      "__id__": 39
+      "__id__": 40
     },
     "_enabled": true,
     "__prefab": null,
@@ -1241,26 +1282,22 @@
       }
     ],
     "_visFlags": 0,
-    "lightmapSettings": {
-      "__id__": 41
+    "bakeSettings": {
+      "__id__": 42
     },
     "_mesh": {
       "__uuid__": "1263d74c-8167-4928-91a6-4e2672411f47@38fd2",
       "__expectedType__": "cc.Mesh"
     },
-    "_shadowCastingMode": 0,
+    "_shadowCastingMode": 1,
     "_shadowReceivingMode": 1,
     "_shadowBias": 0,
     "_shadowNormalBias": 0,
-    "_useLightProbe": false,
-    "_bakeToReflectionProbe": true,
-    "_reflectionProbeType": 0,
-    "_probeCubemap": null,
     "_enableMorph": true,
     "_id": "916jV8mfJGNLNg7PZZl5vs"
   },
   {
-    "__type__": "cc.ModelLightmapSettings",
+    "__type__": "cc.ModelBakeSettings",
     "texture": null,
     "uvParam": {
       "__type__": "cc.Vec4",
@@ -1273,14 +1310,19 @@
     "_castShadow": false,
     "_receiveShadow": false,
     "_recieveShadow": false,
-    "_lightmapSize": 64
+    "_lightmapSize": 64,
+    "_useLightProbe": false,
+    "_bakeToLightProbe": true,
+    "_reflectionProbeType": 0,
+    "_bakeToReflectionProbe": true,
+    "_probeCubemap": null
   },
   {
     "__type__": "cc.RigidBody",
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 39
+      "__id__": 40
     },
     "_enabled": true,
     "__prefab": null,
@@ -1310,7 +1352,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 39
+      "__id__": 40
     },
     "_enabled": true,
     "__prefab": null,
@@ -1335,13 +1377,13 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 39
+      "__id__": 40
     },
     "_enabled": true,
     "__prefab": null,
     "_enableCollision": true,
     "_connectedBody": {
-      "__id__": 32
+      "__id__": 33
     },
     "_breakForce": 100000000,
     "breakForce": 100000000,
@@ -1354,14 +1396,14 @@
     "_name": "part2",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 26
+      "__id__": 27
     },
     "_children": [
       {
-        "__id__": 46
+        "__id__": 47
       },
       {
-        "__id__": 51
+        "__id__": 52
       }
     ],
     "_active": true,
@@ -1401,19 +1443,19 @@
     "_name": "Sphere",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 45
+      "__id__": 46
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 47
-      },
-      {
-        "__id__": 49
+        "__id__": 48
       },
       {
         "__id__": 50
+      },
+      {
+        "__id__": 51
       }
     ],
     "_prefab": null,
@@ -1451,7 +1493,7 @@
     "_name": "Sphere<ModelComponent>",
     "_objFlags": 0,
     "node": {
-      "__id__": 46
+      "__id__": 47
     },
     "_enabled": true,
     "__prefab": null,
@@ -1462,26 +1504,22 @@
       }
     ],
     "_visFlags": 0,
-    "lightmapSettings": {
-      "__id__": 48
+    "bakeSettings": {
+      "__id__": 49
     },
     "_mesh": {
       "__uuid__": "1263d74c-8167-4928-91a6-4e2672411f47@17020",
       "__expectedType__": "cc.Mesh"
     },
-    "_shadowCastingMode": 0,
+    "_shadowCastingMode": 1,
     "_shadowReceivingMode": 1,
     "_shadowBias": 0,
     "_shadowNormalBias": 0,
-    "_useLightProbe": false,
-    "_bakeToReflectionProbe": true,
-    "_reflectionProbeType": 0,
-    "_probeCubemap": null,
     "_enableMorph": true,
     "_id": "baFVepnVtMy6opkkRgKdx3"
   },
   {
-    "__type__": "cc.ModelLightmapSettings",
+    "__type__": "cc.ModelBakeSettings",
     "texture": null,
     "uvParam": {
       "__type__": "cc.Vec4",
@@ -1494,14 +1532,19 @@
     "_castShadow": false,
     "_receiveShadow": false,
     "_recieveShadow": false,
-    "_lightmapSize": 64
+    "_lightmapSize": 64,
+    "_useLightProbe": false,
+    "_bakeToLightProbe": true,
+    "_reflectionProbeType": 0,
+    "_bakeToReflectionProbe": true,
+    "_probeCubemap": null
   },
   {
     "__type__": "cc.RigidBody",
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 46
+      "__id__": 47
     },
     "_enabled": true,
     "__prefab": null,
@@ -1531,7 +1574,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 46
+      "__id__": 47
     },
     "_enabled": true,
     "__prefab": null,
@@ -1554,22 +1597,22 @@
     "_name": "Cube",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 45
+      "__id__": 46
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 52
-      },
-      {
-        "__id__": 54
+        "__id__": 53
       },
       {
         "__id__": 55
       },
       {
         "__id__": 56
+      },
+      {
+        "__id__": 57
       }
     ],
     "_prefab": null,
@@ -1607,7 +1650,7 @@
     "_name": "Cube<ModelComponent>",
     "_objFlags": 0,
     "node": {
-      "__id__": 51
+      "__id__": 52
     },
     "_enabled": true,
     "__prefab": null,
@@ -1618,26 +1661,22 @@
       }
     ],
     "_visFlags": 0,
-    "lightmapSettings": {
-      "__id__": 53
+    "bakeSettings": {
+      "__id__": 54
     },
     "_mesh": {
       "__uuid__": "1263d74c-8167-4928-91a6-4e2672411f47@a804a",
       "__expectedType__": "cc.Mesh"
     },
-    "_shadowCastingMode": 0,
+    "_shadowCastingMode": 1,
     "_shadowReceivingMode": 1,
     "_shadowBias": 0,
     "_shadowNormalBias": 0,
-    "_useLightProbe": false,
-    "_bakeToReflectionProbe": true,
-    "_reflectionProbeType": 0,
-    "_probeCubemap": null,
     "_enableMorph": true,
     "_id": "f7OAU4oSNHeKH+EvN/JfkS"
   },
   {
-    "__type__": "cc.ModelLightmapSettings",
+    "__type__": "cc.ModelBakeSettings",
     "texture": null,
     "uvParam": {
       "__type__": "cc.Vec4",
@@ -1650,14 +1689,19 @@
     "_castShadow": false,
     "_receiveShadow": false,
     "_recieveShadow": false,
-    "_lightmapSize": 64
+    "_lightmapSize": 64,
+    "_useLightProbe": false,
+    "_bakeToLightProbe": true,
+    "_reflectionProbeType": 0,
+    "_bakeToReflectionProbe": true,
+    "_probeCubemap": null
   },
   {
     "__type__": "cc.BoxCollider",
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 51
+      "__id__": 52
     },
     "_enabled": true,
     "__prefab": null,
@@ -1685,7 +1729,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 51
+      "__id__": 52
     },
     "_enabled": true,
     "__prefab": null,
@@ -1715,13 +1759,13 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 51
+      "__id__": 52
     },
     "_enabled": true,
     "__prefab": null,
     "_enableCollision": true,
     "_connectedBody": {
-      "__id__": 49
+      "__id__": 50
     },
     "_breakForce": 100000000,
     "breakForce": 100000000,
@@ -1734,14 +1778,14 @@
     "_name": "Cylinders",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 25
+      "__id__": 26
     },
     "_children": [
       {
-        "__id__": 58
+        "__id__": 59
       },
       {
-        "__id__": 65
+        "__id__": 66
       }
     ],
     "_active": true,
@@ -1781,22 +1825,22 @@
     "_name": "Cylinder-01",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 57
+      "__id__": 58
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 59
-      },
-      {
-        "__id__": 61
+        "__id__": 60
       },
       {
         "__id__": 62
       },
       {
         "__id__": 63
+      },
+      {
+        "__id__": 64
       }
     ],
     "_prefab": null,
@@ -1834,7 +1878,7 @@
     "_name": "Cylinder<ModelComponent>",
     "_objFlags": 0,
     "node": {
-      "__id__": 58
+      "__id__": 59
     },
     "_enabled": true,
     "__prefab": null,
@@ -1845,26 +1889,22 @@
       }
     ],
     "_visFlags": 0,
-    "lightmapSettings": {
-      "__id__": 60
+    "bakeSettings": {
+      "__id__": 61
     },
     "_mesh": {
       "__uuid__": "1263d74c-8167-4928-91a6-4e2672411f47@8abdc",
       "__expectedType__": "cc.Mesh"
     },
-    "_shadowCastingMode": 0,
+    "_shadowCastingMode": 1,
     "_shadowReceivingMode": 1,
     "_shadowBias": 0,
     "_shadowNormalBias": 0,
-    "_useLightProbe": false,
-    "_bakeToReflectionProbe": true,
-    "_reflectionProbeType": 0,
-    "_probeCubemap": null,
     "_enableMorph": true,
     "_id": "c4cZOJ+bBP+Khjz+qwTxz/"
   },
   {
-    "__type__": "cc.ModelLightmapSettings",
+    "__type__": "cc.ModelBakeSettings",
     "texture": null,
     "uvParam": {
       "__type__": "cc.Vec4",
@@ -1877,14 +1917,19 @@
     "_castShadow": false,
     "_receiveShadow": false,
     "_recieveShadow": false,
-    "_lightmapSize": 64
+    "_lightmapSize": 64,
+    "_useLightProbe": false,
+    "_bakeToLightProbe": true,
+    "_reflectionProbeType": 0,
+    "_bakeToReflectionProbe": true,
+    "_probeCubemap": null
   },
   {
     "__type__": "cc.CylinderCollider",
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 58
+      "__id__": 59
     },
     "_enabled": true,
     "__prefab": null,
@@ -1909,7 +1954,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 58
+      "__id__": 59
     },
     "_enabled": true,
     "__prefab": null,
@@ -1939,13 +1984,13 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 58
+      "__id__": 59
     },
     "_enabled": true,
     "__prefab": null,
     "_enableCollision": false,
     "_connectedBody": {
-      "__id__": 64
+      "__id__": 65
     },
     "_breakForce": 100000000,
     "breakForce": 100000000,
@@ -1958,7 +2003,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 65
+      "__id__": 66
     },
     "_enabled": true,
     "__prefab": null,
@@ -1988,19 +2033,19 @@
     "_name": "Cylinder-02",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 57
+      "__id__": 58
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 66
+        "__id__": 67
       },
       {
-        "__id__": 68
+        "__id__": 69
       },
       {
-        "__id__": 64
+        "__id__": 65
       }
     ],
     "_prefab": null,
@@ -2038,7 +2083,7 @@
     "_name": "Cylinder<ModelComponent>",
     "_objFlags": 0,
     "node": {
-      "__id__": 65
+      "__id__": 66
     },
     "_enabled": true,
     "__prefab": null,
@@ -2049,26 +2094,22 @@
       }
     ],
     "_visFlags": 0,
-    "lightmapSettings": {
-      "__id__": 67
+    "bakeSettings": {
+      "__id__": 68
     },
     "_mesh": {
       "__uuid__": "1263d74c-8167-4928-91a6-4e2672411f47@8abdc",
       "__expectedType__": "cc.Mesh"
     },
-    "_shadowCastingMode": 0,
+    "_shadowCastingMode": 1,
     "_shadowReceivingMode": 1,
     "_shadowBias": 0,
     "_shadowNormalBias": 0,
-    "_useLightProbe": false,
-    "_bakeToReflectionProbe": true,
-    "_reflectionProbeType": 0,
-    "_probeCubemap": null,
     "_enableMorph": true,
     "_id": "f7NM4hNBFATq5NOYAH1pS1"
   },
   {
-    "__type__": "cc.ModelLightmapSettings",
+    "__type__": "cc.ModelBakeSettings",
     "texture": null,
     "uvParam": {
       "__type__": "cc.Vec4",
@@ -2081,14 +2122,19 @@
     "_castShadow": false,
     "_receiveShadow": false,
     "_recieveShadow": false,
-    "_lightmapSize": 64
+    "_lightmapSize": 64,
+    "_useLightProbe": false,
+    "_bakeToLightProbe": true,
+    "_reflectionProbeType": 0,
+    "_bakeToReflectionProbe": true,
+    "_probeCubemap": null
   },
   {
     "__type__": "cc.CylinderCollider",
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 65
+      "__id__": 66
     },
     "_enabled": true,
     "__prefab": null,
@@ -2113,11 +2159,11 @@
     "_name": "ground",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 25
+      "__id__": 26
     },
     "_children": [
       {
-        "__id__": 70
+        "__id__": 71
       }
     ],
     "_active": true,
@@ -2157,19 +2203,19 @@
     "_name": "ground",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 69
+      "__id__": 70
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 71
-      },
-      {
-        "__id__": 73
+        "__id__": 72
       },
       {
         "__id__": 74
+      },
+      {
+        "__id__": 75
       }
     ],
     "_prefab": null,
@@ -2207,7 +2253,7 @@
     "_name": "Cube<ModelComponent>",
     "_objFlags": 0,
     "node": {
-      "__id__": 70
+      "__id__": 71
     },
     "_enabled": true,
     "__prefab": null,
@@ -2218,26 +2264,22 @@
       }
     ],
     "_visFlags": 0,
-    "lightmapSettings": {
-      "__id__": 72
+    "bakeSettings": {
+      "__id__": 73
     },
     "_mesh": {
       "__uuid__": "1263d74c-8167-4928-91a6-4e2672411f47@a804a",
       "__expectedType__": "cc.Mesh"
     },
-    "_shadowCastingMode": 1,
+    "_shadowCastingMode": 0,
     "_shadowReceivingMode": 1,
     "_shadowBias": 0,
     "_shadowNormalBias": 0,
-    "_useLightProbe": false,
-    "_bakeToReflectionProbe": true,
-    "_reflectionProbeType": 0,
-    "_probeCubemap": null,
     "_enableMorph": true,
     "_id": "06OeF43hJPXaAxDv3ObE2F"
   },
   {
-    "__type__": "cc.ModelLightmapSettings",
+    "__type__": "cc.ModelBakeSettings",
     "texture": null,
     "uvParam": {
       "__type__": "cc.Vec4",
@@ -2250,14 +2292,19 @@
     "_castShadow": true,
     "_receiveShadow": true,
     "_recieveShadow": true,
-    "_lightmapSize": 64
+    "_lightmapSize": 64,
+    "_useLightProbe": false,
+    "_bakeToLightProbe": true,
+    "_reflectionProbeType": 0,
+    "_bakeToReflectionProbe": true,
+    "_probeCubemap": null
   },
   {
     "__type__": "cc.BoxCollider",
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 70
+      "__id__": 71
     },
     "_enabled": true,
     "__prefab": null,
@@ -2285,7 +2332,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 70
+      "__id__": 71
     },
     "_enabled": true,
     "__prefab": null,
@@ -2315,14 +2362,14 @@
     "_name": "Collection1",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 25
+      "__id__": 26
     },
     "_children": [
       {
-        "__id__": 76
+        "__id__": 77
       },
       {
-        "__id__": 83
+        "__id__": 84
       }
     ],
     "_active": true,
@@ -2362,22 +2409,22 @@
     "_name": "Cube",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 75
+      "__id__": 76
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 77
-      },
-      {
-        "__id__": 79
+        "__id__": 78
       },
       {
         "__id__": 80
       },
       {
         "__id__": 81
+      },
+      {
+        "__id__": 82
       }
     ],
     "_prefab": null,
@@ -2415,7 +2462,7 @@
     "_name": "Cube<ModelComponent>",
     "_objFlags": 0,
     "node": {
-      "__id__": 76
+      "__id__": 77
     },
     "_enabled": true,
     "__prefab": null,
@@ -2426,26 +2473,22 @@
       }
     ],
     "_visFlags": 0,
-    "lightmapSettings": {
-      "__id__": 78
+    "bakeSettings": {
+      "__id__": 79
     },
     "_mesh": {
       "__uuid__": "1263d74c-8167-4928-91a6-4e2672411f47@a804a",
       "__expectedType__": "cc.Mesh"
     },
-    "_shadowCastingMode": 0,
+    "_shadowCastingMode": 1,
     "_shadowReceivingMode": 1,
     "_shadowBias": 0,
     "_shadowNormalBias": 0,
-    "_useLightProbe": false,
-    "_bakeToReflectionProbe": true,
-    "_reflectionProbeType": 0,
-    "_probeCubemap": null,
     "_enableMorph": true,
     "_id": "7f6sckM8ZI87JV5VDjvx3o"
   },
   {
-    "__type__": "cc.ModelLightmapSettings",
+    "__type__": "cc.ModelBakeSettings",
     "texture": null,
     "uvParam": {
       "__type__": "cc.Vec4",
@@ -2458,14 +2501,19 @@
     "_castShadow": false,
     "_receiveShadow": false,
     "_recieveShadow": false,
-    "_lightmapSize": 64
+    "_lightmapSize": 64,
+    "_useLightProbe": false,
+    "_bakeToLightProbe": true,
+    "_reflectionProbeType": 0,
+    "_bakeToReflectionProbe": true,
+    "_probeCubemap": null
   },
   {
     "__type__": "cc.BoxCollider",
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 76
+      "__id__": 77
     },
     "_enabled": true,
     "__prefab": null,
@@ -2493,7 +2541,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 76
+      "__id__": 77
     },
     "_enabled": true,
     "__prefab": null,
@@ -2523,13 +2571,13 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 76
+      "__id__": 77
     },
     "_enabled": true,
     "__prefab": null,
     "_enableCollision": true,
     "_connectedBody": {
-      "__id__": 82
+      "__id__": 83
     },
     "_breakForce": 1,
     "breakForce": 1,
@@ -2542,7 +2590,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 83
+      "__id__": 84
     },
     "_enabled": true,
     "__prefab": null,
@@ -2572,19 +2620,19 @@
     "_name": "Sphere",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 75
+      "__id__": 76
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 84
+        "__id__": 85
       },
       {
-        "__id__": 82
+        "__id__": 83
       },
       {
-        "__id__": 86
+        "__id__": 87
       }
     ],
     "_prefab": null,
@@ -2622,7 +2670,7 @@
     "_name": "Sphere<ModelComponent>",
     "_objFlags": 0,
     "node": {
-      "__id__": 83
+      "__id__": 84
     },
     "_enabled": true,
     "__prefab": null,
@@ -2633,26 +2681,22 @@
       }
     ],
     "_visFlags": 0,
-    "lightmapSettings": {
-      "__id__": 85
+    "bakeSettings": {
+      "__id__": 86
     },
     "_mesh": {
       "__uuid__": "1263d74c-8167-4928-91a6-4e2672411f47@17020",
       "__expectedType__": "cc.Mesh"
     },
-    "_shadowCastingMode": 0,
+    "_shadowCastingMode": 1,
     "_shadowReceivingMode": 1,
     "_shadowBias": 0,
     "_shadowNormalBias": 0,
-    "_useLightProbe": false,
-    "_bakeToReflectionProbe": true,
-    "_reflectionProbeType": 0,
-    "_probeCubemap": null,
     "_enableMorph": true,
     "_id": "42OX2CfL1PSYpfpXJH4I9C"
   },
   {
-    "__type__": "cc.ModelLightmapSettings",
+    "__type__": "cc.ModelBakeSettings",
     "texture": null,
     "uvParam": {
       "__type__": "cc.Vec4",
@@ -2665,14 +2709,19 @@
     "_castShadow": false,
     "_receiveShadow": false,
     "_recieveShadow": false,
-    "_lightmapSize": 64
+    "_lightmapSize": 64,
+    "_useLightProbe": false,
+    "_bakeToLightProbe": true,
+    "_reflectionProbeType": 0,
+    "_bakeToReflectionProbe": true,
+    "_probeCubemap": null
   },
   {
     "__type__": "cc.SphereCollider",
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 83
+      "__id__": 84
     },
     "_enabled": true,
     "__prefab": null,
@@ -2695,17 +2744,17 @@
     "_name": "Collection2",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 25
+      "__id__": 26
     },
     "_children": [
       {
-        "__id__": 88
+        "__id__": 89
       },
       {
-        "__id__": 93
+        "__id__": 94
       },
       {
-        "__id__": 99
+        "__id__": 100
       }
     ],
     "_active": true,
@@ -2745,19 +2794,19 @@
     "_name": "Torus-001",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 87
+      "__id__": 88
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 89
-      },
-      {
-        "__id__": 91
+        "__id__": 90
       },
       {
         "__id__": 92
+      },
+      {
+        "__id__": 93
       }
     ],
     "_prefab": null,
@@ -2795,7 +2844,7 @@
     "_name": "Torus<ModelComponent>",
     "_objFlags": 0,
     "node": {
-      "__id__": 88
+      "__id__": 89
     },
     "_enabled": true,
     "__prefab": null,
@@ -2806,26 +2855,22 @@
       }
     ],
     "_visFlags": 0,
-    "lightmapSettings": {
-      "__id__": 90
+    "bakeSettings": {
+      "__id__": 91
     },
     "_mesh": {
       "__uuid__": "1263d74c-8167-4928-91a6-4e2672411f47@40ece",
       "__expectedType__": "cc.Mesh"
     },
-    "_shadowCastingMode": 0,
+    "_shadowCastingMode": 1,
     "_shadowReceivingMode": 1,
     "_shadowBias": 0,
     "_shadowNormalBias": 0,
-    "_useLightProbe": false,
-    "_bakeToReflectionProbe": true,
-    "_reflectionProbeType": 0,
-    "_probeCubemap": null,
     "_enableMorph": true,
     "_id": "48ZxV63XVHMqAeq99JVJM2"
   },
   {
-    "__type__": "cc.ModelLightmapSettings",
+    "__type__": "cc.ModelBakeSettings",
     "texture": null,
     "uvParam": {
       "__type__": "cc.Vec4",
@@ -2838,14 +2883,19 @@
     "_castShadow": false,
     "_receiveShadow": false,
     "_recieveShadow": false,
-    "_lightmapSize": 64
+    "_lightmapSize": 64,
+    "_useLightProbe": false,
+    "_bakeToLightProbe": true,
+    "_reflectionProbeType": 0,
+    "_bakeToReflectionProbe": true,
+    "_probeCubemap": null
   },
   {
     "__type__": "cc.MeshCollider",
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 88
+      "__id__": 89
     },
     "_enabled": true,
     "__prefab": null,
@@ -2872,7 +2922,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 88
+      "__id__": 89
     },
     "_enabled": true,
     "__prefab": null,
@@ -2902,22 +2952,22 @@
     "_name": "Torus",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 87
+      "__id__": 88
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 94
-      },
-      {
-        "__id__": 96
+        "__id__": 95
       },
       {
         "__id__": 97
       },
       {
         "__id__": 98
+      },
+      {
+        "__id__": 99
       }
     ],
     "_prefab": null,
@@ -2955,7 +3005,7 @@
     "_name": "Torus<ModelComponent>",
     "_objFlags": 0,
     "node": {
-      "__id__": 93
+      "__id__": 94
     },
     "_enabled": true,
     "__prefab": null,
@@ -2966,26 +3016,22 @@
       }
     ],
     "_visFlags": 0,
-    "lightmapSettings": {
-      "__id__": 95
+    "bakeSettings": {
+      "__id__": 96
     },
     "_mesh": {
       "__uuid__": "1263d74c-8167-4928-91a6-4e2672411f47@40ece",
       "__expectedType__": "cc.Mesh"
     },
-    "_shadowCastingMode": 0,
+    "_shadowCastingMode": 1,
     "_shadowReceivingMode": 1,
     "_shadowBias": 0,
     "_shadowNormalBias": 0,
-    "_useLightProbe": false,
-    "_bakeToReflectionProbe": true,
-    "_reflectionProbeType": 0,
-    "_probeCubemap": null,
     "_enableMorph": true,
     "_id": "34EoM6e8hEnqPUVoLGux0e"
   },
   {
-    "__type__": "cc.ModelLightmapSettings",
+    "__type__": "cc.ModelBakeSettings",
     "texture": null,
     "uvParam": {
       "__type__": "cc.Vec4",
@@ -2998,14 +3044,19 @@
     "_castShadow": false,
     "_receiveShadow": false,
     "_recieveShadow": false,
-    "_lightmapSize": 64
+    "_lightmapSize": 64,
+    "_useLightProbe": false,
+    "_bakeToLightProbe": true,
+    "_reflectionProbeType": 0,
+    "_bakeToReflectionProbe": true,
+    "_probeCubemap": null
   },
   {
     "__type__": "cc.MeshCollider",
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 93
+      "__id__": 94
     },
     "_enabled": true,
     "__prefab": null,
@@ -3032,7 +3083,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 93
+      "__id__": 94
     },
     "_enabled": true,
     "__prefab": null,
@@ -3062,13 +3113,13 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 93
+      "__id__": 94
     },
     "_enabled": true,
     "__prefab": null,
     "_enableCollision": true,
     "_connectedBody": {
-      "__id__": 92
+      "__id__": 93
     },
     "_breakForce": 100000000,
     "breakForce": 100000000,
@@ -3081,22 +3132,22 @@
     "_name": "Cone",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 87
+      "__id__": 88
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 100
-      },
-      {
-        "__id__": 102
+        "__id__": 101
       },
       {
         "__id__": 103
       },
       {
         "__id__": 104
+      },
+      {
+        "__id__": 105
       }
     ],
     "_prefab": null,
@@ -3134,7 +3185,7 @@
     "_name": "Cone<ModelComponent>",
     "_objFlags": 0,
     "node": {
-      "__id__": 99
+      "__id__": 100
     },
     "_enabled": true,
     "__prefab": null,
@@ -3145,26 +3196,22 @@
       }
     ],
     "_visFlags": 0,
-    "lightmapSettings": {
-      "__id__": 101
+    "bakeSettings": {
+      "__id__": 102
     },
     "_mesh": {
       "__uuid__": "1263d74c-8167-4928-91a6-4e2672411f47@38fd2",
       "__expectedType__": "cc.Mesh"
     },
-    "_shadowCastingMode": 0,
+    "_shadowCastingMode": 1,
     "_shadowReceivingMode": 1,
     "_shadowBias": 0,
     "_shadowNormalBias": 0,
-    "_useLightProbe": false,
-    "_bakeToReflectionProbe": true,
-    "_reflectionProbeType": 0,
-    "_probeCubemap": null,
     "_enableMorph": true,
     "_id": "a3RLzv4FpLG6F9mh8IkQX6"
   },
   {
-    "__type__": "cc.ModelLightmapSettings",
+    "__type__": "cc.ModelBakeSettings",
     "texture": null,
     "uvParam": {
       "__type__": "cc.Vec4",
@@ -3177,14 +3224,19 @@
     "_castShadow": false,
     "_receiveShadow": false,
     "_recieveShadow": false,
-    "_lightmapSize": 64
+    "_lightmapSize": 64,
+    "_useLightProbe": false,
+    "_bakeToLightProbe": true,
+    "_reflectionProbeType": 0,
+    "_bakeToReflectionProbe": true,
+    "_probeCubemap": null
   },
   {
     "__type__": "cc.RigidBody",
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 99
+      "__id__": 100
     },
     "_enabled": true,
     "__prefab": null,
@@ -3214,7 +3266,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 99
+      "__id__": 100
     },
     "_enabled": true,
     "__prefab": null,
@@ -3239,13 +3291,13 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 99
+      "__id__": 100
     },
     "_enabled": true,
     "__prefab": null,
     "_enableCollision": true,
     "_connectedBody": {
-      "__id__": 97
+      "__id__": 98
     },
     "_breakForce": 100000000,
     "breakForce": 100000000,
@@ -3255,7 +3307,11 @@
   },
   {
     "__type__": "cc.PrefabInfo",
+    "root": null,
+    "asset": null,
     "fileId": "67c2115c-7cca-4e4e-bfdf-088ecc924dc4",
+    "instance": null,
+    "targetOverrides": null,
     "nestedPrefabInstanceRoots": [
       {
         "__id__": 16
@@ -3265,23 +3321,24 @@
   {
     "__type__": "cc.SceneGlobals",
     "ambient": {
-      "__id__": 107
-    },
-    "shadows": {
       "__id__": 108
     },
-    "_skybox": {
+    "shadows": {
       "__id__": 109
     },
-    "fog": {
+    "_skybox": {
       "__id__": 110
     },
-    "octree": {
+    "fog": {
       "__id__": 111
     },
-    "lightProbeInfo": {
+    "octree": {
       "__id__": 112
-    }
+    },
+    "lightProbeInfo": {
+      "__id__": 113
+    },
+    "bakedWithStationaryMainLight": false
   },
   {
     "__type__": "cc.AmbientInfo",
