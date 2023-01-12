@@ -89,7 +89,8 @@ export class CurvecastHelper extends Component {
         this.SetSampleNumber(this.SampleNumnber);
 
         let expectationLabel = this.node.scene.getChildByName('Canvas')!.getChildByName('Expectation')!.getComponent(LabelComponent)!;
-        expectationLabel.string = "physx和bullet跟所有类型碰撞体都可以有碰撞点\n builtin跟圆柱/圆锥体没有碰撞点\n cannon.js跟胶囊体没有碰撞点";
+        // expectationLabel.string = "physx和bullet跟所有类型碰撞体都可以有碰撞点\n builtin跟圆柱/圆锥体没有碰撞点\n cannon.js跟胶囊体没有碰撞点";
+        expectationLabel.string = "In physx and bullet, curve intersects with all kinds of colliders.\nIn builtin, curve doesn't intersect with cylinder and cone.\nIn cannon.js, curve doesn't intersect with capsule.";
     }
 
     onLoad() {
