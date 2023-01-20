@@ -118,6 +118,9 @@
     "_shadowSaturation": 0.2980392156862745,
     "_shadowDistance": 100,
     "_shadowInvisibleOcclusionRange": 200,
+    "_csmLevel": 1,
+    "_csmLayerLambda": 0.75,
+    "_csmOptimizationMode": 2,
     "_shadowFixedArea": false,
     "_shadowNear": 0.1,
     "_shadowFar": 10,
@@ -213,6 +216,8 @@
     "_screenScale": 1,
     "_visibility": 1820327937,
     "_targetTexture": null,
+    "_cameraType": -1,
+    "_trackingType": 0,
     "_id": "7dWQTpwS5LrIHnc1zAPUtf"
   },
   {
@@ -270,13 +275,13 @@
     },
     "_enabled": true,
     "__prefab": null,
-    "_visFlags": 0,
     "_materials": [
       {
         "__uuid__": "d3c7820c-2a98-4429-8bc7-b8453bc9ac41",
         "__expectedType__": "cc.Material"
       }
     ],
+    "_visFlags": 0,
     "lightmapSettings": {
       "__id__": 9
     },
@@ -460,6 +465,8 @@
     "_screenScale": 1,
     "_visibility": 42467328,
     "_targetTexture": null,
+    "_cameraType": -1,
+    "_trackingType": 0,
     "_id": "12/7s4iV5Pv7tlL/tG2UQh"
   },
   {
@@ -582,13 +589,13 @@
     },
     "_enabled": true,
     "__prefab": null,
-    "_visFlags": 0,
     "_materials": [
       {
         "__uuid__": "d3c7820c-2a98-4429-8bc7-b8453bc9ac41",
         "__expectedType__": "cc.Material"
       }
     ],
+    "_visFlags": 0,
     "lightmapSettings": {
       "__id__": 19
     },
@@ -692,13 +699,13 @@
     },
     "_enabled": true,
     "__prefab": null,
-    "_visFlags": 0,
     "_materials": [
       {
         "__uuid__": "d3c7820c-2a98-4429-8bc7-b8453bc9ac41",
         "__expectedType__": "cc.Material"
       }
     ],
+    "_visFlags": 0,
     "lightmapSettings": {
       "__id__": 23
     },
@@ -851,7 +858,11 @@
     "_diffuseMapHDR": null,
     "_diffuseMapLDR": null,
     "_enabled": false,
-    "_useHDR": true
+    "_useHDR": true,
+    "_editableMaterial": null,
+    "_reflectionHDR": null,
+    "_reflectionLDR": null,
+    "_rotationAngle": 0
   },
   {
     "__type__": "cc.FogInfo",
