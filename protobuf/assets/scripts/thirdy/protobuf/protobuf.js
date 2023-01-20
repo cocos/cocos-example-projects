@@ -1,6 +1,6 @@
 /*!
- * protobuf.js v6.8.8 (c) 2016, daniel wirtz
- * compiled tue, 10 mar 2020 18:44:49 utc
+ * protobuf.js v7.1.2 (c) 2016, daniel wirtz
+ * compiled fri, 20 jan 2023 12:31:29 utc
  * licensed under the bsd-3-clause license
  * see: https://github.com/dcodeio/protobuf.js for details
  */
@@ -1530,13 +1530,21 @@ var Enum = require(15),
  * @ignore
  */
 function genValuePartial_fromObject(gen, field, fieldIndex, prop) {
+    var defaultAlreadyEmitted = false;
     /* eslint-disable no-unexpected-multiline, block-scoped-var, no-redeclare */
     if (field.resolvedType) {
         if (field.resolvedType instanceof Enum) { gen
             ("switch(d%s){", prop);
             for (var values = field.resolvedType.values, keys = Object.keys(values), i = 0; i < keys.length; ++i) {
-                if (field.repeated && values[keys[i]] === field.typeDefault) gen
-                ("default:");
+                // enum unknown values passthrough
+                if (values[keys[i]] === field.typeDefault && !defaultAlreadyEmitted) { gen
+                    ("default:")
+                        ("if(typeof(d%s)===\"number\"){m%s=d%s;break}", prop, prop, prop);
+                    if (!field.repeated) gen // fallback to default value only for
+                                             // arrays, to avoid leaving holes.
+                        ("break");           // for non-repeated fields, just ignore
+                    defaultAlreadyEmitted = true;
+                }
                 gen
                 ("case%j:", keys[i])
                 ("case %i:", values[keys[i]])
@@ -1583,7 +1591,7 @@ function genValuePartial_fromObject(gen, field, fieldIndex, prop) {
             case "bytes": gen
                 ("if(typeof d%s===\"string\")", prop)
                     ("util.base64.decode(d%s,m%s=util.newBuffer(util.base64.length(d%s)),0)", prop, prop, prop)
-                ("else if(d%s.length)", prop)
+                ("else if(d%s.length >= 0)", prop)
                     ("m%s=d%s", prop, prop);
                 break;
             case "string": gen
@@ -1668,7 +1676,7 @@ function genValuePartial_toObject(gen, field, fieldIndex, prop) {
     /* eslint-disable no-unexpected-multiline, block-scoped-var, no-redeclare */
     if (field.resolvedType) {
         if (field.resolvedType instanceof Enum) gen
-            ("d%s=o.enums===String?types[%i].values[m%s]:m%s", prop, fieldIndex, prop, prop);
+            ("d%s=o.enums===String?(types[%i].values[m%s]===undefined?m%s:types[%i].values[m%s]):m%s", prop, fieldIndex, prop, prop, fieldIndex, prop, prop);
         else gen
             ("d%s=types[%i].toObject(m%s,o)", prop, fieldIndex, prop);
     } else {
@@ -1826,7 +1834,7 @@ function decoder(mtype) {
     var gen = util.codegen(["r", "l"], mtype.name + "$decode")
     ("if(!(r instanceof Reader))")
         ("r=Reader.create(r)")
-    ("var c=l===undefined?r.len:r.pos+l,m=new this.ctor" + (mtype.fieldsArray.filter(function(field) { return field.map; }).length ? ",k" : ""))
+    ("var c=l===undefined?r.len:r.pos+l,m=new this.ctor" + (mtype.fieldsArray.filter(function(field) { return field.map; }).length ? ",k,value" : ""))
     ("while(r.pos<c){")
         ("var t=r.uint32()");
     if (mtype.group) gen
@@ -1840,26 +1848,48 @@ function decoder(mtype) {
         var field = mtype._fieldsArray[i].resolve(),
             type  = field.resolvedType instanceof Enum ? "int32" : field.type,
             ref   = "m" + util.safeProp(field.name); gen
-            ("case %i:", field.id);
+            ("case %i: {", field.id);
 
         // Map fields
         if (field.map) { gen
-                ("r.skip().pos++") // assumes id 1 + key wireType
                 ("if(%s===util.emptyObject)", ref)
                     ("%s={}", ref)
-                ("k=r.%s()", field.keyType)
-                ("r.pos++"); // assumes id 2 + value wireType
-            if (types.long[field.keyType] !== undefined) {
-                if (types.basic[type] === undefined) gen
-                ("%s[typeof k===\"object\"?util.longToHash(k):k]=types[%i].decode(r,r.uint32())", ref, i); // can't be groups
-                else gen
-                ("%s[typeof k===\"object\"?util.longToHash(k):k]=r.%s()", ref, type);
-            } else {
-                if (types.basic[type] === undefined) gen
-                ("%s[k]=types[%i].decode(r,r.uint32())", ref, i); // can't be groups
-                else gen
-                ("%s[k]=r.%s()", ref, type);
-            }
+                ("var c2 = r.uint32()+r.pos");
+
+            if (types.defaults[field.keyType] !== undefined) gen
+                ("k=%j", types.defaults[field.keyType]);
+            else gen
+                ("k=null");
+
+            if (types.defaults[type] !== undefined) gen
+                ("value=%j", types.defaults[type]);
+            else gen
+                ("value=null");
+
+            gen
+                ("while(r.pos<c2){")
+                    ("var tag2=r.uint32()")
+                    ("switch(tag2>>>3){")
+                        ("case 1: k=r.%s(); break", field.keyType)
+                        ("case 2:");
+
+            if (types.basic[type] === undefined) gen
+                            ("value=types[%i].decode(r,r.uint32())", i); // can't be groups
+            else gen
+                            ("value=r.%s()", type);
+
+            gen
+                            ("break")
+                        ("default:")
+                            ("r.skipType(tag2&7)")
+                            ("break")
+                    ("}")
+                ("}");
+
+            if (types.long[field.keyType] !== undefined) gen
+                ("%s[typeof k===\"object\"?util.longToHash(k):k]=value", ref);
+            else gen
+                ("%s[k]=value", ref);
 
         // Repeated fields
         } else if (field.repeated) { gen
@@ -1889,8 +1919,9 @@ function decoder(mtype) {
         else gen
                 ("%s=r.%s()", ref, type);
         gen
-                ("break");
-    // Unknown fields
+                ("break")
+            ("}");
+        // Unknown fields
     } gen
             ("default:")
                 ("r.skipType(t&7)")
@@ -1961,7 +1992,7 @@ function encoder(mtype) {
         // Map fields
         if (field.map) {
             gen
-    ("if(%s!=null&&m.hasOwnProperty(%j)){", ref, field.name) // !== undefined && !== null
+    ("if(%s!=null&&Object.hasOwnProperty.call(m,%j)){", ref, field.name) // !== undefined && !== null
         ("for(var ks=Object.keys(%s),i=0;i<ks.length;++i){", ref)
             ("w.uint32(%i).fork().uint32(%i).%s(ks[i])", (field.id << 3 | 2) >>> 0, 8 | types.mapKey[field.keyType], field.keyType);
             if (wireType === undefined) gen
@@ -1999,7 +2030,7 @@ function encoder(mtype) {
         // Non-repeated
         } else {
             if (field.optional) gen
-    ("if(%s!=null&&m.hasOwnProperty(%j))", ref, field.name); // !== undefined && !== null
+    ("if(%s!=null&&Object.hasOwnProperty.call(m,%j))", ref, field.name); // !== undefined && !== null
 
             if (wireType === undefined)
         genTypePartial(gen, field, index, ref);
@@ -2013,6 +2044,7 @@ function encoder(mtype) {
     ("return w");
     /* eslint-enable no-unexpected-multiline, block-scoped-var, no-redeclare */
 }
+
 },{"15":15,"36":36,"37":37}],15:[function(require,module,exports){
 "use strict";
 module.exports = Enum;
@@ -2034,8 +2066,9 @@ var Namespace = require(23),
  * @param {Object.<string,*>} [options] Declared options
  * @param {string} [comment] The comment for this enum
  * @param {Object.<string,string>} [comments] The value comments for this enum
+ * @param {Object.<string,Object<string,*>>|undefined} [valuesOptions] The value options for this enum
  */
-function Enum(name, values, options, comment, comments) {
+function Enum(name, values, options, comment, comments, valuesOptions) {
     ReflectionObject.call(this, name, options);
 
     if (values && typeof values !== "object")
@@ -2064,6 +2097,12 @@ function Enum(name, values, options, comment, comments) {
      * @type {Object.<string,string>}
      */
     this.comments = comments || {};
+
+    /**
+     * Values options, if any
+     * @type {Object<string, Object<string, *>>|undefined}
+     */
+    this.valuesOptions = valuesOptions;
 
     /**
      * Reserved ranges, if any.
@@ -2109,11 +2148,12 @@ Enum.fromJSON = function fromJSON(name, json) {
 Enum.prototype.toJSON = function toJSON(toJSONOptions) {
     var keepComments = toJSONOptions ? Boolean(toJSONOptions.keepComments) : false;
     return util.toObject([
-        "options"  , this.options,
-        "values"   , this.values,
-        "reserved" , this.reserved && this.reserved.length ? this.reserved : undefined,
-        "comment"  , keepComments ? this.comment : undefined,
-        "comments" , keepComments ? this.comments : undefined
+        "options"       , this.options,
+        "valuesOptions" , this.valuesOptions,
+        "values"        , this.values,
+        "reserved"      , this.reserved && this.reserved.length ? this.reserved : undefined,
+        "comment"       , keepComments ? this.comment : undefined,
+        "comments"      , keepComments ? this.comments : undefined
     ]);
 };
 
@@ -2122,11 +2162,12 @@ Enum.prototype.toJSON = function toJSON(toJSONOptions) {
  * @param {string} name Value name
  * @param {number} id Value id
  * @param {string} [comment] Comment, if any
+ * @param {Object.<string, *>|undefined} [options] Options, if any
  * @returns {Enum} `this`
  * @throws {TypeError} If arguments are invalid
  * @throws {Error} If there is already a value with this name or id
  */
-Enum.prototype.add = function add(name, id, comment) {
+Enum.prototype.add = function add(name, id, comment, options) {
     // utilized by the parser but not by .fromJSON
 
     if (!util.isString(name))
@@ -2151,6 +2192,12 @@ Enum.prototype.add = function add(name, id, comment) {
     } else
         this.valuesById[this.values[name] = id] = name;
 
+    if (options) {
+        if (this.valuesOptions === undefined)
+            this.valuesOptions = {};
+        this.valuesOptions[name] = options || null;
+    }
+
     this.comments[name] = comment || null;
     return this;
 };
@@ -2174,6 +2221,8 @@ Enum.prototype.remove = function remove(name) {
     delete this.valuesById[val];
     delete this.values[name];
     delete this.comments[name];
+    if (this.valuesOptions)
+        delete this.valuesOptions[name];
 
     return this;
 };
@@ -2281,6 +2330,9 @@ function Field(name, id, type, rule, extend, options, comment) {
      * Field rule, if any.
      * @type {string|undefined}
      */
+    if (rule === "proto3_optional") {
+        rule = "optional";
+    }
     this.rule = rule && rule !== "optional" ? rule : undefined; // toJSON
 
     /**
@@ -2466,6 +2518,9 @@ Field.prototype.resolve = function resolve() {
             this.typeDefault = null;
         else // instanceof Enum
             this.typeDefault = this.resolvedType.values[Object.keys(this.resolvedType.values)[0]]; // first defined
+    } else if (this.options && this.options.proto3_optional) {
+        // proto3 scalar value marked optional; should default to null
+        this.typeDefault = null;
     }
 
     // use explicitly set default value if present
@@ -2705,12 +2760,12 @@ protobuf.configure    = configure;
  * @returns {undefined}
  */
 function configure() {
-    protobuf.Reader._configure(protobuf.BufferReader);
     protobuf.util._configure();
+    protobuf.Writer._configure(protobuf.BufferWriter);
+    protobuf.Reader._configure(protobuf.BufferReader);
 }
 
 // Set up buffer utility according to the environment
-protobuf.Writer._configure(protobuf.BufferWriter);
 configure();
 
 },{"27":27,"28":28,"30":30,"31":31,"39":39,"42":42,"43":43}],19:[function(require,module,exports){
@@ -3018,8 +3073,9 @@ var util = require(37);
  * @param {boolean|Object.<string,*>} [responseStream] Whether the response is streamed
  * @param {Object.<string,*>} [options] Declared options
  * @param {string} [comment] The comment for this method
+ * @param {Object.<string,*>} [parsedOptions] Declared options, properly parsed into an object
  */
-function Method(name, type, requestType, responseType, requestStream, responseStream, options, comment) {
+function Method(name, type, requestType, responseType, requestStream, responseStream, options, comment, parsedOptions) {
 
     /* istanbul ignore next */
     if (util.isObject(requestStream)) {
@@ -3091,6 +3147,11 @@ function Method(name, type, requestType, responseType, requestStream, responseSt
      * @type {string|null}
      */
     this.comment = comment;
+
+    /**
+     * Options properly parsed into an object
+     */
+    this.parsedOptions = parsedOptions;
 }
 
 /**
@@ -3102,6 +3163,8 @@ function Method(name, type, requestType, responseType, requestStream, responseSt
  * @property {boolean} [requestStream=false] Whether requests are streamed
  * @property {boolean} [responseStream=false] Whether responses are streamed
  * @property {Object.<string,*>} [options] Method options
+ * @property {string} comment Method comments
+ * @property {Object.<string,*>} [parsedOptions] Method options properly parsed into an object
  */
 
 /**
@@ -3112,7 +3175,7 @@ function Method(name, type, requestType, responseType, requestStream, responseSt
  * @throws {TypeError} If arguments are invalid
  */
 Method.fromJSON = function fromJSON(name, json) {
-    return new Method(name, json.type, json.requestType, json.responseType, json.requestStream, json.responseStream, json.options, json.comment);
+    return new Method(name, json.type, json.requestType, json.responseType, json.requestStream, json.responseStream, json.options, json.comment, json.parsedOptions);
 };
 
 /**
@@ -3129,7 +3192,8 @@ Method.prototype.toJSON = function toJSON(toJSONOptions) {
         "responseType"   , this.responseType,
         "responseStream" , this.responseStream,
         "options"        , this.options,
-        "comment"        , keepComments ? this.comment : undefined
+        "comment"        , keepComments ? this.comment : undefined,
+        "parsedOptions"  , this.parsedOptions,
     ]);
 };
 
@@ -3157,7 +3221,8 @@ var ReflectionObject = require(24);
 ((Namespace.prototype = Object.create(ReflectionObject.prototype)).constructor = Namespace).className = "Namespace";
 
 var Field    = require(16),
-    util     = require(37);
+    util     = require(37),
+    OneOf    = require(25);
 
 var Type,    // cyclic
     Service,
@@ -3213,7 +3278,7 @@ Namespace.arrayToJSON = arrayToJSON;
 Namespace.isReservedId = function isReservedId(reserved, id) {
     if (reserved)
         for (var i = 0; i < reserved.length; ++i)
-            if (typeof reserved[i] !== "string" && reserved[i][0] <= id && reserved[i][1] >= id)
+            if (typeof reserved[i] !== "string" && reserved[i][0] <= id && reserved[i][1] > id)
                 return true;
     return false;
 };
@@ -3293,9 +3358,8 @@ Object.defineProperty(Namespace.prototype, "nestedArray", {
 /**
  * Any nested object descriptor.
  * @typedef AnyNestedObject
- * @type {IEnum|IType|IService|AnyExtensionField|INamespace}
+ * @type {IEnum|IType|IService|AnyExtensionField|INamespace|IOneOf}
  */
-// ^ BEWARE: VSCode hangs forever when using more than 5 types (that's why AnyExtensionField exists in the first place)
 
 /**
  * Converts this namespace to a namespace descriptor.
@@ -3368,7 +3432,7 @@ Namespace.prototype.getEnum = function getEnum(name) {
  */
 Namespace.prototype.add = function add(object) {
 
-    if (!(object instanceof Field && object.extend !== undefined || object instanceof Type || object instanceof Enum || object instanceof Service || object instanceof Namespace))
+    if (!(object instanceof Field && object.extend !== undefined || object instanceof Type  || object instanceof OneOf || object instanceof Enum || object instanceof Service || object instanceof Namespace))
         throw TypeError("object must be a valid nested object");
 
     if (!this.nested)
@@ -3583,7 +3647,7 @@ Namespace._configure = function(Type_, Service_, Enum_) {
     Enum    = Enum_;
 };
 
-},{"16":16,"24":24,"37":37}],24:[function(require,module,exports){
+},{"16":16,"24":24,"25":25,"37":37}],24:[function(require,module,exports){
 "use strict";
 module.exports = ReflectionObject;
 
@@ -3614,6 +3678,12 @@ function ReflectionObject(name, options) {
      * @type {Object.<string,*>|undefined}
      */
     this.options = options; // toJSON
+
+    /**
+     * Parsed Options.
+     * @type {Array.<Object.<string,*>>|undefined}
+     */
+    this.parsedOptions = null;
 
     /**
      * Unique name within its namespace.
@@ -3752,6 +3822,43 @@ ReflectionObject.prototype.getOption = function getOption(name) {
 ReflectionObject.prototype.setOption = function setOption(name, value, ifNotSet) {
     if (!ifNotSet || !this.options || this.options[name] === undefined)
         (this.options || (this.options = {}))[name] = value;
+    return this;
+};
+
+/**
+ * Sets a parsed option.
+ * @param {string} name parsed Option name
+ * @param {*} value Option value
+ * @param {string} propName dot '.' delimited full path of property within the option to set. if undefined\empty, will add a new option with that value
+ * @returns {ReflectionObject} `this`
+ */
+ReflectionObject.prototype.setParsedOption = function setParsedOption(name, value, propName) {
+    if (!this.parsedOptions) {
+        this.parsedOptions = [];
+    }
+    var parsedOptions = this.parsedOptions;
+    if (propName) {
+        // If setting a sub property of an option then try to merge it
+        // with an existing option
+        var opt = parsedOptions.find(function (opt) {
+            return Object.prototype.hasOwnProperty.call(opt, name);
+        });
+        if (opt) {
+            // If we found an existing option - just merge the property value
+            var newValue = opt[name];
+            util.setProperty(newValue, propName, value);
+        } else {
+            // otherwise, create a new option, set it's property and add it to the list
+            opt = {};
+            opt[name] = util.setProperty({}, propName, value);
+            parsedOptions.push(opt);
+        }
+    } else {
+        // Always create a new option when setting the value of the option itself
+        var newOpt = {};
+        newOpt[name] = value;
+        parsedOptions.push(newOpt);
+    }
     return this;
 };
 
@@ -4035,6 +4142,7 @@ var base10Re    = /^[1-9][0-9]*$/,
  * @interface IParseOptions
  * @property {boolean} [keepCase=false] Keeps field casing instead of converting to camel case
  * @property {boolean} [alternateCommentMode=false] Recognize double-slash comments in addition to doc-block comments.
+ * @property {boolean} [preferTrailingComment=false] Use trailing comment when both leading comment and trailing comment exist.
  */
 
 /**
@@ -4061,6 +4169,7 @@ function parse(source, root, options) {
     if (!options)
         options = parse.defaults;
 
+    var preferTrailingComment = options.preferTrailingComment || false;
     var tn = tokenize(source, options.alternateCommentMode || false),
         next = tn.next,
         push = tn.push,
@@ -4270,7 +4379,9 @@ function parse(source, root, options) {
     function ifBlock(obj, fnIf, fnElse) {
         var trailingLine = tn.line;
         if (obj) {
-            obj.comment = cmnt(); // try block-type comment
+            if(typeof obj.comment !== "string") {
+              obj.comment = cmnt(); // try block-type comment
+            }
             obj.filename = parse.filename;
         }
         if (skip("{", true)) {
@@ -4282,8 +4393,8 @@ function parse(source, root, options) {
             if (fnElse)
                 fnElse();
             skip(";");
-            if (obj && typeof obj.comment !== "string")
-                obj.comment = cmnt(trailingLine); // try line-type comment if no block
+            if (obj && (typeof obj.comment !== "string" || preferTrailingComment))
+                obj.comment = cmnt(trailingLine) || obj.comment; // try line-type comment
         }
     }
 
@@ -4305,9 +4416,17 @@ function parse(source, root, options) {
                     break;
 
                 case "required":
-                case "optional":
                 case "repeated":
                     parseField(type, token);
+                    break;
+
+                case "optional":
+                    /* istanbul ignore if */
+                    if (isProto3) {
+                        parseField(type, "proto3_optional");
+                    } else {
+                        parseField(type, "optional");
+                    }
                     break;
 
                 case "oneof":
@@ -4368,7 +4487,16 @@ function parse(source, root, options) {
         }, function parseField_line() {
             parseInlineOptions(field);
         });
-        parent.add(field);
+
+        if (rule === "proto3_optional") {
+            // for proto3 optional fields, we create a single-member Oneof to mimic "optional" behavior
+            var oneof = new OneOf("_" + name);
+            field.setOption("proto3_optional", true);
+            oneof.add(field);
+            parent.add(oneof);
+        } else {
+            parent.add(field);
+        }
 
         // JSON defaults to packed=true if not set so we have to set packed=false explicity when
         // parsing proto2 descriptors without the option, where applicable. This must be done for
@@ -4402,9 +4530,25 @@ function parse(source, root, options) {
                     break;
 
                 case "required":
-                case "optional":
                 case "repeated":
                     parseField(type, token);
+                    break;
+
+                case "optional":
+                    /* istanbul ignore if */
+                    if (isProto3) {
+                        parseField(type, "proto3_optional");
+                    } else {
+                        parseField(type, "optional");
+                    }
+                    break;
+
+                case "message":
+                    parseType(type, token);
+                    break;
+
+                case "enum":
+                    parseEnum(type, token);
                     break;
 
                 /* istanbul ignore next */
@@ -4507,7 +4651,14 @@ function parse(source, root, options) {
 
         skip("=");
         var value = parseId(next(), true),
-            dummy = {};
+            dummy = {
+                options: undefined
+            };
+        dummy.setOption = function(name, value) {
+            if (this.options === undefined)
+                this.options = {};
+            this.options[name] = value;
+        };
         ifBlock(dummy, function parseEnumValue_block(token) {
 
             /* istanbul ignore else */
@@ -4520,7 +4671,7 @@ function parse(source, root, options) {
         }, function parseEnumValue_line() {
             parseInlineOptions(dummy); // skip
         });
-        parent.add(token, value, dummy.comment);
+        parent.add(token, value, dummy.comment, dummy.options);
     }
 
     function parseOption(parent, token) {
@@ -4531,45 +4682,93 @@ function parse(source, root, options) {
             throw illegal(token, "name");
 
         var name = token;
+        var option = name;
+        var propName;
+
         if (isCustom) {
             skip(")");
             name = "(" + name + ")";
+            option = name;
             token = peek();
             if (fqTypeRefRe.test(token)) {
+                propName = token.slice(1); //remove '.' before property name
                 name += token;
                 next();
             }
         }
         skip("=");
-        parseOptionValue(parent, name);
+        var optionValue = parseOptionValue(parent, name);
+        setParsedOption(parent, option, optionValue, propName);
     }
 
     function parseOptionValue(parent, name) {
-        if (skip("{", true)) { // { a: "foo" b { c: "bar" } }
-            do {
+        // { a: "foo" b { c: "bar" } }
+        if (skip("{", true)) {
+            var objectResult = {};
+
+            while (!skip("}", true)) {
                 /* istanbul ignore if */
-                if (!nameRe.test(token = next()))
+                if (!nameRe.test(token = next())) {
                     throw illegal(token, "name");
+                }
+
+                var value;
+                var propName = token;
+
+                skip(":", true);
 
                 if (peek() === "{")
-                    parseOptionValue(parent, name + "." + token);
-                else {
-                    skip(":");
-                    if (peek() === "{")
-                        parseOptionValue(parent, name + "." + token);
-                    else
-                        setOption(parent, name + "." + token, readValue(true));
+                    value = parseOptionValue(parent, name + "." + token);
+                else if (peek() === "[") {
+                    // option (my_option) = {
+                    //     repeated_value: [ "foo", "bar" ]
+                    // };
+                    value = [];
+                    var lastValue;
+                    if (skip("[", true)) {
+                        do {
+                            lastValue = readValue(true);
+                            value.push(lastValue);
+                        } while (skip(",", true));
+                        skip("]");
+                        if (typeof lastValue !== "undefined") {
+                            setOption(parent, name + "." + token, lastValue);
+                        }
+                    }
+                } else {
+                    value = readValue(true);
+                    setOption(parent, name + "." + token, value);
                 }
+
+                var prevValue = objectResult[propName];
+
+                if (prevValue)
+                    value = [].concat(prevValue).concat(value);
+
+                objectResult[propName] = value;
+
+                // Semicolons and commas can be optional
                 skip(",", true);
-            } while (!skip("}", true));
-        } else
-            setOption(parent, name, readValue(true));
+                skip(";", true);
+            }
+
+            return objectResult;
+        }
+
+        var simpleValue = readValue(true);
+        setOption(parent, name, simpleValue);
+        return simpleValue;
         // Does not enforce a delimiter to be universal
     }
 
     function setOption(parent, name, value) {
         if (parent.setOption)
             parent.setOption(name, value);
+    }
+
+    function setParsedOption(parent, name, value, propName) {
+        if (parent.setParsedOption)
+            parent.setParsedOption(name, value, propName);
     }
 
     function parseInlineOptions(parent) {
@@ -4603,6 +4802,10 @@ function parse(source, root, options) {
     }
 
     function parseMethod(parent, token) {
+        // Get the comment of the preceding line now (if one exists) in case the
+        // method is defined across multiple lines.
+        var commentText = cmnt();
+
         var type = token;
 
         /* istanbul ignore if */
@@ -4634,6 +4837,7 @@ function parse(source, root, options) {
         skip(")");
 
         var method = new Method(name, type, requestType, responseType, requestStream, responseStream);
+        method.comment = commentText;
         ifBlock(method, function parseMethod_block(token) {
 
             /* istanbul ignore else */
@@ -4659,8 +4863,16 @@ function parse(source, root, options) {
 
                 case "required":
                 case "repeated":
-                case "optional":
                     parseField(parent, token, reference);
+                    break;
+
+                case "optional":
+                    /* istanbul ignore if */
+                    if (isProto3) {
+                        parseField(parent, "proto3_optional", reference);
+                    } else {
+                        parseField(parent, "optional", reference);
+                    }
                     break;
 
                 default:
@@ -4706,10 +4918,6 @@ function parse(source, root, options) {
                 break;
 
             case "option":
-
-                /* istanbul ignore if */
-                if (!head)
-                    throw illegal(token);
 
                 parseOption(ptr, token);
                 skip(";");
@@ -4806,6 +5014,20 @@ var create_array = typeof Uint8Array !== "undefined"
         throw Error("illegal buffer");
     };
 
+var create = function create() {
+    return util.Buffer
+        ? function create_buffer_setup(buffer) {
+            return (Reader.create = function create_buffer(buffer) {
+                return util.Buffer.isBuffer(buffer)
+                    ? new BufferReader(buffer)
+                    /* istanbul ignore next */
+                    : create_array(buffer);
+            })(buffer);
+        }
+        /* istanbul ignore next */
+        : create_array;
+};
+
 /**
  * Creates a new reader using the specified buffer.
  * @function
@@ -4813,17 +5035,7 @@ var create_array = typeof Uint8Array !== "undefined"
  * @returns {Reader|BufferReader} A {@link BufferReader} if `buffer` is a Buffer, otherwise a {@link Reader}
  * @throws {Error} If `buffer` is not a valid buffer
  */
-Reader.create = util.Buffer
-    ? function create_buffer_setup(buffer) {
-        return (Reader.create = function create_buffer(buffer) {
-            return util.Buffer.isBuffer(buffer)
-                ? new BufferReader(buffer)
-                /* istanbul ignore next */
-                : create_array(buffer);
-        })(buffer);
-    }
-    /* istanbul ignore next */
-    : create_array;
+Reader.create = create();
 
 Reader.prototype._slice = util.Array.prototype.subarray || /* istanbul ignore next */ util.Array.prototype.slice;
 
@@ -5130,6 +5342,8 @@ Reader.prototype.skipType = function(wireType) {
 
 Reader._configure = function(BufferReader_) {
     BufferReader = BufferReader_;
+    Reader.create = create();
+    BufferReader._configure();
 
     var fn = util.Long ? "toLong" : /* istanbul ignore next */ "toNumber";
     util.merge(Reader.prototype, {
@@ -5184,16 +5398,21 @@ function BufferReader(buffer) {
      */
 }
 
-/* istanbul ignore else */
-if (util.Buffer)
-    BufferReader.prototype._slice = util.Buffer.prototype.slice;
+BufferReader._configure = function () {
+    /* istanbul ignore else */
+    if (util.Buffer)
+        BufferReader.prototype._slice = util.Buffer.prototype.slice;
+};
+
 
 /**
  * @override
  */
 BufferReader.prototype.string = function read_string_buffer() {
     var len = this.uint32(); // modifies pos
-    return this.buf.utf8Slice(this.pos, this.pos = Math.min(this.pos + len, this.len));
+    return this.buf.utf8Slice
+        ? this.buf.utf8Slice(this.pos, this.pos = Math.min(this.pos + len, this.len))
+        : this.buf.toString("utf-8", this.pos, this.pos = Math.min(this.pos + len, this.len));
 };
 
 /**
@@ -5202,6 +5421,8 @@ BufferReader.prototype.string = function read_string_buffer() {
  * @function
  * @returns {Buffer} Value read
  */
+
+BufferReader._configure();
 
 },{"27":27,"39":39}],29:[function(require,module,exports){
 "use strict";
@@ -5267,6 +5488,16 @@ Root.fromJSON = function fromJSON(json, root) {
  */
 Root.prototype.resolvePath = util.path.resolve;
 
+/**
+ * Fetch content from file path or url
+ * This method exists so you can override it with your own logic.
+ * @function
+ * @param {string} path File path or url
+ * @param {FetchCallback} callback Callback function
+ * @returns {undefined}
+ */
+Root.prototype.fetch = util.fetch;
+
 // A symbol-like function to safely signal synchronous loading
 /* istanbul ignore next */
 function SYNC() {} // eslint-disable-line no-empty-function
@@ -5301,6 +5532,16 @@ Root.prototype.load = function load(filename, options, callback) {
         cb(err, root);
     }
 
+    // Bundled definition existence checking
+    function getBundledFileName(filename) {
+        var idx = filename.lastIndexOf("google/protobuf/");
+        if (idx > -1) {
+            var altname = filename.substring(idx);
+            if (altname in common) return altname;
+        }
+        return null;
+    }
+
     // Processes a single file
     function process(filename, source) {
         try {
@@ -5315,11 +5556,11 @@ Root.prototype.load = function load(filename, options, callback) {
                     i = 0;
                 if (parsed.imports)
                     for (; i < parsed.imports.length; ++i)
-                        if (resolved = self.resolvePath(filename, parsed.imports[i]))
+                        if (resolved = getBundledFileName(parsed.imports[i]) || self.resolvePath(filename, parsed.imports[i]))
                             fetch(resolved);
                 if (parsed.weakImports)
                     for (i = 0; i < parsed.weakImports.length; ++i)
-                        if (resolved = self.resolvePath(filename, parsed.weakImports[i]))
+                        if (resolved = getBundledFileName(parsed.weakImports[i]) || self.resolvePath(filename, parsed.weakImports[i]))
                             fetch(resolved, true);
             }
         } catch (err) {
@@ -5331,14 +5572,6 @@ Root.prototype.load = function load(filename, options, callback) {
 
     // Fetches a single file
     function fetch(filename, weak) {
-
-        // Strip path if this file references a bundled definition
-        var idx = filename.lastIndexOf("google/protobuf/");
-        if (idx > -1) {
-            var altname = filename.substring(idx);
-            if (altname in common)
-                filename = altname;
-        }
 
         // Skip if already loaded / attempted
         if (self.files.indexOf(filename) > -1)
@@ -5372,7 +5605,7 @@ Root.prototype.load = function load(filename, options, callback) {
             process(filename, source);
         } else {
             ++queued;
-            util.fetch(filename, function(err, source) {
+            self.fetch(filename, function(err, source) {
                 --queued;
                 /* istanbul ignore if */
                 if (!callback)
@@ -5563,7 +5796,7 @@ module.exports = {};
 /**
  * Named roots.
  * This is where pbjs stores generated structures (the option `-r, --root` specifies a name).
- * Can also be used manually to make roots available accross modules.
+ * Can also be used manually to make roots available across modules.
  * @name roots
  * @type {Object.<string,Root>}
  * @example
@@ -6033,10 +6266,8 @@ function tokenize(source, alternateCommentMode) {
     var offset = 0,
         length = source.length,
         line = 1,
-        commentType = null,
-        commentText = null,
-        commentLine = 0,
-        commentLineEmpty = false;
+        lastCommentLine = 0,
+        comments = {};
 
     var stack = [];
 
@@ -6084,13 +6315,16 @@ function tokenize(source, alternateCommentMode) {
      * Sets the current comment text.
      * @param {number} start Start offset
      * @param {number} end End offset
+     * @param {boolean} isLeading set if a leading comment
      * @returns {undefined}
      * @inner
      */
-    function setComment(start, end) {
-        commentType = source.charAt(start++);
-        commentLine = line;
-        commentLineEmpty = false;
+    function setComment(start, end, isLeading) {
+        var comment = {
+            type: source.charAt(start++),
+            lineEmpty: false,
+            leading: isLeading,
+        };
         var lookback;
         if (alternateCommentMode) {
             lookback = 2;  // alternate comment parsing: "//" or "/*"
@@ -6102,7 +6336,7 @@ function tokenize(source, alternateCommentMode) {
         do {
             if (--commentOffset < 0 ||
                     (c = source.charAt(commentOffset)) === "\n") {
-                commentLineEmpty = true;
+                comment.lineEmpty = true;
                 break;
             }
         } while (c === " " || c === "\t");
@@ -6113,9 +6347,12 @@ function tokenize(source, alternateCommentMode) {
             lines[i] = lines[i]
                 .replace(alternateCommentMode ? setCommentAltRe : setCommentRe, "")
                 .trim();
-        commentText = lines
+        comment.text = lines
             .join("\n")
             .trim();
+
+        comments[line] = comment;
+        lastCommentLine = line;
     }
 
     function isDoubleSlashCommentLine(startOffset) {
@@ -6152,14 +6389,17 @@ function tokenize(source, alternateCommentMode) {
             prev,
             curr,
             start,
-            isDoc;
+            isDoc,
+            isLeadingComment = offset === 0;
         do {
             if (offset === length)
                 return null;
             repeat = false;
             while (whitespaceRe.test(curr = charAt(offset))) {
-                if (curr === "\n")
+                if (curr === "\n") {
+                    isLeadingComment = true;
                     ++line;
+                }
                 if (++offset === length)
                     return null;
             }
@@ -6180,7 +6420,10 @@ function tokenize(source, alternateCommentMode) {
                         }
                         ++offset;
                         if (isDoc) {
-                            setComment(start, offset - 1);
+                            setComment(start, offset - 1, isLeadingComment);
+                            // Trailing comment cannot not be multi-line,
+                            // so leading comment state should be reset to handle potential next comments
+                            isLeadingComment = true;
                         }
                         ++line;
                         repeat = true;
@@ -6196,12 +6439,17 @@ function tokenize(source, alternateCommentMode) {
                                     break;
                                 }
                                 offset++;
+                                if (!isLeadingComment) {
+                                    // Trailing comment cannot not be multi-line
+                                    break;
+                                }
                             } while (isDoubleSlashCommentLine(offset));
                         } else {
                             offset = Math.min(length, findEndOfLine(offset) + 1);
                         }
                         if (isDoc) {
-                            setComment(start, offset);
+                            setComment(start, offset, isLeadingComment);
+                            isLeadingComment = true;
                         }
                         line++;
                         repeat = true;
@@ -6222,7 +6470,8 @@ function tokenize(source, alternateCommentMode) {
                     } while (prev !== "*" || curr !== "/");
                     ++offset;
                     if (isDoc) {
-                        setComment(start, offset - 2);
+                        setComment(start, offset - 2, isLeadingComment);
+                        isLeadingComment = true;
                     }
                     repeat = true;
                 } else {
@@ -6298,17 +6547,22 @@ function tokenize(source, alternateCommentMode) {
      */
     function cmnt(trailingLine) {
         var ret = null;
+        var comment;
         if (trailingLine === undefined) {
-            if (commentLine === line - 1 && (alternateCommentMode || commentType === "*" || commentLineEmpty)) {
-                ret = commentText;
+            comment = comments[line - 1];
+            delete comments[line - 1];
+            if (comment && (alternateCommentMode || comment.type === "*" || comment.lineEmpty)) {
+                ret = comment.leading ? comment.text : null;
             }
         } else {
             /* istanbul ignore else */
-            if (commentLine < trailingLine) {
+            if (lastCommentLine < trailingLine) {
                 peek();
             }
-            if (commentLine === trailingLine && !commentLineEmpty && (alternateCommentMode || commentType === "/")) {
-                ret = commentText;
+            comment = comments[trailingLine];
+            delete comments[trailingLine];
+            if (comment && !comment.lineEmpty && (alternateCommentMode || comment.type === "/")) {
+                ret = comment.leading ? null : comment.text;
             }
         }
         return ret;
@@ -7283,6 +7537,40 @@ util.decorateEnum = function decorateEnum(object) {
     return enm;
 };
 
+
+/**
+ * Sets the value of a property by property path. If a value already exists, it is turned to an array
+ * @param {Object.<string,*>} dst Destination object
+ * @param {string} path dot '.' delimited path of the property to set
+ * @param {Object} value the value to set
+ * @returns {Object.<string,*>} Destination object
+ */
+util.setProperty = function setProperty(dst, path, value) {
+    function setProp(dst, path, value) {
+        var part = path.shift();
+        if (part === "__proto__") {
+          return dst;
+        }
+        if (path.length > 0) {
+            dst[part] = setProp(dst[part] || {}, path, value);
+        } else {
+            var prevValue = dst[part];
+            if (prevValue)
+                value = [].concat(prevValue).concat(value);
+            dst[part] = value;
+        }
+        return dst;
+    }
+
+    if (typeof dst !== "object")
+        throw TypeError("dst must be an object");
+    if (!path)
+        throw TypeError("path must be specified");
+
+    path = path.split(".");
+    return setProp(dst, path, value);
+};
+
 /**
  * Decorator root (TypeScript).
  * @name util.decorateRoot
@@ -7525,9 +7813,24 @@ util.pool = require(9);
 // utility to work with the low and high bits of a 64 bit value
 util.LongBits = require(38);
 
-// global object reference
-util.global = typeof window !== "undefined" && window
-           || typeof global !== "undefined" && global
+/**
+ * Whether running within node or not.
+ * @memberof util
+ * @type {boolean}
+ */
+util.isNode = Boolean(typeof global !== "undefined"
+                   && global
+                   && global.process
+                   && global.process.versions
+                   && global.process.versions.node);
+
+/**
+ * Global object reference.
+ * @memberof util
+ * @type {Object}
+ */
+util.global = util.isNode && global
+           || typeof window !== "undefined" && window
            || typeof self   !== "undefined" && self
            || this; // eslint-disable-line no-invalid-this
 
@@ -7545,14 +7848,6 @@ util.emptyArray = Object.freeze ? Object.freeze([]) : /* istanbul ignore next */
  * @const
  */
 util.emptyObject = Object.freeze ? Object.freeze({}) : /* istanbul ignore next */ {}; // used on prototypes
-
-/**
- * Whether running within node or not.
- * @memberof util
- * @type {boolean}
- * @const
- */
-util.isNode = Boolean(util.global.process && util.global.process.versions && util.global.process.versions.node);
 
 /**
  * Tests if the specified value is an integer.
@@ -7767,19 +8062,36 @@ function newError(name) {
         if (Error.captureStackTrace) // node
             Error.captureStackTrace(this, CustomError);
         else
-            Object.defineProperty(this, "stack", { value: (new Error()).stack || "" });
+            Object.defineProperty(this, "stack", { value: new Error().stack || "" });
 
         if (properties)
             merge(this, properties);
     }
 
-    (CustomError.prototype = Object.create(Error.prototype)).constructor = CustomError;
-
-    Object.defineProperty(CustomError.prototype, "name", { get: function() { return name; } });
-
-    CustomError.prototype.toString = function toString() {
-        return this.name + ": " + this.message;
-    };
+    CustomError.prototype = Object.create(Error.prototype, {
+        constructor: {
+            value: CustomError,
+            writable: true,
+            enumerable: false,
+            configurable: true,
+        },
+        name: {
+            get() { return name; },
+            set: undefined,
+            enumerable: false,
+            // configurable: false would accurately preserve the behavior of
+            // the original, but I'm guessing that was not intentional.
+            // For an actual error subclass, this property would
+            // be configurable.
+            configurable: true,
+        },
+        toString: {
+            value() { return this.name + ": " + this.message; },
+            writable: true,
+            enumerable: false,
+            configurable: true,
+        },
+    });
 
     return CustomError;
 }
@@ -8136,15 +8448,20 @@ wrappers[".google.protobuf.Any"] = {
 
         // unwrap value type if mapped
         if (object && object["@type"]) {
-            var type = this.lookup(object["@type"]);
+             // Only use fully qualified type name after the last '/'
+            var name = object["@type"].substring(object["@type"].lastIndexOf("/") + 1);
+            var type = this.lookup(name);
             /* istanbul ignore else */
             if (type) {
                 // type_url does not accept leading "."
                 var type_url = object["@type"].charAt(0) === "." ?
-                    object["@type"].substr(1) : object["@type"];
+                    object["@type"].slice(1) : object["@type"];
                 // type_url prefix is optional, but path seperator is required
+                if (type_url.indexOf("/") === -1) {
+                    type_url = "/" + type_url;
+                }
                 return this.create({
-                    type_url: "/" + type_url,
+                    type_url: type_url,
                     value: type.encode(type.fromObject(object)).finish()
                 });
             }
@@ -8155,10 +8472,17 @@ wrappers[".google.protobuf.Any"] = {
 
     toObject: function(message, options) {
 
+        // Default prefix
+        var googleApi = "type.googleapis.com/";
+        var prefix = "";
+        var name = "";
+
         // decode value if requested and unmapped
         if (options && options.json && message.type_url && message.value) {
             // Only use fully qualified type name after the last '/'
-            var name = message.type_url.substring(message.type_url.lastIndexOf("/") + 1);
+            name = message.type_url.substring(message.type_url.lastIndexOf("/") + 1);
+            // Separate the prefix used
+            prefix = message.type_url.substring(0, message.type_url.lastIndexOf("/") + 1);
             var type = this.lookup(name);
             /* istanbul ignore else */
             if (type)
@@ -8168,7 +8492,14 @@ wrappers[".google.protobuf.Any"] = {
         // wrap value if unmapped
         if (!(message instanceof this.ctor) && message instanceof Message) {
             var object = message.$type.toObject(message, options);
-            object["@type"] = message.$type.fullName;
+            var messageName = message.$type.fullName[0] === "." ?
+                message.$type.fullName.slice(1) : message.$type.fullName;
+            // Default to type.googleapis.com prefix if no prefix is used
+            if (prefix === "") {
+                prefix = googleApi;
+            }
+            name = prefix + messageName;
+            object["@type"] = name;
             return object;
         }
 
@@ -8300,21 +8631,25 @@ function Writer() {
     // part is just a linked list walk calling operations with already prepared values.
 }
 
+var create = function create() {
+    return util.Buffer
+        ? function create_buffer_setup() {
+            return (Writer.create = function create_buffer() {
+                return new BufferWriter();
+            })();
+        }
+        /* istanbul ignore next */
+        : function create_array() {
+            return new Writer();
+        };
+};
+
 /**
  * Creates a new writer.
  * @function
  * @returns {BufferWriter|Writer} A {@link BufferWriter} when Buffers are supported, otherwise a {@link Writer}
  */
-Writer.create = util.Buffer
-    ? function create_buffer_setup() {
-        return (Writer.create = function create_buffer() {
-            return new BufferWriter();
-        })();
-    }
-    /* istanbul ignore next */
-    : function create_array() {
-        return new Writer();
-    };
+Writer.create = create();
 
 /**
  * Allocates a buffer of the specified size.
@@ -8635,6 +8970,8 @@ Writer.prototype.finish = function finish() {
 
 Writer._configure = function(BufferWriter_) {
     BufferWriter = BufferWriter_;
+    Writer.create = create();
+    BufferWriter._configure();
 };
 
 },{"39":39}],43:[function(require,module,exports){
@@ -8647,8 +8984,6 @@ var Writer = require(42);
 
 var util = require(39);
 
-var Buffer = util.Buffer;
-
 /**
  * Constructs a new buffer writer instance.
  * @classdesc Wire format writer using node buffers.
@@ -8659,27 +8994,29 @@ function BufferWriter() {
     Writer.call(this);
 }
 
-/**
- * Allocates a buffer of the specified size.
- * @param {number} size Buffer size
- * @returns {Buffer} Buffer
- */
-BufferWriter.alloc = function alloc_buffer(size) {
-    return (BufferWriter.alloc = util._Buffer_allocUnsafe)(size);
+BufferWriter._configure = function () {
+    /**
+     * Allocates a buffer of the specified size.
+     * @function
+     * @param {number} size Buffer size
+     * @returns {Buffer} Buffer
+     */
+    BufferWriter.alloc = util._Buffer_allocUnsafe;
+
+    BufferWriter.writeBytesBuffer = util.Buffer && util.Buffer.prototype instanceof Uint8Array && util.Buffer.prototype.set.name === "set"
+        ? function writeBytesBuffer_set(val, buf, pos) {
+          buf.set(val, pos); // faster than copy (requires node >= 4 where Buffers extend Uint8Array and set is properly inherited)
+          // also works for plain array values
+        }
+        /* istanbul ignore next */
+        : function writeBytesBuffer_copy(val, buf, pos) {
+          if (val.copy) // Buffer values
+            val.copy(buf, pos, 0, val.length);
+          else for (var i = 0; i < val.length;) // plain array values
+            buf[pos++] = val[i++];
+        };
 };
 
-var writeBytesBuffer = Buffer && Buffer.prototype instanceof Uint8Array && Buffer.prototype.set.name === "set"
-    ? function writeBytesBuffer_set(val, buf, pos) {
-        buf.set(val, pos); // faster than copy (requires node >= 4 where Buffers extend Uint8Array and set is properly inherited)
-                           // also works for plain array values
-    }
-    /* istanbul ignore next */
-    : function writeBytesBuffer_copy(val, buf, pos) {
-        if (val.copy) // Buffer values
-            val.copy(buf, pos, 0, val.length);
-        else for (var i = 0; i < val.length;) // plain array values
-            buf[pos++] = val[i++];
-    };
 
 /**
  * @override
@@ -8690,22 +9027,24 @@ BufferWriter.prototype.bytes = function write_bytes_buffer(value) {
     var len = value.length >>> 0;
     this.uint32(len);
     if (len)
-        this._push(writeBytesBuffer, len, value);
+        this._push(BufferWriter.writeBytesBuffer, len, value);
     return this;
 };
 
 function writeStringBuffer(val, buf, pos) {
     if (val.length < 40) // plain js is faster for short strings (probably due to redundant assertions)
         util.utf8.write(val, buf, pos);
-    else
+    else if (buf.utf8Write)
         buf.utf8Write(val, pos);
+    else
+        buf.write(val, pos);
 }
 
 /**
  * @override
  */
 BufferWriter.prototype.string = function write_string_buffer(value) {
-    var len = Buffer.byteLength(value);
+    var len = util.Buffer.byteLength(value);
     this.uint32(len);
     if (len)
         this._push(writeStringBuffer, len, value);
@@ -8719,6 +9058,8 @@ BufferWriter.prototype.string = function write_string_buffer(value) {
  * @function
  * @returns {Buffer} Finished buffer
  */
+
+BufferWriter._configure();
 
 },{"39":39,"42":42}]},{},[19])
 

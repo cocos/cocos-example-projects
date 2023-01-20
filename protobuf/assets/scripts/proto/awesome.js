@@ -100,13 +100,13 @@
             AwesomeMessage.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.name != null && message.hasOwnProperty("name"))
+                if (message.name != null && Object.hasOwnProperty.call(message, "name"))
                     writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
-                if (message.age != null && message.hasOwnProperty("age"))
+                if (message.age != null && Object.hasOwnProperty.call(message, "age"))
                     writer.uint32(/* id 2, wireType 0 =*/16).int32(message.age);
-                if (message.data != null && message.hasOwnProperty("data"))
+                if (message.data != null && Object.hasOwnProperty.call(message, "data"))
                     writer.uint32(/* id 3, wireType 2 =*/26).bytes(message.data);
-                if (message.level != null && message.hasOwnProperty("level"))
+                if (message.level != null && Object.hasOwnProperty.call(message, "level"))
                     writer.uint32(/* id 4, wireType 0 =*/32).int64(message.level);
                 return writer;
             };
@@ -386,15 +386,15 @@
             QuestInfo.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.questId != null && message.hasOwnProperty("questId"))
+                if (message.questId != null && Object.hasOwnProperty.call(message, "questId"))
                     writer.uint32(/* id 1, wireType 0 =*/8).int32(message.questId);
-                if (message.finished != null && message.hasOwnProperty("finished"))
+                if (message.finished != null && Object.hasOwnProperty.call(message, "finished"))
                     writer.uint32(/* id 2, wireType 0 =*/16).bool(message.finished);
-                if (message.recved != null && message.hasOwnProperty("recved"))
+                if (message.recved != null && Object.hasOwnProperty.call(message, "recved"))
                     writer.uint32(/* id 3, wireType 0 =*/24).bool(message.recved);
-                if (message.conditionParam1 != null && message.hasOwnProperty("conditionParam1"))
+                if (message.conditionParam1 != null && Object.hasOwnProperty.call(message, "conditionParam1"))
                     writer.uint32(/* id 4, wireType 0 =*/32).int32(message.conditionParam1);
-                if (message.conditionParam2 != null && message.hasOwnProperty("conditionParam2"))
+                if (message.conditionParam2 != null && Object.hasOwnProperty.call(message, "conditionParam2"))
                     writer.uint32(/* id 5, wireType 0 =*/40).int32(message.conditionParam2);
                 return writer;
             };
@@ -672,15 +672,15 @@
             MoreAwesomeMessage.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.myName != null && message.hasOwnProperty("myName"))
+                if (message.myName != null && Object.hasOwnProperty.call(message, "myName"))
                     writer.uint32(/* id 1, wireType 2 =*/10).string(message.myName);
-                if (message.someAge != null && message.hasOwnProperty("someAge"))
+                if (message.someAge != null && Object.hasOwnProperty.call(message, "someAge"))
                     writer.uint32(/* id 2, wireType 0 =*/16).int32(message.someAge);
-                if (message.theData != null && message.hasOwnProperty("theData"))
+                if (message.theData != null && Object.hasOwnProperty.call(message, "theData"))
                     writer.uint32(/* id 3, wireType 2 =*/26).bytes(message.theData);
-                if (message.nextLevel != null && message.hasOwnProperty("nextLevel"))
+                if (message.nextLevel != null && Object.hasOwnProperty.call(message, "nextLevel"))
                     writer.uint32(/* id 4, wireType 0 =*/32).int64(message.nextLevel);
-                if (message.msg != null && message.hasOwnProperty("msg"))
+                if (message.msg != null && Object.hasOwnProperty.call(message, "msg"))
                     $root.awesome.AwesomeMessage.encode(message.msg, writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
                 if (message.quests != null && message.quests.length)
                     for (var i = 0; i < message.quests.length; ++i)
