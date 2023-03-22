@@ -124,13 +124,7 @@ export class ContactPointHelper extends Component {
                     const marker = this._pool!.alloc();
                     pt = marker.pt;
                     aw = marker.aw;
-
-                    pt.setWorldScale(0.25, 0.25, 0.25);
-                    pt.setParent(ContactPointHelper._container);
-
-                    aw = instantiate(this.arrow);
-                    aw.setParent(ContactPointHelper._container);
-
+                    pt.active = true; aw.active = true;
                     map.pt.push(pt);
                     map.aw.push(aw);
                 }
