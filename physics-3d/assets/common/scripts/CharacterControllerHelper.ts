@@ -11,6 +11,7 @@ export class CharacterControllerHelper extends Component {
     private _CapsuleCCT : Node = null!;
     private _slopeLimitComp : Component = null!;
     private _stepOffsetComp : Component = null!;
+    private _contactOffsetComp : Component = null!;
 
     onLoad() {
     }
@@ -24,6 +25,9 @@ export class CharacterControllerHelper extends Component {
         
         const stepOffsetNode = this.node.scene.getChildByName('Canvas')!.getChildByName('最大台阶高度')!;
         this._stepOffsetComp = stepOffsetNode.getChildByName('最大台阶高度数值')!.getComponent(LabelComponent)!;
+
+        const contactOffsetNode = this.node.scene.getChildByName('Canvas')!.getChildByName('接触间隙')!;
+        this._contactOffsetComp = contactOffsetNode.getChildByName('接触间隙数值')!.getComponent(LabelComponent)!;
     }
 
     onDestroy () {
@@ -63,5 +67,13 @@ export class CharacterControllerHelper extends Component {
         this._CapsuleCCT!.getComponent(CharacterController)!.stepOffset = value;
         this._BoxCCT!.getComponent(CharacterController)!.stepOffset = value;
         (this._stepOffsetComp as LabelComponent).string = value.toFixed(2);
+    }
+
+    
+    onChangeCCTContactOffset(customEventData:any) {
+        const value = customEventData._progress * 0.2;
+        this._CapsuleCCT!.getComponent(CharacterController)!.contactOffset = value;
+        this._BoxCCT!.getComponent(CharacterController)!.contactOffset = value;
+        (this._contactOffsetComp as LabelComponent).string = value.toFixed(2);
     }
 }
