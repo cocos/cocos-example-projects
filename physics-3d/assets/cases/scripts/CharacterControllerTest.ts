@@ -145,7 +145,7 @@ export class CharacterControllerTest extends Component {
 
     onResetPosition(){
         if(!this._cct) return;
-        this._cct!.setPosition(new Vec3(-5,5,6));
+        this._cct!.setPosition(new Vec3(-3,5,6));
     }
     update(deltaTime: number) {
         if(!this._cct) 

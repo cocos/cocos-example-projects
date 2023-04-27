@@ -12,6 +12,7 @@ export class CharacterControllerHelper extends Component {
     private _slopeLimitComp : Component = null!;
     private _stepOffsetComp : Component = null!;
     private _contactOffsetComp : Component = null!;
+    private _scaleComp : Component = null!;
 
     onLoad() {
     }
@@ -28,6 +29,9 @@ export class CharacterControllerHelper extends Component {
 
         const contactOffsetNode = this.node.scene.getChildByName('Canvas')!.getChildByName('接触间隙')!;
         this._contactOffsetComp = contactOffsetNode.getChildByName('接触间隙数值')!.getComponent(LabelComponent)!;
+
+        const scaleNode = this.node.scene.getChildByName('Canvas')!.getChildByName('节点缩放')!;
+        this._scaleComp = scaleNode.getChildByName('节点缩放数值')!.getComponent(LabelComponent)!;
     }
 
     onDestroy () {
@@ -75,5 +79,16 @@ export class CharacterControllerHelper extends Component {
         this._CapsuleCCT!.getComponent(CharacterController)!.contactOffset = value;
         this._BoxCCT!.getComponent(CharacterController)!.contactOffset = value;
         (this._contactOffsetComp as LabelComponent).string = value.toFixed(2);
+    }
+
+    onChangeCCTNodeScale(customEventData:any) {
+        let value = customEventData._progress * 3;
+        //clamp value to [0.01, 5]
+        if (value < 0.1) {
+            value = 0.1;
+        }
+        (this._CapsuleCCT! as Node).setWorldScale(value, value, value);
+        (this._BoxCCT! as Node).setWorldScale(value, value, value);
+        (this._scaleComp as LabelComponent).string = value.toFixed(2);
     }
 }
