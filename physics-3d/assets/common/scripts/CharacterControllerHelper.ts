@@ -13,6 +13,7 @@ export class CharacterControllerHelper extends Component {
     private _stepOffsetComp : Component = null!;
     private _contactOffsetComp : Component = null!;
     private _scaleComp : Component = null!;
+    private _descComp : Component = null!;
 
     onLoad() {
     }
@@ -32,6 +33,10 @@ export class CharacterControllerHelper extends Component {
 
         const scaleNode = this.node.scene.getChildByName('Canvas')!.getChildByName('节点缩放')!;
         this._scaleComp = scaleNode.getChildByName('节点缩放数值')!.getComponent(LabelComponent)!;
+
+        const descNode = this.node.scene.getChildByName('Canvas')!.getChildByName('测试说明')!;
+        this._descComp = descNode.getComponent(LabelComponent)!;
+
     }
 
     onDestroy () {
@@ -90,5 +95,9 @@ export class CharacterControllerHelper extends Component {
         (this._CapsuleCCT! as Node).setWorldScale(value, value, value);
         (this._BoxCCT! as Node).setWorldScale(value, value, value);
         (this._scaleComp as LabelComponent).string = value.toFixed(2);
+    }
+
+    onEnableTestDesc(customEventData:any) {
+        this._descComp.enabled = !(this._descComp.enabled);
     }
 }
