@@ -58,6 +58,6 @@ chai.expect(typeof proto.pkg2.Baz).to.equal('function');
 // log(`Guess exports: ${protobufjsFloatIndex.writeDoubleBE === writeDoubleBE}`);
 
 // MGOBE is not a namespace, from its declaration file
-import '../../Libs/MGOBE_v1.3.8/MGOBE.js';
+import MGOBE from '../../Libs/MGOBE_v1.3.8/MGOBE.js';
 chai.expect(typeof MGOBE).to.equal('function');
 chai.expect(typeof MGOBE.Room).to.equal('function');
