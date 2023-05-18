@@ -269,6 +269,8 @@
     "_screenScale": 1,
     "_visibility": 1822425087,
     "_targetTexture": null,
+    "_postProcess": null,
+    "_usePostProcess": false,
     "_cameraType": -1,
     "_trackingType": 0,
     "_id": "7dWQTpwS5LrIHnc1zAPUtf"
@@ -347,6 +349,7 @@
         "__expectedType__": "cc.Material"
       }
     ],
+    "_enabledStandardSkin": false,
     "_visFlags": 0,
     "bakeSettings": {
       "__id__": 10
@@ -518,6 +521,7 @@
         "__expectedType__": "cc.Material"
       }
     ],
+    "_enabledStandardSkin": false,
     "_visFlags": 0,
     "bakeSettings": {
       "__id__": 14
@@ -679,6 +683,7 @@
         "__expectedType__": "cc.Material"
       }
     ],
+    "_enabledStandardSkin": false,
     "_visFlags": 0,
     "bakeSettings": {
       "__id__": 19
@@ -810,6 +815,7 @@
         "__expectedType__": "cc.Material"
       }
     ],
+    "_enabledStandardSkin": false,
     "_visFlags": 0,
     "bakeSettings": {
       "__id__": 23
@@ -938,6 +944,7 @@
         "__expectedType__": "cc.Material"
       }
     ],
+    "_enabledStandardSkin": false,
     "_visFlags": 0,
     "bakeSettings": {
       "__id__": 27
@@ -1064,6 +1071,7 @@
         "__expectedType__": "cc.Material"
       }
     ],
+    "_enabledStandardSkin": false,
     "_visFlags": 0,
     "bakeSettings": {
       "__id__": 31
@@ -1192,6 +1200,7 @@
         "__expectedType__": "cc.Material"
       }
     ],
+    "_enabledStandardSkin": false,
     "_visFlags": 0,
     "bakeSettings": {
       "__id__": 35
@@ -1459,6 +1468,7 @@
         "__expectedType__": "cc.Material"
       }
     ],
+    "_enabledStandardSkin": false,
     "_visFlags": 0,
     "bakeSettings": {
       "__id__": 43
@@ -1559,6 +1569,7 @@
         "__expectedType__": "cc.Material"
       }
     ],
+    "_enabledStandardSkin": false,
     "_visFlags": 0,
     "bakeSettings": {
       "__id__": 46
@@ -1755,6 +1766,8 @@
     "_screenScale": 1,
     "_visibility": 41943040,
     "_targetTexture": null,
+    "_postProcess": null,
+    "_usePostProcess": false,
     "_cameraType": -1,
     "_trackingType": 0,
     "_id": "c8IIOEuUNLUpeqxOZbB0c5"
@@ -4514,7 +4527,7 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 265.891,
+      "x": 234.863,
       "y": 26.376,
       "z": 0
     },
@@ -9250,6 +9263,7 @@
         "__expectedType__": "cc.Material"
       }
     ],
+    "_enabledStandardSkin": false,
     "_visFlags": 0,
     "bakeSettings": {
       "__id__": 277
@@ -9347,6 +9361,7 @@
         "__expectedType__": "cc.Material"
       }
     ],
+    "_enabledStandardSkin": false,
     "_visFlags": 0,
     "bakeSettings": {
       "__id__": 280
@@ -9444,6 +9459,7 @@
         "__expectedType__": "cc.Material"
       }
     ],
+    "_enabledStandardSkin": false,
     "_visFlags": 0,
     "bakeSettings": {
       "__id__": 283
@@ -9638,6 +9654,7 @@
         "__expectedType__": "cc.Material"
       }
     ],
+    "_enabledStandardSkin": false,
     "_visFlags": 0,
     "bakeSettings": {
       "__id__": 288
@@ -9735,6 +9752,7 @@
         "__expectedType__": "cc.Material"
       }
     ],
+    "_enabledStandardSkin": false,
     "_visFlags": 0,
     "bakeSettings": {
       "__id__": 291
@@ -9879,6 +9897,7 @@
         "__expectedType__": "cc.Material"
       }
     ],
+    "_enabledStandardSkin": false,
     "_visFlags": 0,
     "bakeSettings": {
       "__id__": 295
@@ -9976,6 +9995,7 @@
         "__expectedType__": "cc.Material"
       }
     ],
+    "_enabledStandardSkin": false,
     "_visFlags": 0,
     "bakeSettings": {
       "__id__": 298
@@ -10120,6 +10140,7 @@
         "__expectedType__": "cc.Material"
       }
     ],
+    "_enabledStandardSkin": false,
     "_visFlags": 0,
     "bakeSettings": {
       "__id__": 302
@@ -10217,6 +10238,7 @@
         "__expectedType__": "cc.Material"
       }
     ],
+    "_enabledStandardSkin": false,
     "_visFlags": 0,
     "bakeSettings": {
       "__id__": 305
@@ -10285,8 +10307,11 @@
     "octree": {
       "__id__": 312
     },
-    "lightProbeInfo": {
+    "skin": {
       "__id__": 313
+    },
+    "lightProbeInfo": {
+      "__id__": 314
     },
     "bakedWithStationaryMainLight": false,
     "bakedWithHighpLightmap": false
@@ -10425,6 +10450,12 @@
     "_depth": 8
   },
   {
+    "__type__": "cc.SkinInfo",
+    "_enabled": false,
+    "_blurRadius": 0.01,
+    "_sssIntensity": 5
+  },
+  {
     "__type__": "cc.LightProbeInfo",
     "_giScale": 1,
     "_giSamples": 1024,
@@ -10433,6 +10464,7 @@
     "_showProbe": true,
     "_showWireframe": true,
     "_showConvex": false,
-    "_data": null
+    "_data": null,
+    "_lightProbeSphereVolume": 1
   }
 ]
