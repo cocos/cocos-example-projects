@@ -21,22 +21,22 @@
         "__id__": 6
       },
       {
-        "__id__": 109
-      },
-      {
-        "__id__": 121
-      },
-      {
-        "__id__": 130
+        "__id__": 120
       },
       {
         "__id__": 132
+      },
+      {
+        "__id__": 134
+      },
+      {
+        "__id__": 137
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 135
+      "__id__": 150
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -67,7 +67,7 @@
     },
     "autoReleaseAssets": false,
     "_globals": {
-      "__id__": 136
+      "__id__": 151
     },
     "_id": "dbecd8b4-7295-4a7f-b5cb-272751917937"
   },
@@ -219,6 +219,9 @@
       },
       {
         "__id__": 83
+      },
+      {
+        "__id__": 109
       }
     ],
     "_active": true,
@@ -2411,8 +2414,8 @@
     "_connectedBody": {
       "__id__": 74
     },
-    "_breakForce": 1000,
-    "_breakTorque": 1000,
+    "_breakForce": 50,
+    "_breakTorque": 50,
     "_linearLimitSettings": {
       "__id__": 79
     },
@@ -3523,162 +3526,353 @@
   },
   {
     "__type__": "cc.Node",
-    "_objFlags": 512,
+    "_name": "Collection3",
+    "_objFlags": 0,
     "_parent": {
-      "__id__": 1
+      "__id__": 6
     },
-    "_prefab": {
-      "__id__": 110
-    }
+    "_children": [
+      {
+        "__id__": 110
+      }
+    ],
+    "_active": true,
+    "_components": [],
+    "_prefab": null,
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": 0.633,
+      "y": 3.291,
+      "z": -0.377
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0.35355339059327373,
+      "y": 0.35355339059327384,
+      "z": -0.14644660940672624,
+      "w": 0.8535533905932737
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 0.9999999999999999,
+      "y": 0.9999999999999999,
+      "z": 0.9999999999999998
+    },
+    "_mobility": 0,
+    "_layer": 1073741824,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": 45,
+      "y": 45.00000000000001,
+      "z": 3.1805546814635168e-15
+    },
+    "_id": "628Bcx2+xIEbwz1L5jl6HF"
   },
   {
-    "__type__": "cc.PrefabInfo",
-    "root": {
+    "__type__": "cc.Node",
+    "_name": "Cube",
+    "_objFlags": 0,
+    "_parent": {
       "__id__": 109
     },
-    "asset": {
-      "__uuid__": "9d27ae6f-851c-417f-ad4d-573f38dbefad",
-      "__expectedType__": "cc.Prefab"
-    },
-    "fileId": "57r1NJa1ZEMpiY0enYfIAb",
-    "instance": {
-      "__id__": 111
-    },
-    "targetOverrides": null,
-    "nestedPrefabInstanceRoots": null
-  },
-  {
-    "__type__": "cc.PrefabInstance",
-    "fileId": "36zGICu3hAv7q2fSwSmrRl",
-    "prefabRootNode": null,
-    "mountedChildren": [],
-    "mountedComponents": [],
-    "propertyOverrides": [
+    "_children": [],
+    "_active": true,
+    "_components": [
       {
-        "__id__": 112
+        "__id__": 111
+      },
+      {
+        "__id__": 113
       },
       {
         "__id__": 114
       },
       {
         "__id__": 115
-      },
-      {
-        "__id__": 116
-      },
-      {
-        "__id__": 117
-      },
-      {
-        "__id__": 118
-      },
-      {
-        "__id__": 119
       }
     ],
-    "removedComponents": []
-  },
-  {
-    "__type__": "CCPropertyOverrideInfo",
-    "targetInfo": {
-      "__id__": 113
-    },
-    "propertyPath": [
-      "_name"
-    ],
-    "value": "cannon-ammo"
-  },
-  {
-    "__type__": "cc.TargetInfo",
-    "localID": [
-      "57r1NJa1ZEMpiY0enYfIAb"
-    ]
-  },
-  {
-    "__type__": "CCPropertyOverrideInfo",
-    "targetInfo": {
-      "__id__": 113
-    },
-    "propertyPath": [
-      "_lpos"
-    ],
-    "value": {
+    "_prefab": null,
+    "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 480,
-      "y": 320,
+      "x": 0,
+      "y": 0,
       "z": 0
-    }
-  },
-  {
-    "__type__": "CCPropertyOverrideInfo",
-    "targetInfo": {
-      "__id__": 113
     },
-    "propertyPath": [
-      "_lrot"
-    ],
-    "value": {
+    "_lrot": {
       "__type__": "cc.Quat",
       "x": 0,
       "y": 0,
       "z": 0,
       "w": 1
-    }
-  },
-  {
-    "__type__": "CCPropertyOverrideInfo",
-    "targetInfo": {
-      "__id__": 113
     },
-    "propertyPath": [
-      "_layer"
-    ],
-    "value": 1073741824
-  },
-  {
-    "__type__": "CCPropertyOverrideInfo",
-    "targetInfo": {
-      "__id__": 113
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
     },
-    "propertyPath": [
-      "_euler"
-    ],
-    "value": {
+    "_mobility": 0,
+    "_layer": 1073741824,
+    "_euler": {
       "__type__": "cc.Vec3",
       "x": 0,
       "y": 0,
       "z": 0
-    }
-  },
-  {
-    "__type__": "CCPropertyOverrideInfo",
-    "targetInfo": {
-      "__id__": 113
     },
-    "propertyPath": [
-      "_active"
-    ],
-    "value": true
+    "_id": "5eG9m0XWxH7YUPcH4I3HVl"
   },
   {
-    "__type__": "CCPropertyOverrideInfo",
-    "targetInfo": {
-      "__id__": 120
+    "__type__": "cc.MeshRenderer",
+    "_name": "Cube<ModelComponent>",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 110
     },
-    "propertyPath": [
-      "_contentSize"
+    "_enabled": true,
+    "__prefab": null,
+    "_materials": [
+      {
+        "__uuid__": "d3c7820c-2a98-4429-8bc7-b8453bc9ac41",
+        "__expectedType__": "cc.Material"
+      }
     ],
-    "value": {
-      "__type__": "cc.Size",
-      "width": 960,
-      "height": 640
-    }
+    "_enabledStandardSkin": false,
+    "_visFlags": 0,
+    "bakeSettings": {
+      "__id__": 112
+    },
+    "_mesh": {
+      "__uuid__": "1263d74c-8167-4928-91a6-4e2672411f47@a804a",
+      "__expectedType__": "cc.Mesh"
+    },
+    "_shadowCastingMode": 1,
+    "_shadowReceivingMode": 1,
+    "_shadowBias": 0,
+    "_shadowNormalBias": 0,
+    "_reflectionProbeId": -1,
+    "_reflectionProbeBlendId": -1,
+    "_reflectionProbeBlendWeight": 0,
+    "_enableMorph": true,
+    "_id": "c4YK76jLRAobfU6YGOYd14"
   },
   {
-    "__type__": "cc.TargetInfo",
-    "localID": [
-      "29sgMGwBxBXYoO7GS/vqnB"
-    ]
+    "__type__": "cc.ModelBakeSettings",
+    "texture": null,
+    "uvParam": {
+      "__type__": "cc.Vec4",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 0
+    },
+    "_bakeable": false,
+    "_castShadow": false,
+    "_receiveShadow": false,
+    "_recieveShadow": false,
+    "_lightmapSize": 64,
+    "_useLightProbe": false,
+    "_bakeToLightProbe": true,
+    "_reflectionProbeType": 0,
+    "_bakeToReflectionProbe": true
+  },
+  {
+    "__type__": "cc.BoxCollider",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 110
+    },
+    "_enabled": true,
+    "__prefab": null,
+    "_material": {
+      "__uuid__": "ba21476f-2866-4f81-9c4d-6e359316e448",
+      "__expectedType__": "cc.PhysicsMaterial"
+    },
+    "_isTrigger": false,
+    "_center": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_size": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_id": "9d8Z0LK+BFkIqLp9Wsd8++"
+  },
+  {
+    "__type__": "cc.RigidBody",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 110
+    },
+    "_enabled": true,
+    "__prefab": null,
+    "_group": 1,
+    "_type": 1,
+    "_mass": 1,
+    "_allowSleep": true,
+    "_linearDamping": 0.1,
+    "_angularDamping": 0.1,
+    "_useGravity": true,
+    "_linearFactor": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_angularFactor": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_id": "61YA3ae2NLnLyjXbrrzyhn"
+  },
+  {
+    "__type__": "cc.ConfigurableConstraint",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 110
+    },
+    "_enabled": true,
+    "__prefab": null,
+    "_enableCollision": true,
+    "_connectedBody": null,
+    "_breakForce": 100000000,
+    "_breakTorque": 100000000,
+    "_linearLimitSettings": {
+      "__id__": 116
+    },
+    "linearLimitSettings": {
+      "__id__": 116
+    },
+    "_angularLimitSettings": {
+      "__id__": 117
+    },
+    "angularLimitSettings": {
+      "__id__": 117
+    },
+    "_linearDriverSettings": {
+      "__id__": 118
+    },
+    "linearDriverSettings": {
+      "__id__": 118
+    },
+    "_angularDriverSettings": {
+      "__id__": 119
+    },
+    "angularDriverSettings": {
+      "__id__": 119
+    },
+    "_pivotA": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_pivotB": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_autoPivotB": false,
+    "_axis": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 1,
+      "z": 0
+    },
+    "_secondaryAxis": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 0,
+      "z": 0
+    },
+    "_id": "8ekCZ93BlGq7eVV0vkM30z"
+  },
+  {
+    "__type__": "cc.LinearLimitSettings",
+    "_xMotion": 2,
+    "_yMotion": 2,
+    "_zMotion": 2,
+    "_upper": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_lower": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_enableSoftConstraint": false,
+    "_bounciness": 0,
+    "_stiffness": 0,
+    "_damping": 0
+  },
+  {
+    "__type__": "cc.AngularLimitSettings",
+    "_swing1Motion": 2,
+    "_swing2Motion": 2,
+    "_twistMotion": 2,
+    "_twistExtent": 0,
+    "_swingExtent1": 0,
+    "_swingExtent2": 0,
+    "_enableSoftConstraintSwing": false,
+    "_swingBounciness": 0,
+    "_swingStiffness": 0,
+    "_swingDamping": 0,
+    "_enableSoftConstraintTwist": false,
+    "_twistBounciness": 0,
+    "_twistStiffness": 0,
+    "_twistDamping": 0
+  },
+  {
+    "__type__": "cc.LinearDriverSettings",
+    "_target": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_velocity": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_xDrive": 0,
+    "_yDrive": 0,
+    "_zDrive": 0,
+    "_strength": 0
+  },
+  {
+    "__type__": "cc.AngularDriverSettings",
+    "_swingDrive1": 0,
+    "_swingDrive2": 0,
+    "_twistDrive": 0,
+    "_targetOrientation": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_targetVelocity": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_strength": 0
   },
   {
     "__type__": "cc.Node",
@@ -3689,22 +3883,25 @@
     },
     "_children": [
       {
-        "__id__": 122
+        "__id__": 121
       },
       {
-        "__id__": 125
+        "__id__": 123
+      },
+      {
+        "__id__": 126
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 127
-      },
-      {
-        "__id__": 128
-      },
-      {
         "__id__": 129
+      },
+      {
+        "__id__": 130
+      },
+      {
+        "__id__": 131
       }
     ],
     "_prefab": null,
@@ -3739,122 +3936,16 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Label",
-    "_objFlags": 512,
-    "_parent": {
-      "__id__": 121
-    },
-    "_children": [],
-    "_active": true,
-    "_components": [
-      {
-        "__id__": 123
-      },
-      {
-        "__id__": 124
-      }
-    ],
-    "_prefab": null,
-    "_lpos": {
-      "__type__": "cc.Vec3",
-      "x": 330,
-      "y": 0,
-      "z": 0
-    },
-    "_lrot": {
-      "__type__": "cc.Quat",
-      "x": 0,
-      "y": 0,
-      "z": 0,
-      "w": 1
-    },
-    "_lscale": {
-      "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
-      "z": 1
-    },
-    "_mobility": 0,
-    "_layer": 16384,
-    "_euler": {
-      "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 0,
-      "z": 0
-    },
-    "_id": "7dbiPP3LxPeIBDuX79ha23"
-  },
-  {
-    "__type__": "cc.UITransform",
-    "_name": "Label<UITransform>",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 122
-    },
-    "_enabled": true,
-    "__prefab": null,
-    "_contentSize": {
-      "__type__": "cc.Size",
-      "width": 265,
-      "height": 600
-    },
-    "_anchorPoint": {
-      "__type__": "cc.Vec2",
-      "x": 0.5,
-      "y": 0.5
-    },
-    "_id": "693d6PqVhGmq8KYlTKb12m"
-  },
-  {
-    "__type__": "cc.Label",
-    "_name": "Label<Label>",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 122
-    },
-    "_enabled": true,
-    "__prefab": null,
-    "_customMaterial": null,
-    "_srcBlendFactor": 2,
-    "_dstBlendFactor": 4,
-    "_color": {
-      "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
-      "a": 255
-    },
-    "_string": "相同颜色的物体通过 configurable constraint 进行约束，在 demo 运行过程中，相同颜色的物体会保持运动状态一致，相对静止。\n\n\n\n\n\n\n\n深蓝色组合的约束效果将会在掉落后失效。",
-    "_horizontalAlign": 2,
-    "_verticalAlign": 2,
-    "_actualFontSize": 20,
-    "_fontSize": 20,
-    "_fontFamily": "Arial",
-    "_lineHeight": 40,
-    "_overflow": 1,
-    "_enableWrapText": true,
-    "_font": null,
-    "_isSystemFontUsed": true,
-    "_spacingX": 0,
-    "_isItalic": false,
-    "_isBold": false,
-    "_isUnderline": false,
-    "_underlineHeight": 2,
-    "_cacheMode": 0,
-    "_id": "bb2YP+3flIirCCGwqwpETH"
-  },
-  {
-    "__type__": "cc.Node",
     "_name": "UICamera_Canvas",
     "_objFlags": 512,
     "_parent": {
-      "__id__": 121
+      "__id__": 120
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 126
+        "__id__": 122
       }
     ],
     "_prefab": null,
@@ -3892,7 +3983,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 125
+      "__id__": 121
     },
     "_enabled": true,
     "__prefab": null,
@@ -3933,11 +4024,225 @@
     "_id": "4aqN61G1ZDR6nJZeTX/ksl"
   },
   {
+    "__type__": "cc.Node",
+    "_name": "Label-001",
+    "_objFlags": 512,
+    "__editorExtras__": {},
+    "_parent": {
+      "__id__": 120
+    },
+    "_children": [],
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 124
+      },
+      {
+        "__id__": 125
+      }
+    ],
+    "_prefab": null,
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": 310.296,
+      "y": -199.789,
+      "z": 0
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_mobility": 0,
+    "_layer": 16384,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_id": "faen7EjWhIA4p4UFSGdwUt"
+  },
+  {
+    "__type__": "cc.UITransform",
+    "_name": "Label<UITransform>",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 123
+    },
+    "_enabled": true,
+    "__prefab": null,
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 300,
+      "height": 150
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_id": "f7/MTRIARBCpPrfr0y5iz0"
+  },
+  {
+    "__type__": "cc.Label",
+    "_name": "Label<Label>",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 123
+    },
+    "_enabled": true,
+    "__prefab": null,
+    "_customMaterial": null,
+    "_srcBlendFactor": 2,
+    "_dstBlendFactor": 4,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 0,
+      "g": 0,
+      "b": 0,
+      "a": 255
+    },
+    "_string": "深蓝色组合的约束效果将会在掉落后失效。\n白色物体将悬浮在空中不会掉落。",
+    "_horizontalAlign": 2,
+    "_verticalAlign": 2,
+    "_actualFontSize": 20,
+    "_fontSize": 20,
+    "_fontFamily": "Arial",
+    "_lineHeight": 40,
+    "_overflow": 1,
+    "_enableWrapText": true,
+    "_font": null,
+    "_isSystemFontUsed": true,
+    "_spacingX": 0,
+    "_isItalic": false,
+    "_isBold": false,
+    "_isUnderline": false,
+    "_underlineHeight": 2,
+    "_cacheMode": 0,
+    "_id": "12/r23w0pDwbMxvY3Hr52F"
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Label",
+    "_objFlags": 512,
+    "__editorExtras__": {},
+    "_parent": {
+      "__id__": 120
+    },
+    "_children": [],
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 127
+      },
+      {
+        "__id__": 128
+      }
+    ],
+    "_prefab": null,
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": 329.99999999999994,
+      "y": 145.44399999999996,
+      "z": 0
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_mobility": 0,
+    "_layer": 16384,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_id": "1aeeLyYp5Of6TkViVveFD/"
+  },
+  {
+    "__type__": "cc.UITransform",
+    "_name": "Label<UITransform>",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 126
+    },
+    "_enabled": true,
+    "__prefab": null,
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 265,
+      "height": 200
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_id": "87AeRRbr9GiosqvR1gMbbV"
+  },
+  {
+    "__type__": "cc.Label",
+    "_name": "Label<Label>",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 126
+    },
+    "_enabled": true,
+    "__prefab": null,
+    "_customMaterial": null,
+    "_srcBlendFactor": 2,
+    "_dstBlendFactor": 4,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_string": "相同颜色的物体通过 configurable constraint 进行约束，在 demo 运行过程中，相同颜色的物体会保持运动状态一致，相对静止。",
+    "_horizontalAlign": 2,
+    "_verticalAlign": 0,
+    "_actualFontSize": 20,
+    "_fontSize": 20,
+    "_fontFamily": "Arial",
+    "_lineHeight": 40,
+    "_overflow": 1,
+    "_enableWrapText": true,
+    "_font": null,
+    "_isSystemFontUsed": true,
+    "_spacingX": 0,
+    "_isItalic": false,
+    "_isBold": false,
+    "_isUnderline": false,
+    "_underlineHeight": 2,
+    "_cacheMode": 0,
+    "_id": "05uTuNh7pMs49G1hZ9qfE6"
+  },
+  {
     "__type__": "cc.UITransform",
     "_name": "Canvas<UITransform>",
     "_objFlags": 0,
     "node": {
-      "__id__": 121
+      "__id__": 120
     },
     "_enabled": true,
     "__prefab": null,
@@ -3958,12 +4263,12 @@
     "_name": "Canvas<Canvas>",
     "_objFlags": 0,
     "node": {
-      "__id__": 121
+      "__id__": 120
     },
     "_enabled": true,
     "__prefab": null,
     "_cameraComponent": {
-      "__id__": 126
+      "__id__": 122
     },
     "_alignCanvasWithScreen": true,
     "_id": "46Re9w3DNJZJfw4NN2Id8r"
@@ -3973,7 +4278,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 121
+      "__id__": 120
     },
     "_enabled": true,
     "__prefab": null,
@@ -4008,7 +4313,7 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 131
+        "__id__": 133
       }
     ],
     "_prefab": null,
@@ -4046,7 +4351,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 130
+      "__id__": 132
     },
     "_enabled": true,
     "__prefab": null,
@@ -4097,7 +4402,7 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 133
+        "__id__": 135
       }
     ],
     "_prefab": null,
@@ -4135,7 +4440,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 132
+      "__id__": 134
     },
     "_enabled": true,
     "__prefab": null,
@@ -4149,7 +4454,7 @@
     "_useColorTemperature": false,
     "_colorTemperature": 6550,
     "_staticSettings": {
-      "__id__": 134
+      "__id__": 136
     },
     "_visibility": -325058561,
     "_illuminanceHDR": 65000,
@@ -4181,6 +4486,175 @@
     "_castShadow": true
   },
   {
+    "__type__": "cc.Node",
+    "_objFlags": 512,
+    "_parent": {
+      "__id__": 1
+    },
+    "_prefab": {
+      "__id__": 138
+    },
+    "__editorExtras__": {}
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 137
+    },
+    "asset": {
+      "__uuid__": "e20a39a0-80e8-4643-ba1d-13a35c705e9a",
+      "__expectedType__": "cc.Prefab"
+    },
+    "fileId": "57r1NJa1ZEMpiY0enYfIAb",
+    "instance": {
+      "__id__": 139
+    },
+    "targetOverrides": null,
+    "nestedPrefabInstanceRoots": null
+  },
+  {
+    "__type__": "cc.PrefabInstance",
+    "fileId": "6bWC36BTZDSav77Lsul5+x",
+    "prefabRootNode": null,
+    "mountedChildren": [],
+    "mountedComponents": [],
+    "propertyOverrides": [
+      {
+        "__id__": 140
+      },
+      {
+        "__id__": 142
+      },
+      {
+        "__id__": 143
+      },
+      {
+        "__id__": 144
+      },
+      {
+        "__id__": 145
+      },
+      {
+        "__id__": 147
+      },
+      {
+        "__id__": 148
+      },
+      {
+        "__id__": 149
+      }
+    ],
+    "removedComponents": []
+  },
+  {
+    "__type__": "CCPropertyOverrideInfo",
+    "targetInfo": {
+      "__id__": 141
+    },
+    "propertyPath": [
+      "_lpos"
+    ],
+    "value": {
+      "__type__": "cc.Vec3",
+      "x": 480,
+      "y": 320,
+      "z": 0
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "57r1NJa1ZEMpiY0enYfIAb"
+    ]
+  },
+  {
+    "__type__": "CCPropertyOverrideInfo",
+    "targetInfo": {
+      "__id__": 141
+    },
+    "propertyPath": [
+      "_name"
+    ],
+    "value": "bullet"
+  },
+  {
+    "__type__": "CCPropertyOverrideInfo",
+    "targetInfo": {
+      "__id__": 141
+    },
+    "propertyPath": [
+      "_lrot"
+    ],
+    "value": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    }
+  },
+  {
+    "__type__": "CCPropertyOverrideInfo",
+    "targetInfo": {
+      "__id__": 141
+    },
+    "propertyPath": [
+      "_euler"
+    ],
+    "value": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    }
+  },
+  {
+    "__type__": "CCPropertyOverrideInfo",
+    "targetInfo": {
+      "__id__": 146
+    },
+    "propertyPath": [
+      "_left"
+    ],
+    "value": 0
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "52A9kDcaRG+KE5wDWTUUIl"
+    ]
+  },
+  {
+    "__type__": "CCPropertyOverrideInfo",
+    "targetInfo": {
+      "__id__": 146
+    },
+    "propertyPath": [
+      "_right"
+    ],
+    "value": 0
+  },
+  {
+    "__type__": "CCPropertyOverrideInfo",
+    "targetInfo": {
+      "__id__": 146
+    },
+    "propertyPath": [
+      "_top"
+    ],
+    "value": 0
+  },
+  {
+    "__type__": "CCPropertyOverrideInfo",
+    "targetInfo": {
+      "__id__": 146
+    },
+    "propertyPath": [
+      "_bottom"
+    ],
+    "value": 0
+  },
+  {
     "__type__": "cc.PrefabInfo",
     "root": null,
     "asset": null,
@@ -4189,32 +4663,32 @@
     "targetOverrides": null,
     "nestedPrefabInstanceRoots": [
       {
-        "__id__": 109
+        "__id__": 137
       }
     ]
   },
   {
     "__type__": "cc.SceneGlobals",
     "ambient": {
-      "__id__": 137
+      "__id__": 152
     },
     "shadows": {
-      "__id__": 138
+      "__id__": 153
     },
     "_skybox": {
-      "__id__": 139
+      "__id__": 154
     },
     "fog": {
-      "__id__": 140
+      "__id__": 155
     },
     "octree": {
-      "__id__": 141
+      "__id__": 156
     },
     "skin": {
-      "__id__": 142
+      "__id__": 157
     },
     "lightProbeInfo": {
-      "__id__": 143
+      "__id__": 158
     },
     "bakedWithStationaryMainLight": false,
     "bakedWithHighpLightmap": false
