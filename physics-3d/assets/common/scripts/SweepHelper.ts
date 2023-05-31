@@ -143,7 +143,7 @@ export class SweepHelper extends Component {
         }
 
         //let sampleDir = new Vec3();
-        for(let s = 0; s < this.SampleNumnber - 1; s++){
+        for(let s = 0; s < this.SampleNumnber; s++){
             const lineSegment = this.lineSegmentContainer.children[s];
             let samplePos = sampleArray[s];
             
@@ -379,7 +379,7 @@ export class SweepHelper extends Component {
                 }
                 this.SampleNumnber = sampleNumber;
                 this.lineSegmentContainer.removeAllChildren();
-                for(let s = 0; s < this.SampleNumnber - 1; s++){
+                for(let s = 0; s < this.SampleNumnber; s++){
                     const lineSegment = instantiate(sweepShape) as Node;        
                     this.lineSegmentContainer.addChild(lineSegment);
                 }
