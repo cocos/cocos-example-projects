@@ -16,6 +16,8 @@ enum ESweepShapeType {
 }
 Enum(ESweepShapeType);
 
+const DEFAULT_HIT_POINT_NUMBER = 20;
+const DefaultHitPointWorldPos = new Vec3(-100000,-100000,-100000);
 @ccclass('COMMON.SweepHelper')
 @menu('common/SweepHelper')
 export class SweepHelper extends Component {
@@ -63,6 +65,8 @@ export class SweepHelper extends Component {
 
     private ResultLabel: any;
 
+    private _hitPointPool: Node[] = [];
+    
     __preload () {
         this.ResultLabel = this.node.scene.getChildByName('Canvas')!.getChildByName('Result')!.getComponent(LabelComponent)!;
 
@@ -100,6 +104,14 @@ export class SweepHelper extends Component {
         director.addPersistRootNode(this.lineSegmentContainer);
 
         this.generateSegments(this.SampleNumnber, this.sweepShapeType);
+
+        //init hit point pool
+        for(let i = 0; i < DEFAULT_HIT_POINT_NUMBER; i++){
+            const hitPoint = instantiate(this._hitPoint) as Node;
+            hitPoint.setWorldPosition(DefaultHitPointWorldPos);
+            this._hitPointPool.push(hitPoint);
+            this.hitPointContainer.addChild(hitPoint);
+        }
     }
 
     onLoad() {
@@ -112,6 +124,7 @@ export class SweepHelper extends Component {
     onDestroy () {
         this.hitPointContainer.removeAllChildren();
         this.lineSegmentContainer.removeAllChildren();
+        this._hitPointPool.length = 0;
     }
     
     sampleLine(p0:Vec3, p1:Vec3, t: number):Vec3 {
@@ -124,6 +137,31 @@ export class SweepHelper extends Component {
         return ret;
     }
 
+    getHitPoint () {
+        let hitPoint = null;
+        if(this._hitPointPool.length > 0){
+            hitPoint = this._hitPointPool.pop();
+        } else{
+            hitPoint = instantiate(this._hitPoint) as Node;
+            this.hitPointContainer.addChild(hitPoint);
+        }
+        return hitPoint;
+    }
+
+    putHitPoint (hitPoint: Node) {
+        if (!hitPoint) return;
+        hitPoint.setWorldPosition(DefaultHitPointWorldPos);
+        this._hitPointPool.push(hitPoint);
+    }
+
+    resetHitPointContainer () {
+        for(let i = 0 ; i < this.hitPointContainer.children.length; i++){
+            const hitPoint = this.hitPointContainer.children[i];
+            this.putHitPoint(hitPoint);
+        }
+        this.hitPointContainer.removeAllChildren();
+    }
+
     OnCurveCast () {
         this._ray = new geometry.Ray(-9, this.StartPointY, this.StartPointZ, 1, 0, 0);
         //convert rotation to orientation
@@ -131,8 +169,7 @@ export class SweepHelper extends Component {
 
         this.ResultLabel.string = "";
 
-        //remnove all existing controlPoint, hitPoint node
-        this.hitPointContainer.removeAllChildren();
+        this.resetHitPointContainer();
 
         let sampleArray = [];
         let p1 = new Vec3();
@@ -161,7 +198,7 @@ export class SweepHelper extends Component {
                     Vec3.multiplyScalar(v3_t, v3_t, this._scale);
                     if (PhysicsSystem.instance.sweepBoxClosest(this._ray, v3_t, this._orientation, this._mask, this._maxDistance, this._queryTrigger)) {
                         const result = PhysicsSystem.instance.sweepCastClosestResult;
-                        const hitPoint = instantiate(this._hitPoint) as Node;
+                        const hitPoint = this.getHitPoint();
                         hitPoint.setWorldPosition(result.hitPoint);
                         hitPoint.setScale(this.hitSphereScale, this.hitSphereScale, this.hitSphereScale);
                         this.hitPointContainer.addChild(hitPoint);
@@ -170,7 +207,7 @@ export class SweepHelper extends Component {
                 case ESweepShapeType.SPHERE:
                     if (PhysicsSystem.instance.sweepSphereClosest(this._ray, this._sphereRadius * this._scale, this._mask, this._maxDistance, this._queryTrigger)) {
                         const result = PhysicsSystem.instance.sweepCastClosestResult;
-                        const hitPoint = instantiate(this._hitPoint) as Node;
+                        const hitPoint = this.getHitPoint();
                         hitPoint.setWorldPosition(result.hitPoint);
                         hitPoint.setScale(this.hitSphereScale, this.hitSphereScale, this.hitSphereScale);
                         this.hitPointContainer.addChild(hitPoint);
@@ -179,7 +216,7 @@ export class SweepHelper extends Component {
                 case ESweepShapeType.CAPSULE:
                     if (PhysicsSystem.instance.sweepCapsuleClosest(this._ray, this._capsuleRadius * this._scale, this._capsuleHeight * this._scale, this._orientation, this._mask, this._maxDistance, this._queryTrigger)) {
                         const result = PhysicsSystem.instance.sweepCastClosestResult;
-                        const hitPoint = instantiate(this._hitPoint) as Node;
+                        const hitPoint = this.getHitPoint();
                         hitPoint.setWorldPosition(result.hitPoint);
                         hitPoint.setScale(this.hitSphereScale, this.hitSphereScale, this.hitSphereScale);
                         this.hitPointContainer.addChild(hitPoint);
@@ -196,7 +233,7 @@ export class SweepHelper extends Component {
 
                         for (let i = 0; i < results.length; i++) {
                             const result = results[i];
-                            const hitPoint = instantiate(this._hitPoint) as Node;
+                            const hitPoint = this.getHitPoint();
                             hitPoint.setWorldPosition(result.hitPoint);
                             hitPoint.setScale(this.hitSphereScale, this.hitSphereScale, this.hitSphereScale);
                             this.hitPointContainer.addChild(hitPoint);
@@ -209,7 +246,7 @@ export class SweepHelper extends Component {
 
                         for (let i = 0; i < results.length; i++) {
                             const result = results[i];
-                            const hitPoint = instantiate(this._hitPoint) as Node;
+                            const hitPoint = this.getHitPoint();
                             hitPoint.setWorldPosition(result.hitPoint);
                             hitPoint.setScale(this.hitSphereScale, this.hitSphereScale, this.hitSphereScale);
                             this.hitPointContainer.addChild(hitPoint);
@@ -222,7 +259,7 @@ export class SweepHelper extends Component {
 
                         for (let i = 0; i < results.length; i++) {
                             const result = results[i];
-                            const hitPoint = instantiate(this._hitPoint) as Node;
+                            const hitPoint = this.getHitPoint();
                             hitPoint.setWorldPosition(result.hitPoint);
                             hitPoint.setScale(this.hitSphereScale, this.hitSphereScale, this.hitSphereScale);
                             this.hitPointContainer.addChild(hitPoint);
