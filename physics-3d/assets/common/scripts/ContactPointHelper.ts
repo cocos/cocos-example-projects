@@ -1,6 +1,7 @@
 import { _decorator, Component, Node, Prefab, loader, instantiate, ICollisionEvent, ColliderComponent, game, Vec3, Quat, Pool, LabelComponent, CCInteger } from 'cc';
 const { ccclass, property, menu } = _decorator;
 const q_0 = new Quat();
+const infFar = new Vec3(999999, 999999, 999999);
 
 interface primitive {
     pt: Node;
@@ -23,9 +24,9 @@ export class ContactPointHelper extends Component {
 
     private _pool: Pool<primitive> | null = null;
 
-    private _entityMap: Map<string, { pt: Node[], aw: Node[] }> = new Map<string, { pt: Node[], aw: Node[] }>();
+    private _entityMap: Map<string, { markers: primitive[] }> = new Map<string, { markers: primitive[] }>();
 
-    private originPoolSize = 4;
+    private originPoolSize = 10;
 
     __preload() {
         if (ContactPointHelper._container == null) {
@@ -51,26 +52,12 @@ export class ContactPointHelper extends Component {
             pt.active = true;
             aw.active = true;
 
-            const infFar = new Vec3(999999, 999999, 999999);
             pt.setWorldPosition(infFar);
             aw.setWorldPosition(infFar);
 
             return { pt, aw };
-        }, originPoolSize);
-
-        const colliders = this.getComponents(ColliderComponent);
-
-        colliders.forEach((e: ColliderComponent) => {
-            if (!this._entityMap.has(e.uuid)) this._entityMap.set(e.uuid, { pt: [], aw: [] });
-            const map = this._entityMap.get(e.uuid)!;
-            const pts = map.pt;
-            const aws = map.aw;
-            for (let i = 0; i < originPoolSize; i++) {
-                const p = this._pool!.alloc();
-                pts.push(p.pt);
-                aws.push(p.aw);
-            }
-        });
+        },
+        originPoolSize);
     }
 
     onLoad() {
@@ -100,9 +87,9 @@ export class ContactPointHelper extends Component {
 
     onCollision(event: ICollisionEvent) {
         if (this.point && this.arrow) {
-            const map = this._entityMap.get(event.selfCollider.uuid)!;
-            const pts = map.pt;
-            const aws = map.aw;
+            if (!this._entityMap.has(event.otherCollider.uuid)) this._entityMap.set(event.otherCollider.uuid, { markers: [] });
+            const map = this._entityMap.get(event.otherCollider.uuid)!;
+            const markers = map.markers;
 
             event.contacts.forEach((e, i) => {
                 const wp = new Vec3();
@@ -115,31 +102,25 @@ export class ContactPointHelper extends Component {
                     e.getWorldNormalOnA(wn);
                 }
 
-                let pt: Node, aw: Node;
+                let marker: primitive;
 
-                if (map.pt.length > i) {
-                    pt = map.pt[i]; aw = map.aw[i];
-                    pt.active = true; aw.active = true;
+                if (markers.length > i) {
+                    marker = markers[i];
                 } else {
-                    const marker = this._pool!.alloc();
-                    pt = marker.pt;
-                    aw = marker.aw;
-                    pt.active = true; aw.active = true;
-                    map.pt.push(pt);
-                    map.aw.push(aw);
+                    marker = this._pool!.alloc();
+                    markers.push(marker);
                 }
 
-                pt.setWorldPosition(wp);
-                aw.setWorldPosition(wp);
+                marker.pt.setWorldPosition(wp);
+                marker.aw.setWorldPosition(wp);
                 Quat.rotationTo(q_0, Vec3.UNIT_Z, wn);
-                aw.setWorldRotation(q_0);
-            })
+                marker.aw.setWorldRotation(q_0);
+            });
 
-            const pool_size = pts.length;
-            const infFar = new Vec3(999999, 999999, 999999);
+            const pool_size = markers.length;
             for (let i = event.contacts.length; i < pool_size; i++) {
-                pts[i].setWorldPosition(infFar);
-                aws[i].setWorldPosition(infFar);
+                markers[i].pt.setWorldPosition(infFar);
+                markers[i].aw.setWorldPosition(infFar);
             }
         }
     }
@@ -149,9 +130,13 @@ export class ContactPointHelper extends Component {
         if (index >= 0) {
             ContactPointHelper._insArr.splice(index, 1);
         }
-        this._entityMap.forEach((e: { pt: Node[], aw: Node[] }) => {
-            e.pt.forEach((t) => { t.removeFromParent(); t.destroy(); })
-            e.aw.forEach((b) => { b.removeFromParent(); b.destroy(); })
+        this._entityMap.forEach((e: { markers: primitive[] }) => {
+            e.markers.forEach((t) => {
+                t.pt.removeFromParent();
+                t.aw.removeFromParent();
+                t.pt.destroy();
+                t.aw.destroy();
+            })
         })
     }
 }
