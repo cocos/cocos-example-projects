@@ -2048,3 +2048,5 @@ declare namespace MGOBE {
 
     }
 }
+
+export default MGOBE;
