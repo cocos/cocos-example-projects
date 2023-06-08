@@ -1,5 +1,5 @@
 import { _decorator, Component, Node, CharacterController, Vec2, Vec3, Input, EventKeyboard, 
-    KeyCode, clamp, input, PhysicsSystem, CharacterControllerContact, Quat, EventTouch } from 'cc';
+    KeyCode, clamp, input, PhysicsSystem, CharacterControllerContact, Quat, EventTouch, BoxCharacterController } from 'cc';
 const { ccclass, property, menu } = _decorator;
 const v_3 = new Vec3();
 const v3_0 = new Vec3();
@@ -40,7 +40,7 @@ export class CharacterControllerTest extends Component {
 
         this._cct = this.node.getComponent(CharacterController)!;
         if (this._cct) {
-            this._cct.on('onColliderHit', this.onColliderHit, this);
+            this._cct.on('onControllerColliderHit', this.onControllerColliderHit, this);
         }
     }
 
@@ -58,7 +58,7 @@ export class CharacterControllerTest extends Component {
         input.off(Input.EventType.TOUCH_END, this.onTouchEnd, this);
     }
 
-    onColliderHit (selfCCT, hitCollider, hit: CharacterControllerContact){
+    onControllerColliderHit (hit: CharacterControllerContact){
         // console.log('Test onColliderHit');
         // console.log('selfCCT ', selfCCT.node.name, ' hitCollider ', hitCollider.node.name);
         // console.log('character velocity ', selfCCT.getVelocity());
@@ -145,14 +145,14 @@ export class CharacterControllerTest extends Component {
 
     onResetPosition(){
         if(!this._cct) return;
-        this._cct!.setPosition(new Vec3(-3,5,6));
+        this._cct!.centerWorldPosition = new Vec3(-3,5,6);
     }
     update(deltaTime: number) {
         if(!this._cct) 
             return;
 
         deltaTime = PhysicsSystem.instance.fixedTimeStep;
-        this._grounded = this._cct!.onGround();
+        this._grounded = this._cct!.onGround;
         
         // Gravity
         this._playerVelocity.y += this.gravityValue * deltaTime;
