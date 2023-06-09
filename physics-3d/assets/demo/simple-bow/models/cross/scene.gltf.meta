@@ -1,5 +1,5 @@
 {
-  "ver": "2.1.10",
+  "ver": "2.3.8",
   "importer": "gltf",
   "imported": true,
   "uuid": "7f15bfcf-cf25-4534-9a03-fdafef827476",
@@ -12,9 +12,10 @@
       "id": "c00d1",
       "name": "defaultMaterial.mesh",
       "userData": {
-        "gltfIndex": 0
+        "gltfIndex": 0,
+        "triangleCount": 172
       },
-      "ver": "1.1.0",
+      "ver": "1.1.1",
       "imported": true,
       "files": [
         ".bin",
@@ -38,7 +39,7 @@
         "isUuid": false,
         "imageUuidOrDatabaseUri": "db://assets/demo/simple-bow/models/cross/textures/Material_metallicRoughness.png"
       },
-      "ver": "1.0.21",
+      "ver": "1.0.22",
       "imported": true,
       "files": [
         ".json"
@@ -61,7 +62,7 @@
         "isUuid": false,
         "imageUuidOrDatabaseUri": "db://assets/demo/simple-bow/models/cross/textures/Material_normal.jpeg"
       },
-      "ver": "1.0.21",
+      "ver": "1.0.22",
       "imported": true,
       "files": [
         ".json"
@@ -84,7 +85,7 @@
         "isUuid": false,
         "imageUuidOrDatabaseUri": "db://assets/demo/simple-bow/models/cross/textures/Material_baseColor.jpeg"
       },
-      "ver": "1.0.21",
+      "ver": "1.0.22",
       "imported": true,
       "files": [
         ".json"
@@ -116,7 +117,7 @@
       "userData": {
         "gltfIndex": 0
       },
-      "ver": "1.0.12",
+      "ver": "1.0.13",
       "imported": true,
       "files": [
         ".json"
@@ -153,6 +154,25 @@
       ],
       "scenes": [
         "7f15bfcf-cf25-4534-9a03-fdafef827476@d1932"
+      ]
+    },
+    "mountAllAnimationsOnPrefab": true,
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
       ]
     }
   }

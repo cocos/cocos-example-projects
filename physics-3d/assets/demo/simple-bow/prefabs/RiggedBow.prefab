@@ -1,7 +1,7 @@
 [
   {
     "__type__": "cc.Prefab",
-    "_name": "",
+    "_name": "RiggedBow",
     "_objFlags": 0,
     "_native": "",
     "data": {
@@ -873,7 +873,7 @@
     "fileId": "87AxwvFSFQHpBe3QE3/Ldc"
   },
   {
-    "__type__": "cc.ModelLightmapSettings",
+    "__type__": "cc.ModelBakeSettings",
     "texture": null,
     "uvParam": {
       "__type__": "cc.Vec4",
@@ -982,7 +982,7 @@
     "fileId": "eeQlZXGY9QtYtzVvJNTbwb"
   },
   {
-    "__type__": "cc.ModelLightmapSettings",
+    "__type__": "cc.ModelBakeSettings",
     "texture": null,
     "uvParam": {
       "__type__": "cc.Vec4",
@@ -1535,23 +1535,24 @@
       }
     ],
     "_visFlags": 0,
-    "lightmapSettings": {
-      "__id__": 58
-    },
+    "lightmapSettings": null,
     "_mesh": {
       "__uuid__": "5220c62a-07cc-4900-bcc8-883c2248486c@fd280"
     },
     "_shadowCastingMode": 0,
     "_shadowReceivingMode": 1,
     "_enableMorph": true,
-    "_id": ""
+    "_id": "",
+    "bakeSettings": {
+      "__id__": 58
+    }
   },
   {
     "__type__": "cc.CompPrefabInfo",
     "fileId": "c0LDGcL7NWbKUz10maWlkX"
   },
   {
-    "__type__": "cc.ModelLightmapSettings",
+    "__type__": "cc.ModelBakeSettings",
     "texture": null,
     "uvParam": {
       "__type__": "cc.Vec4",

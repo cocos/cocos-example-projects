@@ -27,9 +27,10 @@ CCEffect %{
 
 CCProgram bonus-unlit-vs %{
   precision mediump float;
-  #include <cc-global>
-  #include <cc-local-batch>
-  #include <input>
+  #include <builtin/uniforms/cc-global>
+  #include <legacy/decode-base>
+  #include <legacy/local-batch>
+  #include <legacy/input>
 
   #if USE_VERTEX_COLOR
     in vec4 a_color;
@@ -73,7 +74,7 @@ CCProgram bonus-unlit-vs %{
 
 CCProgram bonus-unlit-fs %{
   precision mediump float;
-  #include <output>
+  #include <legacy/output>
 
   #if USE_TEXTURE
     in vec2 v_uv;

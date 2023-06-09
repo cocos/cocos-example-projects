@@ -1,12 +1,12 @@
 {
-  "ver": "2.1.10",
+  "ver": "2.3.8",
   "importer": "fbx",
   "imported": true,
   "uuid": "48a21055-cdbe-4dd3-9f77-d38d8a061f4a",
   "files": [],
   "subMetas": {
     "40572": {
-      "ver": "1.1.0",
+      "ver": "1.1.1",
       "importer": "gltf-mesh",
       "name": "Box023.mesh",
       "id": "40572",
@@ -19,11 +19,12 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 0
+        "gltfIndex": 0,
+        "triangleCount": 50
       }
     },
     "a8fa3": {
-      "ver": "1.1.0",
+      "ver": "1.1.1",
       "importer": "gltf-mesh",
       "name": "Box042.mesh",
       "id": "a8fa3",
@@ -36,11 +37,12 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 1
+        "gltfIndex": 1,
+        "triangleCount": 30
       }
     },
     "6eeec": {
-      "ver": "1.1.0",
+      "ver": "1.1.1",
       "importer": "gltf-mesh",
       "name": "Box043.mesh",
       "id": "6eeec",
@@ -53,11 +55,12 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 2
+        "gltfIndex": 2,
+        "triangleCount": 30
       }
     },
     "c75d3": {
-      "ver": "1.1.0",
+      "ver": "1.1.1",
       "importer": "gltf-mesh",
       "name": "Box047.mesh",
       "id": "c75d3",
@@ -70,11 +73,12 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 3
+        "gltfIndex": 3,
+        "triangleCount": 30
       }
     },
     "207a8": {
-      "ver": "1.1.0",
+      "ver": "1.1.1",
       "importer": "gltf-mesh",
       "name": "Box050.mesh",
       "id": "207a8",
@@ -87,7 +91,8 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 4
+        "gltfIndex": 4,
+        "triangleCount": 30
       }
     },
     "a9ca9": {
@@ -102,7 +107,10 @@
       "subMetas": {},
       "userData": {
         "externalURI": "file:///D:/Github/Cocos/example-3d/simple-car-game/temp/asset-db/assets/fbx2gltf-48a21055-cdbe-4dd3-9f77-d38d8a061f4a/out/road02.jpg",
-        "gltfIndex": 0
+        "gltfIndex": 0,
+        "fixAlphaTransparencyArtifacts": true,
+        "hasAlpha": false,
+        "type": "texture"
       },
       "displayName": "",
       "id": "a9ca9",
@@ -120,14 +128,17 @@
       "subMetas": {},
       "userData": {
         "externalURI": "file:///D:/Github/Cocos/example-3d/simple-car-game/temp/asset-db/assets/fbx2gltf-48a21055-cdbe-4dd3-9f77-d38d8a061f4a/out/road01.jpg",
-        "gltfIndex": 1
+        "gltfIndex": 1,
+        "fixAlphaTransparencyArtifacts": true,
+        "hasAlpha": false,
+        "type": "texture"
       },
       "displayName": "",
       "id": "1b048",
       "name": "road01.jpg.image"
     },
     "eb794": {
-      "ver": "1.0.21",
+      "ver": "1.0.22",
       "importer": "texture",
       "name": "贴图 #5.texture",
       "id": "eb794",
@@ -151,7 +162,7 @@
       }
     },
     "442db": {
-      "ver": "1.0.21",
+      "ver": "1.0.22",
       "importer": "texture",
       "name": "贴图 #4.texture",
       "id": "442db",
@@ -212,7 +223,7 @@
       "displayName": "",
       "id": "99a4a",
       "name": "road03.prefab",
-      "ver": "1.0.12",
+      "ver": "1.0.13",
       "imported": true,
       "files": [
         ".json"
@@ -259,6 +270,29 @@
         "uri": "48a21055-cdbe-4dd3-9f77-d38d8a061f4a@1b048"
       }
     ],
-    "legacyFbxImporter": true
+    "legacyFbxImporter": true,
+    "fbx": {
+      "smartMaterialEnabled": false,
+      "matchMeshNames": false
+    },
+    "mountAllAnimationsOnPrefab": true,
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    }
   }
 }

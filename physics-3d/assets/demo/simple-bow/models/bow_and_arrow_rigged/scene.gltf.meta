@@ -1,5 +1,5 @@
 {
-  "ver": "2.1.10",
+  "ver": "2.3.8",
   "importer": "gltf",
   "imported": true,
   "uuid": "5220c62a-07cc-4900-bcc8-883c2248486c",
@@ -14,9 +14,10 @@
       "id": "5f22b",
       "name": "Bowstring_Bow_0.mesh",
       "userData": {
-        "gltfIndex": 0
+        "gltfIndex": 0,
+        "triangleCount": 144
       },
-      "ver": "1.1.0",
+      "ver": "1.1.1",
       "imported": true,
       "files": [
         ".bin",
@@ -31,9 +32,10 @@
       "id": "fe339",
       "name": "Bow_Bow_0.mesh",
       "userData": {
-        "gltfIndex": 1
+        "gltfIndex": 1,
+        "triangleCount": 872
       },
-      "ver": "1.1.0",
+      "ver": "1.1.1",
       "imported": true,
       "files": [
         ".bin",
@@ -48,9 +50,10 @@
       "id": "fd280",
       "name": "Arrow_Arrow_0.mesh",
       "userData": {
-        "gltfIndex": 2
+        "gltfIndex": 2,
+        "triangleCount": 164
       },
-      "ver": "1.1.0",
+      "ver": "1.1.1",
       "imported": true,
       "files": [
         ".bin",
@@ -114,7 +117,7 @@
         "isUuid": false,
         "imageUuidOrDatabaseUri": "db://assets/demo/simple-bow/models/bow_and_arrow_rigged/textures/Arrow_baseColor.png"
       },
-      "ver": "1.0.21",
+      "ver": "1.0.22",
       "imported": true,
       "files": [
         ".json"
@@ -137,7 +140,7 @@
         "isUuid": false,
         "imageUuidOrDatabaseUri": "db://assets/demo/simple-bow/models/bow_and_arrow_rigged/textures/material_baseColor.png"
       },
-      "ver": "1.0.21",
+      "ver": "1.0.22",
       "imported": true,
       "files": [
         ".json"
@@ -185,7 +188,7 @@
       "userData": {
         "gltfIndex": 0
       },
-      "ver": "1.0.12",
+      "ver": "1.0.13",
       "imported": true,
       "files": [
         ".json"
@@ -213,7 +216,8 @@
             "name": "Take 001",
             "from": 0,
             "to": 0.3333333432674408,
-            "wrapMode": 2
+            "wrapMode": 2,
+            "previousId": "73b7f"
           }
         ]
       }
@@ -243,6 +247,28 @@
     "meshOptimizer": false,
     "meshOptimizerOptions": {
       "si": 0.5
+    },
+    "mountAllAnimationsOnPrefab": true,
+    "allowMeshDataAccess": true,
+    "addVertexColor": false,
+    "generateLightmapUVNode": false,
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
     }
   }
 }

@@ -1,12 +1,12 @@
 {
-  "ver": "2.1.10",
+  "ver": "2.3.8",
   "importer": "fbx",
   "imported": true,
   "uuid": "c4995fba-9b4b-4968-957c-6eb66f4e73eb",
   "files": [],
   "subMetas": {
     "604e5": {
-      "ver": "1.1.0",
+      "ver": "1.1.1",
       "importer": "gltf-mesh",
       "name": "Box022.mesh",
       "id": "604e5",
@@ -19,7 +19,8 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 0
+        "gltfIndex": 0,
+        "triangleCount": 484
       }
     },
     "546af": {
@@ -34,14 +35,17 @@
       "subMetas": {},
       "userData": {
         "externalURI": "file:///D:/Github/Cocos/example-3d/simple-car-game/temp/asset-db/assets/fbx2gltf-c4995fba-9b4b-4968-957c-6eb66f4e73eb/out/house02.jpg",
-        "gltfIndex": 0
+        "gltfIndex": 0,
+        "fixAlphaTransparencyArtifacts": true,
+        "hasAlpha": false,
+        "type": "texture"
       },
       "displayName": "",
       "id": "546af",
       "name": "house02.jpg.image"
     },
     "a96a6": {
-      "ver": "1.0.21",
+      "ver": "1.0.22",
       "importer": "texture",
       "name": "贴图 #1.texture",
       "id": "a96a6",
@@ -86,7 +90,7 @@
       "displayName": "",
       "id": "f5095",
       "name": "house02.prefab",
-      "ver": "1.0.12",
+      "ver": "1.0.13",
       "imported": true,
       "files": [
         ".json"
@@ -123,6 +127,29 @@
         "uri": "c4995fba-9b4b-4968-957c-6eb66f4e73eb@546af"
       }
     ],
-    "legacyFbxImporter": true
+    "legacyFbxImporter": true,
+    "fbx": {
+      "smartMaterialEnabled": false,
+      "matchMeshNames": false
+    },
+    "mountAllAnimationsOnPrefab": true,
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    }
   }
 }

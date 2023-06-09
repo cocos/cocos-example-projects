@@ -1,5 +1,5 @@
 {
-  "ver": "2.1.10",
+  "ver": "2.3.8",
   "importer": "gltf",
   "imported": true,
   "uuid": "f924a3e1-43d6-40c5-bb9c-b47864e37c69",
@@ -11,7 +11,7 @@
       "displayName": "",
       "id": "72704",
       "name": "cocosfinish_02.mesh",
-      "ver": "1.1.0",
+      "ver": "1.1.1",
       "imported": true,
       "files": [
         ".bin",
@@ -19,7 +19,8 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 0
+        "gltfIndex": 0,
+        "triangleCount": 304
       }
     },
     "28c31": {
@@ -28,7 +29,7 @@
       "displayName": "",
       "id": "28c31",
       "name": "cocos_mesh_helmet.prefab",
-      "ver": "1.0.12",
+      "ver": "1.0.13",
       "imported": true,
       "files": [
         ".json"
@@ -51,6 +52,25 @@
       "materials": [],
       "scenes": [
         "f924a3e1-43d6-40c5-bb9c-b47864e37c69@28c31"
+      ]
+    },
+    "mountAllAnimationsOnPrefab": true,
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
       ]
     }
   }

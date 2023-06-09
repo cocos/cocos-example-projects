@@ -1,12 +1,12 @@
 {
-  "ver": "2.1.10",
+  "ver": "2.3.8",
   "importer": "fbx",
   "imported": true,
   "uuid": "9fa22f3f-a37f-4e4b-9693-98864b9a26a8",
   "files": [],
   "subMetas": {
     "50b92": {
-      "ver": "1.1.0",
+      "ver": "1.1.1",
       "importer": "gltf-mesh",
       "name": "TS_FaGuangSuiPian_01.mesh",
       "id": "50b92",
@@ -19,7 +19,8 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 0
+        "gltfIndex": 0,
+        "triangleCount": 128
       }
     },
     "1cdc4": {
@@ -28,19 +29,22 @@
       "uuid": "9fa22f3f-a37f-4e4b-9693-98864b9a26a8@1cdc4",
       "imported": true,
       "files": [
-        ".png",
-        ".json"
+        ".json",
+        ".png"
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 0
+        "gltfIndex": 0,
+        "fixAlphaTransparencyArtifacts": true,
+        "hasAlpha": true,
+        "type": "texture"
       },
       "displayName": "",
       "id": "1cdc4",
       "name": "贴图 #3.image"
     },
     "bfae8": {
-      "ver": "1.0.21",
+      "ver": "1.0.22",
       "importer": "texture",
       "name": "贴图 #3.texture",
       "id": "bfae8",
@@ -59,8 +63,8 @@
         "mipfilter": "none",
         "premultiplyAlpha": false,
         "anisotropy": 0,
-        "isUuid": false,
-        "imageUuidOrDatabaseUri": "db://assets/common/models/tree/stone01.png"
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "7bda0529-b4ff-41d8-89ab-fed9b93c0c62"
       }
     },
     "fe5ee": {
@@ -85,7 +89,7 @@
       "displayName": "",
       "id": "dea75",
       "name": "stone01.prefab",
-      "ver": "1.0.12",
+      "ver": "1.0.13",
       "imported": true,
       "files": [
         ".json"
@@ -119,10 +123,33 @@
     "imageMetas": [
       {
         "name": "贴图 #3",
-        "remap": "db://assets/common/models/tree/stone01.png",
+        "remap": "7bda0529-b4ff-41d8-89ab-fed9b93c0c62",
         "uri": "9fa22f3f-a37f-4e4b-9693-98864b9a26a8@1cdc4"
       }
     ],
-    "legacyFbxImporter": true
+    "legacyFbxImporter": true,
+    "fbx": {
+      "smartMaterialEnabled": false,
+      "matchMeshNames": false
+    },
+    "mountAllAnimationsOnPrefab": true,
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    }
   }
 }

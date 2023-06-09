@@ -37,11 +37,7 @@
   "physics": {
     "fixedTimeStep": 0.01666667,
     "useCollsionMatrix": true,
-    "defaultMaterial": {
-      "friction": 0.6,
-      "restitution": 0.1,
-      "rollingFriction": 0.1
-    },
+    "defaultMaterial": "",
     "autoSimulation": true,
     "useNodeChains": true,
     "collisionGroups": [
@@ -61,9 +57,15 @@
     },
     "maxSubSteps": 1
   },
-  "__version__": "1.0.1",
+  "__version__": "1.0.4",
   "script": {
     "useDefineForClassFields": false,
     "allowDeclareFields": false
-  }
+  },
+  "fbx": {
+    "legacyFbxImporter": {
+      "visible": true
+    }
+  },
+  "custom_joint_texture_layouts": []
 }

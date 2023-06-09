@@ -1,5 +1,5 @@
 {
-  "ver": "2.1.10",
+  "ver": "2.3.8",
   "importer": "gltf",
   "imported": true,
   "uuid": "d92c050e-f543-44d9-a6a9-fd7f2be9a21a",
@@ -11,7 +11,7 @@
       "displayName": "",
       "id": "a865e",
       "name": "cocosfinish_01.mesh",
-      "ver": "1.1.0",
+      "ver": "1.1.1",
       "imported": true,
       "files": [
         ".bin",
@@ -19,7 +19,8 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 0
+        "gltfIndex": 0,
+        "triangleCount": 5881
       }
     },
     "e69d3": {
@@ -28,7 +29,7 @@
       "displayName": "",
       "id": "e69d3",
       "name": "cocos_mesh.prefab",
-      "ver": "1.0.12",
+      "ver": "1.0.13",
       "imported": true,
       "files": [
         ".json"
@@ -51,6 +52,25 @@
       "materials": [],
       "scenes": [
         "d92c050e-f543-44d9-a6a9-fd7f2be9a21a@e69d3"
+      ]
+    },
+    "mountAllAnimationsOnPrefab": true,
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
       ]
     }
   }

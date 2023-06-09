@@ -1,12 +1,12 @@
 {
-  "ver": "2.1.10",
+  "ver": "2.3.8",
   "importer": "fbx",
   "imported": true,
   "uuid": "73c15f5f-8227-413d-a25d-c4844b6c4e87",
   "files": [],
   "subMetas": {
     "b8a2d": {
-      "ver": "1.1.0",
+      "ver": "1.1.1",
       "importer": "gltf-mesh",
       "name": "Plane001.mesh",
       "id": "b8a2d",
@@ -19,7 +19,8 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 0
+        "gltfIndex": 0,
+        "triangleCount": 2
       }
     },
     "9defe": {
@@ -28,19 +29,22 @@
       "uuid": "73c15f5f-8227-413d-a25d-c4844b6c4e87@9defe",
       "imported": true,
       "files": [
-        ".png",
-        ".json"
+        ".json",
+        ".png"
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 0
+        "gltfIndex": 0,
+        "fixAlphaTransparencyArtifacts": true,
+        "hasAlpha": true,
+        "type": "texture"
       },
       "displayName": "",
       "id": "9defe",
       "name": "贴图 #8.image"
     },
     "bc797": {
-      "ver": "1.0.21",
+      "ver": "1.0.22",
       "importer": "texture",
       "name": "贴图 #8.texture",
       "id": "bc797",
@@ -59,8 +63,8 @@
         "mipfilter": "none",
         "premultiplyAlpha": false,
         "anisotropy": 0,
-        "isUuid": false,
-        "imageUuidOrDatabaseUri": "db://assets/common/models/sign/end.jpg"
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "e1873d82-7bb1-4553-ae0a-710d91e9299d"
       }
     },
     "5eade": {
@@ -69,7 +73,7 @@
       "displayName": "",
       "id": "5eade",
       "name": "end.prefab",
-      "ver": "1.0.12",
+      "ver": "1.0.13",
       "imported": true,
       "files": [
         ".json"
@@ -103,11 +107,34 @@
     "imageMetas": [
       {
         "name": "贴图 #8",
-        "remap": "db://assets/common/models/sign/end.jpg",
+        "remap": "e1873d82-7bb1-4553-ae0a-710d91e9299d",
         "uri": "73c15f5f-8227-413d-a25d-c4844b6c4e87@9defe"
       }
     ],
     "legacyFbxImporter": true,
-    "materialDumpDir": "db://assets/common/models/sign/Materials_end"
+    "materialDumpDir": "db://assets/common/models/sign/Materials_end",
+    "fbx": {
+      "smartMaterialEnabled": false,
+      "matchMeshNames": false
+    },
+    "mountAllAnimationsOnPrefab": true,
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    }
   }
 }
