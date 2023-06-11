@@ -1,5 +1,5 @@
 {
-  "ver": "2.1.10",
+  "ver": "2.3.8",
   "importer": "gltf",
   "imported": true,
   "uuid": "92515b6a-664d-4865-b0ef-61637a436f8b",
@@ -36,7 +36,7 @@
       "displayName": "",
       "id": "bce50",
       "name": "cocos_anim_down.prefab",
-      "ver": "1.0.12",
+      "ver": "1.0.13",
       "imported": true,
       "files": [
         ".json"
@@ -59,7 +59,8 @@
             "name": "cocos_anim_down",
             "from": 0,
             "to": 2.633333444595337,
-            "wrapMode": 0
+            "wrapMode": 0,
+            "previousId": "96245"
           }
         ]
       }
@@ -72,6 +73,25 @@
       "materials": [],
       "scenes": [
         "92515b6a-664d-4865-b0ef-61637a436f8b@bce50"
+      ]
+    },
+    "mountAllAnimationsOnPrefab": true,
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
       ]
     }
   }

@@ -1,5 +1,5 @@
 {
-  "ver": "2.1.10",
+  "ver": "2.3.8",
   "importer": "gltf",
   "imported": true,
   "uuid": "f7ac166d-b0dd-4b32-b0ec-a7895dc14c38",
@@ -36,7 +36,7 @@
       "displayName": "",
       "id": "578b6",
       "name": "cocos_anim_die.prefab",
-      "ver": "1.0.12",
+      "ver": "1.0.13",
       "imported": true,
       "files": [
         ".json"
@@ -59,7 +59,8 @@
             "name": "cocos_anim_die",
             "from": 0,
             "to": 1.6666667461395264,
-            "wrapMode": 2
+            "wrapMode": 2,
+            "previousId": "5ecd9"
           }
         ]
       }
@@ -72,6 +73,25 @@
       "materials": [],
       "scenes": [
         "f7ac166d-b0dd-4b32-b0ec-a7895dc14c38@578b6"
+      ]
+    },
+    "mountAllAnimationsOnPrefab": true,
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
       ]
     }
   }

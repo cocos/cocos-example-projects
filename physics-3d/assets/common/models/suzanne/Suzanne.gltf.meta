@@ -1,12 +1,12 @@
 {
-  "ver": "2.1.10",
+  "ver": "2.3.8",
   "importer": "gltf",
   "imported": true,
   "uuid": "adca0157-a318-4226-91df-7c401429c552",
   "files": [],
   "subMetas": {
     "a781f": {
-      "ver": "1.1.0",
+      "ver": "1.1.1",
       "importer": "gltf-mesh",
       "uuid": "adca0157-a318-4226-91df-7c401429c552@a781f",
       "imported": true,
@@ -16,14 +16,15 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 0
+        "gltfIndex": 0,
+        "triangleCount": 3936
       },
       "id": "a781f",
       "name": "Suzanne.mesh",
       "displayName": ""
     },
     "3effa": {
-      "ver": "1.0.21",
+      "ver": "1.0.22",
       "importer": "texture",
       "uuid": "adca0157-a318-4226-91df-7c401429c552@3effa",
       "imported": true,
@@ -47,7 +48,7 @@
       "displayName": ""
     },
     "221a5": {
-      "ver": "1.0.21",
+      "ver": "1.0.22",
       "importer": "texture",
       "uuid": "adca0157-a318-4226-91df-7c401429c552@221a5",
       "imported": true,
@@ -87,7 +88,7 @@
       "displayName": ""
     },
     "1a935": {
-      "ver": "1.0.12",
+      "ver": "1.0.13",
       "importer": "gltf-scene",
       "uuid": "adca0157-a318-4226-91df-7c401429c552@1a935",
       "imported": true,
@@ -131,6 +132,25 @@
       {
         "uri": "db://assets/common/models/suzanne/Suzanne_MetallicRoughness.png"
       }
-    ]
+    ],
+    "mountAllAnimationsOnPrefab": true,
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    }
   }
 }

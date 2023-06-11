@@ -1,5 +1,5 @@
 {
-  "ver": "2.1.10",
+  "ver": "2.3.8",
   "importer": "gltf",
   "imported": true,
   "uuid": "6c9158d1-15b8-463e-bc35-b2821946acad",
@@ -36,7 +36,7 @@
       "displayName": "",
       "id": "0ea50",
       "name": "cocos_anim_idle.prefab",
-      "ver": "1.0.12",
+      "ver": "1.0.13",
       "imported": true,
       "files": [
         ".json"
@@ -59,7 +59,8 @@
             "name": "cocos_anim_idle",
             "from": 0,
             "to": 3.000000238418579,
-            "wrapMode": 2
+            "wrapMode": 2,
+            "previousId": "ab65f"
           }
         ]
       }
@@ -72,6 +73,25 @@
       "materials": [],
       "scenes": [
         "6c9158d1-15b8-463e-bc35-b2821946acad@0ea50"
+      ]
+    },
+    "mountAllAnimationsOnPrefab": true,
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
       ]
     }
   }

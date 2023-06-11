@@ -1,5 +1,5 @@
 {
-  "ver": "2.1.10",
+  "ver": "2.3.8",
   "importer": "fbx",
   "imported": true,
   "uuid": "933a6531-2595-4085-91a3-307eba7061ec",
@@ -11,7 +11,7 @@
       "displayName": "",
       "id": "76763",
       "name": "truck02.prefab",
-      "ver": "1.0.12",
+      "ver": "1.0.13",
       "imported": true,
       "files": [
         ".json"
@@ -22,7 +22,7 @@
       }
     },
     "5d0b5": {
-      "ver": "1.1.0",
+      "ver": "1.1.1",
       "importer": "gltf-mesh",
       "name": "car_005_0.mesh",
       "id": "5d0b5",
@@ -35,29 +35,32 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 0
+        "gltfIndex": 0,
+        "triangleCount": 2402
       }
     },
-    "a9082": {
-      "ver": "1.0.3",
+    "181cb": {
       "importer": "gltf-embeded-image",
-      "uuid": "933a6531-2595-4085-91a3-307eba7061ec@a9082",
+      "uuid": "933a6531-2595-4085-91a3-307eba7061ec@181cb",
+      "displayName": "",
+      "id": "181cb",
+      "name": "贴图 #4.image",
+      "userData": {
+        "gltfIndex": 0,
+        "fixAlphaTransparencyArtifacts": true,
+        "hasAlpha": true,
+        "type": "texture"
+      },
+      "ver": "1.0.3",
       "imported": true,
       "files": [
-        ".jpg",
-        ".json"
+        ".json",
+        ".png"
       ],
-      "subMetas": {},
-      "userData": {
-        "externalURI": "file:///D:/Github/Cocos/example-3d/simple-car-game/temp/asset-db/assets/fbx2gltf-933a6531-2595-4085-91a3-307eba7061ec/out/truck02Silvery.jpg",
-        "gltfIndex": 0
-      },
-      "displayName": "",
-      "id": "a9082",
-      "name": "truck02Silvery.jpg.image"
+      "subMetas": {}
     },
     "442db": {
-      "ver": "1.0.21",
+      "ver": "1.0.22",
       "importer": "texture",
       "name": "贴图 #4.texture",
       "id": "442db",
@@ -77,7 +80,7 @@
         "premultiplyAlpha": false,
         "anisotropy": 0,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "933a6531-2595-4085-91a3-307eba7061ec@a9082"
+        "imageUuidOrDatabaseUri": "933a6531-2595-4085-91a3-307eba7061ec@181cb"
       }
     }
   },
@@ -103,11 +106,34 @@
     },
     "imageMetas": [
       {
-        "name": "truck02Silvery.jpg",
-        "uri": "933a6531-2595-4085-91a3-307eba7061ec@a9082"
+        "name": "贴图 #4",
+        "uri": "933a6531-2595-4085-91a3-307eba7061ec@181cb"
       }
     ],
     "legacyFbxImporter": true,
-    "materialDumpDir": "db://assets/common/models/truck/Materials_truck02"
+    "materialDumpDir": "db://assets/common/models/truck/Materials_truck02",
+    "fbx": {
+      "smartMaterialEnabled": false,
+      "matchMeshNames": false
+    },
+    "mountAllAnimationsOnPrefab": true,
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    }
   }
 }

@@ -1,12 +1,12 @@
 {
-  "ver": "2.1.10",
+  "ver": "2.3.8",
   "importer": "fbx",
   "imported": true,
   "uuid": "29f6b875-dda6-4f1f-82c3-1ec375754c73",
   "files": [],
   "subMetas": {
     "40572": {
-      "ver": "1.1.0",
+      "ver": "1.1.1",
       "importer": "gltf-mesh",
       "name": "Box023.mesh",
       "id": "40572",
@@ -19,7 +19,8 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 0
+        "gltfIndex": 0,
+        "triangleCount": 50
       }
     },
     "a9ca9": {
@@ -34,14 +35,17 @@
       "subMetas": {},
       "userData": {
         "externalURI": "file:///D:/Github/Cocos/example-3d/simple-car-game/temp/asset-db/assets/fbx2gltf-29f6b875-dda6-4f1f-82c3-1ec375754c73/out/road02.jpg",
-        "gltfIndex": 0
+        "gltfIndex": 0,
+        "fixAlphaTransparencyArtifacts": true,
+        "hasAlpha": false,
+        "type": "texture"
       },
       "displayName": "",
       "id": "a9ca9",
       "name": "road02.jpg.image"
     },
     "eb794": {
-      "ver": "1.0.21",
+      "ver": "1.0.22",
       "importer": "texture",
       "name": "贴图 #5.texture",
       "id": "eb794",
@@ -86,7 +90,7 @@
       "displayName": "",
       "id": "70daa",
       "name": "road02.prefab",
-      "ver": "1.0.12",
+      "ver": "1.0.13",
       "imported": true,
       "files": [
         ".json"
@@ -123,6 +127,29 @@
         "uri": "29f6b875-dda6-4f1f-82c3-1ec375754c73@a9ca9"
       }
     ],
-    "legacyFbxImporter": true
+    "legacyFbxImporter": true,
+    "fbx": {
+      "smartMaterialEnabled": false,
+      "matchMeshNames": false
+    },
+    "mountAllAnimationsOnPrefab": true,
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    }
   }
 }

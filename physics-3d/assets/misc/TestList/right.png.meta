@@ -1,11 +1,11 @@
 {
-  "ver": "1.0.22",
+  "ver": "1.0.26",
   "importer": "image",
   "imported": true,
   "uuid": "b05f9dce-fe36-4483-b125-9b1b1f6f355b",
   "files": [
-    ".png",
-    ".json"
+    ".json",
+    ".png"
   ],
   "subMetas": {
     "6c48a": {
@@ -14,7 +14,7 @@
       "displayName": "right",
       "id": "6c48a",
       "name": "texture",
-      "ver": "1.0.21",
+      "ver": "1.0.22",
       "imported": true,
       "files": [
         ".json"
@@ -29,7 +29,8 @@
         "premultiplyAlpha": false,
         "anisotropy": 0,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "b05f9dce-fe36-4483-b125-9b1b1f6f355b"
+        "imageUuidOrDatabaseUri": "b05f9dce-fe36-4483-b125-9b1b1f6f355b",
+        "visible": false
       }
     },
     "f9941": {
@@ -38,7 +39,7 @@
       "displayName": "right",
       "id": "f9941",
       "name": "spriteFrame",
-      "ver": "1.0.9",
+      "ver": "1.0.12",
       "imported": true,
       "files": [
         ".json"
@@ -63,13 +64,72 @@
         "isUuid": true,
         "imageUuidOrDatabaseUri": "b05f9dce-fe36-4483-b125-9b1b1f6f355b@6c48a",
         "atlasUuid": "",
-        "packable": true
+        "packable": true,
+        "pixelsToUnit": 100,
+        "pivotX": 0.5,
+        "pivotY": 0.5,
+        "meshType": 0,
+        "vertices": {
+          "rawPosition": [
+            -20,
+            -32,
+            0,
+            20,
+            -32,
+            0,
+            -20,
+            32,
+            0,
+            20,
+            32,
+            0
+          ],
+          "indexes": [
+            0,
+            1,
+            2,
+            2,
+            1,
+            3
+          ],
+          "uv": [
+            30,
+            82,
+            70,
+            82,
+            30,
+            18,
+            70,
+            18
+          ],
+          "nuv": [
+            0.3,
+            0.18,
+            0.7,
+            0.18,
+            0.3,
+            0.82,
+            0.7,
+            0.82
+          ],
+          "minPos": [
+            -20,
+            -32,
+            0
+          ],
+          "maxPos": [
+            20,
+            32,
+            0
+          ]
+        }
       }
     }
   },
   "userData": {
     "type": "sprite-frame",
     "redirect": "b05f9dce-fe36-4483-b125-9b1b1f6f355b@f9941",
-    "hasAlpha": true
+    "hasAlpha": true,
+    "fixAlphaTransparencyArtifacts": false
   }
 }

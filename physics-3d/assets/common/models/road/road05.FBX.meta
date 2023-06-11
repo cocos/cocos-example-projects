@@ -1,12 +1,12 @@
 {
-  "ver": "2.1.10",
+  "ver": "2.3.8",
   "importer": "fbx",
   "imported": true,
   "uuid": "76563dac-7b68-4f3f-a880-d1be43e5a601",
   "files": [],
   "subMetas": {
     "44034": {
-      "ver": "1.1.0",
+      "ver": "1.1.1",
       "importer": "gltf-mesh",
       "name": "001.mesh",
       "id": "44034",
@@ -19,7 +19,8 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 0
+        "gltfIndex": 0,
+        "triangleCount": 117
       }
     },
     "3bd65": {
@@ -34,14 +35,17 @@
       "subMetas": {},
       "userData": {
         "externalURI": "file:///D:/Github/Cocos/example-3d/simple-car-game/temp/asset-db/assets/fbx2gltf-76563dac-7b68-4f3f-a880-d1be43e5a601/out/road03.jpg",
-        "gltfIndex": 0
+        "gltfIndex": 0,
+        "fixAlphaTransparencyArtifacts": true,
+        "hasAlpha": false,
+        "type": "texture"
       },
       "displayName": "",
       "id": "3bd65",
       "name": "road03.jpg.image"
     },
     "bc797": {
-      "ver": "1.0.21",
+      "ver": "1.0.22",
       "importer": "texture",
       "name": "贴图 #8.texture",
       "id": "bc797",
@@ -60,8 +64,8 @@
         "mipfilter": "none",
         "premultiplyAlpha": false,
         "anisotropy": 0,
-        "isUuid": false,
-        "imageUuidOrDatabaseUri": "db://assets/common/models/road/road03.jpg"
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "ffc02252-433c-4574-a4d7-0152d2b83db8"
       }
     },
     "530d1": {
@@ -86,7 +90,7 @@
       "displayName": "",
       "id": "77f73",
       "name": "road05.prefab",
-      "ver": "1.0.12",
+      "ver": "1.0.13",
       "imported": true,
       "files": [
         ".json"
@@ -120,10 +124,33 @@
     "imageMetas": [
       {
         "name": "road03.jpg",
-        "remap": "db://assets/common/models/road/road03.jpg",
+        "remap": "ffc02252-433c-4574-a4d7-0152d2b83db8",
         "uri": "76563dac-7b68-4f3f-a880-d1be43e5a601@3bd65"
       }
     ],
-    "legacyFbxImporter": true
+    "legacyFbxImporter": true,
+    "fbx": {
+      "smartMaterialEnabled": false,
+      "matchMeshNames": false
+    },
+    "mountAllAnimationsOnPrefab": true,
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    }
   }
 }

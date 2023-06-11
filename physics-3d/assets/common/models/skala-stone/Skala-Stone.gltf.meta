@@ -1,5 +1,5 @@
 {
-  "ver": "2.1.10",
+  "ver": "2.3.8",
   "importer": "gltf",
   "imported": true,
   "uuid": "fc743ed7-042b-4d41-bdf9-1ae01e76dcea",
@@ -12,9 +12,10 @@
       "id": "bcca5",
       "name": "UnnamedMesh.mesh",
       "userData": {
-        "gltfIndex": 0
+        "gltfIndex": 0,
+        "triangleCount": 423
       },
-      "ver": "1.1.0",
+      "ver": "1.1.1",
       "imported": true,
       "files": [
         ".bin",
@@ -38,7 +39,7 @@
         "isUuid": false,
         "imageUuidOrDatabaseUri": "db://assets/common/models/skala-stone/skala-low-normal.jpg"
       },
-      "ver": "1.0.21",
+      "ver": "1.0.22",
       "imported": true,
       "files": [
         ".json"
@@ -61,7 +62,7 @@
         "isUuid": false,
         "imageUuidOrDatabaseUri": "db://assets/common/models/skala-stone/skala-low-diffuse.jpg"
       },
-      "ver": "1.0.21",
+      "ver": "1.0.22",
       "imported": true,
       "files": [
         ".json"
@@ -93,7 +94,7 @@
       "userData": {
         "gltfIndex": 0
       },
-      "ver": "1.0.12",
+      "ver": "1.0.13",
       "imported": true,
       "files": [
         ".json"
@@ -128,12 +129,34 @@
         "fc743ed7-042b-4d41-bdf9-1ae01e76dcea@ecfef"
       ]
     },
-    "meshOptimizer": true,
-    "meshOptimizerOptions": {
-      "si": 0.01,
-      "sa": true
+    "meshOptimizer": {
+      "algorithm": "gltfpack",
+      "enable": true,
+      "gltfpackOptions": {
+        "si": 0.01,
+        "sa": true
+      }
     },
     "dumpMaterials": false,
-    "materialDumpDir": "db://assets/common/models/skala-stone/Materials_Skala-Stone"
+    "materialDumpDir": "db://assets/common/models/skala-stone/Materials_Skala-Stone",
+    "mountAllAnimationsOnPrefab": true,
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    }
   }
 }

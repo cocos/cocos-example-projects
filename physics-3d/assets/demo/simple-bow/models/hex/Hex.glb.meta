@@ -1,5 +1,5 @@
 {
-  "ver": "2.1.10",
+  "ver": "2.3.8",
   "importer": "gltf",
   "imported": true,
   "uuid": "f3957d7a-e0f2-4cc6-81d9-cd92fe010ae9",
@@ -12,9 +12,10 @@
       "id": "05993",
       "name": "COL_Floor.002.mesh",
       "userData": {
-        "gltfIndex": 0
+        "gltfIndex": 0,
+        "triangleCount": 24
       },
-      "ver": "1.1.0",
+      "ver": "1.1.1",
       "imported": true,
       "files": [
         ".bin",
@@ -47,7 +48,7 @@
       "userData": {
         "gltfIndex": 0
       },
-      "ver": "1.0.12",
+      "ver": "1.0.13",
       "imported": true,
       "files": [
         ".json"
@@ -73,6 +74,25 @@
       ]
     },
     "dumpMaterials": false,
-    "materialDumpDir": "db://assets/demo/hybrid-game/models/Materials_Hex"
+    "materialDumpDir": "db://assets/demo/hybrid-game/models/Materials_Hex",
+    "mountAllAnimationsOnPrefab": true,
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    }
   }
 }
