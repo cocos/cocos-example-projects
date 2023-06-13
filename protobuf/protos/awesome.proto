@@ -7,4 +7,22 @@ message AwesomeMessage {
     string name = 1;
     int32 age = 2;
     bytes data = 3;
+    int64 level = 4;
+}
+
+message QuestInfo {
+    int32 quest_id = 1;
+    bool finished = 2;
+    bool recved = 3;
+    int32 condition_param1 = 4;
+    int32 condition_param2 = 5;
+}
+
+message MoreAwesomeMessage {
+    string my_name = 1;
+    int32 some_age = 2;
+    bytes the_data = 3;
+    int64 next_level = 4;
+    AwesomeMessage msg = 5;
+    repeated QuestInfo quests = 6;
 }

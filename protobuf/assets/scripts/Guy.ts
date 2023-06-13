@@ -22,7 +22,7 @@ export class Guy extends Component {
     private _label: Label | null = null;
     private _ray: geometry.Ray = new geometry.Ray();
     private _textLiveTime = 0;
-    
+
     start() {
         if (this.canvasNode === null) {
             throw new Error(`Canvas not specified!`);
@@ -46,7 +46,7 @@ export class Guy extends Component {
         });
     }
 
-    update (deltaTime: number) {
+    update(deltaTime: number) {
         if (this._textLiveTime === 0) {
             return;
         }
@@ -55,7 +55,7 @@ export class Guy extends Component {
         if (this._textLiveTime > textFacadeTime) {
             return;
         }
-        
+
         if (this._textLiveTime <= 0) {
             this._textLiveTime = 0;
         }
@@ -68,7 +68,7 @@ export class Guy extends Component {
         }
     }
 
-    lateUpdate (deltaTime: number) {
+    lateUpdate(deltaTime: number) {
         if (this._billboardNode) {
             this.node.getWorldPosition(v);
             this.mainCamera.convertToUINode(v, this._billboardNode.parent, v);
@@ -76,38 +76,39 @@ export class Guy extends Component {
         }
     }
 
-    onEnable () {
+    onEnable() {
         input.on(Input.EventType.TOUCH_START, this.onTouchStart, this);
     }
 
-    onDisable () {
+    onDisable() {
         input.off(Input.EventType.TOUCH_START, this.onTouchStart, this);
     }
 
-    onTouchStart (event: EventTouch) {
+    onTouchStart(event: EventTouch) {
         this.mainCamera.screenPointToRay(event.touch!.getLocationX(), event.touch!.getLocationY(), this._ray);
         if (geometry.intersect.ray_model(this._ray, this._modelComponent.model)) {
             this._send();
         } else {
-            
+
         }
     }
 
     private _send() {
         this._printFacadeMessage(`${this.nickName} 发送了一条广播消息。`);
-        const data = awesome.AwesomeMessage.encode(generateRandomMessage()).finish();
+        const data = awesome.MoreAwesomeMessage.encode(generateRandomMessage()).finish();
         globalBroadcast.broadcast(this.nickName, data);
     }
 
     private _onReceived(data: Uint8Array) {
         try {
-            const message = awesome.AwesomeMessage.decode(data);
+            const message = awesome.MoreAwesomeMessage.decode(data);
             this._printFacadeMessage(`${this.nickName} 收到广播消息: ${JSON.stringify(message, undefined, 2)}`);
+            console.log(message.toJSON());
         } catch (err) {
             if (err instanceof protobuf.util.ProtocolError) {
-    
+
             } else {
-    
+
             }
         }
     }
@@ -135,9 +136,17 @@ export class Guy extends Component {
     }
 }
 
-function generateRandomMessage(): awesome.IAwesomeMessage {
+function generateRandomMessage(): awesome.IMoreAwesomeMessage {
     return {
-        name: 'Jack',
-        age: randomRange(1, 29),
+        myName: 'Jack',
+        someAge: randomRange(1, 29),
+        theData: new Uint8Array(3),
+        nextLevel: 4294967299,
+        msg: {
+            name: 'Rose',
+            age: randomRange(15, 35),
+            level: randomRange(1000, 2000),
+        },
+        quests: [],
     };
 }
