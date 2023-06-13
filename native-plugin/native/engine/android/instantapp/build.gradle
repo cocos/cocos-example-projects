@@ -10,6 +10,7 @@ android {
     compileSdkVersion PROP_COMPILE_SDK_VERSION.toInteger()
     buildToolsVersion PROP_BUILD_TOOLS_VERSION
     ndkPath PROP_NDK_PATH
+    namespace "com.cocos.android.sssdfsdf"
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -17,7 +18,6 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.cocos.android.sssdfsdf"
         minSdkVersion PROP_MIN_SDK_VERSION
         targetSdkVersion PROP_TARGET_SDK_VERSION
         versionCode 1
@@ -35,7 +35,7 @@ android {
 
     sourceSets.main {
         java.srcDirs "../src", "src"
-        res.srcDirs "../res", 'res'
+        res.srcDirs "../res", 'res', "${RES_PATH}/res"
         jniLibs.srcDirs "../libs", 'libs'
         manifest.srcFile "AndroidManifest.xml"
         assets.srcDir "${RES_PATH}/data"
