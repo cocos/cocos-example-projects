@@ -16,7 +16,7 @@ enum ESweepShapeType {
 }
 Enum(ESweepShapeType);
 
-const DEFAULT_HIT_POINT_NUMBER = 20;
+const DEFAULT_HIT_POINT_NUMBER = 100;
 const DefaultHitPointWorldPos = new Vec3(-100000,-100000,-100000);
 @ccclass('COMMON.SweepHelper')
 @menu('common/SweepHelper')
@@ -159,7 +159,6 @@ export class SweepHelper extends Component {
             const hitPoint = this.hitPointContainer.children[i];
             this.putHitPoint(hitPoint);
         }
-        this.hitPointContainer.removeAllChildren();
     }
 
     OnCurveCast () {
@@ -199,27 +198,30 @@ export class SweepHelper extends Component {
                     if (PhysicsSystem.instance.sweepBoxClosest(this._ray, v3_t, this._orientation, this._mask, this._maxDistance, this._queryTrigger)) {
                         const result = PhysicsSystem.instance.sweepCastClosestResult;
                         const hitPoint = this.getHitPoint();
-                        hitPoint.setWorldPosition(result.hitPoint);
-                        hitPoint.setScale(this.hitSphereScale, this.hitSphereScale, this.hitSphereScale);
-                        this.hitPointContainer.addChild(hitPoint);
+                        if(hitPoint) {
+                            hitPoint.setWorldPosition(result.hitPoint);
+                            hitPoint.setScale(this.hitSphereScale, this.hitSphereScale, this.hitSphereScale);
+                        }
                     }
                     break;
                 case ESweepShapeType.SPHERE:
                     if (PhysicsSystem.instance.sweepSphereClosest(this._ray, this._sphereRadius * this._scale, this._mask, this._maxDistance, this._queryTrigger)) {
                         const result = PhysicsSystem.instance.sweepCastClosestResult;
                         const hitPoint = this.getHitPoint();
-                        hitPoint.setWorldPosition(result.hitPoint);
-                        hitPoint.setScale(this.hitSphereScale, this.hitSphereScale, this.hitSphereScale);
-                        this.hitPointContainer.addChild(hitPoint);
+                        if(hitPoint) {
+                            hitPoint.setWorldPosition(result.hitPoint);
+                            hitPoint.setScale(this.hitSphereScale, this.hitSphereScale, this.hitSphereScale);
+                        }
                     }
                     break;
                 case ESweepShapeType.CAPSULE:
                     if (PhysicsSystem.instance.sweepCapsuleClosest(this._ray, this._capsuleRadius * this._scale, this._capsuleHeight * this._scale, this._orientation, this._mask, this._maxDistance, this._queryTrigger)) {
                         const result = PhysicsSystem.instance.sweepCastClosestResult;
                         const hitPoint = this.getHitPoint();
-                        hitPoint.setWorldPosition(result.hitPoint);
-                        hitPoint.setScale(this.hitSphereScale, this.hitSphereScale, this.hitSphereScale);
-                        this.hitPointContainer.addChild(hitPoint);
+                        if(hitPoint) {
+                            hitPoint.setWorldPosition(result.hitPoint);
+                            hitPoint.setScale(this.hitSphereScale, this.hitSphereScale, this.hitSphereScale);
+                        }
                     }
                     break;
             }
@@ -230,13 +232,13 @@ export class SweepHelper extends Component {
                     Vec3.multiplyScalar(v3_t, v3_t, this._scale);
                     if (PhysicsSystem.instance.sweepBox(this._ray, v3_t, this._orientation, this._mask, this._maxDistance, this._queryTrigger)) {
                         const results = PhysicsSystem.instance.sweepCastResults;
-
                         for (let i = 0; i < results.length; i++) {
                             const result = results[i];
                             const hitPoint = this.getHitPoint();
-                            hitPoint.setWorldPosition(result.hitPoint);
-                            hitPoint.setScale(this.hitSphereScale, this.hitSphereScale, this.hitSphereScale);
-                            this.hitPointContainer.addChild(hitPoint);
+                            if(hitPoint) {
+                                hitPoint.setWorldPosition(result.hitPoint);
+                                hitPoint.setScale(this.hitSphereScale, this.hitSphereScale, this.hitSphereScale);
+                            }
                         }
                     }
                     break;
@@ -247,9 +249,10 @@ export class SweepHelper extends Component {
                         for (let i = 0; i < results.length; i++) {
                             const result = results[i];
                             const hitPoint = this.getHitPoint();
-                            hitPoint.setWorldPosition(result.hitPoint);
-                            hitPoint.setScale(this.hitSphereScale, this.hitSphereScale, this.hitSphereScale);
-                            this.hitPointContainer.addChild(hitPoint);
+                            if(hitPoint) {
+                                hitPoint.setWorldPosition(result.hitPoint);
+                                hitPoint.setScale(this.hitSphereScale, this.hitSphereScale, this.hitSphereScale);
+                            }
                         }
                     }
                     break;
@@ -260,9 +263,10 @@ export class SweepHelper extends Component {
                         for (let i = 0; i < results.length; i++) {
                             const result = results[i];
                             const hitPoint = this.getHitPoint();
-                            hitPoint.setWorldPosition(result.hitPoint);
-                            hitPoint.setScale(this.hitSphereScale, this.hitSphereScale, this.hitSphereScale);
-                            this.hitPointContainer.addChild(hitPoint);
+                            if(hitPoint) {
+                                hitPoint.setWorldPosition(result.hitPoint);
+                                hitPoint.setScale(this.hitSphereScale, this.hitSphereScale, this.hitSphereScale);
+                            }
                         }
                     }
                     break;
