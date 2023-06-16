@@ -152,7 +152,7 @@ export class CharacterControllerTest extends Component {
             return;
 
         deltaTime = PhysicsSystem.instance.fixedTimeStep;
-        this._grounded = this._cct!.onGround;
+        this._grounded = this._cct!.isGrounded;
         
         // Gravity
         this._playerVelocity.y += this.gravityValue * deltaTime;
