@@ -35,7 +35,9 @@ export class MapLoaderTesing extends Component {
                         } else {
                             const prefab = args[1] as Prefab;
                             const clone = instantiate(prefab) as Node;
-                            this.node.addChild(clone);
+                            if(this.node){
+                                this.node.addChild(clone);
+                            }
                             clone.setWorldPosition(prefabInfo.p as Vec3);
                             clone.setWorldRotation(prefabInfo.r as Quat);
                             clone.setWorldScale(prefabInfo.s as Vec3);
