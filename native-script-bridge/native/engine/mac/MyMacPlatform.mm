@@ -4,9 +4,7 @@
 namespace cc{
 
 int32_t MyMacPlatform::run(int argc, const char** argv) {
-    id delegate = [[AppDelegate alloc] init];
-    NSApplication.sharedApplication.delegate = delegate;
     jsbBridgeTest = [JsbBridgeTest new];
-    return NSApplicationMain(argc, argv);
+    return MacPlatform::run(argc, argv);
 }
 }//namespace cc
