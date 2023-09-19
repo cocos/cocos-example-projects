@@ -1,145 +1,108 @@
 {
-    "asset" : {
-        "generator" : "Khronos glTF Blender I/O v1.5.17",
-        "version" : "2.0"
-    },
-    "scene" : 0,
-    "scenes" : [
-        {
-            "name" : "Scene",
-            "nodes" : [
-                0
-            ]
-        }
-    ],
-    "nodes" : [
-        {
-            "mesh" : 0,
-            "name" : "Skala-Stone"
-        }
-    ],
-    "materials" : [
-        {
-            "doubleSided" : true,
-            "name" : "skala-low",
-            "normalTexture" : {
-                "index" : 0
-            },
-            "pbrMetallicRoughness" : {
-                "baseColorTexture" : {
-                    "index" : 1
-                },
-                "metallicFactor" : 0,
-                "roughnessFactor" : 0.5
-            }
-        }
-    ],
-    "meshes" : [
-        {
-            "name" : "skala-low",
-            "primitives" : [
-                {
-                    "attributes" : {
-                        "POSITION" : 0,
-                        "NORMAL" : 1,
-                        "TEXCOORD_0" : 2
-                    },
-                    "indices" : 3,
-                    "material" : 0
-                }
-            ]
-        }
-    ],
-    "textures" : [
-        {
-            "sampler" : 0,
-            "source" : 0
-        },
-        {
-            "sampler" : 0,
-            "source" : 1
-        }
-    ],
-    "images" : [
-        {
-            "mimeType" : "image/jpeg",
-            "name" : "skala-low-normal",
-            "uri" : "skala-low-normal.jpg"
-        },
-        {
-            "mimeType" : "image/jpeg",
-            "name" : "skala-low-diffuse",
-            "uri" : "skala-low-diffuse.jpg"
-        }
-    ],
-    "accessors" : [
-        {
-            "bufferView" : 0,
-            "componentType" : 5126,
-            "count" : 149946,
-            "max" : [
-                1.956649899482727,
-                1.9779335260391235,
-                2.251922607421875
-            ],
-            "min" : [
-                -1.6947221755981445,
-                -1.3759334087371826,
-                -2.237849473953247
-            ],
-            "type" : "VEC3"
-        },
-        {
-            "bufferView" : 1,
-            "componentType" : 5126,
-            "count" : 149946,
-            "type" : "VEC3"
-        },
-        {
-            "bufferView" : 2,
-            "componentType" : 5126,
-            "count" : 149946,
-            "type" : "VEC2"
-        },
-        {
-            "bufferView" : 3,
-            "componentType" : 5125,
-            "count" : 149946,
-            "type" : "SCALAR"
-        }
-    ],
-    "bufferViews" : [
-        {
-            "buffer" : 0,
-            "byteLength" : 1799352,
-            "byteOffset" : 0
-        },
-        {
-            "buffer" : 0,
-            "byteLength" : 1799352,
-            "byteOffset" : 1799352
-        },
-        {
-            "buffer" : 0,
-            "byteLength" : 1199568,
-            "byteOffset" : 3598704
-        },
-        {
-            "buffer" : 0,
-            "byteLength" : 599784,
-            "byteOffset" : 4798272
-        }
-    ],
-    "samplers" : [
-        {
-            "magFilter" : 9729,
-            "minFilter" : 9987
-        }
-    ],
-    "buffers" : [
-        {
-            "byteLength" : 5398056,
-            "uri" : "Skala-Stone.bin"
-        }
-    ]
+	"asset":{
+		"version":"2.0",
+		"generator":""
+	},
+	"accessors":[
+		{
+			"bufferView":0,
+			"componentType":5125,
+			"count":44958,
+			"type":"SCALAR",
+			"min":[0
+			],
+			"max":[44926
+			]
+		},
+		{
+			"bufferView":1,
+			"componentType":5126,
+			"count":44927,
+			"type":"VEC3",
+			"min":[-1.69136477,-1.37464201,-2.24008179
+			],
+			"max":[1.95687926,1.98205197,2.24834275
+			]
+		},
+		{
+			"bufferView":2,
+			"componentType":5126,
+			"count":44927,
+			"type":"VEC2",
+			"min":[0.00926427823,0.00888437033
+			],
+			"max":[0.971954048,0.990031123
+			]
+		},
+		{
+			"bufferView":3,
+			"componentType":5126,
+			"count":44927,
+			"type":"VEC3",
+			"min":[-0.999959171,-0.999984384,-0.999646127
+			],
+			"max":[0.999945402,0.999444187,0.999828577
+			]
+		}
+	],
+	"buffers":[
+		{
+			"uri":"Skala-Stone.bin",
+			"byteLength":1617496,
+			"name":"main_buffer"
+		}
+	],
+	"bufferViews":[
+		{
+			"buffer":0,
+			"byteLength":179832,
+			"target":34963
+		},
+		{
+			"buffer":0,
+			"byteOffset":179832,
+			"byteLength":539124,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteOffset":718956,
+			"byteLength":359416,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteOffset":1078372,
+			"byteLength":539124,
+			"target":34962
+		}
+	],
+	"nodes":[
+		{
+			"name":"geo1",
+			"mesh":0
+		}
+	],
+	"meshes":[
+		{
+			"primitives":[
+				{
+					"attributes":{
+						"NORMAL":3,
+						"TEXCOORD_0":2,
+						"POSITION":1
+					},
+					"indices":0
+				}
+			],
+			"name":"polyreduce1"
+		}
+	],
+	"scenes":[
+		{
+			"nodes":[0
+			]
+		}
+	],
+	"scene":0
 }
