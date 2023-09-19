@@ -1,86 +1,24 @@
 {
-  "ver": "2.3.8",
+  "ver": "2.3.12",
   "importer": "gltf",
   "imported": true,
   "uuid": "fc743ed7-042b-4d41-bdf9-1ae01e76dcea",
   "files": [],
   "subMetas": {
-    "bcca5": {
+    "f38da": {
       "importer": "gltf-mesh",
-      "uuid": "fc743ed7-042b-4d41-bdf9-1ae01e76dcea@bcca5",
+      "uuid": "fc743ed7-042b-4d41-bdf9-1ae01e76dcea@f38da",
       "displayName": "",
-      "id": "bcca5",
-      "name": "UnnamedMesh.mesh",
+      "id": "f38da",
+      "name": "polyreduce1.mesh",
       "userData": {
         "gltfIndex": 0,
-        "triangleCount": 423
+        "triangleCount": 14986
       },
       "ver": "1.1.1",
       "imported": true,
       "files": [
         ".bin",
-        ".json"
-      ],
-      "subMetas": {}
-    },
-    "3effa": {
-      "importer": "texture",
-      "uuid": "fc743ed7-042b-4d41-bdf9-1ae01e76dcea@3effa",
-      "displayName": "",
-      "id": "3effa",
-      "name": "UnnamedTexture-0.texture",
-      "userData": {
-        "wrapModeS": "repeat",
-        "wrapModeT": "repeat",
-        "minfilter": "linear",
-        "magfilter": "linear",
-        "mipfilter": "none",
-        "anisotropy": 0,
-        "isUuid": false,
-        "imageUuidOrDatabaseUri": "db://assets/common/models/skala-stone/skala-low-normal.jpg"
-      },
-      "ver": "1.0.22",
-      "imported": true,
-      "files": [
-        ".json"
-      ],
-      "subMetas": {}
-    },
-    "221a5": {
-      "importer": "texture",
-      "uuid": "fc743ed7-042b-4d41-bdf9-1ae01e76dcea@221a5",
-      "displayName": "",
-      "id": "221a5",
-      "name": "UnnamedTexture-1.texture",
-      "userData": {
-        "wrapModeS": "repeat",
-        "wrapModeT": "repeat",
-        "minfilter": "linear",
-        "magfilter": "linear",
-        "mipfilter": "none",
-        "anisotropy": 0,
-        "isUuid": false,
-        "imageUuidOrDatabaseUri": "db://assets/common/models/skala-stone/skala-low-diffuse.jpg"
-      },
-      "ver": "1.0.22",
-      "imported": true,
-      "files": [
-        ".json"
-      ],
-      "subMetas": {}
-    },
-    "6900b": {
-      "importer": "gltf-material",
-      "uuid": "fc743ed7-042b-4d41-bdf9-1ae01e76dcea@6900b",
-      "displayName": "",
-      "id": "6900b",
-      "name": "skala-low.material",
-      "userData": {
-        "gltfIndex": 0
-      },
-      "ver": "1.0.14",
-      "imported": true,
-      "files": [
         ".json"
       ],
       "subMetas": {}
@@ -94,7 +32,7 @@
       "userData": {
         "gltfIndex": 0
       },
-      "ver": "1.0.13",
+      "ver": "1.0.14",
       "imported": true,
       "files": [
         ".json"
@@ -103,39 +41,19 @@
     }
   },
   "userData": {
-    "imageMetas": [
-      {
-        "uri": "db://assets/common/models/skala-stone/skala-low-normal.jpg"
-      },
-      {
-        "uri": "db://assets/common/models/skala-stone/skala-low-diffuse.jpg"
-      }
-    ],
+    "imageMetas": [],
     "legacyFbxImporter": false,
     "redirect": "fc743ed7-042b-4d41-bdf9-1ae01e76dcea@ecfef",
     "assetFinder": {
       "meshes": [
-        "fc743ed7-042b-4d41-bdf9-1ae01e76dcea@bcca5"
+        "fc743ed7-042b-4d41-bdf9-1ae01e76dcea@f38da"
       ],
       "skeletons": [],
-      "textures": [
-        "fc743ed7-042b-4d41-bdf9-1ae01e76dcea@3effa",
-        "fc743ed7-042b-4d41-bdf9-1ae01e76dcea@221a5"
-      ],
-      "materials": [
-        "fc743ed7-042b-4d41-bdf9-1ae01e76dcea@6900b"
-      ],
+      "textures": [],
+      "materials": [],
       "scenes": [
         "fc743ed7-042b-4d41-bdf9-1ae01e76dcea@ecfef"
       ]
-    },
-    "meshOptimizer": {
-      "algorithm": "gltfpack",
-      "enable": true,
-      "gltfpackOptions": {
-        "si": 0.01,
-        "sa": true
-      }
     },
     "dumpMaterials": false,
     "materialDumpDir": "db://assets/common/models/skala-stone/Materials_Skala-Stone",
@@ -157,6 +75,10 @@
           "faceCount": 0.1
         }
       ]
+    },
+    "meshSimplify": {
+      "enable": true,
+      "targetRatio": 1
     }
   }
 }
